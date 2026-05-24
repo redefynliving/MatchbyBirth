@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>social-first — Free Zodiac Compatibility</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>social-first</h1>
+    <p class="tag">Free Zodiac Compatibility Calculator — no signup</p>
+
+    <form id="calc" onsubmit="return false;">
+      <div class="person">
+        <h3>Person 1</h3>
+        <input id="name1" placeholder="Name (optional)">
+        <input id="date1" type="date">
+      </div>
+      <div class="person">
+        <h3>Person 2</h3>
+        <input id="name2" placeholder="Name (optional)">
+        <input id="date2" type="date">
+      </div>
+
+      <div class="controls">
+        <select id="mode">
+          <option>Romantic / Love</option>
+          <option>Friendship</option>
+          <option>Work</option>
+        </select>
+        <button id="calcBtn">Calculate Compatibility</button>
+      </div>
+    </form>
+
+    <section id="result" class="hidden">
+      <h2 id="score">—%</h2>
+      <p id="explain"></p>
+      <div class="result-actions">
+        <button id="shareBtn">Share image</button>
+        <a id="downloadBtn" download="compatibility.png" class="hidden">Download</a>
+      </div>
+    </section>
+
+    <footer>
+      <small>Starter template. Deploy to Vercel for free.</small>
+    </footer>
+  </main>
+
+  <canvas id="card" width="800" height="420" style="display:none"></canvas>
+  <script src="/script.js"></script>
+</body>
+</html>
