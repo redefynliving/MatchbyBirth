@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import posts from '@/data/posts';
@@ -12,28 +11,62 @@ function BlogPage() {
         <meta name="description" content="Read our latest articles and guides on zodiac compatibility, astrology, and relationship advice." />
       </Helmet>
 
-      <main className="section-spacing bg-background min-h-screen">
-        <div className="content-container max-w-4xl">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Blog & Guides</h1>
-            <p className="text-lg text-muted-foreground">Insights into the stars and your relationships.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <main style={{ padding: '40px 24px' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto' }}>
+          <header style={{ textAlign: 'center', marginBottom: 32 }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>Blog & Guides</h1>
+            <p style={{ fontSize: '1rem', color: '#888', marginTop: 8 }}>Insights into the stars and your relationships.</p>
+          </header>
+
+          <section className="posts-grid">
             {posts.map((post) => (
-              <article key={post.slug} className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-xl font-semibold mb-2"><Link to={`/blog/${post.slug}`} className="hover:underline">{post.title}</Link></h3>
-                <p className="text-sm text-muted-foreground mb-3">{new Date(post.date).toLocaleDateString()}</p>
-                <p className="text-muted-foreground mb-4">{post.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+              <article key={post.slug} className="post-card">
+                <h3 className="post-title"><Link to={`/blog/${post.slug}`} className="post-link">{post.title}</Link></h3>
+                <p className="post-date">{new Date(post.date).toLocaleDateString()}</p>
+                <p className="post-description">{post.description}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 12 }}>
                   {post.tags.map((t) => (
-                    <span key={t} className="px-2 py-1 rounded-full bg-muted text-muted-foreground text-xs">{t}</span>
+                    <span key={t} className="tag">{t}</span>
                   ))}
                 </div>
-                <Link to={`/blog/${post.slug}`} className="inline-block text-primary font-medium">Read More →</Link>
+                <Link to={`/blog/${post.slug}`} className="read-more">Read More →</Link>
               </article>
             ))}
-          </div>
+          </section>
+
+          <style>{`
+            .posts-grid {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 20px;
+            }
+
+            @media (min-width: 720px) {
+              .posts-grid {
+                grid-template-columns: 1fr 1fr;
+              }
+            }
+
+            .post-card {
+              background: #ffffff;
+              border: 1px solid #e6e6f0;
+              border-radius: 16px;
+              padding: 20px;
+              box-shadow: 0 1px 4px rgba(16,24,40,0.04);
+            }
+
+            .post-title { font-size: 1.25rem; font-weight: 600; margin: 0 0 8px 0; color: #1a1a2e; }
+            .post-link { color: inherit; text-decoration: none; }
+            .post-link:hover { text-decoration: underline; color: #6c4de6; }
+
+            .post-date { font-size: 0.875rem; color: #888; margin: 0 0 12px 0; }
+            .post-description { color: #2d2d2d; font-size: 1rem; margin: 0 0 12px 0; }
+
+            .tag { background: #f3f0ff; color: #6c4de6; padding: 4px 8px; border-radius: 999px; font-size: 0.75rem; }
+
+            .read-more { color: #6c4de6; font-weight: 600; text-decoration: none; }
+            .read-more:hover { text-decoration: underline; }
+          `}</style>
         </div>
       </main>
     </>
