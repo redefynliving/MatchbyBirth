@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
 
 function AdBanner() {
   useEffect(() => {
@@ -64,6 +65,11 @@ function HomePage() {
             {/* Ad Banner Placed After Calculator Results Focus */}
             <div className="mt-8 max-w-2xl mx-auto">
               <AdBanner />
+            </div>
+
+            {/* Email capture section */}
+            <div className="mt-8 max-w-3xl mx-auto">
+              <EmailCaptureSection />
             </div>
           </div>
         </section>
