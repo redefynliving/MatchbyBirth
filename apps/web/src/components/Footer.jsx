@@ -1,0 +1,76 @@
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Sparkles, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="border-t border-border bg-card mt-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          
+          <div className="md:col-span-2 space-y-4">
+            <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-foreground">
+              <Sparkles className="w-6 h-6 text-primary" />
+              Match by Birth
+            </Link>
+            <p className="text-muted-foreground max-w-sm leading-relaxed">
+              Discover your cosmic connections. Our astrological compatibility calculator helps you understand the dynamics of your relationships through the stars.
+            </p>
+            <div className="flex flex-col space-y-2 pt-2">
+              <a href="mailto:support@matchbybirth.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="w-4 h-4" />
+                <span>support@matchbybirth.com</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-4 pt-2">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-6">Quick Links</h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link>
+              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link>
+              <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link>
+              <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog & Guides</Link>
+              <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
+            </nav>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-foreground mb-6">Legal</h4>
+            <nav className="flex flex-col gap-3">
+              <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
+              <Link to="/disclaimers" className="text-muted-foreground hover:text-primary transition-colors">Disclaimers</Link>
+            </nav>
+          </div>
+
+        </div>
+        
+        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} Match by Birth. All rights reserved.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            For entertainment purposes only.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;
