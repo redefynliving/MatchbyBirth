@@ -17,11 +17,20 @@ function BlogPage() {
             <p className="text-lg text-muted-foreground">Insights into the stars and your relationships.</p>
           </div>
           
-          <div className="bg-card border border-border rounded-2xl p-12 text-center shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground mb-2">Coming Soon</h2>
-            <p className="text-muted-foreground">
-              We are currently writing our first batch of astrological guides. Stay tuned!
-            </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {posts.map((post) => (
+              <article key={post.slug} className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-semibold mb-2"><Link to={`/blog/${post.slug}`} className="hover:underline">{post.title}</Link></h3>
+                <p className="text-sm text-muted-foreground mb-3">{new Date(post.date).toLocaleDateString()}</p>
+                <p className="text-muted-foreground mb-4">{post.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((t) => (
+                    <span key={t} className="px-2 py-1 rounded-full bg-muted text-muted-foreground text-xs">{t}</span>
+                  ))}
+                </div>
+                <Link to={`/blog/${post.slug}`} className="inline-block text-primary font-medium">Read More →</Link>
+              </article>
+            ))}
           </div>
         </div>
       </main>
