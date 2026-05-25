@@ -2,12 +2,7 @@
   "buildCommand": "cd apps/web && npm install && npm run build",
   "outputDirectory": "dist/apps/web",
   "framework": null,
-  "functions": {
-    "apps/web/api/*.js": {
-      "runtime": "@vercel/node@3"
-    }
-  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/apps/web/api/$1" }
+    { "source": "/api/(.*)", "destination": "/apps/web/api/$1.js" }
   ]
 }
