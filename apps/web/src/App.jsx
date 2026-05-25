@@ -11,6 +11,7 @@ import HomePage from '@/pages/HomePage.jsx';
 import AboutPage from '@/pages/AboutPage.jsx';
 import FAQPage from '@/pages/FAQPage.jsx';
 import BlogPage from '@/pages/BlogPage.jsx';
+import BlogPostPage from '@/pages/BlogPostPage.jsx';
 import ContactPage from '@/pages/ContactPage.jsx';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage.jsx';
 import TermsOfServicePage from '@/pages/TermsOfServicePage.jsx';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsOfServicePage />} />
