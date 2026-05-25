@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import posts from '@/data/posts';
+import { Link } from 'react-router-dom';
 
 function BlogPage() {
   return (
