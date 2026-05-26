@@ -197,13 +197,23 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
 
         {/* Action & Share Section */}
         <div className="p-6 bg-card">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="w-full flex items-center justify-center gap-2 mb-6 h-12 bg-primary/10 text-primary font-semibold rounded-xl hover:bg-primary/20 transition-colors"
-          >
-            <Download className="w-5 h-5" />
-            Save Result
-          </button>
+          <div className="space-y-3">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="w-full flex items-center justify-center gap-2 mb-2 h-12 bg-primary/10 text-primary font-semibold rounded-xl hover:bg-primary/20 transition-colors"
+            >
+              <Download className="w-5 h-5" />
+              Save Result
+            </button>
+
+            <button
+              onClick={() => window.open('/#', '_self')}
+              className="w-full flex items-center justify-center gap-2 mb-4 h-12 bg-secondary text-secondary-foreground font-semibold rounded-xl hover:bg-secondary/90 transition-colors"
+              title="Get Full Report — $4.99"
+            >
+              <span className="font-bold">Get Full Report — $4.99</span>
+            </button>
+          </div>
 
           <h4 className="text-xs font-semibold text-center text-muted-foreground uppercase tracking-wider mb-4">
             Share Result
