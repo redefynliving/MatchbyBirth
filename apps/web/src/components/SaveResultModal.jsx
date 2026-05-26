@@ -17,13 +17,32 @@ function SaveResultModal({ isOpen, onClose, resultUrl }) {
       timestamp: new Date().toISOString()
     };
 
-    // Store in localStorage
-    const existing = JSON.parse(localStorage.getItem('savedResults') || '[]');
-    localStorage.setItem('savedResults', JSON.stringify([...existing, savedData]));
+    // POST to serverless API to send email via Resend
+    try {
+      const resp = await fetch('/api/save-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, p1: getNameFromUrl(resultUrl, 'p1') || '', p2: getNameFromUrl(resultUrl, 'p2') || '', p1_dob: getNameFromUrl(resultUrl, 'p1_dob') || '', p2_dob: getNameFromUrl(resultUrl, 'p2_dob') || '', score: getNameFromUrl(resultUrl, 'score') || '' })
+      });
+      const j = await resp.json();
+      if (resp.ok && j.success) {
+        alert('Result saved successfully! Check your email shortly.');
+        setEmail('');
+        onClose();
+      } else {
+        alert('Failed to save result. Please try again later.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to save result. Please try again later.');
+    }
 
-    alert('Result saved successfully! We will email you the link shortly.');
-    setEmail('');
-    onClose();
+    function getNameFromUrl(url, key) {
+      try {
+        const u = new URL(url);
+        return u.searchParams.get(key);
+      } catch (e) { return null; }
+    }
   };
 
   return (
