@@ -7,10 +7,16 @@ Public API:
 Implementation notes:
 - Reuses compute_aspects by prefixing names (A_:B_) and filtering cross-chart pairs.
 - Strengths from compute_aspects already incorporate aspect weights; we sum them and normalize by sum of per-pair max strengths.
+- When weights/orbs/aspects are omitted, load them dynamically from astro.config so runtime updates (tuning) are picked up.
 """
 from typing import Dict, List
 from astro.aspects import compute_aspects
-from astro.config import DEFAULT_WEIGHTS, DEFAULT_ORBS, ASPECT_ANGLES
+import importlib
+
+
+def _load_config():
+    ac = importlib.import_module('astro.config')
+    return ac.ASPECT_ANGLES, ac.DEFAULT_ORBS, ac.DEFAULT_WEIGHTS
 
 
 def compute_synastry(chartA: Dict[str, float], chartB: Dict[str, float], aspects: List[str] = None, orbs: Dict[str, float] = None, weights: Dict[str, float] = None) -> Dict:
@@ -19,7 +25,8 @@ def compute_synastry(chartA: Dict[str, float], chartB: Dict[str, float], aspects
     prefB = {f"B_{k}": float(v) % 360.0 for k, v in chartB.items()}
     combined = {**prefA, **prefB}
 
-    # default aspects / orbs / weights
+    # default aspects / orbs / weights: load dynamically so runtime tuning works
+    ASPECT_ANGLES, DEFAULT_ORBS, DEFAULT_WEIGHTS = _load_config()
     if aspects is None:
         aspects = list(ASPECT_ANGLES.keys())
     if orbs is None:
