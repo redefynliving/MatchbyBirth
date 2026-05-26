@@ -133,7 +133,7 @@ function ResultPage() {
           ) : null}
 
           <div className="max-w-3xl mx-auto mt-12">
-            <AdUnit adSlot="1234567890" adFormat="auto" />
+
             
             {isGroupMode && groupData ? (
               <ShareButtons 
@@ -162,7 +162,7 @@ function ResultPage() {
             </div>
             
             <div className="mt-12">
-              <AdUnit adSlot="0987654321" adFormat="auto" />
+  
             </div>
           </div>
 
