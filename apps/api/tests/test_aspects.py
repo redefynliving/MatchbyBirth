@@ -33,3 +33,18 @@ def test_strength_monotonic():
     r1 = compute_aspects(positions1, aspects=['sextile'])[0]
     r2 = compute_aspects(positions2, aspects=['sextile'])[0]
     assert r1['strength'] > r2['strength']
+
+
+def test_strength_is_normalized_not_weighted():
+    positions = {'A': 0.0, 'B': 60.0}  # exact sextile
+    r = compute_aspects(positions, aspects=['sextile'])[0]
+    assert r['aspect'] == 'sextile'
+    assert r['orb_diff'] == 0.0
+    assert r['strength'] == 1.0
+
+
+def test_strength_at_orb_boundary_is_zero():
+    positions = {'A': 0.0, 'B': 64.0}  # sextile, exactly 4 deg orb
+    r = compute_aspects(positions, aspects=['sextile'])[0]
+    assert r['orb_diff'] == 4.0
+    assert r['strength'] == 0.0

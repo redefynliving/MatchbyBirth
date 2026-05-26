@@ -42,11 +42,11 @@ function EmailCaptureSection() {
   return (
     <section className="mt-12 py-12 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl text-center">
       <div className="content-container max-w-2xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-2">✦ Your stars, every month</h2>
-        <p className="text-muted-foreground mb-6">Get your Cosmic Compatibility Report — monthly insights on your sign, your best matches, and what the stars say about your relationships.</p>
+        <h2 className="text-2xl font-semibold mb-2">Get Your Free 3-Page Compatibility Mini-Report</h2>
+        <p className="text-muted-foreground mb-6">Enter your email and we'll send you a personalized 3-page compatibility breakdown for your sign — free, no spam.</p>
 
         {status === 'success' ? (
-          <div className="text-lg font-medium text-foreground">✦ You're in. Check your inbox.</div>
+          <div className="text-lg font-medium text-foreground">✦ You're in. Check your inbox for your free mini-report.</div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center">
             <input
@@ -62,7 +62,7 @@ function EmailCaptureSection() {
               disabled={status === 'loading'}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
             >
-              {status === 'loading' ? 'Sending...' : 'Get My Report →'}
+              {status === 'loading' ? 'Sending...' : "Send My Free Report →"}
             </button>
           </form>
         )}
