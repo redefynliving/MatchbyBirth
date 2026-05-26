@@ -8,7 +8,7 @@ import morgan from 'morgan';
 import routes from './routes/index.js';
 import { errorMiddleware } from './middleware/error.js';
 import { globalRateLimit } from './middleware/global-rate-limit.js';
-import logger from './utils/logger.js';
+import logger from './utils/winston.js';
 import { BodyLimit } from './constants/common.js';
 
 const app = express();
@@ -38,6 +38,14 @@ process.on('SIGTERM', async () => {
 });
 
 app.use(helmet());
+app.use((req, res, next) => {
+  // attach request id and logger
+  import('./middleware/request-id.js').then(m => m.requestIdMiddleware(req, res, next));
+});
+app.use((req, res, next) => {
+  res.setHeader('X-Powered-By', 'MatchByBirth');
+  next();
+});
 app.use(cors({
 	origin: process.env.CORS_ORIGIN,
 	credentials: true,
