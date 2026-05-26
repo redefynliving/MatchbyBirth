@@ -1,5 +1,5 @@
 
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useSearchParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ArrowLeft } from 'lucide-react';
@@ -20,6 +20,9 @@ function ResultPage() {
   const p2 = searchParams.get('p2');
   const p2_dob = searchParams.get('p2_dob');
   const type = searchParams.get('type') || 'love';
+
+  // Local UI state so we can render immediately when URL params are present
+  const [mountedFromLink, setMountedFromLink] = useState(false);
 
   // Determine mode
   const isGroupMode = !!groupParam;
@@ -90,13 +93,20 @@ function ResultPage() {
 
   // Append generated parameters to the browser's address bar without reloading
   useEffect(() => {
-    if (resultUrl && window.history.replaceState) {
+    if (resultUrl && window.history.replaceState && !mountedFromLink) {
       window.history.replaceState(null, '', resultUrl);
     }
-  }, [resultUrl]);
+  }, [resultUrl, mountedFromLink]);
+
+  // If the page loads with full pair params, mark as mountedFromLink so we render immediately
+  useEffect(() => {
+    if (p1 && p1_dob && p2 && p2_dob && !isGroupMode) {
+      setMountedFromLink(true);
+    }
+  }, [p1, p1_dob, p2, p2_dob, isGroupMode]);
 
   // Now use the hook results conditionally
-  if (!isGroupMode && !pairData) {
+  if (!isGroupMode && !pairData && !mountedFromLink) {
     return <Navigate to="/" replace />;
   }
   if (isGroupMode && !groupData) {
