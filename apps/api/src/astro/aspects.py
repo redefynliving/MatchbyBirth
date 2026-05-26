@@ -48,18 +48,16 @@ def compute_aspects(positions: Dict[str, float], aspects: List[str] = None, orbs
                 within = d <= orb + 1e-12
                 strength = 0.0
                 if orb > 0:
+                    # normalized relative closeness: 1.0 = exact match, 0.0 = at/beyond orb
                     rel = max(0.0, 1.0 - (d / orb))
-                    # scale by configured weight but cap at 1.0 to keep aspect strength normalized
+                    # scale by configured weight (weights >1 make curve steeper)
                     weight = float(weights.get(asp, 1.0))
                     if weight <= 0:
                         weight = 1.0
-                    # Use an exponentiation-based scaling so heavier weights increase
-                    # sensitivity without causing equal-strength saturation at near-orb values.
+                    # exponentiation-based scaling while preserving 0..1 range
                     strength = float(rel ** (1.0 / weight))
-                    # ensure strength is normalized to 0.0 - 1.0 range
-                    # some callers historically returned percentages (0-100); guard against that
-                    if strength > 1.0:
-                        strength = strength / 100.0
+                    # clamp to [0.0, 1.0] to guarantee normalized output
+                    strength = max(0.0, min(1.0, strength))
                 if within:
                     results.append({
                         'a': names[i],
