@@ -68,8 +68,13 @@ function CompatibilityScoreBar({ label, score, description, groupResults, relati
                       style={{ width: `${pair.score}%` }}
                     />
                   </div>
+                  {/* Remove repeated overall label from individual metric rows */}
+                  {/* Overall label will appear once in the top interpretation section */}
+                  {/* (keeps per-pair cards cleaner) */}
+                  
+                  {/* pairInterpretation remains available for debugging but label hidden here */}
                   <div className="score-container mt-2">
-                    <span className="score-label text-sm text-foreground">{pairInterpretation.label}</span>
+                    <span className="score-label text-sm text-foreground hidden">{pairInterpretation.label}</span>
                     <span className="score-explanation text-xs">{pairInterpretation.explanation}</span>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/50">
