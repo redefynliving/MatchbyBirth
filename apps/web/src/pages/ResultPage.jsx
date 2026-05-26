@@ -121,6 +121,16 @@ function ResultPage() {
     <>
       <Helmet>
         <title>{pageTitle}</title>
+        <meta property="og:image" content={
+          (() => {
+            const u = new URL(window.location.href);
+            const p1 = u.searchParams.get('p1') || u.searchParams.get('group') || 'Alex';
+            const p2 = u.searchParams.get('p2') || 'Jordan';
+            const s = u.searchParams.get('score') || '';
+            const label = 'See your Match by Birth result';
+            return `https://matchbybirth.com/api/og?p1=${encodeURIComponent(p1)}&p2=${encodeURIComponent(p2)}&score=${encodeURIComponent(s)}&label=${encodeURIComponent(label)}`;
+          })()
+        } />
       </Helmet>
 
       <main className="section-spacing bg-background min-h-screen">
