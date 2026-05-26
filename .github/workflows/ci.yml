@@ -14,11 +14,14 @@ jobs:
         python: ['3.10', '3.11']
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
           cache: 'pip'
+          cache-dependency-path: apps/api/requirements.txt
       - name: Setup Python diagnostics (always)
         if: always()
         run: |
