@@ -23,6 +23,7 @@ def compute_aspects(
 
     Returns a list of dicts:
       {a: nameA, b: nameB, aspect: name, angle: angle_deg, diff: actual_diff_deg, orb: orb_deg, strength: 0..1}
+    where strength is normalized from 0.0 at the orb boundary to 1.0 for an exact aspect.
     """
     if aspects is None:
         aspects = list(ASPECT_ANGLES.keys())

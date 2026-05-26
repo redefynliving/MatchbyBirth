@@ -100,10 +100,10 @@ function ResultPage() {
 
   // If the page loads with full pair params, mark as mountedFromLink so we render immediately
   useEffect(() => {
-    if (p1 && p1_dob && p2 && p2_dob && !isGroupMode) {
+    if (p1 && p1_dob && p2 && p2_dob && !isGroupMode && !mountedFromLink) {
       setMountedFromLink(true);
     }
-  }, [p1, p1_dob, p2, p2_dob, isGroupMode]);
+  }, [p1, p1_dob, p2, p2_dob, isGroupMode, mountedFromLink]);
 
   // Now use the hook results conditionally
   if (!isGroupMode && !pairData && !mountedFromLink) {
