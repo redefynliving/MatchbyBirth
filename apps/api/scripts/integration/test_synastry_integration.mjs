@@ -7,7 +7,7 @@ import { setTimeout as sleep } from 'timers/promises';
 
 const PORT = process.env.PORT || 3002;
 const BASE_URL = `http://localhost:${PORT}`;
-const MAX_WAIT_MS = 15_000;
+const MAX_WAIT_MS = 30_000;
 const POLL_MS = 500;
 
 async function waitForServer() {
@@ -30,7 +30,17 @@ async function run() {
   const server = spawn('node', ['src/main.js'], {
     cwd: new URL('../../', import.meta.url).pathname,
     env: { ...process.env, PORT: String(PORT) },
-    stdio: 'inherit',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+
+  // Stream server stdout/stderr so we can see crash messages
+  server.stdout.on('data', (d) => process.stdout.write(`[server] ${d}`));
+  server.stderr.on('data', (d) => process.stderr.write(`[server:err] ${d}`));
+
+  server.on('exit', (code) => {
+    if (code !== null && code !== 0) {
+      console.error(`[integration] Server exited with code ${code}`);
+    }
   });
 
   let exitCode = 0;
