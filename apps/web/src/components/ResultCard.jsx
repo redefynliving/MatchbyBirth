@@ -94,11 +94,23 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
     shareResult(platform, activeUrl, shareText);
   };
 
+  const shareToTikTok = (url) => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      // mobile: deep link to TikTok share sheet (best-effort)
+      const tiktokShare = `https://www.tiktok.com/share?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`;
+      window.location.href = tiktokShare;
+    } else {
+      // desktop: copy link instead and show toast
+      copyResult(shareText, url);
+      toast.success('Link copied! Paste it into TikTok.');
+    }
+  };
+
   return (
     <>
       <div className="animate-scale-up w-full max-w-md mx-auto bg-card rounded-3xl shadow-xl overflow-hidden border border-border">
         {/* Top Gradient Section */}
-        <div className={`bg-gradient-to-br ${getGradient()} p-8 text-center relative overflow-hidden`}>
+        <div className={`bg-gradient-to-br ${getGradient()} p-6 text-center relative overflow-hidden min-h-[240px]`} style={{maxWidth: '520px', margin: '0 auto'}}>
           <div className="absolute top-4 right-4 opacity-20">
             {getIcon()}
           </div>
@@ -249,7 +261,7 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.951-7.252 4.168 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.367 18.604 0 12.017 0z"/></svg>
             </button>
             <button
-              onClick={() => handleShareClick('tiktok')}
+              onClick={() => shareToTikTok(activeUrl)}
               className="flex items-center justify-center h-10 rounded-lg bg-muted text-foreground hover:bg-black hover:text-white transition-colors"
               title="TikTok"
             >
