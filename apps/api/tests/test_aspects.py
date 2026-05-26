@@ -10,7 +10,7 @@ def test_conjunction_detected_exact():
     r = res[0]
     assert r['aspect'] == 'conjunction'
     assert r['orb_diff'] == 0.0
-    assert r['strength'] == 100.0
+    assert r['strength'] == 1.0
 
 
 def test_sextile_within_orb_boundary():
