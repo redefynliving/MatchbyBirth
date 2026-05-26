@@ -3,7 +3,9 @@ export function generateResultPermalink(p1_date, p2_date, p1_name, p2_name, scor
   // Generate the URL parameter format
   const searchParams = new URLSearchParams();
   if (p1_date) searchParams.set('p1', p1_date);
+  if (p1_name) searchParams.set('p1_dob', p1_date);
   if (p2_date) searchParams.set('p2', p2_date);
+  if (p2_name) searchParams.set('p2_dob', p2_date);
   
   const resultUrl = `${window.location.origin}/result?${searchParams.toString()}`;
   
