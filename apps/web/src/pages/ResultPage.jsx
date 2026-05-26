@@ -39,14 +39,20 @@ function ResultPage() {
 
   // HOOK 2: Parse Pair Data - called unconditionally at top level
   const pairData = useMemo(() => {
-    if (!p1 || !p1_dob || !p2 || !p2_dob) return null;
+    // support params set either as p1/p2 with p1_dob/p2_dob OR older format p1/p2 without dob
+    const dob1 = p1_dob || searchParams.get('p1_dob') || searchParams.get('p1_date');
+    const dob2 = p2_dob || searchParams.get('p2_dob') || searchParams.get('p2_date');
+    const name1 = p1 || searchParams.get('p1') || null;
+    const name2 = p2 || searchParams.get('p2') || null;
 
-    const sign1 = getZodiacSign(p1_dob);
-    const sign2 = getZodiacSign(p2_dob);
+    if (!name1 || !dob1 || !name2 || !dob2) return null;
+
+    const sign1 = getZodiacSign(dob1);
+    const sign2 = getZodiacSign(dob2);
     const score = calculateBaseCompatibility(sign1, sign2);
     const interpretation = getScoreInterpretation(score, type);
 
-    return { p1, p2, score, interpretation, type };
+    return { p1: name1, p2: name2, score, interpretation, type };
   }, [p1, p1_dob, p2, p2_dob, type]);
 
   // HOOK 3: Calculate Group Vibe Score - called unconditionally at top level

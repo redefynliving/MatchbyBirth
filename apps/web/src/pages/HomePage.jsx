@@ -35,6 +35,10 @@ function HomePage() {
       <Helmet>
         <title>Zodiac Compatibility Calculator | Birth Date Match</title>
         <meta name="description" content="Free birth date compatibility calculator. Check zodiac compatibility instantly—no signup required. Get your relationship compatibility score in seconds." />
+        <meta property="og:title" content="Match by Birth - Free Zodiac Compatibility Calculator" />
+        <meta property="og:description" content="Discover your astrological compatibility instantly with our free calculator. No signup needed—enter two birth dates and check your match." />
+        <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
+        <meta property="og:url" content={window.location.origin} />
       </Helmet>
 
       <main className="flex-1 bg-background">
