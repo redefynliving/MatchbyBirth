@@ -1,10 +1,13 @@
-const express = require('express');
+import express from 'express';
+import { spawn } from 'child_process';
+import { synastryRateLimit } from '../middleware/synastry-rate-limit.js';
+import { validateSynastry } from '../middleware/validate-synastry.js';
+
 const router = express.Router();
-const { spawn } = require('child_process');
 
 // POST /api/synastry
 // Body: { chartA: {...}, chartB: {...}, options: {...} }
-router.post('/', async (req, res) => {
+router.post('/', synastryRateLimit, validateSynastry, async (req, res) => {
   try {
     const payload = {
       chartA: req.body.chartA || {},
@@ -22,14 +25,22 @@ router.post('/', async (req, res) => {
     py.on('close', (code) => {
       if (code !== 0) {
         console.error('synastry python exit', code, stderr);
-        return res.status(500).json({ success: false, error: 'scoring-failure', details: stderr });
+        const err = new Error('scoring-failure');
+        err.code = 'ENGINE_ERROR';
+        err.details = { stderr };
+        err.status = 500;
+        throw err;
       }
       try {
         const out = JSON.parse(stdout);
         return res.json(out);
       } catch (e) {
         console.error('invalid json from synastry runner', e, stdout, stderr);
-        return res.status(500).json({ success: false, error: 'bad-output', details: stdout });
+        const err = new Error('bad-output');
+        err.code = 'BAD_OUTPUT';
+        err.details = { stdout, stderr };
+        err.status = 500;
+        throw err;
       }
     });
 
@@ -48,4 +59,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
