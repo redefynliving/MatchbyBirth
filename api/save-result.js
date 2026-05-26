@@ -40,6 +40,14 @@ module.exports = async (req, res) => {
         <p>You can revisit your result any time using the link below:</p>
         <p><a href="${resultLink}" style="color:#111827; background:#f3e8ff; padding:8px 12px; border-radius:6px; text-decoration:none;">View your Match by Birth result</a></p>
         <p style="color:#6b7280; font-size:12px;">If you didn't request this email, you can safely ignore it.</p>
+
+        <hr />
+
+        <div style="margin-top:12px;">
+          <p style="font-weight:bold;">Want weekly compatibility updates?</p>
+          <p>Get a weekly compatibility summary straight to your inbox.</p>
+          <p><a href="https://matchbybirth.com/premium" style="color:#ffffff; background:#7c3aed; padding:10px 14px; border-radius:6px; text-decoration:none; display:inline-block;">Get your weekly compatibility update — $4.99/mo</a></p>
+        </div>
       </div>
     `;
 
