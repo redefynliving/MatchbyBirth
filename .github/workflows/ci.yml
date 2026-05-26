@@ -79,7 +79,7 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
 
   node-unit-tests:
     runs-on: ubuntu-latest
@@ -92,7 +92,7 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
       - name: Run unit tests (supertest)
         working-directory: apps/api
         run: |
@@ -109,7 +109,7 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
       - name: Start Node app & run integration test
         working-directory: apps/api
         run: node scripts/integration/test_synastry_integration.mjs
