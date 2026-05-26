@@ -19,19 +19,38 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           cache: 'pip'
-      - name: Show Python
+      - name: Setup Python diagnostics (always)
         if: always()
         run: |
+          echo "=== python --version ==="
           python --version || echo "python not found"
+          echo "=== which python ==="
           which python || true
-      - name: Setup Python fallback (apt)
+          echo "=== env vars (partial) ==="
+          env | grep -E 'GITHUB|CI|PYTHON' || true
+          echo "=== DNS & network check ==="
+          nslookup python.org || true
+          curl -I --max-time 10 https://www.python.org || true
+      - name: Setup Python retry/fallback
         if: failure()
         run: |
-          echo "setup-python failed; attempting apt-get fallback"
-          sudo apt-get update -y
-          sudo apt-get install -y python3.10 python3.10-venv python3.10-dev python3-pip
-          sudo ln -sf /usr/bin/python3.10 /usr/bin/python || true
-          python --version
+          echo "setup-python failed; attempting retry + apt fallback"
+          set -e
+          attempts=0
+          max=3
+          while [ $attempts -lt $max ]; do
+            attempts=$((attempts+1))
+            echo "Retry attempt $attempts"
+            # try apt-based install of common interpreters
+            sudo apt-get update -y && \
+              sudo apt-get install -y python3.11 python3.10 python3-pip python3-venv || true
+            # try symlink to python3
+            if command -v python3.11 >/dev/null 2>&1; then sudo ln -sf /usr/bin/python3.11 /usr/bin/python; fi
+            if command -v python3.10 >/dev/null 2>&1; then sudo ln -sf /usr/bin/python3.10 /usr/bin/python; fi
+            python --version && break || echo "python still not available, sleeping" && sleep $((attempts*5))
+          done
+          echo "final python state:"
+          python --version || true
       - name: Install deps (repo-root fallback)
         if: always()
         run: |
