@@ -8,7 +8,7 @@ function HowItWorksPage() {
   return (
     <>
       <Helmet>
-        <title>How It Works - Compatibility Calculator</title>
+        <title>How It Works - Match by Birth</title>
         <meta name="description" content="Learn how our compatibility calculator uses zodiac signs and birth dates to analyze relationship dynamics." />
       </Helmet>
 

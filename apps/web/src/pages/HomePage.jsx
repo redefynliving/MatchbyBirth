@@ -33,10 +33,10 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Zodiac Compatibility Calculator | Birth Date Match</title>
-        <meta name="description" content="Free birth date compatibility calculator. Check zodiac compatibility instantly—no signup required. Get your relationship compatibility score in seconds." />
-        <meta property="og:title" content="Match by Birth - Free Zodiac Compatibility Calculator" />
-        <meta property="og:description" content="Discover your astrological compatibility instantly with our free calculator. No signup needed—enter two birth dates and check your match." />
+        <title>Match by Birth | The connection behind every relationship.</title>
+        <meta name="description" content="Match by Birth: discover your connection with our free birth date compatibility tool. No signup—just enter two birth dates and get your match." />
+        <meta property="og:title" content="Match by Birth - The connection behind every relationship." />
+        <meta property="og:description" content="Discover your astrological compatibility instantly with Match by Birth. No signup needed—enter two birth dates and check your match." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
         <meta property="og:url" content={window.location.origin} />
       </Helmet>
@@ -56,7 +56,7 @@ function HomePage() {
           <div className="content-container relative z-10">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Free Zodiac Compatibility Calculator by Birth Date
+                Match by Birth — The connection behind every relationship.
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                 Discover your astrological compatibility instantly with our free compatibility calculator. No signup needed—just enter two birth dates and get your compatibility score. Perfect for checking relationship compatibility, friendship compatibility, and more.

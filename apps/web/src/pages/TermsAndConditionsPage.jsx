@@ -20,7 +20,7 @@ function TermsAndConditionsPage() {
 
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing and using Match by Birth and our Relationship Compatibility Calculator, you accept and agree to be bound by the terms and provision of this agreement ("Terms"). If you do not agree to abide by these Terms, please do not use this Website.
+              By accessing and using Match by Birth and our Relationship Compatibility tool, you accept and agree to be bound by the terms and provision of this agreement ("Terms"). If you do not agree to abide by these Terms, please do not use this Website.
             </p>
 
             <h2>2. Entertainment and Informational Purposes Only</h2>
