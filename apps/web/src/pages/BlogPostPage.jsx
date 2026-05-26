@@ -24,6 +24,10 @@ function BlogPostPage() {
       <Helmet>
         <title>{post.title} | Match by Birth</title>
         <meta name="description" content={post.description} />
+        <meta property="og:title" content={`${post.title} | Match by Birth`} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:image" content={`https://matchbybirth.com/og-image.png`} />
+        <meta property="og:url" content={`${window.location.origin}/blog/${post.slug}`} />
       </Helmet>
 
       <main style={{ padding: '40px 24px' }}>
