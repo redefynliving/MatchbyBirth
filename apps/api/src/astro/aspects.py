@@ -1,6 +1,4 @@
-import math
-from typing import Dict, List, Tuple
-import numpy as np
+from typing import Dict, List
 
 from astro.config import ASPECT_ANGLES, DEFAULT_ORBS, DEFAULT_WEIGHTS
 
@@ -10,7 +8,12 @@ def _circular_diff(a_deg: float, b_deg: float) -> float:
     return d if d <= 180.0 else 360.0 - d
 
 
-def compute_aspects(positions: Dict[str, float], aspects: List[str] = None, orbs: Dict[str, float] = None, weights: Dict[str, float] = None) -> List[Dict]:
+def compute_aspects(
+    positions: Dict[str, float],
+    aspects: List[str] = None,
+    orbs: Dict[str, float] = None,
+    weights: Dict[str, float] = None,
+) -> List[Dict]:
     """Compute aspects between named bodies.
 
     positions: {name: longitude_deg}
@@ -29,12 +32,12 @@ def compute_aspects(positions: Dict[str, float], aspects: List[str] = None, orbs
         weights = DEFAULT_WEIGHTS
 
     names = list(positions.keys())
-    longs = np.array([float(positions[n]) % 360.0 for n in names])
+    longs = [float(positions[n]) % 360.0 for n in names]
 
     results = []
     n = len(names)
     for i in range(n):
-        for j in range(i+1, n):
+        for j in range(i + 1, n):
             a = longs[i]
             b = longs[j]
             diff = _circular_diff(a, b)
