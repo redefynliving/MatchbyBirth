@@ -49,7 +49,8 @@ def compute_aspects(positions: Dict[str, float], aspects: List[str] = None, orbs
                 strength = 0.0
                 if orb > 0:
                     rel = max(0.0, 1.0 - (d / orb))
-                    strength = rel * weights.get(asp, 1.0)
+                    # Return normalized strength in the documented 0..1 range.
+                    strength = rel
                 if within:
                     results.append({
                         'a': names[i],
