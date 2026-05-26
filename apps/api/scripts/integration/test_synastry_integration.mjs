@@ -4,11 +4,13 @@
  */
 import { spawn } from 'child_process';
 import { setTimeout as sleep } from 'timers/promises';
+import { fileURLToPath } from 'url';
 
 const PORT = process.env.PORT || 3002;
 const BASE_URL = `http://localhost:${PORT}`;
 const MAX_WAIT_MS = 30_000;
 const POLL_MS = 500;
+const API_ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
 async function waitForServer() {
   const deadline = Date.now() + MAX_WAIT_MS;
@@ -28,7 +30,7 @@ async function run() {
   console.log(`[integration] Starting API server on port ${PORT}…`);
 
   const server = spawn('node', ['src/main.js'], {
-    cwd: new URL('../../', import.meta.url).pathname,
+    cwd: API_ROOT,
     env: { ...process.env, PORT: String(PORT) },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
