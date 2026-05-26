@@ -45,10 +45,8 @@ jobs:
           while [ $attempts -lt $max ]; do
             attempts=$((attempts+1))
             echo "Retry attempt $attempts"
-            # try apt-based install of common interpreters
             sudo apt-get update -y && \
               sudo apt-get install -y python3.11 python3.10 python3-pip python3-venv || true
-            # try symlink to python3
             if command -v python3.11 >/dev/null 2>&1; then sudo ln -sf /usr/bin/python3.11 /usr/bin/python; fi
             if command -v python3.10 >/dev/null 2>&1; then sudo ln -sf /usr/bin/python3.10 /usr/bin/python; fi
             python --version && break || echo "python still not available, sleeping" && sleep $((attempts*5))
@@ -59,7 +57,6 @@ jobs:
         if: always()
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          # ensure pytest is available for test runner
           python -m pip install --upgrade pytest
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
           if [ -f apps/api/requirements.txt ]; then python -m pip install -r apps/api/requirements.txt; fi
@@ -79,7 +76,7 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
 
   node-unit-tests:
     runs-on: ubuntu-latest
@@ -92,7 +89,7 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
       - name: Run unit tests (supertest)
         working-directory: apps/api
         run: |
@@ -109,7 +106,14 @@ jobs:
           node-version: '18'
       - name: Install Node deps
         working-directory: apps/api
-        run: npm ci
+        run: npm install
+      - name: Debug - try starting server directly
+        working-directory: apps/api
+        run: |
+          echo "=== Attempting to start server ==="
+          timeout 10 node src/main.js || true
+        env:
+          PORT: 3002
       - name: Start Node app & run integration test
         working-directory: apps/api
         run: node scripts/integration/test_synastry_integration.mjs
