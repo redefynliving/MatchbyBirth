@@ -33,18 +33,26 @@ export const calculateBaseCompatibility = (sign1, sign2) => {
   const element1 = getElement(sign1);
   const element2 = getElement(sign2);
 
-  if (element1 === element2) return 88 + Math.floor(Math.random() * 8);
+  // deterministic offset derived from the sign pair so results are stable across runs/devices
+  const deterministicOffset = (a = '', b = '', range = 0) => {
+    const s = (a + '|' + b).toLowerCase();
+    let sum = 0;
+    for (let i = 0; i < s.length; i++) sum = (sum * 31 + s.charCodeAt(i)) >>> 0; // simple rolling hash
+    return range > 0 ? sum % (range + 1) : 0;
+  };
+
+  if (element1 === element2) return 88 + deterministicOffset(sign1, sign2, 7); // 88-95
   if ((element1 === 'fire' && element2 === 'air') || (element1 === 'air' && element2 === 'fire')) {
-    return 76 + Math.floor(Math.random() * 10);
+    return 76 + deterministicOffset(sign1, sign2, 9); // 76-85
   }
   if ((element1 === 'earth' && element2 === 'water') || (element1 === 'water' && element2 === 'earth')) {
-    return 74 + Math.floor(Math.random() * 10);
+    return 74 + deterministicOffset(sign1, sign2, 9); // 74-83
   }
   if ((element1 === 'fire' && element2 === 'earth') || (element1 === 'earth' && element2 === 'fire')) {
-    return 52 + Math.floor(Math.random() * 12);
+    return 52 + deterministicOffset(sign1, sign2, 11); // 52-63
   }
   if ((element1 === 'air' && element2 === 'water') || (element1 === 'water' && element2 === 'air')) {
-    return 48 + Math.floor(Math.random() * 12);
+    return 48 + deterministicOffset(sign1, sign2, 11); // 48-59
   }
-  return 42 + Math.floor(Math.random() * 14);
+  return 42 + deterministicOffset(sign1, sign2, 13); // 42-55
 };
