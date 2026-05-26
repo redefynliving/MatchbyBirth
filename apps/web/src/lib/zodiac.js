@@ -1,4 +1,6 @@
 
+import { hashFromTwoDates } from './deterministic.js';
+
 export const getZodiacSign = (dateString) => {
   const date = new Date(dateString);
   const month = date.getMonth() + 1;
@@ -22,23 +24,20 @@ export const getElement = (sign) => {
   const fire = ['Aries', 'Leo', 'Sagittarius'];
   const earth = ['Taurus', 'Virgo', 'Capricorn'];
   const air = ['Gemini', 'Libra', 'Aquarius'];
-  
+
   if (fire.includes(sign)) return 'fire';
   if (earth.includes(sign)) return 'earth';
   if (air.includes(sign)) return 'air';
   return 'water';
 };
 
-export const calculateBaseCompatibility = (sign1, sign2) => {
+export const calculateBaseCompatibility = (sign1, sign2, dob1 = '', dob2 = '') => {
   const element1 = getElement(sign1);
   const element2 = getElement(sign2);
 
   // deterministic offset derived from the sign pair so results are stable across runs/devices
   const deterministicOffset = (a = '', b = '', range = 0) => {
-    const s = (a + '|' + b).toLowerCase();
-    let sum = 0;
-    for (let i = 0; i < s.length; i++) sum = (sum * 31 + s.charCodeAt(i)) >>> 0; // simple rolling hash
-    return range > 0 ? sum % (range + 1) : 0;
+    return hashFromTwoDates(a, b, range);
   };
 
   if (element1 === element2) return 88 + deterministicOffset(sign1, sign2, 7); // 88-95

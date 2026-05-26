@@ -536,7 +536,14 @@ SidebarMenuBadge.displayName = "SidebarMenuBadge"
 const SidebarMenuSkeleton = React.forwardRef(({ className, showIcon = false, ...props }, ref) => {
   // Random width between 50 to 90%.
   const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
+    // replace randomness with deterministic percentage based on user context or fallback
+    // use a fixed hash to keep UI stable across reloads
+    const deterministicPercent = (seedStr = '') => {
+      let s = 0;
+      for (let i = 0; i < seedStr.length; i++) s += seedStr.charCodeAt(i);
+      return `${(50 + (s % 40))}%`;
+    };
+    return deterministicPercent(props.title || 'sidebar');
   }, [])
 
   return (
