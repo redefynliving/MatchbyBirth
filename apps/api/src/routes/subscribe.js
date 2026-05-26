@@ -1,6 +1,6 @@
 import express from 'express';
 import { z } from 'zod';
-import Resend from 'resend';
+import { Resend } from 'resend';
 
 const router = express.Router();
 
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     const html = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #111827;">
         <h1>✦ Welcome to Match by Birth</h1>
-        <p>Welcome to Match by Birth. Every month we'll send you compatibility insights, your sign's relationship forecast, and more. In the meantime, try our free calculator at <a href="https://matchbybirth.com">matchbybirth.com</a></p>
+        <p>Welcome to Match by Birth. Every month we'll send you compatibility insights, your sign's relationship forecast, and more. In the meantime, try our free calculator at <a href="https://matchbybirth.com">matchbybirth.com</a>.</p>
       </div>
     `;
 
