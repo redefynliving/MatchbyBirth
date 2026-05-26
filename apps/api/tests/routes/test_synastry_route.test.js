@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../server'); // adjust path to match your Express app entry
+const app = require('../../src/main').default; // import the Express app export
 
 describe('POST /api/synastry', () => {
   it('returns synastry JSON for simple charts', async () => {
