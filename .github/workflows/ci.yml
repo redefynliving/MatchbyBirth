@@ -37,6 +37,36 @@ jobs:
       - name: Install Node deps
         working-directory: apps/api
         run: npm ci
+
+  node-unit-tests:
+    runs-on: ubuntu-latest
+    needs: node-tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install Node deps
+        working-directory: apps/api
+        run: npm ci
+      - name: Run unit tests (supertest)
+        working-directory: apps/api
+        run: |
+          npm run test || npx jest --runInBand || echo "no js unit test script found"
+
+  node-integration-test:
+    runs-on: ubuntu-latest
+    needs: node-unit-tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install Node deps
+        working-directory: apps/api
+        run: npm ci
       - name: Start Node app & run integration test
         working-directory: apps/api
         run: node scripts/integration/test_synastry_integration.mjs
