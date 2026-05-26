@@ -7,7 +7,7 @@ function SaveResultModal({ isOpen, onClose, resultUrl }) {
 
   if (!isOpen) return null;
 
-  const handleSaveResult = (event) => {
+  const handleSaveResult = async (event) => {
     event.preventDefault();
     if (!email) return;
 
