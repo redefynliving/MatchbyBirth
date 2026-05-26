@@ -1,0 +1,4 @@
+pytest>=7.0
+numpy>=1.24
+# Add other project-specific test/runtime deps here as needed
+# e.g. pyswisseph, skyfield, or astro-specific libs if used by the synastry engine
