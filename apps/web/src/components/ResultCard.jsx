@@ -123,31 +123,77 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
         </div>
 
         {/* Breakdown Section */}
-        {breakdown && (
-          <div className="p-6 bg-card border-b border-border">
-            <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 text-center">Compatibility Breakdown</h4>
-            <div className="space-y-4">
-              {Object.entries(breakdown).map(([key, value]) => {
-                if (key === 'overall' || key === 'longTerm') return null;
-                const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-                return (
-                  <div key={key} className="space-y-1.5">
-                    <div className="flex justify-between text-sm font-medium">
-                      <span className="text-foreground">{label}</span>
-                      <span className="text-primary">{value}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-primary rounded-full transition-all duration-1000"
-                        style={{ width: `${value}%` }}
-                      />
-                    </div>
+        {/* Five-layer breakdown */}
+        <div className="p-6 bg-card border-b border-border">
+          <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 text-center">Compatibility Breakdown</h4>
+          <div className="space-y-4">
+            {breakdown && (
+              <>
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="text-foreground">🔥 Chemistry</span>
+                    <span className="text-primary">{breakdown.chemistry}%</span>
                   </div>
-                );
-              })}
-            </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.chemistry}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Magnetic connection and physical spark.</p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="text-foreground">💬 Communication</span>
+                    <span className="text-primary">{breakdown.communication}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.communication}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Clarity, listening, and mutual understanding.</p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="text-foreground">🏗️ Stability</span>
+                    <span className="text-primary">{breakdown.stability}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.stability}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Reliability, long-term potential, and shared values.</p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="text-foreground">⚡ Growth</span>
+                    <span className="text-primary">{breakdown.growth}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.growth}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Potential for mutual development and challenge.</p>
+                </div>
+
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-sm font-medium">
+                    <span className="text-foreground">🌙 Intuition</span>
+                    <span className="text-primary">{breakdown.intuition}%</span>
+                  </div>
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.intuition}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">Emotional resonance and subtle understanding.</p>
+                </div>
+
+                <div className="pt-2 border-t border-border">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-semibold">Overall</span>
+                    <span className="text-2xl font-extrabold text-foreground">{breakdown.overall}%</span>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
-        )}
+        </div>
 
         {/* Action & Share Section */}
         <div className="p-6 bg-card">
