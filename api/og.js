@@ -1,53 +1,33 @@
-import { ImageResponse } from '@vercel/og';
+import sharp from 'sharp';
 
-export const config = {
-  runtime: 'edge',
-};
-
-export default function handler(req) {
+export default async function handler(req, res) {
   try {
-    const url = new URL(req.url);
-    const p1 = url.searchParams.get('p1') || 'Alex';
-    const p2 = url.searchParams.get('p2') || 'Jordan';
-    const score = url.searchParams.get('score') || '78';
-    const label = url.searchParams.get('label') || 'Mostly Compatible';
+    const { p1 = 'Person 1', p2 = 'Person 2', score = '72', label = 'Strong Match' } = req.query;
 
-    return new ImageResponse(
-      (
-        <div style={{
-          width: '1200px',
-          height: '630px',
-          display: 'flex',
-          background: 'linear-gradient(180deg, #07102A 0%, #0D1B3A 100%)',
-          color: '#F5F3EE',
-          fontFamily: 'Inter, -apple-system, system-ui, sans-serif',
-          padding: 40,
-          boxSizing: 'border-box'
-        }}>
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-            <div>
-              <div style={{ fontSize: 28, fontWeight: 700 }}>{p1} & {p2}</div>
-              <div style={{ marginTop: 8, fontSize: 18, color: '#C9A84C' }}>{label}</div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-              <div style={{ fontSize: 120, fontWeight: 800 }}>{score}%</div>
-              <div style={{ fontSize: 20, color: '#BFC7D6' }}>Match by Birth</div>
-            </div>
-          </div>
-          <div style={{ width: 320, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" rx="20" fill="#0A1A2A" />
-              <circle cx="100" cy="100" r="78" stroke="#C9A84C" strokeWidth="4" />
-              <circle cx="70" cy="70" r="6" fill="#C9A84C" />
-              <circle cx="130" cy="130" r="6" fill="#C9A84C" />
-            </svg>
-          </div>
-        </div>
-      ),
-      { width: 1200, height: 630 }
-    );
+    const svg = `
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1a1a2e"/>
+            <stop offset="100%" style="stop-color:#16213e"/>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="630" fill="url(#bg)"/>
+        <text x="600" y="180" font-family="serif" font-size="48" fill="#ffffff" text-anchor="middle" font-weight="bold">Match by Birth</text>
+        <text x="600" y="280" font-family="serif" font-size="64" fill="#f0c674" text-anchor="middle">${p1} &amp; ${p2}</text>
+        <text x="600" y="400" font-family="serif" font-size="120" fill="#ffffff" text-anchor="middle" font-weight="bold">${score}%</text>
+        <text x="600" y="480" font-family="serif" font-size="40" fill="#a0aec0" text-anchor="middle">${label}</text>
+        <text x="600" y="580" font-family="serif" font-size="28" fill="#718096" text-anchor="middle">matchbybirth.com</text>
+      </svg>
+    `;
+
+    const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+    res.setHeader('Content-Type', 'image/png');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    return res.status(200).send(png);
   } catch (err) {
     console.error(err);
-    return new Response('Failed to generate image', { status: 500 });
+    return res.status(500).send('Failed to generate image');
   }
 }
