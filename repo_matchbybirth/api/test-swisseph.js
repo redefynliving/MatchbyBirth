@@ -1,4 +1,8 @@
-const swisseph = require('swisseph');
+const { julian } = require('astronomia');
+const solar = require('astronomia/lib/solar');
+const moonposition = require('astronomia/lib/moonposition');
+const ascendant = require('astronomia/lib/ascendant');
+
 
 module.exports = async (req, res) => {
   try {
@@ -6,15 +10,15 @@ module.exports = async (req, res) => {
     const year = 1990, month = 1, day = 15;
     const hour = 14 + 30/60; // 14.5 UT
 
-    const jd = swisseph.swe_julday(year, month, day, hour, swisseph.SE_GREG_CAL);
-    const sun = swisseph.swe_calc_ut(jd, swisseph.SE_SUN);
+    const jd = julian.calendarGregorianToJD(year, month, day + (hour/24));
+    const sunLon = (solar.apparentLongitude(jd) * 180) / Math.PI;
 
     function signFromLongitude(long) {
       const signs = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
       return signs[Math.floor(((long % 360) + 360) % 360 / 30)];
     }
 
-    const sunSign = sun && sun.longitude ? signFromLongitude(sun.longitude) : null;
+    const sunSign = signFromLongitude(sunLon);
 
     return res.status(200).json({ ok: true, sunSign, jd });
   } catch (err) {
