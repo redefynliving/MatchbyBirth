@@ -7,15 +7,24 @@ import { Plus, X, Loader2 } from 'lucide-react';
 
 function GroupInputForm({ people, setPeople, onSubmit, isCalculating, error }) {
 const addPerson = () => {
-if (people.length < 7) {
-setPeople([...people, { id: Date.now(), name: '', birthDate: '' }]);
-}
+  if (people.length < 7) {
+    const newPerson = { id: Date.now(), name: '', birthDate: '' };
+    setPeople(prev => {
+      const next = [...prev, newPerson];
+      try { console.log('addPerson ->', next.length); } catch(e) {}
+      return next;
+    });
+  }
 };
 
 const removePerson = (id) => {
-if (people.length > 3) {
-setPeople(people.filter(p => p.id !== id));
-}
+  if (people.length > 3) {
+    setPeople(prev => {
+      const next = prev.filter(p => p.id !== id);
+      try { console.log('removePerson ->', next.length); } catch(e) {}
+      return next;
+    });
+  }
 };
 
 const handlePersonChange = (id, field, value) => {
