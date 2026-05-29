@@ -4,71 +4,56 @@ module.exports = async (req, res) => {
   try {
     if (req.method !== 'POST') {
       res.setHeader('Allow', 'POST');
-      return res.status(405).json({ error: 'Method Not Allowed' });
+      return res.status(405).json({ ok: false, error: 'Method Not Allowed' });
     }
 
     const { nameA, nameB, dobA, dobB, scores } = req.body || {};
 
     if (!nameA || !nameB || !dobA || !dobB) {
-      return res.status(400).json({ error: 'Missing required fields: nameA, nameB, dobA, dobB' });
+      return res.status(400).json({ ok: false, error: 'Missing required fields: nameA, nameB, dobA, dobB' });
     }
 
-    const key = process.env.ANTHROPIC_API_KEY;
+    const key = process.env.GEMINI_API_KEY;
     if (!key) {
-      return res.status(500).json({ error: 'Server misconfiguration: ANTHROPIC_API_KEY not set' });
+      return res.status(500).json({ ok: false, error: 'Server misconfiguration: GEMINI_API_KEY not set' });
     }
 
-    const prompt = `You are an expert astrology writer. Produce a concise, well-structured markdown compatibility report for two people. Use the data exactly as provided. Output only markdown.
-
-Input:
-- nameA: ${nameA}
-- nameB: ${nameB}
-- dobA: ${dobA}
-- dobB: ${dobB}
-- synastry_scores: ${JSON.stringify(scores || {})}
-
-Instructions:
-- Title the report with both names.
-- Include a brief summary (1-2 sentences) of overall compatibility.
-- Provide sections: Summary, Strengths, Challenges, Practical advice.
-- Keep the tone warm and non-judgmental.
-- Keep it under ~700 words and use headings and bullet points where appropriate.
-
-Return the markdown document only (no extraneous JSON or commentary).`;
+    const prompt = `You are an astrology compatibility expert. Given two people and their compatibility scores, write a warm, engaging 3-paragraph compatibility report in markdown. Names: ${nameA} and ${nameB}. Birthdays: ${dobA} and ${dobB}. Scores: ${JSON.stringify(scores)}. Be specific, fun, and avoid generic filler.`;
 
     const body = {
-      model: 'claude-haiku-4-5-20251001',
-      prompt,
-      max_tokens_to_sample: 2000,
-      temperature: 0.7
+      contents: [
+        {
+          parts: [ { text: prompt } ]
+        }
+      ]
     };
 
-    const resp = await fetch('https://api.anthropic.com/v1/complete', {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
+    const resp = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${key}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
     });
 
     if (!resp.ok) {
       const text = await resp.text();
-      console.error('Anthropic API error', resp.status, text);
-      return res.status(502).json({ error: 'AI provider error', details: text });
+      console.error('Gemini API error', resp.status, text);
+      return res.status(502).json({ ok: false, error: 'AI provider error', details: text });
     }
 
     const data = await resp.json();
-    // Support common response shapes
-    const markdown = data.completion || data.completion?.[0]?.text || data.output || data.text || data.completion_text || (typeof data === 'string' ? data : undefined);
+    const markdown = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (!markdown) {
-      return res.status(502).json({ error: 'AI provider returned no completion', raw: data });
+      return res.status(502).json({ ok: false, error: 'AI provider returned no completion', raw: data });
     }
 
     return res.status(200).json({ ok: true, markdown });
   } catch (err) {
     console.error('generate-report error', err);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ ok: false, error: 'Internal server error' });
   }
 };
