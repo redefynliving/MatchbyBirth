@@ -2,11 +2,36 @@
 import React, { useEffect, useState } from 'react';
 import { Heart, Users, Briefcase, Download, Copy } from 'lucide-react';
 import { shareResult, copyResult } from '@/utils/resultPermalink.js';
-import SaveResultModal from './SaveResultModal.jsx';
 import { toast } from 'sonner';
 
 function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipType, breakdown, resultUrl }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [downloadInProgress, setDownloadInProgress] = useState(false);
+
+  // download result card as PNG using html2canvas
+  const handleDownloadResultCard = async () => {
+    try {
+      setDownloadInProgress(true);
+      // load html2canvas dynamically to avoid bundling in SSR
+      const { default: html2canvas } = await import('html2canvas');
+      const el = document.getElementById('result-card');
+      if (!el) throw new Error('result-card-not-found');
+      const canvas = await html2canvas(el, { useCORS: true, backgroundColor: null });
+      const dataUrl = canvas.toDataURL('image/png');
+      // create temporary link
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = 'my-match-result.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setDownloadInProgress(false);
+    } catch (err) {
+      console.error('download failed', err);
+      setDownloadInProgress(false);
+      toast.error('Failed to save image.');
+    }
+  };
 
   const getIcon = () => {
     switch (relationshipType) {
@@ -282,6 +307,9 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         resultUrl={activeUrl}
+        person1Name={person1Name}
+        person2Name={person2Name}
+        score={score}
       />
     </>
   );
