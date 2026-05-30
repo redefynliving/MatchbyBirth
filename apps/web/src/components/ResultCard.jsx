@@ -108,7 +108,7 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
 
   return (
     <>
-      <div className="animate-scale-up w-full max-w-md mx-auto bg-card rounded-3xl shadow-xl overflow-hidden border border-border">
+      <div id="result-card" className="animate-scale-up w-full max-w-md mx-auto bg-card rounded-3xl shadow-xl overflow-hidden border border-border">
         {/* Top Gradient Section */}
         <div className={`bg-gradient-to-br ${getGradient()} p-6 text-center relative overflow-hidden min-h-[240px]`} style={{maxWidth: '520px', margin: '0 auto'}}>
           <div className="absolute top-4 right-4 opacity-20">

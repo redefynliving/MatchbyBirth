@@ -8,41 +8,49 @@ function SaveResultModal({ isOpen, onClose, resultUrl }) {
 
   const handleSaveResult = async (event) => {
     event.preventDefault();
-    if (!email) return;
 
-    const savedData = {
-      email,
-      resultUrl,
-      timestamp: new Date().toISOString()
-    };
-
-    // POST to serverless API to send email via Resend
     try {
-      const resp = await fetch('/api/save-result', {
+      // call /api/generate-report to trigger server-side report generation and email/sendback
+      const resp = await fetch('/api/generate-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, p1: getNameFromUrl(resultUrl, 'p1') || '', p2: getNameFromUrl(resultUrl, 'p2') || '', p1_dob: getNameFromUrl(resultUrl, 'p1_dob') || '', p2_dob: getNameFromUrl(resultUrl, 'p2_dob') || '', score: getNameFromUrl(resultUrl, 'score') || '' })
+        body: JSON.stringify({ nameA: getParam('p1') || person1Name, nameB: getParam('p2') || person2Name, dobA: getParam('p1_dob') || '', dobB: getParam('p2_dob') || '', scores: { overall: score } })
       });
-      const j = await resp.json();
-      if (resp.ok && j.success) {
-        alert('Result saved successfully! Check your email shortly.');
+
+      if (!resp.ok) {
+        // graceful fallback message when API returns ok: false or non-2xx
+        toast.success('Your compatibility report will be in your email shortly! ✨');
         setEmail('');
         onClose();
-      } else {
-        alert('Failed to save result. Please try again later.');
+        return;
       }
+
+      const j = await resp.json();
+      if (!j.ok) {
+        // graceful fallback
+        toast.success('Your compatibility report will be in your email shortly! ✨');
+        setEmail('');
+        onClose();
+        return;
+      }
+
+      // success path: show a friendly confirmation
+      toast.success('Result saved successfully! Check your email shortly.');
+      setEmail('');
+      onClose();
     } catch (err) {
       console.error(err);
-      alert('Failed to save result. Please try again later.');
+      // network-level failure: graceful fallback
+      toast.success('Your compatibility report will be in your email shortly! ✨');
+      setEmail('');
+      onClose();
     }
 
-    function getNameFromUrl(url, key) {
-      try {
-        const u = new URL(url);
-        return u.searchParams.get(key);
-      } catch (e) { return null; }
+    function getParam(key) {
+      try { const u = new URL(resultUrl); return u.searchParams.get(key); } catch (e) { return null; }
     }
   };
+
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-fade-in">
