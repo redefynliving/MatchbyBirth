@@ -96,6 +96,353 @@ const posts = [
 
       <p>Ultimately, the compatibility score helps you notice patterns, ask better questions, and invest where it matters most.</p>
     `
+  },
+  {
+    slug: 'taurus-cancer-nurturing-pair',
+    title: 'Taurus and Cancer Compatibility — The Most Nurturing Pair in the Zodiac',
+    date: '2026-05-31',
+    description: 'Taurus and Cancer form a deeply nurturing partnership built on security, comfort, and emotional attunement. Explore why this earth-water duo often feels like home.',
+    tags: ['taurus','cancer','compatibility','nurture'],
+    content: `
+      <h1>Taurus and Cancer: The Most Nurturing Pair in the Zodiac</h1>
+
+      <p>Taurus and Cancer are often described as two signs that instinctively know how to make a house feel like a home. Taurus, ruled by Venus, values comfort, stability, and sensory pleasure. Cancer, ruled by the Moon, stands for emotional safety, caretaking, and an instinct for creating intimate spaces. Together they form a pairing that prioritizes belonging, routine, and the small rituals that turn shared life into sanctuary.</p>
+
+      <h2>Why they click</h2>
+
+      <p>At the core, Taurus and Cancer seek the same end even if their methods differ. Taurus builds tangible security — a steady job, a reliable paycheck, warm meals, and a comfortable bed. Cancer builds emotional security — attentive listening, nightly check-ins, and an uncanny sensitivity to mood shifts. The result is mutual reinforcement: Taurus makes Cancer feel materially safe, while Cancer ensures Taurus feels emotionally held.</p>
+
+      <p>There’s also a practical chemistry here. Taurus’ patient, unhurried approach meshes with Cancer’s preference for domestic steadiness. Where Taurus resists sudden change, Cancer resists emotional unpredictability. Both signs are slow to abandon what they’ve built, which makes them naturally durable as partners.</p>
+
+      <h2>Love and romance</h2>
+
+      <p>In romance, Taurus and Cancer are often quietly affectionate rather than wildly demonstrative. A perfect date for them might be cooking dinner together, sharing stories, and sinking into a couch with soft lighting. Taurus brings sensuality and tactile reassurance; Cancer supplies warmth, reminiscence, and the ability to translate small gestures into deep meaning.</p>
+
+      <p>These signs can outlast flashier matches because they invest in rituals and predictability. Yet the relationship’s emotional depth can surprise outsiders: private jokes, family traditions, and a shared pantry become markers of devotion. This is the kind of union that ages like a well-loved home — comfortable, layered, and familiar.</p>
+
+      <h2>Challenges to watch</h2>
+
+      <p>No pairing is perfect. Taurus can sometimes be stubborn and resistant to emotional nuance. Cancer can be moody and prone to withdraw into protective shells. When Taurus retreats into silence, Cancer interprets it as rejection; when Cancer gets clingy, Taurus feels smothered. Resolution requires explicit communication and a willingness to name needs rather than expect them to be sensed.</p>
+
+      <p>Financial differences can also surface. Taurus values material security and may be conservative with money; Cancer’s spending may be tied to emotional needs and caretaking. Open conversations about budgeting, shared goals, and household roles keep friction minimal.</p>
+
+      <h2>Friendship and family</h2>
+
+      <p>As friends or family members, Taurus and Cancer create tribes. They are reliable guests, consistent callers, and organizers of family traditions. Cancer often takes on the emotional labor while Taurus provides stable logistics. Together they are the people who remember birthdays, host holiday meals, and keep the living room cozy year after year.</p>
+
+      <h2>How to strengthen the match</h2>
+
+      <ul>
+        <li>Honor routine: Rituals matter to both. Monthly date nights or weekly home projects go a long way.</li>
+        <li>Practice gentle check-ins: Cancer benefits from verbal reassurances; Taurus benefits from knowing what to expect emotionally.</li>
+        <li>Plan together: Shared savings goals or home improvements build trust and align values.</li>
+        <li>Respect boundaries: Let Taurus have quiet time; let Cancer lead caregiving tasks when needed.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Security, loyalty, mutual caretaking.</p>
+      <p>Challenges: Stubbornness, moodiness, misread needs.</p>
+
+      <p>For readers who want to test a real pairing, try our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> to see how Taurus and Cancer score with your exact birth data. The sun sign gives a helpful impression, but natal charts reveal the finer textures of compatibility.</p>
+
+      <p>When Taurus and Cancer come together intentionally — with conversations about needs, money, and emotional rhythms — they often build partnerships that feel like home: nourishing, steady, and deeply attuned.</p>
+    `
+  },
+  {
+    slug: 'gemini-sagittarius-opposites-that-work',
+    title: 'Gemini and Sagittarius Compatibility — Opposites That Actually Work',
+    date: '2026-05-31',
+    description: 'Gemini and Sagittarius are opposite signs with complementary strengths. Learn how curiosity and optimism make this pairing lively, durable, and surprisingly compatible.',
+    tags: ['gemini','sagittarius','compatibility','opposites'],
+    content: `
+      <h1>Gemini and Sagittarius: Opposites That Actually Work</h1>
+
+      <p>Gemini and Sagittarius occupy opposite poles of the zodiac, and that polarity is precisely what makes this pairing magnetic. Gemini is curious, adaptable, and conversational — an air sign that thrives on ideas and variety. Sagittarius, a fire sign, is expansive, philosophical, and driven by a hunger for meaning and adventure. Together they form a classic example of "opposites attract," but with a practical twist: their differences often cover one another’s blind spots.</p>
+
+      <h2>What draws them together</h2>
+
+      <p>At the most basic level, Gemini and Sagittarius share a love of discovery. Gemini explores borders through conversation and mental agility. Sagittarius explores through travel, big-picture thinking, and moral inquiry. Both are learners, and both respond to partners who stimulate their minds. The exchange of ideas feels like a shared playground, which keeps boredom at bay.</p>
+
+      <p>There’s also a philosophical complement: Gemini’s local curiosity pairs well with Sagittarius’ global curiosity. When Gemini wants to pick apart details, Sagittarius can reframe them within a broader narrative. When Sagittarius gets lost in ideals, Gemini tests ideas with witty skepticism.</p>
+
+      <h2>Romance and chemistry</h2>
+
+      <p>In romance, this duo is playful, spontaneous, and often unmistakably fun. Dates tend to be social, interactive, and intellectually stimulating — think museum crawls, long debates over coffee, or last-minute road trips. Sexual chemistry tends to be lively; both signs value novelty and mental rapport as much as physical attraction.</p>
+
+      <p>Their biggest romantic asset is flexibility. Gemini’s adaptability helps them roll with Sagittarius’ restlessness. Sagittarius’ optimism reassures Gemini when their curiosity leads to doubt. When both practice mutual respect for freedom, the relationship thrives.</p>
+
+      <h2>Challenges and growth edges</h2>
+
+      <p>Despite strong compatibility cues, friction can emerge. Gemini’s need for variety can feel scattered to Sagittarius, who craves truth and depth. Sagittarius’ blunt honesty can feel like criticism to socially sensitive Gemini. Both must tolerate different communication styles: Gemini speaks in nuance and irony; Sagittarius prefers blunt clarity.</p>
+
+      <p>Commitment can also be a negotiation. Sagittarius values personal freedom and may resist anything that seems limiting. Gemini’s flirtatious nature can trigger insecurity. Clear agreements about what commitment looks like — and how independence will be preserved — help both feel secure.</p>
+
+      <h2>Friendship and collaboration</h2>
+
+      <p>As friends or collaborators, Gemini and Sagittarius are energetic idea partners. Gemini generates creative angles; Sagittarius provides vision and momentum. This makes them excellent co-founders, travel companions, or conversation partners. Their differences create a productive tension rather than a deadlock.</p>
+
+      <h2>How to make it work</h2>
+
+      <ul>
+        <li>Honor exploration: Allow space for travel, classes, and side projects.</li>
+        <li>Practice direct kindness: Sagittarius’ truthfulness should be tempered with tact; Gemini’s teasing should be paired with clarity.</li>
+        <li>Set shared goals: Even adventurous pairs need a project that bonds them long-term.</li>
+        <li>Celebrate curiosity: Attend lectures, plan trips, and keep conversations fresh.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Intellectual rapport, adventure, adaptability.</p>
+      <p>Challenges: Bluntness, inconsistency, commitment negotiation.</p>
+
+      <p>Want to see how your Gemini-Sagittarius pairing scores with exact birth data? Use our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> to get a full synastry read. Their polarity can be a strength when both value curiosity, truth, and shared exploration.</p>
+
+      <p>Ultimately, Gemini and Sagittarius offer each other what few other pairings do: a relationship that’s perpetually in motion, intellectually alive, and open to the next horizon.</p>
+    `
+  },
+  {
+    slug: 'leo-aquarius-fixed-signs-big-sparks',
+    title: 'Leo and Aquarius Compatibility — Fixed Signs, Big Sparks',
+    date: '2026-05-31',
+    description: 'Leo and Aquarius are opposite fixed signs — bold, stubborn, and electrifying when together. Learn how their passions align and where friction comes up.',
+    tags: ['leo','aquarius','compatibility','fixed-signs'],
+    content: `
+      <h1>Leo and Aquarius: Fixed Signs, Big Sparks</h1>
+
+      <p>Leo and Aquarius sit opposite one another on the zodiac wheel, and both are fixed signs — meaning they bring persistence, intensity, and a strong sense of identity to any relationship. Leo, ruled by the Sun, desires attention, warmth, and a stage on which to shine. Aquarius, ruled by Uranus (and traditionally Saturn), values individuality, progressive ideas, and social causes. Together, they generate a dynamic blend of charisma and rebellion.</p>
+
+      <h2>Attraction and complementary strengths</h2>
+
+      <p>What draws these signs together is the complement of showmanship and originality. Leo offers the heat: dramatic flair, generosity, and a desire for adoration. Aquarius offers the cool: eccentricity, visionary thinking, and an unapologetic independence. Leo admires Aquarius’ originality; Aquarius respects Leo’s courage to be seen.</p>
+
+      <p>The relationship can feel like a partnership between an artist and an innovator. Leo creates moments; Aquarius invents movements. In public, they can be magnetic — the charismatic leader and the avant-garde thinker making an unforgettable pair.</p>
+
+      <h2>Romance and emotional life</h2>
+
+      <p>In romance, these signs can either amplify one another’s best qualities or clash over control and visibility. Leo craves consistent adoration and public affirmation. Aquarius prefers to keep things unconventional and may resist being boxed into traditional roles. The trick is for Leo to appreciate Aquarius’ need for freedom, and for Aquarius to provide Leo with genuine recognition that doesn’t feel performative.</p>
+
+      <p>Emotionally, Leo is direct and expressive; Aquarius is intellectual and sometimes detached. That creates a polarity where Leo’s warmth can soften Aquarius, while Aquarius’ perspective can remind Leo of larger ideals beyond ego.</p>
+
+      <h2>Challenges and negotiation points</h2>
+
+      <p>Problems arise when stubbornness hardens into inflexibility. Both are fixed signs and can dig in their heels. Leo may interpret Aquarius’ detachment as rejection; Aquarius may see Leo’s desire for attention as self-centered. Compromise requires humility and a shared sense of purpose.</p>
+
+      <p>Fight patterns often center on control and authenticity. Leo wants heartfelt ceremony; Aquarius wants authenticity without the trappings. Establishing rituals that feel meaningful to both — a weekly idea night, a public shoutout, or joint creative projects — helps bridge the gap.</p>
+
+      <h2>Friendship, work, and social impact</h2>
+
+      <p>These signs shine in collaborative social efforts. Leo’s charisma rallies teams; Aquarius’ foresight designs strategy. They are natural partners for activism, creative enterprises, or public-facing projects. Leo provides the face; Aquarius builds the structure behind the cause.</p>
+
+      <h2>How to make it work</h2>
+
+      <ul>
+        <li>Respect individuality: Celebrate quirks without trying to change them.</li>
+        <li>Create shared rituals that honor both showmanship and independence.</li>
+        <li>Channel stubbornness into shared goals rather than personal victories.</li>
+        <li>Practice explicit appreciation: Aquarius isn’t always demonstrative; Leo needs verbal praise.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Magnetism, vision, loyalty.</p>
+      <p>Challenges: Stubbornness, detachment, ego clashes.</p>
+
+      <p>Curious how a Leo-Aquarius pair plays out for your exact charts? Try the calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> and get a synastry read tailored to your birth times. With effort, this pairing can balance spectacle with substance and craft something distinctive together.</p>
+    `
+  },
+  {
+    slug: 'virgo-pisces-logic-intuition-love',
+    title: 'Virgo and Pisces Compatibility — Can Logic and Intuition Find Love?',
+    date: '2026-05-31',
+    description: 'Virgo and Pisces sit opposite on the zodiac and can either frustrate or complete one another. Explore how earthy detail and watery intuition can create a transformative relationship.',
+    tags: ['virgo','pisces','compatibility','opposites'],
+    content: `
+      <h1>Virgo and Pisces: Can Logic and Intuition Find Love?</h1>
+
+      <p>Virgo and Pisces are classic opposite signs. Virgo, an earth sign ruled by Mercury, values precision, routine, and helpfulness. Pisces, a water sign ruled by Neptune (and Jupiter traditionally), embodies imagination, empathy, and a porous sense of boundaries. At their best, the pair completes a whole: Virgo brings form to Pisces’ formlessness, and Pisces brings soul to Virgo’s structure.</p>
+
+      <h2>Mutual healing and complementarity</h2>
+
+      <p>One of the most beautiful things about Virgo-Pisces relationships is their potential for healing. Virgo’s practical care can help Pisces ground dreams into reality. Conversely, Pisces can teach Virgo to relax, to accept ambiguity, and to notice the spiritual undercurrent beneath daily routines. Where Virgo worries, Pisces comforts; where Pisces drifts, Virgo organizes.</p>
+
+      <p>This polarity is often therapeutic. Virgo’s critique, when gentle, becomes a form of service. Pisces’ compassion, when clear, becomes emotional education. Together they can cultivate both competence and compassion in each other.</p>
+
+      <h2>Romance and intimacy</h2>
+
+      <p>Intimacy between these signs tends to be subtle and tender. Pisces seeks depth and emotional surrender; Virgo seeks useful devotion expressed through helpful acts. Their love language differs but dovetails: Virgo makes tea, fixes the leaky faucet, and organizes paperwork; Pisces brings poetry, music, and quiet dream-sharing.</p>
+
+      <p>Sexually, their connection can be devotional. Pisces’s sensitivity meets Virgo’s attentiveness, creating a space where both feel seen and cared for. The pairing rewards patience and reciprocity rather than fireworks.</p>
+
+      <h2>Tensions and boundaries</h2>
+
+      <p>Tension arises when Virgo’s criticism turns harsh and when Pisces’ boundaries dissolve into codependency. Virgo must learn to express needs without shaming; Pisces must learn to say no without guilt. Practical tools — explicit agreements, shared calendars, and small daily rituals — help maintain balance.</p>
+
+      <p>Financial and organizational stress can also be a flashpoint. Virgo values order; Pisces sometimes avoids harsh realities. Joint planning sessions that respect Virgo’s need for detail and Pisces’ need for inspiration provide a healthy compromise.</p>
+
+      <h2>Friendship and shared work</h2>
+
+      <p>In non-romantic partnerships, Virgo and Pisces excel when roles are clear. Virgo handles operations; Pisces handles vision and outreach. This combination works well in nonprofits, creative studios, and caregiving professions where both compassion and competence matter.</p>
+
+      <h2>How to strengthen the match</h2>
+
+      <ul>
+        <li>Turn care into action: small services matter to both signs.</li>
+        <li>Build gentle feedback rituals so Virgo’s critique feels like help.</li>
+        <li>Practice boundary language: "I need" and "I can" rather than blame.</li>
+        <li>Nurture shared creative projects that bridge structure and inspiration.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Mutual healing, practical compassion, devotion.</p>
+      <p>Challenges: Critique vs. sensitivity, boundary erosion, avoidance of conflict.</p>
+
+      <p>Want to test how Virgo and Pisces align in your actual charts? Use our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> for a detailed synastry score. With kindness and shared rituals, logic and intuition often make an unexpectedly beautiful match.</p>
+    `
+  },
+  {
+    slug: 'libra-gemini-air-sign-romance',
+    title: 'Libra and Gemini Compatibility — The Ultimate Air Sign Romance',
+    date: '2026-05-31',
+    description: 'Libra and Gemini share an air-sign affinity that fuels romance, conversation, and intellectual play. Discover why they excel at companionship and social chemistry.',
+    tags: ['libra','gemini','compatibility','air-signs'],
+    content: `
+      <h1>Libra and Gemini: The Ultimate Air Sign Romance</h1>
+
+      <p>Libra and Gemini dwell in the world of ideas, social connection, and graceful exchange. Gemini, ruled by Mercury, is the nimble conversationalist, agile and endlessly curious. Libra, ruled by Venus, seeks balance, beauty, and harmonious relationships. As an air-air pairing, their rapport is often elegant, witty, and culturally attuned.</p>
+
+      <h2>Shared social intelligence</h2>
+
+      <p>Both signs prize communication as a currency. Gemini brings rapid-fire curiosity and adaptability; Libra brings diplomacy and a refined sense of aesthetics. Together they are excellent hosts, delightful conversationalists, and partners who read social cues with ease. Parties, debates, and art openings are natural habitats for this duo.</p>
+
+      <p>Where Gemini generates ideas and playful banter, Libra smooths differences into consensus. This makes decision-making easier in many cases: Libra can mediate while Gemini offers options. The relationship often hums with cultural references, shared playlists, and mutual introductions across social circles.</p>
+
+      <h2>Romance and intellectual flirtation</h2>
+
+      <p>Romance between Libra and Gemini is typically flirtatious and mentally stimulating. They enjoy intellectual foreplay: witty texts, playful teasing, and long conversations that curve through topics like art, ethics, and travel. Both enjoy variety and novelty but prefer to keep interactions light rather than excessively dramatic.</p>
+
+      <p>Libra admires Gemini’s mental agility; Gemini enjoys Libra’s charm and poise. Both dislike conflict, so arguments tend to be mild and quickly resolved, although avoidance of deep emotional work can surface as a long-term issue if not addressed.</p>
+
+      <h2>Challenges and growth areas</h2>
+
+      <p>Problems can occur when choices must be made. Libra’s desire for equilibrium can stall decision-making, while Gemini’s curiosity can scatter attention across too many options. Additionally, both signs can prioritize social harmony over dealing with underlying emotional needs.</p>
+
+      <p>To grow, Libra and Gemini should cultivate private rituals and honest check-ins. Slowing down to discuss values — not just plans — deepens their bond beyond shared interests.</p>
+
+      <h2>Friendship and collaboration</h2>
+
+      <p>As collaborators, they are social alchemists. Gemini brings adaptability to projects; Libra brings taste and partnership skills. Together they make strong creative teams for events, content, and social ventures.</p>
+
+      <h2>How to make it work</h2>
+
+      <ul>
+        <li>Schedule quiet check-ins to balance the social calendar with inner life.</li>
+        <li>Practice decisive compromise: agree on small experiments to break indecision.</li>
+        <li>Celebrate shared aesthetics — music, books, and art strengthen connection.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Communication, charm, social chemistry.</p>
+      <p>Challenges: Indecision, avoidance, scattered attention.</p>
+
+      <p>If you want a customized read, try our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> and enter your birth data. For Libra and Gemini, the intellect is the hearth — keep conversations warm and frequent.</p>
+    `
+  },
+  {
+    slug: 'how-birth-date-affects-personality-relationships',
+    title: 'How Birth Date Affects Personality and Relationships',
+    date: '2026-05-31',
+    description: 'Birth date shapes more than your sun sign. Learn how chart placements, natal houses, and planetary aspects influence personality and relationship patterns.',
+    tags: ['birth-date','personality','relationships','natal-chart'],
+    content: `
+      <h1>How Birth Date Affects Personality and Relationships</h1>
+
+      <p>People often think their sun sign tells the whole story. The truth is richer: the exact moment and place of your birth set a unique astrological blueprint. Your birth date determines not only the sun sign but the arrangement of planets across houses, aspects between planets, and the rising sign. All of these factors combine to shape temperament, attachment style, and the ways you show up in relationships.</p>
+
+      <h2>Sun, moon, and rising: the three pillars</h2>
+
+      <p>The sun sign represents core identity and conscious purpose. The moon sign governs inner emotional life and unconscious needs. The rising sign (ascendant) shapes first impressions and social persona. Consider a simple example: two people born on the same day could have very different relational styles if one has a watery moon and the other an airy moon. The moon governs emotional reactivity and comfort with vulnerability.</p>
+
+      <p>Rising signs matter in dating contexts because they affect how someone presents. A Libra rising might appear charming and diplomatic on a first date, while a Capricorn rising might come across as reserved and competent. These impressions influence attraction and compatibility before deeper chart dynamics emerge.</p>
+
+      <h2>Houses and relationship patterns</h2>
+
+      <p>Houses are sectors of the natal chart that map to life areas. The seventh house governs partnerships and how you relate one-on-one. The fifth house deals with romance and creative play. Planets placed in these houses color how you approach dating and commitment. For instance, Mars in the seventh house can indicate directness in relationships; Venus in the fifth house often suggests romantic expressiveness.</p>
+
+      <h2>Aspects: the conversation between planets</h2>
+
+      <p>Aspects are angular relationships between planets. A conjunction blends energies; a square creates tension; a trine offers ease. These aspects create patterns within personality. Someone with Venus square Saturn may value loyalty but fear emotional risk. Understanding aspects explains recurring themes in attachments — why someone gravitates toward unavailable partners or why another seeks deep merger.</p>
+
+      <h2>Timing and transits</h2>
+
+      <p>Birth charts are dynamic. Transits — the ongoing movement of planets — trigger natal points and produce life phases. Saturn returns, progressed moons, and Jupiter transits can all impact relationships by changing priorities, increasing responsibilities, or opening opportunities. Birth date anchors the timeline: without it, transit reading lacks context.</p>
+
+      <h2>Practical implications for relationships</h2>
+
+      <p>Knowing your partner’s chart helps with translation. If your moon needs reassurance, say it plainly. If your partner’s Venus prefers acts of service, notice those gestures. Compatibility isn’t just sun-sign matching; it’s about creating a dialect between needs and expressions.</p>
+
+      <p>For a practical test, use our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> to compare specific birth times and see how planetary placements interact. Small chart details often explain big interpersonal puzzles.</p>
+
+      <h2>How to use chart knowledge wisely</h2>
+
+      <ul>
+        <li>Use charts as maps, not mandates: they describe tendencies, not fate.</li>
+        <li>Talk about patterns gently: "I notice you pull away when stressed — is that true?"</li>
+        <li>Match needs and gestures: name the ways you feel loved and request them specifically.</li>
+      </ul>
+
+      <h2>Final thought</h2>
+
+      <p>Birth date matters because it creates distinct energetic fingerprints. When partners learn to read each other’s charts, they gain vocabulary for difference and tools for empathy. Astrology can make relationships more intentional, not inevitable.</p>
+    `
+  },
+  {
+    slug: 'four-elements-fire-earth-air-water-explained',
+    title: 'The 4 Elements in Astrology — Fire, Earth, Air, and Water Explained',
+    date: '2026-05-31',
+    description: 'Understanding the four elements is essential to decoding temperament and compatibility. Learn how fire, earth, air, and water shape our drives and relationships.',
+    tags: ['elements','fire','earth','air','water','astrology'],
+    content: `
+      <h1>The 4 Elements in Astrology — Fire, Earth, Air, and Water Explained</h1>
+
+      <p>Every zodiac sign belongs to one of four elements: fire, earth, air, or water. These elements provide a shorthand for temperament and energy style. Fire signs bring heat and initiative; earth signs bring stability and practicality; air signs bring ideas and communication; water signs bring feeling and depth. Learning the elements helps you quickly read compatibility and personal priorities.</p>
+
+      <h2>Fire: spark and action</h2>
+
+      <p>Fire signs (Aries, Leo, Sagittarius) are energetic, bold, and oriented toward action. They crave autonomy, take risks, and often inspire others. In relationships, fire signs bring passion, spontaneity, and optimism. Their downside can be impatience or a tendency to dominate conversation or plans.</p>
+
+      <h2>Earth: stability and care</h2>
+
+      <p>Earth signs (Taurus, Virgo, Capricorn) value tangible results, routine, and security. They form the foundation of long-term relationships because they are dependable and pragmatic. Earth signs show love through service and reliability, though they can sometimes appear resistant to novelty or overly cautious.</p>
+
+      <h2>Air: ideas and connection</h2>
+
+      <p>Air signs (Gemini, Libra, Aquarius) prioritize communication, intellectual curiosity, and social networks. They make relationships lively through conversation and shared interests. Air signs may struggle with emotional depth at times, preferring to process feelings through dialogue rather than immersion.</p>
+
+      <h2>Water: emotion and intuition</h2>
+
+      <p>Water signs (Cancer, Scorpio, Pisces) are attuned to emotion, subtlety, and depth. They excel at sensing unspoken needs and creating emotional safety. In relationships, water signs bring empathy and devotion, though they sometimes absorb other people’s moods and need clear boundaries.</p>
+
+      <h2>How elements interact</h2>
+
+      <p>Elements offer quick compatibility clues. Fire and air tend to be lively with each other; air fuels fire’s ideas and fire supplies energy to air’s plans. Earth and water pair smoothly: earth provides structure for water’s feeling life, while water softens earth’s rigidity. Opposite-element pairings (fire with water, earth with air) can either clash or balance depending on maturity and communication.</p>
+
+      <p>Remember that full natal charts complicate simple elemental rules. A fire sun with a heavy water moon can behave differently than a pure elemental type. Use the elements as a starting point, then dive into planetary placements for nuance.</p>
+
+      <h2>Using the elements in relationship work</h2>
+
+      <ul>
+        <li>Identify primary elements in yourself and your partner — note where energy clashes arise.</li>
+        <li>Create rituals that honor both styles: plan adventures for fire, routines for earth, conversations for air, and reflective nights for water.</li>
+        <li>Translate differences into tasks: if one partner is all talk (air) and the other needs practical proofs (earth), make a plan that includes both discussion and action.</li>
+      </ul>
+
+      <h2>Final note</h2>
+
+      <p>The four elements are a compass for temperaments. They simplify complex charts into readable energies and offer a practical vocabulary for relationships. For a precise elemental balance in your partnership, try our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> and see which elements dominate your synastry.</p>
+    `
   }
 ];
 
