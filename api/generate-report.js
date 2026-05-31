@@ -17,39 +17,42 @@ module.exports = async (req, res) => {
       return res.status(400).json({ ok: false, error: 'Missing or invalid email' });
     }
 
-    // Generate AI report via Gemini
+    // Generate AI report via Anthropic Haiku
     let markdown = null;
     try {
-      const key = process.env.GEMINI_API_KEY;
+      const key = process.env.ANTHROPIC_API_KEY;
       if (key) {
         const prompt = `You are an astrology compatibility expert. Given two people and their compatibility scores, write a warm, engaging 3-paragraph compatibility report in markdown. Names: ${nameA} and ${nameB}. Birthdays: ${dobA} and ${dobB}. Scores: ${JSON.stringify(scores)}. Be specific, fun, and avoid generic filler.`;
 
         const body = {
-          contents: [
-            { parts: [{ text: prompt }] }
-          ]
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 1024,
+          messages: [{ role: "user", content: prompt }]
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
-
-        const resp = await fetch(url, {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'x-api-key': key,
+            'anthropic-version': '2023-06-01',
+            'content-type': 'application/json'
+          },
           body: JSON.stringify(body)
         });
 
         if (resp.ok) {
           const data = await resp.json();
-          markdown = data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+          // Response path: response.content[0].text
+          markdown = data?.content?.[0]?.text || null;
         } else {
           const text = await resp.text();
-          console.error('Gemini API error', resp.status, text);
+          console.error('Anthropic API error', resp.status, text);
         }
       } else {
-        console.error('GEMINI_API_KEY not set');
+        console.error('ANTHROPIC_API_KEY not set');
       }
     } catch (err) {
-      console.error('Error calling Gemini', err);
+      console.error('Error calling Anthropic', err);
     }
 
     if (!markdown) {
