@@ -18,16 +18,16 @@ module.exports = async (req, res) => {
     }
 
     // Generate AI report via Anthropic Haiku
-    let markdown = null;
+    let aiText = null;
     try {
       const key = process.env.ANTHROPIC_API_KEY;
       if (key) {
-        const prompt = `You are an astrology compatibility expert. Given two people and their compatibility scores, write a warm, engaging 3-paragraph compatibility report in markdown. Names: ${nameA} and ${nameB}. Birthdays: ${dobA} and ${dobB}. Scores: ${JSON.stringify(scores)}. Be specific, fun, and avoid generic filler.`;
+        const prompt = `You are an astrology compatibility expert. Write a clean, elegant compatibility report for two people. Do NOT use emojis. Do NOT use markdown symbols (no **, no #, no backticks). Use plain paragraph breaks only. Keep prose warm, specific, and succinct. Include an overall score out of 100 and a brief breakdown. Names: ${nameA} and ${nameB}. Birthdays: ${dobA} and ${dobB}. Scores: ${JSON.stringify(scores)}.`;
 
         const body = {
-          model: "claude-haiku-4-5-20251001",
+          model: 'claude-haiku-4-5-20251001',
           max_tokens: 1024,
-          messages: [{ role: "user", content: prompt }]
+          messages: [{ role: 'user', content: prompt }]
         };
 
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
@@ -42,8 +42,7 @@ module.exports = async (req, res) => {
 
         if (resp.ok) {
           const data = await resp.json();
-          // Response path: response.content[0].text
-          markdown = data?.content?.[0]?.text || null;
+          aiText = data?.content?.[0]?.text || null;
         } else {
           const text = await resp.text();
           console.error('Anthropic API error', resp.status, text);
@@ -55,35 +54,93 @@ module.exports = async (req, res) => {
       console.error('Error calling Anthropic', err);
     }
 
-    if (!markdown) {
-      // Fallback markdown if AI fails
-      markdown = `## ${escapeHtml(nameA)} & ${escapeHtml(nameB)}\n\nWe couldn't generate a full AI report right now, but here's a quick summary based on the scores you saw.\n\nOverall: ${escapeHtml(String(scores?.overall ?? 'N/A'))}/100\n\nThanks for trying Match by Birth!`;
+    if (!aiText) {
+      // Fallback plain text
+      const overall = String(scores?.overall ?? 'N/A');
+      aiText = `${nameA} and ${nameB} have an overall compatibility score of ${overall} out of 100.\n\nThis score reflects a balance of shared values and areas where the two of you may need to work on communication.\n\nUse the Match by Birth calculator for more details and a personalized breakdown.`;
     }
 
-    // Convert basic markdown (headings + paragraphs) to minimal HTML
-    const html = markdown
-      .split('\n\n')
-      .map((block) => {
-        if (/^#{1,6}\s+/.test(block)) {
-          const m = block.match(/^(#{1,6})\s+(.*)$/);
-          const level = Math.min(m[1].length, 6);
-          return `<h${level} style="color:#7c3aed;">${escapeHtml(m[2])}</h${level}>`;
-        }
-        return `<p>${escapeHtml(block).replace(/\n/g, '<br/>')}</p>`;
-      })
-      .join('');
+    // Processing rules:
+    // - Remove emojis
+    // - Strip markdown headings (#)
+    // - Convert **bold** to <strong>
+    // - Paragraph breaks -> <p> tags
+    // - No raw markdown symbols or emojis visible
+
+    // Remove emojis (Unicode Extended Pictographic)
+    aiText = aiText.replace(/\p{Extended_Pictographic}/gu, '');
+
+    // Normalize line endings
+    aiText = aiText.replace(/\r\n?/g, '\n');
+
+    // Strip leading heading markers (if any)
+    aiText = aiText.replace(/^#{1,6}\s*/gm, '');
+
+    // Prepare placeholders for bold segments so we can escape safely
+    const boldReplacements = [];
+    aiText = aiText.replace(/\*\*(.+?)\*\*/gs, (_, inner) => {
+      const idx = boldReplacements.length;
+      boldReplacements.push(inner);
+      return `@@BOLD:${idx}@@`;
+    });
+
+    // Escape the remaining text
+    const escaped = escapeHtml(aiText);
+
+    // Restore bold placeholders with escaped inner text wrapped in <strong>
+    const restored = escaped.replace(/@@BOLD:(\d+)@@/g, (_, n) => {
+      const inner = boldReplacements[Number(n)] || '';
+      return `<strong>${escapeHtml(inner)}</strong>`;
+    });
+
+    // Remove any stray single '*' or '`' characters
+    const cleaned = restored.replace(/[*`]/g, '');
+
+    // Split into paragraphs (double newlines) and render with serif font
+    const paragraphs = cleaned.split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
+
+    const bodyHtml = paragraphs.map(p => {
+      // collapse single newlines into spaces
+      const content = p.replace(/\n+/g, ' ');
+      return `<p style="font-family: Georgia, 'Times New Roman', serif; line-height:1.6; margin:0 0 16px 0; color:#111827;">${content}</p>`;
+    }).join('\n');
+
+    const overallScore = Number(scores?.overall ?? NaN);
+    const scoreDisplay = Number.isFinite(overallScore) ? Math.round(overallScore) : 'N/A';
 
     const emailHtml = `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #111827;">
-        <h2 style="color:#7c3aed;">Your Match by Birth Report</h2>
-        <p>Hi there —</p>
-        ${html}
-        <p style="color:#6b7280; font-size:12px;">If you didn't request this email, you can safely ignore it.</p>
-        <hr />
-        <div style="margin-top:12px;">
-          <p style="font-weight:bold;">Want weekly compatibility updates?</p>
-          <p>Get a weekly compatibility summary straight to your inbox.</p>
-          <p><a href="https://matchbybirth.com/premium" style="color:#ffffff; background:#7c3aed; padding:10px 14px; border-radius:6px; text-decoration:none; display:inline-block;">Get your weekly compatibility update — $4.99/mo</a></p>
+      <div style="background:#ffffff; width:100%; padding:24px 16px; -webkit-font-smoothing:antialiased;">
+        <div style="max-width:600px; margin:0 auto; border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(16,24,40,0.06);">
+
+          <div style="background:#1a1a2e; padding:18px 24px; text-align:center;">
+            <h1 style="margin:0; font-family: 'Georgia', 'Times New Roman', serif; color:#ffffff; font-weight:600; font-size:20px;">Your Compatibility Report</h1>
+          </div>
+
+          <div style="background:#ffffff; padding:24px; text-align:center;">
+
+            <div style="margin-bottom:18px;">
+              <div style="font-family: 'Georgia', 'Times New Roman', serif; color:#7c3aed; font-size:28px; font-weight:700;">${escapeHtml(nameA)} &amp; ${escapeHtml(nameB)}</div>
+            </div>
+
+            <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-bottom:18px;">
+              <div style="width:92px; height:92px; border-radius:46px; background:#f3f0ff; display:flex; align-items:center; justify-content:center;">
+                <div style="font-family: 'Georgia', 'Times New Roman', serif; color:#4c1d95; font-size:28px; font-weight:700;">${escapeHtml(String(scoreDisplay))}</div>
+              </div>
+              <div style="font-size:14px; color:#6b7280;">/ 100</div>
+            </div>
+
+            <hr style="border:none;border-top:1px solid #eef2f7;margin:18px 0;" />
+
+            <div style="text-align:left;">
+              ${bodyHtml}
+            </div>
+
+          </div>
+
+          <div style="background:#f9fafb; padding:12px 24px; text-align:center; font-size:12px; color:#6b7280;">
+            Match by Birth · For entertainment purposes only
+          </div>
+
         </div>
       </div>
     `;
@@ -99,7 +156,7 @@ module.exports = async (req, res) => {
       const payload = {
         from: 'support@matchbybirth.com',
         to: [email],
-        subject: `✨ Your Match by Birth Report -- ${nameA} & ${nameB}`,
+        subject: `Your Compatibility Report — ${nameA} & ${nameB}`,
         html: emailHtml
       };
 
@@ -115,7 +172,6 @@ module.exports = async (req, res) => {
       if (!sendResp.ok) {
         const text = await sendResp.text();
         console.error('Resend API error', sendResp.status, text);
-        // Don't expose error to client
         return res.status(200).json({ ok: true });
       }
     } catch (err) {
@@ -126,7 +182,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('generate-report error', err);
-    // Always return success to the client to avoid exposing errors
     return res.status(200).json({ ok: true });
   }
 };
