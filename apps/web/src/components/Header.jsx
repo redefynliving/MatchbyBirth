@@ -68,20 +68,16 @@ function Header() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="#calculator"
-              role="button"
-              aria-controls="calculator"
+            <button
               onClick={(e) => {
                 e.preventDefault();
                 const el = document.getElementById('calculator');
                 if (el) smoothScrollTo(el, 520);
                 else window.location.hash = '#calculator';
               }}
-              className="ml-4 inline-flex items-center px-3 py-2 bg-primary text-primary-foreground text-sm rounded-md font-semibold shadow-sm hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            >
+              className="ml-4 btn-primary text-sm">
               Try It Free
-            </a>
+            </button>
           </nav>
 
           {/* Mobile Nav Toggle */}
