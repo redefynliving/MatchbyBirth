@@ -43,6 +43,29 @@ function Header() {
               href="#calculator"
               role="button"
               aria-controls="calculator"
+              onClick={(e) => {
+                // Smooth scroll with offset for sticky header
+                try {
+                  e.preventDefault();
+                  const el = document.getElementById('calculator');
+                  if (el) {
+                    const header = document.querySelector('header');
+                    const offset = (header && header.offsetHeight) ? header.offsetHeight : 80;
+                    const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    // update hash for history/focus
+                    window.history.replaceState(null, '', '#calculator');
+                    el.setAttribute('tabindex', '-1');
+                    el.focus({ preventScroll: true });
+                  } else {
+                    // fallback to native behavior
+                    window.location.hash = '#calculator';
+                  }
+                } catch (err) {
+                  // ignore errors and fallback
+                  window.location.hash = '#calculator';
+                }
+              }}
               className="ml-4 inline-flex items-center px-3 py-2 bg-primary text-primary-foreground text-sm rounded-md font-semibold shadow-sm hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
               Try It Free
