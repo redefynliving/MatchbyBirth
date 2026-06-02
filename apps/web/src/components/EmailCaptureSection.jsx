@@ -83,15 +83,13 @@ function EmailCaptureSection() {
               type="email"
               aria-label="Email"
               value={email}
--              onChange={(e) => setEmail(e.target.value)}
-+              onChange={(e) => handleEmailChange(e.target.value)}
+              onChange={(e) => handleEmailChange(e.target.value)}
               placeholder="you@example.com"
               className="px-4 py-3 rounded-lg border border-border w-full sm:w-auto flex-1"
             />
             <button
               type="submit"
--              disabled={status === 'loading'}
-+              disabled={status === 'loading'}
+              disabled={status === 'loading'}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
             >
               {status === 'loading' ? 'Sending...' : "Send My Mini-Report"}
