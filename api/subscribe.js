@@ -6,26 +6,48 @@ export default async function handler(req, res) {
 
   try {
     const { email, p1, p2, p1_dob, p2_dob, score, label, resultUrl } = req.body || {};
-    if (!email || typeof email !== 'string' || !email.includes('@')) {
+
+    // Validate email with a stricter regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
       return res.status(400).json({ success: false, error: 'Invalid email' });
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ success: false, error: 'Resend API key not configured' });
+      // Fail gracefully if email provider is not configured
+      return res.status(503).json({ success: false, error: 'Email service not configured' });
     }
 
     // Construct a revisit link. Prefer explicit resultUrl, otherwise reconstruct from params if present.
     let resultLink = 'https://matchbybirth.com';
-    if (resultUrl && typeof resultUrl === 'string' && resultUrl.startsWith('http')) {
-      resultLink = resultUrl;
-    } else if (p1 && p2 && p1_dob && p2_dob) {
-      resultLink = `https://matchbybirth.com/result?p1=${encodeURIComponent(p1)}&p1_dob=${encodeURIComponent(p1_dob)}&p2=${encodeURIComponent(p2)}&p2_dob=${encodeURIComponent(p2_dob)}`;
+    if (resultUrl && typeof resultUrl === 'string') {
+      try {
+        const parsed = new URL(resultUrl);
+        // Prevent obviously malformed URLs; allow both http and https but default to https homepage when suspicious
+        if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+          resultLink = parsed.toString();
+        }
+      } catch (e) {
+        // ignore bad resultUrl
+      }
     }
 
-    // Determine score display
-    const numericScore = Number(score);
-    const scoreDisplay = Number.isFinite(numericScore) ? Math.round(numericScore) : 'N/A';
+    // If no explicit resultUrl, try reconstructing from params.
+    if (resultLink === 'https://matchbybirth.com' && p1 && p2 && p1_dob && p2_dob) {
+      // Safely encode components
+      const q = new URLSearchParams({ p1: p1, p1_dob: p1_dob, p2: p2, p2_dob: p2_dob });
+      resultLink = `https://matchbybirth.com/result?${q.toString()}`;
+    }
+
+    // Determine score display and bound it between 0 and 100
+    let numericScore = Number(score);
+    if (!Number.isFinite(numericScore)) {
+      numericScore = NaN;
+    } else {
+      numericScore = Math.max(0, Math.min(100, Math.round(numericScore)));
+    }
+    const scoreDisplay = Number.isFinite(numericScore) ? numericScore : 'N/A';
 
     // Determine score band bullets
     let bullets = [];
@@ -48,8 +70,12 @@ export default async function handler(req, res) {
     const subject = 'Your Match by Birth compatibility result';
     const preview = "Here’s your score, summary, and a link to revisit your results.";
 
-    const namesLine = (p1 && p2) ? `<div style=\"color:#374151; font-size:16px; margin-top:6px;\">${escapeHtml(p1)} &amp; ${escapeHtml(p2)}</div>` : '';
-    const labelLine = label ? `<div style=\"color:#6b7280; font-size:14px; margin-top:4px;\">${escapeHtml(label)}</div>` : '';
+    const safeP1 = sanitizeText(p1);
+    const safeP2 = sanitizeText(p2);
+    const safeLabel = sanitizeText(label);
+
+    const namesLine = (safeP1 && safeP2) ? `<div style=\"color:#374151; font-size:16px; margin-top:6px;\">${escapeHtml(safeP1)} &amp; ${escapeHtml(safeP2)}</div>` : '';
+    const labelLine = safeLabel ? `<div style=\"color:#6b7280; font-size:14px; margin-top:4px;\">${escapeHtml(safeLabel)}</div>` : '';
 
     const bulletsHtml = bullets.map(b => `<li style=\"margin-bottom:8px; color:#111827;\">${escapeHtml(b)}</li>`).join('');
 
@@ -95,11 +121,11 @@ export default async function handler(req, res) {
     if (Number.isFinite(numericScore)) {
       text.push(`Your score: ${scoreDisplay}/100`);
     }
-    if (p1 && p2) {
-      text.push(`${sanitizeText(p1)} + ${sanitizeText(p2)}`);
+    if (safeP1 && safeP2) {
+      text.push(`${sanitizeText(safeP1)} + ${sanitizeText(safeP2)}`);
     }
-    if (label) {
-      text.push(sanitizeText(label));
+    if (safeLabel) {
+      text.push(safeLabel);
     }
     text.push('');
     text.push('Here\'s a quick look at your connection based on your birth dates.');
@@ -133,6 +159,32 @@ export default async function handler(req, res) {
     if (!resp.ok) {
       const textResp = await resp.text();
       console.error('Resend error', resp.status, textResp);
+      return res.status(502).json({ success: false, error: 'Email service error' });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    console.error(err);
+    // Do not leak error details to client
+    return res.status(500).json({ success: false, error: 'Server error' });
+  }
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function sanitizeText(s) {
+  if (!s) return '';
+  // Strip tags and collapse whitespace
+  return String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}
+
       return res.status(502).json({ success: false, error: 'Email service error' });
     }
 
