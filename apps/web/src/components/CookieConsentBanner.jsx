@@ -39,7 +39,7 @@ function CookieConsentBanner() {
         <div className="flex flex-row sm:flex-col gap-3 w-full sm:w-auto shrink-0">
           <button
             onClick={handleAccept}
-            className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            className="flex-1 sm:flex-none btn-primary text-sm"
           >
             Accept
           </button>
