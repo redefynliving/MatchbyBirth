@@ -79,13 +79,13 @@ function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name,
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full h-12 px-4 rounded-xl border border-input bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+              className="input h-12"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full h-12 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all shadow-md active:scale-[0.98]"
+            className="w-full h-12 btn-primary"
           >
             Submit
           </button>
