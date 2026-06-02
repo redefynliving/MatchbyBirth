@@ -17,6 +17,35 @@ function Header() {
 
   const isActive = (path) => location.pathname === path;
 
+  // Smooth scroll helper with easing and offset for sticky header
+  const smoothScrollTo = (el, duration = 520) => {
+    if (!el) return;
+    const header = document.querySelector('header');
+    const offset = (header && header.offsetHeight) ? header.offsetHeight : 80;
+    const start = window.pageYOffset;
+    const target = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
+    const distance = target - start;
+    let startTime = null;
+
+    const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    function animation(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      window.scrollTo(0, start + distance * eased);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+      else {
+        // ensure final position and focus
+        window.history.replaceState(null, '', '#calculator');
+        try { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); } catch (e) {}
+      }
+    }
+
+    requestAnimationFrame(animation);
+  };
+
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,27 +73,10 @@ function Header() {
               role="button"
               aria-controls="calculator"
               onClick={(e) => {
-                // Smooth scroll with offset for sticky header
-                try {
-                  e.preventDefault();
-                  const el = document.getElementById('calculator');
-                  if (el) {
-                    const header = document.querySelector('header');
-                    const offset = (header && header.offsetHeight) ? header.offsetHeight : 80;
-                    const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                    // update hash for history/focus
-                    window.history.replaceState(null, '', '#calculator');
-                    el.setAttribute('tabindex', '-1');
-                    el.focus({ preventScroll: true });
-                  } else {
-                    // fallback to native behavior
-                    window.location.hash = '#calculator';
-                  }
-                } catch (err) {
-                  // ignore errors and fallback
-                  window.location.hash = '#calculator';
-                }
+                e.preventDefault();
+                const el = document.getElementById('calculator');
+                if (el) smoothScrollTo(el, 520);
+                else window.location.hash = '#calculator';
               }}
               className="ml-4 inline-flex items-center px-3 py-2 bg-primary text-primary-foreground text-sm rounded-md font-semibold shadow-sm hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
