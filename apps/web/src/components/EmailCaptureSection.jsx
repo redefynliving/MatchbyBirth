@@ -19,11 +19,32 @@ function EmailCaptureSection() {
 
     setStatus('loading');
 
+    // Try to capture any result context from the URL if present
+    let p1 = '';
+    let p2 = '';
+    let p1_dob = '';
+    let p2_dob = '';
+    let score = '';
+    let label = '';
+    try {
+      const params = new URLSearchParams(window.location.search);
+      p1 = params.get('p1') || params.get('nameA') || '';
+      p2 = params.get('p2') || params.get('nameB') || '';
+      p1_dob = params.get('p1_dob') || params.get('dobA') || '';
+      p2_dob = params.get('p2_dob') || params.get('dobB') || '';
+      score = params.get('score') || params.get('s') || '';
+      label = params.get('label') || '';
+    } catch (err) {
+      // ignore URL parse errors
+    }
+
+    const payload = { email, p1, p2, p1_dob, p2_dob, score, label, resultUrl: window.location.href };
+
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify(payload),
       });
 
       const json = await res.json();
