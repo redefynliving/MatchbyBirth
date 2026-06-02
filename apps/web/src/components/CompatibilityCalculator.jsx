@@ -93,7 +93,7 @@ return (
 <GroupModeToggle mode={mode} setMode={handleModeChange} />
 
 {mode === 'pair' ? (
-<form onSubmit={calculatePairCompatibility} className="space-y-8 bg-card p-6 md:p-10 rounded-3xl border border-border shadow-lg animate-fade-in">
+<form onSubmit={calculatePairCompatibility} className="space-y-8 bg-card p-6 md:p-10 rounded-3xl border border-border shadow-2xl animate-fade-in" style={{boxShadow: '0 8px 24px rgba(76,29,149,0.06)'}}>
 {error && (
 <div className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
 {error}

@@ -42,11 +42,11 @@ function EmailCaptureSection() {
   return (
     <section className="mt-12 py-12 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl text-center">
       <div className="content-container max-w-2xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-2">Get Your Free Compatibility Report</h2>
-        <p className="text-muted-foreground mb-6">Enter your email and we'll send you a personalized compatibility report for you and your match — free, no spam.</p>
+        <h2 className="text-2xl font-semibold mb-2">Get your free compatibility mini-report</h2>
+        <p className="text-muted-foreground mb-6">Enter your email and we’ll send your score, a short relationship summary, and a link to revisit your results anytime.</p>
 
         {status === 'success' ? (
-          <div className="text-lg font-medium text-foreground">✦ You're in. Check your inbox for your free mini-report.</div>
+          <div className="text-lg font-medium text-foreground">✦ You're in. Check your inbox for your mini-report.</div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center">
             <input
@@ -62,7 +62,7 @@ function EmailCaptureSection() {
               disabled={status === 'loading'}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
             >
-              {status === 'loading' ? 'Sending...' : "Send My Free Report →"}
+              {status === 'loading' ? 'Sending...' : "Send My Mini-Report"}
             </button>
           </form>
         )}
