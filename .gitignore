@@ -1,1 +1,9 @@
 node_modules/
+# Build output
+/dist
+
+# Vite output for apps/web
+apps/web/dist
+
+# local dist output root (some environments)
+dist/
