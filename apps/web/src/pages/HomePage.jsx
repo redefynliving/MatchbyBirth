@@ -54,13 +54,17 @@ function HomePage() {
           </div>
           
           <div className="content-container relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Match by Birth — The connection behind every relationship.
+            <div className="text-center max-w-2xl mx-auto mb-20">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight max-w-xl mx-auto">
+                Do your birth dates actually match?
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Discover your astrological compatibility instantly with our free compatibility calculator. No signup needed—just enter two birth dates and get your compatibility score. Perfect for checking relationship compatibility, friendship compatibility, and more.
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto">
+                Enter two birthdays and get an instant compatibility score for love, friendship, or your next situationship.
               </p>
+              <div className="mt-6">
+                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold">See Your Match</button>
+              </div>
+              <div className="mt-3 text-sm text-muted-foreground">No signup required. Results in seconds.</div>
             </div>
 
             {/* 2. Calculator Component */}
@@ -74,6 +78,32 @@ function HomePage() {
             {/* Email capture section */}
             <div className="mt-8 max-w-3xl mx-auto">
               <EmailCaptureSection />
+            </div>
+
+            {/* How it works row */}
+            <div className="mt-8">
+              <div className="max-w-4xl mx-auto px-6">
+                <div className="bg-background border border-border rounded-2xl p-6 text-center">
+                  <div className="max-w-3xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">1</div>
+                        <div className="font-semibold">Enter two birth dates</div>
+                      </div>
+
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">2</div>
+                        <div className="font-semibold">We analyze zodiac compatibility</div>
+                      </div>
+
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">3</div>
+                        <div className="font-semibold">Get your score instantly</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
