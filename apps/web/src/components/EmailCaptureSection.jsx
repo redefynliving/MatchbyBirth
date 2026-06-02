@@ -96,26 +96,28 @@ function EmailCaptureSection() {
         {status === 'success' ? (
           <div className="text-lg font-medium text-foreground">✦ You're in. Check your inbox for your mini-report.</div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full">
             <input
+              id="email-capture"
               type="email"
               aria-label="Email"
+              aria-describedby={status === 'error' ? 'email-capture-error' : undefined}
               value={email}
               onChange={(e) => handleEmailChange(e.target.value)}
               placeholder="you@example.com"
-              className="px-4 py-3 rounded-lg border border-border w-full sm:w-auto flex-1"
+              className="input"
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
+              className="btn-primary px-6 py-3 rounded-lg font-medium"
             >
               {status === 'loading' ? 'Sending...' : "Send My Mini-Report"}
             </button>
           </form>
         )}
 
-        {status === 'error' && <p className="text-red-600 mt-3">{error}</p>}
+        {status === 'error' && <p id="email-capture-error" className="text-red-600 mt-3">{error}</p>}
       </div>
     </section>
   );
