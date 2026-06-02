@@ -61,7 +61,7 @@ function HomePage() {
                 Check compatibility for just the two of you — or bring the whole friend group. Up to 7 people, instant results.
               </p>
               <div className="mt-6">
-                <a href="#calculator" role="button" aria-controls="calculator" className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">See Your Match</a>
+                <button onClick={(e)=>{e.preventDefault(); const el=document.getElementById('calculator'); if(el) el.scrollIntoView({behavior:'smooth'});}} className="btn-primary inline-block px-6 py-3 rounded-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">See Your Match</button>
               </div>
               <div className="mt-3 text-sm text-muted-foreground">No signup required. Results in seconds.</div>
             </div>

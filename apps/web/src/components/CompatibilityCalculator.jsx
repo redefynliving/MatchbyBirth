@@ -144,20 +144,20 @@ className="bg-background text-foreground border-border focus-visible:ring-primar
 </Select>
 </div>
 
-<Button
-type="submit"
-disabled={isCalculating}
-className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-md text-lg font-semibold h-14 rounded-xl"
->
-{isCalculating ? (
-<>
-<Loader2 className="w-5 h-5 mr-2 animate-spin" />
-Calculating Stars...
-</>
-) : (
-'Calculate Compatibility'
-)}
-</Button>
+          <Button
+            type="submit"
+            disabled={isCalculating}
+            className="w-full btn-primary text-lg h-14 rounded-xl"
+          >
+            {isCalculating ? (
+              <>
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                Calculating Stars...
+              </>
+            ) : (
+              'Calculate Compatibility'
+            )}
+          </Button>
 </form>
 ) : (
 <GroupInputForm 
