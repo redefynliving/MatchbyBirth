@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -89,7 +88,7 @@ navigate(`/result?group=${groupString}`);
 };
 
 return (
-<div className="w-full max-w-2xl mx-auto">
+<div id="calculator" className="w-full max-w-2xl mx-auto">
 <GroupModeToggle mode={mode} setMode={handleModeChange} />
 
 {mode === 'pair' ? (
@@ -174,5 +173,3 @@ error={error}
 }
 
 export default CompatibilityCalculator;
-
-
