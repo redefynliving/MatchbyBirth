@@ -10,10 +10,7 @@ function Header() {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
     { path: '/faq', label: 'FAQ' },
-    { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -28,20 +25,26 @@ function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'text-primary'
-                    : 'text-muted-foreground hover:text-primary'
+                  isActive(link.path) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+            <a
+              href="#calculator"
+              role="button"
+              aria-controls="calculator"
+              className="ml-4 inline-flex items-center px-3 py-2 bg-primary text-primary-foreground text-sm rounded-md font-semibold shadow-sm hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            >
+              Try It Free
+            </a>
           </nav>
 
           {/* Mobile Nav Toggle */}
