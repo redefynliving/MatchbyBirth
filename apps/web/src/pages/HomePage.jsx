@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
@@ -17,7 +16,7 @@ function AdBanner() {
   }, []);
 
   return (
-    <div className="w-full my-8 min-h-[90px] flex items-center justify-center bg-muted/20 rounded-2xl border border-dashed border-border p-2">
+    <div className="w-full my-6 min-h-[90px] flex items-center justify-center bg-muted/20 rounded-2xl border border-dashed border-border p-2">
       <ins 
         className="adsbygoogle w-full"
         style={{ display: 'block' }}
@@ -62,7 +61,7 @@ function HomePage() {
                 Enter two birthdays and get an instant compatibility score for love, friendship, or your next situationship.
               </p>
               <div className="mt-6">
-                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold">See Your Match</button>
+                <a href="#calculator" role="button" aria-controls="calculator" className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">See Your Match</a>
               </div>
               <div className="mt-3 text-sm text-muted-foreground">No signup required. Results in seconds.</div>
             </div>
@@ -71,13 +70,8 @@ function HomePage() {
             <CompatibilityCalculator />
 
             {/* Ad Banner Placed After Calculator Results Focus */}
-            <div className="mt-8 max-w-2xl mx-auto">
+            <div className="mt-6 max-w-2xl mx-auto">
               <AdBanner />
-            </div>
-
-            {/* Email capture section */}
-            <div className="mt-8 max-w-3xl mx-auto">
-              <EmailCaptureSection />
             </div>
 
             {/* How it works row */}
@@ -86,24 +80,54 @@ function HomePage() {
                 <div className="bg-background border border-border rounded-2xl p-6 text-center">
                   <div className="max-w-3xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">1</div>
-                        <div className="font-semibold">Enter two birth dates</div>
+                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
+                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">1</div>
+                        <div className="font-semibold text-lg">Enter two birth dates</div>
                       </div>
 
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">2</div>
-                        <div className="font-semibold">We analyze zodiac compatibility</div>
+                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
+                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">2</div>
+                        <div className="font-semibold text-lg">We analyze zodiac compatibility</div>
                       </div>
 
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">3</div>
-                        <div className="font-semibold">Get your score instantly</div>
+                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
+                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">3</div>
+                        <div className="font-semibold text-lg">Get your score instantly</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Result preview - shows a sample compatibility card */}
+        <section className="section-spacing bg-background">
+          <div className="content-container max-w-3xl">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-semibold text-foreground">Here's what your result looks like</h3>
+            </div>
+            <div className="max-w-xl mx-auto">
+              <div className="bg-card border border-border rounded-2xl p-6 flex items-center justify-between">
+                <div>
+                  <div className="text-lg font-semibold">Sarah & James</div>
+                  <div className="text-sm text-muted-foreground">Birth date compatibility preview</div>
+                </div>
+                <div className="flex flex-col items-end">
+                  <div className="text-3xl font-bold text-primary">87%</div>
+                  <div className="text-sm text-muted-foreground">Compatible</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Email capture section moved to after results/preview */}
+        <section className="section-spacing bg-background">
+          <div className="content-container">
+            <div className="max-w-3xl mx-auto">
+              <EmailCaptureSection />
             </div>
           </div>
         </section>
@@ -180,6 +204,43 @@ function HomePage() {
                   The compatibility score (out of 100) represents the natural ease and harmony between your astrological signs. Scores above 75 indicate strong natural alignment, 50-74 suggest a balanced dynamic requiring some effort, and below 50 indicates contrasting energies that offer high growth potential.
                 </AccordionContent>
               </AccordionItem>
+
+              <AccordionItem value="item-4" className="bg-card border border-border rounded-xl px-6">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
+                  How is my privacy handled?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                  We do not sell your data. Email is used only to deliver your mini-report and occasional account-related messages if you opt in. You can request deletion by contacting support.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="bg-card border border-border rounded-xl px-6">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
+                  How are zodiac signs calculated from birth dates?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                  Zodiac sun signs are determined by the birth date falling within standardized sign date ranges. We map dates to sun signs using established western astrology boundaries.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6" className="bg-card border border-border rounded-xl px-6">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
+                  What's the difference between sun sign and a full birth chart?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                  The sun sign is one piece of a full natal chart. A full chart uses exact birth time and place to calculate planetary positions, ascendants, and houses. This tool focuses on birth dates for quick compatibility insights.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7" className="bg-card border border-border rounded-xl px-6">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
+                  Can I check compatibility for groups?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                  Yes — use Group mode in the calculator to add multiple people and see group compatibility summaries.
+                </AccordionContent>
+              </AccordionItem>
+
             </Accordion>
           </div>
         </section>
