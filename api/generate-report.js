@@ -30,11 +30,13 @@ module.exports = async (req, res) => {
         const body = {
           model: 'claude-haiku-4-5-20251001',
           max_tokens: 1024,
+          system: systemPrompt,
           messages: [
-            { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
           ]
         };
+
+        console.log('Anthropic request body:', JSON.stringify(body));
 
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
