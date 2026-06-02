@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
     // - Paragraph breaks -> <p> tags
     // - No raw markdown symbols or emojis visible
 
-    // Remove emojis (broader ranges) and trim
+    // Strip emojis right after receiving the AI response and trim
     aiText = aiText.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{26FF}]/gu, '').trim();
 
     // Normalize line endings
@@ -76,29 +76,16 @@ module.exports = async (req, res) => {
     // Strip leading heading markers (if any)
     aiText = aiText.replace(/^#{1,6}\s*/gm, '');
 
-    // Convert markdown bold/italic to HTML placeholders BEFORE escaping.
-    // We use placeholders so we can safely escape the rest of the text and then
-    // restore the intended tags with escaped inner content.
-    const htmlPlaceholders = [];
-    aiText = aiText.replace(/\*\*(.*?)\*\*/gs, (_, inner) => {
-      const idx = htmlPlaceholders.push({ tag: 'strong', text: inner }) - 1;
-      return `@@HTML:${idx}@@`;
-    });
-    aiText = aiText.replace(/\*(.*?)\*/gs, (_, inner) => {
-      const idx = htmlPlaceholders.push({ tag: 'em', text: inner }) - 1;
-      return `@@HTML:${idx}@@`;
-    });
+    // Convert markdown bold and italic to HTML BEFORE inserting into the template
+    // (running the exact requested regexes)
+    aiText = aiText.replace(/\*\*(.*?)\*\*/gs, '<strong>$1</strong>');
+    aiText = aiText.replace(/\*(.*?)\*/gs, '<em>$1</em>');
 
-    // Escape the remaining text
+    // Escape the rest of the content but preserve <strong> and <em> tags
     const escaped = escapeHtml(aiText);
+    const restored = escaped.replace(/&lt;(\/)?(strong|em)&gt;/g, '<$1$2>');
 
-    // Restore HTML placeholders with escaped inner text wrapped in proper tags
-    const restored = escaped.replace(/@@HTML:(\d+)@@/g, (_, n) => {
-      const entry = htmlPlaceholders[Number(n)] || { tag: 'span', text: '' };
-      return `<${entry.tag}>${escapeHtml(entry.text)}</${entry.tag}>`;
-    });
-
-    // Remove any stray backticks (we already handled * and **)
+    // Remove any stray backticks
     const cleaned = restored.replace(/`/g, '');
 
     // Split into paragraphs (double newlines) and render with serif font
@@ -161,7 +148,8 @@ module.exports = async (req, res) => {
       const payload = {
         from: 'support@matchbybirth.com',
         to: [email],
-        subject: `Your Compatibility Report — ${nameA} & ${nameB}`,
+        // Ensure subject contains no emojis or other non-standard symbols
+        subject: (`Your Compatibility Report — ${nameA} & ${nameB}`).replace(/[^\w\s\-&.,:;!()?]/g, ''),
         html: emailHtml
       };
 
