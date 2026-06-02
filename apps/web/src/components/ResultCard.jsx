@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Heart, Users, Briefcase, Download, Copy } from 'lucide-react';
 import { shareResult, copyResult } from '@/utils/resultPermalink.js';
+import SaveResultModal from './SaveResultModal';
 import { toast } from 'sonner';
 
 function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipType, breakdown, resultUrl }) {
