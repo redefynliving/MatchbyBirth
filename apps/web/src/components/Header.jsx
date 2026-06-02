@@ -40,6 +40,11 @@ function Header() {
         // ensure final position and focus
         window.history.replaceState(null, '', '#calculator');
         try { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); } catch (e) {}
+        // add slight purple arrival highlight then remove
+        try {
+          el.classList.add('arrival-highlight');
+          setTimeout(() => el.classList.remove('arrival-highlight'), 900);
+        } catch (e) {}
       }
     }
 
