@@ -101,18 +101,18 @@ Add Person ({people.length}/7)
 </Button>
 
 <Button
-type="submit"
-disabled={isCalculating}
-className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-md text-lg font-semibold h-14 rounded-xl mt-4"
+  type="submit"
+  disabled={isCalculating}
+  className="w-full btn-primary text-lg h-14 rounded-xl mt-4"
 >
-{isCalculating ? (
-<>
-<Loader2 className="w-5 h-5 mr-2 animate-spin" />
-Calculating Group Vibe...
-</>
-) : (
-'Calculate Group Compatibility'
-)}
+  {isCalculating ? (
+    <>
+      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+      Calculating Group Vibe...
+    </>
+  ) : (
+    'Calculate Group Compatibility'
+  )}
 </Button>
 </form>
 );
