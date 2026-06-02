@@ -58,7 +58,7 @@ function HomePage() {
                 Do your birth dates actually match?
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto">
-                Enter two birthdays and get an instant compatibility score for love, friendship, or your next situationship.
+                Check compatibility for just the two of you — or bring the whole friend group. Up to 7 people, instant results.
               </p>
               <div className="mt-6">
                 <a href="#calculator" role="button" aria-controls="calculator" className="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">See Your Match</a>
@@ -102,36 +102,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Result preview - shows a sample compatibility card */}
-        <section className="section-spacing bg-background">
-          <div className="content-container max-w-3xl">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold text-foreground">Here's what your result looks like</h3>
-            </div>
-            <div className="max-w-xl mx-auto">
-              <div className="bg-card border border-border rounded-2xl p-6 flex items-center justify-between">
-                <div>
-                  <div className="text-lg font-semibold">Sarah & James</div>
-                  <div className="text-sm text-muted-foreground">Birth date compatibility preview</div>
-                </div>
-                <div className="flex flex-col items-end">
-                  <div className="text-3xl font-bold text-primary">87%</div>
-                  <div className="text-sm text-muted-foreground">Compatible</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Email capture section moved to after results/preview */}
-        <section className="section-spacing bg-background">
-          <div className="content-container">
-            <div className="max-w-3xl mx-auto">
-              <EmailCaptureSection />
-            </div>
-          </div>
-        </section>
-
+        {/* Result preview removed from homepage; Email capture moved to result page */}
         {/* 3. Explanatory Content Section */}
         <section className="section-spacing bg-card border-y border-border">
           <div className="content-container">
