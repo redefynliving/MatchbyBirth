@@ -67,8 +67,8 @@ module.exports = async (req, res) => {
     // - Paragraph breaks -> <p> tags
     // - No raw markdown symbols or emojis visible
 
-    // Remove emojis (Unicode Extended Pictographic)
-    aiText = aiText.replace(/\p{Extended_Pictographic}/gu, '');
+    // Remove emojis (broader ranges) and trim
+    aiText = aiText.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{26FF}]/gu, '').trim();
 
     // Normalize line endings
     aiText = aiText.replace(/\r\n?/g, '\n');
@@ -76,25 +76,30 @@ module.exports = async (req, res) => {
     // Strip leading heading markers (if any)
     aiText = aiText.replace(/^#{1,6}\s*/gm, '');
 
-    // Prepare placeholders for bold segments so we can escape safely
-    const boldReplacements = [];
-    aiText = aiText.replace(/\*\*(.+?)\*\*/gs, (_, inner) => {
-      const idx = boldReplacements.length;
-      boldReplacements.push(inner);
-      return `@@BOLD:${idx}@@`;
+    // Convert markdown bold/italic to HTML placeholders BEFORE escaping.
+    // We use placeholders so we can safely escape the rest of the text and then
+    // restore the intended tags with escaped inner content.
+    const htmlPlaceholders = [];
+    aiText = aiText.replace(/\*\*(.*?)\*\*/gs, (_, inner) => {
+      const idx = htmlPlaceholders.push({ tag: 'strong', text: inner }) - 1;
+      return `@@HTML:${idx}@@`;
+    });
+    aiText = aiText.replace(/\*(.*?)\*/gs, (_, inner) => {
+      const idx = htmlPlaceholders.push({ tag: 'em', text: inner }) - 1;
+      return `@@HTML:${idx}@@`;
     });
 
     // Escape the remaining text
     const escaped = escapeHtml(aiText);
 
-    // Restore bold placeholders with escaped inner text wrapped in <strong>
-    const restored = escaped.replace(/@@BOLD:(\d+)@@/g, (_, n) => {
-      const inner = boldReplacements[Number(n)] || '';
-      return `<strong>${escapeHtml(inner)}</strong>`;
+    // Restore HTML placeholders with escaped inner text wrapped in proper tags
+    const restored = escaped.replace(/@@HTML:(\d+)@@/g, (_, n) => {
+      const entry = htmlPlaceholders[Number(n)] || { tag: 'span', text: '' };
+      return `<${entry.tag}>${escapeHtml(entry.text)}</${entry.tag}>`;
     });
 
-    // Remove any stray single '*' or '`' characters
-    const cleaned = restored.replace(/[*`]/g, '');
+    // Remove any stray backticks (we already handled * and **)
+    const cleaned = restored.replace(/`/g, '');
 
     // Split into paragraphs (double newlines) and render with serif font
     const paragraphs = cleaned.split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
