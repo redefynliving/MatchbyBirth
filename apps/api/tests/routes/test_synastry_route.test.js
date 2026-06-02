@@ -1,5 +1,5 @@
-const request = require('supertest');
-const app = require('../../src/main').default; // import the Express app export
+import request from 'supertest';
+import app from '../../src/main.js'; // ESM import of Express app
 
 describe('POST /api/synastry', () => {
   it('returns synastry JSON for simple charts', async () => {
