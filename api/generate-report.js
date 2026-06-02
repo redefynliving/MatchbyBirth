@@ -17,17 +17,23 @@ module.exports = async (req, res) => {
       return res.status(400).json({ ok: false, error: 'Missing or invalid email' });
     }
 
-    // Generate AI report via Anthropic Haiku
+    // Generate AI report via Anthropic
     let aiText = null;
     try {
       const key = process.env.ANTHROPIC_API_KEY;
       if (key) {
-        const prompt = `You are an astrology compatibility expert. Write a clean, elegant compatibility report for two people. Do NOT use emojis. Do NOT use markdown symbols (no **, no #, no backticks). Use plain paragraph breaks only. Keep prose warm, specific, and succinct. Include an overall score out of 100 and a brief breakdown. Names: ${nameA} and ${nameB}. Birthdays: ${dobA} and ${dobB}. Scores: ${JSON.stringify(scores)}.`;
+        // System prompt (per user request): instruct model to write like a personal letter.
+        const systemPrompt = "Write as if you are writing a personal, intimate letter directly to this couple. Use 'you' and 'your' throughout. No headers, no bullet points, no section titles. Three paragraphs of flowing prose. Warm, specific, emotionally resonant. No emojis. No markdown.";
+
+        const userPrompt = `You are an astrology compatibility expert. Write a clean, elegant compatibility report as a personal letter for two people named ${nameA} and ${nameB}. Use plain paragraphs only. Mention the birthdays: ${dobA} and ${dobB}. If a numeric overall score is available, include it naturally in the prose. Avoid markdown, emojis, headings, lists, buttons, or CTAs. Keep the tone intimate, luxurious, and emotionally specific.`;
 
         const body = {
           model: 'claude-haiku-4-5-20251001',
           max_tokens: 1024,
-          messages: [{ role: 'user', content: prompt }]
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt }
+          ]
         };
 
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
@@ -57,81 +63,57 @@ module.exports = async (req, res) => {
     if (!aiText) {
       // Fallback plain text
       const overall = String(scores?.overall ?? 'N/A');
-      aiText = `${nameA} and ${nameB} have an overall compatibility score of ${overall} out of 100.\n\nThis score reflects a balance of shared values and areas where the two of you may need to work on communication.\n\nUse the Match by Birth calculator for more details and a personalized breakdown.`;
+      aiText = `${nameA} and ${nameB} have an overall compatibility score of ${overall} out of 100.\n\nThis score reflects a balance of shared values and areas where the two of you may need to work on communication.\n\nUse Match by Birth for a personalized breakdown.`;
     }
 
-    // Processing rules:
+    // Sanitization and paragraph handling
     // - Remove emojis
-    // - Strip markdown headings (#)
-    // - Convert **bold** to <strong>
-    // - Paragraph breaks -> <p> tags
-    // - No raw markdown symbols or emojis visible
+    // - Normalize line endings
+    // - Strip heading markers
+    // - Remove stray backticks
 
-    // Strip emojis right after receiving the AI response and trim
     aiText = aiText.replace(/[\u{1F300}-\u{1FFFF}]/gu, '').replace(/[\u{2600}-\u{26FF}]/gu, '').trim();
-
-    // Normalize line endings
     aiText = aiText.replace(/\r\n?/g, '\n');
-
-    // Strip leading heading markers (if any)
     aiText = aiText.replace(/^#{1,6}\s*/gm, '');
+    aiText = aiText.replace(/`/g, '');
 
-    // Convert markdown bold and italic to HTML BEFORE inserting into the template
-    // (running the exact requested regexes)
-    aiText = aiText.replace(/\*\*(.*?)\*\*/gs, '<strong>$1</strong>');
-    aiText = aiText.replace(/\*(.*?)\*/gs, '<em>$1</em>');
+    // Split into paragraphs. The system prompt asks for three paragraphs; preserve whatever the model returns.
+    const paragraphs = aiText.split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
 
-    // Escape the rest of the content but preserve <strong> and <em> tags
-    const escaped = escapeHtml(aiText);
-    const restored = escaped.replace(/&lt;(\/)?(strong|em)&gt;/g, '<$1$2>');
-
-    // Remove any stray backticks
-    const cleaned = restored.replace(/`/g, '');
-
-    // Split into paragraphs (double newlines) and render with serif font
-    const paragraphs = cleaned.split(/\n\s*\n+/).map(p => p.trim()).filter(Boolean);
-
-    const bodyHtml = paragraphs.map(p => {
-      // collapse single newlines into spaces
-      const content = p.replace(/\n+/g, ' ');
-      return `<p style="font-family: Georgia, 'Times New Roman', serif; line-height:1.6; margin:0 0 16px 0; color:#111827;">${content}</p>`;
+    // Render paragraphs with the requested typography
+    const paragraphHtml = paragraphs.map(p => {
+      const content = escapeHtml(p).replace(/\n+/g, ' ');
+      return `<p style="font-family: Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.8; margin:0 0 24px 0; color:#1f2937;">${content}</p>`;
     }).join('\n');
 
     const overallScore = Number(scores?.overall ?? NaN);
     const scoreDisplay = Number.isFinite(overallScore) ? Math.round(overallScore) : 'N/A';
 
+    // Build the email HTML following the luxury minimal letter design
     const emailHtml = `
-      <div style="background:#ffffff; width:100%; padding:24px 16px; -webkit-font-smoothing:antialiased;">
-        <div style="max-width:600px; margin:0 auto; border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(16,24,40,0.06);">
+      <div style="background:#ffffff; width:100%; padding:48px 16px; -webkit-font-smoothing:antialiased;">
+        <div style="max-width:560px; margin:0 auto;">
 
-          <div style="background:#1a1a2e; padding:18px 24px; text-align:center;">
-            <h1 style="margin:0; font-family: 'Georgia', 'Times New Roman', serif; color:#ffffff; font-weight:600; font-size:20px;">Your Compatibility Report</h1>
+          <div style="text-align:center; color:#9ca3af; font-family: Arial, Helvetica, sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase;">Match by Birth</div>
+          <hr style="border:none; border-top:1px solid #e5e7eb; margin:12px 0 28px 0;" />
+
+          <div style="text-align:center; margin-bottom:24px; font-family: Georgia, 'Times New Roman', serif;">
+            <div style="color:#4c1d95; font-size:32px; line-height:1;">${escapeHtml(nameA)} &amp; ${escapeHtml(nameB)}</div>
+            <div style="color:#7c3aed; font-size:64px; font-weight:700; line-height:1; margin-top:8px;">${escapeHtml(String(scoreDisplay))}</div>
+            <div style="color:#6b7280; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-top:6px;">COMPATIBILITY SCORE</div>
           </div>
 
-          <div style="background:#ffffff; padding:24px; text-align:center;">
+          <hr style="border:none; border-top:1px solid #e5e7eb; margin:8px 0 28px 0;" />
 
-            <div style="margin-bottom:18px;">
-              <div style="font-family: 'Georgia', 'Times New Roman', serif; color:#7c3aed; font-size:28px; font-weight:700;">${escapeHtml(nameA)} &amp; ${escapeHtml(nameB)}</div>
-            </div>
-
-            <div style="display:flex; justify-content:center; align-items:center; gap:12px; margin-bottom:18px;">
-              <div style="width:92px; height:92px; border-radius:46px; background:#f3f0ff; display:flex; align-items:center; justify-content:center;">
-                <div style="font-family: 'Georgia', 'Times New Roman', serif; color:#4c1d95; font-size:28px; font-weight:700;">${escapeHtml(String(scoreDisplay))}</div>
-              </div>
-              <div style="font-size:14px; color:#6b7280;">/ 100</div>
-            </div>
-
-            <hr style="border:none;border-top:1px solid #eef2f7;margin:18px 0;" />
-
-            <div style="text-align:left;">
-              ${bodyHtml}
-            </div>
-
+          <div style="font-family: Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.8; color:#1f2937;">
+            ${paragraphHtml}
           </div>
 
-          <div style="background:#f9fafb; padding:12px 24px; text-align:center; font-size:12px; color:#6b7280;">
-            Match by Birth · For entertainment purposes only
-          </div>
+          <div style="text-align:center; margin-top:12px; font-style:italic; color:#6b7280; font-family: Georgia, 'Times New Roman', serif;">The stars don't decide your story. They just help you understand it.</div>
+
+          <hr style="border:none; border-top:1px solid #e5e7eb; margin:20px 0 16px 0;" />
+
+          <div style="text-align:center; color:#9ca3af; font-size:12px; font-family: Arial, Helvetica, sans-serif;">Match by Birth · For entertainment purposes only</div>
 
         </div>
       </div>
@@ -148,7 +130,6 @@ module.exports = async (req, res) => {
       const payload = {
         from: 'support@matchbybirth.com',
         to: [email],
-        // Ensure subject contains no emojis or other non-standard symbols
         subject: (`Your Compatibility Report — ${nameA} & ${nameB}`).replace(/[^\w\s\-&.,:;!()?]/g, ''),
         html: emailHtml
       };
