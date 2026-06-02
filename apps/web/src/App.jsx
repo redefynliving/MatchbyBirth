@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import ReportSuccess from './pages/ReportSuccess';
 import { Toaster } from 'sonner';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -38,6 +39,9 @@ function App() {
             <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="/disclaimers" element={<DisclaimerPage />} />
             
+            {/* Catch-all route */}
+            <Route path="/report-success" element={<ReportSuccess />} />
+
             {/* Catch-all route */}
             <Route path="*" element={
               <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">

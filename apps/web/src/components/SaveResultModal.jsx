@@ -11,33 +11,43 @@ function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name,
     event.preventDefault();
 
     try {
-      const nameA = person1Name || getParam('p1') || '';
-      const nameB = person2Name || getParam('p2') || '';
-      const dobA = getParam('p1_dob') || '';
-      const dobB = getParam('p2_dob') || '';
-      const scores = { overall: score ?? Number(getParam('score')) ?? 0 };
+    const nameA = person1Name || getParam('p1') || '';
+    const nameB = person2Name || getParam('p2') || '';
+    const dobA = getParam('p1_dob') || '';
+    const dobB = getParam('p2_dob') || '';
+    const scores = { overall: score ?? Number(getParam('score')) ?? 0 };
 
-      await fetch('/api/generate-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nameA, nameB, dobA, dobB, scores, email })
-      });
+    setStatus('loading');
 
-      // Show success message regardless of backend outcome (silent failures)
-      toast.success('Your report is on its way! Check your inbox ✨');
+    const resp = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nameA, nameB, dobA, dobB, scores, email })
+    });
+
+    if (!resp.ok) {
+      throw new Error('Checkout session creation failed');
+    }
+
+    const data = await resp.json();
+    if (!data?.url) throw new Error('Missing session URL');
+
+    window.location.href = data.url;
+
     } catch (err) {
-      console.error(err);
-      // Silent failure: still show success message
-      toast.success('Your report is on its way! Check your inbox ✨');
+    console.error(err);
+    setStatus('error');
+    toast.error('Something went wrong. Please try again.');
     } finally {
-      setEmail('');
-      onClose();
+    setEmail('');
+    onClose();
+    setStatus('idle');
     }
 
     function getParam(key) {
-      try { const u = new URL(resultUrl); return u.searchParams.get(key); } catch (e) { return null; }
+    try { const u = new URL(resultUrl); return u.searchParams.get(key); } catch (e) { return null; }
     }
-  };
+    };
 
 
   return (
