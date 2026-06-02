@@ -43,11 +43,7 @@ module.exports = async (req, res) => {
 
         <hr />
 
-        <div style="margin-top:12px;">
-          <p style="font-weight:bold;">Want weekly compatibility updates?</p>
-          <p>Get a weekly compatibility summary straight to your inbox.</p>
-          <p><a href="https://matchbybirth.com/premium" style="color:#ffffff; background:#7c3aed; padding:10px 14px; border-radius:6px; text-decoration:none; display:inline-block;">Get your weekly compatibility update — $4.99/mo</a></p>
-        </div>
+        <!-- Weekly updates/upsell removed per request -->
       </div>
     `;
 
