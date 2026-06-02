@@ -50,20 +50,38 @@ function EmailCaptureSection() {
     const payload = { email, p1, p2, p1_dob, p2_dob, score, label, resultUrl: window.location.href };
 
     try {
-      const res = await fetch('/api/subscribe', {
+      // Allow local development to target a standalone API server by setting VITE_API_BASE.
+      // In production we keep the same relative /api/subscribe path so serverless routing still works.
+      const API_BASE = (import.meta.env && import.meta.env.VITE_API_BASE) || '';
+      const endpoint = API_BASE ? `${API_BASE}/subscribe` : '/api/subscribe';
+
+      // Log payload for debugging during QA
+      // eslint-disable-next-line no-console
+      console.log('Submitting subscribe payload to', endpoint, payload);
+
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      const json = await res.json();
-      if (res.ok && json.success) {
+      // Try to parse JSON safely
+      let json = null;
+      try {
+        json = await res.json();
+      } catch (e) {
+        // ignore JSON parse errors
+      }
+
+      if (res.ok && json && json.success) {
         setStatus('success');
       } else {
-        setError(json.error || 'Server error');
+        setError((json && json.error) || `Server error (${res.status})`);
         setStatus('error');
       }
     } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('Subscribe network error', err);
       setError('Network error');
       setStatus('error');
     }
