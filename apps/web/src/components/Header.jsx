@@ -11,6 +11,8 @@ function Header() {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/faq', label: 'FAQ' },
+    { path: '/blog', label: 'Blog' },
+    { path: '/contact', label: 'Contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
