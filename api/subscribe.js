@@ -85,13 +85,40 @@ export default async function handler(req, res) {
       </div>
     `;
 
+    // Build plain-text fallback
+    const plainTextBullets = bullets.join('\n- ');
+    const text = [];
+    text.push('Match by Birth');
+    text.push('');
+    text.push('Your compatibility result is in');
+    text.push('');
+    if (Number.isFinite(numericScore)) {
+      text.push(`Your score: ${scoreDisplay}/100`);
+    }
+    if (p1 && p2) {
+      text.push(`${sanitizeText(p1)} + ${sanitizeText(p2)}`);
+    }
+    if (label) {
+      text.push(sanitizeText(label));
+    }
+    text.push('');
+    text.push('Here\'s a quick look at your connection based on your birth dates.');
+    text.push('');
+    text.push('- ' + plainTextBullets);
+    text.push('');
+    text.push(`View your result: ${resultLink}`);
+    text.push('');
+    text.push('For entertainment purposes only.');
+    text.push(`Support: ${supportEmail}`);
+
     const payload = {
       from: 'support@matchbybirth.com',
       to: [email],
       subject,
       // Resend supports a preview_text property; include if desired
       preview_text: preview,
-      html
+      html,
+      text: text.join('\n')
     };
 
     const resp = await fetch('https://api.resend.com/emails', {
@@ -104,14 +131,30 @@ export default async function handler(req, res) {
     });
 
     if (!resp.ok) {
-      const text = await resp.text();
-      console.error('Resend error', resp.status, text);
+      const textResp = await resp.text();
+      console.error('Resend error', resp.status, textResp);
       return res.status(502).json({ success: false, error: 'Email service error' });
     }
 
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
+    // Do not leak error details to client
     return res.status(500).json({ success: false, error: 'Server error' });
   }
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function sanitizeText(s) {
+  if (!s) return '';
+  // Strip tags and collapse whitespace
+  return String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
