@@ -18,13 +18,21 @@ function ContactPage() {
           </div>
           
           <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
-            <p className="text-muted-foreground text-center mb-6">
-              Have a question or feedback? Reach out to us directly at:
+            <p className="text-muted-foreground text-center mb-4">
+              Have a question or feedback? We typically reply within 1-2 business days. Please include as much context as you can so we can help fast.
             </p>
-            <div className="text-center">
+            <div className="text-center mb-6">
               <a href="mailto:support@matchbybirth.com" className="text-xl font-semibold text-primary hover:underline">
                 support@matchbybirth.com
               </a>
+            </div>
+            <div className="border-t border-border pt-4">
+              <h3 className="text-lg font-semibold mb-2">Quick Help</h3>
+              <ul className="text-muted-foreground list-disc list-inside">
+                <li>Account or email issues — include the email you used.</li>
+                <li>Result mismatch — paste the URL of the result page.</li>
+                <li>Bug report — steps to reproduce and device/browser info help a lot.</li>
+              </ul>
             </div>
           </div>
         </div>

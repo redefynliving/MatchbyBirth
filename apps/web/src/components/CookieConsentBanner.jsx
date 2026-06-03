@@ -28,8 +28,8 @@ function CookieConsentBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 md:pb-8 pointer-events-none">
-      <div className="max-w-4xl mx-auto bg-card border border-border rounded-xl shadow-lg p-5 sm:p-6 pointer-events-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+    <div className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-50 pointer-events-none">
+      <div className="max-w-4xl mx-auto bg-card border border-border rounded-full shadow-lg p-3 sm:p-4 pointer-events-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex-1 pr-4">
           <h3 className="text-base font-semibold text-foreground mb-1">We value your privacy</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">

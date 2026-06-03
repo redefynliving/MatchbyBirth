@@ -69,10 +69,7 @@ function HomePage() {
             {/* 2. Calculator Component */}
             <CompatibilityCalculator />
 
-            {/* Ad Banner Placed After Calculator Results Focus */}
-            <div className="mt-6 max-w-2xl mx-auto">
-              <AdBanner />
-            </div>
+            {/* Ad Banner removed to prevent layout shifts beneath the calculator */}
 
             {/* How it works row */}
             <div className="mt-8">
@@ -82,7 +79,7 @@ function HomePage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                       <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
                         <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">1</div>
-                        <div className="font-semibold text-lg">Enter two birth dates</div>
+                        <div className="font-semibold text-lg">Add birthdays — just two, or up to 7</div>
                       </div>
 
                       <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
