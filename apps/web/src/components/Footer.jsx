@@ -42,7 +42,7 @@ function Footer() {
             <h4 className="font-semibold text-foreground mb-6">Quick Links</h4>
             <nav className="flex flex-col gap-3">
               <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link>
-              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link>
+              {/* About page removed from footer quick links to match header */}
               <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link>
               <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog & Guides</Link>
               <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
