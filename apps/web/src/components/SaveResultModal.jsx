@@ -4,6 +4,7 @@ import { toast } from 'sonner';
 
 function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name, score }) {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle');
 
   if (!isOpen) return null;
 
@@ -17,7 +18,7 @@ function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name,
     const dobB = getParam('p2_dob') || '';
     const scores = { overall: score ?? Number(getParam('score')) ?? 0 };
 
-    setStatus('loading');
+      setStatus('loading');
 
     const resp = await fetch('/api/create-checkout-session', {
       method: 'POST',
@@ -39,9 +40,9 @@ function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name,
     setStatus('error');
     toast.error('Something went wrong. Please try again.');
     } finally {
-    setEmail('');
-    onClose();
-    setStatus('idle');
+      setEmail('');
+      onClose();
+      setStatus('idle');
     }
 
     function getParam(key) {
@@ -86,8 +87,9 @@ function SaveResultModal({ isOpen, onClose, resultUrl, person1Name, person2Name,
           <button
             type="submit"
             className="w-full h-12 btn-primary"
+            disabled={status === 'loading'}
           >
-            Submit
+            {status === 'loading' ? 'Submitting...' : 'Submit'}
           </button>
         </form>
 

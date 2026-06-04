@@ -245,7 +245,7 @@ function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipT
             </button>
 
             <button
-              onClick={() => window.open('/#', '_self')}
+              onClick={() => setIsModalOpen(true)}
               className="w-full flex items-center justify-center gap-2 mb-4 h-12 bg-secondary text-secondary-foreground font-semibold rounded-xl hover:bg-secondary/90 transition-colors"
               title="Get Full Report — $4.99"
             >
