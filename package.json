@@ -16,7 +16,8 @@
   ],
   "dependencies": {
     "@vercel/og": "^0.11.1",
-    "astronomia": "^4.2.0"
+    "astronomia": "^4.2.0",
+    "stripe": "^22.2.0"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.0.0"
