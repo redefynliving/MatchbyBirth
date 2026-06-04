@@ -126,7 +126,8 @@ module.exports = async (req, res) => {
       const resendKey = process.env.RESEND_API_KEY;
       if (!resendKey) {
         console.error('Resend key missing');
-        return res.status(200).json({ ok: true });
+        // Fail loudly so callers know email didn't send
+        return res.status(500).json({ ok: false, error: 'Server misconfiguration: RESEND_API_KEY not set' });
       }
 
       const payload = {
@@ -148,14 +149,25 @@ module.exports = async (req, res) => {
       if (!sendResp.ok) {
         const text = await sendResp.text();
         console.error('Resend API error', sendResp.status, text);
-        return res.status(200).json({ ok: true });
+        // Surface a provider error to clients while avoiding leaking details
+        return res.status(502).json({ ok: false, error: 'Email provider error' });
       }
+
+      // Try to capture provider response id for tracing (if provided)
+      let providerId = null;
+      try {
+        const sendJson = await sendResp.json();
+        providerId = sendJson?.id || sendJson?.messageId || null;
+        if (providerId) console.log('Resend send id:', providerId);
+      } catch (e) {
+        // non-json or empty body — ignore
+      }
+
+      return res.status(200).json({ ok: true, provider_id: providerId });
     } catch (err) {
       console.error('Error sending email', err);
-      return res.status(200).json({ ok: true });
+      return res.status(500).json({ ok: false, error: 'Email send failed' });
     }
-
-    return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('generate-report error', err);
     return res.status(200).json({ ok: true });
