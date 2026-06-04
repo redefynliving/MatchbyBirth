@@ -9,6 +9,7 @@ import ShareButtons from '@/components/ShareButtons.jsx';
 import AdUnit from '@/components/AdUnit.jsx';
 import { getZodiacSign, calculateBaseCompatibility } from '@/lib/zodiac.js';
 import { getScoreInterpretation } from '@/lib/scoreInterpretation.js';
+import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
 
 function ResultPage() {
   const [searchParams] = useSearchParams();
