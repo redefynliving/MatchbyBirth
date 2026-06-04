@@ -13,7 +13,13 @@ router.post('/', async (req, res) => {
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      return res.status(500).json({ success: false, error: 'Resend API key not configured' });
+      // In production we signal service misconfiguration. In non-production return 200 for local workflows.
+      if (process.env.NODE_ENV === 'production') {
+        console.error('RESEND_API_KEY not set in production');
+        return res.status(503).json({ success: false, error: 'Email service not configured' });
+      }
+      console.warn('RESEND_API_KEY not set — skipping email send in non-production');
+      return res.status(200).json({ success: true, fallback: true });
     }
 
     const resend = new Resend(apiKey);

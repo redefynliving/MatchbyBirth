@@ -72,7 +72,11 @@ export default async function handler(req, res) {
     const { subject, html, text } = buildEmail(parsed);
 
     if (!apiKey) {
-      // Fallback for local/dev: persist email payload to tmp for inspection and return success
+      // In production, fail loudly so callers know email wasn't sent. In non-production, fall back to writing a file for inspection.
+      if (process.env.NODE_ENV === 'production') {
+        console.error('RESEND_API_KEY not set in production');
+        return res.status(503).json({ success: false, error: 'Email service not configured' });
+      }
       try {
         const outDir = path.resolve(process.cwd(), 'tmp', 'fake_emails');
         fs.mkdirSync(outDir, { recursive: true });

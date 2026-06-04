@@ -9,11 +9,18 @@ module.exports = async (req, res) => {
 
     const { nameA, nameB, dobA, dobB, scores, email } = req.body || {};
 
+    // Sanitize inputs: never log or persist raw DOBs. Keep minimal values here.
+    const safeNameA = String(nameA || '').trim().slice(0, 100);
+    const safeNameB = String(nameB || '').trim().slice(0, 100);
+    const safeEmail = String(email || '').trim().slice(0, 254);
+    // Do not keep dobA/dobB in server logs or variables beyond immediate need.
+
+
     if (!nameA || !nameB || !dobA || !dobB) {
       return res.status(400).json({ ok: false, error: 'Missing required fields: nameA, nameB, dobA, dobB' });
     }
 
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!safeEmail || typeof safeEmail !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(safeEmail)) {
       return res.status(400).json({ ok: false, error: 'Missing or invalid email' });
     }
 
@@ -25,7 +32,7 @@ module.exports = async (req, res) => {
         // System prompt (per user request): instruct model to write like a personal letter.
         const systemPrompt = "Write as if you are writing a personal, intimate letter directly to this couple. Use 'you' and 'your' throughout. No headers, no bullet points, no section titles. Three paragraphs of flowing prose. Warm, specific, emotionally resonant. No emojis. No markdown.";
 
-        const userPrompt = `You are an astrology compatibility expert. Write a clean, elegant compatibility report as a personal letter for two people named ${nameA} and ${nameB}. Use plain paragraphs only. Mention the birthdays: ${dobA} and ${dobB}. If a numeric overall score is available, include it naturally in the prose. Avoid markdown, emojis, headings, lists, buttons, or CTAs. Keep the tone intimate, luxurious, and emotionally specific.`;
+        const userPrompt = `You are an astrology compatibility expert. Write a clean, elegant compatibility report as a personal letter for two people named ${safeNameA} and ${safeNameB}. Use plain paragraphs only. Mention the birthdays: [REDACTED]. If a numeric overall score is available, include it naturally in the prose. Avoid markdown, emojis, headings, lists, buttons, or CTAs. Keep the tone intimate, luxurious, and emotionally specific.`;
 
         const body = {
           model: 'claude-haiku-4-5-20251001',
@@ -36,7 +43,8 @@ module.exports = async (req, res) => {
           ]
         };
 
-        console.log('Anthropic request body:', JSON.stringify(body));
+        // Log metadata only. Do NOT log full prompts or DOBs (PII).
+        console.log('Anthropic request:', { model: body.model, messages: body.messages.map(m => ({ role: m.role, content_length: String(m.content || '').length })) });
 
         const resp = await fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
@@ -127,7 +135,7 @@ module.exports = async (req, res) => {
       if (!resendKey) {
         console.error('Resend key missing');
         // Fail loudly so callers know email didn't send
-        return res.status(500).json({ ok: false, error: 'Server misconfiguration: RESEND_API_KEY not set' });
+        return res.status(500).json({ ok: false, error: 'Server misconfiguration: RESEND_API_KEY not set' }); // kept explicit for caller handling
       }
 
       const payload = {
