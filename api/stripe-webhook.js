@@ -43,10 +43,24 @@ module.exports = async (req, res) => {
       // Asynchronously generate the report and send email
       (async () => {
         try {
-          const { nameA, nameB, dobA, dobB, scores, email } = metadata;
+          // Do not pull raw DOBs into logs or downstream requests. Replace DOBs with a hash for internal correlation if needed.
+          const { nameA, nameB, scores, email } = metadata;
+          const dobA = metadata.dobA ? hashPII(metadata.dobA) : undefined;
+          const dobB = metadata.dobB ? hashPII(metadata.dobB) : undefined;
           const parsedScores = scores ? JSON.parse(scores) : null;
 
           // Call Anthropic to generate the report (reuse existing function)
+
+          function hashPII(value) {
+            try {
+              const h = crypto.createHash('sha256');
+              h.update(String(value));
+              return h.digest('hex').slice(0, 32); // short hash
+            } catch (e) {
+              return undefined;
+            }
+          }
+
           const generateReport = require('./generate-report');
           // generate-report expects (req,res) signature; call its inner logic by emulating a request
 
