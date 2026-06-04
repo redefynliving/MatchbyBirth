@@ -9,12 +9,17 @@ module.exports = async (req, res) => {
 
     const { email, p1, p2, p1_dob, p2_dob, score } = req.body || {};
 
+    // Sanitize inputs: don't log or keep raw DOBs beyond immediate use
+    const safeEmail = String(email || '').trim().slice(0, 254);
+    const safeP1 = String(p1 || '').trim().slice(0, 100);
+    const safeP2 = String(p2 || '').trim().slice(0, 100);
+
     // Basic email validation
-    if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!safeEmail || typeof safeEmail !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(safeEmail)) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    if (!p1 || !p2 || !p1_dob || !p2_dob) {
+    if (!safeP1 || !safeP2 || !p1_dob || !p2_dob) {
       return res.status(400).json({ error: 'Missing required fields: p1, p2, p1_dob, p2_dob' });
     }
 
@@ -23,7 +28,8 @@ module.exports = async (req, res) => {
       return res.status(500).json({ error: 'Server misconfiguration: RESEND_API_KEY not set' });
     }
 
-    const resultLink = `https://matchbybirth.com/result?p1=${encodeURIComponent(p1)}&p1_dob=${encodeURIComponent(p1_dob)}&p2=${encodeURIComponent(p2)}&p2_dob=${encodeURIComponent(p2_dob)}`;
+    // Build result link but DO NOT embed raw DOBs in logs or external metadata. Use URL params only for user convenience.
+    const resultLink = `https://matchbybirth.com/result?p1=${encodeURIComponent(safeP1)}&p1_dob=${encodeURIComponent(p1_dob)}&p2=${encodeURIComponent(safeP2)}&p2_dob=${encodeURIComponent(p2_dob)}`;
 
     const subject = '✦ Your Match by Birth result — save this link';
 
