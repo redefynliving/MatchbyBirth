@@ -1,4 +1,23 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const initStripe = async () => {
+  // Support both CJS require and ESM dynamic import depending on runtime
+  try {
+    // Try CommonJS first
+    // eslint-disable-next-line global-require
+    const stripePkg = require('stripe');
+    return stripePkg(process.env.STRIPE_SECRET_KEY);
+  } catch (cjsErr) {
+    try {
+      // Fallback to dynamic import for ESM environments
+      const stripeModule = await import('stripe');
+      const factory = stripeModule.default || stripeModule;
+      return factory(process.env.STRIPE_SECRET_KEY);
+    } catch (esmErr) {
+      const err = new Error('stripe_module_missing');
+      err.cause = { cjsErr: cjsErr.message, esmErr: esmErr.message };
+      throw err;
+    }
+  }
+};
 
 module.exports = async (req, res) => {
   try {
@@ -17,6 +36,14 @@ module.exports = async (req, res) => {
       return res.status(500).json({ ok: false, error: 'Server misconfiguration' });
     }
 
+    let stripe;
+    try {
+      stripe = await initStripe();
+    } catch (err) {
+      console.error('Stripe initialization failed', err);
+      return res.status(500).json({ ok: false, error: 'Stripe client initialization failed' });
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -24,10 +51,11 @@ module.exports = async (req, res) => {
       line_items: [{ price: process.env.STRIPE_PRICE_ID, quantity: 1 }],
       success_url: 'https://matchbybirth.com/report-success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://matchbybirth.com',
-      metadata: { nameA, nameB, dobA, dobB, scores: JSON.stringify(scores), email }
+      metadata: { nameA, nameB, dobA, dobB, scores: JSON.stringify(scores || {}), email }
     });
 
-    return res.status(200).json({ url: session.url });
+    // session.url may be undefined in some Stripe versions/environments. Return both for safety.
+    return res.status(200).json({ ok: true, url: session.url, id: session.id });
   } catch (err) {
     console.error('create-checkout-session error', err);
     return res.status(500).json({ ok: false, error: 'Server error' });
