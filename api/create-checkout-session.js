@@ -37,11 +37,22 @@ module.exports = async (req, res) => {
     }
 
     let stripe;
-    try {
-      stripe = await initStripe();
-    } catch (err) {
-      console.error('Stripe initialization failed', err);
-      return res.status(500).json({ ok: false, error: 'Stripe client initialization failed' });
+    // Allow local testing with a mock Stripe client when STRIPE_MOCK=1
+    if (process.env.STRIPE_MOCK === '1') {
+      stripe = {
+        checkout: {
+          sessions: {
+            create: async (opts) => ({ id: 'sess_fake_123', url: 'https://checkout.fake/sess_fake_123', ...opts })
+          }
+        }
+      };
+    } else {
+      try {
+        stripe = await initStripe();
+      } catch (err) {
+        console.error('Stripe initialization failed', err);
+        return res.status(500).json({ ok: false, error: 'Stripe client initialization failed' });
+      }
     }
 
     const session = await stripe.checkout.sessions.create({
