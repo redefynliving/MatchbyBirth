@@ -181,6 +181,8 @@ function escapeHtml(text) {
 
 function sanitizeText(s) {
   if (!s) return '';
-  // Strip tags and collapse whitespace
-  return String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  // Remove individual angle-bracket characters and collapse whitespace.
+  // Using a character class instead of a multi-character tag pattern prevents
+  // bypass via nested sequences (e.g. <<script>>).
+  return String(s).replace(/[<>]/g, '').replace(/\s+/g, ' ').trim();
 }
