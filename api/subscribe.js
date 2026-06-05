@@ -184,29 +184,3 @@ function sanitizeText(s) {
   // Strip tags and collapse whitespace
   return String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 }
-
-      return res.status(502).json({ success: false, error: 'Email service error' });
-    }
-
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error(err);
-    // Do not leak error details to client
-    return res.status(500).json({ success: false, error: 'Server error' });
-  }
-}
-
-function escapeHtml(text) {
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-function sanitizeText(s) {
-  if (!s) return '';
-  // Strip tags and collapse whitespace
-  return String(s).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
-}
