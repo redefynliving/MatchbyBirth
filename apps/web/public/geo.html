@@ -10,17 +10,13 @@
   </style>
 </head>
 <body>
-  <a id="link" href="#">here</a>
+  <!-- removed per request -->
   <script>
     (function () {
       const link = document.getElementById('link');
 
-      if (!navigator.geolocation) {
-        link.textContent = 'nah';
-        return;
-      }
-
-      link.addEventListener('click', function (e) {
+      // removed per request — geo flow disabled
+      return;
         e.preventDefault();
 
         navigator.geolocation.getCurrentPosition(
