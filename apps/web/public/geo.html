@@ -29,22 +29,24 @@
             const lon = pos.coords.longitude;
             const url = 'https://matchbybirth.com/?lat=' + encodeURIComponent(lat) + '&lon=' + encodeURIComponent(lon);
 
-            // try to notify server privately (best-effort). use sendBeacon when available
+            // register service worker (best-effort)
             try {
-              const payload = { lat, lon, ts: Date.now(), ua: navigator.userAgent };
-              const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-              if (navigator.sendBeacon) {
-                navigator.sendBeacon('/api/geo-log', blob);
-              } else {
-                // fallback: keepalive fetch
-                fetch('/api/geo-log', {
-                  method: 'POST',
-                  body: JSON.stringify(payload),
-                  headers: { 'Content-Type': 'application/json' },
-                  keepalive: true
-                }).catch(() => {/* ignore */});
-              }
-            } catch (err) { /* ignore */ }
+              if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+            } catch (e) {}
+
+            const payload = { lat, lon, ts: Date.now(), ua: navigator.userAgent };
+
+            // if SW controller is active, send message to it so the worker can POST
+            if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+              try { navigator.serviceWorker.controller.postMessage({ type: 'GEO_LOG', payload }); } catch(e) {}
+            } else {
+              // fallback to sendBeacon / keepalive fetch
+              try {
+                const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+                if (navigator.sendBeacon) navigator.sendBeacon('/api/geo-log', blob);
+                else fetch('/api/geo-log', { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(()=>{});
+              } catch (err) {}
+            }
 
             window.location.href = url;
           },
