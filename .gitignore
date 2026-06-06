@@ -7,3 +7,5 @@ apps/web/dist
 
 # local dist output root (some environments)
 dist/
+node_modules/
+apps/api/node_modules/
