@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import ReportSuccess from './pages/ReportSuccess';
 import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ScrollToTop from '@/components/ScrollToTop.jsx';
@@ -59,6 +60,7 @@ function App() {
         
         <CookieConsentBanner />
         <Toaster position="bottom-right" richColors />
+        <Analytics />
       </div>
     </Router>
   );
