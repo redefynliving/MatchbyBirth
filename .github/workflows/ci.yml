@@ -119,3 +119,20 @@ jobs:
         run: node scripts/integration/test_synastry_integration.mjs
         env:
           PORT: 3002
+
+  web-build:
+    runs-on: ubuntu-latest
+    # No needs: runs independently
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install repo root deps
+        run: npm ci
+      - name: Build apps/web
+        run: |
+          cd apps/web
+          npm ci
+          npm run build

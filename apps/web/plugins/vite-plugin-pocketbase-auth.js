@@ -34,7 +34,13 @@ export default function pocketbaseAuthPlugin() {
                     const parentOrigin = getParentOrigin();
 
                     if (event.data?.type === "database_preview_auth" && parentOrigin && ALLOWED_PARENT_ORIGINS.includes(parentOrigin)) {
-                        localStorage.setItem("__pb_superuser_auth__", event.data.value);
+                        try {
+                            // Some embed contexts (cross-origin previews) block access to localStorage.
+                            // Guard against throws so the app doesn't crash in those environments.
+                            localStorage.setItem("__pb_superuser_auth__", event.data.value);
+                        } catch (e) {
+                            console.warn('Unable to write to localStorage in this context:', e && e.message ? e.message : e);
+                        }
                     }
                 });
             `;
