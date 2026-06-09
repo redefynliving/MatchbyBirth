@@ -1,194 +1,222 @@
-
-import React, { useMemo, useEffect, useState } from 'react';
-import { useSearchParams, Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { ArrowLeft } from 'lucide-react';
-import ResultCard from '@/components/ResultCard.jsx';
-import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.jsx';
-import ShareButtons from '@/components/ShareButtons.jsx';
-import AdUnit from '@/components/AdUnit.jsx';
-import { getZodiacSign, calculateBaseCompatibility } from '@/lib/zodiac.js';
-import { getScoreInterpretation } from '@/lib/scoreInterpretation.js';
+import { ArrowLeft, Loader2, RefreshCw } from 'lucide-react';
+import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
+import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.jsx';
+import ResultCard from '@/components/ResultCard.jsx';
+import ShareButtons from '@/components/ShareButtons.jsx';
+import { Button } from '@/components/ui/button.jsx';
+import { trackEvent } from '@/lib/analytics.js';
+
+function parseLegacyInput(searchParams) {
+  const groupParam = searchParams.get('group');
+  if (groupParam) {
+    const parts = groupParam.split(',');
+    const people = [];
+    for (let index = 0; index < parts.length; index += 2) {
+      if (parts[index] && parts[index + 1]) {
+        people.push({
+          id: `legacy-${index / 2 + 1}`,
+          name: decodeURIComponent(parts[index]),
+          birthDate: decodeURIComponent(parts[index + 1]),
+        });
+      }
+    }
+    return people.length >= 3
+      ? { mode: 'group', relationshipType: 'friendship', people }
+      : null;
+  }
+
+  const firstName = searchParams.get('p1');
+  const firstBirthDate = searchParams.get('p1_dob') || searchParams.get('p1_date');
+  const secondName = searchParams.get('p2');
+  const secondBirthDate = searchParams.get('p2_dob') || searchParams.get('p2_date');
+  if (!firstName || !firstBirthDate || !secondName || !secondBirthDate) return null;
+
+  return {
+    mode: 'pair',
+    relationshipType: searchParams.get('type') || 'love',
+    people: [
+      { id: 'legacy-1', name: firstName, birthDate: firstBirthDate },
+      { id: 'legacy-2', name: secondName, birthDate: secondBirthDate },
+    ],
+  };
+}
 
 function ResultPage() {
   const [searchParams] = useSearchParams();
-  
-  // Extract all params at top level
-  const groupParam = searchParams.get('group');
-  const p1 = searchParams.get('p1');
-  const p1_dob = searchParams.get('p1_dob');
-  const p2 = searchParams.get('p2');
-  const p2_dob = searchParams.get('p2_dob');
-  const type = searchParams.get('type') || 'love';
+  const location = useLocation();
+  const navigate = useNavigate();
+  const shareSlug = searchParams.get('share');
+  const legacyInput = useMemo(() => parseLegacyInput(searchParams), [searchParams]);
+  const [resultState, setResultState] = useState(() => {
+    if (location.state?.result && location.state?.shareSlug === shareSlug) {
+      return {
+        status: 'ready',
+        resultId: location.state.resultId,
+        result: location.state.result,
+      };
+    }
+    return { status: 'loading', resultId: null, result: null, error: '' };
+  });
+  const [reloadKey, setReloadKey] = useState(0);
 
-  // Local UI state so we can render immediately when URL params are present
-  const [mountedFromLink, setMountedFromLink] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
 
-  // Determine mode
-  const isGroupMode = !!groupParam;
+    async function loadResult() {
+      setResultState((current) => ({ ...current, status: 'loading', error: '' }));
 
-  // HOOK 1: Parse Group Data - called unconditionally at top level
-  const groupData = useMemo(() => {
-    if (!groupParam) return null;
-    const parts = groupParam.split(',');
-    const members = [];
-    for (let i = 0; i < parts.length; i += 2) {
-      if (parts[i] && parts[i+1]) {
-        members.push({ name: decodeURIComponent(parts[i]), birthDate: decodeURIComponent(parts[i+1]) });
+      try {
+        if (shareSlug) {
+          const response = await fetch(`/api/result?share=${encodeURIComponent(shareSlug)}`);
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(data.error || 'Unable to load this result.');
+          if (!cancelled) {
+            setResultState({
+              status: 'ready',
+              resultId: data.resultId,
+              result: data.result,
+              error: '',
+            });
+            trackEvent('shared_result_viewed', {
+              mode: data.result.mode,
+              relationship_type: data.result.relationshipType,
+              group_size: data.result.people.length,
+            });
+          }
+          return;
+        }
+
+        if (legacyInput) {
+          const response = await fetch('/api/calculate-result', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(legacyInput),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(data.error || 'Unable to update this result link.');
+          if (!cancelled) {
+            navigate(`/result?share=${encodeURIComponent(data.shareSlug)}`, {
+              replace: true,
+              state: {
+                resultId: data.resultId,
+                shareSlug: data.shareSlug,
+                result: data.result,
+              },
+            });
+          }
+          return;
+        }
+
+        if (!cancelled) setResultState({ status: 'invalid', resultId: null, result: null, error: '' });
+      } catch (error) {
+        if (!cancelled) {
+          setResultState({
+            status: 'error',
+            resultId: null,
+            result: null,
+            error: error.message || 'Unable to load this result.',
+          });
+        }
       }
     }
-    return members.length >= 3 ? members : null;
-  }, [groupParam]);
 
-  // HOOK 2: Parse Pair Data - called unconditionally at top level
-  const pairData = useMemo(() => {
-    // support params set either as p1/p2 with p1_dob/p2_dob OR older format p1/p2 without dob
-    const dob1 = p1_dob || searchParams.get('p1_dob') || searchParams.get('p1_date');
-    const dob2 = p2_dob || searchParams.get('p2_dob') || searchParams.get('p2_date');
-    const name1 = p1 || searchParams.get('p1') || null;
-    const name2 = p2 || searchParams.get('p2') || null;
+    loadResult();
+    return () => {
+      cancelled = true;
+    };
+  }, [shareSlug, legacyInput, navigate, reloadKey]);
 
-    if (!name1 || !dob1 || !name2 || !dob2) return null;
-
-    const sign1 = getZodiacSign(dob1);
-    const sign2 = getZodiacSign(dob2);
-    const score = calculateBaseCompatibility(sign1, sign2);
-    const interpretation = getScoreInterpretation(score, type);
-
-    return { p1: name1, p2: name2, score, interpretation, type };
-  }, [p1, p1_dob, p2, p2_dob, type]);
-
-  // HOOK 3: Calculate Group Vibe Score - called unconditionally at top level
-  const groupVibeScore = useMemo(() => {
-    if (!groupData || groupData.length < 3) return 0;
-    let total = 0;
-    let count = 0;
-    for (let i = 0; i < groupData.length; i++) {
-      for (let j = i + 1; j < groupData.length; j++) {
-        const s1 = getZodiacSign(groupData[i].birthDate);
-        const s2 = getZodiacSign(groupData[j].birthDate);
-        total += calculateBaseCompatibility(s1, s2);
-        count++;
-      }
-    }
-    return count > 0 ? Math.round(total / count) : 0;
-  }, [groupData]);
-
-  // HOOK 4: Generate Full Share URL - includes calculated score values
-  const resultUrl = useMemo(() => {
-    const url = new URL(window.location.origin + window.location.pathname);
-    if (isGroupMode && groupData) {
-      url.searchParams.set('group', groupParam);
-      url.searchParams.set('groupScore', groupVibeScore.toString());
-    } else if (pairData) {
-      url.searchParams.set('p1', pairData.p1);
-      url.searchParams.set('p1_dob', p1_dob || '');
-      url.searchParams.set('p2', pairData.p2);
-      url.searchParams.set('p2_dob', p2_dob || '');
-      url.searchParams.set('score', pairData.score.toString());
-      url.searchParams.set('type', pairData.type);
-    }
-    return url.toString();
-  }, [isGroupMode, groupData, groupParam, groupVibeScore, pairData, p1_dob, p2_dob]);
-
-  // Append generated parameters to the browser's address bar without reloading
-  useEffect(() => {
-    if (resultUrl && window.history.replaceState && !mountedFromLink) {
-      window.history.replaceState(null, '', resultUrl);
-    }
-  }, [resultUrl, mountedFromLink]);
-
-  // If the page loads with full pair params, mark as mountedFromLink so we render immediately
-  useEffect(() => {
-    if (p1 && p1_dob && p2 && p2_dob && !isGroupMode && !mountedFromLink) {
-      setMountedFromLink(true);
-    }
-  }, [p1, p1_dob, p2, p2_dob, isGroupMode, mountedFromLink]);
-
-  // Now use the hook results conditionally
-  if (!isGroupMode && !pairData && !mountedFromLink) {
-    return <Navigate to="/" replace />;
-  }
-  if (isGroupMode && !groupData) {
+  if (resultState.status === 'invalid') {
     return <Navigate to="/" replace />;
   }
 
-  const pageTitle = isGroupMode 
-    ? `Group Compatibility Score - ${groupVibeScore}% | Match by Birth`
-    : `${pairData?.p1} & ${pairData?.p2} Compatibility - ${pairData?.score}% | Match by Birth`;
+  if (resultState.status === 'loading') {
+    return (
+      <main className="min-h-[65vh] flex items-center justify-center bg-background px-4">
+        <div className="text-center">
+          <Loader2 className="w-7 h-7 animate-spin text-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading your result...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (resultState.status === 'error') {
+    return (
+      <main className="min-h-[65vh] flex items-center justify-center bg-background px-4">
+        <div className="max-w-md text-center bg-card border border-border rounded-2xl p-8">
+          <h1 className="text-2xl font-semibold mb-3">We couldn’t load this result</h1>
+          <p className="text-muted-foreground mb-6">{resultState.error}</p>
+          <Button onClick={() => setReloadKey((value) => value + 1)} className="rounded-xl">
+            <RefreshCw className="w-4 h-4 mr-2" />
+            Try Again
+          </Button>
+        </div>
+      </main>
+    );
+  }
+
+  const { result, resultId } = resultState;
+  const isGroup = result.mode === 'group';
+  const resultUrl = `${window.location.origin}/result?share=${encodeURIComponent(shareSlug)}`;
+  const names = result.people.map((person) => person.name);
+  const pageTitle = isGroup
+    ? `Group Compatibility — ${result.groupScore}% | Match by Birth`
+    : `${names[0]} & ${names[1]} Compatibility — ${result.score}% | Match by Birth`;
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
-        <meta property="og:image" content={
-          (() => {
-            const u = new URL(window.location.href);
-            const p1 = u.searchParams.get('p1') || u.searchParams.get('group') || 'Alex';
-            const p2 = u.searchParams.get('p2') || 'Jordan';
-            const s = u.searchParams.get('score') || '';
-            const label = 'See your Match by Birth result';
-            return `https://matchbybirth.com/api/og?p1=${encodeURIComponent(p1)}&p2=${encodeURIComponent(p2)}&score=${encodeURIComponent(s)}&label=${encodeURIComponent(label)}`;
-          })()
-        } />
+        <meta name="description" content="A private Match by Birth compatibility result." />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:image" content={`${window.location.origin}/api/og?share=${encodeURIComponent(shareSlug)}`} />
       </Helmet>
 
       <main className="section-spacing bg-background min-h-screen">
         <div className="content-container">
-          
-          {isGroupMode && groupData ? (
-            <GroupCompatibilityResults 
-              groupData={groupData} 
+          {isGroup ? (
+            <GroupCompatibilityResults result={result} />
+          ) : (
+            <ResultCard
+              resultId={resultId}
+              people={result.people}
+              score={result.score}
+              matchLabel={result.interpretation.label}
+              explanation={result.interpretation.explanation}
+              relationshipType={result.relationshipType}
+              breakdown={result.breakdown}
               resultUrl={resultUrl}
             />
-          ) : pairData ? (
-            <ResultCard 
-              person1Name={pairData.p1}
-              person2Name={pairData.p2}
-              score={pairData.score}
-              matchLabel={pairData.interpretation.label}
-              relationshipType={pairData.type}
+          )}
+
+          <div className="max-w-3xl mx-auto mt-10">
+            <ShareButtons
+              mode={result.mode}
+              p1={names[0]}
+              p2={names[1]}
+              score={result.score}
+              groupVibeScore={result.groupScore}
               resultUrl={resultUrl}
             />
-          ) : null}
 
-          <div className="max-w-3xl mx-auto mt-12">
-
-            
-            {isGroupMode && groupData ? (
-              <ShareButtons 
-                mode="group"
-                groupVibeScore={groupVibeScore}
-                resultUrl={resultUrl}
-              />
-            ) : pairData ? (
-              <ShareButtons 
-                mode="pair"
-                p1={pairData.p1}
-                p2={pairData.p2}
-                score={pairData.score}
-                resultUrl={resultUrl}
-              />
-            ) : null}
-
-            <div className="mt-12 text-center">
+            <div className="mt-10 text-center">
               <Link
                 to="/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground rounded-xl font-semibold hover:bg-secondary/80 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground rounded-xl font-semibold hover:bg-secondary/80 transition-colors"
               >
-                <ArrowLeft className="w-5 h-5" />
-                Try It Yourself
+                <ArrowLeft className="w-4 h-4" />
+                Try Another Match
               </Link>
             </div>
-            
+
             <div className="mt-8">
-              <div className="max-w-3xl mx-auto">
-                <EmailCaptureSection />
-              </div>
+              <EmailCaptureSection resultId={resultId} />
             </div>
           </div>
-
         </div>
       </main>
     </>

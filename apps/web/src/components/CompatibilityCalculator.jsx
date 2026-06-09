@@ -1,175 +1,202 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Loader2 } from 'lucide-react';
-import GroupModeToggle from './GroupModeToggle.jsx';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { trackEvent } from '@/lib/analytics.js';
 import GroupInputForm from './GroupInputForm.jsx';
+import GroupModeToggle from './GroupModeToggle.jsx';
+
+const createPerson = (id) => ({ id, name: '', birthDate: '' });
 
 function CompatibilityCalculator() {
-const navigate = useNavigate();
-const [mode, setMode] = useState('pair'); // 'pair' or 'group'
+  const navigate = useNavigate();
+  const [mode, setMode] = useState('pair');
+  const [pairPeople, setPairPeople] = useState([
+    createPerson('pair-1'),
+    createPerson('pair-2'),
+  ]);
+  const [groupPeople, setGroupPeople] = useState([
+    createPerson('group-1'),
+    createPerson('group-2'),
+    createPerson('group-3'),
+  ]);
+  const [relationshipType, setRelationshipType] = useState('love');
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [error, setError] = useState('');
 
-// Pair State
-const [pairPeople, setPairPeople] = useState([
-{ id: 1, name: '', birthDate: '' },
-{ id: 2, name: '', birthDate: '' }
-]);
-const [relationshipType, setRelationshipType] = useState('love');
+  const updatePairPerson = (id, field, value) => {
+    setPairPeople((people) => people.map(
+      (person) => person.id === id ? { ...person, [field]: value } : person,
+    ));
+  };
 
-// Group State (starts with 2 people instead of 3)
-const [groupPeople, setGroupPeople] = useState([
-{ id: 1, name: '', birthDate: '' },
-{ id: 2, name: '', birthDate: '' }
-]);
+  const submitCalculation = async (payload) => {
+    setError('');
+    setIsCalculating(true);
+    trackEvent('calculation_started', {
+      mode: payload.mode,
+      relationship_type: payload.relationshipType,
+      group_size: payload.people.length,
+    });
 
-const [isCalculating, setIsCalculating] = useState(false);
-const [error, setError] = useState('');
+    try {
+      const response = await fetch('/api/calculate-result', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json().catch(() => ({}));
 
-const handlePairChange = (id, field, value) => {
-setPairPeople(pairPeople.map(p => p.id === id ? { ...p, [field]: value } : p));
-};
+      if (!response.ok) {
+        throw new Error(data.error || 'Unable to calculate this result.');
+      }
 
-const handleModeChange = (newMode) => {
-setMode(newMode);
-setError('');
-};
+      trackEvent('calculation_completed', {
+        mode: data.result.mode,
+        relationship_type: data.result.relationshipType,
+        group_size: data.result.people.length,
+        score_band: Math.floor(
+          (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
+        ) * 10,
+      });
+      navigate(`/result?share=${encodeURIComponent(data.shareSlug)}`, {
+        state: {
+          resultId: data.resultId,
+          shareSlug: data.shareSlug,
+          result: data.result,
+        },
+      });
+    } catch (calculationError) {
+      setError(calculationError.message || 'Unable to calculate this result.');
+      trackEvent('calculation_failed', { mode: payload.mode });
+    } finally {
+      setIsCalculating(false);
+    }
+  };
 
-const calculatePairCompatibility = (e) => {
-e.preventDefault();
-setError('');
+  const calculatePairCompatibility = (event) => {
+    event.preventDefault();
+    submitCalculation({
+      mode: 'pair',
+      relationshipType,
+      people: pairPeople,
+    });
+  };
 
-const isInvalid = pairPeople.some(p => !p.name.trim() || !p.birthDate);
-if (isInvalid) {
-setError('Please fill in all names and birth dates.');
-return;
-}
+  const calculateGroupCompatibility = (event) => {
+    event.preventDefault();
+    submitCalculation({
+      mode: 'group',
+      relationshipType: 'friendship',
+      people: groupPeople,
+    });
+  };
 
-setIsCalculating(true);
+  return (
+    <div id="calculator" className="w-full max-w-2xl mx-auto">
+      <GroupModeToggle
+        mode={mode}
+        setMode={(nextMode) => {
+          setMode(nextMode);
+          setError('');
+        }}
+      />
 
-setTimeout(() => {
-const searchParams = new URLSearchParams();
-searchParams.set('p1', pairPeople[0].name);
-searchParams.set('p1_dob', pairPeople[0].birthDate);
-searchParams.set('p2', pairPeople[1].name);
-searchParams.set('p2_dob', pairPeople[1].birthDate);
-searchParams.set('type', relationshipType);
+      {mode === 'pair' ? (
+        <form
+          onSubmit={calculatePairCompatibility}
+          className="space-y-7 bg-card p-6 md:p-9 rounded-3xl border border-border shadow-lg animate-fade-in"
+        >
+          {error && (
+            <div role="alert" className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
+              {error}
+            </div>
+          )}
 
-setIsCalculating(false);
-navigate(`/result?${searchParams.toString()}`);
-}, 1000);
-};
+          <div className="space-y-7">
+            {pairPeople.map((person, index) => (
+              <div key={person.id} className="space-y-4">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Person {index + 1}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor={`name-${person.id}`}>Name</Label>
+                    <Input
+                      id={`name-${person.id}`}
+                      value={person.name}
+                      onChange={(event) => updatePairPerson(person.id, 'name', event.target.value)}
+                      placeholder="Enter name"
+                      maxLength={80}
+                      required
+                      className="h-12 rounded-xl"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor={`dob-${person.id}`}>Birth Date</Label>
+                    <Input
+                      id={`dob-${person.id}`}
+                      type="date"
+                      value={person.birthDate}
+                      onChange={(event) => updatePairPerson(person.id, 'birthDate', event.target.value)}
+                      max={new Date().toISOString().slice(0, 10)}
+                      required
+                      className="h-12 rounded-xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-const calculateGroupCompatibility = (e) => {
-e.preventDefault();
-setError('');
+          <div className="space-y-2">
+            <Label htmlFor="relationshipType">Relationship Type</Label>
+            <Select value={relationshipType} onValueChange={setRelationshipType}>
+              <SelectTrigger id="relationshipType" className="h-12 rounded-xl">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="love">Romantic / Love</SelectItem>
+                <SelectItem value="friendship">Friendship</SelectItem>
+                <SelectItem value="work">Work / Professional</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-const isInvalid = groupPeople.some(p => !p.name.trim() || !p.birthDate);
-if (isInvalid) {
-setError('Please fill in all names and birth dates for the group.');
-return;
-}
-
-// Since we now allow starting with 2 people, we must enforce minimum 2
-if (groupPeople.length < 2) {
-setError('Please add at least 2 people to the group.');
-return;
-}
-
-setIsCalculating(true);
-
-setTimeout(() => {
-const groupString = groupPeople.map(p => `${encodeURIComponent(p.name)},${encodeURIComponent(p.birthDate)}`).join(',');
-setIsCalculating(false);
-navigate(`/result?group=${groupString}`);
-}, 1000);
-};
-
-return (
-<div id="calculator" className="w-full max-w-2xl mx-auto">
-<GroupModeToggle mode={mode} setMode={handleModeChange} />
-
-{mode === 'pair' ? (
-<form onSubmit={calculatePairCompatibility} className="space-y-8 bg-card p-6 md:p-10 rounded-3xl border border-border shadow-2xl animate-fade-in" style={{boxShadow: '0 8px 24px rgba(76,29,149,0.06)'}}>
-{error && (
-<div className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
-{error}
-</div>
-)}
-
-<div className="space-y-8">
-{pairPeople.map((person, index) => (
-<div key={person.id} className="space-y-4 relative">
-<h3 className="text-lg font-semibold text-foreground border-b border-border pb-2">Person {index + 1}</h3>
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<div className="space-y-2">
-<Label htmlFor={`name-${person.id}`} className="text-foreground font-medium">Name</Label>
-<Input
-id={`name-${person.id}`}
-type="text"
-value={person.name}
-onChange={(e) => handlePairChange(person.id, 'name', e.target.value)}
-placeholder="Enter name"
-className="bg-background text-foreground border-border focus-visible:ring-primary h-12 rounded-xl"
-/>
-</div>
-<div className="space-y-2">
-<Label htmlFor={`dob-${person.id}`} className="text-foreground font-medium">Birth Date</Label>
-<Input
-id={`dob-${person.id}`}
-type="date"
-value={person.birthDate}
-onChange={(e) => handlePairChange(person.id, 'birthDate', e.target.value)}
-className="bg-background text-foreground border-border focus-visible:ring-primary h-12 rounded-xl"
-/>
-</div>
-</div>
-</div>
-))}
-</div>
-
-<div className="space-y-2 pt-4">
-<Label htmlFor="relationshipType" className="text-foreground font-medium">Relationship Type</Label>
-<Select value={relationshipType} onValueChange={setRelationshipType}>
-<SelectTrigger className="bg-background text-foreground border-border focus:ring-primary h-12 rounded-xl">
-<SelectValue />
-</SelectTrigger>
-<SelectContent>
-<SelectItem value="love">Romantic / Love</SelectItem>
-<SelectItem value="friendship">Friendship</SelectItem>
-<SelectItem value="work">Work / Professional</SelectItem>
-</SelectContent>
-</Select>
-</div>
-
-          <Button
-            type="submit"
-            disabled={isCalculating}
-            className="w-full btn-primary text-lg h-14 rounded-xl"
-          >
+          <Button type="submit" disabled={isCalculating} className="w-full btn-primary text-base h-14 rounded-xl">
             {isCalculating ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Calculating Stars...
+                Calculating...
               </>
             ) : (
               'Calculate Compatibility'
             )}
           </Button>
-</form>
-) : (
-<GroupInputForm 
-people={groupPeople} 
-setPeople={setGroupPeople} 
-onSubmit={calculateGroupCompatibility}
-isCalculating={isCalculating}
-error={error}
-/>
-)}
-</div>
-);
+          <p className="text-xs text-center text-muted-foreground">
+            Birth dates are used for this calculation and are not stored.
+          </p>
+        </form>
+      ) : (
+        <GroupInputForm
+          people={groupPeople}
+          setPeople={setGroupPeople}
+          onSubmit={calculateGroupCompatibility}
+          isCalculating={isCalculating}
+          error={error}
+        />
+      )}
+    </div>
+  );
 }
 
 export default CompatibilityCalculator;

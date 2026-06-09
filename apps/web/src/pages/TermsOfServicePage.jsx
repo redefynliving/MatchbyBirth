@@ -15,7 +15,7 @@ function TermsOfServicePage() {
           <article className="prose prose-slate dark:prose-invert prose-headings:text-balance prose-h1:text-4xl prose-h1:font-extrabold prose-a:text-primary mx-auto">
             <h1>Terms of Service</h1>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-8">
-              Last Updated: May 24, 2026
+              Last Updated: June 9, 2026
             </p>
 
             <h2>1. Welcome to Match by Birth</h2>
@@ -35,12 +35,12 @@ function TermsOfServicePage() {
 
             <h2>4. Sharing and URLs</h2>
             <p>
-              To make sharing easy, we encode the names and birth dates you enter directly into the URL (the web address). This allows you to copy and share your unique result link with friends. Anyone with access to the URL can view the generated results for the individuals included in the link. 
+              Shared results use an opaque link that displays the sanitized names, signs, scores, and interpretations associated with that result. Birth dates are not included in new sharing URLs. Anyone with the link can view the result, so you are responsible for sharing it appropriately.
             </p>
 
             <h2>5. Data Handling</h2>
             <p>
-              <strong>We do not store your names or birth dates on our servers.</strong> All input data is processed locally in your browser and temporarily encoded into the URL for sharing. Because the data lives in the URL, you are solely responsible for where and with whom you share these links.
+              Birth dates are processed transiently and are not stored. Sanitized result data, purchase records, reports, and consented email subscriptions may be stored as described in our Privacy Policy.
             </p>
 
             <h2>6. Third-Party Advertising (AdSense)</h2>

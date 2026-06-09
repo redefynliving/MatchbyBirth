@@ -6,7 +6,7 @@ export default [
 	{ ignores: ['node_modules/**'] },
 	js.configs.recommended,
 	{
-		files: ['**/*.js'],
+		files: ['**/*.{js,mjs}'],
 		plugins: { import: importPlugin },
 		languageOptions: {
 			ecmaVersion: 'latest',
@@ -29,6 +29,14 @@ export default [
 			'import/no-named-as-default-member': 'off',
 			'import/no-self-import': 'error',
 			'import/no-cycle': 'off',
+		},
+	},
+	{
+		files: ['tests/**/*.js'],
+		languageOptions: {
+			globals: {
+				...globals.jest,
+			},
 		},
 	},
 ];

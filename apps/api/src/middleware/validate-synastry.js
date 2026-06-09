@@ -1,20 +1,21 @@
-import Joi from 'joi';
+import { z } from 'zod';
 
-export const synastrySchema = Joi.object({
-  chartA: Joi.object().pattern(Joi.string(), Joi.number().min(0).max(360)).required(),
-  chartB: Joi.object().pattern(Joi.string(), Joi.number().min(0).max(360)).required(),
-  options: Joi.object().optional(),
+export const synastrySchema = z.object({
+  chartA: z.record(z.number().min(0).max(360)),
+  chartB: z.record(z.number().min(0).max(360)),
+  options: z.record(z.unknown()).optional(),
 });
 
 export function validateSynastry(req, res, next) {
-  const { error } = synastrySchema.validate(req.body);
-  if (error) {
+  const result = synastrySchema.safeParse(req.body);
+  if (!result.success) {
     return res.status(400).json({
       error_code: 'INVALID_INPUT',
       message: 'Invalid request body',
       request_id: req.requestId || null,
-      details: error.details,
+      details: result.error.issues,
     });
   }
+  req.body = result.data;
   next();
 }

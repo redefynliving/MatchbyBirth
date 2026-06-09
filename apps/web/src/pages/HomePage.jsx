@@ -1,32 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
-
-function AdBanner() {
-  useEffect(() => {
-    try {
-      if (window && typeof window !== 'undefined') {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (error) {
-      console.error('AdSense initialization error:', error);
-    }
-  }, []);
-
-  return (
-    <div className="w-full my-6 min-h-[90px] flex items-center justify-center bg-muted/20 rounded-2xl border border-dashed border-border p-2">
-      <ins 
-        className="adsbygoogle w-full"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-7210866068673514"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
-    </div>
-  );
-}
 
 function HomePage() {
   return (
@@ -41,59 +16,43 @@ function HomePage() {
       </Helmet>
 
       <main className="flex-1 bg-background">
-        {/* 1. Hero Section */}
-        <section className="relative py-20 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1623833269143-570fb7bcf54b?auto=format&fit=crop&q=80&w=2000" 
-              alt="Starry night sky background" 
-              className="w-full h-full object-cover opacity-20"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background to-background"></div>
-          </div>
-          
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[620px] h-[620px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
           <div className="content-container relative z-10">
-            <div className="text-center max-w-2xl mx-auto mb-20">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight max-w-xl mx-auto">
-                Do your birth dates actually match?
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto">
-                Check compatibility for just the two of you — or bring the whole friend group. Up to 7 people, instant results.
+            <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-5">
+                The connection behind every relationship
               </p>
-              <div className="mt-6">
-                <button onClick={(e)=>{e.preventDefault(); const el=document.getElementById('calculator'); if(el) el.scrollIntoView({behavior:'smooth'});}} className="btn-primary inline-block px-6 py-3 rounded-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">See Your Match</button>
+              <h1 className="text-4xl md:text-6xl font-semibold text-foreground mb-5 leading-[1.05] max-w-2xl mx-auto">
+                See how your connection naturally fits.
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
+                Compare two people or a full friend group and get a clear compatibility reading in seconds.
+              </p>
+              <div className="mt-7">
+                <button onClick={(event) => { event.preventDefault(); document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' }); }} className="btn-primary inline-block px-7 py-3.5 rounded-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+                  Check Compatibility
+                </button>
               </div>
-              <div className="mt-3 text-sm text-muted-foreground">No signup required. Results in seconds.</div>
+              <div className="mt-4 text-sm text-muted-foreground">
+                No signup. Birth dates are not stored. Groups support 3–7 people.
+              </div>
             </div>
 
-            {/* 2. Calculator Component */}
             <CompatibilityCalculator />
 
-            {/* Ad Banner removed to prevent layout shifts beneath the calculator */}
-
-            {/* How it works row */}
-            <div className="mt-8">
-              <div className="max-w-4xl mx-auto px-6">
-                <div className="bg-background border border-border rounded-2xl p-6 text-center">
-                  <div className="max-w-3xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
-                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">1</div>
-                        <div className="font-semibold text-lg">Add birthdays — just two, or up to 7</div>
-                      </div>
-
-                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
-                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">2</div>
-                        <div className="font-semibold text-lg">We analyze zodiac compatibility</div>
-                      </div>
-
-                      <div className="flex flex-col items-center gap-4 p-6 rounded-2xl bg-primary/10">
-                        <div className="w-14 h-14 rounded-full bg-white text-primary flex items-center justify-center text-lg font-bold">3</div>
-                        <div className="font-semibold text-lg">Get your score instantly</div>
-                      </div>
-                    </div>
+            <div className="mt-9 max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border rounded-2xl overflow-hidden">
+                {[
+                  ['01', 'Add names and birth dates'],
+                  ['02', 'We compare every connection'],
+                  ['03', 'See and privately share the result'],
+                ].map(([number, text]) => (
+                  <div key={number} className="bg-card px-6 py-5 text-center">
+                    <span className="text-xs font-semibold text-primary tracking-[0.16em]">{number}</span>
+                    <p className="font-medium text-foreground mt-2">{text}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

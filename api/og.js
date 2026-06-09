@@ -1,34 +1,45 @@
-module.exports = function handler(req, res) {
+'use strict';
+
+const store = require('./lib/supabase-store.cjs');
+const { getSharedResult } = require('./lib/result-service.cjs');
+
+function escapeXml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+module.exports = async function handler(req, res) {
   try {
     const url = new URL(req.url, 'http://localhost');
-    const p1 = url.searchParams.get('p1') || 'Person 1';
-    const p2 = url.searchParams.get('p2') || 'Person 2';
-    const score = url.searchParams.get('score') || '72';
-    const label = url.searchParams.get('label') || 'Strong Match';
+    const shareSlug = req.query?.share || url.searchParams.get('share');
+    const shared = await getSharedResult(shareSlug, store);
+    const { result } = shared;
+    const names = result.mode === 'group'
+      ? `${result.people.length} friends`
+      : result.people.map((person) => person.name).join(' & ');
+    const label = result.mode === 'group'
+      ? 'Group compatibility'
+      : result.interpretation.label;
 
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
     <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#1a1a2e"/>
-          <stop offset="100%" stop-color="#16213e"/>
-        </linearGradient>
-      </defs>
-      <rect width="1200" height="630" fill="url(#bg)"/>
-      <text x="600" y="160" font-family="Georgia,serif" font-size="44" fill="#ffffff" text-anchor="middle" font-weight="bold">Match by Birth</text>
-      <text x="600" y="270" font-family="Georgia,serif" font-size="60" fill="#f0c674" text-anchor="middle">${p1} &amp; ${p2}</text>
-      <text x="600" y="400" font-family="Georgia,serif" font-size="130" fill="#ffffff" text-anchor="middle" font-weight="bold">${score}%</text>
-      <text x="600" y="480" font-family="Georgia,serif" font-size="38" fill="#a0aec0" text-anchor="middle">${label}</text>
-      <text x="600" y="580" font-family="Georgia,serif" font-size="26" fill="#718096" text-anchor="middle">matchbybirth.com</text>
+      <rect width="1200" height="630" fill="#fbf8f3"/>
+      <circle cx="600" cy="315" r="245" fill="#f3eef7"/>
+      <text x="600" y="118" font-family="Arial,sans-serif" font-size="24" letter-spacing="5" fill="#756b82" text-anchor="middle">MATCH BY BIRTH</text>
+      <text x="600" y="245" font-family="Georgia,serif" font-size="58" fill="#26212b" text-anchor="middle">${escapeXml(names)}</text>
+      <text x="600" y="405" font-family="Georgia,serif" font-size="132" fill="#6d4ca0" text-anchor="middle">${escapeXml(result.score)}%</text>
+      <text x="600" y="482" font-family="Arial,sans-serif" font-size="30" fill="#756b82" text-anchor="middle">${escapeXml(label)}</text>
+      <text x="600" y="574" font-family="Arial,sans-serif" font-size="22" fill="#8b8390" text-anchor="middle">matchbybirth.com</text>
     </svg>`;
 
     res.setHeader('Content-Type', 'image/svg+xml');
-    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    res.statusCode = 200;
-    res.end(svg);
-  } catch (err) {
-    console.error('og handler error', err);
-    res.statusCode = 500;
-    res.end('Internal Server Error');
+    res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
+    return res.status(200).end(svg);
+  } catch {
+    return res.status(404).end('Result not found');
   }
 };

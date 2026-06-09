@@ -1,4 +1,14 @@
 node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local environment and service state
+.env
+.env.*
+!.env.example
+supabase/.temp/
+
 # Build output
 /dist
 
