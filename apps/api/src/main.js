@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import { fileURLToPath } from 'node:url';
 
 import routes from './routes/index.js';
 import { errorMiddleware } from './middleware/error.js';
@@ -13,7 +14,7 @@ import { BodyLimit } from './constants/common.js';
 
 const app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 process.on('uncaughtException', (error) => {
 	logger.error('Uncaught exception:', error);
@@ -70,8 +71,10 @@ app.use((req, res) => {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => {
-	logger.info(`🚀 API Server running on http://localhost:${port}`);
-});
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
+	app.listen(port, () => {
+		logger.info(`🚀 API Server running on http://localhost:${port}`);
+	});
+}
 
 export default app;

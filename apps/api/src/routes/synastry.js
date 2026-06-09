@@ -1,9 +1,11 @@
 import express from 'express';
 import { spawn } from 'child_process';
+import { fileURLToPath } from 'node:url';
 import { synastryRateLimit } from '../middleware/synastry-rate-limit.js';
 import { validateSynastry } from '../middleware/validate-synastry.js';
 
 const router = express.Router();
+const runnerPath = fileURLToPath(new URL('../astro/run_synastry.py', import.meta.url));
 
 // POST /api/synastry
 // Body: { chartA: {...}, chartB: {...}, options: {...} }
@@ -15,47 +17,41 @@ router.post('/', synastryRateLimit, validateSynastry, async (req, res) => {
       options: req.body.options || {}
     };
 
-    const py = spawn('python3', ['apps/api/src/astro/run_synastry.py'], { stdio: ['pipe', 'pipe', 'pipe'] });
-    let stdout = '';
-    let stderr = '';
+    const output = await new Promise((resolve, reject) => {
+      const py = spawn(process.env.PYTHON_BIN || 'python3', [runnerPath], {
+        stdio: ['pipe', 'pipe', 'pipe'],
+      });
+      let stdout = '';
+      let stderr = '';
 
-    py.stdout.on('data', (chunk) => { stdout += chunk.toString(); });
-    py.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
+      py.stdout.on('data', (chunk) => { stdout += chunk.toString(); });
+      py.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
+      py.on('error', reject);
+      py.on('close', (code) => {
+        clearTimeout(timeout);
+        if (code !== 0) {
+          return reject(new Error(`Synastry engine failed: ${stderr}`));
+        }
+        try {
+          return resolve(JSON.parse(stdout));
+        } catch {
+          return reject(new Error('Synastry engine returned invalid JSON.'));
+        }
+      });
 
-    py.on('close', (code) => {
-      if (code !== 0) {
-        console.error('synastry python exit', code, stderr);
-        const err = new Error('scoring-failure');
-        err.code = 'ENGINE_ERROR';
-        err.details = { stderr };
-        err.status = 500;
-        throw err;
-      }
-      try {
-        const out = JSON.parse(stdout);
-        return res.json(out);
-      } catch (e) {
-        console.error('invalid json from synastry runner', e, stdout, stderr);
-        const err = new Error('bad-output');
-        err.code = 'BAD_OUTPUT';
-        err.details = { stdout, stderr };
-        err.status = 500;
-        throw err;
-      }
+      const timeout = setTimeout(() => {
+        py.kill();
+        reject(new Error('Synastry engine timed out.'));
+      }, 5000);
+
+      py.stdin.write(JSON.stringify(payload));
+      py.stdin.end();
     });
 
-    // write payload and close stdin
-    py.stdin.write(JSON.stringify(payload));
-    py.stdin.end();
-
-    // safety: kill if it runs too long (5s)
-    setTimeout(() => {
-      try { py.kill(); } catch (e) {}
-    }, 5000);
-
+    return res.json(output);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, error: 'server-error' });
+    return res.status(500).json({ success: false, error: 'server-error' });
   }
 });
 
