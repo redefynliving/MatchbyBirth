@@ -1,6 +1,10 @@
 'use strict';
 
 const store = require('./lib/supabase-store.cjs');
+const { fulfillConfiguredPurchase } = require('./lib/fulfillment.cjs');
+const {
+  refreshRetryablePurchase,
+} = require('./lib/purchase-status-service.cjs');
 const { createReportAccess } = require('./lib/report-service.cjs');
 
 module.exports = async (req, res) => {
@@ -15,10 +19,14 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const purchase = await store.findPurchaseBySessionId(sessionId);
+    let purchase = await store.findPurchaseBySessionId(sessionId);
     if (!purchase) {
       return res.status(404).json({ ok: false, error: 'Purchase not found.' });
     }
+    purchase = await refreshRetryablePurchase(purchase, sessionId, {
+      fulfillPurchase: fulfillConfiguredPurchase,
+      store,
+    });
 
     const response = { ok: true, status: purchase.status };
     if (purchase.status === 'delivered') {
