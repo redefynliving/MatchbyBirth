@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 
 const {
   calculateAndStoreResult,
+  calculateResultWithOptionalStorage,
   getSharedResult,
 } = require('../api/lib/result-service.cjs');
 
@@ -56,6 +57,31 @@ test('calculateAndStoreResult makes group mode friendship-only', async () => {
 
   assert.equal(response.result.relationshipType, 'friendship');
   assert.equal(response.result.pairs.length, 3);
+});
+
+test('calculateResultWithOptionalStorage returns a usable result without database configuration', async () => {
+  const response = await calculateResultWithOptionalStorage(
+    {
+      mode: 'pair',
+      relationshipType: 'love',
+      people: [
+        { id: 'one', name: 'Alijah', birthDate: '2001-08-15' },
+        { id: 'two', name: 'Eddie', birthDate: '1980-01-18' },
+      ],
+    },
+    {
+      isConfigured: () => false,
+      insertResult: async () => {
+        throw new Error('storage should not be called');
+      },
+    },
+  );
+
+  assert.equal(response.persisted, false);
+  assert.equal(response.resultId, null);
+  assert.equal(response.shareSlug, null);
+  assert.equal(response.result.mode, 'pair');
+  assert.equal(JSON.stringify(response).includes('2001-08-15'), false);
 });
 
 test('getSharedResult rejects missing and expired records', async () => {

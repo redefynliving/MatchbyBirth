@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { trackEvent } from '@/lib/analytics.js';
+import { buildResultNavigation } from '@/lib/result-navigation.js';
 import GroupInputForm from './GroupInputForm.jsx';
 import GroupModeToggle from './GroupModeToggle.jsx';
 
@@ -68,13 +69,8 @@ function CompatibilityCalculator() {
           (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
         ) * 10,
       });
-      navigate(`/result?share=${encodeURIComponent(data.shareSlug)}`, {
-        state: {
-          resultId: data.resultId,
-          shareSlug: data.shareSlug,
-          result: data.result,
-        },
-      });
+      const navigation = buildResultNavigation(data);
+      navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {
       setError(calculationError.message || 'Unable to calculate this result.');
       trackEvent('calculation_failed', { mode: payload.mode });
