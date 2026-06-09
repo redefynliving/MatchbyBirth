@@ -18,11 +18,15 @@ function createShareSlug() {
   return crypto.randomBytes(18).toString('base64url');
 }
 
-async function calculateAndStoreResult(input, store, slugFactory = createShareSlug) {
+function calculateResult(input) {
   const mode = input?.mode === 'group' ? 'group' : 'pair';
-  const result = mode === 'group'
+  return mode === 'group'
     ? calculateGroupResult(input?.people)
     : calculatePairResult(input?.people, input?.relationshipType);
+}
+
+async function calculateAndStoreResult(input, store, slugFactory = createShareSlug) {
+  const result = calculateResult(input);
   const shareSlug = slugFactory();
   const inserted = await store.insertResult({
     share_slug: shareSlug,
@@ -34,8 +38,26 @@ async function calculateAndStoreResult(input, store, slugFactory = createShareSl
   return {
     resultId: inserted.id,
     shareSlug,
+    persisted: true,
     result,
   };
+}
+
+async function calculateResultWithOptionalStorage(
+  input,
+  store,
+  slugFactory = createShareSlug,
+) {
+  if (!store?.isConfigured?.()) {
+    return {
+      resultId: null,
+      shareSlug: null,
+      persisted: false,
+      result: calculateResult(input),
+    };
+  }
+
+  return calculateAndStoreResult(input, store, slugFactory);
 }
 
 async function getSharedResult(shareSlug, store, now = new Date()) {
@@ -62,6 +84,8 @@ async function getSharedResult(shareSlug, store, now = new Date()) {
 module.exports = {
   ResultServiceError,
   calculateAndStoreResult,
+  calculateResult,
+  calculateResultWithOptionalStorage,
   createShareSlug,
   getSharedResult,
 };

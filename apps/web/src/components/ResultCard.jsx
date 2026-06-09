@@ -12,6 +12,7 @@ const BREAKDOWN_LABELS = {
 };
 
 function ResultCard({
+  canPurchase,
   resultId,
   people,
   score,
@@ -96,13 +97,19 @@ function ResultCard({
             <p className="text-sm text-muted-foreground mt-1">
               Get a private, detailed report with strengths, friction points, communication guidance, and practical next steps.
             </p>
-            <button
-              type="button"
-              onClick={() => setIsModalOpen(true)}
-              className="w-full mt-5 h-12 btn-primary rounded-xl font-semibold"
-            >
-              Get Full Report — $9.99
-            </button>
+            {canPurchase ? (
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="w-full mt-5 h-12 btn-primary rounded-xl font-semibold"
+              >
+                Get Full Report — $9.99
+              </button>
+            ) : (
+              <p className="mt-4 text-sm font-medium text-muted-foreground">
+                Detailed reports are temporarily unavailable.
+              </p>
+            )}
           </div>
           <button
             type="button"
@@ -116,13 +123,15 @@ function ResultCard({
         </footer>
       </article>
 
-      <SaveResultModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        resultId={resultId}
-        resultUrl={resultUrl}
-        names={people.map((person) => person.name)}
-      />
+      {canPurchase && (
+        <SaveResultModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          resultId={resultId}
+          resultUrl={resultUrl}
+          names={people.map((person) => person.name)}
+        />
+      )}
     </>
   );
 }

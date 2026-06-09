@@ -3,7 +3,7 @@
 const store = require('./lib/supabase-store.cjs');
 const {
   ResultServiceError,
-  calculateAndStoreResult,
+  calculateResultWithOptionalStorage,
 } = require('./lib/result-service.cjs');
 
 module.exports = async (req, res) => {
@@ -13,8 +13,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const response = await calculateAndStoreResult(req.body || {}, store);
-    return res.status(201).json({ ok: true, ...response });
+    const response = await calculateResultWithOptionalStorage(req.body || {}, store);
+    return res.status(response.persisted ? 201 : 200).json({ ok: true, ...response });
   } catch (error) {
     const statusCode = error instanceof ResultServiceError
       ? error.statusCode
