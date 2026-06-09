@@ -1,0 +1,9 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Keep temporary renders out of Git while preserving the two approved exports.
+out/*
+!out/matchbybirth-promo-landscape.mp4
+!out/matchbybirth-promo-vertical.mp4
