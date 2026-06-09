@@ -8,6 +8,13 @@ class StoreError extends Error {
   }
 }
 
+function isConfigured() {
+  return Boolean(
+    String(process.env.SUPABASE_URL || '').trim()
+    && String(process.env.SUPABASE_SERVICE_ROLE_KEY || '').trim(),
+  );
+}
+
 function getConfig() {
   const url = String(process.env.SUPABASE_URL || '').replace(/\/$/, '');
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -223,6 +230,7 @@ module.exports = {
   findReportByPurchaseId,
   findResultById,
   findResultBySlug,
+  isConfigured,
   insertReport,
   insertResult,
   insertPurchase,

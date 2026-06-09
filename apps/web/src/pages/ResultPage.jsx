@@ -8,6 +8,7 @@ import ResultCard from '@/components/ResultCard.jsx';
 import ShareButtons from '@/components/ShareButtons.jsx';
 import { Button } from '@/components/ui/button.jsx';
 import { trackEvent } from '@/lib/analytics.js';
+import { buildResultNavigation } from '@/lib/result-navigation.js';
 
 function parseLegacyInput(searchParams) {
   const groupParam = searchParams.get('group');
@@ -51,18 +52,26 @@ function ResultPage() {
   const shareSlug = searchParams.get('share');
   const legacyInput = useMemo(() => parseLegacyInput(searchParams), [searchParams]);
   const [resultState, setResultState] = useState(() => {
-    if (location.state?.result && location.state?.shareSlug === shareSlug) {
+    if (
+      location.state?.result
+      && (!shareSlug || location.state.shareSlug === shareSlug)
+    ) {
       return {
         status: 'ready',
         resultId: location.state.resultId,
+        canPurchase: location.state.canPurchase === true,
+        canShare: location.state.canShare === true,
         result: location.state.result,
       };
     }
     return { status: 'loading', resultId: null, result: null, error: '' };
   });
   const [reloadKey, setReloadKey] = useState(0);
+  const hasLocalResult = !shareSlug && Boolean(location.state?.result);
 
   useEffect(() => {
+    if (hasLocalResult) return undefined;
+
     let cancelled = false;
 
     async function loadResult() {
@@ -77,6 +86,8 @@ function ResultPage() {
             setResultState({
               status: 'ready',
               resultId: data.resultId,
+              canPurchase: true,
+              canShare: true,
               result: data.result,
               error: '',
             });
@@ -98,13 +109,10 @@ function ResultPage() {
           const data = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(data.error || 'Unable to update this result link.');
           if (!cancelled) {
-            navigate(`/result?share=${encodeURIComponent(data.shareSlug)}`, {
+            const navigation = buildResultNavigation(data);
+            navigate(navigation.path, {
               replace: true,
-              state: {
-                resultId: data.resultId,
-                shareSlug: data.shareSlug,
-                result: data.result,
-              },
+              state: navigation.state,
             });
           }
           return;
@@ -127,7 +135,7 @@ function ResultPage() {
     return () => {
       cancelled = true;
     };
-  }, [shareSlug, legacyInput, navigate, reloadKey]);
+  }, [shareSlug, legacyInput, navigate, reloadKey, hasLocalResult]);
 
   if (resultState.status === 'invalid') {
     return <Navigate to="/" replace />;
@@ -159,9 +167,16 @@ function ResultPage() {
     );
   }
 
-  const { result, resultId } = resultState;
+  const {
+    canPurchase = Boolean(resultState.resultId),
+    canShare = Boolean(shareSlug),
+    result,
+    resultId,
+  } = resultState;
   const isGroup = result.mode === 'group';
-  const resultUrl = `${window.location.origin}/result?share=${encodeURIComponent(shareSlug)}`;
+  const resultUrl = canShare
+    ? `${globalThis.location.origin}/result?share=${encodeURIComponent(shareSlug)}`
+    : null;
   const names = result.people.map((person) => person.name);
   const pageTitle = isGroup
     ? `Group Compatibility — ${result.groupScore}% | Match by Birth`
@@ -173,7 +188,12 @@ function ResultPage() {
         <title>{pageTitle}</title>
         <meta name="description" content="A private Match by Birth compatibility result." />
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:image" content={`${window.location.origin}/api/og?share=${encodeURIComponent(shareSlug)}`} />
+        {canShare && (
+          <meta
+            property="og:image"
+            content={`${globalThis.location.origin}/api/og?share=${encodeURIComponent(shareSlug)}`}
+          />
+        )}
       </Helmet>
 
       <main className="section-spacing bg-background min-h-screen">
@@ -182,6 +202,7 @@ function ResultPage() {
             <GroupCompatibilityResults result={result} />
           ) : (
             <ResultCard
+              canPurchase={canPurchase}
               resultId={resultId}
               people={result.people}
               score={result.score}
@@ -194,14 +215,20 @@ function ResultPage() {
           )}
 
           <div className="max-w-3xl mx-auto mt-10">
-            <ShareButtons
-              mode={result.mode}
-              p1={names[0]}
-              p2={names[1]}
-              score={result.score}
-              groupVibeScore={result.groupScore}
-              resultUrl={resultUrl}
-            />
+            {canShare ? (
+              <ShareButtons
+                mode={result.mode}
+                p1={names[0]}
+                p2={names[1]}
+                score={result.score}
+                groupVibeScore={result.groupScore}
+                resultUrl={resultUrl}
+              />
+            ) : (
+              <p className="mt-8 text-center text-sm text-muted-foreground">
+                Sharing is temporarily unavailable. Your result remains visible in this tab.
+              </p>
+            )}
 
             <div className="mt-10 text-center">
               <Link
@@ -213,9 +240,11 @@ function ResultPage() {
               </Link>
             </div>
 
-            <div className="mt-8">
-              <EmailCaptureSection resultId={resultId} />
-            </div>
+            {resultId && (
+              <div className="mt-8">
+                <EmailCaptureSection resultId={resultId} />
+              </div>
+            )}
           </div>
         </div>
       </main>
