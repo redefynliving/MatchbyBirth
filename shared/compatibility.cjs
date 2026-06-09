@@ -67,7 +67,10 @@ function getElement(sign) {
 }
 
 function stableHash(...values) {
-  const input = values.map(String).sort().join('|');
+  const input = values
+    .map(String)
+    .sort((left, right) => left.localeCompare(right))
+    .join('|');
   let hash = 2166136261;
 
   for (let index = 0; index < input.length; index += 1) {
@@ -170,7 +173,8 @@ function validatePeople(people, minimum, maximum) {
 }
 
 function calculateBreakdown(personA, personB, baseScore) {
-  const pairSeed = [personA.birthDate, personB.birthDate].sort();
+  const pairSeed = [personA.birthDate, personB.birthDate]
+    .sort((left, right) => left.localeCompare(right));
   const nudge = (key) => offset(18, ...pairSeed, key) - 9;
   const clamp = (value) => Math.max(20, Math.min(98, Math.round(value)));
 
