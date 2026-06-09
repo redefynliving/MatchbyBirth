@@ -75,10 +75,17 @@ function fallbackReport(result) {
 }
 
 function parseModelReport(text) {
-  const normalized = String(text || '')
-    .trim()
-    .replace(/^```(?:json)?\s*/i, '')
-    .replace(/\s*```$/, '');
+  let normalized = String(text || '').trim();
+  if (normalized.startsWith('```')) {
+    const firstLineEnd = normalized.indexOf('\n');
+    normalized = firstLineEnd === -1
+      ? normalized.slice(3)
+      : normalized.slice(firstLineEnd + 1);
+  }
+  if (normalized.endsWith('```')) {
+    normalized = normalized.slice(0, -3);
+  }
+  normalized = normalized.trim();
   const report = JSON.parse(normalized);
   if (
     !report ||

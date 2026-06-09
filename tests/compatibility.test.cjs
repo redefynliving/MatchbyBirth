@@ -38,7 +38,9 @@ test('pair results are order independent and include five breakdown scores', () 
 
   assert.equal(forward.score, reverse.score);
   assert.deepEqual(forward.breakdown, reverse.breakdown);
-  assert.deepEqual(Object.keys(forward.breakdown).sort(), [
+  assert.deepEqual(Object.keys(forward.breakdown).sort((left, right) => (
+    left.localeCompare(right)
+  )), [
     'chemistry',
     'communication',
     'growth',

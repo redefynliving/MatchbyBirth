@@ -10,7 +10,16 @@ class CheckoutError extends Error {
 
 function normalizeEmail(value) {
   const email = String(value || '').trim().toLowerCase().slice(0, 254);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  const atIndex = email.indexOf('@');
+  const dotIndex = email.indexOf('.', atIndex + 2);
+  const hasWhitespace = [...email].some((character) => character.trim() === '');
+  if (
+    atIndex <= 0 ||
+    atIndex !== email.lastIndexOf('@') ||
+    dotIndex <= atIndex + 1 ||
+    dotIndex === email.length - 1 ||
+    hasWhitespace
+  ) {
     throw new CheckoutError('Enter a valid email address.');
   }
   return email;
