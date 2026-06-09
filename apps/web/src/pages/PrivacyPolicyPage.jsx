@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -7,63 +6,78 @@ function PrivacyPolicyPage() {
     <>
       <Helmet>
         <title>Privacy Policy | Match by Birth</title>
-        <meta name="description" content="Privacy Policy for Match by Birth, outlining our secure URL-based data handling." />
+        <meta name="description" content="How Match by Birth processes calculator, result, payment, email, and analytics data." />
       </Helmet>
 
       <main className="py-20 md:py-24 bg-background min-h-screen">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <article className="prose prose-slate dark:prose-invert prose-headings:text-balance prose-h1:text-4xl prose-h1:font-extrabold prose-a:text-primary mx-auto">
+          <article className="prose prose-slate prose-headings:text-balance prose-h1:text-4xl prose-h1:font-extrabold prose-a:text-primary mx-auto">
             <h1>Privacy Policy</h1>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-8">
-              Last Updated: May 24, 2026
+              Last Updated: June 9, 2026
             </p>
 
             <div className="p-6 bg-primary/10 rounded-2xl border border-primary/20 mb-8 not-prose">
               <p className="font-semibold text-foreground m-0">
-                TL;DR: We don't save your names or birthdates to a database. The data you enter is stored securely inside the URL so you can easily share your results with friends.
+                Birth dates are processed to calculate your result, but they are not stored in our database or included in new share links.
               </p>
             </div>
 
-            <h2>1. Data Collection</h2>
+            <h2>1. Information You Provide</h2>
             <p>
-              When you use our compatibility calculator, you provide names (or aliases) and birth dates. This information is required strictly to calculate accurate astrological placements and dynamics. 
+              The free calculator receives display names or aliases and birth dates. If you purchase a report or opt into updates, we also receive your email address. Payment card information is collected directly by Stripe and is not handled by Match by Birth.
             </p>
 
-            <h2>2. URL Parameters & Group Mode Data</h2>
+            <h2>2. Calculator Processing and Saved Results</h2>
             <p>
-              We designed Match by Birth to be entirely stateless to protect your privacy. When you calculate a match (including our up to 7-person Group Mode), your input data is encoded directly into the web address (URL parameters). 
+              Names and birth dates are transmitted securely to our calculation endpoint. Birth dates are used transiently to determine signs and scores, then discarded. We store a sanitized result containing display names, signs, scores, interpretations, and an opaque sharing identifier.
             </p>
             <p>
-              <strong>We do not transmit this data to our servers, nor do we store it in a backend database.</strong> Anyone who receives your shared URL will be able to see the names and dates embedded within it, so please share your result links responsibly.
-            </p>
-
-            <h2>3. Data Retention</h2>
-            <p>
-              Because your personal input data is processed locally and encoded in the URL, it is not retained by us after you close your browser. We do not have a database of users' birth charts.
+              Unpaid shared results expire after approximately 90 days. Purchased results and reports are retained so the buyer can revisit them, unless deletion is requested.
             </p>
 
-            <h2>4. Third-Party Services</h2>
+            <h2>3. Private Sharing</h2>
             <p>
-              We use third-party services to support the operation of our website:
+              New result URLs contain a random share identifier rather than names or birth dates. Anyone who receives that link can view the sanitized result, so only share it with people you trust.
             </p>
+
+            <h2>4. Purchases and Reports</h2>
+            <p>
+              Stripe processes checkout and payment data. We store the checkout status, amount, currency, delivery email, and provider identifiers needed to fulfill or refund the purchase. Anthropic receives the sanitized signs, scores, and display names needed to generate a paid report; it does not receive birth dates or your email address. Resend receives the delivery email and completed report.
+            </p>
+
+            <h2>5. Optional Marketing Email</h2>
+            <p>
+              Report delivery does not automatically enroll you in marketing. Marketing consent is optional and unchecked by default. If you opt in, we retain your email until you unsubscribe or request deletion.
+            </p>
+
+            <h2>6. Analytics and Cookies</h2>
+            <p>
+              We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. Analytics events do not include names, birth dates, emails, or private result tokens. Advertising or other optional services may use cookies where disclosed by the site and permitted by your browser or consent settings.
+            </p>
+
+            <h2>7. Service Providers</h2>
             <ul>
-              <li><strong>Google AdSense:</strong> We use Google AdSense to display advertisements. Google uses cookies to serve ads based on your prior visits to our website or other websites. You can opt out of personalized advertising by visiting Google Ads Settings.</li>
-              <li><strong>Analytics:</strong> We may use basic analytics to understand aggregate site traffic (such as page views and browser types). This data is anonymized and not linked to your compatibility inputs.</li>
+              <li><strong>Vercel:</strong> website hosting, server functions, and aggregate analytics.</li>
+              <li><strong>Supabase:</strong> secure database storage.</li>
+              <li><strong>Stripe:</strong> payment processing.</li>
+              <li><strong>Anthropic:</strong> paid report generation using sanitized result data.</li>
+              <li><strong>Resend:</strong> transactional and opted-in email delivery.</li>
             </ul>
 
-            <h2>5. Cookies</h2>
+            <h2>8. Your Choices and Rights</h2>
             <p>
-              Our third-party advertising and analytics partners use cookies to collect technical data. You can manage or disable cookies through your browser settings, though doing so may affect the display of advertisements.
+              You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>. We may ask for reasonable verification before deleting purchase records.
             </p>
 
-            <h2>6. User Rights</h2>
+            <h2>9. Security and Children</h2>
             <p>
-              Because we do not store your personal compatibility data in a database, there is no account to delete or data profile to request. If you clear your browser history and do not share your generated URLs, your data is gone.
+              We use access controls, encrypted connections, private report tokens, and restricted server credentials. No online system is risk-free. Match by Birth is not directed to children under 13, and children should not submit personal information.
             </p>
 
-            <h2>7. Contact Information</h2>
+            <h2>10. Contact</h2>
             <p>
-              If you have any questions or concerns about this privacy policy or how your data is handled, please contact us at <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.
+              Privacy questions may be sent to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.
             </p>
           </article>
         </div>

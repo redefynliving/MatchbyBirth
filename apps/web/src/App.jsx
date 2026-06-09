@@ -19,6 +19,7 @@ import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage.jsx';
 import TermsOfServicePage from '@/pages/TermsOfServicePage.jsx';
 import DisclaimerPage from '@/pages/DisclaimerPage.jsx';
 import ResultPage from '@/pages/ResultPage.jsx';
+import ReportPage from '@/pages/ReportPage.jsx';
 
 function App() {
   return (
@@ -39,9 +40,8 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/terms" element={<TermsOfServicePage />} />
             <Route path="/disclaimers" element={<DisclaimerPage />} />
-            
-            {/* Catch-all route */}
             <Route path="/report-success" element={<ReportSuccess />} />
+            <Route path="/report" element={<ReportPage />} />
 
             {/* Catch-all route */}
             <Route path="*" element={

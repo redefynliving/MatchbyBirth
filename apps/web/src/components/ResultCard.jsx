@@ -1,260 +1,128 @@
-import React, { useEffect, useState } from 'react';
-import { Heart, Users, Briefcase } from 'lucide-react';
-import { copyResult } from '@/utils/resultPermalink.js';
+import React, { useState } from 'react';
+import { Download } from 'lucide-react';
 import { toast } from 'sonner';
+import SaveResultModal from '@/components/SaveResultModal.jsx';
 
-function ResultCard({ person1Name, person2Name, score, matchLabel, relationshipType, breakdown, resultUrl }) {
+const BREAKDOWN_LABELS = {
+  chemistry: 'Chemistry',
+  communication: 'Communication',
+  stability: 'Stability',
+  growth: 'Growth',
+  intuition: 'Intuition',
+};
+
+function ResultCard({
+  resultId,
+  people,
+  score,
+  matchLabel,
+  explanation,
+  relationshipType,
+  breakdown,
+  resultUrl,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInProgress, setDownloadInProgress] = useState(false);
 
-  // download result card as PNG using html2canvas
-  const handleDownloadResultCard = async () => {
+  const downloadResult = async () => {
     try {
       setDownloadInProgress(true);
-      // load html2canvas dynamically to avoid bundling in SSR
       const { default: html2canvas } = await import('html2canvas');
-      const el = document.getElementById('result-card');
-      if (!el) throw new Error('result-card-not-found');
-      const canvas = await html2canvas(el, { useCORS: true, backgroundColor: null });
-      const dataUrl = canvas.toDataURL('image/png');
-      // create temporary link
-      const a = document.createElement('a');
-      a.href = dataUrl;
-      a.download = 'my-match-result.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      const element = document.getElementById('result-card');
+      if (!element) throw new Error('Result card not found');
+      const canvas = await html2canvas(element, {
+        useCORS: true,
+        backgroundColor: '#fffdf9',
+        scale: 2,
+      });
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'match-by-birth-result.png';
+      link.click();
+    } catch {
+      toast.error('The result image could not be downloaded.');
+    } finally {
       setDownloadInProgress(false);
-    } catch (err) {
-      console.error('download failed', err);
-      setDownloadInProgress(false);
-      toast.error('Failed to save image.');
-    }
-  };
-
-  const getIcon = () => {
-    switch (relationshipType) {
-      case 'love': return <Heart className="w-8 h-8 text-white" />;
-      case 'friendship': return <Users className="w-8 h-8 text-white" />;
-      case 'work': return <Briefcase className="w-8 h-8 text-white" />;
-      default: return <Heart className="w-8 h-8 text-white" />;
-    }
-  };
-
-  const getGradient = () => {
-    if (score >= 80) return 'from-primary to-secondary';
-    if (score >= 50) return 'from-secondary to-accent';
-    return 'from-muted-foreground to-foreground';
-  };
-
-  useEffect(() => {
-    // Generate an image for og:image dynamically when the card loads
-    const generateShareImage = () => {
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = 1200;
-        canvas.height = 630;
-        const ctx = canvas.getContext('2d');
-
-        // Draw gradient background (#fef3f8 to #f0e6f6)
-        const grad = ctx.createLinearGradient(0, 0, 1200, 630);
-        grad.addColorStop(0, '#fef3f8');
-        grad.addColorStop(1, '#f0e6f6');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, 1200, 630);
-
-        // Draw branding
-        ctx.fillStyle = '#9b7eb5'; 
-        ctx.font = 'bold 32px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText('Match by Birth', 600, 560);
-
-        // Draw explanation / match label
-        ctx.fillStyle = '#4a5568';
-        ctx.font = 'italic 40px sans-serif';
-        ctx.fillText(matchLabel, 600, 480);
-
-        // Draw names
-        ctx.fillStyle = '#2d3748';
-        ctx.font = 'bold 64px sans-serif';
-        ctx.fillText(`${person1Name || 'Person 1'} & ${person2Name || 'Person 2'}`, 600, 150);
-
-        // Draw score
-        ctx.fillStyle = '#2d3748';
-        ctx.font = 'bold 160px sans-serif';
-        ctx.fillText(`${score}/100`, 600, 360);
-
-        // Draw subtle zodiac symbols left and right
-        ctx.fillStyle = '#cbd5e1';
-        ctx.font = '100px sans-serif';
-        ctx.fillText('♈︎', 200, 340);
-        ctx.fillText('♎︎', 1000, 340);
-
-        const dataUrl = canvas.toDataURL('image/jpeg');
-
-        // Update og:image tag
-        let ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage) {
-          ogImage.setAttribute('content', dataUrl);
-        }
-      } catch (err) {
-        console.error('Failed to generate canvas image for OG tag', err);
-      }
-    };
-
-    generateShareImage();
-  }, [person1Name, person2Name, score, matchLabel]);
-
-  // Use the provided resultUrl with params, otherwise fallback to current window URL
-  const activeUrl = resultUrl || window.location.href;
-  const shareText = `${person1Name || 'Person 1'} & ${person2Name || 'Person 2'} are ${matchLabel} (Score: ${score}/100) 🔮✨ Check your compatibility with Match by Birth!`;
-
-  const handleNativeShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: 'Match by Birth',
-          text: shareText,
-          url: activeUrl,
-        });
-      } else {
-        // fallback: copy to clipboard
-        copyResult(shareText, activeUrl);
-        toast.success('Link copied to clipboard!');
-      }
-    } catch (err) {
-      console.error('native share failed', err);
-      // if user cancels native share, don't show an error toast
-      if (err && err.name !== 'AbortError') {
-        toast.error('Failed to share result.');
-      }
     }
   };
 
   return (
     <>
-      <div id="result-card" className="card shadow-elevated animate-scale-up w-full max-w-md mx-auto overflow-hidden">
-        {/* Top Gradient Section */}
-        <div className={`bg-gradient-to-br ${getGradient()} p-6 text-center relative overflow-hidden min-h-[240px]`} style={{maxWidth: '520px', margin: '0 auto'}}>
-          <div className="absolute top-4 right-4 opacity-20">
-            {getIcon()}
+      <article id="result-card" className="bg-card border border-border rounded-3xl shadow-lg w-full max-w-2xl mx-auto overflow-hidden animate-scale-up">
+        <header className="text-center px-6 py-10 md:px-10 md:py-12 border-b border-border">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
+            {relationshipType} compatibility
+          </p>
+          <div className="flex items-start justify-center gap-5 md:gap-10 mb-7">
+            {people.map((person) => (
+              <div key={person.id} className="min-w-0">
+                <h1 className="text-xl md:text-2xl font-semibold truncate">{person.name}</h1>
+                <p className="text-sm text-muted-foreground mt-1">{person.sign}</p>
+              </div>
+            ))}
           </div>
-          
-          <div className="relative z-10">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="text-xl font-bold text-white">{person1Name || 'Person 1'}</span>
-              <span className="text-white/70 font-medium">&</span>
-              <span className="text-xl font-bold text-white">{person2Name || 'Person 2'}</span>
-            </div>
+          <div className="text-7xl md:text-8xl font-semibold tracking-tight text-foreground">
+            {score}%
+          </div>
+          <h2 className="text-2xl md:text-3xl font-semibold mt-5">{matchLabel}</h2>
+          <p className="text-muted-foreground mt-3 max-w-lg mx-auto">{explanation}</p>
+        </header>
 
-            <div className="inline-flex flex-col items-center justify-center w-32 h-32 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-inner mb-4">
-              <span className="text-4xl font-extrabold text-white tracking-tighter">{score}/100</span>
-              <span className="text-[10px] font-bold text-white/80 uppercase tracking-widest mt-1">Score</span>
-            </div>
+        <section className="px-6 py-8 md:px-10">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
+            Compatibility Breakdown
+          </h3>
+          <div className="space-y-5">
+            {Object.entries(BREAKDOWN_LABELS).map(([key, label]) => (
+              <div key={key}>
+                <div className="flex items-center justify-between text-sm mb-2">
+                  <span className="font-medium">{label}</span>
+                  <span className="text-muted-foreground">{breakdown[key]}%</span>
+                </div>
+                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-primary rounded-full"
+                    style={{ width: `${breakdown[key]}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            <h3 className="text-2xl font-bold text-white mb-1">{matchLabel}</h3>
-            <p className="text-white/80 text-sm font-medium uppercase tracking-wider">
-              {relationshipType} Compatibility
+        <footer className="px-6 pb-8 md:px-10 md:pb-10">
+          <div className="bg-primary/10 border border-primary/20 rounded-2xl p-5 mb-4">
+            <p className="font-semibold">Go beyond the score</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Get a private, detailed report with strengths, friction points, communication guidance, and practical next steps.
             </p>
-          </div>
-        </div>
-
-        {/* Breakdown Section */}
-        {/* Five-layer breakdown */}
-        <div className="p-6 bg-card border-b border-border">
-          <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 text-center">Compatibility Breakdown</h4>
-          <div className="space-y-4">
-            {breakdown && (
-              <>
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="text-foreground">🔥 Chemistry</span>
-                    <span className="text-primary">{breakdown.chemistry}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.chemistry}%` }} />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Magnetic connection and physical spark.</p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="text-foreground">💬 Communication</span>
-                    <span className="text-primary">{breakdown.communication}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.communication}%` }} />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Clarity, listening, and mutual understanding.</p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="text-foreground">🏗️ Stability</span>
-                    <span className="text-primary">{breakdown.stability}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.stability}%` }} />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Reliability, long-term potential, and shared values.</p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="text-foreground">⚡ Growth</span>
-                    <span className="text-primary">{breakdown.growth}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.growth}%` }} />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Potential for mutual development and challenge.</p>
-                </div>
-
-                <div className="space-y-1.5">
-                  <div className="flex justify-between text-sm font-medium">
-                    <span className="text-foreground">🌙 Intuition</span>
-                    <span className="text-primary">{breakdown.intuition}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000" style={{ width: `${breakdown.intuition}%` }} />
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">Emotional resonance and subtle understanding.</p>
-                </div>
-
-                <div className="pt-2 border-t border-border">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-semibold">Overall</span>
-                    <span className="text-2xl font-extrabold text-foreground">{breakdown.overall}%</span>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Action & Share Section (simplified per spec) */}
-        <div className="p-6 bg-card">
-          <div className="space-y-3">
-            {/* Keep only Get Full Report button; fixed price $9.99 */}
             <button
-              onClick={async () => { try { const u = new URL(resultUrl || window.location.href); const nameA = person1Name || u.searchParams.get('p1') || ''; const nameB = person2Name || u.searchParams.get('p2') || ''; const dobA = u.searchParams.get('p1_dob') || ''; const dobB = u.searchParams.get('p2_dob') || ''; const scores = { overall: score ?? Number(u.searchParams.get('score')) ?? 0 }; const resp = await fetch('/api/create-checkout-session', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nameA, nameB, dobA, dobB, scores }) }); if (!resp.ok) { const err = await resp.json().catch(() => ({})); throw new Error(err?.error || 'Checkout session creation failed'); } const data = await resp.json(); if (!data?.url) throw new Error('Missing session URL'); window.location.href = data.url; } catch (err) { console.error('checkout error', err); toast.error(err?.message || 'Something went wrong starting checkout.'); } }}\n              className="w-full flex items-center justify-center gap-2 mb-4 h-12 bg-secondary text-secondary-foreground font-semibold rounded-xl hover:bg-secondary/90 transition-colors"
-              title="Get Full Report — $9.99"
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="w-full mt-5 h-12 btn-primary rounded-xl font-semibold"
             >
-              <span className="font-bold">Get Full Report — $9.99</span>
-            </button>
-
-            {/* Single native Share button */}
-            <button
-              onClick={handleNativeShare}
-              className="w-full flex items-center justify-center gap-2 h-12 bg-muted text-foreground font-semibold rounded-xl hover:bg-primary hover:text-primary-foreground transition-colors"
-              title="Share result"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 6l-4-4-4 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 2v14" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              <span>Share</span>
+              Get Full Report — $9.99
             </button>
           </div>
-        </div>
-      </div>
+          <button
+            type="button"
+            onClick={downloadResult}
+            disabled={downloadInProgress}
+            className="w-full inline-flex items-center justify-center gap-2 h-11 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            {downloadInProgress ? 'Preparing image...' : 'Download result image'}
+          </button>
+        </footer>
+      </article>
+
+      <SaveResultModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        resultId={resultId}
+        resultUrl={resultUrl}
+        names={people.map((person) => person.name)}
+      />
     </>
   );
 }

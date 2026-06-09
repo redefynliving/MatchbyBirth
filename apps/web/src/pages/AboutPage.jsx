@@ -74,7 +74,7 @@ function AboutPage() {
                   A great reading is meant to be shared. We’ve built in seamless sharing features so you can effortlessly show your friends your match scores.
                 </p>
                 <ul className="mt-4 list-disc list-inside">
-                  <li className="mt-2"> <strong>Unique URLs:</strong> Your results are encoded directly into the web address. Just copy the URL and send it in your group chat.</li>
+                  <li className="mt-2"><strong>Private share links:</strong> Each result gets an opaque link without birth dates in the URL. Copy it and send it only to people you trust.</li>
                   <li className="mt-2"><strong>Social Previews:</strong> Share your link on Twitter or iMessage, and our Open Graph (OG) previews will automatically display a customized card showing who was matched.</li>
                 </ul>
               </div>

@@ -1,141 +1,79 @@
+import React from 'react';
+import { Link2, Sparkles, Users } from 'lucide-react';
 
-import React, { useMemo } from 'react';
-import { Users, Star, Trophy, TrendingUp } from 'lucide-react';
-import { getZodiacSign, calculateBaseCompatibility } from '@/lib/zodiac.js';
-
-function GroupCompatibilityResults({ groupData }) {
-  const results = useMemo(() => {
-    if (!groupData || groupData.length < 3) return null;
-
-    const pairs = [];
-    const personAverages = {};
-    let totalScore = 0;
-
-    // Initialize averages
-    groupData.forEach(p => {
-      personAverages[p.name] = { total: 0, count: 0 };
-    });
-
-    // Calculate all pairs
-    for (let i = 0; i < groupData.length; i++) {
-      for (let j = i + 1; j < groupData.length; j++) {
-        const p1 = groupData[i];
-        const p2 = groupData[j];
-        const sign1 = getZodiacSign(p1.birthDate);
-        const sign2 = getZodiacSign(p2.birthDate);
-        const score = calculateBaseCompatibility(sign1, sign2);
-
-        pairs.push({ p1: p1.name, p2: p2.name, score });
-        
-        personAverages[p1.name].total += score;
-        personAverages[p1.name].count += 1;
-        personAverages[p2.name].total += score;
-        personAverages[p2.name].count += 1;
-        
-        totalScore += score;
-      }
-    }
-
-    // Sort pairs highest to lowest
-    pairs.sort((a, b) => b.score - a.score);
-
-    // Calculate averages
-    const averages = Object.entries(personAverages).map(([name, data]) => ({
-      name,
-      avg: Math.round(data.total / data.count)
-    })).sort((a, b) => b.avg - a.avg);
-
-    const groupVibeScore = Math.round(totalScore / pairs.length);
-
-    return {
-      pairs,
-      averages,
-      groupVibeScore,
-      bestPair: pairs[0]
-    };
-  }, [groupData]);
-
-  if (!results) return null;
-
+function PairRow({ pair, rank }) {
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8 animate-fade-in">
-      {/* Group Vibe Hero */}
-      <div className="bg-gradient-to-br from-primary to-secondary p-8 md:p-12 rounded-3xl shadow-xl text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-white/5 backdrop-blur-sm"></div>
-        <div className="relative z-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
-            <Users className="w-8 h-8 text-white" />
+    <div className="flex items-center justify-between gap-4 py-3 border-b border-border/60 last:border-0">
+      <div className="min-w-0">
+        <span className="text-xs text-muted-foreground mr-3">{rank}.</span>
+        <span className="font-medium text-foreground">
+          {pair.personA.name} &amp; {pair.personB.name}
+        </span>
+        <p className="text-xs text-muted-foreground mt-1 ml-7">
+          {pair.personA.sign} + {pair.personB.sign}
+        </p>
+      </div>
+      <span className="font-semibold text-primary shrink-0">{pair.score}%</span>
+    </div>
+  );
+}
+
+function GroupCompatibilityResults({ result }) {
+  return (
+    <div className="w-full max-w-3xl mx-auto space-y-6 animate-fade-in">
+      <section className="bg-card border border-border rounded-3xl p-8 md:p-12 text-center shadow-lg">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-5">
+          <Users className="w-6 h-6" />
+        </div>
+        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+          Group Vibe
+        </p>
+        <div className="text-7xl md:text-8xl font-semibold tracking-tight text-foreground my-3">
+          {result.groupScore}%
+        </div>
+        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
+          {result.interpretation.label}
+        </h1>
+        <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+          {result.interpretation.explanation} Based on {result.pairs.length} unique connections.
+        </p>
+      </section>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <section className="bg-card border border-border rounded-2xl p-6">
+          <div className="flex items-center gap-2 text-muted-foreground mb-4">
+            <Link2 className="w-4 h-4" />
+            <h2 className="text-xs font-semibold uppercase tracking-[0.14em]">Strongest Pair</h2>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Group Vibe Score</h2>
-          <div className="text-7xl md:text-8xl font-extrabold text-white tracking-tighter my-4">
-            {results.groupVibeScore}%
-          </div>
-          <p className="text-white/90 text-lg font-medium">
-            {results.groupVibeScore >= 80 ? 'Incredible group dynamic! ✨' : 
-             results.groupVibeScore >= 60 ? 'Solid friend group! 🌟' : 
-             'A chaotic but fun mix! 🌪️'}
+          <p className="text-lg font-semibold">
+            {result.bestPair.personA.name} &amp; {result.bestPair.personB.name}
           </p>
-        </div>
+          <p className="text-3xl font-semibold text-primary mt-2">{result.bestPair.score}%</p>
+        </section>
+
+        <section className="bg-card border border-border rounded-2xl p-6">
+          <div className="flex items-center gap-2 text-muted-foreground mb-4">
+            <Sparkles className="w-4 h-4" />
+            <h2 className="text-xs font-semibold uppercase tracking-[0.14em]">Group Glue</h2>
+          </div>
+          <p className="text-lg font-semibold">{result.groupGlue.name}</p>
+          <p className="text-3xl font-semibold text-primary mt-2">{result.groupGlue.average}%</p>
+        </section>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Best Pair */}
-        <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-yellow-100 text-yellow-600 rounded-lg">
-              <Trophy className="w-5 h-5" />
-            </div>
-            <h3 className="text-lg font-semibold text-foreground">Most Compatible Pair</h3>
-          </div>
-          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-xl">
-            <span className="font-medium text-foreground">{results.bestPair.p1} & {results.bestPair.p2}</span>
-            <span className="text-xl font-bold text-primary">{results.bestPair.score}%</span>
-          </div>
-        </div>
-
-        {/* Social Butterfly */}
-        <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-blue-100 text-blue-600 rounded-lg">
-              <Star className="w-5 h-5" />
-            </div>
-            <h3 className="text-lg font-semibold text-foreground">The Glue (Highest Avg)</h3>
-          </div>
-          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-xl">
-            <span className="font-medium text-foreground">{results.averages[0].name}</span>
-            <span className="text-xl font-bold text-primary">{results.averages[0].avg}%</span>
-          </div>
-        </div>
-      </div>
-
-      {/* All Pairs Ranked */}
-      <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-primary/10 text-primary rounded-lg">
-            <TrendingUp className="w-5 h-5" />
-          </div>
-          <h3 className="text-xl font-semibold text-foreground">All Pairs Ranked</h3>
-        </div>
-        <div className="space-y-3">
-          {results.pairs.map((pair, idx) => (
-            <div key={idx} className="flex items-center justify-between p-3 hover:bg-muted/50 rounded-xl transition-colors">
-              <div className="flex items-center gap-4">
-                <span className="text-muted-foreground font-medium w-6">{idx + 1}.</span>
-                <span className="font-medium text-foreground">{pair.p1} & {pair.p2}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-24 h-2 bg-muted rounded-full overflow-hidden hidden sm:block">
-                  <div 
-                    className="h-full bg-primary rounded-full"
-                    style={{ width: `${pair.score}%` }}
-                  />
-                </div>
-                <span className="font-bold text-foreground w-10 text-right">{pair.score}%</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <section className="bg-card border border-border rounded-2xl p-6">
+        <h2 className="text-xl font-semibold mb-2">Every Connection</h2>
+        <p className="text-sm text-muted-foreground mb-4">
+          Ranked from the most naturally aligned pairing to the connection that may need more intention.
+        </p>
+        {result.pairs.map((pair, index) => (
+          <PairRow
+            key={`${pair.personA.id}-${pair.personB.id}`}
+            pair={pair}
+            rank={index + 1}
+          />
+        ))}
+      </section>
     </div>
   );
 }
