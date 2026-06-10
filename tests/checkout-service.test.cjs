@@ -66,6 +66,49 @@ test('createCheckout controls price and keeps personal result data out of Stripe
   });
 });
 
+test('createCheckout accepts a configured Stripe product ID', async () => {
+  let stripePayload;
+  const store = {
+    findResultById: async () => ({
+      id: 'result-id',
+      share_slug: 'share-slug',
+      mode: 'pair',
+    }),
+    insertPurchase: async (record) => ({ ...record, id: 'purchase-id' }),
+    updatePurchase: async () => {},
+    upsertSubscriber: async () => {},
+  };
+  const stripe = {
+    checkout: {
+      sessions: {
+        create: async (payload) => {
+          stripePayload = payload;
+          return { id: 'checkout-id', url: 'https://checkout.stripe.test/session' };
+        },
+      },
+    },
+  };
+
+  await createCheckout(
+    { resultId: 'result-id', email: 'buyer@example.com' },
+    {
+      store,
+      stripe,
+      appUrl: 'https://matchbybirth.com',
+      priceId: 'prod_report',
+    },
+  );
+
+  assert.deepEqual(stripePayload.line_items, [{
+    price_data: {
+      currency: 'usd',
+      product: 'prod_report',
+      unit_amount: 999,
+    },
+    quantity: 1,
+  }]);
+});
+
 test('createCheckout rejects group reports and invalid email addresses', async () => {
   const groupStore = {
     findResultById: async () => ({ id: 'group-id', mode: 'group' }),
