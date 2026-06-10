@@ -83,6 +83,10 @@ h3 { font-size: 1.125rem; }
 
 html { scroll-behavior: smooth; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* Section spacing tokens — slightly tightened */
 .section-spacing { @apply py-12 md:py-16; }
 

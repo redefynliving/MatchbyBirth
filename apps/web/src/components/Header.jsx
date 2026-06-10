@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Sparkles } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { scrollToCalculator } from '@/lib/scroll-to-calculator.js';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,40 +17,6 @@ function Header() {
   ];
 
   const isActive = (path) => location.pathname === path;
-
-  // Smooth scroll helper with easing and offset for sticky header
-  const smoothScrollTo = (el, duration = 520) => {
-    if (!el) return;
-    const header = document.querySelector('header');
-    const offset = (header && header.offsetHeight) ? header.offsetHeight : 80;
-    const start = window.pageYOffset;
-    const target = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
-    const distance = target - start;
-    let startTime = null;
-
-    const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-    function animation(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const eased = easeInOutCubic(progress);
-      window.scrollTo(0, start + distance * eased);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
-      else {
-        // ensure final position and focus
-        window.history.replaceState(null, '', '#calculator');
-        try { el.setAttribute('tabindex', '-1'); el.focus({ preventScroll: true }); } catch (e) {}
-        // add slight purple arrival highlight then remove
-        try {
-          el.classList.add('arrival-highlight');
-          setTimeout(() => el.classList.remove('arrival-highlight'), 900);
-        } catch (e) {}
-      }
-    }
-
-    requestAnimationFrame(animation);
-  };
 
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
@@ -74,11 +41,10 @@ function Header() {
               </Link>
             ))}
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById('calculator');
-                if (el) smoothScrollTo(el, 520);
-                else window.location.hash = '#calculator';
+              onClick={() => {
+                if (!scrollToCalculator()) {
+                  window.location.assign('/#calculator');
+                }
               }}
               className="ml-4 btn-primary text-sm">
               Try It Free

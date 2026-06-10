@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  scrollToCalculator,
+  scrollToCalculatorFromHash,
+} from '@/lib/scroll-to-calculator.js';
 
 function HomePage() {
+  useEffect(() => {
+    scrollToCalculatorFromHash();
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -30,7 +38,7 @@ function HomePage() {
                 Compare two people or a full friend group and get a clear compatibility reading in seconds.
               </p>
               <div className="mt-7">
-                <button onClick={(event) => { event.preventDefault(); document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' }); }} className="btn-primary inline-block px-7 py-3.5 rounded-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+                <button onClick={() => scrollToCalculator()} className="btn-primary inline-block px-7 py-3.5 rounded-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
                   Check Compatibility
                 </button>
               </div>
