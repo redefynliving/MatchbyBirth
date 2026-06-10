@@ -60,11 +60,22 @@ async function createCheckout(input, dependencies) {
   }
 
   try {
+    const lineItems = priceId.startsWith('prod_')
+      ? [{
+        price_data: {
+          currency: 'usd',
+          product: priceId,
+          unit_amount: 999,
+        },
+        quantity: 1,
+      }]
+      : [{ price: priceId, quantity: 1 }];
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
-      line_items: [{ price: priceId, quantity: 1 }],
+      line_items: lineItems,
       success_url: new URL(
         '/report-success?session_id={CHECKOUT_SESSION_ID}',
         appUrl,
