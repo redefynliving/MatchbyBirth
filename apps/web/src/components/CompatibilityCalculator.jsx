@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -98,19 +98,27 @@ function CompatibilityCalculator() {
   };
 
   return (
-    <div id="calculator" className="w-full max-w-2xl mx-auto">
-      <GroupModeToggle
-        mode={mode}
-        setMode={(nextMode) => {
-          setMode(nextMode);
-          setError('');
-        }}
-      />
+    <div id="calculator" className="h-full w-full bg-card">
+      <div className="flex flex-col gap-4 border-b border-border px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-7">
+        <div>
+          <h2 className="text-xl font-semibold">Check your connection</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Start with two people or compare a full group.
+          </p>
+        </div>
+        <GroupModeToggle
+          mode={mode}
+          setMode={(nextMode) => {
+            setMode(nextMode);
+            setError('');
+          }}
+        />
+      </div>
 
       {mode === 'pair' ? (
         <form
           onSubmit={calculatePairCompatibility}
-          className="space-y-7 bg-card p-6 md:p-9 rounded-3xl border border-border shadow-lg animate-fade-in"
+          className="animate-fade-in space-y-4 p-5 md:p-7"
         >
           {error && (
             <div role="alert" className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
@@ -118,15 +126,19 @@ function CompatibilityCalculator() {
             </div>
           )}
 
-          <div className="space-y-7">
+          <div className="divide-y divide-border border-y border-border">
             {pairPeople.map((person, index) => (
-              <div key={person.id} className="space-y-4">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                  Person {index + 1}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor={`name-${person.id}`}>Name</Label>
+              <div
+                key={person.id}
+                className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-[2rem_minmax(0,1fr)_minmax(0,1fr)] sm:items-end"
+              >
+                <span className="grid h-7 w-7 place-items-center rounded-lg bg-secondary text-xs font-semibold text-primary sm:mb-2">
+                  {index + 1}
+                </span>
+                <div className="space-y-1.5">
+                    <Label htmlFor={`name-${person.id}`} className="text-xs text-muted-foreground">
+                      Name or nickname
+                    </Label>
                     <Input
                       id={`name-${person.id}`}
                       value={person.name}
@@ -134,11 +146,13 @@ function CompatibilityCalculator() {
                       placeholder="Enter name"
                       maxLength={80}
                       required
-                      className="h-12 rounded-xl"
+                      className="h-11 rounded-xl"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor={`dob-${person.id}`}>Birth Date</Label>
+                </div>
+                <div className="space-y-1.5">
+                    <Label htmlFor={`dob-${person.id}`} className="text-xs text-muted-foreground">
+                      Birth date
+                    </Label>
                     <Input
                       id={`dob-${person.id}`}
                       type="date"
@@ -146,16 +160,17 @@ function CompatibilityCalculator() {
                       onChange={(event) => updatePairPerson(person.id, 'birthDate', event.target.value)}
                       max={new Date().toISOString().slice(0, 10)}
                       required
-                      className="h-12 rounded-xl"
+                      className="h-11 rounded-xl"
                     />
-                  </div>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="relationshipType">Relationship Type</Label>
+            <Label htmlFor="relationshipType" className="text-xs text-muted-foreground">
+              What kind of connection?
+            </Label>
             <Select value={relationshipType} onValueChange={setRelationshipType}>
               <SelectTrigger id="relationshipType" className="h-12 rounded-xl">
                 <SelectValue />
@@ -168,18 +183,19 @@ function CompatibilityCalculator() {
             </Select>
           </div>
 
-          <Button type="submit" disabled={isCalculating} className="w-full btn-primary text-base h-14 rounded-xl">
+          <Button type="submit" disabled={isCalculating} className="btn-primary h-12 w-full rounded-xl text-sm">
             {isCalculating ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                 Calculating...
               </>
             ) : (
-              'Calculate Compatibility'
+              'See our compatibility'
             )}
           </Button>
-          <p className="text-xs text-center text-muted-foreground">
-            Birth dates are used for this calculation and are not stored.
+          <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 text-primary" />
+            Private, with no signup required. Birth dates are not stored.
           </p>
         </form>
       ) : (

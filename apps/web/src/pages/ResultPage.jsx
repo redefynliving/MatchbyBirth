@@ -196,7 +196,7 @@ function ResultPage() {
         )}
       </Helmet>
 
-      <main className="section-spacing bg-background min-h-screen">
+      <main className="result-page-bg min-h-screen py-10 md:py-14">
         <div className="content-container">
           {isGroup ? (
             <GroupCompatibilityResults result={result} />
@@ -214,7 +214,7 @@ function ResultPage() {
             />
           )}
 
-          <div className="max-w-3xl mx-auto mt-10">
+          <div className="mx-auto mt-6 max-w-5xl">
             {canShare ? (
               <ShareButtons
                 mode={result.mode}
@@ -225,15 +225,15 @@ function ResultPage() {
                 resultUrl={resultUrl}
               />
             ) : (
-              <p className="mt-8 text-center text-sm text-muted-foreground">
+              <p className="mt-6 text-center text-sm text-muted-foreground">
                 Sharing is temporarily unavailable. Your result remains visible in this tab.
               </p>
             )}
 
-            <div className="mt-10 text-center">
+            <div className="mt-6 text-center">
               <Link
                 to="/"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-secondary text-secondary-foreground rounded-xl font-semibold hover:bg-secondary/80 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-6 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Try Another Match
@@ -241,7 +241,7 @@ function ResultPage() {
             </div>
 
             {resultId && (
-              <div className="mt-8">
+              <div className="mx-auto mt-8 max-w-3xl">
                 <EmailCaptureSection resultId={resultId} />
               </div>
             )}

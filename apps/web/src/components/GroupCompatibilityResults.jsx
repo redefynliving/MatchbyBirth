@@ -1,79 +1,131 @@
-import React from 'react';
-import { Link2, Sparkles, Users } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  ChevronDown,
+  ChevronUp,
+  Link2,
+  Route,
+  Sparkles,
+} from 'lucide-react';
+import { getVisibleGroupPairs } from '@/lib/result-presentation.js';
 
 function PairRow({ pair, rank }) {
   return (
-    <div className="flex items-center justify-between gap-4 py-3 border-b border-border/60 last:border-0">
+    <div className="grid grid-cols-[minmax(0,1fr)_5.5rem_2.5rem] items-center gap-3 rounded-xl bg-muted/35 px-3.5 py-3 text-sm sm:grid-cols-[minmax(0,1fr)_8rem_2.5rem]">
       <div className="min-w-0">
-        <span className="text-xs text-muted-foreground mr-3">{rank}.</span>
+        <span className="mr-2 text-xs text-muted-foreground">{rank}.</span>
         <span className="font-medium text-foreground">
-          {pair.personA.name} &amp; {pair.personB.name}
+          {pair.personA.name} + {pair.personB.name}
         </span>
-        <p className="text-xs text-muted-foreground mt-1 ml-7">
-          {pair.personA.sign} + {pair.personB.sign}
-        </p>
       </div>
-      <span className="font-semibold text-primary shrink-0">{pair.score}%</span>
+      <div className="h-1.5 overflow-hidden rounded-full bg-border">
+        <div
+          className="h-full rounded-full bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(335_36%_65%))]"
+          style={{ width: `${pair.score}%` }}
+        />
+      </div>
+      <span className="text-right font-semibold text-primary">{pair.score}</span>
     </div>
   );
 }
 
 function GroupCompatibilityResults({ result }) {
-  return (
-    <div className="w-full max-w-3xl mx-auto space-y-6 animate-fade-in">
-      <section className="bg-card border border-border rounded-3xl p-8 md:p-12 text-center shadow-lg">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-5">
-          <Users className="w-6 h-6" />
-        </div>
-        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground font-semibold">
-          Group Vibe
-        </p>
-        <div className="text-7xl md:text-8xl font-semibold tracking-tight text-foreground my-3">
-          {result.groupScore}%
-        </div>
-        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
-          {result.interpretation.label}
-        </h1>
-        <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-          {result.interpretation.explanation} Based on {result.pairs.length} unique connections.
-        </p>
-      </section>
+  const [showAllPairs, setShowAllPairs] = useState(false);
+  const visiblePairs = getVisibleGroupPairs(result.pairs, showAllPairs);
+  const lowestPair = result.pairs[result.pairs.length - 1];
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <section className="bg-card border border-border rounded-2xl p-6">
-          <div className="flex items-center gap-2 text-muted-foreground mb-4">
-            <Link2 className="w-4 h-4" />
-            <h2 className="text-xs font-semibold uppercase tracking-[0.14em]">Strongest Pair</h2>
-          </div>
-          <p className="text-lg font-semibold">
-            {result.bestPair.personA.name} &amp; {result.bestPair.personB.name}
+  return (
+    <div className="animate-fade-in mx-auto w-full max-w-5xl space-y-4">
+      <div className="grid gap-4 md:grid-cols-[0.72fr_1.28fr]">
+        <section className="rounded-3xl bg-[linear-gradient(145deg,hsl(var(--primary)),hsl(270_35%_61%))] p-7 text-primary-foreground shadow-[0_20px_45px_rgba(118,80,168,0.23)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground/70">
+            Group vibe
           </p>
-          <p className="text-3xl font-semibold text-primary mt-2">{result.bestPair.score}%</p>
+          <div className="my-5 text-7xl font-semibold tracking-[-0.06em]">
+            {result.groupScore}%
+          </div>
+          <h1 className="text-2xl font-semibold text-primary-foreground">
+            {result.interpretation.label}
+          </h1>
+          <p className="mt-3 text-sm leading-6 text-primary-foreground/75">
+            {result.interpretation.explanation}
+          </p>
         </section>
 
-        <section className="bg-card border border-border rounded-2xl p-6">
-          <div className="flex items-center gap-2 text-muted-foreground mb-4">
-            <Sparkles className="w-4 h-4" />
-            <h2 className="text-xs font-semibold uppercase tracking-[0.14em]">Group Glue</h2>
+        <section className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-7">
+          <h2 className="text-xl font-semibold">Your strongest connections</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {result.people.length} people · {result.pairs.length} unique connections
+          </p>
+          <div className="mt-5 space-y-2">
+            {visiblePairs.map((pair, index) => (
+              <PairRow
+                key={`${pair.personA.id}-${pair.personB.id}`}
+                pair={pair}
+                rank={index + 1}
+              />
+            ))}
           </div>
-          <p className="text-lg font-semibold">{result.groupGlue.name}</p>
-          <p className="text-3xl font-semibold text-primary mt-2">{result.groupGlue.average}%</p>
+          {result.pairs.length > 3 && (
+            <button
+              type="button"
+              onClick={() => setShowAllPairs((value) => !value)}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border py-2.5 text-sm font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              aria-expanded={showAllPairs}
+            >
+              {showAllPairs ? (
+                <>
+                  Show strongest 3
+                  <ChevronUp className="h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  View all {result.pairs.length} connections
+                  <ChevronDown className="h-4 w-4" />
+                </>
+              )}
+            </button>
+          )}
         </section>
       </div>
 
-      <section className="bg-card border border-border rounded-2xl p-6">
-        <h2 className="text-xl font-semibold mb-2">Every Connection</h2>
-        <p className="text-sm text-muted-foreground mb-4">
-          Ranked from the most naturally aligned pairing to the connection that may need more intention.
-        </p>
-        {result.pairs.map((pair, index) => (
-          <PairRow
-            key={`${pair.personA.id}-${pair.personB.id}`}
-            pair={pair}
-            rank={index + 1}
-          />
-        ))}
-      </section>
+      <div className="grid gap-3 md:grid-cols-3">
+        <article className="rounded-2xl border border-border bg-card p-5">
+          <Link2 className="h-5 w-5 text-primary" />
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Group glue
+          </p>
+          <h2 className="mt-1 text-lg font-semibold">{result.groupGlue.name}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Connects with the group at an average of {result.groupGlue.average}%.
+          </p>
+        </article>
+
+        <article className="rounded-2xl border border-border bg-card p-5">
+          <Sparkles className="h-5 w-5 text-primary" />
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Best dynamic
+          </p>
+          <h2 className="mt-1 text-lg font-semibold">
+            {result.bestPair.personA.name} + {result.bestPair.personB.name}
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            The group&apos;s easiest natural rhythm at {result.bestPair.score}%.
+          </p>
+        </article>
+
+        <article className="rounded-2xl border border-border bg-card p-5">
+          <Route className="h-5 w-5 text-primary" />
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Growth edge
+          </p>
+          <h2 className="mt-1 text-lg font-semibold">
+            {lowestPair.personA.name} + {lowestPair.personB.name}
+          </h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            This connection may benefit from more patience and clarity.
+          </p>
+        </article>
+      </div>
     </div>
   );
 }
