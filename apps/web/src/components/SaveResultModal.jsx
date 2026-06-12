@@ -5,6 +5,7 @@ import {
   LockKeyhole,
   MessageCircle,
   ShieldCheck,
+  TriangleAlert,
   X,
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -68,23 +69,24 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 
         <section className="p-6 md:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            Private compatibility report
+            Detailed compatibility report
           </p>
           <h2 id="report-modal-title" className="mt-3 pr-8 text-3xl font-semibold tracking-tight">
-            Go beyond the score.
+            A closer look at your match
           </h2>
           <p className="mt-2 text-sm font-medium text-foreground">
             {names.join(' + ')}
           </p>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
-            A focused reading with useful language for understanding this relationship.
+            A 9-section report based on your compatibility result.
           </p>
 
           <div className="mt-6 divide-y divide-border">
             {[
-              [MessageCircle, 'Communication and conflict', 'How you express needs and repair misunderstandings.'],
-              [HeartHandshake, 'Strengths and friction patterns', 'What creates trust and what needs more care.'],
-              [Compass, 'Practical next steps', 'Clear prompts tailored to this connection.'],
+              [MessageCircle, 'How you communicate', 'Where conversations may feel easy or get crossed.'],
+              [HeartHandshake, 'Where you connect naturally', 'The qualities that may work well between you.'],
+              [TriangleAlert, 'Where misunderstandings may happen', 'Differences that could cause confusion or conflict.'],
+              [Compass, 'Practical ways to handle differences', 'Simple suggestions based on your scores.'],
             ].map(([Icon, title, description]) => (
               <div key={title} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
@@ -103,9 +105,9 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-card text-primary shadow-sm">
             <LockKeyhole className="h-4 w-4" />
           </span>
-          <h3 className="mt-5 text-xl font-semibold">Send your private report</h3>
+          <h3 className="mt-5 text-xl font-semibold">Get the full report</h3>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">
-            Delivered to your email after checkout.
+            Private link and PDF delivered by email.
           </p>
           <p className="mt-5 text-3xl font-semibold tracking-tight">
             $9.99 <span className="text-xs font-medium tracking-normal text-muted-foreground">one-time</span>
@@ -143,7 +145,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
               className="btn-primary h-12 w-full rounded-xl font-semibold"
               disabled={status === 'loading'}
             >
-              {status === 'loading' ? 'Opening secure checkout...' : 'Continue to Checkout'}
+              {status === 'loading' ? 'Opening secure checkout...' : 'Buy report for $9.99'}
             </button>
           </form>
 

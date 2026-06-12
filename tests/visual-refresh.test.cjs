@@ -13,6 +13,12 @@ const presentationModuleUrl = pathToFileURL(
     '../apps/web/src/lib/result-presentation.js',
   ),
 ).href;
+const interpretationModuleUrl = pathToFileURL(
+  path.join(
+    __dirname,
+    '../apps/web/src/lib/scoreInterpretation.js',
+  ),
+).href;
 
 test('buildPairHighlights reduces the detailed breakdown to three readable insights', async () => {
   const { buildPairHighlights } = await import(presentationModuleUrl);
@@ -27,13 +33,32 @@ test('buildPairHighlights reduces the detailed breakdown to three readable insig
 
   assert.deepEqual(highlights.map((highlight) => highlight.label), [
     'Communication',
-    'Emotional rhythm',
-    'Growth edge',
+    'Emotional style',
+    'Where you differ',
   ]);
   assert.equal(highlights[0].score, 91);
   assert.equal(highlights[1].score, 78);
   assert.equal(highlights[2].score, 68);
-  assert.match(highlights[2].summary, /growth/i);
+  assert.match(highlights[2].summary, /lowest score/i);
+});
+
+test('score interpretations use plain, qualified language', async () => {
+  const { getScoreInterpretation } = await import(interpretationModuleUrl);
+  const interpretations = [
+    getScoreInterpretation(85, 'love'),
+    getScoreInterpretation(70, 'friendship'),
+    getScoreInterpretation(50, 'between'),
+    getScoreInterpretation(25, 'love'),
+  ];
+  const copy = JSON.stringify(interpretations);
+
+  assert.deepEqual(interpretations.map(({ label }) => label), [
+    'Very compatible',
+    'Good compatibility',
+    'Mixed compatibility',
+    'More differences than similarities',
+  ]);
+  assert.doesNotMatch(copy, /exceptional|effortless|meaningful connection|intention|natural alignment/i);
 });
 
 test('getVisibleGroupPairs keeps the strongest three visible until expanded', async () => {
@@ -52,6 +77,10 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     path.join(root, 'apps/web/src/pages/HomePage.jsx'),
     'utf8',
   );
+  const homePreview = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/HomeResultPreview.jsx'),
+    'utf8',
+  );
   const calculator = fs.readFileSync(
     path.join(root, 'apps/web/src/components/CompatibilityCalculator.jsx'),
     'utf8',
@@ -65,8 +94,10 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     'utf8',
   );
 
-  assert.match(homePage, /Every connection has its own rhythm\./);
+  assert.match(homePage, /See how you match by birth date\./);
   assert.match(homePage, /HomeResultPreview/);
+  assert.match(homePreview, /Good compatibility/);
+  assert.doesNotMatch(homePreview, />82% compatible</);
   assert.match(calculator, /Check your connection/);
   assert.match(calculator, /Private, with no signup required\./);
   assert.match(header, /\/how-it-works/);
@@ -88,10 +119,13 @@ test('pair and group results progressively reveal detail instead of showing ever
   );
 
   assert.match(pairResult, /buildPairHighlights/);
-  assert.match(pairResult, /Want the complete relationship reading\?/);
+  assert.match(pairResult, /Want a more detailed breakdown\?/);
+  assert.match(pairResult, /Get the detailed report · \$9\.99/);
   assert.match(groupResult, /getVisibleGroupPairs/);
   assert.match(groupResult, /View all .* connections/);
-  assert.match(shareButtons, /Share privately/);
+  assert.match(shareButtons, /Share by link/);
+  assert.match(shareButtons, /Anyone with the link can view this result/);
+  assert.doesNotMatch(shareButtons, /private/i);
 });
 
 test('report checkout explains its value while retaining payment and privacy assurances', () => {
@@ -100,9 +134,57 @@ test('report checkout explains its value while retaining payment and privacy ass
     'utf8',
   );
 
-  assert.match(checkout, /Communication and conflict/);
-  assert.match(checkout, /Strengths and friction patterns/);
-  assert.match(checkout, /Practical next steps/);
+  assert.match(checkout, /9-section report/);
+  assert.match(checkout, /How you communicate/);
+  assert.match(checkout, /Where you connect naturally/);
+  assert.match(checkout, /Where misunderstandings may happen/);
+  assert.match(checkout, /Practical ways to handle differences/);
+  assert.match(checkout, /Private link and PDF delivered by email/);
+  assert.match(checkout, /Buy report for \$9\.99/);
   assert.match(checkout, /Payment is handled by Stripe/);
   assert.match(checkout, /birth dates are not stored/i);
+  assert.doesNotMatch(checkout, /friction patterns|go beyond the score|repair misunderstandings/i);
+});
+
+test('SEO metadata is truthful and result pages are excluded from indexing', () => {
+  const index = fs.readFileSync(
+    path.join(root, 'apps/web/index.html'),
+    'utf8',
+  );
+  const sitemap = fs.readFileSync(
+    path.join(root, 'apps/web/public/sitemap.xml'),
+    'utf8',
+  );
+  const llms = fs.readFileSync(
+    path.join(root, 'apps/web/public/llms.txt'),
+    'utf8',
+  );
+  const resultPage = fs.readFileSync(
+    path.join(root, 'apps/web/src/pages/ResultPage.jsx'),
+    'utf8',
+  );
+  const vercelConfig = JSON.parse(fs.readFileSync(
+    path.join(root, 'vercel.json'),
+    'utf8',
+  ));
+
+  assert.match(index, /Birth Date Compatibility Calculator \| Match by Birth/);
+  assert.match(index, /href="\/favicon\.svg"/);
+  assert.equal(fs.existsSync(path.join(root, 'apps/web/public/favicon.svg')), true);
+  assert.match(index, /Birth dates are processed for the calculation and are not stored/);
+  assert.doesNotMatch(index, /highly accurate|happens instantly in your browser|Hostinger Horizons|vite\.svg/i);
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/matchbybirth\.com\/result<\/loc>/);
+  assert.doesNotMatch(llms, /\]\(\/result\)|\]\(\/report\)/);
+  assert.match(resultPage, /noindex,nofollow,noarchive/);
+  assert.deepEqual(vercelConfig.headers, [
+    {
+      source: '/result',
+      headers: [
+        {
+          key: 'X-Robots-Tag',
+          value: 'noindex, nofollow, noarchive',
+        },
+      ],
+    },
+  ]);
 });

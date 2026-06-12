@@ -1,5 +1,4 @@
 ## Pages
-- [| Private Match by Birth Report](/report): No description available
 - [About Us | Match by Birth](/about): Learn about our mission to help you understand compatibility, including our unique 7-person Group Mode.
 - [Astrology Blog & Guides | Match by Birth](/blog): Read our latest articles and guides on zodiac compatibility, astrology, and relationship advice.
 - [Contact Us | Match by Birth](/contact): Get in touch with the Match by Birth team for support, feedback, or inquiries.
@@ -9,4 +8,3 @@
 - [Privacy Policy | Match by Birth](/privacypolicy): How Match by Birth processes calculator, result, payment, email, and analytics data.
 - [Terms and Conditions | Match by Birth](/termsandconditions): Terms and Conditions for using Match by Birth, covering user responsibilities, service limitations, and astrological disclaimers.
 - [Terms of Service | Match by Birth](/termsofservice): Terms of Service for using Match by Birth.
-- [Untitled Page](/result): A private Match by Birth compatibility result.

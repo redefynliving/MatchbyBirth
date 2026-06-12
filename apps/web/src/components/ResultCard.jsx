@@ -12,8 +12,8 @@ import { buildPairHighlights } from '@/lib/result-presentation.js';
 
 const HIGHLIGHT_ICONS = {
   communication: MessageCircle,
-  'emotional-rhythm': HeartHandshake,
-  'growth-edge': Compass,
+  'emotional-style': HeartHandshake,
+  differences: Compass,
 };
 
 const RELATIONSHIP_LABELS = {
@@ -83,7 +83,7 @@ function ResultCard({
               {names.join(' + ')} · {RELATIONSHIP_LABELS[relationshipType] || relationshipType}
             </p>
             <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.035em] md:text-4xl">
-              Your connection has a clear natural rhythm.
+              Your compatibility result
             </h1>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
               {explanation}
@@ -125,10 +125,10 @@ function ResultCard({
             <div>
               <p className="flex items-center gap-2 font-semibold">
                 <FileHeart className="h-4 w-4 text-primary" />
-                Want the complete relationship reading?
+                Want a more detailed breakdown?
               </p>
               <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                Get communication guidance, friction patterns, and practical next steps.
+                See all nine sections, including communication, likely disagreements, and practical suggestions.
               </p>
             </div>
             {canPurchase ? (
@@ -137,7 +137,7 @@ function ResultCard({
                 onClick={() => setIsModalOpen(true)}
                 className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
               >
-                Preview report · $9.99
+                Get the detailed report · $9.99
               </button>
             ) : (
               <p className="text-sm font-medium text-muted-foreground">

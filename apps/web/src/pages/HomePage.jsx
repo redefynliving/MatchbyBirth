@@ -23,12 +23,13 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Match by Birth | The connection behind every relationship.</title>
-        <meta name="description" content="Match by Birth: discover your connection with our free birth date compatibility tool. No signup—just enter two birth dates and get your match." />
-        <meta property="og:title" content="Match by Birth - The connection behind every relationship." />
-        <meta property="og:description" content="Discover your astrological compatibility instantly with Match by Birth. No signup needed—enter two birth dates and check your match." />
+        <title>Birth Date Compatibility Calculator | Match by Birth</title>
+        <meta name="description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored." />
+        <meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth" />
+        <meta property="og:description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
-        <meta property="og:url" content={window.location.origin} />
+        <meta property="og:url" content={`${window.location.origin}/`} />
+        <link rel="canonical" href={`${window.location.origin}/`} />
       </Helmet>
 
       <main className="flex-1 bg-background">
@@ -36,13 +37,13 @@ function HomePage() {
           <div className="content-container relative z-10">
             <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                The connection behind every relationship
+                Free birth date compatibility calculator
               </p>
               <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.045em] text-foreground md:text-6xl">
-                Every connection has its own rhythm.
+                See how you match by birth date.
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                See where two people naturally align and where the relationship can grow.
+                Compare two people or a group. Get a compatibility score and a clear breakdown in seconds.
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
@@ -72,7 +73,7 @@ function HomePage() {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Share2 className="h-3.5 w-3.5 text-primary" />
-                Private sharing
+                Share by link
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <FileHeart className="h-3.5 w-3.5 text-primary" />
@@ -85,19 +86,19 @@ function HomePage() {
         <section className="section-spacing border-y border-border bg-card">
           <div className="content-container">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Useful at a glance</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Clear and easy to scan</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-                More than one percentage.
+                What your result includes
               </h2>
               <p className="mt-3 leading-relaxed text-muted-foreground">
-                Each result turns the score into a few clear ideas you can understand, discuss, and privately share.
+                See the overall score, where you connect, and which differences may take more effort.
               </p>
             </div>
             <div className="mt-9 grid gap-4 md:grid-cols-3">
               {[
-                ['01', 'See the natural strengths', 'Understand what already feels easy between you.'],
-                ['02', 'Name the growth edge', 'Find the pattern that benefits from more intention.'],
-                ['03', 'Choose how deep to go', 'Share the free result or unlock a private detailed report.'],
+                ['01', 'Your compatibility score', 'See the overall match at a glance.'],
+                ['02', 'Where you connect', 'See what tends to work well between you.'],
+                ['03', 'Where you differ', 'See which areas may take more effort.'],
               ].map(([number, title, description]) => (
                 <article key={number} className="rounded-2xl border border-border bg-background/70 p-6">
                   <span className="text-xs font-semibold tracking-[0.16em] text-primary">{number}</span>
@@ -121,7 +122,7 @@ function HomePage() {
                   Do I need an exact birth time?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  No. Match by Birth uses calendar birth dates for a quick foundational reading.
+                  No. Match by Birth uses calendar birth dates for a quick compatibility reading.
                 </AccordionContent>
               </AccordionItem>
 
@@ -130,7 +131,7 @@ function HomePage() {
                   Are birth dates stored?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  Birth dates are processed for the calculation and are not stored or placed in private result links.
+                  Birth dates are processed for the calculation and are not stored or included in share links.
                 </AccordionContent>
               </AccordionItem>
 

@@ -11,15 +11,15 @@ function normalizeScore(value) {
   return Math.max(0, Math.min(100, Math.round(score)));
 }
 
-function describeScore(score, strong, balanced, intentional) {
+function describeScore(score, strong, balanced, lower) {
   if (score >= 80) return strong;
   if (score >= 60) return balanced;
-  return intentional;
+  return lower;
 }
 
 export function buildPairHighlights(breakdown = {}) {
   const communication = normalizeScore(breakdown.communication);
-  const emotionalRhythm = normalizeScore(
+  const emotionalStyle = normalizeScore(
     (
       normalizeScore(breakdown.chemistry)
       + normalizeScore(breakdown.stability)
@@ -39,26 +39,26 @@ export function buildPairHighlights(breakdown = {}) {
       summary: describeScore(
         communication,
         'You tend to understand each other quickly.',
-        'Clear communication grows with a little intention.',
+        'You can communicate well when both people are direct.',
         'Slow down and confirm what each person means.',
       ),
     },
     {
-      key: 'emotional-rhythm',
-      label: 'Emotional rhythm',
-      score: emotionalRhythm,
+      key: 'emotional-style',
+      label: 'Emotional style',
+      score: emotionalStyle,
       summary: describeScore(
-        emotionalRhythm,
-        'Your emotional pace feels naturally reassuring.',
-        'You can find a steady rhythm with mutual care.',
-        'Give each other more room to process differently.',
+        emotionalStyle,
+        'You may respond to feelings in similar ways.',
+        'Your emotional styles have both similarities and differences.',
+        'You may need more time to understand each other’s reactions.',
       ),
     },
     {
-      key: 'growth-edge',
-      label: 'Growth edge',
+      key: 'differences',
+      label: 'Where you differ',
       score: growthScore,
-      summary: `${BREAKDOWN_LABELS[growthKey]} is where this connection benefits from the most intention.`,
+      summary: `${BREAKDOWN_LABELS[growthKey]} has the lowest score in this result.`,
     },
   ];
 }
@@ -67,4 +67,3 @@ export function getVisibleGroupPairs(pairs, expanded, limit = 3) {
   if (!Array.isArray(pairs)) return [];
   return expanded ? pairs : pairs.slice(0, limit);
 }
-

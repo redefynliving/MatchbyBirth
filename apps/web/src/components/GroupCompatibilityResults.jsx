@@ -109,20 +109,20 @@ function GroupCompatibilityResults({ result }) {
             {result.bestPair.personA.name} + {result.bestPair.personB.name}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            The group&apos;s easiest natural rhythm at {result.bestPair.score}%.
+            Highest-scoring pair at {result.bestPair.score}%.
           </p>
         </article>
 
         <article className="rounded-2xl border border-border bg-card p-5">
           <Route className="h-5 w-5 text-primary" />
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Growth edge
+            Lowest-scoring pair
           </p>
           <h2 className="mt-1 text-lg font-semibold">
             {lowestPair.personA.name} + {lowestPair.personB.name}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            This connection may benefit from more patience and clarity.
+            This pair has more differences to work through.
           </p>
         </article>
       </div>

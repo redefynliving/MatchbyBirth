@@ -186,7 +186,8 @@ function ResultPage() {
     <>
       <Helmet>
         <title>{pageTitle}</title>
-        <meta name="description" content="A private Match by Birth compatibility result." />
+        <meta name="description" content="A shared Match by Birth compatibility result." />
+        <meta name="robots" content="noindex,nofollow,noarchive" />
         <meta property="og:title" content={pageTitle} />
         {canShare && (
           <meta

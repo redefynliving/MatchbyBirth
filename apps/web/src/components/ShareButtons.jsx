@@ -8,14 +8,14 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
   const shareUrl = resultUrl || window.location.href;
   
   const shareText = mode === 'group'
-    ? `Our group compatibility is ${groupVibeScore}%. Explore yours with Match by Birth.`
-    : `${p1} and ${p2} are ${score}% compatible. Explore yours with Match by Birth.`;
+    ? `Our group compatibility is ${groupVibeScore}%. Check your group at Match by Birth.`
+    : `${p1} and ${p2} are ${score}% compatible. Check your match at Match by Birth.`;
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
       trackEvent('result_shared', { mode, channel: 'copy' });
-      toast.success('Private result link copied.');
+      toast.success('Result link copied.');
     } catch {
       toast.error('The link could not be copied.');
     }
@@ -32,8 +32,11 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
     <div className="mx-auto mt-6 w-full max-w-lg rounded-2xl border border-border bg-card p-4">
       <div className="mb-3 flex items-center gap-2">
         <Share2 className="h-4 w-4 text-primary" />
-        <h2 className="text-sm font-semibold">Share privately</h2>
+        <h2 className="text-sm font-semibold">Share by link</h2>
       </div>
+      <p className="mb-3 text-xs leading-5 text-muted-foreground">
+        Anyone with the link can view this result.
+      </p>
       <div className="grid grid-cols-2 gap-3">
         <button
           type="button"
