@@ -106,13 +106,15 @@ function CompatibilityCalculator() {
             Start with two people or compare a full group.
           </p>
         </div>
-        <GroupModeToggle
-          mode={mode}
-          setMode={(nextMode) => {
-            setMode(nextMode);
-            setError('');
-          }}
-        />
+        <div className="flex justify-center sm:justify-end">
+          <GroupModeToggle
+            mode={mode}
+            setMode={(nextMode) => {
+              setMode(nextMode);
+              setError('');
+            }}
+          />
+        </div>
       </div>
 
       {mode === 'pair' ? (
