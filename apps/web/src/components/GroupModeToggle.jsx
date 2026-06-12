@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 function GroupModeToggle({ mode, setMode }) {
   return (
-    <div className="flex shrink-0 rounded-xl bg-muted p-1">
+    <div className="flex w-fit shrink-0 rounded-xl bg-muted p-1">
       <button
         type="button"
         onClick={() => setMode('pair')}

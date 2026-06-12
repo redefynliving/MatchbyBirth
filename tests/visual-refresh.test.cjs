@@ -97,6 +97,8 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
   assert.match(homePage, /See how you match by birth date\./);
   assert.match(homePage, /HomeResultPreview/);
   assert.match(homePreview, /Good compatibility/);
+  assert.match(homePreview, /aria-label="Example compatibility score: 82%"/);
+  assert.doesNotMatch(homePreview, /conic-gradient|inset_0_0_0/);
   assert.doesNotMatch(homePreview, />82% compatible</);
   assert.match(calculator, /Check your connection/);
   assert.match(calculator, /Private, with no signup required\./);
@@ -126,6 +128,43 @@ test('pair and group results progressively reveal detail instead of showing ever
   assert.match(shareButtons, /Share by link/);
   assert.match(shareButtons, /Anyone with the link can view this result/);
   assert.doesNotMatch(shareButtons, /private/i);
+});
+
+test('marketing subscription UI confirms delivery and requires an unsubscribe action', () => {
+  const app = fs.readFileSync(
+    path.join(root, 'apps/web/src/App.jsx'),
+    'utf8',
+  );
+  const emailCapture = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/EmailCaptureSection.jsx'),
+    'utf8',
+  );
+  const unsubscribePage = fs.readFileSync(
+    path.join(root, 'apps/web/src/pages/UnsubscribePage.jsx'),
+    'utf8',
+  );
+
+  assert.match(app, /path="\/unsubscribe"/);
+  assert.match(emailCapture, /welcomeEmailSent/);
+  assert.match(emailCapture, /A welcome email is on its way\./);
+  assert.match(emailCapture, /the welcome email could not be sent/);
+  assert.match(unsubscribePage, /Confirm unsubscribe/);
+  assert.match(unsubscribePage, /fetch\('\/api\/unsubscribe'/);
+  assert.match(unsubscribePage, /name="robots" content="noindex, nofollow"/);
+});
+
+test('mobile Pair and Group selector is compact and centered', () => {
+  const calculator = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CompatibilityCalculator.jsx'),
+    'utf8',
+  );
+  const modeToggle = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/GroupModeToggle.jsx'),
+    'utf8',
+  );
+
+  assert.match(calculator, /flex justify-center sm:justify-end/);
+  assert.match(modeToggle, /w-fit/);
 });
 
 test('report checkout explains its value while retaining payment and privacy assurances', () => {

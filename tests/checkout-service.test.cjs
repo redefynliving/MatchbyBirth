@@ -7,6 +7,7 @@ test('createCheckout controls price and keeps personal result data out of Stripe
   let purchaseRecord;
   let stripePayload;
   let purchaseUpdate;
+  let marketingSubscriber;
   const store = {
     findResultById: async () => ({
       id: 'result-id',
@@ -48,6 +49,9 @@ test('createCheckout controls price and keeps personal result data out of Stripe
       stripe,
       appUrl: 'https://matchbybirth.com',
       priceId: 'price_report',
+      subscribeMarketing: async (subscriber) => {
+        marketingSubscriber = subscriber;
+      },
     },
   );
 
@@ -64,6 +68,60 @@ test('createCheckout controls price and keeps personal result data out of Stripe
     id: 'purchase-id',
     values: { stripe_checkout_session_id: 'checkout-id' },
   });
+  assert.deepEqual(marketingSubscriber, {
+    email: 'buyer@example.com',
+    resultId: 'result-id',
+    consentSource: 'report_checkout',
+  });
+});
+
+test('createCheckout does not block payment when optional marketing subscription fails', async () => {
+  let attemptedSubscription = false;
+  let reportedError;
+  const store = {
+    findResultById: async () => ({
+      id: 'result-id',
+      share_slug: 'share-slug',
+      mode: 'pair',
+    }),
+    insertPurchase: async (record) => ({ ...record, id: 'purchase-id' }),
+    updatePurchase: async () => {},
+  };
+  const stripe = {
+    checkout: {
+      sessions: {
+        create: async () => ({
+          id: 'checkout-id',
+          url: 'https://checkout.stripe.test/session',
+        }),
+      },
+    },
+  };
+
+  const response = await createCheckout(
+    {
+      resultId: 'result-id',
+      email: 'buyer@example.com',
+      marketingConsent: true,
+    },
+    {
+      store,
+      stripe,
+      appUrl: 'https://matchbybirth.com',
+      priceId: 'price_report',
+      subscribeMarketing: async () => {
+        attemptedSubscription = true;
+        throw new Error('Welcome delivery failed');
+      },
+      onMarketingError: (error) => {
+        reportedError = error;
+      },
+    },
+  );
+
+  assert.equal(attemptedSubscription, true);
+  assert.equal(reportedError.message, 'Welcome delivery failed');
+  assert.equal(response.url, 'https://checkout.stripe.test/session');
 });
 
 test('createCheckout accepts a configured Stripe product ID', async () => {

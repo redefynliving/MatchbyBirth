@@ -34,6 +34,22 @@ function renderReportEmail(report, reportUrl) {
   `;
 }
 
+function renderWelcomeEmail(unsubscribeUrl) {
+  return `
+    <div style="background:#f8f4ee;padding:40px 16px;">
+      <div style="max-width:600px;margin:0 auto;background:#fffdf9;border:1px solid #e8e0d6;border-radius:20px;padding:40px;">
+        <p style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-align:center;color:#756b82;margin:0 0 24px;">Match by Birth</p>
+        <h1 style="font-family:Georgia,serif;font-size:34px;font-weight:500;text-align:center;color:#26212b;margin:0 0 16px;">You are on the list</h1>
+        <p style="font-family:Georgia,serif;font-size:17px;line-height:1.75;color:#4d4653;margin:0 0 24px;">We will send occasional compatibility insights, thoughtful relationship prompts, and product updates. No account is required.</p>
+        <div style="text-align:center;margin-top:32px;">
+          <a href="https://matchbybirth.com" style="display:inline-block;background:#6d4ca0;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-weight:600;padding:14px 22px;border-radius:10px;">Explore Match by Birth</a>
+        </div>
+        <p style="font-family:Arial,sans-serif;font-size:11px;line-height:1.6;text-align:center;color:#8b8390;margin:28px 0 0;">You opted in to occasional Match by Birth updates. <a href="${escapeHtml(unsubscribeUrl)}" style="color:#6d4ca0;">Unsubscribe</a> at any time.</p>
+      </div>
+    </div>
+  `;
+}
+
 async function sendReportEmail(input, options = {}) {
   const apiKey = options.apiKey ?? process.env.RESEND_API_KEY;
   const fetchImpl = options.fetchImpl || fetch;
@@ -61,8 +77,37 @@ async function sendReportEmail(input, options = {}) {
   return response.json();
 }
 
+async function sendWelcomeEmail(input, options = {}) {
+  const apiKey = options.apiKey ?? process.env.RESEND_API_KEY;
+  const fetchImpl = options.fetchImpl || fetch;
+  if (!apiKey) throw new Error('Email service is not configured.');
+
+  const response = await fetchImpl('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'Idempotency-Key': input.idempotencyKey,
+    },
+    body: JSON.stringify({
+      from: 'Match by Birth <support@matchbybirth.com>',
+      to: [input.to],
+      subject: 'Welcome to Match by Birth',
+      html: renderWelcomeEmail(input.unsubscribeUrl),
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Email provider failed with status ${response.status}.`);
+  }
+
+  return response.json();
+}
+
 module.exports = {
   escapeHtml,
   renderReportEmail,
+  renderWelcomeEmail,
   sendReportEmail,
+  sendWelcomeEmail,
 };

@@ -13,8 +13,12 @@ function HomeResultPreview() {
       </p>
 
       <div className="mt-6 flex items-center gap-4">
-        <div className="grid h-20 w-20 shrink-0 place-items-center rounded-full bg-[conic-gradient(hsl(var(--primary))_0_82%,rgba(255,255,255,0.65)_82%)] shadow-[inset_0_0_0_9px_rgba(255,255,255,0.82)]">
-          <span className="text-2xl font-semibold tracking-tight text-foreground">82%</span>
+        <div
+          aria-label="Example compatibility score: 82%"
+          className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-primary/20 bg-primary/10 shadow-sm"
+          role="img"
+        >
+          <span className="text-2xl font-semibold tracking-tight text-primary">82%</span>
         </div>
         <div>
           <h3 className="text-lg font-semibold">Good compatibility</h3>
