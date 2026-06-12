@@ -4,6 +4,7 @@ import { trackEvent } from '@/lib/analytics.js';
 function EmailCaptureSection({ resultId }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
+  const [welcomeEmailSent, setWelcomeEmailSent] = useState(false);
   const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
@@ -24,6 +25,7 @@ function EmailCaptureSection({ resultId }) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || 'Unable to subscribe.');
+      setWelcomeEmailSent(data.welcomeEmailSent === true);
       setStatus('success');
       trackEvent('email_subscribed', { source: 'result_updates' });
     } catch (subscriptionError) {
@@ -41,7 +43,11 @@ function EmailCaptureSection({ resultId }) {
         </p>
 
         {status === 'success' ? (
-          <p className="font-medium text-foreground">You’re subscribed. Check your inbox for future updates.</p>
+          <p className="font-medium text-foreground">
+            {welcomeEmailSent
+              ? "You're subscribed. A welcome email is on its way."
+              : "You're subscribed, but the welcome email could not be sent. Future updates will still go to this address."}
+          </p>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <input

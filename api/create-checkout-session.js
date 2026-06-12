@@ -2,6 +2,8 @@
 
 const Stripe = require('stripe');
 const store = require('./lib/supabase-store.cjs');
+const { sendWelcomeEmail } = require('./lib/email-service.cjs');
+const { subscribeEmail } = require('./lib/subscription-service.cjs');
 const {
   CheckoutError,
   createCheckout,
@@ -29,6 +31,22 @@ module.exports = async (req, res) => {
       stripe,
       appUrl: process.env.APP_URL,
       priceId: process.env.STRIPE_PRICE_ID,
+      subscribeMarketing: (input) => subscribeEmail(input, {
+        appUrl: process.env.APP_URL,
+        tokenSecret: process.env.REPORT_TOKEN_SECRET,
+        store,
+        sendWelcomeEmail,
+        onEmailError: (emailError) => {
+          console.error('checkout welcome email failed', {
+            message: emailError.message,
+          });
+        },
+      }),
+      onMarketingError: (marketingError) => {
+        console.error('checkout marketing opt-in failed', {
+          message: marketingError.message,
+        });
+      },
     });
     return res.status(200).json({ ok: true, ...response });
   } catch (error) {

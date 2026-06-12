@@ -26,7 +26,14 @@ function normalizeEmail(value) {
 }
 
 async function createCheckout(input, dependencies) {
-  const { store, stripe, appUrl, priceId } = dependencies;
+  const {
+    store,
+    stripe,
+    appUrl,
+    priceId,
+    subscribeMarketing,
+    onMarketingError = () => {},
+  } = dependencies;
   if (!appUrl || !priceId) {
     throw new CheckoutError('Checkout is not configured.', 500);
   }
@@ -49,16 +56,7 @@ async function createCheckout(input, dependencies) {
     status: 'checkout_created',
   });
 
-  if (input?.marketingConsent === true) {
-    await store.upsertSubscriber({
-      email,
-      result_id: result.id,
-      consent_source: 'report_checkout',
-      consented_at: new Date().toISOString(),
-      unsubscribed_at: null,
-    });
-  }
-
+  let session;
   try {
     const lineItems = priceId.startsWith('prod_')
       ? [{
@@ -71,7 +69,7 @@ async function createCheckout(input, dependencies) {
       }]
       : [{ price: priceId, quantity: 1 }];
 
-    const session = await stripe.checkout.sessions.create({
+    session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
@@ -93,12 +91,6 @@ async function createCheckout(input, dependencies) {
     await store.updatePurchase(purchase.id, {
       stripe_checkout_session_id: session.id,
     });
-
-    return {
-      purchaseId: purchase.id,
-      sessionId: session.id,
-      url: session.url,
-    };
   } catch (error) {
     await store.updatePurchase(purchase.id, {
       last_error: 'Stripe checkout session creation failed.',
@@ -106,6 +98,24 @@ async function createCheckout(input, dependencies) {
     });
     throw error;
   }
+
+  if (input?.marketingConsent === true && subscribeMarketing) {
+    try {
+      await subscribeMarketing({
+        email,
+        resultId: result.id,
+        consentSource: 'report_checkout',
+      });
+    } catch (error) {
+      onMarketingError(error);
+    }
+  }
+
+  return {
+    purchaseId: purchase.id,
+    sessionId: session.id,
+    url: session.url,
+  };
 }
 
 module.exports = {

@@ -114,6 +114,16 @@ async function upsertSubscriber(record) {
   return rows[0] || null;
 }
 
+async function updateSubscriberByEmail(email, values) {
+  const query = new URLSearchParams({ email: `eq.${email}` });
+  const rows = await request(`email_subscribers?${query.toString()}`, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=representation' },
+    body: JSON.stringify(values),
+  });
+  return rows[0] || null;
+}
+
 async function findPurchaseWithResult(purchaseId) {
   const query = new URLSearchParams({
     select: '*,result:results(id,result_payload)',
@@ -239,5 +249,6 @@ module.exports = {
   updateReport,
   updateResult,
   updatePurchase,
+  updateSubscriberByEmail,
   upsertSubscriber,
 };
