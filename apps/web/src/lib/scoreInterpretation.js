@@ -2,48 +2,46 @@
 export function getScoreInterpretation(score, relationshipType = 'love') {
   const safeScore = typeof score === 'number' ? score : 0;
   const type = relationshipType?.toLowerCase() || 'love';
-  
-  // Normalize relationship type to match the three categories
+
   let category = 'between';
   if (type === 'love' || type === 'romantic') category = 'love';
   if (type === 'friendship' || type === 'friend') category = 'friendship';
 
   if (safeScore >= 80) {
     if (category === 'love') {
-      return { label: "High Romantic Harmony", explanation: "This is an exceptionally harmonious romantic match." };
+      return { label: 'Very compatible', explanation: 'Several parts of this romantic match may feel easy.' };
     }
     if (category === 'friendship') {
-      return { label: "High Friendship Harmony", explanation: "You're naturally aligned as friends with effortless compatibility." };
+      return { label: 'Very compatible', explanation: 'You share several qualities that may make friendship feel easy.' };
     }
-    return { label: "Powerful Natural Connection", explanation: "You have rare and exceptional natural alignment." };
-  } 
-  
+    return { label: 'Very compatible', explanation: 'You share several qualities that may make this connection feel easy.' };
+  }
+
   if (safeScore >= 60) {
     if (category === 'love') {
-      return { label: "Strong Romantic Potential", explanation: "This is a promising romantic connection with natural chemistry." };
+      return { label: 'Good compatibility', explanation: 'This romantic match has several strengths and a few differences.' };
     }
     if (category === 'friendship') {
-      return { label: "Strong Friendship Match", explanation: "You have the foundation for a strong and lasting friendship." };
+      return { label: 'Good compatibility', explanation: 'This friendship has several strengths and a few differences.' };
     }
-    return { label: "Meaningful Connection", explanation: "You share genuine compatibility and natural understanding." };
+    return { label: 'Good compatibility', explanation: 'This connection has several strengths and a few differences.' };
   }
 
   if (safeScore >= 40) {
     if (category === 'love') {
-      return { label: "Mixed Romantic Match", explanation: "There's potential here, but it will take effort and understanding." };
+      return { label: 'Mixed compatibility', explanation: 'Some parts of this romantic match may click while others take more effort.' };
     }
     if (category === 'friendship') {
-      return { label: "Developing Friendship Match", explanation: "You could develop a solid friendship with some mutual effort." };
+      return { label: 'Mixed compatibility', explanation: 'Some parts of this friendship may click while others take more effort.' };
     }
-    return { label: "Potential Connection", explanation: "With intention and openness, this could grow into something meaningful." };
+    return { label: 'Mixed compatibility', explanation: 'Some parts of this connection may click while others take more effort.' };
   }
 
-  // 0 - 39
   if (category === 'love') {
-    return { label: "Challenging Match", explanation: "This pairing may require significant effort and understanding to work." };
+    return { label: 'More differences than similarities', explanation: 'This romantic match may require patience and clearer communication.' };
   }
   if (category === 'friendship') {
-    return { label: "Uneven Friendship Fit", explanation: "Building a strong friendship here would take intentional work." };
+    return { label: 'More differences than similarities', explanation: 'This friendship may require patience and clearer communication.' };
   }
-  return { label: "Unclear Connection", explanation: "This connection may need time and intention to develop." };
+  return { label: 'More differences than similarities', explanation: 'This connection may require patience and clearer communication.' };
 }

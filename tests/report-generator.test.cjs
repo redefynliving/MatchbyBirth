@@ -40,6 +40,10 @@ test('generateStructuredReport returns a complete fallback without an AI key', a
     'avoid',
   ]);
   assert.equal(JSON.stringify(report).includes('birthDate'), false);
+  assert.doesNotMatch(
+    JSON.stringify(report),
+    /benefit from intention|emotional safety|growth potential|strongest version of this connection/i,
+  );
 });
 
 test('generateStructuredReport parses a strict JSON model response', async () => {
@@ -65,5 +69,35 @@ test('generateStructuredReport parses a strict JSON model response', async () =>
 
   assert.equal(report.overview, 'Generated overview');
   assert.equal(report.model, 'claude-haiku-4-5-20251001');
-  assert.equal(report.promptVersion, 'structured-v1');
+  assert.equal(report.promptVersion, 'structured-v2');
+});
+
+test('generateStructuredReport asks the model for plain and qualified language', async () => {
+  let requestBody;
+  const generated = {
+    title: 'Alex & Jordan',
+    overview: 'Generated overview',
+    sections: Array.from({ length: 9 }, (_, index) => ({
+      key: `section-${index}`,
+      title: `Section ${index}`,
+      body: `Body ${index}`,
+    })),
+    closing: 'Generated closing',
+  };
+  const fakeFetch = async (_url, request) => {
+    requestBody = JSON.parse(request.body);
+    return {
+      ok: true,
+      json: async () => ({ content: [{ text: JSON.stringify(generated) }] }),
+    };
+  };
+
+  await generateStructuredReport(result, {
+    apiKey: 'test-key',
+    fetchImpl: fakeFetch,
+  });
+
+  assert.match(requestBody.system, /plain, specific language/i);
+  assert.match(requestBody.system, /avoid certainty/i);
+  assert.match(requestBody.system, /growth edge/i);
 });

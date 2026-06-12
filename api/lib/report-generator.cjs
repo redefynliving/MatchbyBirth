@@ -1,7 +1,7 @@
 'use strict';
 
 const MODEL = 'claude-haiku-4-5-20251001';
-const PROMPT_VERSION = 'structured-v1';
+const PROMPT_VERSION = 'structured-v2';
 
 function fallbackReport(result) {
   const [first, second] = result.people;
@@ -20,55 +20,55 @@ function fallbackReport(result) {
 
   return {
     title: `${first.name} & ${second.name}`,
-    overview: `${first.name} and ${second.name} share a ${score}% compatibility score. Their ${first.element} and ${second.element} styles create a ${relationship} with clear natural strengths and a few areas that benefit from intention.`,
+    overview: `${first.name} and ${second.name} share a ${score}% compatibility score. Their ${first.element} and ${second.element} signs point to several strengths and some differences in this ${relationship}.`,
     sections: [
       {
         key: 'strengths',
-        title: 'Natural Strengths',
-        body: `The clearest strength is ${stronger}. ${first.name}'s ${first.sign} directness and ${second.name}'s ${second.sign} perspective can help this connection feel active, responsive, and mutually encouraging.`,
+        title: 'Where You Connect',
+        body: `${stronger} is the highest-scoring part of this result. ${first.name}'s ${first.sign} style and ${second.name}'s ${second.sign} style may make this area easier for them.`,
       },
       {
         key: 'friction',
-        title: 'Likely Friction',
-        body: `${gentler} may need the most care. Differences are more useful when they are named early instead of treated as proof that one person is right and the other is wrong.`,
+        title: 'Where You May Clash',
+        body: `${gentler} is the lowest-scoring part of this result. This difference may cause confusion when each person expects the other to respond the same way.`,
       },
       {
         key: 'communication',
         title: 'Communication',
-        body: `Short, direct conversations will serve this pair better than assumptions. Reflecting back what was heard before responding can prevent small differences in style from becoming larger misunderstandings.`,
+        body: `Short, direct conversations may work better than assumptions for this pair. Repeating back the main point before responding can help prevent misunderstandings.`,
       },
       {
         key: 'emotional_dynamic',
-        title: 'Emotional Dynamic',
-        body: `This pair may process feelings at different speeds. Giving each other room to respond honestly, without forcing immediate agreement, can create more emotional safety.`,
+        title: 'Emotional Style',
+        body: `This pair may respond to feelings at different speeds. Allowing time before expecting an answer may make difficult conversations easier.`,
       },
       {
         key: 'stability',
         title: 'Stability',
-        body: `Consistency matters more than intensity here. Reliable follow-through, simple rituals, and clear expectations will make the connection feel steadier over time.`,
+        body: `Clear expectations and reliable follow-through may make this connection easier to manage. Small promises matter more when both people keep them.`,
       },
       {
         key: 'growth',
-        title: 'Growth Potential',
-        body: `Each person can expand the other's usual point of view. The best growth comes from curiosity: ask what the other person's approach protects or makes possible before trying to change it.`,
+        title: 'What You Can Learn From Each Other',
+        body: `Each person may notice options the other overlooks. Asking why the other person prefers a different approach can make those differences more useful.`,
       },
       {
         key: 'practical_advice',
-        title: 'Practical Advice',
-        body: `Choose one recurring check-in, keep expectations specific, and address tension while it is still small. Shared plans work best when both people can see where they have flexibility and where they need dependability.`,
+        title: 'What May Help',
+        body: `Keep requests specific and discuss problems before they build up. Shared plans are easier when both people know what is flexible and what is not.`,
       },
       {
         key: 'do',
-        title: 'Do More Of',
-        body: `Name appreciation out loud, make requests directly, and create space for both spontaneity and structure. Notice successful moments and repeat what made them work.`,
+        title: 'Try More Of',
+        body: `Say what you appreciate, make requests directly, and notice which conversations go well. Repeat the habits that make those moments easier.`,
       },
       {
         key: 'avoid',
-        title: 'Avoid',
-        body: `Avoid mind-reading, scorekeeping, and using personality differences as fixed labels. A compatibility score is most helpful as a prompt for conversation, not a verdict.`,
+        title: 'Watch For',
+        body: `Watch for assumptions, scorekeeping, and treating personality differences as permanent facts. Use the score as a conversation starter, not a verdict.`,
       },
     ],
-    closing: `The strongest version of this connection is built through attention, honesty, and repeated choices. The score describes a pattern; ${first.name} and ${second.name} still decide what they create from it.`,
+    closing: `This score describes patterns based on the information provided. ${first.name} and ${second.name}'s choices and communication matter more than any compatibility score.`,
     model: 'fallback-v1',
     promptVersion: PROMPT_VERSION,
   };
@@ -122,9 +122,10 @@ async function generateStructuredReport(result, options = {}) {
       model: MODEL,
       max_tokens: 2600,
       system: [
-        'Write a premium, grounded relationship compatibility report.',
+        'Write a grounded relationship compatibility report in plain, specific language and short sentences.',
         'Return valid JSON only. Do not use markdown or emojis.',
-        'Treat astrology as reflective entertainment, never certainty or professional advice.',
+        'Treat astrology as reflective entertainment. Avoid certainty, predictions, diagnosis, or professional advice.',
+        'Avoid vague therapy or AI-style phrases, including natural alignment, natural rhythm, growth edge, intention, emotional safety, meaningful connection, and go deeper.',
         'Use the supplied sanitized signs and scores only. Do not invent birth dates or chart placements.',
       ].join(' '),
       messages: [{

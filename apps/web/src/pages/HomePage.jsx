@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import {
+  FileHeart,
+  LockKeyhole,
+  Share2,
+  Users,
+  Zap,
+} from 'lucide-react';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
+import HomeResultPreview from '@/components/HomeResultPreview.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
-  scrollToCalculator,
   scrollToCalculatorFromHash,
 } from '@/lib/scroll-to-calculator.js';
 
@@ -15,168 +23,132 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Match by Birth | The connection behind every relationship.</title>
-        <meta name="description" content="Match by Birth: discover your connection with our free birth date compatibility tool. No signup—just enter two birth dates and get your match." />
-        <meta property="og:title" content="Match by Birth - The connection behind every relationship." />
-        <meta property="og:description" content="Discover your astrological compatibility instantly with Match by Birth. No signup needed—enter two birth dates and check your match." />
+        <title>Birth Date Compatibility Calculator | Match by Birth</title>
+        <meta name="description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored." />
+        <meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth" />
+        <meta property="og:description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
-        <meta property="og:url" content={window.location.origin} />
+        <meta property="og:url" content={`${window.location.origin}/`} />
+        <link rel="canonical" href={`${window.location.origin}/`} />
       </Helmet>
 
       <main className="flex-1 bg-background">
-        <section className="relative py-16 md:py-24 overflow-hidden">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[620px] h-[620px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+        <section className="brand-hero relative overflow-hidden py-14 md:py-20">
           <div className="content-container relative z-10">
-            <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-              <p className="text-xs uppercase tracking-[0.2em] font-semibold text-primary mb-5">
-                The connection behind every relationship
+            <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Free birth date compatibility calculator
               </p>
-              <h1 className="text-4xl md:text-6xl font-semibold text-foreground mb-5 leading-[1.05] max-w-2xl mx-auto">
-                See how your connection naturally fits.
+              <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.045em] text-foreground md:text-6xl">
+                See how you match by birth date.
               </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto">
-                Compare two people or a full friend group and get a clear compatibility reading in seconds.
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                Compare two people or a group. Get a compatibility score and a clear breakdown in seconds.
               </p>
-              <div className="mt-7">
-                <button onClick={() => scrollToCalculator()} className="btn-primary inline-block px-7 py-3.5 rounded-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
-                  Check Compatibility
-                </button>
-              </div>
-              <div className="mt-4 text-sm text-muted-foreground">
-                No signup. Birth dates are not stored. Groups support 3–7 people.
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5">
+                  <Zap className="h-3.5 w-3.5 text-primary" />
+                  Results in seconds
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <LockKeyhole className="h-3.5 w-3.5 text-primary" />
+                  Birth dates not stored
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Users className="h-3.5 w-3.5 text-primary" />
+                  Pair or group
+                </span>
               </div>
             </div>
 
-            <CompatibilityCalculator />
+            <div className="mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-primary/15 bg-card shadow-[0_24px_65px_rgba(55,43,65,0.14)] lg:grid-cols-[1.25fr_0.75fr]">
+              <CompatibilityCalculator />
+              <HomeResultPreview />
+            </div>
 
-            <div className="mt-9 max-w-3xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border border border-border rounded-2xl overflow-hidden">
-                {[
-                  ['01', 'Add names and birth dates'],
-                  ['02', 'We compare every connection'],
-                  ['03', 'See and privately share the result'],
-                ].map(([number, text]) => (
-                  <div key={number} className="bg-card px-6 py-5 text-center">
-                    <span className="text-xs font-semibold text-primary tracking-[0.16em]">{number}</span>
-                    <p className="font-medium text-foreground mt-2">{text}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="mx-auto mt-5 flex max-w-4xl flex-wrap items-center justify-center gap-x-7 gap-y-2 text-xs font-medium text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Users className="h-3.5 w-3.5 text-primary" />
+                Groups of 3–7
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Share2 className="h-3.5 w-3.5 text-primary" />
+                Share by link
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <FileHeart className="h-3.5 w-3.5 text-primary" />
+                Optional detailed report
+              </span>
             </div>
           </div>
         </section>
 
-        {/* Result preview removed from homepage; Email capture moved to result page */}
-        {/* 3. Explanatory Content Section */}
-        <section className="section-spacing bg-card border-y border-border">
+        <section className="section-spacing border-y border-border bg-card">
           <div className="content-container">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-              
-              <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">Quick Compatibility Check</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Our birthdate compatibility test analyzes the core astrological elements of two individuals. Whether you're looking for love compatibility by birthdate or assessing a new connection, this relationship compatibility calculator provides personalized insights into how your energies interact.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">Free No-Signup Compatibility</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  Astrological compatibility goes beyond just sun signs. The interaction between different elements shapes how you communicate and express emotion. Our free compatibility test synthesizes these factors into an easy-to-understand reading, giving you a comprehensive match by birth.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">Understanding Your Compatibility Score</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  A high compatibility score indicates natural harmony, while a lower score suggests areas where conscious effort is needed. Because this is a birth date compatibility check, contrasting signs often provide the greatest opportunities for dynamic balance and personal growth.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">Why Birth Dates Are Enough</h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  While a full natal chart uses exact times, this compatibility calculator uses birth dates to provide a highly accurate foundation for relationship dynamics. Discover your match by birth date quickly, securely, and completely free.
-                </p>
-              </div>
-
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Clear and easy to scan</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+                What your result includes
+              </h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                See the overall score, where you connect, and which differences may take more effort.
+              </p>
+            </div>
+            <div className="mt-9 grid gap-4 md:grid-cols-3">
+              {[
+                ['01', 'Your compatibility score', 'See the overall match at a glance.'],
+                ['02', 'Where you connect', 'See what tends to work well between you.'],
+                ['03', 'Where you differ', 'See which areas may take more effort.'],
+              ].map(([number, title, description]) => (
+                <article key={number} className="rounded-2xl border border-border bg-background/70 p-6">
+                  <span className="text-xs font-semibold tracking-[0.16em] text-primary">{number}</span>
+                  <h3 className="mt-3 text-lg font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 4. Comprehensive FAQ Section */}
         <section className="section-spacing bg-background">
           <div className="content-container max-w-3xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
-              <p className="text-muted-foreground">Everything you need to know about astrological compatibility.</p>
+            <div className="mb-9 text-center">
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">A few quick answers</h2>
             </div>
 
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion type="single" collapsible className="w-full space-y-3">
               <AccordionItem value="item-1" className="bg-card border border-border rounded-xl px-6">
                 <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  How accurate is this compatibility calculator?
+                  Do I need an exact birth time?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  Our calculator uses established astrological principles based on sun signs and elemental interactions. While it provides highly accurate insights into natural tendencies and archetypal dynamics, real-world relationships always depend on mutual effort, communication, and personal choices.
+                  No. Match by Birth uses calendar birth dates for a quick compatibility reading.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="bg-card border border-border rounded-xl px-6">
                 <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  Do I need my exact birth time?
+                  Are birth dates stored?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  No, this specific birth date compatibility calculator only requires birth dates to determine sun signs and core elemental compatibility. Exact birth times aren't necessary for this foundational compatibility test.
+                  Birth dates are processed for the calculation and are not stored or included in share links.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="bg-card border border-border rounded-xl px-6">
                 <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  What does the compatibility score mean?
+                  Can I compare a group?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  The compatibility score (out of 100) represents the natural ease and harmony between your astrological signs. Scores above 75 indicate strong natural alignment, 50-74 suggest a balanced dynamic requiring some effort, and below 50 indicates contrasting energies that offer high growth potential.
+                  Yes. Group mode compares 3–7 people and ranks every unique pair within the group.
                 </AccordionContent>
               </AccordionItem>
-
-              <AccordionItem value="item-4" className="bg-card border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  How is my privacy handled?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  We do not sell your data. Email is used only to deliver your mini-report and occasional account-related messages if you opt in. You can request deletion by contacting support.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-5" className="bg-card border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  How are zodiac signs calculated from birth dates?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  Zodiac sun signs are determined by the birth date falling within standardized sign date ranges. We map dates to sun signs using established western astrology boundaries.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-6" className="bg-card border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  What's the difference between sun sign and a full birth chart?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  The sun sign is one piece of a full natal chart. A full chart uses exact birth time and place to calculate planetary positions, ascendants, and houses. This tool focuses on birth dates for quick compatibility insights.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-7" className="bg-card border border-border rounded-xl px-6">
-                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  Can I check compatibility for groups?
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  Yes — use Group mode in the calculator to add multiple people and see group compatibility summaries.
-                </AccordionContent>
-              </AccordionItem>
-
             </Accordion>
+            <div className="mt-6 text-center">
+              <Link to="/faq" className="text-sm font-semibold text-primary hover:underline">
+                Read all frequently asked questions
+              </Link>
+            </div>
           </div>
         </section>
       </main>

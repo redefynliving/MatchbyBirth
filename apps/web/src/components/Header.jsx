@@ -10,18 +10,17 @@ function Header() {
   const location = useLocation();
 
   const navLinks = [
-    { path: '/', label: 'Home' },
+    { path: '/how-it-works', label: 'How It Works' },
     { path: '/faq', label: 'FAQ' },
     { path: '/blog', label: 'Blog' },
-    { path: '/contact', label: 'Contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-[4.5rem] items-center justify-between">
           <Link to="/" className="flex items-center gap-2 text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors">
             <Sparkles className="w-6 h-6 text-primary" />
             Match by Birth
@@ -46,7 +45,7 @@ function Header() {
                   window.location.assign('/#calculator');
                 }
               }}
-              className="ml-4 btn-primary text-sm">
+              className="btn-primary ml-2 rounded-xl px-5 py-2.5 text-sm">
               Try It Free
             </button>
           </nav>
@@ -81,6 +80,18 @@ function Header() {
                     {link.label}
                   </Link>
                 ))}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (!scrollToCalculator()) {
+                      window.location.assign('/#calculator');
+                    }
+                  }}
+                  className="btn-primary mt-2 h-12 rounded-xl"
+                >
+                  Try It Free
+                </button>
               </nav>
             </SheetContent>
           </Sheet>

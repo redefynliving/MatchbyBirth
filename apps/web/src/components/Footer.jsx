@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
+import { Mail, Sparkles } from 'lucide-react';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,23 +17,12 @@ function Footer() {
               Match by Birth
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">
-              Discover your cosmic connections. Our astrological compatibility calculator helps you understand the dynamics of your relationships through the stars.
+              Clear, private compatibility readings for romantic, friendship, family, work, and group connections.
             </p>
             <div className="flex flex-col space-y-2 pt-2">
               <a href="mailto:support@matchbybirth.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
                 <span>support@matchbybirth.com</span>
-              </a>
-            </div>
-            <div className="flex items-center gap-4 pt-2">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
-                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>

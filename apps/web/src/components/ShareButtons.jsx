@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Copy, Twitter } from 'lucide-react';
+import { Copy, Share2, Twitter } from 'lucide-react';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 
@@ -8,14 +8,14 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
   const shareUrl = resultUrl || window.location.href;
   
   const shareText = mode === 'group'
-    ? `Our friend group is ${groupVibeScore}% compatible 👀 check yours ➜`
-    : `${p1} & ${p2} are ${score}% compatible 👀 check yours ➜`;
+    ? `Our group compatibility is ${groupVibeScore}%. Check your group at Match by Birth.`
+    : `${p1} and ${p2} are ${score}% compatible. Check your match at Match by Birth.`;
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
       trackEvent('result_shared', { mode, channel: 'copy' });
-      toast.success('Private result link copied.');
+      toast.success('Result link copied.');
     } catch {
       toast.error('The link could not be copied.');
     }
@@ -29,23 +29,31 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
   };
 
   return (
-    <div className="mt-8 space-y-4 w-full max-w-md mx-auto">
-      <h4 className="text-sm font-semibold text-center text-muted-foreground uppercase tracking-wider">Share Private Result</h4>
-      <div className="grid grid-cols-2 gap-4">
+    <div className="mx-auto mt-6 w-full max-w-lg rounded-2xl border border-border bg-card p-4">
+      <div className="mb-3 flex items-center gap-2">
+        <Share2 className="h-4 w-4 text-primary" />
+        <h2 className="text-sm font-semibold">Share by link</h2>
+      </div>
+      <p className="mb-3 text-xs leading-5 text-muted-foreground">
+        Anyone with the link can view this result.
+      </p>
+      <div className="grid grid-cols-2 gap-3">
         <button
+          type="button"
           onClick={handleCopy}
-          className="flex items-center justify-center gap-2 p-4 rounded-xl bg-card border border-border hover:bg-muted transition-colors shadow-sm"
+          className="flex h-11 items-center justify-center gap-2 rounded-xl border border-border bg-background text-sm font-semibold transition-colors hover:bg-muted"
         >
-          <Copy className="w-5 h-5 text-foreground" />
-          <span className="font-medium text-foreground">Copy Link</span>
+          <Copy className="h-4 w-4 text-primary" />
+          <span>Copy link</span>
         </button>
         
         <button
+          type="button"
           onClick={handleTwitterShare}
-          className="flex items-center justify-center gap-2 p-4 rounded-xl bg-black text-white hover:bg-black/80 transition-colors shadow-sm"
+          className="flex h-11 items-center justify-center gap-2 rounded-xl bg-foreground text-sm font-semibold text-background transition-colors hover:bg-foreground/85"
         >
-          <Twitter className="w-5 h-5" />
-          <span className="font-medium">Share to X</span>
+          <Twitter className="h-4 w-4" />
+          <span>Share to X</span>
         </button>
       </div>
     </div>

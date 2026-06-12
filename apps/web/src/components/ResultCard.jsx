@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { Download } from 'lucide-react';
+import {
+  Compass,
+  Download,
+  FileHeart,
+  HeartHandshake,
+  MessageCircle,
+} from 'lucide-react';
 import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
+import { buildPairHighlights } from '@/lib/result-presentation.js';
 
-const BREAKDOWN_LABELS = {
-  chemistry: 'Chemistry',
-  communication: 'Communication',
-  stability: 'Stability',
-  growth: 'Growth',
-  intuition: 'Intuition',
+const HIGHLIGHT_ICONS = {
+  communication: MessageCircle,
+  'emotional-style': HeartHandshake,
+  differences: Compass,
+};
+
+const RELATIONSHIP_LABELS = {
+  love: 'Romantic',
+  friendship: 'Friendship',
+  work: 'Work',
 };
 
 function ResultCard({
@@ -24,6 +35,8 @@ function ResultCard({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInProgress, setDownloadInProgress] = useState(false);
+  const highlights = buildPairHighlights(breakdown);
+  const names = people.map((person) => person.name);
 
   const downloadResult = async () => {
     try {
@@ -49,75 +62,97 @@ function ResultCard({
 
   return (
     <>
-      <article id="result-card" className="bg-card border border-border rounded-3xl shadow-lg w-full max-w-2xl mx-auto overflow-hidden animate-scale-up">
-        <header className="text-center px-6 py-10 md:px-10 md:py-12 border-b border-border">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-5">
-            {relationshipType} compatibility
-          </p>
-          <div className="flex items-start justify-center gap-5 md:gap-10 mb-7">
-            {people.map((person) => (
-              <div key={person.id} className="min-w-0">
-                <h1 className="text-xl md:text-2xl font-semibold truncate">{person.name}</h1>
-                <p className="text-sm text-muted-foreground mt-1">{person.sign}</p>
+      <article
+        id="result-card"
+        className="animate-scale-up mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-border bg-card shadow-[0_22px_60px_rgba(55,43,65,0.12)]"
+      >
+        <header className="grid gap-6 p-5 sm:p-7 md:grid-cols-[12rem_minmax(0,1fr)] md:items-center md:p-8">
+          <div className="grid min-h-44 place-items-center rounded-2xl bg-[linear-gradient(145deg,hsl(var(--secondary)),hsl(335_45%_94%))] text-center">
+            <div>
+              <div className="text-6xl font-semibold tracking-[-0.06em] text-foreground">
+                {score}%
               </div>
-            ))}
+              <p className="mt-2 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-primary">
+                {matchLabel}
+              </p>
+            </div>
           </div>
-          <div className="text-7xl md:text-8xl font-semibold tracking-tight text-foreground">
-            {score}%
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              {names.join(' + ')} · {RELATIONSHIP_LABELS[relationshipType] || relationshipType}
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.035em] md:text-4xl">
+              Your compatibility result
+            </h1>
+            <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+              {explanation}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {people.map((person) => (
+                <span
+                  key={person.id}
+                  className="rounded-full border border-border bg-muted/40 px-3 py-1.5 text-xs font-medium text-muted-foreground"
+                >
+                  {person.name} · {person.sign}
+                </span>
+              ))}
+            </div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-semibold mt-5">{matchLabel}</h2>
-          <p className="text-muted-foreground mt-3 max-w-lg mx-auto">{explanation}</p>
         </header>
 
-        <section className="px-6 py-8 md:px-10">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-muted-foreground mb-6">
-            Compatibility Breakdown
-          </h3>
-          <div className="space-y-5">
-            {Object.entries(BREAKDOWN_LABELS).map(([key, label]) => (
-              <div key={key}>
-                <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="font-medium">{label}</span>
-                  <span className="text-muted-foreground">{breakdown[key]}%</span>
-                </div>
-                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-primary rounded-full"
-                    style={{ width: `${breakdown[key]}%` }}
-                  />
-                </div>
+        <section className="border-t border-border">
+          {highlights.map((highlight) => {
+            const Icon = HIGHLIGHT_ICONS[highlight.key];
+            return (
+              <div
+                key={highlight.key}
+                className="grid gap-3 border-b border-border px-5 py-4 last:border-b-0 sm:grid-cols-[2.5rem_10rem_minmax(0,1fr)_3rem] sm:items-center sm:px-7"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-secondary text-primary">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <h2 className="text-sm font-semibold">{highlight.label}</h2>
+                <p className="text-sm leading-6 text-muted-foreground">{highlight.summary}</p>
+                <span className="text-right text-sm font-semibold text-primary">{highlight.score}</span>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </section>
 
-        <footer className="px-6 pb-8 md:px-10 md:pb-10">
-          <div className="bg-primary/10 border border-primary/20 rounded-2xl p-5 mb-4">
-            <p className="font-semibold">Go beyond the score</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Get a private, detailed report with strengths, friction points, communication guidance, and practical next steps.
-            </p>
+        <footer className="border-t border-border p-5 sm:p-7">
+          <div className="flex flex-col gap-5 rounded-2xl border border-primary/15 bg-[linear-gradient(110deg,hsl(var(--secondary)),hsl(335_45%_95%)_70%,hsl(var(--card)))] p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="flex items-center gap-2 font-semibold">
+                <FileHeart className="h-4 w-4 text-primary" />
+                Want a more detailed breakdown?
+              </p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                See all nine sections, including communication, likely disagreements, and practical suggestions.
+              </p>
+            </div>
             {canPurchase ? (
               <button
                 type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="w-full mt-5 h-12 btn-primary rounded-xl font-semibold"
+                className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
               >
-                Get Full Report — $9.99
+                Get the detailed report · $9.99
               </button>
             ) : (
-              <p className="mt-4 text-sm font-medium text-muted-foreground">
+              <p className="text-sm font-medium text-muted-foreground">
                 Detailed reports are temporarily unavailable.
               </p>
             )}
           </div>
+
           <button
             type="button"
             onClick={downloadResult}
             disabled={downloadInProgress}
-            className="w-full inline-flex items-center justify-center gap-2 h-11 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="mx-auto mt-4 inline-flex h-10 w-full items-center justify-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:w-auto sm:px-5"
           >
-            <Download className="w-4 h-4" />
+            <Download className="h-4 w-4" />
             {downloadInProgress ? 'Preparing image...' : 'Download result image'}
           </button>
         </footer>
@@ -129,7 +164,7 @@ function ResultCard({
           onClose={() => setIsModalOpen(false)}
           resultId={resultId}
           resultUrl={resultUrl}
-          names={people.map((person) => person.name)}
+          names={names}
         />
       )}
     </>

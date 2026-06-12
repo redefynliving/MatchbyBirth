@@ -12,6 +12,7 @@ import CookieConsentBanner from '@/components/CookieConsentBanner.jsx';
 import HomePage from '@/pages/HomePage.jsx';
 import AboutPage from '@/pages/AboutPage.jsx';
 import FAQPage from '@/pages/FAQPage.jsx';
+import HowItWorksPage from '@/pages/HowItWorksPage.jsx';
 import BlogPage from '@/pages/BlogPage.jsx';
 import BlogPostPage from '@/pages/BlogPostPage.jsx';
 import ContactPage from '@/pages/ContactPage.jsx';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/result" element={<ResultPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
