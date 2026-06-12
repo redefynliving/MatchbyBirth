@@ -1,11 +1,17 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const test = require('node:test');
+const { pathToFileURL } = require('node:url');
 
-const {
-  buildResultNavigation,
-} = require('../shared/result-navigation.cjs');
+const root = path.resolve(__dirname, '..');
+const navigationPath = path.join(
+  root,
+  'apps/web/src/lib/result-navigation.js',
+);
+const navigationModuleUrl = pathToFileURL(navigationPath).href;
 
 const result = {
   mode: 'pair',
@@ -13,7 +19,15 @@ const result = {
   score: 72,
 };
 
-test('buildResultNavigation uses an opaque URL for persisted results', () => {
+test('frontend result navigation is a native ES module', () => {
+  const source = fs.readFileSync(navigationPath, 'utf8');
+
+  assert.doesNotMatch(source, /\.cjs|module\.exports|require\(/);
+  assert.match(source, /export function buildResultNavigation/);
+});
+
+test('buildResultNavigation uses an opaque URL for persisted results', async () => {
+  const { buildResultNavigation } = await import(navigationModuleUrl);
   const navigation = buildResultNavigation({
     persisted: true,
     resultId: 'result-id',
@@ -26,7 +40,8 @@ test('buildResultNavigation uses an opaque URL for persisted results', () => {
   assert.equal(navigation.state.canPurchase, true);
 });
 
-test('buildResultNavigation keeps an unpersisted result in navigation state only', () => {
+test('buildResultNavigation keeps an unpersisted result in navigation state only', async () => {
+  const { buildResultNavigation } = await import(navigationModuleUrl);
   const navigation = buildResultNavigation({
     persisted: false,
     resultId: null,

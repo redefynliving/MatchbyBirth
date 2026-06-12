@@ -65,6 +65,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+}
+
+.brand-hero {
+  background:
+    radial-gradient(circle at 10% 22%, hsl(var(--primary) / 0.15), transparent 25%),
+    radial-gradient(circle at 91% 58%, hsl(335 45% 82% / 0.2), transparent 25%),
+    linear-gradient(180deg, hsl(300 30% 99%) 0%, hsl(var(--background)) 62%);
+}
+
+.result-page-bg {
+  background:
+    radial-gradient(circle at 90% 4%, hsl(var(--primary) / 0.13), transparent 25%),
+    radial-gradient(circle at 4% 82%, hsl(335 45% 82% / 0.15), transparent 26%),
+    hsl(var(--background));
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.15;
