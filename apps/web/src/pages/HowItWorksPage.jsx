@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 
 function HowItWorksPage() {
@@ -13,8 +12,6 @@ function HowItWorksPage() {
       </Helmet>
 
       <div className="min-h-screen flex flex-col bg-background">
-        <Header />
-
         <main className="flex-1 py-16">
           <div className="content-container">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
