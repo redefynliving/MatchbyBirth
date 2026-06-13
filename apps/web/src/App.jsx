@@ -15,6 +15,7 @@ import FAQPage from '@/pages/FAQPage.jsx';
 import HowItWorksPage from '@/pages/HowItWorksPage.jsx';
 import BlogPage from '@/pages/BlogPage.jsx';
 import BlogPostPage from '@/pages/BlogPostPage.jsx';
+import CategoryPage from '@/pages/CategoryPage.jsx';
 import ContactPage from '@/pages/ContactPage.jsx';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage.jsx';
 import TermsOfServicePage from '@/pages/TermsOfServicePage.jsx';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/category/:category" element={<CategoryPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
