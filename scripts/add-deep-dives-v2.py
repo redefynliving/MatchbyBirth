@@ -190,6 +190,156 @@ NEW_POSTS = [
 
 <p>Want to see how your Pisces-Cancer pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
     },
+    {
+        "slug": "leo-sagittarius-compatibility",
+        "title": "Leo and Sagittarius Compatibility — The Fire That Never Dies",
+        "date": "2026-07-06",
+        "desc": "Leo and Sagittarius are two fire signs that create an optimistic, adventurous, and endlessly enthusiastic partnership.",
+        "tags": "['leo','sagittarius','compatibility','fire-signs','adventure']",
+        "body": """<h1>Leo and Sagittarius Compatibility — The Fire That Never Dies</h1>
+<p>Leo and Sagittarius — two fire signs that together create a relationship of extraordinary optimism, adventure, and joy. Ruled by the Sun and Jupiter respectively, this pairing is larger than life, endlessly enthusiastic, and impossible to ignore.</p>
+
+<h2>The instant spark</h2>
+<p>Leo and Sagittarius are drawn to each other by a shared love of life, laughter, and adventure. Both are attracted to big personalities, and both recognize a kindred spirit immediately. The chemistry is immediate and sustained — this is not a slow-burn romance, it is a fireworks display that keeps going.</p>
+
+<h2>Love and romance</h2>
+<p>Romance between Leo and Sagittarius is grand, generous, and fun. This is the couple that takes spontaneous road trips, plans elaborate dates, and makes every day feel like an adventure. Both signs are romantic in a big, bold way.</p>
+
+<h2>Shared optimism</h2>
+<p>One of the most beautiful things about this pairing is their shared optimism. Both Leo and Sagittarius believe that things will work out, that the future is bright, and that anything is possible. This creates a relationship that is resilient in the face of challenges.</p>
+
+<h2>Challenges to watch</h2>
+<ul>
+  <li>Financial impulsiveness — both love spending. Create a budget and stick to it.</li>
+  <li>Ego clashes — both want to be the star. Take turns shining.</li>
+  <li>Bluntness — Sagittarius' honesty can wound Leo's pride. Practice tact.</li>
+</ul>
+
+<h2>Quick compatibility snapshot</h2>
+<p>Strengths: Optimism, adventure, generosity, passion.<br>Challenges: Financial impulsiveness, ego clashes, bluntness.<br>Overall: 9/10 — One of the zodiac's most joyful pairings.</p>
+
+<p>Curious how your Leo-Sagittarius pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
+    },
+    {
+        "slug": "aries-sagittarius-compatibility",
+        "title": "Aries and Sagittarius Compatibility — The Adventure Duo",
+        "date": "2026-07-07",
+        "desc": "Aries and Sagittarius are two fire signs that create an energetic, adventurous, and freedom-loving partnership that never stands still.",
+        "tags": "['aries','sagittarius','compatibility','fire-signs','adventure']",
+        "body": """<h1>Aries and Sagittarius Compatibility — The Adventure Duo</h1>
+<p>Aries and Sagittarius — two fire signs that together create a relationship of extraordinary energy, adventure, and freedom. Ruled by Mars and Jupiter respectively, this pairing is always moving, always exploring, and always looking for the next horizon.</p>
+
+<h2>The shared love of adventure</h2>
+<p>Aries and Sagittarius are both adventurers at heart. Aries wants to be first — the pioneer, the trailblazer. Sagittarius wants to explore — to travel, to learn, to understand the bigger picture. Together, they are the couple that is always planning the next trip, the next project, the next big thing.</p>
+
+<h2>Love and romance</h2>
+<p>Romance between Aries and Sagittarius is passionate, spontaneous, and fun. This is not the couple that plans a formal dinner date — they are the couple that decides at 9 PM to drive to the coast and watch the sunrise. Physical chemistry is intense and playful.</p>
+
+<h2>Freedom and independence</h2>
+<p>Both signs need significant personal freedom, and both are happy to give it to their partner. Neither is jealous, possessive, or controlling. They trust each other completely, which creates a relationship that is both secure and spacious.</p>
+
+<h2>Challenges to watch</h2>
+<ul>
+  <li>Impulsiveness — both act first, think later. Slow down for big decisions.</li>
+  <li>Financial carelessness — both love spending. Create a savings plan.</li>
+  <li>Bluntness — both can be tactlessly honest. Practice kindness in communication.</li>
+</ul>
+
+<h2>Quick compatibility snapshot</h2>
+<p>Strengths: Adventure, energy, honesty, mutual freedom.<br>Challenges: Impulsiveness, financial carelessness, bluntness.<br>Overall: 9/10 — One of the zodiac's most exciting pairings.</p>
+
+<p>Want to see how your Aries-Sagittarius pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
+    },
+    {
+        "slug": "capricorn-taurus-compatibility",
+        "title": "Capricorn and Taurus Compatibility — The Builders of Empires",
+        "date": "2026-07-08",
+        "desc": "Capricorn and Taurus are two earth signs that create a partnership built on shared values, mutual respect, and a long-term vision for success.",
+        "tags": "['capricorn','taurus','compatibility','earth-signs','builders']",
+        "body": """<h1>Capricorn and Taurus Compatibility — The Builders of Empires</h1>
+<p>Capricorn and Taurus — two earth signs that together create a partnership of extraordinary stability, ambition, and shared values. Ruled by Saturn and Venus respectively, this pairing is the zodiac's ultimate power couple — not because they seek attention, but because they build things that last.</p>
+
+<h2>Shared values</h2>
+<p>Capricorn and Taurus share a fundamental understanding of what matters: security, loyalty, hard work, and building something meaningful. Neither sign is interested in shortcuts or superficial success. Both believe in earning what you have and building it to last.</p>
+
+<h2>Love and romance</h2>
+<p>Romance between Capricorn and Taurus is steady, sensual, and deeply committed. This is not a whirlwind romance — it is a slow burn that grows stronger over time. Taurus brings sensuality and physical affection. Capricorn brings loyalty, protection, and quiet devotion.</p>
+
+<h2>Ambition and success</h2>
+<p>Both signs are ambitious, but they express it differently. Capricorn is the public achiever; Taurus is the private builder. Together, they create both public success and private security. They make excellent business partners because they share a work ethic and a long-term vision.</p>
+
+<h2>Challenges to watch</h2>
+<ul>
+  <li>Emotional reserve — both signs struggle to express feelings verbally.</li>
+  <li>Stubbornness — both are fixed signs. Compromise requires conscious effort.</li>
+  <li>Work-life imbalance — both are workaholics. Schedule intentional downtime.</li>
+</ul>
+
+<h2>Quick compatibility snapshot</h2>
+<p>Strengths: Shared values, loyalty, ambition, stability.<br>Challenges: Emotional reserve, stubbornness, work-life imbalance.<br>Overall: 9/10 — One of the zodiac's most enduring partnerships.</p>
+
+<p>Want to see how your Capricorn-Taurus pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
+    },
+    {
+        "slug": "aquarius-gemini-compatibility",
+        "title": "Aquarius and Gemini Compatibility — The Freedom Alliance",
+        "date": "2026-07-09",
+        "desc": "Aquarius and Gemini are two air signs that create an intellectually electric, freedom-loving, and endlessly curious partnership.",
+        "tags": "['aquarius','gemini','compatibility','air-signs','freedom']",
+        "body": """<h1>Aquarius and Gemini Compatibility — The Freedom Alliance</h1>
+<p>Aquarius and Gemini — two air signs that together create a partnership built on intellectual curiosity, mutual independence, and a shared love of freedom. Ruled by Uranus and Mercury respectively, this pairing values ideas over emotions, friendship over possessiveness, and the open road over the well-worn path.</p>
+
+<h2>The intellectual connection</h2>
+<p>Aquarius and Gemini connect through ideas — big, unusual, future-oriented ideas. They can talk for hours about technology, philosophy, social change, and the nature of the universe. Both signs are mentally agile, curious, and genuinely interested in learning from each other.</p>
+
+<h2>Freedom and independence</h2>
+<p>This is the most freedom-loving pairing in the zodiac. Both Aquarius and Gemini need significant personal space, independent friendships, and the freedom to pursue their own interests. Neither is jealous, possessive, or clingy — and both appreciate the same in return.</p>
+
+<h2>Love and romance</h2>
+<p>Romance between Aquarius and Gemini is playful, intellectual, and unconventional. This is not a traditional couple — they are more likely to fall in love over a debate about quantum physics than over a candlelit dinner. Both signs value mental stimulation over emotional intensity.</p>
+
+<h2>Challenges to watch</h2>
+<ul>
+  <li>Emotional detachment — both signs can struggle with emotional vulnerability.</li>
+  <li>Inconsistency — both signs are changeable, which can create instability.</li>
+  <li>Commitment avoidance — both like to keep their options open.</li>
+</ul>
+
+<h2>Quick compatibility snapshot</h2>
+<p>Strengths: Intellectual stimulation, mutual freedom, friendship, curiosity.<br>Challenges: Emotional detachment, inconsistency, commitment avoidance.<br>Overall: 9/10 — One of the zodiac's most intellectually compatible pairings.</p>
+
+<p>Curious how your Aquarius-Gemini pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
+    },
+    {
+        "slug": "gemini-libra-compatibility",
+        "title": "Gemini and Libra Compatibility — The Ultimate Air Sign Romance",
+        "date": "2026-07-10",
+        "desc": "Gemini and Libra are two air signs that create an intellectually stimulating, socially graceful, and endlessly conversational romance.",
+        "tags": "['gemini','libra','compatibility','air-signs','intellectual']",
+        "body": """<h1>Gemini and Libra Compatibility — The Ultimate Air Sign Romance</h1>
+<p>Gemini and Libra — two air signs that together create a relationship of extraordinary intellectual chemistry, social grace, and endless conversation. Ruled by Mercury and Venus respectively, this pairing values ideas, beauty, and the art of communication above all else.</p>
+
+<h2>The meeting of minds</h2>
+<p>Gemini and Libra connect first and foremost through ideas. Their conversations range across art, philosophy, culture, politics, and everything in between. Neither sign is interested in small talk — they want to explore concepts, debate perspectives, and learn from each other.</p>
+
+<h2>Love and romance</h2>
+<p>Romance between Gemini and Libra is flirtatious, intellectual, and socially elegant. This is the couple that looks stunning together at parties, that finishes each other's sentences, and that can talk until 3 AM about everything and nothing.</p>
+
+<h2>Social chemistry</h2>
+<p>Gemini and Libra are both social butterflies who love being around people. Together, they are the couple that hosts the best parties, knows everyone in the room, and makes every gathering more fun.</p>
+
+<h2>Challenges to watch</h2>
+<ul>
+  <li>Indecision — both signs can struggle to make decisions. Designate a decision-maker.</li>
+  <li>Emotional avoidance — both prefer intellectual connection over emotional vulnerability.</li>
+  <li>Commitment hesitation — both signs like to keep their options open.</li>
+</ul>
+
+<h2>Quick compatibility snapshot</h2>
+<p>Strengths: Intellectual chemistry, social grace, communication, shared interests.<br>Challenges: Indecision, emotional avoidance, commitment hesitation.<br>Overall: 9/10 — One of the zodiac's most intellectually compatible pairings.</p>
+
+<p>Want to see how your Gemini-Libra pairing scores? <a href="https://matchbybirth.com">Try the MatchByBirth calculator</a> for a personalized synastry reading.</p>"""
+    },
 ]
 
 # Build the JS insertion
