@@ -21,3 +21,8 @@ node_modules/
 apps/api/node_modules/
 apps/web/node_modules/
 apps/web/node_modules/
+
+# Secrets and tokens
+.notion-token
+.env*.local
+scripts/setup-notion.js
