@@ -243,7 +243,12 @@ function ResultPage() {
 
             {resultId && (
               <div className="mx-auto mt-8 max-w-3xl">
-                <EmailCaptureSection resultId={resultId} />
+                <EmailCaptureSection
+                  resultId={resultId}
+                  people={result.people}
+                  score={result.score}
+                  signs={[result.people[0]?.sign, result.people[1]?.sign]}
+                />
               </div>
             )}
           </div>
