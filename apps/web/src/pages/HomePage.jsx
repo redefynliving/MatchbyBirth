@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import {
@@ -8,8 +8,7 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
-import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
-import HomeResultPreview from '@/components/HomeResultPreview.jsx';
+import CalculatorWithPreview from '@/components/CalculatorWithPreview.jsx';
 import HomeEmailCapture from '@/components/HomeEmailCapture.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
@@ -17,6 +16,7 @@ import {
 } from '@/lib/scroll-to-calculator.js';
 
 function HomePage() {
+  const [mode, setMode] = useState('pair');
   useEffect(() => {
     scrollToCalculatorFromHash();
   }, []);
@@ -62,10 +62,7 @@ function HomePage() {
               </div>
             </div>
 
-            <div className="mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-primary/15 bg-card shadow-[0_24px_65px_rgba(55,43,65,0.14)] lg:grid-cols-[1.25fr_0.75fr]">
-              <CompatibilityCalculator />
-              <HomeResultPreview />
-            </div>
+            <CalculatorWithPreview mode={mode} setMode={setMode} />
 
             <div className="mx-auto mt-5 flex max-w-4xl flex-wrap items-center justify-center gap-x-7 gap-y-2 text-xs font-medium text-muted-foreground">
               <span className="inline-flex items-center gap-1.5">
