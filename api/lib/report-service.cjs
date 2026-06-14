@@ -34,10 +34,13 @@ async function fulfillPurchase(purchaseId, dependencies) {
   if (!purchase.result?.result_payload) throw new Error('Purchase result not found.');
 
   if (purchase.status === 'delivered') {
+    console.log(`FULFILL SKIP: purchase ${purchaseId} already delivered`);
     return { purchaseId, status: 'delivered' };
   }
 
   const nextAttempt = Number(purchase.delivery_attempts || 0) + 1;
+  console.log(`FULFILL START: purchase ${purchaseId} (attempt ${nextAttempt})`);
+  
   await store.updatePurchase(purchaseId, {
     status: 'generating',
     delivery_attempts: nextAttempt,
@@ -49,13 +52,16 @@ async function fulfillPurchase(purchaseId, dependencies) {
     let report = await store.findReportByPurchaseId(purchaseId);
 
     if (!report) {
+      console.log(`FULFILL GENERATING: purchase ${purchaseId} — calling report generator`);
       const content = await generateReport(purchase.result.result_payload);
+      console.log(`FULFILL GENERATED: purchase ${purchaseId} — model: ${content.model || 'unknown'}`);
+      
       report = await store.insertReport({
         purchase_id: purchaseId,
         access_token_hash: access.tokenHash,
         content,
         model: content.model || 'fallback-v1',
-        prompt_version: content.promptVersion || 'structured-v1',
+        promptVersion: content.promptVersion || 'structured-v1',
       });
     }
 
@@ -63,12 +69,15 @@ async function fulfillPurchase(purchaseId, dependencies) {
     reportUrl.searchParams.set('purchase', purchaseId);
     reportUrl.searchParams.set('token', access.token);
 
+    console.log(`FULFILL EMAILING: purchase ${purchaseId} → ${purchase.email}`);
     const emailResponse = await sendReportEmail({
       to: purchase.email,
       report: report.content,
       reportUrl: reportUrl.toString(),
       idempotencyKey: `report-delivery/${purchaseId}`,
     });
+    console.log(`FULFILL EMAILED: purchase ${purchaseId} — email id: ${emailResponse.id || 'unknown'}`);
+    
     const deliveredAt = new Date().toISOString();
 
     await store.updateReport(report.id, {
@@ -82,16 +91,22 @@ async function fulfillPurchase(purchaseId, dependencies) {
     });
     await store.updateResult(purchase.result_id, { expires_at: null });
 
+    console.log(`FULFILL COMPLETE: purchase ${purchaseId} delivered at ${deliveredAt}`);
+
     return {
       purchaseId,
       status: 'delivered',
       reportUrl: reportUrl.toString(),
     };
   } catch (error) {
+    console.error(`FULFILL ERROR: purchase ${purchaseId}`, {
+      message: error.message,
+      stack: error.stack,
+    });
     await store.updatePurchase(purchaseId, {
       status: 'failed',
       delivery_attempts: nextAttempt,
-      last_error: 'Report fulfillment failed.',
+      last_error: error.message || 'Report fulfillment failed.',
     });
     throw error;
   }
