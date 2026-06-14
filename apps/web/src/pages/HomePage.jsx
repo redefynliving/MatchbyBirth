@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import CompatibilityCalculator from '@/components/CompatibilityCalculator.jsx';
 import HomeResultPreview from '@/components/HomeResultPreview.jsx';
+import HomeEmailCapture from '@/components/HomeEmailCapture.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
   scrollToCalculatorFromHash,
@@ -109,6 +110,8 @@ function HomePage() {
             </div>
           </div>
         </section>
+
+        <HomeEmailCapture />
 
         <section className="section-spacing bg-background">
           <div className="content-container max-w-3xl">
