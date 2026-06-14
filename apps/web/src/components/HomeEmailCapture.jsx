@@ -1,81 +1,133 @@
 import React from 'react';
-import { Mail, Star, ArrowRight } from 'lucide-react';
-import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
+import { Mail, ArrowRight } from 'lucide-react';
 
 function HomeEmailCapture() {
-  return (
-    <section className="mx-auto mt-16 max-w-2xl">
-      <div style={{
-        background: 'linear-gradient(135deg, #6c4de6 0%, #8b5cf6 100%)',
-        borderRadius: 20,
-        padding: '32px 24px',
-        color: '#fff',
-        textAlign: 'center',
-      }}>
-        <div style={{ marginBottom: 16 }}>
-          <Mail style={{ width: 32, height: 32, margin: '0 auto 12px', opacity: 0.9 }} />
-          <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0 0 8px' }}>
-            Get Weekly Forecasts for Your Connections
-          </h2>
-          <p style={{ fontSize: '0.95rem', opacity: 0.85, margin: 0, lineHeight: 1.5 }}>
-            Enter your email and we'll send you personalized weekly insights based on your birth dates — free, no spam, unsubscribe anytime.
-          </p>
-        </div>
+  const [email, setEmail] = React.useState('');
+  const [status, setStatus] = React.useState('idle');
+  const [error, setError] = React.useState('');
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            // This would connect to your actual email capture logic
-            alert('Email capture would connect here - for now, this is a placeholder');
-          }}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
-            maxWidth: 360,
-            margin: '0 auto',
-          }}
-        >
-          <input
-            type="email"
-            placeholder="your@email.com"
-            autoComplete="email"
-            required
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus('loading');
+    setError('');
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          consent: true,
+          consentSource: 'home_weekly_forecast',
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'Unable to subscribe.');
+      setStatus('success');
+    } catch (err) {
+      setStatus('error');
+      setError(err.message || 'Unable to subscribe.');
+    }
+  };
+
+  return (
+    <section className="mx-auto mt-16 max-w-2xl px-4">
+      <div
+        style={{
+          background: 'linear-gradient(135deg, #6c4de6 0%, #8b5cf6 100%)',
+          borderRadius: 20,
+          padding: '36px 28px',
+          color: '#fff',
+          textAlign: 'center',
+        }}
+      >
+        <Mail style={{ width: 28, height: 28, margin: '0 auto 12px', opacity: 0.9 }} />
+        <h2 style={{ fontSize: '1.35rem', fontWeight: 700, margin: '0 0 8px', lineHeight: 1.3 }}>
+          See what the stars say about your connections this week
+        </h2>
+        <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: '0 0 20px', lineHeight: 1.5 }}>
+          Free weekly forecasts delivered to your inbox. No spam, unsubscribe anytime.
+        </p>
+
+        {status === 'success' ? (
+          <div
             style={{
-              height: 48,
+              background: 'rgba(255,255,255,0.15)',
               borderRadius: 12,
-              border: 'none',
-              padding: '0 16px',
-              fontSize: '1rem',
-              background: '#fff',
-              color: '#1a1a2e',
-              outline: 'none',
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              height: 48,
-              borderRadius: 12,
-              border: 'none',
-              background: '#fff',
-              color: '#6c4de6',
-              fontWeight: 700,
-              fontSize: '1rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 8,
+              padding: '18px 16px',
             }}
           >
-            Get My Weekly Forecast
-            <ArrowRight style={{ width: 18, height: 18 }} />
-          </button>
-        </form>
+            <p style={{ fontWeight: 600, margin: '0 0 4px', fontSize: '1rem' }}>You&apos;re on the list!</p>
+            <p style={{ fontSize: '0.85rem', opacity: 0.85, margin: 0 }}>
+              Check your inbox for your first weekly forecast.
+            </p>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 10,
+              maxWidth: 340,
+              margin: '0 auto',
+            }}
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              autoComplete="email"
+              required
+              style={{
+                height: 46,
+                borderRadius: 12,
+                border: 'none',
+                padding: '0 16px',
+                fontSize: '0.95rem',
+                background: '#fff',
+                color: '#1a1a2e',
+                outline: 'none',
+              }}
+            />
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              style={{
+                height: 46,
+                borderRadius: 12,
+                border: 'none',
+                background: '#fff',
+                color: '#6c4de6',
+                fontWeight: 700,
+                fontSize: '0.95rem',
+                cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                opacity: status === 'loading' ? 0.7 : 1,
+              }}
+            >
+              {status === 'loading' ? (
+                'Subscribing...'
+              ) : (
+                <>
+                  Get My Weekly Forecast
+                  <ArrowRight style={{ width: 16, height: 16 }} />
+                </>
+              )}
+            </button>
+          </form>
+        )}
 
-        <p style={{ fontSize: '0.75rem', opacity: 0.7, marginTop: 12 }}>
-          Free. Unsubscribe anytime. We'll never spam you.
+        {status === 'error' && (
+          <p style={{ color: '#fecaca', marginTop: 10, fontSize: '0.85rem' }}>{error}</p>
+        )}
+
+        <p style={{ fontSize: '0.72rem', opacity: 0.65, marginTop: 14 }}>
+          Free. Unsubscribe anytime. We&apos;ll never spam you.
         </p>
       </div>
     </section>

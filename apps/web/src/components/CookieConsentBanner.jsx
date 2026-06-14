@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
@@ -9,7 +8,6 @@ function CookieConsentBanner() {
   useEffect(() => {
     const consent = localStorage.getItem('cookie_consent');
     if (!consent) {
-      // Small delay so it doesn't jarringly appear instantly
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
     }
@@ -28,38 +26,39 @@ function CookieConsentBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 z-50 pointer-events-none">
-      <div className="max-w-4xl mx-auto bg-card border border-border rounded-full shadow-lg p-3 sm:p-4 pointer-events-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex-1 pr-4">
-          <h3 className="text-base font-semibold text-foreground mb-1">We value your privacy</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
-          </p>
-        </div>
-        <div className="flex flex-row sm:flex-col gap-3 w-full sm:w-auto shrink-0">
-          <button
-            onClick={handleAccept}
-            className="flex-1 sm:flex-none btn-primary text-sm"
-          >
-            Accept
-          </button>
-          <div className="flex gap-3 sm:flex-col w-full sm:w-auto">
-            <Link
-              to="/privacy"
-              className="flex-1 sm:flex-none text-center px-4 py-2.5 bg-muted text-foreground text-sm font-medium rounded-lg hover:bg-muted/80 transition-colors"
-              onClick={() => setIsVisible(false)}
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4">
+      <div className="mx-auto max-w-3xl bg-card border border-border rounded-2xl shadow-xl p-4 sm:p-5">
+        <div className="flex items-start gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-sm text-foreground leading-relaxed">
+              This site uses cookies for analytics and to remember your preferences. No personal data is shared with third parties.{' '}
+              <Link to="/privacy" className="text-primary underline hover:no-underline font-medium">
+                Learn more
+              </Link>
+            </p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={handleDecline}
+              className="px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors"
             >
-              Learn More
-            </Link>
+              Decline
+            </button>
+            <button
+              onClick={handleAccept}
+              className="px-4 py-1.5 text-xs font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Accept
+            </button>
+            <button
+              onClick={handleDecline}
+              className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
         </div>
-        <button 
-          onClick={handleDecline}
-          className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors p-1"
-          aria-label="Close"
-        >
-          <X className="w-5 h-5" />
-        </button>
       </div>
     </div>
   );
