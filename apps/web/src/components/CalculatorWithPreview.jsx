@@ -297,11 +297,18 @@ function CalculatorWithPreview({ mode, setMode }) {
         )}
       </div>
 
-      <HomeResultPreview
-        pairPeople={pairPeople}
-        groupPeople={groupPeople}
-        mode={mode}
-      />
+      {/* Google AdSense */}
+      <aside className="hidden lg:flex h-full flex-col items-center justify-center border-t border-border bg-[linear-gradient(155deg,hsl(var(--secondary))_0%,hsl(335_45%_95%)_100%)] p-6 lg:border-l lg:border-t-0 lg:p-7">
+        <div className="flex h-full w-full items-center justify-center rounded-2xl bg-card/30 p-4">
+          <ins className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-7210866068673514"
+            data-ad-slot="3279476431"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        </div>
+      </aside>
     </div>
   );
 }

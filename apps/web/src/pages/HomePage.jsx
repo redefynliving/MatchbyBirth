@@ -32,7 +32,8 @@ function HomePage() {
         <meta property="og:url" content={`${window.location.origin}/`} />
         <link rel="canonical" href={`${window.location.origin}/`} />
 
-        {/* Structured Data: WebApplication */}
+        {/* AdSense */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossorigin="anonymous"></script>
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
