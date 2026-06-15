@@ -5,7 +5,8 @@ const posts = [
     date: '2026-05-25',
     description: 'Aries and Scorpio are two of the most intense signs in the zodiac. Discover how this fire-water pairing plays out in love, friendship, and the workplace.',
     tags: ['aries','scorpio','compatibility','love'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Aries and Scorpio: A Magnetic Match</h1>
       <p>Aries and Scorpio create chemistry that feels both thrilling and dangerous. Aries, ruled by Mars, brings bold energy, blazing enthusiasm, and a need for independence. Scorpio, ruled by Pluto (and Mars traditionally), brings depth, emotional intensity, and a talent for seeing what others hide. Together, they form a pairing that can be transformative — for better and worse.</p>
 
@@ -42,7 +43,8 @@ const posts = [
     date: '2026-05-25',
     description: 'Which zodiac signs are most compatible in 2026? We break down the top pairings for love, friendship, and everything in between based on elemental astrology.',
     tags: ['compatibility','zodiac','2026','love'],
-    content: `
+
+    category: 'seasonal',    content: `
       <h1>Most Compatible Zodiac Signs of 2026</h1>
       <p>2026 brings a fresh astrological landscape that favors certain pairings. While personal birth charts matter most, sun-sign pairings offer a helpful roadmap. Below are three matchups that look especially promising this year.</p>
 
@@ -74,7 +76,8 @@ const posts = [
     date: '2026-05-25',
     description: 'A clear breakdown of what the compatibility score measures, how it’s calculated, and how to interpret it for love, friendship, and work.',
     tags: ['compatibility','score','zodiac','guide'],
-    content: `
+
+    category: 'learn-astrology',    content: `
       <h1>What Your Compatibility Score Actually Means</h1>
       <p>The compatibility score on Match by Birth is a composite metric designed to summarize multiple layers of astrological interaction. It’s not destiny — it’s information. Here’s how to read it.</p>
 
@@ -103,7 +106,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Taurus and Cancer form a deeply nurturing partnership built on security, comfort, and emotional attunement. Explore why this earth-water duo often feels like home.',
     tags: ['taurus','cancer','compatibility','nurture'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Taurus and Cancer: The Most Nurturing Pair in the Zodiac</h1>
 
       <p>Taurus and Cancer are often described as two signs that instinctively know how to make a house feel like a home. Taurus, ruled by Venus, values comfort, stability, and sensory pleasure. Cancer, ruled by the Moon, stands for emotional safety, caretaking, and an instinct for creating intimate spaces. Together they form a pairing that prioritizes belonging, routine, and the small rituals that turn shared life into sanctuary.</p>
@@ -155,7 +159,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Gemini and Sagittarius are opposite signs with complementary strengths. Learn how curiosity and optimism make this pairing lively, durable, and surprisingly compatible.',
     tags: ['gemini','sagittarius','compatibility','opposites'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Gemini and Sagittarius: Opposites That Actually Work</h1>
 
       <p>Gemini and Sagittarius occupy opposite poles of the zodiac, and that polarity is precisely what makes this pairing magnetic. Gemini is curious, adaptable, and conversational — an air sign that thrives on ideas and variety. Sagittarius, a fire sign, is expansive, philosophical, and driven by a hunger for meaning and adventure. Together they form a classic example of "opposites attract," but with a practical twist: their differences often cover one another’s blind spots.</p>
@@ -207,7 +212,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Leo and Aquarius are opposite fixed signs — bold, stubborn, and electrifying when together. Learn how their passions align and where friction comes up.',
     tags: ['leo','aquarius','compatibility','fixed-signs'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Leo and Aquarius: Fixed Signs, Big Sparks</h1>
 
       <p>Leo and Aquarius sit opposite one another on the zodiac wheel, and both are fixed signs — meaning they bring persistence, intensity, and a strong sense of identity to any relationship. Leo, ruled by the Sun, desires attention, warmth, and a stage on which to shine. Aquarius, ruled by Uranus (and traditionally Saturn), values individuality, progressive ideas, and social causes. Together, they generate a dynamic blend of charisma and rebellion.</p>
@@ -257,7 +263,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Virgo and Pisces sit opposite on the zodiac and can either frustrate or complete one another. Explore how earthy detail and watery intuition can create a transformative relationship.',
     tags: ['virgo','pisces','compatibility','opposites'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Virgo and Pisces: Can Logic and Intuition Find Love?</h1>
 
       <p>Virgo and Pisces are classic opposite signs. Virgo, an earth sign ruled by Mercury, values precision, routine, and helpfulness. Pisces, a water sign ruled by Neptune (and Jupiter traditionally), embodies imagination, empathy, and a porous sense of boundaries. At their best, the pair completes a whole: Virgo brings form to Pisces’ formlessness, and Pisces brings soul to Virgo’s structure.</p>
@@ -307,7 +314,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Libra and Gemini share an air-sign affinity that fuels romance, conversation, and intellectual play. Discover why they excel at companionship and social chemistry.',
     tags: ['libra','gemini','compatibility','air-signs'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
       <h1>Libra and Gemini: The Ultimate Air Sign Romance</h1>
 
       <p>Libra and Gemini dwell in the world of ideas, social connection, and graceful exchange. Gemini, ruled by Mercury, is the nimble conversationalist, agile and endlessly curious. Libra, ruled by Venus, seeks balance, beauty, and harmonious relationships. As an air-air pairing, their rapport is often elegant, witty, and culturally attuned.</p>
@@ -356,7 +364,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Birth date shapes more than your sun sign. Learn how chart placements, natal houses, and planetary aspects influence personality and relationship patterns.',
     tags: ['birth-date','personality','relationships','natal-chart'],
-    content: `
+
+    category: 'learn-astrology',    content: `
       <h1>How Birth Date Affects Personality and Relationships</h1>
 
       <p>People often think their sun sign tells the whole story. The truth is richer: the exact moment and place of your birth set a unique astrological blueprint. Your birth date determines not only the sun sign but the arrangement of planets across houses, aspects between planets, and the rising sign. All of these factors combine to shape temperament, attachment style, and the ways you show up in relationships.</p>
@@ -404,7 +413,8 @@ const posts = [
     date: '2026-05-31',
     description: 'Understanding the four elements is essential to decoding temperament and compatibility. Learn how fire, earth, air, and water shape our drives and relationships.',
     tags: ['elements','fire','earth','air','water','astrology'],
-    content: `
+
+    category: 'learn-astrology',    content: `
       <h1>The 4 Elements in Astrology — Fire, Earth, Air, and Water Explained</h1>
 
       <p>Every zodiac sign belongs to one of four elements: fire, earth, air, or water. These elements provide a shorthand for temperament and energy style. Fire signs bring heat and initiative; earth signs bring stability and practicality; air signs bring ideas and communication; water signs bring feeling and depth. Learning the elements helps you quickly read compatibility and personal priorities.</p>
@@ -452,7 +462,8 @@ const posts = [
     date: '2026-06-13',
     description: 'How does Gemini get along with every sign of the zodiac? Discover Gemini\'s best and worst compatibility matches for love, friendship, and work.',
     tags: ['gemini','compatibility','zodiac','love','air-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Gemini Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Gemini \u2014 the zodiac's curious communicator. Ruled by Mercury, Gemini brings wit, adaptability, and an insatiable need for mental stimulation. Here's your definitive ranking.</p>
 
@@ -495,7 +506,8 @@ const posts = [
     date: '2026-06-14',
     description: 'Pisces is the zodiac\'s dreamer and empath. Discover which signs Pisces is most (and least) compatible with.',
     tags: ['pisces','compatibility','zodiac','love','water-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Pisces Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Pisces \u2014 the zodiac's mystic and empath. Ruled by Neptune, Pisces swims in emotion, intuition, and imagination.</p>
 
@@ -528,7 +540,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Aquarius is the zodiac\'s rebel and visionary. Find out which signs are most compatible with Aquarius.',
     tags: ['aquarius','compatibility','zodiac','love','air-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Aquarius Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Aquarius \u2014 the zodiac's innovator. Ruled by Uranus, Aquarius values independence and progressive ideals.</p>
 
@@ -561,7 +574,8 @@ const posts = [
     date: '2026-06-16',
     description: 'Capricorn is the zodiac\'s achiever and strategist. Discover which signs Capricorn is most compatible with.',
     tags: ['capricorn','compatibility','zodiac','love','earth-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Capricorn Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Capricorn \u2014 the zodiac's ambitious achiever. Ruled by Saturn, Capricorn values discipline and tangible results.</p>
 
@@ -594,7 +608,8 @@ const posts = [
     date: '2026-06-17',
     description: 'Sagittarius is the zodiac\'s adventurer and philosopher. Find out which signs are most compatible with Sagittarius.',
     tags: ['sagittarius','compatibility','zodiac','love','fire-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Sagittarius Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Sagittarius \u2014 the zodiac's eternal explorer. Ruled by Jupiter, Sagittarius values freedom and the big picture.</p>
 
@@ -627,7 +642,8 @@ const posts = [
     date: '2026-06-18',
     description: 'Scorpio is the zodiac\'s most intense and magnetic sign. Discover which signs can handle Scorpio\'s depth.',
     tags: ['scorpio','compatibility','zodiac','love','water-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Scorpio Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Scorpio \u2014 the zodiac's most intense sign. Ruled by Pluto, Scorpio values emotional depth and transformation.</p>
 
@@ -660,7 +676,8 @@ const posts = [
     date: '2026-06-19',
     description: 'Libra is the zodiac\'s diplomat and romantic. Discover which signs Libra is most compatible with.',
     tags: ['libra','compatibility','zodiac','love','air-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Libra Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Libra \u2014 the zodiac's diplomat. Ruled by Venus, Libra values harmony, beauty, and partnership.</p>
 
@@ -693,7 +710,8 @@ const posts = [
     date: '2026-06-22',
     description: 'Virgo is the zodiac\'s analyst and perfectionist. Discover which signs Virgo is most compatible with.',
     tags: ['virgo','compatibility','zodiac','love','earth-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Virgo Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Virgo \u2014 the zodiac's meticulous analyst. Ruled by Mercury, Virgo values precision and service.</p>
 
@@ -726,7 +744,8 @@ const posts = [
     date: '2026-06-23',
     description: 'Leo is the zodiac\'s star and natural leader. Discover which signs can match Leo\'s warmth and drama.',
     tags: ['leo','compatibility','zodiac','love','fire-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Leo Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Leo \u2014 the zodiac's star. Ruled by the Sun, Leo values loyalty, creativity, and being adored.</p>
 
@@ -759,7 +778,8 @@ const posts = [
     date: '2026-06-24',
     description: 'Cancer is the zodiac\'s nurturer and emotional anchor. Discover which signs Cancer is most compatible with.',
     tags: ['cancer','compatibility','zodiac','love','water-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Cancer Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Cancer \u2014 the zodiac's nurturer. Ruled by the Moon, Cancer values emotional security and family.</p>
 
@@ -792,7 +812,8 @@ const posts = [
     date: '2026-06-25',
     description: 'Taurus is the zodiac\'s anchor and sensualist. Discover which signs Taurus is most compatible with.',
     tags: ['taurus','compatibility','zodiac','love','earth-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Taurus Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Taurus \u2014 the zodiac's anchor. Ruled by Venus, Taurus values stability, comfort, and tangible beauty.</p>
 
@@ -825,7 +846,8 @@ const posts = [
     date: '2026-06-26',
     description: 'Aries is the zodiac\'s pioneer and trailblazer. Discover which signs can keep up with Aries\' energy.',
     tags: ['aries','compatibility','zodiac','love','fire-sign'],
-    content: `
+
+    category: 'sign-guide',    content: `
       <h1>Aries Compatibility With Every Zodiac Sign: Ranked Best to Worst</h1>
       <p>Aries \u2014 the zodiac's pioneer. Ruled by Mars, Aries values courage, independence, and new beginnings.</p>
 
@@ -860,7 +882,8 @@ const posts = [
     date: '2026-06-29',
     description: 'Scorpio and Capricorn are both ambitious, disciplined, and intensely loyal. Discover how this power duo creates one of the zodiac\'s most formidable partnerships.',
     tags: ['scorpio','capricorn','compatibility','power-couple','ambition'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Scorpio and Capricorn Compatibility — The Power Duo That Builds Empires</h1>
 <p>Scorpio and Capricorn are two of the zodiac's most formidable signs. Both are ruled by Saturn (Capricorn directly, Scorpio traditionally), both value discipline and long-term planning, and both understand that real power is built slowly and quietly. When these two come together, they create a partnership that can weather almost anything.</p>
 
@@ -906,7 +929,8 @@ const posts = [
     date: '2026-06-30',
     description: 'Aries and Leo are two fire signs that create an electrifying, passionate, and dramatic romance. Learn how this power couple thrives.',
     tags: ['aries','leo','compatibility','fire-signs','power-couple'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Aries and Leo Compatibility — The Fire That Lights Up the Room</h1>
 <p>Aries and Leo — two fire signs that together create a blaze of passion, creativity, and sheer life force. Ruled by Mars and the Sun respectively, this pairing is bold, generous, and impossible to ignore.</p>
 
@@ -946,7 +970,8 @@ const posts = [
     date: '2026-07-01',
     description: 'Cancer and Scorpio are two water signs that create one of the zodiac\'s most deeply bonded, almost psychic connections.',
     tags: ['cancer','scorpio','compatibility','water-signs','emotional'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Cancer and Scorpio Compatibility — The Emotional Fortress</h1>
 <p>Cancer and Scorpio — two water signs that together create an emotional bond so deep it borders on the psychic. Ruled by the Moon and Pluto respectively, this pairing operates on a frequency that most other signs can't even detect.</p>
 
@@ -984,7 +1009,8 @@ const posts = [
     date: '2026-07-02',
     description: 'Taurus and Virgo are two earth signs that build a life of comfort, stability, and quiet devotion.',
     tags: ['taurus','virgo','compatibility','earth-signs','practical'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Taurus and Virgo Compatibility — The Earth Sign Power Couple</h1>
 <p>Taurus and Virgo — two earth signs that together create a partnership built on practicality, loyalty, and quiet devotion. Ruled by Venus and Mercury respectively, this pairing values substance over flash, routine over chaos, and building something real over chasing fantasies.</p>
 
@@ -1013,7 +1039,8 @@ const posts = [
     date: '2026-07-03',
     description: 'Pisces and Cancer are two water signs that create one of the zodiac\'s most nurturing, empathetic, and emotionally rich partnerships.',
     tags: ['pisces','cancer','compatibility','water-signs','nurturing'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Pisces and Cancer Compatibility — The Emotional Sanctuary</h1>
 <p>Pisces and Cancer — two water signs that together create an emotional bond of extraordinary depth and tenderness. Ruled by Neptune and the Moon respectively, this pairing operates in the realm of feeling, intuition, and the unseen currents that connect human hearts.</p>
 
@@ -1048,7 +1075,8 @@ const posts = [
     date: '2026-07-06',
     description: 'Leo and Sagittarius are two fire signs that create an optimistic, adventurous, and endlessly enthusiastic partnership.',
     tags: ['leo','sagittarius','compatibility','fire-signs','adventure'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Leo and Sagittarius Compatibility — The Fire That Never Dies</h1>
 <p>Leo and Sagittarius — two fire signs that together create a relationship of extraordinary optimism, adventure, and joy. Ruled by the Sun and Jupiter respectively, this pairing is larger than life, endlessly enthusiastic, and impossible to ignore.</p>
 
@@ -1081,7 +1109,8 @@ const posts = [
     date: '2026-07-07',
     description: 'Aries and Sagittarius are two fire signs that create an energetic, adventurous, and freedom-loving partnership that never stands still.',
     tags: ['aries','sagittarius','compatibility','fire-signs','adventure'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Aries and Sagittarius Compatibility — The Adventure Duo</h1>
 <p>Aries and Sagittarius — two fire signs that together create a relationship of extraordinary energy, adventure, and freedom. Ruled by Mars and Jupiter respectively, this pairing is always moving, always exploring, and always looking for the next horizon.</p>
 
@@ -1114,7 +1143,8 @@ const posts = [
     date: '2026-07-08',
     description: 'Capricorn and Taurus are two earth signs that create a partnership built on shared values, mutual respect, and a long-term vision for success.',
     tags: ['capricorn','taurus','compatibility','earth-signs','builders'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Capricorn and Taurus Compatibility — The Builders of Empires</h1>
 <p>Capricorn and Taurus — two earth signs that together create a partnership of extraordinary stability, ambition, and shared values. Ruled by Saturn and Venus respectively, this pairing is the zodiac's ultimate power couple — not because they seek attention, but because they build things that last.</p>
 
@@ -1147,7 +1177,8 @@ const posts = [
     date: '2026-07-09',
     description: 'Aquarius and Gemini are two air signs that create an intellectually electric, freedom-loving, and endlessly curious partnership.',
     tags: ['aquarius','gemini','compatibility','air-signs','freedom'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Aquarius and Gemini Compatibility — The Freedom Alliance</h1>
 <p>Aquarius and Gemini — two air signs that together create a partnership built on intellectual curiosity, mutual independence, and a shared love of freedom. Ruled by Uranus and Mercury respectively, this pairing values ideas over emotions, friendship over possessiveness, and the open road over the well-worn path.</p>
 
@@ -1180,7 +1211,8 @@ const posts = [
     date: '2026-07-10',
     description: 'Gemini and Libra are two air signs that create an intellectually stimulating, socially graceful, and endlessly conversational romance.',
     tags: ['gemini','libra','compatibility','air-signs','intellectual'],
-    content: `
+
+    category: 'pair-deep-dive',    content: `
 <h1>Gemini and Libra Compatibility — The Ultimate Air Sign Romance</h1>
 <p>Gemini and Libra — two air signs that together create a relationship of extraordinary intellectual chemistry, social grace, and endless conversation. Ruled by Mercury and Venus respectively, this pairing values ideas, beauty, and the art of communication above all else.</p>
 
@@ -1214,6 +1246,7 @@ const posts = [
     description: 'Some zodiac pairings are doomed from the start. Here are the top 10 most toxic zodiac matchups and the astrological reasons they struggle.',
     tags: ['zodiac','compatibility','toxic','relationships','guide'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/top-10-most-toxic-zodiac-pairings.png`,
     ogImage: `https://matchbybirth.com/og/og-toxic-pairings.png`,    content: `
       <h1>Top 10 Most Toxic Zodiac Pairings</h1>
@@ -1250,6 +1283,7 @@ const posts = [
     description: 'These zodiac pairings shouldn\'t work on paper — but they do. Here are seven surprisingly compatible couples that prove astrology is more than sun signs.',
     tags: ['zodiac','compatibility','surprising','relationships','guide'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/7-surprising-compatible-zodiac-pairs.png`,
     ogImage: `https://matchbybirth.com/og/og-surprising-pairs.png`,    content: `
       <h1>7 Surprising Zodiac Pairs That Are Weirdly Compatible</h1>
@@ -1280,6 +1314,7 @@ const posts = [
     description: 'Your zodiac sign affects more than love — it shapes how you work. Discover which sign pairings make the most productive professional teams.',
     tags: ['zodiac','compatibility','work','career','workplace','team'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/zodiac-compatibility-workplace-career.png`,
     ogImage: `https://matchbybirth.com/og/og-workplace.png`,    content: `
       <h1>Zodiac Compatibility at Work: Best Teams</h1>
@@ -1310,6 +1345,7 @@ const posts = [
     description: 'Every zodiac sign has a mythological origin story. These ancient tales reveal deeper truths about each sign\'s personality and relationship style.',
     tags: ['zodiac','mythology','astrology','signs','stories','guide'],
 
+    category: 'learn-astrology',
     ogImage: `https://matchbybirth.com/og/zodiac-sign-myths-legends-stories.png`,
     ogImage: `https://matchbybirth.com/og/og-myths.png`,    content: `
       <h1>The Myths Behind the Zodiac Signs</h1>
@@ -1350,6 +1386,7 @@ const posts = [
     description: 'Your friend group\'s zodiac makeup matters more than you think. Discover which sign combinations create the most harmonious — and chaotic — groups.',
     tags: ['zodiac','compatibility','group','friends','team','social'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/group-zodiac-compatibility-friendship-dynamics.png`,
     ogImage: `https://matchbybirth.com/og/og-groups.png`,    content: `
       <h1>Group Zodiac Compatibility: Building the Perfect Friend Group</h1>
@@ -1396,6 +1433,7 @@ const posts = [
     description: 'Mercury retrograde is infamous for communication breakdowns. Here\'s what the 2026 retrogrades mean for your love life, friendships, and work relationships.',
     tags: ['mercury','retrograde','2026','relationships','communication','astrology'],
 
+    category: 'seasonal',
     ogImage: `https://matchbybirth.com/og/mercury-retrograde-2026-relationships.png`,
     ogImage: `https://matchbybirth.com/og/og-mercury.png`,    content: `
       <h1>Mercury Retrograde 2026: Relationships Guide</h1>
@@ -1435,6 +1473,7 @@ const posts = [
     description: 'Some signs wear their hearts on their sleeves; others hide their pain behind walls. Here\'s how to support each zodiac sign when they\'re struggling.',
     tags: ['zodiac','emotional','support','relationships','guide','mental-health'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/zodiac-signs-that-need-most-emotional-support.png`,
     ogImage: `https://matchbybirth.com/og/og-emotional.png`,    content: `
       <h1>Zodiac Signs That Need the Most Emotional Support</h1>
@@ -1469,6 +1508,7 @@ const posts = [
     description: 'The zodiac is full of opposite pairings. Some create magnetic chemistry; others create chaos. Here\'s the science behind why opposites attract — and when to run.',
     tags: ['zodiac','opposites','compatibility','attraction','relationships','astrology'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/why-opposites-attract-astrology.png`,
     ogImage: `https://matchbybirth.com/og/og-opposites.png`,    content: `
       <h1>Why Opposites Attract — And When They Don't</h1>
@@ -1500,6 +1540,7 @@ const posts = [
     description: 'Every zodiac sign has shadow sides. Here are the biggest red flags for each sign — and how to tell the difference between a quirk and a genuine warning sign.',
     tags: ['zodiac','red-flags','compatibility','relationships','guide','warning'],
 
+    category: 'relationships',
     ogImage: `https://matchbybirth.com/og/zodiac-compatibility-red-flags.png`,
     ogImage: `https://matchbybirth.com/og/og-red-flags.png`,    content: `
       <h1>Zodiac Red Flags: Every Sign's Shadow Side</h1>
@@ -1544,6 +1585,7 @@ const posts = [
     description: 'Looking for your best astrological match? Here\'s the top compatibility pick for every zodiac sign — and why this year\'s transits make these pairings especially powerful.',
     tags: ['zodiac','compatibility','2026','matches','guide','love'],
 
+    category: 'seasonal',
     ogImage: `https://matchbybirth.com/og/best-zodiac-matches-for-each-sign-2026.png`,
     ogImage: `https://matchbybirth.com/og/og-best-matches.png`,    content: `
       <h1>Best Zodiac Match for Every Sign in 2026</h1>
@@ -1587,7 +1629,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Fire and water can\'t mix? Opposites always attract? Most of what you\'ve heard about zodiac compatibility is wrong. Here are the biggest myths — debunked.',
     tags: ['zodiac','compatibility','myths','debunked','astrology','guide'],
-    content: `
+
+    category: 'learn-astrology',    content: `
       <h1>Zodiac Compatibility Myths Debunked</h1>
       <p>The internet is full of oversimplified zodiac compatibility rules. "Fire and water don't mix." "Opposites attract." "Same-element signs are always compatible." Most of these are wrong — or at least wildly incomplete. Let's set the record straight.</p>
       <h2>Myth #1: "Fire and water signs are incompatible"</h2>
@@ -1621,7 +1664,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Astrology compatibility isn\'t just for fun — it\'s a practical tool. Here\'s how to use zodiac insights to improve your relationships, work life, and self-understanding.',
     tags: ['zodiac','compatibility','practical','guide','relationships','self-help'],
-    content: `
+
+    category: 'learn-astrology',    content: `
       <h1>How to Use Zodiac Compatibility in Real Life</h1>
       <p>Most people treat zodiac compatibility as entertainment — a fun quiz to take and forget. But used well, it's one of the most practical tools for understanding yourself and the people around you. Here's how to make it actually useful.</p>
       <h2>1. Understand your own patterns first</h2>
@@ -1649,7 +1693,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Can astrology predict infidelity? No — but certain signs have tendencies that make them more susceptible to temptation. Here\'s an honest, non-judgmental look.',
     tags: ['zodiac','cheating','infidelity','relationships','trust','guide'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Signs and Infidelity: An Honest Look</h1>
       <p>Let's be clear: no zodiac sign "causes" cheating. People cheat because of their choices, their circumstances, and their values — not their birth chart. That said, certain signs have tendencies that can make them more vulnerable to temptation. Understanding these patterns can help you protect your relationship.</p>
       <h2>Signs most susceptible to temptation</h2>
@@ -1679,7 +1724,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Baby Boomers, Gen X, Millennials, Gen Z — each generation approaches love differently. Here\'s how zodiac compatibility plays out across age groups.',
     tags: ['zodiac','compatibility','generations','age','relationships','culture'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Compatibility Through the Ages</h1>
       <p>Astrology is ancient, but how we apply it to relationships changes with every generation. A Baby Boomer's approach to compatibility looks very different from Gen Z's. Here's how each generation uses — and misuses — zodiac compatibility.</p>
       <h2>Baby Boomers (born 1946-1964)</h2>
@@ -1712,7 +1758,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Struggling to find the right gift? Every zodiac sign has distinct preferences. Here\'s exactly what each sign will love — and what to avoid.',
     tags: ['zodiac','gifts','guide','shopping','birthday','presents'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>The Ultimate Zodiac Gift Guide</h1>
       <p>The best gifts show someone you truly understand them. And nothing says "I get you" like a gift that matches their zodiac energy. Here's what to get every sign — and what to avoid.</p>
       <h2>Fire signs: Aries, Leo, Sagittarius</h2>
@@ -1766,7 +1813,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Long-distance relationships are hard for everyone — but some zodiac signs struggle more than others. Here\'s how each sign handles distance and which pairings survive it best.',
     tags: ['zodiac','compatibility','long-distance','relationships','guide','distance'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Compatibility in Long-Distance Relationships</h1>
       <p>Long-distance relationships test every couple. But some zodiac signs are naturally better equipped for the challenge — and some pairings have an easier time than others. Here's what astrology says about love across the miles.</p>
       <h2>Signs that handle distance well</h2>
@@ -1809,7 +1857,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Breakups are universal — but how you handle them depends heavily on your zodiac sign. Here\'s how each sign processes heartbreak and moves on.',
     tags: ['zodiac','breakup','heartbreak','relationships','guide','healing'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Signs During Breakups</h1>
       <p>Heartbreak is the great equalizer. It doesn't matter if you're an Aries or a Pisces — breakups hurt. But how you process that pain, how you heal, and how you move on is deeply influenced by your zodiac sign.</p>
       <h2>Fire signs: Aries, Leo, Sagittarius</h2>
@@ -1856,7 +1905,8 @@ const posts = [
     date: '2026-06-15',
     description: 'The most important compatibility isn\'t with a partner — it\'s with yourself. Here\'s how every zodiac sign can cultivate self-love and why it transforms every relationship.',
     tags: ['zodiac','self-love','compatibility','relationships','guide','wellness'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Compatibility Starts With Self-Love</h1>
       <p>Before you can be compatible with someone else, you need to be compatible with yourself. That sounds simple, but every zodiac sign has a specific relationship with self-love — and specific work to do. Here's your sign's self-love guide.</p>
       <h2>Fire signs: Learn to be still</h2>
@@ -1898,7 +1948,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Forget sun signs for a moment. These 10 questions reveal your actual compatibility style — and which signs you\'ll truly click with.',
     tags: ['zodiac','compatibility','quiz','questions','guide','personality'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>10 Questions That Reveal Your Compatibility Type</h1>
       <p>Your sun sign is just one piece of the puzzle. These questions dig deeper into your actual relationship style — and reveal which signs you'll truly connect with, regardless of what the zodiac wheel says.</p>
       <h2>1. When you're upset, what do you need most?</h2>
@@ -1941,7 +1992,8 @@ const posts = [
     date: '2026-06-15',
     description: 'Your zodiac sign doesn\'t just affect your love life — it shapes how you parent. Here\'s every sign\'s parenting style and which sign combinations make the best co-parents.',
     tags: ['zodiac','parenting','compatibility','family','guide','children'],
-    content: `
+
+    category: 'relationships',    content: `
       <h1>Zodiac Compatibility in Parenting</h1>
       <p>Becoming a parent changes everything — including how your zodiac sign shows up. The sign that was spontaneous becomes responsible. The sign that was independent becomes protective. Here's how each sign parents, and which sign combinations make the best co-parenting teams.</p>
       <h2>Fire sign parents</h2>

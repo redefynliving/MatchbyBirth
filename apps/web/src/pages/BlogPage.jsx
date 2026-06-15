@@ -7,20 +7,20 @@ const POSTS_PER_PAGE = 6;
 
 const CATEGORIES = [
   { key: 'all', label: 'All Posts' },
-  { key: 'pillar', label: 'Sign Guides', description: 'Complete compatibility for each sign' },
-  { key: 'deep-dive', label: 'Pair Deep Dives', description: 'In-depth analysis of specific pairings' },
-  { key: 'educational', label: 'Learn Astrology', description: 'Elements, planets, and chart basics' },
-  { key: 'seasonal', label: 'Seasonal', description: 'Retrogrades, full moons, and timely guides' },
-  { key: 'comparison', label: 'Comparisons', description: 'App reviews and alternatives' },
+  { key: 'sign-guide', label: 'By Zodiac Sign', description: 'Compatibility guides for each sign' },
+  { key: 'pair-deep-dive', label: 'Pair Deep Dives', description: 'In-depth analysis of specific pairings' },
+  { key: 'learn-astrology', label: 'Learn Astrology', description: 'Elements, planets, and chart basics' },
+  { key: 'seasonal', label: 'Seasonal', description: 'Retrogrades, transits, and timely guides' },
+  { key: 'relationships', label: 'Relationships', description: 'Love, friendship, work, and family' },
 ];
 
 function getCategory(post) {
-  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'pillar';
-  if (post.tags.includes('compatibility') && (post.slug.match(/-/g) || []).length >= 3) return 'deep-dive';
-  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water', 'synastry', 'natal-chart', 'birth-date', 'houses', 'planets'].includes(t))) return 'educational';
-  if (post.tags.some(t => ['retrograde', 'full-moon', 'new-moon', 'valentine', '2026', 'seasonal'].includes(t))) return 'seasonal';
-  if (post.tags.some(t => ['costar', 'the-pattern', 'alternative', 'comparison', 'vs'].includes(t))) return 'comparison';
-  return 'deep-dive'; // default for pair-specific posts
+  if (post.category) return post.category;
+  // Fallback for any posts without category field
+  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
+  if (post.tags.includes('compatibility')) return 'pair-deep-dive';
+  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water'].includes(t))) return 'learn-astrology';
+  return 'relationships';
 }
 
 function BlogPage() {

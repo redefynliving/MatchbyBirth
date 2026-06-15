@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 import posts from '@/data/posts';
 
 const CATEGORY_META = {
-  pillar: {
+  'sign-guide': {
     title: 'Zodiac Sign Compatibility Guides',
     description: 'Complete compatibility guides for each zodiac sign. Find out which signs match best — and which ones challenge you.',
     seoTitle: 'Zodiac Sign Compatibility Guides | Match by Birth',
     seoDescription: 'Explore comprehensive compatibility guides for every zodiac sign. Ranked best to worst matches for love, friendship, and work.',
   },
-  'deep-dive': {
+  'pair-deep-dive': {
     title: 'Zodiac Pair Compatibility Deep Dives',
     description: 'In-depth analysis of specific zodiac pairings. Go beyond sun signs to understand the dynamics between two people.',
     seoTitle: 'Zodiac Pair Compatibility Deep Dives | Match by Birth',
     seoDescription: 'Detailed compatibility analysis for specific zodiac pairings. Learn the strengths, challenges, and hidden dynamics of each match.',
   },
-  educational: {
+  'learn-astrology': {
     title: 'Learn Astrology — Articles & Guides',
     description: 'Understand the building blocks of astrology: elements, planets, houses, and how they shape your relationships.',
     seoTitle: 'Learn Astrology — Articles & Guides | Match by Birth',
