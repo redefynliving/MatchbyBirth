@@ -230,7 +230,14 @@ async function listRetryablePurchases(limit = 10) {
   return request(`purchases?${query.toString()}`);
 }
 
-module.exports = {
+async function listActiveSubscribers() {
+  const query = new URLSearchParams({
+    select: 'email,consented_at',
+    unsubscribed_at: 'is.null',
+    order: 'consented_at.desc',
+  });
+  return request(`email_subscribers?${query.toString()}`);
+}
   StoreError,
   claimWebhookEvent,
   completeWebhookEvent,
@@ -245,6 +252,7 @@ module.exports = {
   insertResult,
   insertPurchase,
   listRetryablePurchases,
+  listActiveSubscribers,
   request,
   updateReport,
   updateResult,
