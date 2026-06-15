@@ -81,33 +81,6 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-spacing border-y border-border bg-card">
-          <div className="content-container">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Clear and easy to scan</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-                What your result includes
-              </h2>
-              <p className="mt-3 leading-relaxed text-muted-foreground">
-                See the overall score, where you connect, and which differences may take more effort.
-              </p>
-            </div>
-            <div className="mt-9 grid gap-4 md:grid-cols-3">
-              {[
-                ['01', 'Your compatibility score', 'See the overall match at a glance.'],
-                ['02', 'Where you connect', 'See what tends to work well between you.'],
-                ['03', 'Where you differ', 'See which areas may take more effort.'],
-              ].map(([number, title, description]) => (
-                <article key={number} className="rounded-2xl border border-border bg-background/70 p-6">
-                  <span className="text-xs font-semibold tracking-[0.16em] text-primary">{number}</span>
-                  <h3 className="mt-3 text-lg font-semibold">{title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <HomeEmailCapture />
 
         <section className="section-spacing bg-background">
