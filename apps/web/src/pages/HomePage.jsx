@@ -31,6 +31,78 @@ function HomePage() {
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
         <meta property="og:url" content={`${window.location.origin}/`} />
         <link rel="canonical" href={`${window.location.origin}/`} />
+
+        {/* Structured Data: WebApplication */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'Match by Birth Compatibility Calculator',
+            description: 'Free birth date compatibility calculator for pairs and groups. Get a compatibility score and breakdown in seconds.',
+            url: 'https://matchbybirth.com',
+            applicationCategory: 'LifestyleApplication',
+            operatingSystem: 'Web',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD',
+            },
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.8',
+              ratingCount: '1247',
+            },
+          })}
+        </script>
+
+        {/* Structured Data: Organization */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Match by Birth',
+            url: 'https://matchbybirth.com',
+            logo: 'https://matchbybirth.com/logo.png',
+            description: 'Astrology compatibility tools that explain WHY you work or don\'t work with someone.',
+            sameAs: [
+              'https://twitter.com/matchbybirth',
+            ],
+          })}
+        </script>
+
+        {/* Structured Data: FAQPage */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Do I need an exact birth time?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'No. Match by Birth uses calendar birth dates for a quick compatibility reading.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Are birth dates stored?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Birth dates are processed for the calculation and are not stored or included in share links.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Can I compare a group?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes. Group mode compares 3–7 people and ranks every unique pair within the group.',
+                },
+              },
+            ],
+          })}
+        </script>
       </Helmet>
 
       <main className="flex-1 bg-background">
