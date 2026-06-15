@@ -1207,6 +1207,764 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'top-10-most-toxic-zodiac-pairings',
+    title: 'Top 10 Most Toxic Zodiac Pairings — And Why They Clash',
+    date: '2026-06-15',
+    description: 'Some zodiac pairings are doomed from the start. Here are the top 10 most toxic zodiac matchups and the astrological reasons they struggle.',
+    tags: ['zodiac','compatibility','toxic','relationships','guide'],
+    content: `
+      <h1>Top 10 Most Toxic Zodiac Pairings</h1>
+      <p>Not every match is made in heaven. While any pairing can work with enough effort, some zodiac combinations face fundamental clashes that make harmony incredibly difficult. Here are ten pairings that require the most work — and why.</p>
+      <h2>1. Aries &amp; Cancer</h2>
+      <p>Aries charges forward; Cancer needs emotional safety. Aries' bluntness wounds Cancer's sensitivity, while Cancer's moodiness frustrates Aries' need for action. The core clash: directness vs. emotional processing.</p>
+      <h2>2. Taurus &amp; Aquarius</h2>
+      <p>Taurus craves routine and stability; Aquarius thrives on change and rebellion. Taurus finds Aquarius unpredictable and cold. Aquarius finds Taurus stubborn and boring. Neither understands the other's worldview.</p>
+      <h2>3. Gemini &amp; Virgo</h2>
+      <p>Both are ruled by Mercury, but they use that energy very differently. Gemini scatters; Virgo organizes. Gemini finds Virgo nitpicky and boring. Virgo finds Gemini unreliable and superficial.</p>
+      <h2>4. Leo &amp; Scorpio</h2>
+      <p>Two fixed signs with massive egos. Leo needs admiration; Scorpio needs control. Leo's openness clashes with Scorpio's secrecy. When they fight, it's explosive — and neither forgets a grudge.</p>
+      <h2>5. Pisces &amp; Sagittarius</h2>
+      <p>Pisces wants deep emotional merging; Sagittarius wants freedom and adventure. Sagittarius's blunt honesty devastates sensitive Pisces. Pisces's neediness suffocates independent Sagittarius.</p>
+      <h2>6. Capricorn &amp; Libra</h2>
+      <p>Capricorn is all about ambition and practicality; Libra cares about harmony and social connection. Capricorn finds Libra frivolous. Libra finds Capricorn cold. Their values are fundamentally misaligned.</p>
+      <h2>7. Scorpio &amp; Aquarius</h2>
+      <p>Scorpio's emotional intensity is Aquarius's nightmare. Aquarius's detachment is Scorpio's betrayal. Scorpio wants to possess; Aquarius wants space. Neither can give the other what they need.</p>
+      <h2>8. Aries &amp; Capricorn</h2>
+      <p>Aries wants it now; Capricorn plans for decades. Aries finds Capricorn slow and pessimistic. Capricorn finds Aries reckless and impulsive. Power struggles are inevitable.</p>
+      <h2>9. Cancer &amp; Sagittarius</h2>
+      <p>Cancer needs home and emotional security; Sagittarius needs adventure and independence. Cancer's clinginess drives Sagittarius away. Sagittarius's wanderlust makes Cancer feel abandoned.</p>
+      <h2>10. Virgo &amp; Pisces</h2>
+      <p>Virgo's practical logic conflicts with Pisces's dreamy intuition. Virgo criticizes Pisces's lack of structure. Pisces feels Virgo is too cold and analytical. They speak different emotional languages.</p>
+      <h2>The takeaway</h2>
+      <p>A difficult pairing doesn't mean impossible — it means you need more self-awareness and communication. Understanding <em>why</em> you clash is the first step toward working through it.</p>
+      <p><a href="https://matchbybirth.com">Check your compatibility</a> to see where your strengths and challenges lie.</p>
+    `,
+  },
+  {
+    slug: '7-surprising-compatible-zodiac-pairs',
+    title: '7 Surprising Zodiac Pairs That Are Weirdly Compatible',
+    date: '2026-06-15',
+    description: 'These zodiac pairings shouldn\'t work on paper — but they do. Here are seven surprisingly compatible couples that prove astrology is more than sun signs.',
+    tags: ['zodiac','compatibility','surprising','relationships','guide'],
+    content: `
+      <h1>7 Surprising Zodiac Pairs That Are Weirdly Compatible</h1>
+      <p>The zodiac is full of surprises. While some pairings look perfect on paper and fizzle out, others that seem mismatched create magic. Here are seven pairings that defy expectations.</p>
+      <h2>1. Aries &amp; Pisces</h2>
+      <p>On paper: a disaster. The ram meets the fish — fire meets water. But Aries' boldness gives Pisces the confidence they secretly crave, while Pisces' gentleness softens Aries' rough edges. Aries protects; Pisces nurtures.</p>
+      <h2>2. Virgo &amp; Sagittarius</h2>
+      <p>The perfectionist and the adventurer shouldn't work. But Virgo helps Sagittarius turn wild dreams into real plans, while Sagittarius pulls Virgo out of their comfort zone. They balance each other beautifully.</p>
+      <h2>3. Capricorn &amp; Gemini</h2>
+      <p>The serious builder and the social butterfly? Capricorn gives Gemini the stability they never knew they needed. Gemini brings fun and spontaneity into Capricorn's structured world. Opposites that complete.</p>
+      <h2>4. Leo &amp; Cancer</h2>
+      <p>Leo wants the spotlight; Cancer wants the home. But Cancer's nurturing makes Leo feel like royalty, and Leo's confidence makes Cancer feel safe. They build a kingdom together — one inside the home.</p>
+      <h2>5. Scorpio &amp; Gemini</h2>
+      <p>The ultimate odd couple. Scorpio's depth fascinates curious Gemini, while Gemini's lightness gives Scorpio relief from their own intensity. They're endlessly intrigued by each other.</p>
+      <h2>6. Taurus &amp; Aquarius</h2>
+      <p>They share a fixed nature but express it differently. Taurus grounds Aquarius's wild ideas; Aquarius introduces Taurus to new ways of thinking. Once they respect their differences, they're unstoppable.</p>
+      <h2>7. Libra &amp; Scorpio</h2>
+      <p>Libra's harmony-seeking balances Scorpio's intensity. Scorpio's loyalty gives Libra the security they need. Together, they create a relationship of deep commitment and mutual understanding.</p>
+      <h2>Why surprising pairings work</h2>
+      <p>The secret is that compatibility isn't just about sun signs. Moon signs, Venus signs, and rising signs all play a role. Two "incompatible" sun signs can have perfectly harmonious Venus placements — and that's what creates the magic.</p>
+      <p><a href="https://matchbybirth.com">Discover your unique compatibility</a> — you might be surprised.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-workplace-career',
+    title: 'Zodiac Compatibility at Work: Which Signs Make the Best Teams',
+    date: '2026-06-15',
+    description: 'Your zodiac sign affects more than love — it shapes how you work. Discover which sign pairings make the most productive professional teams.',
+    tags: ['zodiac','compatibility','work','career','workplace','team'],
+    content: `
+      <h1>Zodiac Compatibility at Work: Best Teams</h1>
+      <p>We spend a third of our lives at work. The people we work with — and how we mesh with them — shapes our daily happiness more than most relationships. Astrology offers a surprisingly practical lens for understanding workplace dynamics.</p>
+      <h2>The best workplace pairings</h2>
+      <h3>Virgo &amp; Capricorn — The Execution Dream Team</h3>
+      <p>Both earth signs, both detail-oriented. Virgo spots the problems; Capricorn builds the systems to fix them. This is the pairing that actually ships projects on time and under budget.</p>
+      <h3>Leo &amp; Sagittarius — The Creative Powerhouse</h3>
+      <p>Fire signs who feed off each other's energy. Leo brings vision and charisma; Sagittarius brings big-picture thinking and enthusiasm. Together, they pitch ideas that actually get funded.</p>
+      <h3>Libra &amp; Gemini — The Social Strategists</h3>
+      <p>Air signs who excel at communication and networking. Libra reads the room; Gemini generates the ideas. They're the pair that turns meetings into momentum.</p>
+      <h3>Scorpio &amp; Pisces — The Intuitive Investigators</h3>
+      <p>Water signs with deep intuition. Scorpio digs for truth; Pisces reads between the lines. They're the team that solves problems nobody else can see.</p>
+      <h2>The most challenging workplace pairings</h2>
+      <h3>Aries &amp; Cancer</h3>
+      <p>Aries pushes fast; Cancer needs to process. Aries sees Cancer as slow; Cancer sees Aries as reckless. Solution: clear roles and written communication.</p>
+      <h3>Taurus &amp; Aquarius</h3>
+      <p>Taurus wants proven methods; Aquarius wants innovation. They can work together if Taurus handles implementation and Aquarius handles ideation.</p>
+      <h2>How to use this at work</h2>
+      <p>You don't need to know your coworker's birth chart (though it helps). Simply understanding that people have different working styles — and that those styles have patterns — makes you a better colleague and leader.</p>
+      <p><a href="https://matchbybirth.com">Try our calculator</a> to see how you and your coworkers match up.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-sign-myths-legends-stories',
+    title: 'The Myths Behind the Zodiac Signs — Stories That Reveal Their Personalities',
+    date: '2026-06-15',
+    description: 'Every zodiac sign has a mythological origin story. These ancient tales reveal deeper truths about each sign\'s personality and relationship style.',
+    tags: ['zodiac','mythology','astrology','signs','stories','guide'],
+    content: `
+      <h1>The Myths Behind the Zodiac Signs</h1>
+      <p>The zodiac isn't just a personality system — it's a collection of ancient stories that have shaped how we understand human nature for thousands of years. Each sign carries the weight of its mythological origin, and those stories reveal deeper truths about why each sign behaves the way it does.</p>
+      <h2>Aries: The Ram That Started a Journey</h2>
+      <p>In Greek myth, the Golden Fleece came from a divine ram that sacrificed itself to save two children. Aries' courage, impulsiveness, and willingness to charge into danger for others comes directly from this myth. Aries is the hero who acts first and thinks later — because sometimes action is what saves the day.</p>
+      <h2>Taurus: The Bull Who Carried Europa</h2>
+      <p>Zeus transformed into a white bull to carry the princess Europa across the sea. Taurus' stubbornness is actually loyalty — once they commit, they carry you all the way. Their sensuality comes from the bull's connection to the earth and physical pleasure.</p>
+      <h2>Gemini: The Twins Who Couldn't Be Separated</h2>
+      <p>Castor and Pollux were twin brothers — one mortal, one immortal. When Castor died, Pollux begged Zeus to let them share immortality. Gemini's duality, their need for connection, and their ability to see both sides of every situation comes from this story of inseparable bonds.</p>
+      <h2>Cancer: The Crab That Bit Hercules</h2>
+      <p>During Hercules' battle with the Hydra, a small crab bit his foot. It was a tiny creature facing a giant — and it did it to help. Cancer's protectiveness, their willingness to pinch when threatened, and their loyalty to those they love comes from this myth. Small but fierce.</p>
+      <h2>Leo: The Nemean Lion That Couldn't Be Killed</h2>
+      <p>The Nemean Lion had a golden hide that no weapon could pierce. Leo's confidence, pride, and need for recognition comes from this myth. But the lion was eventually defeated by Hercules' strength — a reminder that even the proudest sign needs humility.</p>
+      <h2>Virgo: The Maiden Who Fled to the Stars</h2>
+      <p>Astraea was the goddess of justice who fled Earth when humanity became too corrupt. She became the constellation Virgo. Virgo's perfectionism, their desire for purity, and their frustration with imperfection comes from this myth of an idealist who couldn't bear a flawed world.</p>
+      <h2>Libra: The Scales of Justice</h2>
+      <p>Libra is the only zodiac sign represented by an object, not a living thing. The scales belong to Astraea (Virgo's myth). Libra's obsession with fairness, balance, and seeing both sides comes from this — they are literally the tool of justice.</p>
+      <h2>Scorpio: The Scorpion That Killed Orion</h2>
+      <p>Orion the hunter boasted he could kill any animal. Gaia sent a scorpion to humble him. Scorpio' s intensity, their ability to strike when it matters, and their refusal to be underestimated comes from this myth. Never threaten a Scorpio — they will outlast you.</p>
+      <h2>Sagittarius: The Centaur Archer</h2>
+      <p>Chiron was a centaur — half human, half horse — who was a healer and teacher. Unlike other centaurs who were wild, Chiron was wise. Sagittarius' love of learning, travel, and their aim for something higher comes from this myth of the civilized wild one.</p>
+      <h2>Capricorn: The Sea-Goat</h2>
+      <p>Pan transformed into a creature with the body of a fish and the horns of a goat to escape a monster. Capricorn' s ambition, their ability to navigate both emotional (fish) and practical (goat) worlds, and their determination to climb comes from this myth.</p>
+      <h2>Aquarius: The Water Bearer</h2>
+      <p>Zeus fell in love with the mortal Ganymede and brought him to Olympus to serve nectar to the gods. Aquarius' humanitarianism, their desire to serve the greater good, and their outsider perspective comes from this myth of the mortal who became divine through service.</p>
+      <h2>Pisces: The Two Fish Who Escaped</h2>
+      <p>Aphrodite and her son Eros transformed into fish tied together by a cord to escape the monster Typhon. Pisces' empathy, their need for deep connection, and their ability to feel what others feel comes from this myth of two souls bound together against chaos.</p>
+      <h2>What the myths teach us</h2>
+      <p>These aren't just stories — they're archetypes. Each sign carries a deep pattern of behavior that has been recognized for millennia. Understanding your sign's myth helps you understand your strengths, your shadows, and why you relate to others the way you do.</p>
+      <p><a href="https://matchbybirth.com">Explore your sign's compatibility</a> through the lens of astrology.</p>
+    `,
+  },
+  {
+    slug: 'group-zodiac-compatibility-friendship-dynamics',
+    title: 'Group Zodiac Compatibility: How to Build the Perfect Friend Group',
+    date: '2026-06-15',
+    description: 'Your friend group\'s zodiac makeup matters more than you think. Discover which sign combinations create the most harmonious — and chaotic — groups.',
+    tags: ['zodiac','compatibility','group','friends','team','social'],
+    content: `
+      <h1>Group Zodiac Compatibility: Building the Perfect Friend Group</h1>
+      <p>We all know the feeling: some friend groups just <em>work</em>, while others feel like constant emotional labor. Astrology explains why. The zodiac makeup of your group determines its energy, its conflicts, and its magic.</p>
+      <h2>The ideal group size: 3-5 signs</h2>
+      <p>Too few (2) and you get intensity without perspective. Too many (7+) and you get chaos. The sweet spot is 3-5 people with complementary energies.</p>
+      <h2>The best group combinations</h2>
+      <h3>The Balanced Four: One of Each Element</h3>
+      <p>Fire (Aries, Leo, Sag) + Earth (Taurus, Virgo, Cap) + Air (Gemini, Libra, Aquarius) + Water (Cancer, Scorpio, Pisces). This group has every energy covered. Fire initiates, Earth stabilizes, Air communicates, Water nurtures.</p>
+      <h3>The Power Trio: Two Fire + One Earth</h3>
+      <p>Fire signs bring energy and fun. The earth sign keeps everyone grounded and makes sure plans actually happen. This is the group that starts businesses together.</p>
+      <h3>The Deep Circle: Two Water + One Air</h3>
+      <p>Water signs bring emotional depth. The air sign helps everyone communicate and process feelings. This is the group that actually shows up when you're going through something hard.</p>
+      <h2>Group dynamics to watch</h2>
+      <h3>Too many fire signs</h3>
+      <p>Endless fun, zero follow-through. Plans are made but rarely executed. Someone needs to be the responsible one.</p>
+      <h3>Too many water signs</h3>
+      <p>Deeply empathetic but emotionally exhausting. Everyone feels everything. One person's bad day becomes the whole group's bad day.</p>
+      <h3>Too many fixed signs (Taurus, Leo, Scorpio, Aquarius)</h3>
+      <p>Nobody budges. Every decision becomes a battle of wills. Great for loyalty, terrible for compromise.</p>
+      <h2>Your role in the group</h2>
+      <p>Each sign naturally falls into a group role:</p>
+      <ul>
+        <li><strong>Aries:</strong> The initiator — plans the adventures</li>
+        <li><strong>Taurus:</strong> The anchor — keeps everyone grounded</li>
+        <li><strong>Gemini:</strong> The connector — knows everyone</li>
+        <li><strong>Cancer:</strong> The nurturer — remembers birthdays</li>
+        <li><strong>Leo:</strong> The energizer — makes everything fun</li>
+        <li><strong>Virgo:</strong> The organizer — handles logistics</li>
+        <li><strong>Libra:</strong> The mediator — resolves conflicts</li>
+        <li><strong>Scorpio:</strong> The truth-teller — keeps it real</li>
+        <li><strong>Sagittarius:</strong> The adventurer — suggests the trip</li>
+        <li><strong>Capricorn:</strong> The strategist — has a 5-year plan</li>
+        <li><strong>Aquarius:</strong> The visionary — thinks differently</li>
+        <li><strong>Pisces:</strong> The empath — feels the group's energy</li>
+      </ul>
+      <p><a href="https://matchbybirth.com">Try our group calculator</a> to see how your friend group's compatibility breaks down.</p>
+    `,
+  },
+  {
+    slug: 'mercury-retrograde-2026-relationships',
+    title: 'Mercury Retrograde 2026: What It Means for Your Relationships',
+    date: '2026-06-15',
+    description: 'Mercury retrograde is infamous for communication breakdowns. Here\'s what the 2026 retrogrades mean for your love life, friendships, and work relationships.',
+    tags: ['mercury','retrograde','2026','relationships','communication','astrology'],
+    content: `
+      <h1>Mercury Retrograde 2026: Relationships Guide</h1>
+      <p>Every year, Mercury appears to move backward in the sky three times. During these periods — called Mercury retrogrades — communication glitches, misunderstandings, and old flames resurface. Here's what to expect in 2026 and how to protect your relationships.</p>
+      <h2>What is Mercury retrograde?</h2>
+      <p>Mercury rules communication, technology, travel, and contracts. When it goes retrograde (moving backward from our perspective), these areas get disrupted. Emails get lost. Plans change. Exes text you at 2 AM.</p>
+      <h2>2026 Mercury Retrograde Dates</h2>
+      <ul>
+        <li><strong>March 14 – April 7, 2026</strong> (in Aries) — impacts new beginnings and self-identity</li>
+        <li><strong>July 17 – August 11, 2026</strong> (in Leo) — impacts creativity, romance, and ego</li>
+        <li><strong>November 9 – November 29, 2026</strong> (in Scorpio) — impacts deep emotions, secrets, and transformation</li>
+      </ul>
+      <h2>How each retrograde affects relationships</h2>
+      <h3>March-April: Aries Retrograde</h3>
+      <p>New relationships started during this time may stall. You might question whether you really want what you thought you wanted. Existing relationships face impatience and short tempers. Advice: don't start anything new. Revisit instead.</p>
+      <h3>July-August: Leo Retrograde</h3>
+      <p>Romance gets complicated. Old flames resurface. Ego clashes intensify. You might feel unappreciated or crave more attention. Advice: don't make dramatic declarations. Wait until August to have the big conversation.</p>
+      <h3>November: Scorpio Retrograde</h3>
+      <p>The deepest and most intense retrograde. Secrets come to light. Trust issues surface. You might uncover something you wish you hadn't. Advice: this is a time for honest reckoning, not avoidance.</p>
+      <h2>Surviving Mercury retrograde in relationships</h2>
+      <ul>
+        <li><strong>Double-check everything.</strong> Read texts before sending. Confirm plans in writing.</li>
+        <li><strong>Don't sign anything major.</strong> Contracts and commitments made during retrograde often need renegotiation.</li>
+        <li><strong>Expect the unexpected.</strong> Plans will change. Be flexible.</li>
+        <li><strong>Use the word "re-".</strong> Revisit, reconsider, reconnect, reframe. Retrograde energy supports reflection.</li>
+        <li><strong>Back up your data.</strong> Technology fails during Mercury retrograde. Don't lose important messages.</li>
+      </ul>
+      <h2>The gift of Mercury retrograde</h2>
+      <p>It's not all chaos. Mercury retrograde gives us a chance to slow down, reflect, and fix what we've been avoiding. The relationships that survive retrograde come out stronger — because you've had the hard conversations you were putting off.</p>
+      <p><a href="https://matchbybirth.com">Check your compatibility</a> to see how you and your partner handle communication under pressure.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-signs-that-need-most-emotional-support',
+    title: 'The Zodiac Signs That Need the Most Emotional Support (And How to Give It)',
+    date: '2026-06-15',
+    description: 'Some signs wear their hearts on their sleeves; others hide their pain behind walls. Here\'s how to support each zodiac sign when they\'re struggling.',
+    tags: ['zodiac','emotional','support','relationships','guide','mental-health'],
+    content: `
+      <h1>Zodiac Signs That Need the Most Emotional Support</h1>
+      <p>Everyone needs support, but different signs need it in different ways. Understanding what each sign needs — and what they'll never ask for — makes you a better partner, friend, and colleague.</p>
+      <h2>The signs that need the most support</h2>
+      <h3>1. Cancer — The Silent Sufferer</h3>
+      <p>Cancer feels everything deeply but rarely asks for help. They retreat into their shell when hurt, expecting you to notice. What they need: gentle, consistent presence. Don't push — just show up. Bring food. Sit with them. Let them cry.</p>
+      <h3>2. Pisces — The Overwhelmed Empath</h3>
+      <p>Pisces absorbs everyone else's emotions until they drown. They need someone who can help them separate their feelings from others'. What they need: boundaries, grounding, and permission to rest. Remind them it's okay to say no.</p>
+      <h3>3. Scorpio — The Wounded Healer</h3>
+      <p>Scorpio carries deep wounds they'll never fully reveal. They test people to see if they're safe. What they need: unwavering loyalty and patience. Don't push for vulnerability — earn it. Once you're in, you're in forever.</p>
+      <h3>4. Virgo — The Anxious Perfectionist</h3>
+      <p>Virgo's inner critic never stops. They need someone who can quiet the voice that says they're not enough. What they need: specific, genuine compliments. Not "you're great" — "the way you handled that situation was impressive."</p>
+      <h3>5. Capricorn — The Lonely Achiever</h3>
+      <p>Capricorn climbs alone. They've learned to rely on themselves because depending on others has let them down. What they need: someone who stays. Not advice, not solutions — just presence. Show them they don't have to earn love.</p>
+      <h2>Signs that give more than they receive</h2>
+      <p>Leo, Aries, and Sagittarius are natural givers — they'll support everyone else before asking for help. Check on them. They need support too, even if they'd never admit it.</p>
+      <h2>How to support any sign</h2>
+      <ul>
+        <li>Listen before advising</li>
+        <li>Ask "what do you need right now?" instead of assuming</li>
+        <li>Show up consistently, not just in crisis</li>
+        <li>Respect their way of processing (some need space, some need closeness)</li>
+      </ul>
+      <p><a href="https://matchbybirth.com">Understand your partner's emotional needs</a> through compatibility analysis.</p>
+    `,
+  },
+  {
+    slug: 'why-opposites-attract-astrology',
+    title: 'Why Opposites Attract in Astrology — And When They Don\'t',
+    date: '2026-06-15',
+    description: 'The zodiac is full of opposite pairings. Some create magnetic chemistry; others create chaos. Here\'s the science behind why opposites attract — and when to run.',
+    tags: ['zodiac','opposites','compatibility','attraction','relationships','astrology'],
+    content: `
+      <h1>Why Opposites Attract — And When They Don't</h1>
+      <p>The zodiac wheel is designed as a circle of opposites. Aries faces Libra. Taurus faces Scorpio. Gemini faces Sagittarius. These polar pairings create some of the most intense relationships in astrology — for better and worse.</p>
+      <h2>The six zodiac opposites</h2>
+      <h3>Aries ↔ Libra: Self vs. Partnership</h3>
+      <p>Aries is all about "me"; Libra is all about "we." Aries teaches Libra to stand up for themselves. Libra teaches Aries to consider others. When it works, it's beautiful. When it doesn't, Aries feels abandoned and Libra feels bulldozed.</p>
+      <h3>Taurus ↔ Scorpio: Stability vs. Transformation</h3>
+      <p>Taurus wants things to stay the same; Scorpio wants to burn it all down and rebuild. This is one of the most intense pairings in astrology. The chemistry is undeniable. The power struggles are real.</p>
+      <h3>Gemini ↔ Sagittarius: Curiosity vs. Philosophy</h3>
+      <p>Gemini wants to know everything about everything. Sagittarius wants to find the one big truth. Gemini finds Sagittarius shallow; Sagittarius finds Gemini scattered. But they never bore each other.</p>
+      <h3>Cancer ↔ Capricorn: Emotion vs. Ambition</h3>
+      <p>Cancer leads with the heart; Capricorn leads with the head. Cancer teaches Capricorn to feel; Capricorn teaches Cancer to build. This is the parent-child dynamic of the zodiac — nurturing meets discipline.</p>
+      <h3>Leo ↔ Aquarius: Ego vs. Collective</h3>
+      <p>Leo wants to be the star; Aquarius wants to change the world. Leo finds Aquarius cold; Aquarius finds Leo self-centered. But Leo's warmth can thaw Aquarius, and Aquarius's vision can give Leo's creativity purpose.</p>
+      <h3>Virgo ↔ Pisces: Logic vs. Intuition</h3>
+      <p>Virgo analyzes; Pisces feels. Virgo finds Pisces impractical; Pisces finds Virgo heartless. But Virgo can ground Pisces's dreams, and Pisces can teach Virgo that not everything needs to be fixed.</p>
+      <h2>When opposites work</h2>
+      <p>Opposite pairings work when both people respect what the other brings. The key is recognizing that your opposite's weakness is your strength — and vice versa. You complete each other, not compete.</p>
+      <h2>When opposites fail</h2>
+      <p>They fail when one person tries to change the other. If Taurus tries to stop Scorpio's transformations, or if Scorpio tries to break Taurus's stability, both suffer. Acceptance is everything.</p>
+      <p><a href="https://matchbybirth.com">See how you and your partner's differences create chemistry</a> — or conflict.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-red-flags',
+    title: 'Zodiac Red Flags: Which Signs Have the Most (And What They Mean)',
+    date: '2026-06-15',
+    description: 'Every zodiac sign has shadow sides. Here are the biggest red flags for each sign — and how to tell the difference between a quirk and a genuine warning sign.',
+    tags: ['zodiac','red-flags','compatibility','relationships','guide','warning'],
+    content: `
+      <h1>Zodiac Red Flags: Every Sign's Shadow Side</h1>
+      <p>Every sign has a light side and a shadow side. The traits that make each sign special can also be their biggest challenges in relationships. Here's what to watch for — and how to tell the difference between a harmless quirk and a genuine red flag.</p>
+      <h2>Fire signs: Aries, Leo, Sagittarius</h2>
+      <h3>Aries red flags</h3>
+      <p>Impatience, selfishness, explosive temper. Aries can be so focused on what they want that they bulldoze over others. The red flag: if they never apologize or always make it your fault.</p>
+      <h3>Leo red flags</h3>
+      <p>Need for constant admiration, jealousy, dramatic behavior. Leo needs to be the center of attention. The red flag: if they make everything about them and dismiss your feelings as "overreacting."</p>
+      <h3>Sagittarius red flags</h3>
+      <p>Commitment phobia, bluntness that crosses into cruelty, restlessness. Sagittarius values freedom above all. The red flag: if they disappear for days and act like it's normal.</p>
+      <h2>Earth signs: Taurus, Virgo, Capricorn</h2>
+      <h3>Taurus red flags</h3>
+      <p>Stubbornness, possessiveness, resistance to change. Taurus digs in and won't budge. The red flag: if they control where you go, who you see, or how you spend money.</p>
+      <h3>Virgo red flags</h3>
+      <p>Constant criticism, anxiety that becomes controlling, perfectionism that makes everyone feel inadequate. The red flag: if nothing you do is ever good enough.</p>
+      <h3>Capricorn red flags</h3>
+      <p>Emotional unavailability, workaholism, using success as a shield. Capricorn can treat relationships like projects. The red flag: if they're more invested in their career than in you.</p>
+      <h2>Air signs: Gemini, Libra, Aquarius</h2>
+      <h3>Gemini red flags</h3>
+      <p>Inconsistency, gossip, emotional detachment. Gemini can be two different people depending on the day. The red flag: if you never know which Gemini you're getting.</p>
+      <h3>Libra red flags</h3>
+      <p>People-pleasing that becomes dishonesty, indecision that paralyzes the relationship, avoiding conflict until it explodes. The red flag: if they say yes to everything but follow through on nothing.</p>
+      <h3>Aquarius red flags</h3>
+      <p>Emotional coldness, treating you like a friend when you need a partner, prioritizing causes over people. The red flag: if you feel like you're dating a robot who occasionally remembers you exist.</p>
+      <h2>Water signs: Cancer, Scorpio, Pisces</h2>
+      <h3>Cancer red flags</h3>
+      <p>Passive-aggression, emotional manipulation through guilt, clinginess. Cancer expresses hurt indirectly. The red flag: if they punish you with silence instead of telling you what's wrong.</p>
+      <h3>Scorpio red flags</h3>
+      <p>Jealousy, possessiveness, using intimate knowledge as a weapon. Scorpio knows your vulnerabilities — and can use them. The red flag: if they bring up your deepest insecurities during arguments.</p>
+      <h3>Pisces red flags</h3>
+      <p>Victim mentality, escapism, boundary issues. Pisces can lose themselves in relationships. The red flag: if they have no identity outside of you.</p>
+      <h2>Red flag vs. quirk</h2>
+      <p>Every sign has quirks. Aries is impatient — that's a quirk. Aries screams at you and breaks things — that's a red flag. The difference is impact: quirks are annoying but manageable. Red flags cause harm.</p>
+      <p><a href="https://matchbybirth.com">Understand your partner's patterns</a> — the good and the challenging.</p>
+    `,
+  },
+  {
+    slug: 'best-zodiac-matches-for-each-sign-2026',
+    title: 'Best Zodiac Match for Every Sign in 2026',
+    date: '2026-06-15',
+    description: 'Looking for your best astrological match? Here\'s the top compatibility pick for every zodiac sign — and why this year\'s transits make these pairings especially powerful.',
+    tags: ['zodiac','compatibility','2026','matches','guide','love'],
+    content: `
+      <h1>Best Zodiac Match for Every Sign in 2026</h1>
+      <p>While any pairing can work with the right effort, some matches have natural advantages. Here's the best match for each zodiac sign — and why 2026's astrological climate makes these pairings especially potent.</p>
+      <h2>Fire signs</h2>
+      <h3>Aries → Sagittarius</h3>
+      <p>Two fire signs who share a love of adventure, honesty, and independence. Aries leads; Sagittarius explores. Neither is clingy. In 2026, Jupiter's position amplifies fire-sign energy, making this pairing especially lucky.</p>
+      <h3>Leo → Gemini</h3>
+      <p>Leo's drama meets Gemini's wit. Leo brings passion; Gemini brings variety. They never bore each other. 2026 favors air-fire connections, making this a year of exciting possibilities.</p>
+      <h3>Sagittarius → Aries</h3>
+      <p>The mutual admiration society of the zodiac. Both are honest, adventurous, and independent. They give each other space and always have stories to share.</p>
+      <h2>Earth signs</h2>
+      <h3>Taurus → Cancer</h3>
+      <p>Taurus provides the stability Cancer craves. Cancer provides the emotional warmth Taurus secretly needs. Together, they build a home that feels like a sanctuary.</p>
+      <h3>Virgo → Capricorn</h3>
+      <p>Two practical signs who actually get things done. Virgo handles the details; Capricorn handles the big picture. They respect each other's work ethic and ambition.</p>
+      <h3>Capricorn → Virgo</h3>
+      <p>Capricorn's ambition is grounded by Virgo's attention to detail. This is the power couple that builds empires — slowly, methodically, and successfully.</p>
+      <h2>Air signs</h2>
+      <h3>Gemini → Libra</h3>
+      <p>The zodiac's most social pairing. Both love conversation, beauty, and intellectual stimulation. They're the couple that can talk for hours and never run out of things to say.</p>
+      <h3>Libra → Aquarius</h3>
+      <p>Libra's charm meets Aquarius's originality. Both value fairness and intellectual connection. They're the couple that changes the world — and looks good doing it.</p>
+      <h3>Aquarius → Gemini</h3>
+      <p>Two minds that never stop. Aquarius brings vision; Gemini brings curiosity. They challenge each other intellectually and give each other freedom.</p>
+      <h2>Water signs</h2>
+      <h3>Cancer → Pisces</h3>
+      <p>The most emotionally intuitive pairing in the zodiac. Both feel deeply, dream big, and nurture fiercely. They understand each other without words.</p>
+      <h3>Scorpio → Cancer</h3>
+      <p>Scorpio's intensity meets Cancer's nurturing. Both value loyalty above all. Once they trust each other, this is one of the most powerful bonds in the zodiac.</p>
+      <h3>Pisces → Taurus</h3>
+      <p>Pisces dreams; Taurus builds. Taurus gives Pisces the stability they need to create. Pisces gives Taurus the emotional depth they secretly crave.</p>
+      <h2>The bigger picture</h2>
+      <p>Remember: sun sign compatibility is just the start. Your moon sign, Venus sign, and rising sign all play crucial roles. Two "incompatible" sun signs can have perfectly harmonious deeper placements.</p>
+      <p><a href="https://matchbybirth.com">Get your full compatibility analysis</a> — beyond sun signs.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-myths-debunked',
+    title: 'Zodiac Compatibility Myths Debunked: What Astrology Actually Says',
+    date: '2026-06-15',
+    description: 'Fire and water can\'t mix? Opposites always attract? Most of what you\'ve heard about zodiac compatibility is wrong. Here are the biggest myths — debunked.',
+    tags: ['zodiac','compatibility','myths','debunked','astrology','guide'],
+    content: `
+      <h1>Zodiac Compatibility Myths Debunked</h1>
+      <p>The internet is full of oversimplified zodiac compatibility rules. "Fire and water don't mix." "Opposites attract." "Same-element signs are always compatible." Most of these are wrong — or at least wildly incomplete. Let's set the record straight.</p>
+      <h2>Myth #1: "Fire and water signs are incompatible"</h2>
+      <p><strong>Reality:</strong> Some of the most passionate pairings in astrology are fire-water. Aries-Scorpio, Leo-Cancer, Sagittarius-Pisces — these pairings create incredible chemistry precisely because they're different. Fire brings action; water brings depth.</p>
+      <h2>Myth #2: "Opposites always attract"</h2>
+      <p><strong>Reality:</strong> Opposites attract when there's mutual respect. When there's not, they repel. Aries-Libra works when both appreciate what the other brings. It fails when one tries to change the other.</p>
+      <h2>Myth #3: "Same-element signs are always the best match"</h2>
+      <p><strong>Reality:</strong> Same-element pairings understand each other, but they also share the same weaknesses. Two fire signs have incredible fun but no one handles practical matters. Two water signs have deep empathy but can drown in emotion.</p>
+      <h2>Myth #4: "Sun sign compatibility is all that matters"</h2>
+      <p><strong>Reality:</strong> Sun signs represent about 20% of compatibility. Your moon sign (emotions), Venus sign (love style), Mars sign (drive and conflict), and rising sign (first impressions) all play massive roles.</p>
+      <h2>Myth #5: "If your signs are incompatible, the relationship is doomed"</h2>
+      <p><strong>Reality:</strong> Every sign pairing has strengths and challenges. The "most compatible" pairings still have difficulties — they're just different difficulties. Incompatibility means more effort, not impossible.</p>
+      <h2>Myth #6: "You need to be with someone of the same element"</h2>
+      <p><strong>Reality:</strong> Cross-element pairings often create the most growth. Earth-water pairings build stable emotional foundations. Fire-air pairings create exciting intellectual connections.</p>
+      <h2>Myth #7: "Zodiac compatibility is set in stone"</h2>
+      <p><strong>Reality:</strong> Astrology shows tendencies, not destiny. Free will, communication, and effort matter more than any planetary placement. A "difficult" pairing with two mature, committed people will outperform an "easy" pairing with two people who aren't trying.</p>
+      <h2>What actually determines compatibility</h2>
+      <ul>
+        <li><strong>Communication styles</strong> — can you talk about hard things?</li>
+        <li><strong>Emotional needs</strong> — do you understand what your partner needs?</li>
+        <li><strong>Shared values</strong> — do you want the same things in life?</li>
+        <li><strong>Willingness to grow</strong> — can you evolve together?</li>
+        <li><strong>Mutual respect</strong> — do you appreciate your differences?</li>
+      </ul>
+      <p><a href="https://matchbybirth.com">Get your full compatibility reading</a> — beyond the myths.</p>
+    `,
+  },
+  {
+    slug: 'how-to-use-zodiac-compatibility-in-real-life',
+    title: 'How to Actually Use Zodiac Compatibility in Your Daily Life',
+    date: '2026-06-15',
+    description: 'Astrology compatibility isn\'t just for fun — it\'s a practical tool. Here\'s how to use zodiac insights to improve your relationships, work life, and self-understanding.',
+    tags: ['zodiac','compatibility','practical','guide','relationships','self-help'],
+    content: `
+      <h1>How to Use Zodiac Compatibility in Real Life</h1>
+      <p>Most people treat zodiac compatibility as entertainment — a fun quiz to take and forget. But used well, it's one of the most practical tools for understanding yourself and the people around you. Here's how to make it actually useful.</p>
+      <h2>1. Understand your own patterns first</h2>
+      <p>Before analyzing your compatibility with others, understand your own sign's tendencies. What are your default reactions under stress? What do you need to feel loved? What are your blind spots? Self-awareness is the foundation of every good relationship.</p>
+      <h2>2. Use it as a conversation starter, not a verdict</h2>
+      <p>"I read that Leos need appreciation to feel loved — is that true for you?" is a better conversation than "We're incompatible because you're a Leo." Astrology opens doors. Don't use them to build walls.</p>
+      <h2>3. Know your partner's love language through their Venus sign</h2>
+      <p>Your sun sign shows who you are. Your Venus sign shows how you love. A Venus in Taurus expresses love through touch and quality time. A Venus in Aquarius expresses love through intellectual connection and giving space.</p>
+      <h2>4. Navigate conflict through Mars signs</h2>
+      <p>Your Mars sign shows how you handle conflict. Mars in Aries confronts directly. Mars in Libra avoids until it explodes. Mars in Cancer uses passive-aggression. Knowing your partner's Mars style helps you fight fair.</p>
+      <h2>5. Use moon signs for emotional understanding</h2>
+      <p>Your moon sign shows what you need emotionally. Moon in Scorpio needs deep emotional safety. Moon in Gemini needs mental stimulation and variety. When your partner is upset, their moon sign tells you what they actually need.</p>
+      <h2>6. Apply it at work</h2>
+      <p>Understanding your coworker's sign helps you communicate better. Give a Virgo detailed instructions. Give a Sagittarius the big picture and let them figure out the details. Give a Cancer emotional support before giving feedback.</p>
+      <h2>7. Don't use it as an excuse</h2>
+      <p>"I'm a Scorpio, I can't help being jealous" is lazy. Astrology explains tendencies — it doesn't excuse behavior. Use it to understand yourself, not to avoid growth.</p>
+      <h2>8. Remember: the chart is not the person</h2>
+      <p>Two people with identical birth charts can have completely different relationships. Astrology is a tool for understanding, not a prediction. The person in front of you is always more important than the sign on paper.</p>
+      <p><a href="https://matchbybirth.com">Start with your compatibility score</a> — then go deeper.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-signs-most-likely-to-cheat',
+    title: 'Which Zodiac Signs Are Most Likely to Cheat? An Honest Look',
+    date: '2026-06-15',
+    description: 'Can astrology predict infidelity? No — but certain signs have tendencies that make them more susceptible to temptation. Here\'s an honest, non-judgmental look.',
+    tags: ['zodiac','cheating','infidelity','relationships','trust','guide'],
+    content: `
+      <h1>Zodiac Signs and Infidelity: An Honest Look</h1>
+      <p>Let's be clear: no zodiac sign "causes" cheating. People cheat because of their choices, their circumstances, and their values — not their birth chart. That said, certain signs have tendencies that can make them more vulnerable to temptation. Understanding these patterns can help you protect your relationship.</p>
+      <h2>Signs most susceptible to temptation</h2>
+      <h3>Gemini — The Boredom Risk</h3>
+      <p>Gemini craves novelty and mental stimulation. When a relationship becomes routine, they may seek excitement elsewhere — not out of malice, but out of a genuine need for variety. The fix: keep things interesting. Surprise them. Have new conversations.</p>
+      <h3>Sagittarius — The Freedom Risk</h3>
+      <p>Sagittarius values freedom above almost everything. They may not cheat intentionally — they just don't see why saying no to an opportunity is necessary. The fix: give them space within the relationship. Don't make them choose between you and their independence.</p>
+      <h3>Aquarius — The Detachment Risk</h3>
+      <p>Aquarius can be emotionally detached. They may not even realize they're crossing a line because they intellectualize everything. The fix: be explicit about boundaries. Don't assume they "should know" — tell them directly.</p>
+      <h3>Pisces — The Escapism Risk</h3>
+      <p>Pisces uses fantasy and escapism as coping mechanisms. When reality is painful, they may escape into an affair the same way they'd escape into a substance or daydream. The fix: address the underlying pain. What are they escaping from?</p>
+      <h2>Signs that rarely cheat</h2>
+      <h3>Taurus</h3>
+      <p>Once committed, Taurus is incredibly loyal. They hate disruption to their comfort zone. Cheating would destabilize everything they've built.</p>
+      <h3>Cancer</h3>
+      <p>Cancer values emotional security above all. The thought of losing their home and family is unbearable. They'll work through problems rather than run from them.</p>
+      <h3>Scorpio</h3>
+      <p>Scorpio is either all in or all out. If they cheat, it's usually because the relationship was already dead and they've been planning their exit for months.</p>
+      <h2>The real predictor isn't the sign</h2>
+      <p>The biggest predictor of infidelity isn't astrology — it's the quality of the relationship. People cheat when they feel unseen, unappreciated, or trapped. The best protection against cheating isn't finding the "right" sign. It's building a relationship where both people feel valued.</p>
+      <p><a href="https://matchbybirth.com">Understand your relationship's strengths</a> — and where it needs work.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-through-the-ages',
+    title: 'Zodiac Compatibility Through the Ages: How Every Generation Loves',
+    date: '2026-06-15',
+    description: 'Baby Boomers, Gen X, Millennials, Gen Z — each generation approaches love differently. Here\'s how zodiac compatibility plays out across age groups.',
+    tags: ['zodiac','compatibility','generations','age','relationships','culture'],
+    content: `
+      <h1>Zodiac Compatibility Through the Ages</h1>
+      <p>Astrology is ancient, but how we apply it to relationships changes with every generation. A Baby Boomer's approach to compatibility looks very different from Gen Z's. Here's how each generation uses — and misuses — zodiac compatibility.</p>
+      <h2>Baby Boomers (born 1946-1964)</h2>
+      <p>Boomers came of age during the 1960s-70s, when astrology experienced a massive revival. Many took it seriously — checking compatibility before dating was common. Their approach: practical and committed. If the signs matched, you made it work.</p>
+      <p><strong>Compatible style:</strong> Loyalty-focused. Signs that value commitment (Taurus, Cancer, Libra) tend to thrive in Boomer relationships.</p>
+      <h2>Generation X (born 1965-1980)</h2>
+      <p>Gen X is the skeptical generation. They grew up with astrology as entertainment, not guidance. Many know their signs but don't take compatibility too seriously. Their approach: pragmatic. They'll check their signs for fun, but they trust experience over astrology.</p>
+      <p><strong>Compatible style:</strong> Independent. Signs that respect space and autonomy (Aquarius, Sagittarius, Aries) resonate with Gen X values.</p>
+      <h2>Millennials (born 1981-1996)</h2>
+      <p>Millennials are the generation that brought astrology mainstream again. They use it as a tool for self-understanding and communication. "What's your sign?" became a legitimate dating question. Their approach: therapeutic. They use astrology to understand patterns and improve relationships.</p>
+      <p><strong>Compatible style:</strong> Growth-oriented. Signs that value emotional depth and communication (Pisces, Scorpio, Gemini) appeal to Millennial sensibilities.</p>
+      <h2>Generation Z (born 1997-2012)</h2>
+      <p>Gen Z treats astrology as identity, not just entertainment. They use it to understand themselves, find community, and navigate relationships. Memes, TikTok, and Instagram made astrology accessible and fun. Their approach: fluid. They're less rigid about "rules" and more interested in what resonates personally.</p>
+      <p><strong>Compatible style:</strong> Authentic. Signs that value individuality and reject traditional norms (Aquarius, Leo, Libra) align with Gen Z values.</p>
+      <h2>What every generation gets wrong</h2>
+      <ul>
+        <li><strong>Boomers:</strong> Too rigid. "Incompatible signs" can work with effort.</li>
+        <li><strong>Gen X:</strong> Too dismissive. Astrology offers genuine insights.</li>
+        <li><strong>Millennials:</strong> Too therapeutic. Sometimes it's just fun.</li>
+        <li><strong>Gen Z:</strong> Too fluid. Some astrological patterns are real and consistent.</li>
+      </ul>
+      <h2>The timeless truth</h2>
+      <p>Every generation discovers the same thing: understanding yourself and your partner matters more than any sign combination. Astrology is a tool — the best generation is the one that uses it wisely.</p>
+      <p><a href="https://matchbybirth.com">Find your compatibility</a> — whatever your generation.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-gift-guide',
+    title: 'The Ultimate Zodiac Gift Guide: Perfect Presents for Every Sign',
+    date: '2026-06-15',
+    description: 'Struggling to find the right gift? Every zodiac sign has distinct preferences. Here\'s exactly what each sign will love — and what to avoid.',
+    tags: ['zodiac','gifts','guide','shopping','birthday','presents'],
+    content: `
+      <h1>The Ultimate Zodiac Gift Guide</h1>
+      <p>The best gifts show someone you truly understand them. And nothing says "I get you" like a gift that matches their zodiac energy. Here's what to get every sign — and what to avoid.</p>
+      <h2>Fire signs: Aries, Leo, Sagittarius</h2>
+      <h3>Aries</h3>
+      <p><strong>They'll love:</strong> Anything adventurous — rock climbing gear, a cooking class, a bold piece of jewelry, a fitness tracker.</p>
+      <p><strong>Avoid:</strong> Boring or passive gifts. Aries wants excitement, not another candle.</p>
+      <h3>Leo</h3>
+      <p><strong>They'll love:</strong> Anything that makes them feel special — personalized jewelry, a spa day, front-row concert tickets, something gold.</p>
+      <p><strong>Avoid:</strong> Generic gifts. Leo needs to feel like the gift was chosen specifically for them.</p>
+      <h3>Sagittarius</h3>
+      <p><strong>They'll love:</strong> Travel gear, a book about philosophy, tickets to something new, a world map, language lessons.</p>
+      <p><strong>Avoid:</strong> Anything that feels like an obligation. Sagittarius hates feeling tied down, even by gifts.</p>
+      <h2>Earth signs: Taurus, Virgo, Capricorn</h2>
+      <h3>Taurus</h3>
+      <p><strong>They'll love:</strong> Luxurious and sensory — high-quality chocolate, soft blankets, gourmet food, essential oils, cashmere.</p>
+      <p><strong>Avoid:</strong> Cheap or impractical gifts. Taurus values quality over quantity.</p>
+      <h3>Virgo</h3>
+      <p><strong>They'll love:</strong> Useful and well-made — a planner, a high-quality kitchen tool, a book on a topic they love, organizational items.</p>
+      <p><strong>Avoid:</strong> Clutter. Virgo doesn't want more stuff — they want better stuff.</p>
+      <h3>Capricorn</h3>
+      <p><strong>They'll love:</strong> Classic and timeless — a leather briefcase, a quality watch, a book on leadership, something that lasts.</p>
+      <p><strong>Avoid:</strong> Trendy or frivolous gifts. Capricorn values substance and longevity.</p>
+      <h2>Air signs: Gemini, Libra, Aquarius</h2>
+      <h3>Gemini</h3>
+      <p><strong>They'll love:</strong> Books, podcast subscriptions, a new phone accessory, tickets to a comedy show, something that sparks conversation.</p>
+      <p><strong>Avoid:</strong> Heavy emotional gifts. Gemini prefers intellectual stimulation over emotional weight.</p>
+      <h3>Libra</h3>
+      <p><strong>They'll love:</strong> Beautiful and harmonious — art, a nice bottle of wine, something for their home, a couples experience.</p>
+      <p><strong>Avoid:</strong> Anything ugly or impractical. Libra cares about aesthetics as much as function.</p>
+      <h3>Aquarius</h3>
+      <p><strong>They'll love:</strong> Unique and unconventional — a donation to their cause, a quirky gadget, a book on futurism, something no one else would think of.</p>
+      <p><strong>Avoid:</strong> Traditional or sentimental gifts. Aquarius wants to feel understood, not conventional.</p>
+      <h2>Water signs: Cancer, Scorpio, Pisces</h2>
+      <h3>Cancer</h3>
+      <p><strong>They'll love:</strong> Nurturing and sentimental — a photo album, a home-cooked meal, something for their home, a handwritten letter.</p>
+      <p><strong>Avoid:</strong> Impersonal gifts. Cancer needs to feel the emotional connection behind the present.</p>
+      <h3>Scorpio</h3>
+      <p><strong>They'll love:</strong> Intense and meaningful — a deep book, something mysterious, a piece of dark jewelry, an experience that transforms.</p>
+      <p><strong>Avoid:</strong> Surface-level gifts. Scorpio sees through anything that doesn't have depth.</p>
+      <h3>Pisces</h3>
+      <p><strong>They'll love:</strong> Dreamy and artistic — art supplies, a journal, music, something spiritual, a donation in their name.</p>
+      <p><strong>Avoid:</strong> Harsh or overly practical gifts. Pisces lives in a world of beauty and imagination.</p>
+      <h2>The universal rule</h2>
+      <p>The best gift for any sign is one that shows you pay attention. Astrology gives you a starting point, but knowing the person in front of you is what makes a gift truly meaningful.</p>
+      <p><a href="https://matchbybirth.com">Understand what makes your person tick</a> — then get them the perfect gift.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-long-distance-relationships',
+    title: 'Zodiac Compatibility in Long-Distance Relationships: Which Signs Can Handle It',
+    date: '2026-06-15',
+    description: 'Long-distance relationships are hard for everyone — but some zodiac signs struggle more than others. Here\'s how each sign handles distance and which pairings survive it best.',
+    tags: ['zodiac','compatibility','long-distance','relationships','guide','distance'],
+    content: `
+      <h1>Zodiac Compatibility in Long-Distance Relationships</h1>
+      <p>Long-distance relationships test every couple. But some zodiac signs are naturally better equipped for the challenge — and some pairings have an easier time than others. Here's what astrology says about love across the miles.</p>
+      <h2>Signs that handle distance well</h2>
+      <h3>Aquarius</h3>
+      <p>Aquarius is the sign most naturally suited for long-distance. They value independence, communicate well through technology, and don't need constant physical presence to feel connected. Distance gives them the space they crave.</p>
+      <h3>Gemini</h3>
+      <p>Gemini thrives on mental connection. Video calls, texts, voice messages — they can maintain intimacy through communication alone. As long as the conversation stays interesting, distance is manageable.</p>
+      <h3>Sagittarius</h3>
+      <p>Sagittarius sees distance as an adventure. They're naturally optimistic and trust their partner. The time apart gives them space to pursue their own interests, which makes reunions exciting.</p>
+      <h3>Libra</h3>
+      <p>Libra handles distance through romance. They'll send care packages, plan virtual dates, and keep the relationship beautiful even from afar. They're willing to put in the effort to maintain harmony.</p>
+      <h2>Signs that struggle with distance</h2>
+      <h3>Cancer</h3>
+      <p>Cancer needs physical presence and emotional closeness. Distance feels like abandonment to them. They need extra reassurance, frequent communication, and concrete plans for when they'll be together again.</p>
+      <h3>Taurus</h3>
+      <p>Taurus is a physical sign — they express and receive love through touch. Distance is genuinely painful for them. They need tangible reminders of the relationship and frequent visits to stay grounded.</p>
+      <h3>Leo</h3>
+      <p>Leo needs to feel desired and admired. Distance makes them insecure. They need constant affirmation that their partner still finds them irresistible. Without it, they may seek validation elsewhere.</p>
+      <h2>Best long-distance pairings</h2>
+      <h3>Aquarius &amp; Gemini</h3>
+      <p>The ultimate long-distance couple. Both are independent, communicative, and comfortable with technology. They give each other space and stay mentally connected. Distance barely affects them.</p>
+      <h3>Sagittarius &amp; Aries</h3>
+      <p>Both fire signs who value independence. They use the time apart to pursue their own passions and come back together with new stories to share. The distance actually strengthens their bond.</p>
+      <h3>Libra &amp; Leo</h3>
+      <p>Libra's romantic nature keeps Leo feeling special across the miles. Leo's loyalty gives Libra the security they need. They make distance feel like a romantic challenge rather than a burden.</p>
+      <h2>Making long-distance work</h2>
+      <ul>
+        <li><strong>Schedule regular calls</strong> — consistency matters more than length</li>
+        <li><strong>Have a reunion plan</strong> — always know when you'll see each other next</li>
+        <li><strong>Send physical items</strong> — a letter, a shirt that smells like you, something tangible</li>
+        <li><strong>Trust each other</strong> — distance amplifies insecurity; don't feed it</li>
+        <li><strong>Make the most of visits</strong> — quality over quantity</li>
+      </ul>
+      <p><a href="https://matchbybirth.com">Check your compatibility</a> — including how you handle distance.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-breakup-signs',
+    title: 'Zodiac Signs During Breakups: How Each Sign Handles Heartbreak',
+    date: '2026-06-15',
+    description: 'Breakups are universal — but how you handle them depends heavily on your zodiac sign. Here\'s how each sign processes heartbreak and moves on.',
+    tags: ['zodiac','breakup','heartbreak','relationships','guide','healing'],
+    content: `
+      <h1>Zodiac Signs During Breakups</h1>
+      <p>Heartbreak is the great equalizer. It doesn't matter if you're an Aries or a Pisces — breakups hurt. But how you process that pain, how you heal, and how you move on is deeply influenced by your zodiac sign.</p>
+      <h2>Fire signs: Aries, Leo, Sagittarius</h2>
+      <h3>Aries</h3>
+      <p>Aries processes breakups through action. They'll hit the gym, start a new project, or immediately start dating again. They don't sit with pain — they burn through it. The risk: they don't actually process the grief, and it resurfaces later.</p>
+      <h3>Leo</h3>
+      <p>Leo's ego takes the biggest hit. They'll put on a brave face publicly but crumble in private. They need to feel desirable again — which can lead to rebound relationships. The gift: once Leo heals, they come back stronger and more radiant than ever.</p>
+      <h3>Sagittarius</h3>
+      <p>Sagittarius moves on fastest. They see breakups as part of life's journey and quickly focus on the next adventure. They'll book a trip, take a class, or throw themselves into a new interest. The risk: they avoid processing the real reasons the relationship ended.</p>
+      <h2>Earth signs: Taurus, Virgo, Capricorn</h2>
+      <h3>Taurus</h3>
+      <p>Taurus holds on longest. They don't leave easily, and when they're left, they grieve deeply. They'll try to fix things long after it's over. The gift: when Taurus finally lets go, it's permanent. They don't look back.</p>
+      <h3>Virgo</h3>
+      <p>Virgo analyzes the breakup to death. They'll replay every conversation, every mistake, every sign they missed. They need to understand <em>why</em> before they can move on. The gift: they learn from every relationship and grow wiser each time.</p>
+      <h3>Capricorn</h3>
+      <p>Capricorn handles breakups with stoic dignity. They'll grieve privately and present a composed face to the world. They channel pain into work and achievement. The risk: they suppress emotions for years and they eventually surface as burnout or depression.</p>
+      <h2>Air signs: Gemini, Libra, Aquarius</h2>
+      <h3>Gemini</h3>
+      <p>Gemini processes through talking. They'll call every friend, analyze the relationship from every angle, and write long journal entries. They move on through understanding. The risk: they intellectualize instead of feeling.</p>
+      <h3>Libra</h3>
+      <p>Libra struggles most with breakups because they hate being alone. They'll try to stay friends immediately or jump into a new relationship. The gift: Libra eventually learns that being alone isn't the same as being lonely.</p>
+      <h3>Aquarius</h3>
+      <p>Aquarius detaches. They'll seem fine immediately — and they might actually be fine, or they might be suppressing everything. They need intellectual space to process. The risk: they never fully grieve and carry unresolved feelings into the next relationship.</p>
+      <h2>Water signs: Cancer, Scorpio, Pisces</h2>
+      <h3>Cancer</h3>
+      <p>Cancer grieves the deepest. They'll cry for weeks, hold onto mementos, and struggle to let go. They need the most time to heal. The gift: when Cancer finally moves on, they've truly processed the loss and are ready for something real.</p>
+      <h3>Scorpio</h3>
+      <p>Scorpio's breakups are intense and transformative. They'll either go cold and cut contact completely, or they'll obsess over the ex for months. There's no middle ground. The gift: Scorpio emerges from breakups fundamentally changed — and usually for the better.</p>
+      <h3>Pisces</h3>
+      <p>Pisces dissolves into the pain. They'll listen to sad music, watch romantic movies, and fully immerse themselves in the grief. They need to feel it all before they can release it. The gift: Pisces' capacity for emotional processing is unmatched — they truly heal.</p>
+      <h2>Healing tips for every sign</h2>
+      <ul>
+        <li><strong>Fire signs:</strong> Sit with the pain before rushing into action</li>
+        <li><strong>Earth signs:</strong> Let yourself feel, not just think</li>
+        <li><strong>Air signs:</strong> Feel your emotions, don't just analyze them</li>
+        <li><strong>Water signs:</strong> Set a timeline — grief is healthy, but it can't last forever</li>
+      </ul>
+      <p><a href="https://matchbybirth.com">Understand your relationship patterns</a> — including how you heal.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-self-love',
+    title: 'Zodiac Compatibility Starts With Self-Love: A Guide for Every Sign',
+    date: '2026-06-15',
+    description: 'The most important compatibility isn\'t with a partner — it\'s with yourself. Here\'s how every zodiac sign can cultivate self-love and why it transforms every relationship.',
+    tags: ['zodiac','self-love','compatibility','relationships','guide','wellness'],
+    content: `
+      <h1>Zodiac Compatibility Starts With Self-Love</h1>
+      <p>Before you can be compatible with someone else, you need to be compatible with yourself. That sounds simple, but every zodiac sign has a specific relationship with self-love — and specific work to do. Here's your sign's self-love guide.</p>
+      <h2>Fire signs: Learn to be still</h2>
+      <h3>Aries</h3>
+      <p>Aries defines themselves through action and achievement. Self-love means learning that you're enough even when you're not doing anything. Practice: sit still for 10 minutes a day. No phone, no plans. Just be.</p>
+      <h3>Leo</h3>
+      <p>Leo needs external validation to feel worthy. Self-love means finding that validation within. Practice: write down three things you love about yourself that have nothing to do with what others think of you.</p>
+      <h3>Sagittarius</h3>
+      <p>Sagittarius runs from emotional depth. Self-love means staying when things get uncomfortable. Practice: journal about your feelings without trying to fix or explain them.</p>
+      <h2>Earth signs: Allow imperfection</h2>
+      <h3>Taurus</h3>
+      <p>Taurus equates self-worth with productivity and material security. Self-love means knowing you're valuable even when you're not producing. Practice: take a day off with zero guilt.</p>
+      <h3>Virgo</h3>
+      <p>Virgo's inner critic is relentless. Self-love means silencing that voice. Practice: when you catch yourself self-criticizing, ask "would I say this to a friend?" If not, don't say it to yourself.</p>
+      <h3>Capricorn</h3>
+      <p>Capricorn believes love must be earned through achievement. Self-love means accepting that you're worthy of love simply because you exist. Practice: receive a compliment without deflecting it.</p>
+      <h2>Air signs: Feel, don't think</h2>
+      <h3>Gemini</h3>
+      <p>Gemini lives in their head. Self-love means connecting with your body and emotions. Practice: do something physical — dance, walk, stretch — and notice how your body feels without analyzing it.</p>
+      <h3>Libra</h3>
+      <p>Libra defines themselves through relationships. Self-love means being whole on your own. Practice: spend an entire day alone doing exactly what you want. No compromises.</p>
+      <h3>Aquarius</h3>
+      <p>Aquarius intellectualizes emotions. Self-love means letting yourself feel without understanding why. Practice: cry when you need to. Laugh when something's funny. Feel without explanation.</p>
+      <h2>Water signs: Set boundaries</h2>
+      <h3>Cancer</h3>
+      <p>Cancer gives until they're empty. Self-love means learning that saying no doesn't make you a bad person. Practice: decline one request this week without explaining why.</p>
+      <h3>Scorpio</h3>
+      <p>Scorpio's intensity can be self-destructive. Self-love means letting go of grudges — not for the other person, but for yourself. Practice: write a letter you'll never send, then burn it.</p>
+      <h3>Pisces</h3>
+      <p>Pisces absorbs everyone else's emotions. Self-love means protecting your energy. Practice: visualize a boundary around yourself that keeps others' feelings from becoming yours.</p>
+      <h2>The foundation of all compatibility</h2>
+      <p>Every relationship you have is a reflection of your relationship with yourself. When you love yourself well — not narcissistically, but genuinely — you show up differently in every relationship. You're less needy, more generous, and more capable of real intimacy.</p>
+      <p><a href="https://matchbybirth.com">Start with self-understanding</a> — then find your match.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-quiz-questions',
+    title: '10 Questions That Reveal Your True Zodiac Compatibility Type',
+    date: '2026-06-15',
+    description: 'Forget sun signs for a moment. These 10 questions reveal your actual compatibility style — and which signs you\'ll truly click with.',
+    tags: ['zodiac','compatibility','quiz','questions','guide','personality'],
+    content: `
+      <h1>10 Questions That Reveal Your Compatibility Type</h1>
+      <p>Your sun sign is just one piece of the puzzle. These questions dig deeper into your actual relationship style — and reveal which signs you'll truly connect with, regardless of what the zodiac wheel says.</p>
+      <h2>1. When you're upset, what do you need most?</h2>
+      <p><strong>A)</strong> Space to process alone<br><strong>B)</strong> Someone to talk it through with<br><strong>C)</strong> Physical comfort and reassurance<br><strong>D)</strong> A plan to fix the problem</p>
+      <h2>2. What makes you feel most loved?</h2>
+      <p><strong>A)</strong> Quality time and undivided attention<br><strong>B)</strong> Words of affirmation and appreciation<br><strong>C)</strong> Physical touch and affection<br><strong>D)</strong> Acts of service — someone doing things for you</p>
+      <h2>3. In a disagreement, you tend to:</h2>
+      <p><strong>A)</strong> Address it immediately, even if it gets heated<br><strong>B)</strong> Try to find a compromise that makes everyone happy<br><strong>C)</strong> Withdraw until you've processed your feelings<br><strong>D)</strong> Analyze the situation before responding</p>
+      <h2>4. Your ideal weekend looks like:</h2>
+      <p><strong>A)</strong> An adventure — hiking, traveling, trying something new<br><strong>B)</strong> Socializing with friends or a date<br><strong>C)</strong> Cozy at home with your favorite person<br><strong>D)</strong> Productive — working on a project or learning something</p>
+      <h2>5. What's your biggest fear in a relationship?</h2>
+      <p><strong>A)</strong> Losing your independence<br><strong>B)</strong> Being taken for granted<br><strong>C)</strong> Being abandoned or rejected<br><strong>D)</strong> Being seen as inadequate</p>
+      <h2>6. How do you handle stress?</h2>
+      <p><strong>A)</strong> I take action — do something, anything<br><strong>B)</strong> I talk to someone about it<br><strong>C)</strong> I retreat and need comfort<br><strong>D)</strong> I make a plan to address it systematically</p>
+      <h2>7. What attracts you most to someone?</h2>
+      <p><strong>A)</strong> Their energy and confidence<br><strong>B)</strong> Their mind and conversation<br><strong>C)</strong> Their warmth and emotional depth<br><strong>D)</strong> Their reliability and ambition</p>
+      <h2>8. In friendships, you're the one who:</h2>
+      <p><strong>A)</strong> Plans the adventures<br><strong>B)</strong> Connects everyone and keeps the group together<br><strong>C)</strong> Listens and provides emotional support<br><strong>D)</strong> Gives practical advice and solves problems</p>
+      <h2>9. Your communication style is:</h2>
+      <p><strong>A)</strong> Direct and honest, sometimes blunt<br><strong>B)</strong> Diplomatic and thoughtful<br><strong>C)</strong> Warm and empathetic<br><strong>D)</strong> Clear and organized</p>
+      <h2>10. What does commitment mean to you?</h2>
+      <p><strong>A)</strong> Choosing someone every day, not just once<br><strong>B)</strong> A partnership of equals<br><strong>C)</strong> Deep emotional bonding<br><strong>D)</strong> Building a life together over time</p>
+      <h2>Your results</h2>
+      <h3>Mostly A's: The Independent Flame</h3>
+      <p>You need a partner who respects your autonomy. Best matches: Sagittarius, Aquarius, Aries. You thrive with someone who has their own life and doesn't need constant togetherness.</p>
+      <h3>Mostly B's: The Connector</h3>
+      <p>You need intellectual stimulation and social harmony. Best matches: Libra, Gemini, Leo. You thrive with someone who can talk for hours and makes you feel appreciated.</p>
+      <h3>Mostly C's: The Nurturer</h3>
+      <p>You need emotional safety and deep connection. Best matches: Cancer, Pisces, Taurus. You thrive with someone who shows up emotionally and makes you feel secure.</p>
+      <h3>Mostly D's: The Builder</h3>
+      <p>You need reliability and shared goals. Best matches: Capricorn, Virgo, Scorpio. You thrive with someone who's as committed to building a future as you are.</p>
+      <h2>The real answer</h2>
+      <p>Compatibility isn't about finding someone with all the same answers. It's about finding someone whose answers complement yours. The best relationships are built on understanding — not matching.</p>
+      <p><a href="https://matchbybirth.com">Discover your compatibility</a> — beyond the quiz.</p>
+    `,
+  },
+  {
+    slug: 'zodiac-compatibility-parenting-styles',
+    title: 'Zodiac Compatibility in Parenting: How Your Sign Shapes Your Parenting Style',
+    date: '2026-06-15',
+    description: 'Your zodiac sign doesn\'t just affect your love life — it shapes how you parent. Here\'s every sign\'s parenting style and which sign combinations make the best co-parents.',
+    tags: ['zodiac','parenting','compatibility','family','guide','children'],
+    content: `
+      <h1>Zodiac Compatibility in Parenting</h1>
+      <p>Becoming a parent changes everything — including how your zodiac sign shows up. The sign that was spontaneous becomes responsible. The sign that was independent becomes protective. Here's how each sign parents, and which sign combinations make the best co-parenting teams.</p>
+      <h2>Fire sign parents</h2>
+      <h3>Aries Parent</h3>
+      <p>The fun parent who teaches their kids to be brave. Aries parents encourage independence and aren't afraid to let their children take risks. Challenge: patience. Aries can struggle with the slow, repetitive parts of parenting.</p>
+      <h3>Leo Parent</h3>
+      <p>The proud parent who cheers loudest at every game. Leo parents give their children confidence and teach them to shine. Challenge: ego. Leo can struggle when their child doesn't want the spotlight.</p>
+      <h3>Sagittarius Parent</h3>
+      <p>The adventurous parent who takes kids on real and imaginary journeys. Sagittarius parents teach their children to be curious and open-minded. Challenge: consistency. Sagittarius can struggle with routines and bedtimes.</p>
+      <h2>Earth sign parents</h2>
+      <h3>Taurus Parent</h3>
+      <p>The nurturing parent who creates a warm, stable home. Taurus parents provide comfort, good food, and unwavering presence. Challenge: flexibility. Taurus can struggle when plans change or children push boundaries.</p>
+      <h3>Virgo Parent</h3>
+      <p>The organized parent who has a system for everything. Virgo parents teach their children responsibility and attention to detail. Challenge: perfectionism. Virgo can make children feel like nothing they do is good enough.</p>
+      <h3>Capricorn Parent</h3>
+      <p>The ambitious parent who teaches their kids to work hard. Capricorn parents provide structure, discipline, and a strong work ethic. Challenge: emotional availability. Capricorn can struggle to express affection.</p>
+      <h2>Air sign parents</h2>
+      <h3>Gemini Parent</h3>
+      <p>The communicative parent who talks to their kids like adults. Gemini parents teach their children to think, question, and express themselves. Challenge: follow-through. Gemini can start projects and routines but struggle to maintain them.</p>
+      <h3>Libra Parent</h3>
+      <p>The fair parent who teaches their kids about justice and kindness. Libra parents create harmony and teach their children to consider others. Challenge: decision-making. Libra can struggle to set firm boundaries.</p>
+      <h3>Aquarius Parent</h3>
+      <p>The unconventional parent who lets their kids be themselves. Aquarius parents teach their children to think differently and question norms. Challenge: emotional connection. Aquarius can seem detached when their child needs warmth.</p>
+      <h2>Water sign parents</h2>
+      <h3>Cancer Parent</h3>
+      <p>The nurturing parent who creates a safe emotional home. Cancer parents are deeply attuned to their children's feelings. Challenge: boundaries. Cancer can struggle to let their children experience discomfort.</p>
+      <h3>Scorpio Parent</h3>
+      <p>The intense parent who teaches their kids to be resilient. Scorpio parents are fiercely protective and deeply invested. Challenge: control. Scorpio can struggle to let their children make their own mistakes.</p>
+      <h3>Pisces Parent</h3>
+      <p>The imaginative parent who encourages creativity and empathy. Pisces parents teach their children to dream and feel deeply. Challenge: structure. Pisces can struggle with discipline and routines.</p>
+      <h2>Best co-parenting combinations</h2>
+      <h3>Taurus &amp; Cancer</h3>
+      <p>The ultimate nurturing team. Both prioritize home, family, and emotional security. Their children grow up feeling deeply loved and safe.</p>
+      <h3>Virgo &amp; Sagittarius</h3>
+      <p>Virgo provides the structure; Sagittarius provides the adventure. Their children learn to be both responsible and curious.</p>
+      <h3>Leo &amp; Aquarius</h3>
+      <p>Leo teaches confidence; Aquarius teaches individuality. Their children learn to be themselves and shine while respecting others.</p>
+      <h3>Capricorn &amp; Libra</h3>
+      <p>Capricorn provides discipline; Libra provides harmony. Their children learn to work hard and treat others fairly.</p>
+      <p><a href="https://matchbybirth.com">Check your compatibility</a> — in love and in parenting.</p>
+    `,
+  },
+
 ];
 
 export default posts;
