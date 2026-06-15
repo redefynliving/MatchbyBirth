@@ -1213,7 +1213,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Some zodiac pairings are doomed from the start. Here are the top 10 most toxic zodiac matchups and the astrological reasons they struggle.',
     tags: ['zodiac','compatibility','toxic','relationships','guide'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/top-10-most-toxic-zodiac-pairings.png`,
+    ogImage: `https://matchbybirth.com/og/og-toxic-pairings.png`,    content: `
       <h1>Top 10 Most Toxic Zodiac Pairings</h1>
       <p>Not every match is made in heaven. While any pairing can work with enough effort, some zodiac combinations face fundamental clashes that make harmony incredibly difficult. Here are ten pairings that require the most work — and why.</p>
       <h2>1. Aries &amp; Cancer</h2>
@@ -1247,7 +1249,9 @@ const posts = [
     date: '2026-06-15',
     description: 'These zodiac pairings shouldn\'t work on paper — but they do. Here are seven surprisingly compatible couples that prove astrology is more than sun signs.',
     tags: ['zodiac','compatibility','surprising','relationships','guide'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/7-surprising-compatible-zodiac-pairs.png`,
+    ogImage: `https://matchbybirth.com/og/og-surprising-pairs.png`,    content: `
       <h1>7 Surprising Zodiac Pairs That Are Weirdly Compatible</h1>
       <p>The zodiac is full of surprises. While some pairings look perfect on paper and fizzle out, others that seem mismatched create magic. Here are seven pairings that defy expectations.</p>
       <h2>1. Aries &amp; Pisces</h2>
@@ -1275,7 +1279,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Your zodiac sign affects more than love — it shapes how you work. Discover which sign pairings make the most productive professional teams.',
     tags: ['zodiac','compatibility','work','career','workplace','team'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/zodiac-compatibility-workplace-career.png`,
+    ogImage: `https://matchbybirth.com/og/og-workplace.png`,    content: `
       <h1>Zodiac Compatibility at Work: Best Teams</h1>
       <p>We spend a third of our lives at work. The people we work with — and how we mesh with them — shapes our daily happiness more than most relationships. Astrology offers a surprisingly practical lens for understanding workplace dynamics.</p>
       <h2>The best workplace pairings</h2>
@@ -1303,7 +1309,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Every zodiac sign has a mythological origin story. These ancient tales reveal deeper truths about each sign\'s personality and relationship style.',
     tags: ['zodiac','mythology','astrology','signs','stories','guide'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/zodiac-sign-myths-legends-stories.png`,
+    ogImage: `https://matchbybirth.com/og/og-myths.png`,    content: `
       <h1>The Myths Behind the Zodiac Signs</h1>
       <p>The zodiac isn't just a personality system — it's a collection of ancient stories that have shaped how we understand human nature for thousands of years. Each sign carries the weight of its mythological origin, and those stories reveal deeper truths about why each sign behaves the way it does.</p>
       <h2>Aries: The Ram That Started a Journey</h2>
@@ -1341,7 +1349,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Your friend group\'s zodiac makeup matters more than you think. Discover which sign combinations create the most harmonious — and chaotic — groups.',
     tags: ['zodiac','compatibility','group','friends','team','social'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/group-zodiac-compatibility-friendship-dynamics.png`,
+    ogImage: `https://matchbybirth.com/og/og-groups.png`,    content: `
       <h1>Group Zodiac Compatibility: Building the Perfect Friend Group</h1>
       <p>We all know the feeling: some friend groups just <em>work</em>, while others feel like constant emotional labor. Astrology explains why. The zodiac makeup of your group determines its energy, its conflicts, and its magic.</p>
       <h2>The ideal group size: 3-5 signs</h2>
@@ -1385,7 +1395,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Mercury retrograde is infamous for communication breakdowns. Here\'s what the 2026 retrogrades mean for your love life, friendships, and work relationships.',
     tags: ['mercury','retrograde','2026','relationships','communication','astrology'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/mercury-retrograde-2026-relationships.png`,
+    ogImage: `https://matchbybirth.com/og/og-mercury.png`,    content: `
       <h1>Mercury Retrograde 2026: Relationships Guide</h1>
       <p>Every year, Mercury appears to move backward in the sky three times. During these periods — called Mercury retrogrades — communication glitches, misunderstandings, and old flames resurface. Here's what to expect in 2026 and how to protect your relationships.</p>
       <h2>What is Mercury retrograde?</h2>
@@ -1422,7 +1434,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Some signs wear their hearts on their sleeves; others hide their pain behind walls. Here\'s how to support each zodiac sign when they\'re struggling.',
     tags: ['zodiac','emotional','support','relationships','guide','mental-health'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/zodiac-signs-that-need-most-emotional-support.png`,
+    ogImage: `https://matchbybirth.com/og/og-emotional.png`,    content: `
       <h1>Zodiac Signs That Need the Most Emotional Support</h1>
       <p>Everyone needs support, but different signs need it in different ways. Understanding what each sign needs — and what they'll never ask for — makes you a better partner, friend, and colleague.</p>
       <h2>The signs that need the most support</h2>
@@ -1454,7 +1468,9 @@ const posts = [
     date: '2026-06-15',
     description: 'The zodiac is full of opposite pairings. Some create magnetic chemistry; others create chaos. Here\'s the science behind why opposites attract — and when to run.',
     tags: ['zodiac','opposites','compatibility','attraction','relationships','astrology'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/why-opposites-attract-astrology.png`,
+    ogImage: `https://matchbybirth.com/og/og-opposites.png`,    content: `
       <h1>Why Opposites Attract — And When They Don't</h1>
       <p>The zodiac wheel is designed as a circle of opposites. Aries faces Libra. Taurus faces Scorpio. Gemini faces Sagittarius. These polar pairings create some of the most intense relationships in astrology — for better and worse.</p>
       <h2>The six zodiac opposites</h2>
@@ -1483,7 +1499,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Every zodiac sign has shadow sides. Here are the biggest red flags for each sign — and how to tell the difference between a quirk and a genuine warning sign.',
     tags: ['zodiac','red-flags','compatibility','relationships','guide','warning'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/zodiac-compatibility-red-flags.png`,
+    ogImage: `https://matchbybirth.com/og/og-red-flags.png`,    content: `
       <h1>Zodiac Red Flags: Every Sign's Shadow Side</h1>
       <p>Every sign has a light side and a shadow side. The traits that make each sign special can also be their biggest challenges in relationships. Here's what to watch for — and how to tell the difference between a harmless quirk and a genuine red flag.</p>
       <h2>Fire signs: Aries, Leo, Sagittarius</h2>
@@ -1525,7 +1543,9 @@ const posts = [
     date: '2026-06-15',
     description: 'Looking for your best astrological match? Here\'s the top compatibility pick for every zodiac sign — and why this year\'s transits make these pairings especially powerful.',
     tags: ['zodiac','compatibility','2026','matches','guide','love'],
-    content: `
+
+    ogImage: `https://matchbybirth.com/og/best-zodiac-matches-for-each-sign-2026.png`,
+    ogImage: `https://matchbybirth.com/og/og-best-matches.png`,    content: `
       <h1>Best Zodiac Match for Every Sign in 2026</h1>
       <p>While any pairing can work with the right effort, some matches have natural advantages. Here's the best match for each zodiac sign — and why 2026's astrological climate makes these pairings especially potent.</p>
       <h2>Fire signs</h2>

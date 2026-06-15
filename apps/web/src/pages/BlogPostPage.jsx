@@ -26,7 +26,7 @@ function BlogPostPage() {
         <meta name="description" content={post.description} />
         <meta property="og:title" content={`${post.title} | Match by Birth`} />
         <meta property="og:description" content={post.description} />
-        <meta property="og:image" content={`https://matchbybirth.com/og-image.png`} />
+        <meta property="og:image" content={post.ogImage || `https://matchbybirth.com/og-image.png`} />
         <meta property="og:url" content={`${window.location.origin}/blog/${post.slug}`} />
       </Helmet>
 
