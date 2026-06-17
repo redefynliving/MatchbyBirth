@@ -238,6 +238,8 @@ async function listActiveSubscribers() {
   });
   return request(`email_subscribers?${query.toString()}`);
 }
+
+module.exports = {
   StoreError,
   claimWebhookEvent,
   completeWebhookEvent,
