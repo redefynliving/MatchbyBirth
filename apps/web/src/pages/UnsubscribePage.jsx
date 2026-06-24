@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Check, Loader2, MailX } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
+import BackButton from '@/components/BackButton.jsx';
 
 function UnsubscribePage() {
   const [searchParams] = useSearchParams();
@@ -43,6 +44,7 @@ function UnsubscribePage() {
 
       <main className="flex min-h-[70vh] items-center justify-center bg-background p-6">
         <section className="w-full max-w-xl rounded-3xl border border-border bg-card p-8 text-center shadow-lg md:p-12">
+          <BackButton fallbackTo="/" label="Back to Calculator" className="justify-center" />
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
             <Icon className="h-6 w-6" />
           </span>

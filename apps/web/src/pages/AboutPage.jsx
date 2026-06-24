@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import BackButton from '@/components/BackButton.jsx';
 
 function AboutPage() {
   return (
@@ -13,6 +14,7 @@ function AboutPage() {
       <main role="main" className="py-20 md:py-24 bg-background min-h-screen">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <article className="mx-auto">
+            <BackButton fallbackTo="/" label="Back to Calculator" />
             {/* Eyebrow / small label */}
             <p className="text-sm font-medium uppercase tracking-tight text-primary mt-1">About Match by Birth</p>
 

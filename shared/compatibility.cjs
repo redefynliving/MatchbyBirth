@@ -7,6 +7,18 @@ const ELEMENTS = {
   water: ['Cancer', 'Scorpio', 'Pisces'],
 };
 
+// Optional exact astrology integration
+let exactAstrology;
+try {
+  exactAstrology = require('./exact-astrology.cjs');
+} catch {
+  // Fallback for environments without exact-astrology
+  exactAstrology = {
+    getSunSignExact: ({ date }) => (getZodiacSign(date) ? { sign: getZodiacSign(date), exact: false } : { sign: null, exact: false }),
+    isValidPlace: () => false,
+  };
+}
+
 const BREAKDOWN_WEIGHTS = {
   chemistry: 0.25,
   communication: 0.2,
@@ -162,13 +174,15 @@ function validatePeople(people, minimum, maximum) {
     const id = String(person?.id || `person-${index + 1}`).slice(0, 100);
     const name = String(person?.name || '').trim().replace(/\s+/g, ' ').slice(0, 80);
     const birthDate = String(person?.birthDate || '');
+    const place = person?.place || null;
+    const birthTime = person?.birthTime || null;
 
     if (!name) {
       throw new Error(`Person ${index + 1} needs a name.`);
     }
 
     parseBirthDate(birthDate);
-    return { id, name, birthDate };
+    return { id, name, birthDate, place, birthTime };
   });
 }
 
@@ -196,12 +210,29 @@ function calculateBreakdown(personA, personB, baseScore) {
   return scores;
 }
 
+function getSignForPerson(person) {
+  // Exact mode: use place and time if available and valid
+  if (person.place && person.birthTime && exactAstrology.isValidPlace(person.place)) {
+    const { sign, exact } = exactAstrology.getSunSignExact({
+      date: person.birthDate,
+      time: person.birthTime,
+      timezone: person.place.timezone,
+    });
+    return { sign, exact };
+  }
+  // Date-only fallback
+  return { sign: getZodiacSign(person.birthDate), exact: false };
+}
+
 function sanitizePerson(person) {
+  const { sign, exact } = getSignForPerson(person);
   return {
     id: person.id,
     name: person.name,
-    sign: getZodiacSign(person.birthDate),
-    element: getElement(getZodiacSign(person.birthDate)),
+    sign,
+    element: getElement(sign),
+    exactSunSign: sign,
+    precision: exact ? 'exact' : 'date-only',
   };
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
+import BackButton from '@/components/BackButton.jsx';
 
 const POSTS_PER_PAGE = 6;
 
@@ -60,6 +61,7 @@ function BlogPage() {
 
       <main style={{ padding: '40px 24px' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           {/* Header */}
           <header style={{ textAlign: 'center', marginBottom: 32 }}>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>Blog & Guides</h1>

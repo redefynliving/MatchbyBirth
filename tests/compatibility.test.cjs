@@ -82,3 +82,106 @@ test('group mode only accepts three through seven people', () => {
     /no more than 7/i,
   );
 });
+
+// ── Exact sign integration ──────────────────────────────────────────────
+
+test('pair result includes exactSunSign and precision fields', () => {
+  const alex = { id: 'alex', name: 'Alex', birthDate: '1990-03-21' };
+  const jordan = { id: 'jordan', name: 'Jordan', birthDate: '1992-09-23' };
+
+  const result = calculatePairResult([alex, jordan], 'love');
+  assert.equal(result.people[0].exactSunSign, 'Aries');
+  assert.equal(result.people[0].precision, 'date-only');
+  assert.equal(result.people[0].birthDate, undefined);
+  assert.equal(result.people[0].place, undefined);
+  assert.equal(result.people[0].birthTime, undefined);
+});
+
+test('pair result uses exact sign when place and birthTime are provided', () => {
+  const placeWithTZ = {
+    label: 'New York, NY',
+    city: 'New York',
+    state: 'NY',
+    timezone: 'America/New_York',
+    lat: 40.75,
+    lng: -73.98,
+  };
+
+  const alex = {
+    id: 'alex',
+    name: 'Alex',
+    birthDate: '2000-03-21',
+    birthTime: '12:00',
+    place: placeWithTZ,
+  };
+  const jordan = {
+    id: 'jordan',
+    name: 'Jordan',
+    birthDate: '2000-09-23',
+    birthTime: '12:00',
+    place: placeWithTZ,
+  };
+
+  const result = calculatePairResult([alex, jordan], 'love');
+  assert.equal(result.people[0].sign, 'Aries');
+  assert.equal(result.people[0].exactSunSign, 'Aries');
+  assert.equal(result.people[0].precision, 'exact');
+  assert.ok(result.people[0].sign);
+});
+
+test('group result includes precision fields for all members', () => {
+  const placeWithTZ = {
+    label: 'Los Angeles, CA',
+    city: 'Los Angeles',
+    state: 'CA',
+    timezone: 'America/Los_Angeles',
+    lat: 34.05,
+    lng: -118.24,
+  };
+
+  const result = calculateGroupResult([
+    { id: 'a', name: 'A', birthDate: '2000-03-21', birthTime: '12:00', place: placeWithTZ },
+    { id: 'b', name: 'B', birthDate: '2000-04-20' }, // no time/place
+    { id: 'c', name: 'C', birthDate: '2000-05-21' },
+  ]);
+
+  // First person has exact data
+  assert.equal(result.people[0].precision, 'exact');
+  // Others fall back to date-only
+  assert.equal(result.people[1].precision, 'date-only');
+  assert.equal(result.people[2].precision, 'date-only');
+});
+
+test('result never exposes raw birth time or place data', () => {
+  const placeWithTZ = {
+    label: 'Chicago, IL',
+    city: 'Chicago',
+    state: 'IL',
+    timezone: 'America/Chicago',
+    lat: 41.88,
+    lng: -87.63,
+  };
+
+  const result = calculatePairResult([
+    { id: 'a', name: 'A', birthDate: '2000-03-21', birthTime: '14:30', place: placeWithTZ },
+    { id: 'b', name: 'B', birthDate: '2000-04-20' },
+  ]);
+
+  // Raw data must not leak into the result
+  assert.equal(result.people[0].birthTime, undefined);
+  assert.equal(result.people[0].place, undefined);
+  assert.equal(result.people[0].timezone, undefined);
+});
+
+test('exact sign calculation rejects invalid place objects', () => {
+  const invalidPlace = { timezone: 'America/New_York' }; // no label
+
+  const result = calculatePairResult([
+    { id: 'a', name: 'A', birthDate: '2000-03-21', birthTime: '12:00', place: invalidPlace },
+    { id: 'b', name: 'B', birthDate: '2000-04-20' },
+  ]);
+
+  // Should fall back to date-only because place is invalid
+  assert.equal(result.people[0].precision, 'date-only');
+});
+

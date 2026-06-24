@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Check, Loader2, Mail } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics.js';
+import BackButton from '@/components/BackButton.jsx';
 
 export default function ReportSuccess() {
   const [searchParams] = useSearchParams();
@@ -86,6 +87,7 @@ export default function ReportSuccess() {
   return (
     <main className="min-h-[70vh] flex items-center justify-center bg-background p-6">
       <div className="max-w-xl w-full text-center bg-card border border-border rounded-3xl p-8 md:p-12 shadow-lg">
+        <BackButton fallbackTo="/" label="Back to Calculator" className="justify-center" />
         <div className="w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-6">
           <Icon className={`w-6 h-6 ${state.status === 'processing' || state.status === 'checking' ? 'animate-spin' : ''}`} />
         </div>

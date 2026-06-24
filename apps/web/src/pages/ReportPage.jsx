@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { Download, Loader2, LockKeyhole } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
+import BackButton from '@/components/BackButton.jsx';
 
 function ReportPage() {
   const [searchParams] = useSearchParams();
@@ -102,6 +103,7 @@ function ReportPage() {
       </Helmet>
       <main className="bg-background min-h-screen py-12 md:py-20 px-4">
         <div className="max-w-3xl mx-auto">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           <div className="flex items-center justify-between gap-4 mb-6 print:hidden">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <LockKeyhole className="w-4 h-4" />

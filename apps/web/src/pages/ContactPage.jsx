@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BackButton from '@/components/BackButton.jsx';
 
 function ContactPage() {
   return (
@@ -12,6 +13,7 @@ function ContactPage() {
 
       <main className="section-spacing bg-background min-h-screen">
         <div className="content-container max-w-2xl">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Contact Us</h1>
             <p className="text-lg text-muted-foreground">We'd love to hear from you.</p>

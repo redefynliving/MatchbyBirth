@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Loader2, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -13,29 +13,60 @@ import {
 } from '@/components/ui/select';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
-import HomeResultPreview from './HomeResultPreview.jsx';
+import PlaceSearch from './PlaceSearch.jsx';
 
-const createPerson = (id) => ({ id, name: '', birthDate: '' });
+const createPerson = (id) => ({ id, name: '', birthDate: '', place: null, birthTime: '' });
+const defaultPair = [createPerson('pair-1'), createPerson('pair-2')];
+const defaultGroup = [createPerson('group-1'), createPerson('group-2'), createPerson('group-3')];
+
+function ExactModeToggle({ exactMode, onChange }) {
+  return (
+    <div className="flex items-center gap-3 rounded-2xl border border-border bg-muted/20 px-4 py-3">
+      <div className="flex-1">
+        <Label htmlFor="exactMode" className="text-xs font-medium text-foreground">
+          Exact Mode
+        </Label>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Uses birth time and place for a more precise result when available.
+        </p>
+      </div>
+      <input
+        id="exactMode"
+        type="checkbox"
+        checked={exactMode}
+        onChange={(event) => onChange(event.target.checked)}
+        className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+      />
+    </div>
+  );
+}
 
 function CalculatorWithPreview({ mode, setMode }) {
   const navigate = useNavigate();
   const [relationshipType, setRelationshipType] = useState('love');
   const [isCalculating, setIsCalculating] = useState(false);
   const [error, setError] = useState('');
-
-  const defaultPair = [createPerson('pair-1'), createPerson('pair-2')];
-  const defaultGroup = [createPerson('group-1'), createPerson('group-2'), createPerson('group-3')];
-
+  const [exactMode, setExactMode] = useState(false);
   const [pairPeople, setPairPeople] = useState(defaultPair);
   const [groupPeople, setGroupPeople] = useState(defaultGroup);
+
+  useEffect(() => {
+    if (!exactMode) {
+      const clearTimeAndPlace = (people) => people.map((person) => ({
+        ...person,
+        birthTime: '',
+        place: null,
+      }));
+      setPairPeople((prev) => clearTimeAndPlace(prev));
+      setGroupPeople((prev) => clearTimeAndPlace(prev));
+    }
+  }, [exactMode]);
 
   const people = mode === 'pair' ? pairPeople : groupPeople;
   const setPeople = mode === 'pair' ? setPairPeople : setGroupPeople;
 
   const updatePerson = (id, field, value) => {
-    setPeople((prev) => prev.map(
-      (person) => person.id === id ? { ...person, [field]: value } : person,
-    ));
+    setPeople((prev) => prev.map((person) => (person.id === id ? { ...person, [field]: value } : person)));
   };
 
   const addGroupPerson = () => {
@@ -48,7 +79,7 @@ function CalculatorWithPreview({ mode, setMode }) {
   const removeGroupPerson = (id) => {
     setGroupPeople((prev) => {
       if (prev.length <= 3) return prev;
-      return prev.filter((p) => p.id !== id);
+      return prev.filter((person) => person.id !== id);
     });
   };
 
@@ -59,6 +90,7 @@ function CalculatorWithPreview({ mode, setMode }) {
       mode: payload.mode,
       relationship_type: payload.relationshipType,
       group_size: payload.people.length,
+      exact_mode: payload.exactMode,
     });
 
     try {
@@ -80,12 +112,13 @@ function CalculatorWithPreview({ mode, setMode }) {
         score_band: Math.floor(
           (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
         ) * 10,
+        exact_mode: payload.exactMode,
       });
       const navigation = buildResultNavigation(data);
       navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {
       setError(calculationError.message || 'Unable to calculate this result.');
-      trackEvent('calculation_failed', { mode: payload.mode });
+      trackEvent('calculation_failed', { mode: payload.mode, exact_mode: payload.exactMode });
     } finally {
       setIsCalculating(false);
     }
@@ -94,35 +127,67 @@ function CalculatorWithPreview({ mode, setMode }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (mode === 'pair') {
-      submitCalculation({ mode: 'pair', relationshipType, people: pairPeople });
+      submitCalculation({ mode: 'pair', relationshipType, people: pairPeople, exactMode });
     } else {
-      submitCalculation({ mode: 'group', relationshipType: 'friendship', people: groupPeople });
+      submitCalculation({ mode: 'group', relationshipType: 'friendship', people: groupPeople, exactMode });
     }
   };
 
+  const renderExactFields = (person, prefix) => {
+    if (!exactMode) return null;
+
+    return (
+      <>
+        <div className="space-y-1.5">
+          <Label htmlFor={`${prefix}time-${person.id}`} className="text-xs text-muted-foreground">
+            Birth time (HH:MM)
+          </Label>
+          <Input
+            id={`${prefix}time-${person.id}`}
+            type="time"
+            value={person.birthTime}
+            onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}
+            placeholder="HH:MM"
+            className="h-11 rounded-xl"
+          />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor={`${prefix}place-${person.id}`} className="text-xs text-muted-foreground">
+            Birth place (city, state)
+          </Label>
+          <PlaceSearch
+            value={person.place?.label || ''}
+            onChange={(value) => updatePerson(person.id, 'place', { ...(person.place || {}), label: value })}
+            onSelect={(place) => updatePerson(person.id, 'place', place)}
+          />
+        </div>
+      </>
+    );
+  };
+
   return (
-    <div className="mx-auto grid max-w-6xl overflow-hidden rounded-3xl border border-primary/15 bg-card shadow-[0_24px_65px_rgba(55,43,65,0.14)] lg:grid-cols-[1.25fr_0.75fr]">
+    <div className="mx-auto max-w-3xl overflow-hidden rounded-3xl border border-primary/10 bg-card shadow-[0_8px_40px_rgba(55,43,65,0.08)]">
       <div id="calculator" className="h-full w-full bg-card">
         <div className="flex flex-col gap-4 border-b border-border px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-7">
           <div>
-            <h2 className="text-xl font-semibold">Check your connection</h2>
+            <h2 className="text-xl font-semibold tracking-tight">Check compatibility</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Start with two people or compare a full group.
             </p>
           </div>
           <div className="flex justify-center sm:justify-end">
-            <div className="inline-flex items-center rounded-xl bg-secondary p-1">
+            <div className="inline-flex items-center rounded-xl bg-secondary/80 p-1 ring-1 ring-border/50">
               <button
                 type="button"
                 onClick={() => setMode('pair')}
-                className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${mode === 'pair' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-all ${mode === 'pair' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 Pair
               </button>
               <button
                 type="button"
                 onClick={() => setMode('group')}
-                className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-colors ${mode === 'group' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                className={`rounded-lg px-4 py-1.5 text-sm font-medium transition-all ${mode === 'group' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 Group
               </button>
@@ -133,10 +198,12 @@ function CalculatorWithPreview({ mode, setMode }) {
         {mode === 'pair' ? (
           <form onSubmit={handleSubmit} className="space-y-4 p-5 md:p-7">
             {error && (
-              <div role="alert" className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
+              <div role="alert" className="rounded-xl border border-destructive/20 bg-destructive/10 p-4 text-sm font-medium text-destructive">
                 {error}
               </div>
             )}
+
+            <ExactModeToggle exactMode={exactMode} onChange={setExactMode} />
 
             <div className="divide-y divide-border border-y border-border">
               {pairPeople.map((person, index) => (
@@ -175,6 +242,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                       className="h-11 rounded-xl"
                     />
                   </div>
+                  {renderExactFields(person, '')}
                 </div>
               ))}
             </div>
@@ -198,11 +266,11 @@ function CalculatorWithPreview({ mode, setMode }) {
             <Button type="submit" disabled={isCalculating} className="btn-primary h-12 w-full rounded-xl text-sm">
               {isCalculating ? (
                 <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                   Calculating...
                 </>
               ) : (
-                'See our compatibility'
+                'Check compatibility'
               )}
             </Button>
             <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
@@ -213,17 +281,16 @@ function CalculatorWithPreview({ mode, setMode }) {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 p-5 md:p-7">
             {error && (
-              <div role="alert" className="p-4 text-sm text-destructive bg-destructive/10 rounded-xl border border-destructive/20 font-medium">
+              <div role="alert" className="rounded-xl border border-destructive/20 bg-destructive/10 p-4 text-sm font-medium text-destructive">
                 {error}
               </div>
             )}
 
+            <ExactModeToggle exactMode={exactMode} onChange={setExactMode} />
+
             <div className="divide-y divide-border border-y border-border">
               {groupPeople.map((person, index) => (
-                <div
-                  key={person.id}
-                  className="flex items-end gap-3 py-4"
-                >
+                <div key={person.id} className="flex items-end gap-3 py-4">
                   <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-secondary text-xs font-semibold text-primary sm:mb-2">
                     {index + 1}
                   </span>
@@ -255,11 +322,38 @@ function CalculatorWithPreview({ mode, setMode }) {
                       className="h-11 rounded-xl"
                     />
                   </div>
+                  {exactMode && (
+                    <>
+                      <div className="flex-1 space-y-1.5">
+                        <Label htmlFor={`gtime-${person.id}`} className="text-xs text-muted-foreground">
+                          Birth time (HH:MM)
+                        </Label>
+                        <Input
+                          id={`gtime-${person.id}`}
+                          type="time"
+                          value={person.birthTime}
+                          onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}
+                          placeholder="HH:MM"
+                          className="h-11 rounded-xl"
+                        />
+                      </div>
+                      <div className="flex-1 space-y-1.5">
+                        <Label htmlFor={`gplace-${person.id}`} className="text-xs text-muted-foreground">
+                          Birth place (city, state)
+                        </Label>
+                        <PlaceSearch
+                          value={person.place?.label || ''}
+                          onChange={(value) => updatePerson(person.id, 'place', { ...(person.place || {}), label: value })}
+                          onSelect={(place) => updatePerson(person.id, 'place', place)}
+                        />
+                      </div>
+                    </>
+                  )}
                   {groupPeople.length > 3 && (
                     <button
                       type="button"
                       onClick={() => removeGroupPerson(person.id)}
-                      className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border text-muted-foreground hover:text-destructive hover:border-destructive transition-colors"
+                      className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:border-destructive hover:text-destructive"
                       aria-label={`Remove ${person.name || `Person ${index + 1}`}`}
                     >
                       <span className="text-lg leading-none">&times;</span>
@@ -273,7 +367,7 @@ function CalculatorWithPreview({ mode, setMode }) {
               <button
                 type="button"
                 onClick={addGroupPerson}
-                className="w-full rounded-xl border border-dashed border-primary/30 py-3 text-sm font-medium text-primary hover:bg-primary/5 transition-colors"
+                className="w-full rounded-xl border border-dashed border-primary/30 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/5"
               >
                 + Add another person
               </button>
@@ -282,7 +376,7 @@ function CalculatorWithPreview({ mode, setMode }) {
             <Button type="submit" disabled={isCalculating} className="btn-primary h-12 w-full rounded-xl text-sm">
               {isCalculating ? (
                 <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                   Calculating...
                 </>
               ) : (
@@ -297,18 +391,18 @@ function CalculatorWithPreview({ mode, setMode }) {
         )}
       </div>
 
-      {/* Google AdSense */}
-      <aside className="hidden lg:flex h-full flex-col items-center justify-center border-t border-border bg-[linear-gradient(155deg,hsl(var(--secondary))_0%,hsl(335_45%_95%)_100%)] p-6 lg:border-l lg:border-t-0 lg:p-7">
-        <div className="flex h-full w-full items-center justify-center rounded-2xl bg-card/30 p-4">
-          <ins className="adsbygoogle"
-            style={{ display: 'block' }}
-            data-ad-client="ca-pub-7210866068673514"
-            data-ad-slot="3279476431"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          />
-        </div>
-      </aside>
+      {/* Google AdSense — below calculator on all screens */}
+      <div className="flex justify-center border-t border-border bg-muted/20 p-4">
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block' }}
+          data-ad-client="ca-pub-7210866068673514"
+          data-ad-slot="3279476431"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
+
     </div>
   );
 }

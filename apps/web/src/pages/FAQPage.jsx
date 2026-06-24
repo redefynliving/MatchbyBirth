@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BackButton from '@/components/BackButton.jsx';
 
 function FAQPage() {
   return (
@@ -12,6 +13,7 @@ function FAQPage() {
 
       <main className="section-spacing bg-background min-h-screen">
         <div className="content-container max-w-3xl">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Frequently Asked Questions</h1>
             <p className="text-lg text-muted-foreground">Everything you need to know about Match by Birth.</p>

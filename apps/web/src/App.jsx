@@ -22,6 +22,7 @@ import TermsOfServicePage from '@/pages/TermsOfServicePage.jsx';
 import DisclaimerPage from '@/pages/DisclaimerPage.jsx';
 import ResultPage from '@/pages/ResultPage.jsx';
 import ReportPage from '@/pages/ReportPage.jsx';
+import PremiumPage from '@/pages/premium.jsx';
 import UnsubscribePage from '@/pages/UnsubscribePage.jsx';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/disclaimers" element={<DisclaimerPage />} />
             <Route path="/report-success" element={<ReportSuccess />} />
             <Route path="/report" element={<ReportPage />} />
+            <Route path="/premium" element={<PremiumPage />} />
             <Route path="/unsubscribe" element={<UnsubscribePage />} />
 
             {/* Catch-all route */}

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import BackButton from '@/components/BackButton.jsx';
 
 function TermsOfServicePage() {
   return (
@@ -12,6 +13,7 @@ function TermsOfServicePage() {
 
       <main className="py-20 md:py-24 bg-background min-h-screen">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           <article className="prose prose-slate dark:prose-invert prose-headings:text-balance prose-h1:text-4xl prose-h1:font-extrabold prose-a:text-primary mx-auto">
             <h1>Terms of Service</h1>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-8">

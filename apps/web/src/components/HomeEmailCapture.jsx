@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight, Sparkles } from 'lucide-react';
 
 function HomeEmailCapture() {
   const [email, setEmail] = React.useState('');
@@ -33,102 +33,70 @@ function HomeEmailCapture() {
   return (
     <section className="mx-auto mt-16 max-w-2xl px-4">
       <div
-        style={{
-          background: 'linear-gradient(135deg, #6c4de6 0%, #8b5cf6 100%)',
-          borderRadius: 20,
-          padding: '36px 28px',
-          color: '#fff',
-          textAlign: 'center',
-        }}
+        className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-sm md:p-10"
       >
-        <Mail style={{ width: 28, height: 28, margin: '0 auto 12px', opacity: 0.9 }} />
-        <h2 style={{ fontSize: '1.35rem', fontWeight: 700, margin: '0 0 8px', lineHeight: 1.3 }}>
-          See what the stars say about your connections this week
-        </h2>
-        <p style={{ fontSize: '0.9rem', opacity: 0.85, margin: '0 0 20px', lineHeight: 1.5 }}>
-          Free weekly forecasts delivered to your inbox. No spam, unsubscribe anytime.
-        </p>
+        {/* Subtle corner accent */}
+        <div className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full opacity-20 blur-2xl" style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 70%)' }} aria-hidden="true" />
 
-        {status === 'success' ? (
-          <div
-            style={{
-              background: 'rgba(255,255,255,0.15)',
-              borderRadius: 12,
-              padding: '18px 16px',
-            }}
-          >
-            <p style={{ fontWeight: 600, margin: '0 0 4px', fontSize: '1rem' }}>You&apos;re on the list!</p>
-            <p style={{ fontSize: '0.85rem', opacity: 0.85, margin: 0 }}>
-              Check your inbox for your first weekly forecast.
-            </p>
+        <div className="relative z-10">
+          <div className="mx-auto mb-4 grid h-11 w-11 place-items-center rounded-xl bg-primary/10">
+            <Mail className="h-5 w-5 text-primary" />
           </div>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 10,
-              maxWidth: 340,
-              margin: '0 auto',
-            }}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              autoComplete="email"
-              required
-              style={{
-                height: 46,
-                borderRadius: 12,
-                border: 'none',
-                padding: '0 16px',
-                fontSize: '0.95rem',
-                background: '#fff',
-                color: '#1a1a2e',
-                outline: 'none',
-              }}
-            />
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              style={{
-                height: 46,
-                borderRadius: 12,
-                border: 'none',
-                background: '#fff',
-                color: '#6c4de6',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 8,
-                opacity: status === 'loading' ? 0.7 : 1,
-              }}
+
+          <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+            Get your weekly compatibility forecast
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Free weekly insights on love, friendship, and relationship energy. Unsubscribe anytime.
+          </p>
+
+          {status === 'success' ? (
+            <div className="mt-6 rounded-xl bg-secondary p-5">
+              <p className="text-base font-semibold text-foreground">You&apos;re on the list!</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Check your inbox for your first weekly forecast.
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto mt-6 flex max-w-sm flex-col gap-3"
             >
-              {status === 'loading' ? (
-                'Subscribing...'
-              ) : (
-                <>
-                  Get My Weekly Forecast
-                  <ArrowRight style={{ width: 16, height: 16 }} />
-                </>
-              )}
-            </button>
-          </form>
-        )}
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                autoComplete="email"
+                required
+                className="h-12 rounded-xl border border-border bg-background px-4 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-shadow focus:border-primary/40 focus:ring-2 focus:ring-primary/10"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="btn-primary flex h-12 items-center justify-center gap-2 rounded-xl text-sm font-semibold"
+              >
+                {status === 'loading' ? (
+                  'Subscribing...'
+                ) : (
+                  <>
+                    <Sparkles className="h-4 w-4" />
+                    Get My Weekly Forecast
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
 
-        {status === 'error' && (
-          <p style={{ color: '#fecaca', marginTop: 10, fontSize: '0.85rem' }}>{error}</p>
-        )}
+          {status === 'error' && (
+            <p className="mt-3 text-sm text-destructive">{error}</p>
+          )}
 
-        <p style={{ fontSize: '0.72rem', opacity: 0.65, marginTop: 14 }}>
-          Free. Unsubscribe anytime. We&apos;ll never spam you.
-        </p>
+          <p className="mt-5 text-xs text-muted-foreground">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
       </div>
     </section>
   );

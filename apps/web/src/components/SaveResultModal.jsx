@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Compass,
   HeartHandshake,
@@ -15,6 +15,16 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
   const [email, setEmail] = useState('');
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [status, setStatus] = useState('idle');
+
+  useEffect(() => {
+    if (isOpen) {
+      trackEvent('report_upsell_viewed', {
+        mode: 'pair',
+        price: 999,
+        currency: 'usd',
+      });
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -43,6 +53,11 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
         throw new Error(data.error || 'Unable to start checkout.');
       }
       if (!data.url) throw new Error('Checkout did not return a payment link.');
+      trackEvent('checkout_redirected', {
+        mode: 'pair',
+        price: 999,
+        currency: 'usd',
+      });
       window.location.assign(data.url);
     } catch (error) {
       setStatus('error');

@@ -67,3 +67,31 @@ export function getVisibleGroupPairs(pairs, expanded, limit = 3) {
   if (!Array.isArray(pairs)) return [];
   return expanded ? pairs : pairs.slice(0, limit);
 }
+
+export function getResultPrecisionDetails(people = []) {
+  const precisions = people
+    .map((person) => person?.precision)
+    .filter((precision) => precision === 'exact' || precision === 'date-only');
+
+  const hasExact = precisions.includes('exact');
+  const hasDateOnly = precisions.includes('date-only');
+
+  if (hasExact && hasDateOnly) {
+    return {
+      label: 'Mixed precision',
+      note: 'Some people used birth time and place; others used birth date only.',
+    };
+  }
+
+  if (hasExact) {
+    return {
+      label: 'Exact match',
+      note: 'Birth time and place were used.',
+    };
+  }
+
+  return {
+    label: 'Date-only match',
+    note: 'Based on birth date only.',
+  };
+}

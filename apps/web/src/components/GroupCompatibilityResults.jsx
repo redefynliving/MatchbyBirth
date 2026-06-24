@@ -28,7 +28,7 @@ function PairRow({ pair, rank }) {
   );
 }
 
-function GroupCompatibilityResults({ result }) {
+function GroupCompatibilityResults({ result, precisionLabel, precisionNote }) {
   const [showAllPairs, setShowAllPairs] = useState(false);
   const visiblePairs = getVisibleGroupPairs(result.pairs, showAllPairs);
   const lowestPair = result.pairs[result.pairs.length - 1];
@@ -49,6 +49,12 @@ function GroupCompatibilityResults({ result }) {
           <p className="mt-3 text-sm leading-6 text-primary-foreground/75">
             {result.interpretation.explanation}
           </p>
+          <div className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-2 text-xs text-primary-foreground/90">
+            <span className="rounded-full bg-primary-foreground/15 px-2.5 py-1 font-semibold uppercase tracking-[0.12em] text-primary-foreground">
+              {precisionLabel}
+            </span>
+            <span>{precisionNote}</span>
+          </div>
         </section>
 
         <section className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-7">

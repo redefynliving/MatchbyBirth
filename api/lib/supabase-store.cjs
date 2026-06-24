@@ -232,7 +232,7 @@ async function listRetryablePurchases(limit = 10) {
 
 async function listActiveSubscribers() {
   const query = new URLSearchParams({
-    select: 'email,consented_at',
+    select: 'email,consented_at,result_id',
     unsubscribed_at: 'is.null',
     order: 'consented_at.desc',
   });

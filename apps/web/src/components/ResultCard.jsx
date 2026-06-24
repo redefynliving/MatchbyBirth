@@ -9,6 +9,7 @@ import {
 import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
 import { buildPairHighlights } from '@/lib/result-presentation.js';
+import { trackEvent } from '@/lib/analytics.js';
 
 const HIGHLIGHT_ICONS = {
   communication: MessageCircle,
@@ -32,11 +33,22 @@ function ResultCard({
   relationshipType,
   breakdown,
   resultUrl,
+  precisionLabel,
+  precisionNote,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInProgress, setDownloadInProgress] = useState(false);
   const highlights = buildPairHighlights(breakdown);
   const names = people.map((person) => person.name);
+
+  const openPurchaseModal = () => {
+    trackEvent('report_upsell_clicked', {
+      mode: 'pair',
+      price: 999,
+      currency: 'usd',
+    });
+    setIsModalOpen(true);
+  };
 
   const downloadResult = async () => {
     try {
@@ -88,6 +100,12 @@ function ResultCard({
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
               {explanation}
             </p>
+            <div className="mt-4 inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-muted/35 px-3 py-2 text-xs">
+              <span className="rounded-full bg-primary/10 px-2.5 py-1 font-semibold text-primary">
+                {precisionLabel}
+              </span>
+              <span className="text-muted-foreground">{precisionNote}</span>
+            </div>
             <div className="mt-4 flex flex-wrap gap-2">
               {people.map((person) => (
                 <span
@@ -134,7 +152,7 @@ function ResultCard({
             {canPurchase ? (
               <button
                 type="button"
-                onClick={() => setIsModalOpen(true)}
+                onClick={openPurchaseModal}
                 className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
               >
                 Get the detailed report · $9.99

@@ -3,12 +3,14 @@ import { Helmet } from 'react-helmet';
 import { ArrowLeft, Loader2, RefreshCw } from 'lucide-react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
+import BackButton from '@/components/BackButton.jsx';
 import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.jsx';
 import ResultCard from '@/components/ResultCard.jsx';
 import ShareButtons from '@/components/ShareButtons.jsx';
 import { Button } from '@/components/ui/button.jsx';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
+import { getResultPrecisionDetails } from '@/lib/result-presentation.js';
 
 function parseLegacyInput(searchParams) {
   const groupParam = searchParams.get('group');
@@ -178,6 +180,7 @@ function ResultPage() {
     ? `${globalThis.location.origin}/result?share=${encodeURIComponent(shareSlug)}`
     : null;
   const names = result.people.map((person) => person.name);
+  const precision = getResultPrecisionDetails(result.people);
   const pageTitle = isGroup
     ? `Group Compatibility — ${result.groupScore}% | Match by Birth`
     : `${names[0]} & ${names[1]} Compatibility — ${result.score}% | Match by Birth`;
@@ -199,8 +202,13 @@ function ResultPage() {
 
       <main className="result-page-bg min-h-screen py-10 md:py-14">
         <div className="content-container">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
           {isGroup ? (
-            <GroupCompatibilityResults result={result} />
+            <GroupCompatibilityResults
+              result={result}
+              precisionLabel={precision.label}
+              precisionNote={precision.note}
+            />
           ) : (
             <ResultCard
               canPurchase={canPurchase}
@@ -212,6 +220,8 @@ function ResultPage() {
               relationshipType={result.relationshipType}
               breakdown={result.breakdown}
               resultUrl={resultUrl}
+              precisionLabel={precision.label}
+              precisionNote={precision.note}
             />
           )}
 
