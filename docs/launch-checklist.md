@@ -1,56 +1,69 @@
 # Match by Birth Launch Checklist
 
-## 1. Supabase
+## Already done
+- Free calculator works locally
+- Exact Mode works
+- Result page has back navigation
+- Privacy page is crawl-friendly and has a canonical URL
+- `robots.txt` and `sitemap.xml` exist
+- Report upsell and email capture are wired
+- Weekly email send route exists
 
-1. Create or select the production Supabase project.
-2. Link the repository:
+## Still to do before pushing fully live
 
-   ```bash
-   npx supabase link --project-ref <project-ref>
-   ```
+### Stripe / payments
+- Create the live Stripe product for the private report
+- Create the live Stripe price for the report
+- Set `STRIPE_SECRET_KEY` in production
+- Set `STRIPE_PRICE_ID` in production
+- Set `STRIPE_WEBHOOK_SECRET` in production
+- Set `APP_URL` in production
+- Set `REPORT_TOKEN_SECRET` in production
+- Add `/api/webhook` as a Stripe webhook endpoint
+- Test a real checkout end-to-end in test mode
+- Confirm webhook → fulfillment → email delivery works
+- Confirm the report link opens after payment
 
-3. Review and apply `supabase/migrations/20260609042235_matchbybirth_core.sql`:
+### Subscription
+- Create a recurring Stripe subscription product
+- Add a recurring price ID for the subscription
+- Set up a real recurring checkout path
+- Decide what subscribers get:
+  - weekly intel emails
+  - saved history
+  - unlimited checks
+  - member-only insights
+- Protect subscriber-only features if needed
+- Add the subscription CTA and pricing copy
 
-   ```bash
-   npx supabase db push
-   ```
+### Email + retention
+- Make weekly emails feel like a product, not a generic newsletter
+- Personalize weekly emails when a saved `result_id` exists
+- Add a welcome/onboarding email sequence
+- Add unsubscribe and preference links everywhere needed
+- Verify transactional emails deliver reliably
 
-4. Confirm RLS is enabled on `results`, `purchases`, `reports`, `webhook_events`, and `email_subscribers`.
-5. Confirm `anon` and `authenticated` cannot read or write those tables.
+### Analytics
+- Track:
+  - result viewed
+  - email capture viewed
+  - email subscribed
+  - report upsell viewed
+  - report upsell clicked
+  - checkout started
+  - checkout redirected
+  - checkout completed
+  - weekly email sent/opened/clicked
 
-## 2. Vercel Environment
+### SEO / launch polish
+- Request indexing for important pages in Google Search Console
+- Make sure the sitemap is submitted
+- Confirm the home page and core pages render well on mobile
+- Confirm the premium page CTA copy is clear
+- Keep the free result fast and clean
 
-Add every variable from `.env.example` to Preview and Production. Generate `REPORT_TOKEN_SECRET` and `CRON_SECRET` as independent random values with at least 32 bytes of entropy.
-
-The Supabase service-role key, Stripe secret, webhook secret, Anthropic key, Resend key, and token secrets must remain server-only.
-
-## 3. Stripe and Email
-
-1. Create a one-time Stripe Price for `$9.99 USD` and set its ID as `STRIPE_PRICE_ID`.
-2. Register `https://matchbybirth.com/api/stripe-webhook`.
-3. Subscribe the webhook to:
-   - `checkout.session.completed`
-   - `checkout.session.async_payment_succeeded`
-   - `charge.refunded`
-4. Verify `support@matchbybirth.com` as a Resend sender.
-
-## 4. Verification
-
-Run:
-
-```bash
-npm ci
-npm test
-npm run lint --prefix apps/web
-npm run build --prefix apps/web
-npm run lint --prefix promo-video
-```
-
-Then complete one Stripe sandbox purchase and verify:
-
-- The purchase reaches `delivered`.
-- Only one report and one delivery email are created.
-- The private report link opens.
-- The PDF downloads.
-- Raw birth dates are absent from URLs, Stripe metadata, analytics events, and Supabase rows.
-- Pair and 3–7-person group results work on mobile and desktop.
+## Not to do
+- Do not charge for the saved result
+- Do not hide the free calculator behind signup
+- Do not ship placeholder checkout links
+- Do not launch live Stripe with test keys

@@ -25,6 +25,37 @@ function normalizeEmail(value) {
   return email;
 }
 
+async function buildReportLineItem(stripe, priceId) {
+  if (priceId.startsWith('price_')) {
+    return [{ price: priceId, quantity: 1 }];
+  }
+
+  if (!priceId.startsWith('prod_')) {
+    throw new CheckoutError('Stripe report pricing must be a price ID or product ID.', 500);
+  }
+
+  if (!stripe?.products?.retrieve) {
+    throw new CheckoutError('Stripe product lookup is unavailable.', 500);
+  }
+
+  const product = await stripe.products.retrieve(priceId);
+  if (!product) {
+    throw new CheckoutError('Stripe product not found.', 404);
+  }
+
+  return [{
+    price_data: {
+      currency: 'usd',
+      unit_amount: 999,
+      product_data: {
+        name: product.name || 'Match by Birth report',
+        description: product.description || 'Private compatibility report delivered by email.',
+      },
+    },
+    quantity: 1,
+  }];
+}
+
 async function createCheckout(input, dependencies) {
   const {
     store,
@@ -58,16 +89,7 @@ async function createCheckout(input, dependencies) {
 
   let session;
   try {
-    const lineItems = priceId.startsWith('prod_')
-      ? [{
-        price_data: {
-          currency: 'usd',
-          product: priceId,
-          unit_amount: 999,
-        },
-        quantity: 1,
-      }]
-      : [{ price: priceId, quantity: 1 }];
+    const lineItems = await buildReportLineItem(stripe, priceId);
 
     session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -118,8 +140,58 @@ async function createCheckout(input, dependencies) {
   };
 }
 
+async function createSubscriptionCheckout(input, dependencies) {
+  const {
+    store,
+    stripe,
+    appUrl,
+    priceId,
+  } = dependencies;
+  if (!appUrl || !priceId) {
+    throw new CheckoutError('Subscription checkout is not configured.', 500);
+  }
+  if (!priceId.startsWith('price_')) {
+    throw new CheckoutError('Subscription checkout requires a Stripe price ID.', 500);
+  }
+
+  const email = normalizeEmail(input?.email);
+  const resultId = String(input?.resultId || '').trim();
+
+  if (resultId) {
+    const result = await store.findResultById(resultId);
+    if (!result) throw new CheckoutError('Result not found.', 404);
+  }
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    mode: 'subscription',
+    customer_email: email,
+    line_items: [{ price: priceId, quantity: 1 }],
+    success_url: new URL('/premium?subscribed=1', appUrl).toString(),
+    cancel_url: new URL('/premium?subscribed=0', appUrl).toString(),
+    metadata: {
+      checkout_type: 'subscription',
+      email,
+      result_id: resultId || '',
+    },
+    subscription_data: {
+      metadata: {
+        checkout_type: 'subscription',
+        email,
+        result_id: resultId || '',
+      },
+    },
+  });
+
+  return {
+    sessionId: session.id,
+    url: session.url,
+  };
+}
+
 module.exports = {
   CheckoutError,
   createCheckout,
+  createSubscriptionCheckout,
   normalizeEmail,
 };

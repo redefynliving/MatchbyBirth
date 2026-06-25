@@ -40,7 +40,7 @@ function renderWelcomeEmail(unsubscribeUrl) {
       <div style="max-width:600px;margin:0 auto;background:#fffdf9;border:1px solid #e8e0d6;border-radius:20px;padding:40px;">
         <p style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-align:center;color:#756b82;margin:0 0 24px;">Match by Birth</p>
         <h1 style="font-family:Georgia,serif;font-size:34px;font-weight:500;text-align:center;color:#26212b;margin:0 0 16px;">You are on the list</h1>
-        <p style="font-family:Georgia,serif;font-size:17px;line-height:1.75;color:#4d4653;margin:0 0 24px;">We will send occasional compatibility insights, thoughtful relationship prompts, and product updates. No account is required.</p>
+        <p style="font-family:Georgia,serif;font-size:17px;line-height:1.75;color:#4d4653;margin:0 0 24px;">We will send weekly compatibility insights, thoughtful relationship prompts, and product updates. No account is required.</p>
         <div style="text-align:center;margin-top:32px;">
           <a href="https://matchbybirth.com" style="display:inline-block;background:#6d4ca0;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-weight:600;padding:14px 22px;border-radius:10px;">Explore Match by Birth</a>
         </div>

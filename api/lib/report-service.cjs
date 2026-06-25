@@ -106,7 +106,7 @@ async function fulfillPurchase(purchaseId, dependencies) {
     await store.updatePurchase(purchaseId, {
       status: 'failed',
       delivery_attempts: nextAttempt,
-      last_error: error.message || 'Report fulfillment failed.',
+      last_error: 'Report fulfillment failed.',
     });
     throw error;
   }

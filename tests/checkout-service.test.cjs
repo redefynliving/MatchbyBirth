@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { createCheckout } = require('../api/lib/checkout-service.cjs');
+const { createCheckout, createSubscriptionCheckout } = require('../api/lib/checkout-service.cjs');
 
 test('createCheckout controls price and keeps personal result data out of Stripe metadata', async () => {
   let purchaseRecord;
@@ -137,6 +137,9 @@ test('createCheckout accepts a configured Stripe product ID', async () => {
     upsertSubscriber: async () => {},
   };
   const stripe = {
+    products: {
+      retrieve: async (id) => ({ id, name: 'Deep Reading', description: 'Private compatibility report.' }),
+    },
     checkout: {
       sessions: {
         create: async (payload) => {
@@ -160,11 +163,35 @@ test('createCheckout accepts a configured Stripe product ID', async () => {
   assert.deepEqual(stripePayload.line_items, [{
     price_data: {
       currency: 'usd',
-      product: 'prod_report',
       unit_amount: 999,
+      product_data: {
+        name: 'Deep Reading',
+        description: 'Private compatibility report.',
+      },
     },
     quantity: 1,
   }]);
+});
+
+test('createSubscriptionCheckout requires a Stripe price ID', async () => {
+  await assert.rejects(
+    () => createSubscriptionCheckout(
+      { email: 'buyer@example.com' },
+      {
+        store: { findResultById: async () => null },
+        stripe: {
+          checkout: {
+            sessions: {
+              create: async () => ({ id: 'checkout-id', url: 'https://checkout.stripe.test/session' }),
+            },
+          },
+        },
+        appUrl: 'https://matchbybirth.com',
+        priceId: 'prod_subscription',
+      },
+    ),
+    /price ID/i,
+  );
 });
 
 test('createCheckout rejects group reports and invalid email addresses', async () => {

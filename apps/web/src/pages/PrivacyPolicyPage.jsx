@@ -8,6 +8,8 @@ function PrivacyPolicyPage() {
       <Helmet>
         <title>Privacy Policy | Match by Birth</title>
         <meta name="description" content="How Match by Birth processes calculator, result, payment, email, and analytics data." />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={`${window.location.origin}/privacy`} />
       </Helmet>
 
       <main className="py-20 md:py-24 bg-background min-h-screen">

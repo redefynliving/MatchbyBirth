@@ -27,35 +27,35 @@ function CookieConsentBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:p-4">
-      <div className="mx-auto max-w-3xl bg-card border border-border rounded-2xl shadow-xl p-4 sm:p-5">
-        <div className="flex items-start gap-3">
-          <div className="flex-1 min-w-0">
-            <p className="text-sm text-foreground leading-relaxed">
+      <div className="mx-auto max-w-2xl rounded-[1.5rem] border border-border/70 bg-card/95 p-3 shadow-[0_18px_50px_rgba(0,0,0,0.12)] backdrop-blur-md sm:p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="min-w-0 flex-1">
+            <p className="text-xs leading-5 text-foreground sm:text-sm">
               This site uses cookies for analytics and to remember your preferences. No personal data is shared with third parties.{' '}
-              <Link to="/privacy" className="text-primary underline hover:no-underline font-medium">
+              <Link to="/privacy" className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary">
                 Learn more
               </Link>
             </p>
           </div>
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center justify-end gap-2 shrink-0">
             <button
               onClick={handleDecline}
-              className="px-3 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors"
+              className="rounded-xl px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               Decline
             </button>
             <button
               onClick={handleAccept}
-              className="px-4 py-1.5 text-xs font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+              className="rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
             >
               Accept
             </button>
             <button
               onClick={handleDecline}
-              className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="rounded-xl p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               aria-label="Close"
             >
-              <X className="w-4 h-4" />
+              <X className="h-4 w-4" />
             </button>
           </div>
         </div>
