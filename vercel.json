@@ -3,7 +3,9 @@
   "outputDirectory": "dist/apps/web",
   "framework": null,
   "functions": {
-    "api/**": {}
+    "api/**": {
+      "memory": 1024
+    }
   },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
