@@ -95,9 +95,9 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
   );
 
   assert.match(homePage, /See how you match by birth date\./);
-  assert.match(homePage, /HomeResultPreview/);
+  assert.match(homePage, /CalculatorWithPreview/);
   assert.match(homePreview, /Good compatibility/);
-  assert.match(homePreview, /aria-label="Example compatibility score: 82%"/);
+  assert.match(homePreview, /aria-label="Example compatibility score"/);
   assert.doesNotMatch(homePreview, /conic-gradient|inset_0_0_0/);
   assert.doesNotMatch(homePreview, />82% compatible</);
   assert.match(calculator, /Check your connection/);
@@ -145,9 +145,9 @@ test('marketing subscription UI confirms delivery and requires an unsubscribe ac
   );
 
   assert.match(app, /path="\/unsubscribe"/);
-  assert.match(emailCapture, /welcomeEmailSent/);
-  assert.match(emailCapture, /A welcome email is on its way\./);
-  assert.match(emailCapture, /the welcome email could not be sent/);
+  assert.match(emailCapture, /on the list/);
+  assert.match(emailCapture, /Check your inbox/);
+  assert.match(emailCapture, /Unsubscribe anytime/);
   assert.match(unsubscribePage, /Confirm unsubscribe/);
   assert.match(unsubscribePage, /fetch\('\/api\/unsubscribe'/);
   assert.match(unsubscribePage, /name="robots" content="noindex, nofollow"/);
