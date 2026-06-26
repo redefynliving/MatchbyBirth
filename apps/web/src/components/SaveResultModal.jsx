@@ -151,7 +151,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 
           <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
             <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-            Payment is handled by Stripe. Your birth dates are not stored.
+            Payment is handled by Stripe. Your birth dates are not stored. Optional time/place is not stored either.
           </p>
         </section>
       </div>

@@ -1,3 +1,5 @@
+import adsenseGrowthPosts from './adsense-growth-posts.js';
+
 const posts = [
   {
     slug: 'aries-scorpio-compatibility',
@@ -2039,4 +2041,5 @@ const posts = [
 
 ];
 
-export default posts;
+export const existingPosts = posts;
+export default [...posts, ...adsenseGrowthPosts];

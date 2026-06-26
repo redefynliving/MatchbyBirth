@@ -2,26 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
+import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
 
 const POSTS_PER_PAGE = 6;
 
-const CATEGORIES = [
-  { key: 'all', label: 'All Posts' },
-  { key: 'sign-guide', label: 'By Zodiac Sign', description: 'Compatibility guides for each sign' },
-  { key: 'pair-deep-dive', label: 'Pair Deep Dives', description: 'In-depth analysis of specific pairings' },
-  { key: 'learn-astrology', label: 'Learn Astrology', description: 'Elements, planets, and chart basics' },
-  { key: 'seasonal', label: 'Seasonal', description: 'Retrogrades, transits, and timely guides' },
-  { key: 'relationships', label: 'Relationships', description: 'Love, friendship, work, and family' },
-];
-
-function getCategory(post) {
-  if (post.category) return post.category;
-  // Fallback for any posts without category field
-  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
-  if (post.tags.includes('compatibility')) return 'pair-deep-dive';
-  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water'].includes(t))) return 'learn-astrology';
-  return 'relationships';
-}
+const CATEGORIES = [ALL_POSTS_CATEGORY, ...BLOG_CATEGORIES];
 
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -29,8 +14,8 @@ function BlogPage() {
 
   // Enrich posts with category
   const enrichedPosts = useMemo(() => {
-    return posts.map(p => ({ ...p, category: getCategory(p) }));
-  }, [posts]);
+    return posts.map(p => ({ ...p, category: getPostCategory(p) }));
+  }, []);
 
   // Filter by category
   const filteredPosts = useMemo(() => {
@@ -188,10 +173,42 @@ function BlogPage() {
           )}
 
           {/* CTA */}
-          <div style={{ marginTop: 48, background: '#6c4de6', color: '#fff', padding: '24px', borderRadius: 16, textAlign: 'center' }}>
-            <h2 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>Ready to check your compatibility?</h2>
-            <p style={{ margin: '0 0 16px 0', opacity: 0.9, fontSize: '0.95rem' }}>Enter both birth dates for a free personalized reading.</p>
-            <Link to="/" style={{ color: '#fff', fontWeight: 800, textDecoration: 'underline', fontSize: '1.1rem' }}>Try the Calculator →</Link>
+          <div style={{
+            marginTop: 48,
+            background: '#fff',
+            color: '#1a1a2e',
+            padding: '24px',
+            borderRadius: 8,
+            border: '1px solid #e6e1d8',
+            boxShadow: '0 10px 28px rgba(16,24,40,0.06)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 16,
+          }}>
+            <div style={{ maxWidth: 460 }}>
+              <p style={{ margin: '0 0 6px 0', color: '#6c4de6', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Try the tool</p>
+              <h2 style={{ margin: '0 0 8px 0', fontSize: '1.25rem', color: '#1a1a2e' }}>Ready to check your compatibility?</h2>
+              <p style={{ margin: 0, color: '#665f72', fontSize: '0.95rem', lineHeight: 1.55 }}>Enter both birth dates for a free private score, then use the guides to understand the result.</p>
+            </div>
+            <Link
+              to="/#calculator"
+              style={{
+                color: '#fff',
+                background: '#1f1d2b',
+                fontWeight: 800,
+                textDecoration: 'none',
+                fontSize: '0.95rem',
+                padding: '12px 16px',
+                borderRadius: 8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              Try the calculator →
+            </Link>
           </div>
 
           <style>{`

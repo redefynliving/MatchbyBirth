@@ -211,6 +211,7 @@ function ResultPage() {
               explanation={result.interpretation.explanation}
               relationshipType={result.relationshipType}
               breakdown={result.breakdown}
+              precision={result.precision}
               resultUrl={resultUrl}
             />
           )}

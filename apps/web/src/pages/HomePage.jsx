@@ -25,21 +25,21 @@ function HomePage() {
     <>
       <Helmet>
         <title>Birth Date Compatibility Calculator | Match by Birth</title>
-        <meta name="description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored." />
+        <meta name="description" content="Compare two people or a group by birth date. Add optional time and selected birth place for MBB Exact Mode, with no signup and no stored raw birth details." />
         <meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth" />
-        <meta property="og:description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds." />
+        <meta property="og:description" content="Compare two people or a group by birth date, with optional MBB Exact Mode for high-precision Sun signs." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
         <meta property="og:url" content={`${window.location.origin}/`} />
         <link rel="canonical" href={`${window.location.origin}/`} />
 
         {/* AdSense */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossOrigin="anonymous"></script>
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
             name: 'Match by Birth Compatibility Calculator',
-            description: 'Free birth date compatibility calculator for pairs and groups. Get a compatibility score and breakdown in seconds.',
+            description: 'Free birth date compatibility calculator for pairs and groups, with optional MBB Exact Mode for high-precision Sun sign calculation.',
             url: 'https://matchbybirth.com',
             applicationCategory: 'LifestyleApplication',
             operatingSystem: 'Web',
@@ -47,11 +47,6 @@ function HomePage() {
               '@type': 'Offer',
               price: '0',
               priceCurrency: 'USD',
-            },
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.8',
-              ratingCount: '1247',
             },
           })}
         </script>
@@ -63,8 +58,8 @@ function HomePage() {
             '@type': 'Organization',
             name: 'Match by Birth',
             url: 'https://matchbybirth.com',
-            logo: 'https://matchbybirth.com/logo.png',
-            description: 'Astrology compatibility tools that explain WHY you work or don\'t work with someone.',
+            logo: 'https://matchbybirth.com/og-image.png',
+            description: 'Birth date compatibility tools for pairs and groups, with privacy-focused results and responsible relationship reflection.',
             sameAs: [
               'https://twitter.com/matchbybirth',
             ],
@@ -82,7 +77,7 @@ function HomePage() {
                 name: 'Do I need an exact birth time?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'No. Match by Birth uses calendar birth dates for a quick compatibility reading.',
+                  text: 'No. Match by Birth works with calendar birth dates. If you add birth date, time, and selected birth place, MBB Exact Mode calculates a high-precision Sun sign that is more useful around cusp birthdays.',
                 },
               },
               {
@@ -90,7 +85,7 @@ function HomePage() {
                 name: 'Are birth dates stored?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Birth dates are processed for the calculation and are not stored or included in share links.',
+                  text: 'Birth dates and optional exact-mode details are processed for the calculation, then raw birth dates, times, places, coordinates, and timezones are excluded from stored result payloads and share links.',
                 },
               },
               {
@@ -113,11 +108,11 @@ function HomePage() {
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
                 Free birth date compatibility calculator
               </p>
-              <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-[1] tracking-[-0.045em] text-foreground md:text-6xl">
-                See how you match by birth date.
+              <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-[1] tracking-normal text-foreground md:text-6xl">
+                See how you match
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Compare two people or a group. Get a compatibility score and a clear breakdown in seconds.
+                Compare two people or a group. Add optional time and selected birth place for MBB Exact Mode when you want a high-precision Sun sign.
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
@@ -126,7 +121,7 @@ function HomePage() {
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <LockKeyhole className="h-3.5 w-3.5 text-primary" />
-                  Birth dates not stored
+                  Birth details not stored
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <Users className="h-3.5 w-3.5 text-primary" />
@@ -156,6 +151,64 @@ function HomePage() {
 
         <HomeEmailCapture />
 
+        <section className="section-spacing bg-card">
+          <div className="content-container max-w-5xl">
+            <div className="mx-auto mb-10 max-w-3xl text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Built for quick relationship insight
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Why Match by Birth is different
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Match by Birth turns simple birth dates into a private compatibility snapshot for pairs and groups.
+                MBB Exact Mode can calculate a high-precision Sun sign from birth date, time, and selected birth place.
+                The score is a starting point for reflection, not a verdict about your relationship.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <article className="rounded-2xl border border-border bg-background p-5">
+                <Zap className="mb-4 h-5 w-5 text-primary" />
+                <h3 className="text-base font-semibold">Date-first, exact when needed</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Start with the birth date. Add time and a selected birth place to turn on MBB Exact Mode for cusp birthdays or anyone who wants more precise sign placement.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-border bg-background p-5">
+                <Users className="mb-4 h-5 w-5 text-primary" />
+                <h3 className="text-base font-semibold">Pair or group mode</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Compare two people directly or check a group of 3 to 7 people to see every pair ranking and the overall group vibe.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-border bg-background p-5">
+                <LockKeyhole className="mb-4 h-5 w-5 text-primary" />
+                <h3 className="text-base font-semibold">Privacy-first results</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  Birth dates, times, places, coordinates, and timezones are processed for the calculation and kept out of new share links, so results stay focused on signs, scores, and interpretation.
+                </p>
+              </article>
+
+              <article className="rounded-2xl border border-border bg-background p-5">
+                <FileHeart className="mb-4 h-5 w-5 text-primary" />
+                <h3 className="text-base font-semibold">Scores with context</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  High and low scores are explained in plain language so you can talk about communication, timing, trust, and expectations more clearly.
+                </p>
+              </article>
+            </div>
+
+            <div className="mt-8 text-center">
+              <Link to="/blog" className="text-sm font-semibold text-primary hover:underline">
+                Read the birth matching guides
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="section-spacing bg-background">
           <div className="content-container max-w-3xl">
             <div className="mb-9 text-center">
@@ -168,7 +221,7 @@ function HomePage() {
                   Do I need an exact birth time?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  No. Match by Birth uses calendar birth dates for a quick compatibility reading.
+                  No. Match by Birth works with calendar birth dates. Birth time and selected birth place are optional and most helpful near zodiac sign transitions because MBB Exact Mode can calculate a high-precision Sun sign.
                 </AccordionContent>
               </AccordionItem>
 
@@ -177,7 +230,7 @@ function HomePage() {
                   Are birth dates stored?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  Birth dates are processed for the calculation and are not stored or included in share links.
+                  Birth dates and optional exact-mode details are processed for the calculation, then raw birth dates, times, places, coordinates, and timezones are excluded from stored result payloads and share links.
                 </AccordionContent>
               </AccordionItem>
 

@@ -4,9 +4,6 @@ import fs from 'fs';
 import path from 'path';
 
 const CLEAN_CONTENT_REGEX = {
-	comments: /\/\*[\s\S]*?\*\/|\/\/.*$/gm,
-	templateLiterals: /`[\s\S]*?`/g,
-	strings: /'[^']*'|"[^"]*"/g,
 	jsxExpressions: /\{.*?\}/g,
 	htmlEntities: {
 		quot: /&quot;/g,
@@ -18,7 +15,7 @@ const CLEAN_CONTENT_REGEX = {
 };
 
 const EXTRACTION_REGEX = {
-	route: /<Route\s+[^>]*>/g,
+	route: /<Route\b[^>]*path=["']([^"']+)["'][^>]*element=\{\s*<(\w+)/g,
 	path: /path=["']([^"']+)["']/,
 	element: /element=\{<(\w+)[^}]*\/?\s*>\}/,
 	helmet: /<Helmet[^>]*?>([\s\S]*?)<\/Helmet>/i,
@@ -27,13 +24,6 @@ const EXTRACTION_REGEX = {
 	description: /<meta\s+name=["']description["']\s+content=["'](.*?)["']/i,
 	noindex: /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i
 };
-
-function cleanContent(content) {
-	return content
-		.replace(CLEAN_CONTENT_REGEX.comments, '')
-		.replace(CLEAN_CONTENT_REGEX.templateLiterals, '""')
-		.replace(CLEAN_CONTENT_REGEX.strings, '""');
-}
 
 function cleanText(text) {
 	if (!text) return text;
@@ -48,7 +38,7 @@ function cleanText(text) {
 		.trim();
 }
 
-function extractRoutes(appJsxPath) {
+export function extractRoutes(appJsxPath) {
 	if (!fs.existsSync(appJsxPath)) return new Map();
 
 	try {
@@ -57,23 +47,9 @@ function extractRoutes(appJsxPath) {
 		const routeMatches = [...content.matchAll(EXTRACTION_REGEX.route)];
 
 		for (const match of routeMatches) {
-			const routeTag = match[0];
-			const pathMatch = routeTag.match(EXTRACTION_REGEX.path);
-			const elementMatch = routeTag.match(EXTRACTION_REGEX.element);
-			const isIndex = routeTag.includes('index');
-
-			if (elementMatch) {
-				const componentName = elementMatch[1];
-				let routePath;
-
-				if (isIndex) {
-					routePath = '/';
-				} else if (pathMatch) {
-					routePath = pathMatch[1].startsWith('/') ? pathMatch[1] : `/${pathMatch[1]}`;
-				}
-
-				routes.set(componentName, routePath);
-			}
+			const routePath = match[1].startsWith('/') ? match[1] : `/${match[1]}`;
+			const componentName = match[2];
+			routes.set(componentName, routePath);
 		}
 
 		return routes;
@@ -86,13 +62,7 @@ function findReactFiles(dir) {
 	return fs.readdirSync(dir).map(item => path.join(dir, item));
 }
 
-function extractHelmetData(content, filePath, routes) {
-	const cleanedContent = cleanContent(content);
-
-	if (!EXTRACTION_REGEX.helmetTest.test(cleanedContent)) {
-		return null;
-	}
-
+export function extractHelmetData(content, filePath, routes) {
 	const helmetMatch = content.match(EXTRACTION_REGEX.helmet);
 	if (!helmetMatch) return null;
 
@@ -106,9 +76,13 @@ function extractHelmetData(content, filePath, routes) {
 	const description = cleanText(descMatch?.[1]);
 
 	const fileName = path.basename(filePath, path.extname(filePath));
-	const url = routes.length && routes.has(fileName)
+	if (routes.size && !routes.has(fileName)) return null;
+
+	const url = routes.size && routes.has(fileName)
 		? routes.get(fileName)
 		: generateFallbackUrl(fileName);
+
+	if (url.includes(':')) return null;
 
 	return {
 		url,

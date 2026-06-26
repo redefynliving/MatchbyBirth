@@ -1,5 +1,10 @@
 'use strict';
 
+const {
+  normalizeSelectedBirthPlace,
+  resolvePersonAstrology,
+} = require('./exact-astrology.cjs');
+
 const ELEMENTS = {
   fire: ['Aries', 'Leo', 'Sagittarius'],
   earth: ['Taurus', 'Virgo', 'Capricorn'],
@@ -14,6 +19,21 @@ const BREAKDOWN_WEIGHTS = {
   growth: 0.2,
   intuition: 0.15,
 };
+
+const ZODIAC_START_DATES = [
+  [1, 20],
+  [2, 19],
+  [3, 21],
+  [4, 20],
+  [5, 21],
+  [6, 21],
+  [7, 23],
+  [8, 23],
+  [9, 23],
+  [10, 23],
+  [11, 22],
+  [12, 22],
+];
 
 function parseBirthDate(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -43,6 +63,41 @@ function parseBirthDate(value) {
   }
 
   return { year, month, day };
+}
+
+function dayOfLeapYear(month, day) {
+  const date = new Date(Date.UTC(2000, month - 1, day));
+  const start = new Date(Date.UTC(2000, 0, 1));
+  return Math.round((date.getTime() - start.getTime()) / 86400000) + 1;
+}
+
+function isNearSignTransition(value) {
+  const { month, day } = parseBirthDate(value);
+  const targetDay = dayOfLeapYear(month, day);
+
+  return ZODIAC_START_DATES.some(([startMonth, startDay]) => (
+    Math.abs(dayOfLeapYear(startMonth, startDay) - targetDay) <= 1
+  ));
+}
+
+function normalizeBirthTime(value) {
+  const birthTime = String(value || '').trim();
+  if (!birthTime) return '';
+  if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(birthTime)) {
+    throw new Error('Enter birth time as HH:MM.');
+  }
+  return birthTime;
+}
+
+function normalizeBirthPlace(value) {
+  const selectedPlace = normalizeSelectedBirthPlace(value);
+  if (selectedPlace) return selectedPlace;
+
+  const birthPlace = String(value || '').trim().replace(/\s+/g, ' ');
+  if (birthPlace.length > 120) {
+    throw new Error('Birth place must be 120 characters or fewer.');
+  }
+  return birthPlace;
 }
 
 function getZodiacSign(value) {
@@ -162,13 +217,15 @@ function validatePeople(people, minimum, maximum) {
     const id = String(person?.id || `person-${index + 1}`).slice(0, 100);
     const name = String(person?.name || '').trim().replace(/\s+/g, ' ').slice(0, 80);
     const birthDate = String(person?.birthDate || '');
+    const birthTime = normalizeBirthTime(person?.birthTime);
+    const birthPlace = normalizeBirthPlace(person?.birthPlace);
 
     if (!name) {
       throw new Error(`Person ${index + 1} needs a name.`);
     }
 
     parseBirthDate(birthDate);
-    return { id, name, birthDate };
+    return { id, name, birthDate, birthTime, birthPlace };
   });
 }
 
@@ -196,12 +253,82 @@ function calculateBreakdown(personA, personB, baseScore) {
   return scores;
 }
 
+function buildResultPrecision(sanitizedPeople) {
+  const exactCount = sanitizedPeople.filter((person) => person.precision.exact).length;
+
+  if (exactCount === sanitizedPeople.length) {
+    return {
+      mode: 'exact-sun',
+      label: 'MBB Exact Mode',
+      exactCount,
+      totalCount: sanitizedPeople.length,
+      note: 'Sun signs were calculated from birth date, time, and selected birth place.',
+    };
+  }
+
+  if (exactCount > 0) {
+    return {
+      mode: 'mixed',
+      label: 'Mixed precision',
+      exactCount,
+      totalCount: sanitizedPeople.length,
+      note: 'Some Sun signs used MBB Exact Mode while others used date-only zodiac ranges.',
+    };
+  }
+
+  return {
+    mode: 'date-only',
+    label: 'Date-only mode',
+    exactCount,
+    totalCount: sanitizedPeople.length,
+    note: 'Sun signs used standard date-only zodiac ranges.',
+  };
+}
+
+function buildBirthPrecision(person, astrology) {
+  const hasBirthTime = Boolean(person.birthTime);
+  const hasBirthPlace = Boolean(normalizeSelectedBirthPlace(person.birthPlace));
+  const nearSignTransition = isNearSignTransition(person.birthDate);
+
+  if (astrology.exact) {
+    return {
+      level: 'exact-sun',
+      exact: true,
+      hasBirthTime: true,
+      hasBirthPlace: true,
+      nearSignTransition,
+      placeLabel: astrology.placeLabel,
+      solarLongitude: Number(astrology.solarLongitude.toFixed(3)),
+      note: astrology.note,
+    };
+  }
+
+  let note = astrology.note;
+
+  if (nearSignTransition && (!hasBirthTime || !hasBirthPlace)) {
+    note = 'Near a zodiac transition. Add birth time and select a birth place for MBB Exact Mode.';
+  }
+
+  return {
+    level: 'date-only',
+    exact: false,
+    hasBirthTime,
+    hasBirthPlace,
+    nearSignTransition,
+    placeLabel: '',
+    solarLongitude: null,
+    note,
+  };
+}
+
 function sanitizePerson(person) {
+  const astrology = resolvePersonAstrology(person);
   return {
     id: person.id,
     name: person.name,
-    sign: getZodiacSign(person.birthDate),
-    element: getElement(getZodiacSign(person.birthDate)),
+    sign: astrology.sign,
+    element: getElement(astrology.sign),
+    precision: buildBirthPrecision(person, astrology),
   };
 }
 
@@ -219,6 +346,7 @@ function calculatePairResult(people, relationshipType = 'love') {
     mode: 'pair',
     relationshipType,
     people: sanitizedPeople,
+    precision: buildResultPrecision(sanitizedPeople),
     score: breakdown.overall,
     breakdown,
     interpretation,
@@ -271,6 +399,7 @@ function calculateGroupResult(people) {
     mode: 'group',
     relationshipType: 'friendship',
     people: sanitizedPeople,
+    precision: buildResultPrecision(sanitizedPeople),
     score: groupScore,
     groupScore,
     interpretation: scoreInterpretation(groupScore, 'friendship'),
@@ -287,6 +416,7 @@ module.exports = {
   calculatePairResult,
   getElement,
   getZodiacSign,
+  isNearSignTransition,
   scoreInterpretation,
   validatePeople,
 };

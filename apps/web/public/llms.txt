@@ -1,11 +1,10 @@
 ## Pages
-- [About Us | Match by Birth](/about): Learn about our mission to help you understand compatibility, including our unique 7-person Group Mode.
+- [About Match by Birth](/about): Learn who Match by Birth is for, what the compatibility calculator does, what it does not claim, and how privacy works.
 - [Astrology Blog & Guides | Match by Birth](/blog): Explore astrology compatibility guides, zodiac pair deep dives, and relationship insights. Find out how the stars align for you.
-- [Birth Date Compatibility Calculator | Match by Birth](/home): Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored.
+- [Birth Date Compatibility Calculator | Match by Birth](/): Compare two people or a group by birth date. Add optional time and selected birth place for MBB Exact Mode, with no signup and no stored raw birth details.
 - [Contact Us | Match by Birth](/contact): Get in touch with the Match by Birth team for support, feedback, or inquiries.
-- [Disclaimers | Match by Birth](/disclaimer): Important disclaimers about the use of our astrological compatibility calculator.
+- [Disclaimers | Match by Birth](/disclaimers): Important disclaimers about the use of our astrological compatibility calculator.
 - [Frequently Asked Questions | Match by Birth](/faq): Find answers to common questions about astrological compatibility, our calculator, and how to interpret your results.
-- [How It Works - Match by Birth](/howitworks): Learn how our compatibility calculator uses zodiac signs and birth dates to analyze relationship dynamics.
-- [Privacy Policy | Match by Birth](/privacypolicy): How Match by Birth processes calculator, result, payment, email, and analytics data.
-- [Terms and Conditions | Match by Birth](/termsandconditions): Terms and Conditions for using Match by Birth, covering user responsibilities, service limitations, and astrological disclaimers.
-- [Terms of Service | Match by Birth](/termsofservice): Terms of Service for using Match by Birth.
+- [How Match by Birth Works | Methodology](/how-it-works): Learn the Match by Birth methodology: how birth dates, MBB Exact Mode, zodiac signs, life path numbers, pair mode, and group mode shape compatibility scores.
+- [Privacy Policy | Match by Birth](/privacy): How Match by Birth processes calculator, result, payment, email, and analytics data.
+- [Terms of Service | Match by Birth](/terms): Terms of Service for using Match by Birth.

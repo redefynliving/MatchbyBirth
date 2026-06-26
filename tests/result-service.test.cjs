@@ -22,7 +22,18 @@ test('calculateAndStoreResult persists a sanitized pair result behind an opaque 
       relationshipType: 'love',
       people: [
         { id: 'one', name: 'Alex', birthDate: '1990-03-21' },
-        { id: 'two', name: 'Jordan', birthDate: '1992-09-23' },
+        {
+          id: 'two',
+          name: 'Jordan',
+          birthDate: '1992-09-23',
+          birthTime: '23:30',
+          birthPlace: {
+            label: 'Atlanta, Georgia, United States',
+            timezone: 'America/New_York',
+            lat: 33.749,
+            lng: -84.388,
+          },
+        },
       ],
     },
     store,
@@ -33,7 +44,17 @@ test('calculateAndStoreResult persists a sanitized pair result behind an opaque 
   assert.equal(response.shareSlug, 'private-share-token');
   assert.equal(inserted.mode, 'pair');
   assert.equal(inserted.result_payload.people[0].birthDate, undefined);
+  assert.equal(inserted.result_payload.people[1].birthTime, undefined);
+  assert.equal(inserted.result_payload.people[1].birthPlace, undefined);
+  assert.equal(inserted.result_payload.people[1].precision.hasBirthTime, true);
+  assert.equal(inserted.result_payload.people[1].precision.hasBirthPlace, true);
+  assert.equal(inserted.result_payload.precision.mode, 'mixed');
+  assert.equal(inserted.result_payload.people[1].precision.level, 'exact-sun');
   assert.equal(JSON.stringify(inserted).includes('1990-03-21'), false);
+  assert.equal(JSON.stringify(inserted).includes('23:30'), false);
+  assert.equal(JSON.stringify(inserted).includes('America/New_York'), false);
+  assert.equal(JSON.stringify(inserted).includes('33.749'), false);
+  assert.equal(JSON.stringify(inserted).includes('-84.388'), false);
 });
 
 test('calculateAndStoreResult makes group mode friendship-only', async () => {

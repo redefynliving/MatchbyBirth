@@ -32,6 +32,13 @@ function GroupCompatibilityResults({ result }) {
   const [showAllPairs, setShowAllPairs] = useState(false);
   const visiblePairs = getVisibleGroupPairs(result.pairs, showAllPairs);
   const lowestPair = result.pairs[result.pairs.length - 1];
+  const precision = result.precision || {
+    mode: 'date-only',
+    label: 'Date-only mode',
+    exactCount: 0,
+    totalCount: result.people.length,
+    note: 'Sun signs used standard date-only zodiac ranges.',
+  };
 
   return (
     <div className="animate-fade-in mx-auto w-full max-w-5xl space-y-4">
@@ -48,6 +55,9 @@ function GroupCompatibilityResults({ result }) {
           </h1>
           <p className="mt-3 text-sm leading-6 text-primary-foreground/75">
             {result.interpretation.explanation}
+          </p>
+          <p className="mt-4 rounded-2xl bg-white/12 p-3 text-xs leading-5 text-primary-foreground/80">
+            Exact Mode members: {precision.exactCount} of {precision.totalCount}. {precision.note}
           </p>
         </section>
 

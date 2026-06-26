@@ -31,12 +31,20 @@ function ResultCard({
   explanation,
   relationshipType,
   breakdown,
+  precision,
   resultUrl,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInProgress, setDownloadInProgress] = useState(false);
   const highlights = buildPairHighlights(breakdown);
   const names = people.map((person) => person.name);
+  const precisionNotes = people
+    .map((person) => ({
+      id: person.id,
+      name: person.name,
+      note: person.precision?.note,
+    }))
+    .filter((item) => item.note);
 
   const downloadResult = async () => {
     try {
@@ -98,6 +106,32 @@ function ResultCard({
                 </span>
               ))}
             </div>
+            {precision && (
+              <div className="mt-4 rounded-2xl border border-primary/15 bg-secondary/35 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">
+                  {precision.label}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {precision.mode === 'exact-sun'
+                    ? 'MBB Exact Mode used exact Sun signs calculated from birth date, time, and selected birth place.'
+                    : precision.note}
+                </p>
+              </div>
+            )}
+            {precisionNotes.length > 0 && (
+              <div className="mt-4 rounded-2xl border border-primary/15 bg-secondary/35 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">
+                  Precision note
+                </p>
+                <ul className="mt-2 space-y-1.5 text-sm leading-6 text-muted-foreground">
+                  {precisionNotes.map((item) => (
+                    <li key={item.id}>
+                      <span className="font-medium text-foreground">{item.name}:</span> {item.note}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </header>
 

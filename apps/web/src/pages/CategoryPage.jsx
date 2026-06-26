@@ -1,53 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import posts from '@/data/posts';
+import { getCategoryMeta, getPostCategory } from '@/data/blogCategories.js';
 
-const CATEGORY_META = {
-  'sign-guide': {
-    title: 'Zodiac Sign Compatibility Guides',
-    description: 'Complete compatibility guides for each zodiac sign. Find out which signs match best — and which ones challenge you.',
-    seoTitle: 'Zodiac Sign Compatibility Guides | Match by Birth',
-    seoDescription: 'Explore comprehensive compatibility guides for every zodiac sign. Ranked best to worst matches for love, friendship, and work.',
-  },
-  'pair-deep-dive': {
-    title: 'Zodiac Pair Compatibility Deep Dives',
-    description: 'In-depth analysis of specific zodiac pairings. Go beyond sun signs to understand the dynamics between two people.',
-    seoTitle: 'Zodiac Pair Compatibility Deep Dives | Match by Birth',
-    seoDescription: 'Detailed compatibility analysis for specific zodiac pairings. Learn the strengths, challenges, and hidden dynamics of each match.',
-  },
-  'learn-astrology': {
-    title: 'Learn Astrology — Articles & Guides',
-    description: 'Understand the building blocks of astrology: elements, planets, houses, and how they shape your relationships.',
-    seoTitle: 'Learn Astrology — Articles & Guides | Match by Birth',
-    seoDescription: 'Learn about astrological elements, planets, houses, and how they influence personality and relationships.',
-  },
-  seasonal: {
-    title: 'Seasonal Astrology & Timely Guides',
-    description: 'Retrograde survival guides, full moon rituals, and astrological forecasts for the current moment.',
-    seoTitle: 'Seasonal Astrology & Timely Guides | Match by Birth',
-    seoDescription: 'Stay current with seasonal astrology guides: Mercury retrograde, full moons, and planetary transits affecting your relationships.',
-  },
-  comparison: {
-    title: 'Astrology App Comparisons & Reviews',
-    description: 'Honest comparisons of popular astrology apps and tools. Find the right one for your needs.',
-    seoTitle: 'Astrology App Comparisons & Reviews | Match by Birth',
-    seoDescription: 'Unbiased reviews and comparisons of popular astrology apps. Find the best tool for compatibility readings and birth chart analysis.',
-  },
-};
-
-function getCategory(post) {
-  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'pillar';
-  if (post.tags.includes('compatibility') && (post.slug.match(/-/g) || []).length >= 3) return 'deep-dive';
-  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water', 'synastry', 'natal-chart', 'birth-date', 'houses', 'planets'].includes(t))) return 'educational';
-  if (post.tags.some(t => ['retrograde', 'full-moon', 'new-moon', 'valentine', '2026', 'seasonal'].includes(t))) return 'seasonal';
-  if (post.tags.some(t => ['costar', 'the-pattern', 'alternative', 'comparison', 'vs'].includes(t))) return 'comparison';
-  return 'deep-dive';
-}
-
-function CategoryPage({ category }) {
-  const meta = CATEGORY_META[category];
-  const categoryPosts = posts.filter(p => getCategory(p) === category);
+function CategoryPage() {
+  const { category } = useParams();
+  const meta = getCategoryMeta(category);
+  const categoryPosts = posts.filter(p => getPostCategory(p) === category);
 
   if (!meta || categoryPosts.length === 0) {
     return (
@@ -73,7 +33,7 @@ function CategoryPage({ category }) {
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <header style={{ textAlign: 'center', marginBottom: 32 }}>
             <Link to="/blog" style={{ color: '#6c4de6', fontSize: '0.875rem', fontWeight: 600 }}>← All Posts</Link>
-            <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1a1a2e', margin: '16px 0 8px' }}>{meta.title}</h1>
+            <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1a1a2e', margin: '16px 0 8px' }}>{meta.label}</h1>
             <p style={{ fontSize: '1rem', color: '#888', maxWidth: 500, margin: '0 auto' }}>{meta.description}</p>
           </header>
 

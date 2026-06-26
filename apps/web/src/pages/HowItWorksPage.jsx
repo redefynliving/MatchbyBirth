@@ -1,82 +1,153 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Footer from '@/components/Footer.jsx';
+import { Link } from 'react-router-dom';
+
+const inputRows = [
+  ['Birth date', 'Used to identify the calendar-based compatibility pattern for each person.'],
+  ['Optional birth time', 'Used with a selected place in MBB Exact Mode to calculate a high-precision Sun sign.'],
+  ['Birth place', 'A selected birth place supplies timezone context so the same clock time is interpreted correctly.'],
+  ['Zodiac sign', 'Used for sign, element, and modality comparisons that explain relationship style.'],
+  ['Life path number', 'Used as a numerology layer for motivation, pacing, and personal direction.'],
+  ['Pair or group context', 'Used to decide whether the result should explain one relationship or many pair dynamics.'],
+];
+
+const scoreRows = [
+  ['High score', 'Usually means the symbolic patterns are easier to translate into shared rhythm, communication, or attraction.'],
+  ['Middle score', 'Usually means the connection has useful strengths plus areas that need clearer expectations.'],
+  ['Low score', 'Usually means the relationship may involve stronger differences in pace, needs, or conflict style.'],
+];
 
 function HowItWorksPage() {
   return (
     <>
       <Helmet>
-        <title>How It Works - Match by Birth</title>
-        <meta name="description" content="Learn how our compatibility calculator uses zodiac signs and birth dates to analyze relationship dynamics." />
+        <title>How Match by Birth Works | Methodology</title>
+        <meta
+          name="description"
+          content="Learn the Match by Birth methodology: how birth dates, MBB Exact Mode, zodiac signs, life path numbers, pair mode, and group mode shape compatibility scores."
+        />
+        <link rel="canonical" href="https://matchbybirth.com/how-it-works" />
       </Helmet>
 
-      <div className="min-h-screen flex flex-col bg-background">
-        <main className="flex-1 py-16">
-          <div className="content-container">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              How our compatibility calculator works
-            </h1>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-              Understanding the framework behind our astrological relationship analysis.
+      <main className="bg-background py-16 md:py-20">
+        <div className="content-container max-w-4xl">
+          <header className="mb-12">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Match by Birth methodology
             </p>
-
-            <div className="space-y-12">
-              <section className="bg-card p-8 rounded-xl border border-border shadow-sm">
-                <h2 className="text-2xl font-bold text-foreground mb-4">The Foundation: Zodiac Elements</h2>
-                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                  <p>
-                    At the heart of our compatibility calculator lies the ancient system of zodiac signs. Each person's birth date determines their sun sign. The twelve zodiac signs are divided into four elements:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong className="text-foreground">Fire signs</strong> (Aries, Leo, Sagittarius): Passionate, energetic, and action-oriented.</li>
-                    <li><strong className="text-foreground">Earth signs</strong> (Taurus, Virgo, Capricorn): Practical, grounded, and reliable.</li>
-                    <li><strong className="text-foreground">Air signs</strong> (Gemini, Libra, Aquarius): Intellectual, communicative, and social.</li>
-                    <li><strong className="text-foreground">Water signs</strong> (Cancer, Scorpio, Pisces): Emotional, intuitive, and sensitive.</li>
-                  </ul>
-                </div>
-              </section>
-
-              <section className="bg-card p-8 rounded-xl border border-border shadow-sm">
-                <h2 className="text-2xl font-bold text-foreground mb-4">Elemental Compatibility Patterns</h2>
-                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                  <p>
-                    The elements interact in predictable ways that form the basis of compatibility analysis:
-                  </p>
-                  <div className="space-y-4 mt-6">
-                    <div className="bg-muted/30 p-5 rounded-lg border border-border/50">
-                      <h3 className="text-lg font-bold text-foreground mb-2">Harmonious Combinations</h3>
-                      <p className="text-base">Signs of the same element naturally understand each other's motivations. Fire and air signs also complement each other well, just as earth and water signs create stable connections.</p>
-                    </div>
-                    <div className="bg-muted/30 p-5 rounded-lg border border-border/50">
-                      <h3 className="text-lg font-bold text-foreground mb-2">Challenging Combinations</h3>
-                      <p className="text-base">Fire and water can create steam but also conflict. Earth and air may struggle, as earth finds air too abstract while air sees earth as limiting. These pairs require conscious communication.</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section className="bg-card p-8 rounded-xl border border-border shadow-sm">
-                <h2 className="text-2xl font-bold text-foreground mb-4">Our Scoring System</h2>
-                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                  <p>
-                    We analyze multiple dimensions of your relationship to provide a complete picture:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Overall:</strong> The general harmony based on elemental interactions.</li>
-                    <li><strong>Emotional:</strong> How well you support each other's needs.</li>
-                    <li><strong>Communication:</strong> The ease of expressing thoughts and resolving issues.</li>
-                    <li><strong>Chemistry:</strong> Natural attraction and magnetic pull.</li>
-                    <li><strong>Conflict Risk:</strong> Potential areas of tension or recurring friction.</li>
-                  </ul>
-                </div>
-              </section>
+            <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
+              How Match by Birth works
+            </h1>
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+              Match by Birth turns simple birth dates into a compatibility snapshot for pairs and groups. Date-only mode stays fast, while MBB Exact Mode uses birth date, time, and selected birth place to calculate a high-precision Sun sign when users want more precise sign placement. The goal is not to predict a relationship. The goal is to give people a clear, private way to compare relationship patterns and start better conversations.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link to="/#calculator" className="rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary/90">
+                Try the calculator
+              </Link>
+              <Link to="/blog" className="rounded-md border border-border px-5 py-3 text-sm font-semibold text-foreground hover:bg-card">
+                Read the guides
+              </Link>
             </div>
-          </div>
-        </main>
+          </header>
 
-        <Footer />
-      </div>
+          <div className="space-y-12">
+            <section className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-foreground">What Match by Birth uses</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                The calculator starts with information most people know and can enter quickly. It does not require exact birth time, birth location, or a full natal chart. When a user provides birth date, time, and selected birth place, MBB Exact Mode calculates a high-precision Sun sign that is more precise than date-only zodiac ranges for cusp birthdays.
+              </p>
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full min-w-[620px] border-collapse text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-border text-foreground">
+                      <th className="py-3 pr-4 font-semibold">Input</th>
+                      <th className="py-3 font-semibold">How it helps the reading</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {inputRows.map(([label, body]) => (
+                      <tr key={label} className="border-b border-border/70">
+                        <td className="py-4 pr-4 font-semibold text-foreground">{label}</td>
+                        <td className="py-4 text-muted-foreground">{body}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section className="grid gap-4 md:grid-cols-2">
+              <article className="rounded-lg border border-border bg-card p-6">
+                <h2 className="text-2xl font-semibold text-foreground">Pair mode</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  Pair mode compares two people directly. It is best for dating, friendship, family, or any one-to-one relationship where you want a score plus a plain-language explanation.
+                </p>
+              </article>
+              <article className="rounded-lg border border-border bg-card p-6">
+                <h2 className="text-2xl font-semibold text-foreground">Group mode</h2>
+                <p className="mt-3 leading-relaxed text-muted-foreground">
+                  Group mode compares 3 to 7 people, checks every unique pair, and summarizes the overall group pattern. It is useful for friend groups, family dynamics, teams, or event planning.
+                </p>
+              </article>
+            </section>
+
+            <section className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-foreground">How MBB Exact Mode improves sign accuracy</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                Date-only mode uses standard zodiac date ranges, which is enough for most birthdays. MBB Exact Mode is different: it converts the local birth date and time through the selected birth place timezone, then calculates the Sun sign from that moment. This matters most near zodiac transitions, where one month can include multiple signs and a birthday can fall close to a sign change.
+              </p>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                Exact Mode improves the astrology input, not the certainty of the relationship outcome. A more precise Sun sign can make the reading cleaner, but the score is still a reflection tool rather than a prediction or guarantee.
+              </p>
+            </section>
+
+            <section className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-foreground">What the score means</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                The score is a summary of symbolic relationship patterns. The explanation matters more than the number because it tells you what to discuss: pacing, communication, emotional needs, conflict style, trust, or timing.
+              </p>
+              <div className="mt-6 grid gap-3">
+                {scoreRows.map(([label, body]) => (
+                  <div key={label} className="rounded-md border border-border bg-background p-4">
+                    <h3 className="font-semibold text-foreground">{label}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-foreground">What Match by Birth does not claim</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                Match by Birth does not claim to prove love, predict commitment, measure loyalty, or decide whether a relationship should continue. It is for entertainment and reflection. Real compatibility still depends on consent, values, emotional maturity, communication, and how people treat each other over time.
+              </p>
+            </section>
+
+            <section className="rounded-lg border border-border bg-card p-6 md:p-8">
+              <h2 className="text-2xl font-semibold text-foreground">Relationship timing and privacy</h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                Timing articles on Match by Birth are written as reflection tools, not forecasts. They help users ask whether a relationship has enough readiness, clarity, and patience for the moment they are in.
+              </p>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                For privacy, birth dates are used for the result and are not meant to identify people. If optional time and selected birth place are provided, they are used only for calculation context, including timezone lookup for Exact Mode. New share links avoid putting raw birth dates, times, places, coordinates, or timezones in the URL, and the calculator focuses on signs, scores, and interpretation.
+              </p>
+            </section>
+
+            <section className="rounded-lg border border-border bg-background p-6">
+              <h2 className="text-xl font-semibold text-foreground">Go deeper</h2>
+              <div className="mt-4 grid gap-3 md:grid-cols-2">
+                <Link to="/blog/what-is-birth-matching" className="rounded-md border border-border bg-card p-4 font-semibold text-primary hover:bg-primary/5">
+                  What Is Birth Matching?
+                </Link>
+                <Link to="/blog/how-birth-date-compatibility-is-calculated" className="rounded-md border border-border bg-card p-4 font-semibold text-primary hover:bg-primary/5">
+                  How Birth Date Compatibility Is Calculated
+                </Link>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
     </>
   );
 }

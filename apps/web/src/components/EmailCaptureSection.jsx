@@ -6,11 +6,13 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');
+  const [welcomeEmailSent, setWelcomeEmailSent] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setStatus('loading');
     setError('');
+    setWelcomeEmailSent(null);
 
     try {
       const response = await fetch('/api/subscribe', {
@@ -25,6 +27,7 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(data.error || 'Unable to subscribe.');
+      setWelcomeEmailSent(data.welcomeEmailSent === true);
       setStatus('success');
       trackEvent('email_subscribed', { source: 'result_updates' });
     } catch (subscriptionError) {
@@ -59,7 +62,9 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
             <Star style={{ width: 24, height: 24, margin: '0 auto 8px', display: 'block' }} />
             <p style={{ fontWeight: 600, margin: 0 }}>You're on the list!</p>
             <p style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: 4, margin: 0 }}>
-              Check your inbox for a welcome email and your first forecast.
+              {welcomeEmailSent
+                ? 'A welcome email is on its way.'
+                : 'You are subscribed, but the welcome email could not be sent right now.'}
             </p>
           </div>
         ) : (

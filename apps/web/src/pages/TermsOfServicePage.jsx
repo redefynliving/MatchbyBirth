@@ -25,22 +25,22 @@ function TermsOfServicePage() {
 
             <h2>2. Astrology Disclaimer</h2>
             <p>
-              All compatibility scores, group vibe percentages, and astrological interpretations provided on this site are for <strong>entertainment purposes only</strong>. Astrology is a symbolic system, not an empirical science. Our results should never be used as the basis for major life decisions, relationship choices, or professional advice.
+              All compatibility scores, group vibe percentages, and astrological interpretations provided on this site are for <strong>entertainment purposes only</strong>. Astrology is a symbolic system, not an empirical science. MBB Exact Mode can improve Sun sign placement when birth date, time, and selected birth place are provided, but it does not prove or guarantee relationship compatibility. Our results should never be used as the basis for major life decisions, relationship choices, or professional advice.
             </p>
 
             <h2>3. Group Mode & Functionality</h2>
             <p>
-              Match by Birth offers a "Group Mode" that allows users to calculate the compatibility of up to 7 individuals simultaneously. The calculator computes the scores of all possible pairings to generate a "Group Vibe Score." You agree to only input names and birth dates of individuals you have permission to analyze or whose information is reasonably public within your social circle.
+              Match by Birth offers a "Group Mode" that allows users to calculate the compatibility of up to 7 individuals simultaneously. The calculator computes the scores of all possible pairings to generate a "Group Vibe Score." You agree to only input names, birth dates, and optional birth time or selected birth place details of individuals you have permission to analyze or whose information is reasonably public within your social circle.
             </p>
 
             <h2>4. Sharing and URLs</h2>
             <p>
-              Shared results use an opaque link that displays the sanitized names, signs, scores, and interpretations associated with that result. Birth dates are not included in new sharing URLs. Anyone with the link can view the result, so you are responsible for sharing it appropriately.
+              Shared results use an opaque link that displays the sanitized names, signs, scores, and interpretations associated with that result. Birth dates, birth times, raw birth places, coordinates, and timezones are not included in new sharing URLs. Anyone with the link can view the result, so you are responsible for sharing it appropriately.
             </p>
 
             <h2>5. Data Handling</h2>
             <p>
-              Birth dates are processed transiently and are not stored. Sanitized result data, purchase records, reports, and consented email subscriptions may be stored as described in our Privacy Policy.
+              Birth dates and optional exact-mode details are processed transiently and are not stored as raw birth records. Sanitized result data, purchase records, reports, and consented email subscriptions may be stored as described in our Privacy Policy.
             </p>
 
             <h2>6. Third-Party Advertising (AdSense)</h2>

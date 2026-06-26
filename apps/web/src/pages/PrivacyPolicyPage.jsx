@@ -14,23 +14,23 @@ function PrivacyPolicyPage() {
           <article className="prose prose-slate prose-headings:text-balance prose-h1:text-4xl prose-h1:font-extrabold prose-a:text-primary mx-auto">
             <h1>Privacy Policy</h1>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground mb-8">
-              Last Updated: June 9, 2026
+              Last Updated: June 18, 2026
             </p>
 
             <div className="p-6 bg-primary/10 rounded-2xl border border-primary/20 mb-8 not-prose">
               <p className="font-semibold text-foreground m-0">
-                Birth dates are processed to calculate your result, but they are not stored in our database or included in new share links.
+                Birth dates, optional birth time and birth place are processed to calculate your result. If you use MBB Exact Mode, your selected birth place, timezone, and coordinates are used to calculate a high-precision Sun sign. Raw birth dates, times, and places are not stored in our database or included in new share links. Raw birth dates, times, places, coordinates, and timezones are not stored; sanitized result precision may include a selected place label so you can understand which city was used.
               </p>
             </div>
 
             <h2>1. Information You Provide</h2>
             <p>
-              The free calculator receives display names or aliases and birth dates. If you purchase a report or opt into updates, we also receive your email address. Payment card information is collected directly by Stripe and is not handled by Match by Birth.
+              The free calculator receives display names or aliases, birth dates, and optional birth time and birth place if you choose to add them. Exact Mode requires a selected birth place suggestion so the calculator can use a real timezone instead of guessing from free text. If you purchase a report or opt into updates, we also receive your email address. Payment card information is collected directly by Stripe and is not handled by Match by Birth.
             </p>
 
             <h2>2. Calculator Processing and Saved Results</h2>
             <p>
-              Names and birth dates are transmitted securely to our calculation endpoint. Birth dates are used transiently to determine signs and scores, then discarded. We store a sanitized result containing display names, signs, scores, interpretations, and an opaque sharing identifier.
+              Names and birth details are transmitted securely to our calculation endpoint. Birth dates, optional times, selected places, timezones, and coordinates are used transiently to determine signs, scores, and precision context, then discarded. We store a sanitized result containing display names, signs, scores, interpretations, precision labels, optional selected place labels, and an opaque sharing identifier.
             </p>
             <p>
               Unpaid shared results expire after approximately 90 days. Purchased results and reports are retained so the buyer can revisit them, unless deletion is requested.
@@ -38,7 +38,7 @@ function PrivacyPolicyPage() {
 
             <h2>3. Private Sharing</h2>
             <p>
-              New result URLs contain a random share identifier rather than names or birth dates. Anyone who receives that link can view the sanitized result, so only share it with people you trust.
+              New result URLs contain a random share identifier rather than names, birth dates, birth times, or birth places. Anyone who receives that link can view the sanitized result, so only share it with people you trust.
             </p>
 
             <h2>4. Purchases and Reports</h2>
@@ -53,12 +53,19 @@ function PrivacyPolicyPage() {
 
             <h2>6. Analytics and Cookies</h2>
             <p>
-              We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. Analytics events do not include names, birth dates, emails, or private result tokens. Advertising or other optional services may use cookies where disclosed by the site and permitted by your browser or consent settings.
+              We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. Analytics events do not include names, birth dates, optional birth details, emails, or private result tokens.
+            </p>
+            <p>
+              We may use Google AdSense and other advertising partners to display ads. Google and other third-party vendors may place or read cookies, use web beacons, or use similar identifiers to help serve, measure, and personalize ads based on your visits to this site and other sites. You can learn more about how Google uses data from sites and apps that use Google services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noreferrer">Google's partner sites policy</a>.
+            </p>
+            <p>
+              You can adjust cookie preferences in your browser settings. Where required, optional advertising or analytics cookies are subject to your consent choices.
             </p>
 
             <h2>7. Service Providers</h2>
             <ul>
               <li><strong>Vercel:</strong> website hosting, server functions, and aggregate analytics.</li>
+              <li><strong>Google AdSense:</strong> advertising delivery, ad measurement, and cookie-based ad services.</li>
               <li><strong>Supabase:</strong> secure database storage.</li>
               <li><strong>Stripe:</strong> payment processing.</li>
               <li><strong>Anthropic:</strong> paid report generation using sanitized result data.</li>

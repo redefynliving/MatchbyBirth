@@ -81,6 +81,10 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     path.join(root, 'apps/web/src/components/HomeResultPreview.jsx'),
     'utf8',
   );
+  const calculatorPreview = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CalculatorWithPreview.jsx'),
+    'utf8',
+  );
   const calculator = fs.readFileSync(
     path.join(root, 'apps/web/src/components/CompatibilityCalculator.jsx'),
     'utf8',
@@ -94,16 +98,21 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     'utf8',
   );
 
-  assert.match(homePage, /See how you match by birth date\./);
-  assert.match(homePage, /HomeResultPreview/);
+  assert.match(homePage, /See how you match/);
+  assert.match(homePage, /MBB Exact Mode/);
+  assert.match(homePage, /high-precision Sun sign/);
+  assert.match(homePage, /CalculatorWithPreview/);
+  assert.match(calculatorPreview, /HomeResultPreview/);
   assert.match(homePreview, /Good compatibility/);
-  assert.match(homePreview, /aria-label="Example compatibility score: 82%"/);
+  assert.match(homePreview, /aria-label="Example compatibility score"/);
+  assert.match(homePreview, /Compatibility score: \$\{preview\.score\}%/);
   assert.doesNotMatch(homePreview, /conic-gradient|inset_0_0_0/);
   assert.doesNotMatch(homePreview, />82% compatible</);
   assert.match(calculator, /Check your connection/);
   assert.match(calculator, /Private, with no signup required\./);
   assert.match(header, /\/how-it-works/);
   assert.match(app, /path="\/how-it-works"/);
+  assert.doesNotMatch(homePage, /predicts relationship success/i);
 });
 
 test('pair and group results progressively reveal detail instead of showing everything at once', () => {
@@ -167,6 +176,57 @@ test('mobile Pair and Group selector is compact and centered', () => {
   assert.match(modeToggle, /w-fit/);
 });
 
+test('calculator supports optional birth time and place without increasing required friction', () => {
+  const calculatorPreview = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CalculatorWithPreview.jsx'),
+    'utf8',
+  );
+  const resultCard = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/ResultCard.jsx'),
+    'utf8',
+  );
+
+  assert.match(calculatorPreview, /birthTime/);
+  assert.match(calculatorPreview, /type="time"/);
+  assert.match(calculatorPreview, /birthPlace/);
+  assert.match(calculatorPreview, /Add birth time\/place/);
+  assert.match(calculatorPreview, /Near a zodiac transition/);
+  assert.match(calculatorPreview, /optional/i);
+  assert.match(resultCard, /precision\?\.note/);
+});
+
+test('calculator uses selected birth places for MBB Exact Mode', () => {
+  const calculatorPreview = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CalculatorWithPreview.jsx'),
+    'utf8',
+  );
+
+  assert.match(calculatorPreview, /searchBirthPlaces/);
+  assert.match(calculatorPreview, /\/api\/search-birth-places/);
+  assert.match(calculatorPreview, /selectedPlace/);
+  assert.match(calculatorPreview, /MBB Exact Mode ready/);
+  assert.match(calculatorPreview, /Select a city from the list/);
+  assert.match(calculatorPreview, /birthPlace: null/);
+});
+
+test('results show MBB Exact Mode without raw birth details', () => {
+  const resultCard = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/ResultCard.jsx'),
+    'utf8',
+  );
+  const groupResult = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/GroupCompatibilityResults.jsx'),
+    'utf8',
+  );
+
+  assert.match(resultCard, /precision\.label/);
+  assert.match(resultCard, /MBB Exact Mode/);
+  assert.match(resultCard, /exact Sun signs/);
+  assert.match(groupResult, /result\.precision/);
+  assert.match(groupResult, /Exact Mode members/);
+  assert.doesNotMatch(resultCard, /birthTimeUtc/);
+});
+
 test('report checkout explains its value while retaining payment and privacy assurances', () => {
   const checkout = fs.readFileSync(
     path.join(root, 'apps/web/src/components/SaveResultModal.jsx'),
@@ -226,4 +286,10 @@ test('SEO metadata is truthful and result pages are excluded from indexing', () 
       ],
     },
   ]);
+  assert.deepEqual(vercelConfig.functions, {
+    'api/**': {
+      memory: 1024,
+    },
+  });
+  assert.ok(vercelConfig.crons.some((cron) => cron.path === '/api/send-weekly-updates'));
 });
