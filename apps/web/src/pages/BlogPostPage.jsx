@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Mail, ArrowRight } from 'lucide-react';
 import posts from '@/data/posts';
+import BackButton from '@/components/BackButton.jsx';
 
 function BlogPostPage() {
   const { slug } = useParams();
@@ -51,7 +52,7 @@ function BlogPostPage() {
 
       <main style={{ padding: '40px 24px' }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <Link to="/blog" style={{ color: '#6c4de6', display: 'inline-block', marginBottom: 12 }}>← Back to Blog</Link>
+          <BackButton fallbackTo="/blog" label="Back to Blog" />
 
           <article>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>{post.title}</h1>
@@ -89,7 +90,7 @@ function BlogPostPage() {
                     placeholder="your@email.com"
                     required
                     autoComplete="email"
-                    style={{ flex: 1, height: 44, borderRadius: 10, border: 'none', padding: '0 14px', fontSize: '0.95rem', outline: 'none', color: '#1a1a2e' }}
+                    style={{ flex: 1, height: 44, borderRadius: 10, border: 'none', padding: '0 14px', fontSize: '0.95rem', outline: 'none', color: '#1a1a2e', background: '#ffffff' }}
                   />
                   <button
                     type="submit"

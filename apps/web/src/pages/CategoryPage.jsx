@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import posts from '@/data/posts';
+import BackButton from '@/components/BackButton.jsx';
 
 const CATEGORY_META = {
   'sign-guide': {
@@ -55,7 +56,7 @@ function CategoryPage({ category }) {
         <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '2rem', fontWeight: 800, color: '#1a1a2e' }}>Coming Soon</h1>
           <p style={{ color: '#888', marginTop: 16 }}>We're working on content for this section. Check back soon!</p>
-          <Link to="/blog" style={{ color: '#6c4de6', fontWeight: 600, marginTop: 16, display: 'inline-block' }}>← Back to Blog</Link>
+          <BackButton fallbackTo="/blog" label="Back to Blog" />
         </div>
       </main>
     );
@@ -72,7 +73,7 @@ function CategoryPage({ category }) {
       <main style={{ padding: '40px 24px' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <header style={{ textAlign: 'center', marginBottom: 32 }}>
-            <Link to="/blog" style={{ color: '#6c4de6', fontSize: '0.875rem', fontWeight: 600 }}>← All Posts</Link>
+            <BackButton fallbackTo="/blog" label="All Posts" />
             <h1 style={{ fontSize: '2.25rem', fontWeight: 800, color: '#1a1a2e', margin: '16px 0 8px' }}>{meta.title}</h1>
             <p style={{ fontSize: '1rem', color: '#888', maxWidth: 500, margin: '0 auto' }}>{meta.description}</p>
           </header>

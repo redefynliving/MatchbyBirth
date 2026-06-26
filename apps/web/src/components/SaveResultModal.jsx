@@ -120,17 +120,17 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-card text-primary shadow-sm">
             <LockKeyhole className="h-4 w-4" />
           </span>
-          <h3 className="mt-5 text-xl font-semibold">Get the full report</h3>
-          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          <h3 className="mt-5 text-xl font-semibold text-foreground">Get the full report</h3>
+          <p className="mt-2 text-sm leading-6 text-foreground/90">
             Private link and PDF delivered by email.
           </p>
-          <p className="mt-5 text-3xl font-semibold tracking-tight">
-            $9.99 <span className="text-xs font-medium tracking-normal text-muted-foreground">one-time</span>
+          <p className="mt-5 text-3xl font-semibold tracking-tight text-foreground">
+            $9.99 <span className="text-xs font-medium tracking-normal text-foreground/80">one-time</span>
           </p>
 
           <form onSubmit={startCheckout} className="mt-4 space-y-4">
             <div>
-              <label htmlFor="report-email" className="mb-2 block text-sm font-medium">
+              <label htmlFor="report-email" className="mb-2 block text-sm font-semibold text-foreground">
                 Email address
               </label>
               <input
@@ -141,11 +141,11 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
                 placeholder="you@example.com"
                 autoComplete="email"
                 required
-                className="input h-12 bg-card/90"
+                className="input h-12 bg-card text-foreground placeholder:text-muted-foreground border-border"
               />
             </div>
 
-            <label className="flex cursor-pointer items-start gap-3 text-xs leading-5 text-muted-foreground">
+            <label className="flex cursor-pointer items-start gap-3 text-xs leading-5 text-foreground/90">
               <input
                 type="checkbox"
                 checked={marketingConsent}
@@ -164,7 +164,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
             </button>
           </form>
 
-          <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
+          <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-foreground/80">
             <ShieldCheck className="h-3.5 w-3.5 text-primary" />
             Payment is handled by Stripe. Your birth dates are not stored.
           </p>
