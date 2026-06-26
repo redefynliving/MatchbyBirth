@@ -94,7 +94,7 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     'utf8',
   );
 
-  assert.match(homePage, /See how you match by birth date\./);
+  assert.match(homePage, /Discover your birth date compatibility\./);
   assert.match(homePage, /CalculatorWithPreview/);
   assert.match(homePreview, /Good compatibility/);
   assert.match(homePreview, /aria-label="Example compatibility score"/);

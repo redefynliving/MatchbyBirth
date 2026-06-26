@@ -110,7 +110,7 @@ function HomePage() {
                 Free birth date compatibility calculator
               </p>
               <h1 className="mx-auto max-w-2xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-foreground md:text-[3.25rem]">
-                See how you match by birth date.
+                Discover your birth date compatibility.
               </h1>
               <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
                 Compare two people or a group. Get a compatibility score and a clear breakdown in seconds.
