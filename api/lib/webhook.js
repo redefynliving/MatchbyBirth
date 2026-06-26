@@ -1,8 +1,8 @@
 'use strict';
 
 const Stripe = require('stripe');
-const { processStripeEvent } = require('./lib/webhook-service.cjs');
-const { fulfillConfiguredPurchase } = require('./lib/fulfillment.cjs');
+const { processStripeEvent } = require('./webhook-service.cjs');
+const { fulfillConfiguredPurchase } = require('./fulfillment.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
 
   try {
     const result = await processStripeEvent(event, {
-      store: require('./lib/supabase-store.cjs'),
+      store: require('./supabase-store.cjs'),
       fulfillPurchase: fulfillConfiguredPurchase,
     });
     console.log(`WEBHOOK PROCESSED: ${event.type} (${event.id}) → ${result}`);

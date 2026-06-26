@@ -1,13 +1,13 @@
 'use strict';
 
 const Stripe = require('stripe');
-const store = require('./lib/supabase-store.cjs');
-const { sendWelcomeEmail } = require('./lib/email-service.cjs');
-const { subscribeEmail } = require('./lib/subscription-service.cjs');
+const store = require('./supabase-store.cjs');
+const { sendWelcomeEmail } = require('./email-service.cjs');
+const { subscribeEmail } = require('./subscription-service.cjs');
 const {
   CheckoutError,
   createCheckout,
-} = require('./lib/checkout-service.cjs');
+} = require('./checkout-service.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

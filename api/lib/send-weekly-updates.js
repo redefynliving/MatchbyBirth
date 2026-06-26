@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
-const { sendWeeklyUpdates } = require('./lib/newsletter-service.cjs');
+const store = require('./supabase-store.cjs');
+const { sendWeeklyUpdates } = require('./newsletter-service.cjs');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'POST') {

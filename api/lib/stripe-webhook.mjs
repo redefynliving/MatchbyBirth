@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
-import store from './lib/supabase-store.cjs';
-import fulfillment from './lib/fulfillment.cjs';
-import webhookService from './lib/webhook-service.cjs';
+import store from './supabase-store.cjs';
+import fulfillment from './fulfillment.cjs';
+import webhookService from './webhook-service.cjs';
 
 const { fulfillConfiguredPurchase } = fulfillment;
 const { processStripeEvent } = webhookService;

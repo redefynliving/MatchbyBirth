@@ -1,8 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { createSubscribeHandler } = require('../api/subscribe.js');
-const { createUnsubscribeHandler } = require('../api/unsubscribe.js');
+const { createSubscribeHandler } = require('../api/lib/subscribe.js');
+const { createUnsubscribeHandler } = require('../api/lib/unsubscribe.js');
 
 function createResponse() {
   return {

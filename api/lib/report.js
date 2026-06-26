@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
-const { verifyReportAccess } = require('./lib/report-service.cjs');
+const store = require('./supabase-store.cjs');
+const { verifyReportAccess } = require('./report-service.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {

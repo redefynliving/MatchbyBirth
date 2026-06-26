@@ -1,10 +1,10 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
+const store = require('./supabase-store.cjs');
 const {
   ResultServiceError,
   calculateResultWithOptionalStorage,
-} = require('./lib/result-service.cjs');
+} = require('./result-service.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

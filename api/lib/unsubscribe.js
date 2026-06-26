@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
-const { unsubscribeEmail } = require('./lib/subscription-service.cjs');
+const store = require('./supabase-store.cjs');
+const { unsubscribeEmail } = require('./subscription-service.cjs');
 
 function createUnsubscribeHandler(dependencies) {
   return async (req, res) => {

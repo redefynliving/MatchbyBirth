@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
-const { fulfillConfiguredPurchase } = require('./lib/fulfillment.cjs');
+const store = require('./supabase-store.cjs');
+const { fulfillConfiguredPurchase } = require('./fulfillment.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {

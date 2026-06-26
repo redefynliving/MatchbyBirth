@@ -1,11 +1,11 @@
 'use strict';
 
 const Stripe = require('stripe');
-const store = require('./lib/supabase-store.cjs');
+const store = require('./supabase-store.cjs');
 const {
   CheckoutError,
   createSubscriptionCheckout,
-} = require('./lib/checkout-service.cjs');
+} = require('./checkout-service.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

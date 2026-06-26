@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('./lib/supabase-store.cjs');
-const { getSharedResult } = require('./lib/result-service.cjs');
+const store = require('./supabase-store.cjs');
+const { getSharedResult } = require('./result-service.cjs');
 
 function escapeXml(value) {
   return String(value || '')
