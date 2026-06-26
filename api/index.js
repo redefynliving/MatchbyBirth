@@ -3,20 +3,20 @@
 const urlModule = require('url');
 
 const routes = {
-  '/api/calculate-result': './lib/calculate-result.js',
-  '/api/create-checkout-session': './lib/create-checkout-session.js',
-  '/api/create-subscription-checkout': './lib/create-subscription-checkout.js',
-  '/api/og': './lib/og.js',
-  '/api/purchase-status': './lib/purchase-status.js',
-  '/api/report': './lib/report.js',
-  '/api/result': './lib/result.js',
-  '/api/retry-failed-reports': './lib/retry-failed-reports.js',
-  '/api/send-weekly-updates': './lib/send-weekly-updates.js',
-  '/api/webhook': './lib/webhook.js',
-  '/api/stripe-webhook': './lib/webhook.js',
-  '/api/subscribe': './lib/subscribe.js',
-  '/api/unsubscribe': './lib/unsubscribe.js',
-  '/api/places': './lib/places.js',
+  '/api/calculate-result': './_lib/calculate-result.js',
+  '/api/create-checkout-session': './_lib/create-checkout-session.js',
+  '/api/create-subscription-checkout': './_lib/create-subscription-checkout.js',
+  '/api/og': './_lib/og.js',
+  '/api/purchase-status': './_lib/purchase-status.js',
+  '/api/report': './_lib/report.js',
+  '/api/result': './_lib/result.js',
+  '/api/retry-failed-reports': './_lib/retry-failed-reports.js',
+  '/api/send-weekly-updates': './_lib/send-weekly-updates.js',
+  '/api/webhook': './_lib/webhook.js',
+  '/api/stripe-webhook': './_lib/webhook.js',
+  '/api/subscribe': './_lib/subscribe.js',
+  '/api/unsubscribe': './_lib/unsubscribe.js',
+  '/api/places': './_lib/places.js',
 };
 
 module.exports = async (req, res) => {

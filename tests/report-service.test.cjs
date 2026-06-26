@@ -5,7 +5,7 @@ const {
   createReportAccess,
   fulfillPurchase,
   verifyReportAccess,
-} = require('../api/lib/report-service.cjs');
+} = require('../api/_lib/report-service.cjs');
 
 test('report access tokens are deterministic, signed, and reject tampering', () => {
   const first = createReportAccess('purchase-id', 'test-secret');

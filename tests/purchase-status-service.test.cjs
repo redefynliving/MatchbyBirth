@@ -5,7 +5,7 @@ const test = require('node:test');
 
 const {
   refreshRetryablePurchase,
-} = require('../api/lib/purchase-status-service.cjs');
+} = require('../api/_lib/purchase-status-service.cjs');
 
 test('refreshRetryablePurchase retries a failed delivery and returns fresh status', async () => {
   const calls = [];

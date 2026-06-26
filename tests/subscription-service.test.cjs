@@ -6,7 +6,7 @@ const {
   subscribeEmail,
   unsubscribeEmail,
   verifyUnsubscribeToken,
-} = require('../api/lib/subscription-service.cjs');
+} = require('../api/_lib/subscription-service.cjs');
 
 test('unsubscribe tokens are normalized, scoped, and reject tampering', () => {
   const token = createUnsubscribeToken(' Person@Example.com ', 'token-secret');

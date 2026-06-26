@@ -6,16 +6,16 @@ const root = path.resolve(__dirname, '..');
 
 const productionApiModules = [
   'api/index.js',
-  'api/lib/calculate-result.js',
-  'api/lib/create-checkout-session.js',
-  'api/lib/purchase-status.js',
-  'api/lib/report.js',
-  'api/lib/result.js',
-  'api/lib/retry-failed-reports.js',
-  'api/lib/subscribe.js',
-  'api/lib/unsubscribe.js',
-  'api/lib/webhook.js',
-  'api/lib/places.js',
+  'api/_lib/calculate-result.js',
+  'api/_lib/create-checkout-session.js',
+  'api/_lib/purchase-status.js',
+  'api/_lib/report.js',
+  'api/_lib/result.js',
+  'api/_lib/retry-failed-reports.js',
+  'api/_lib/subscribe.js',
+  'api/_lib/unsubscribe.js',
+  'api/_lib/webhook.js',
+  'api/_lib/places.js',
 ];
 
 test('production API modules load before deployment', () => {

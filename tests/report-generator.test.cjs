@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 
 const {
   generateStructuredReport,
-} = require('../api/lib/report-generator.cjs');
+} = require('../api/_lib/report-generator.cjs');
 
 const result = {
   mode: 'pair',

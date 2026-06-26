@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { createCheckout, createSubscriptionCheckout } = require('../api/lib/checkout-service.cjs');
+const { createCheckout, createSubscriptionCheckout } = require('../api/_lib/checkout-service.cjs');
 
 test('createCheckout controls price and keeps personal result data out of Stripe metadata', async () => {
   let purchaseRecord;

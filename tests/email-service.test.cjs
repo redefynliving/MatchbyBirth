@@ -4,7 +4,7 @@ const assert = require('node:assert/strict');
 const {
   sendReportEmail,
   sendWelcomeEmail,
-} = require('../api/lib/email-service.cjs');
+} = require('../api/_lib/email-service.cjs');
 
 test('sendReportEmail escapes report content and sends an idempotency key', async () => {
   let request;

@@ -5,7 +5,7 @@ const {
   calculateAndStoreResult,
   calculateResultWithOptionalStorage,
   getSharedResult,
-} = require('../api/lib/result-service.cjs');
+} = require('../api/_lib/result-service.cjs');
 
 test('calculateAndStoreResult persists a sanitized pair result behind an opaque slug', async () => {
   let inserted;

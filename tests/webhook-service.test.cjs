@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { processStripeEvent } = require('../api/lib/webhook-service.cjs');
+const { processStripeEvent } = require('../api/_lib/webhook-service.cjs');
 
 test('processStripeEvent fulfills a completed checkout once', async () => {
   const updates = [];
