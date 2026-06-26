@@ -97,10 +97,21 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     path.join(root, 'apps/web/src/App.jsx'),
     'utf8',
   );
+  const faqPage = fs.readFileSync(
+    path.join(root, 'apps/web/src/pages/FAQPage.jsx'),
+    'utf8',
+  );
 
   assert.match(homePage, /See how you match/);
+  assert.match(homePage, /Enter two birthdays to get a private compatibility reading/);
+  assert.match(homePage, /Add birth time and place if you want a more exact sign calculation/);
   assert.match(homePage, /MBB Exact Mode/);
   assert.match(homePage, /high-precision Sun sign/);
+  assert.doesNotMatch(homePage, /Add optional time and selected birth place for MBB Exact Mode when you want a high-precision Sun sign/);
+  assert.match(faqPage, /Why would I add birth time and place/);
+  assert.match(faqPage, /more exact sign calculation/);
+  assert.match(faqPage, /does not guarantee relationship compatibility/);
+  assert.doesNotMatch(faqPage, /Detailed FAQ content is currently being updated/);
   assert.match(homePage, /CalculatorWithPreview/);
   assert.match(calculatorPreview, /HomeResultPreview/);
   assert.match(homePreview, /Good compatibility/);

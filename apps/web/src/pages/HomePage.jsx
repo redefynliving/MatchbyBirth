@@ -25,9 +25,9 @@ function HomePage() {
     <>
       <Helmet>
         <title>Birth Date Compatibility Calculator | Match by Birth</title>
-        <meta name="description" content="Compare two people or a group by birth date. Add optional time and selected birth place for MBB Exact Mode, with no signup and no stored raw birth details." />
+        <meta name="description" content="Enter two birthdays to get a private compatibility reading. Add birth time and place if you want a more exact sign calculation." />
         <meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth" />
-        <meta property="og:description" content="Compare two people or a group by birth date, with optional MBB Exact Mode for high-precision Sun signs." />
+        <meta property="og:description" content="Enter two birthdays to get a private compatibility reading, or compare a full group." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
         <meta property="og:url" content={`${window.location.origin}/`} />
         <link rel="canonical" href={`${window.location.origin}/`} />
@@ -74,10 +74,10 @@ function HomePage() {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'Do I need an exact birth time?',
+                name: 'Why would I add birth time and place?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'No. Match by Birth works with calendar birth dates. If you add birth date, time, and selected birth place, MBB Exact Mode calculates a high-precision Sun sign that is more useful around cusp birthdays.',
+                  text: 'You do not need them for a basic reading. Add birth time and place if you want a more exact sign calculation, especially for birthdays near a zodiac sign change.',
                 },
               },
               {
@@ -106,13 +106,13 @@ function HomePage() {
           <div className="content-container relative z-10">
             <div className="mx-auto mb-8 max-w-3xl text-center md:mb-10">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                Free birth date compatibility calculator
+                Birth date compatibility for two people or a group
               </p>
               <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-[1] tracking-normal text-foreground md:text-6xl">
                 See how you match
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Compare two people or a group. Add optional time and selected birth place for MBB Exact Mode when you want a high-precision Sun sign.
+                Enter two birthdays to get a private compatibility reading. Add birth time and place if you want a more exact sign calculation.
               </p>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-muted-foreground">
                 <span className="inline-flex items-center gap-1.5">
@@ -218,10 +218,10 @@ function HomePage() {
             <Accordion type="single" collapsible className="w-full space-y-3">
               <AccordionItem value="item-1" className="bg-card border border-border rounded-xl px-6">
                 <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-4">
-                  Do I need an exact birth time?
+                  Why would I add birth time and place?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
-                  No. Match by Birth works with calendar birth dates. Birth time and selected birth place are optional and most helpful near zodiac sign transitions because MBB Exact Mode can calculate a high-precision Sun sign.
+                  You do not need them for a basic reading. Add birth time and place if you want a more exact sign calculation, especially for birthdays near a zodiac sign change.
                 </AccordionContent>
               </AccordionItem>
 
