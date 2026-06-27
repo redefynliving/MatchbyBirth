@@ -1,3 +1,5 @@
+import sanityPosts from './sanity-posts.generated.js';
+
 const posts = [
   {
     slug: 'aries-scorpio-compatibility',
@@ -2129,4 +2131,5 @@ const posts = [
 
 ];
 
-export default posts;
+export const existingPosts = posts;
+export default [...posts, ...sanityPosts];

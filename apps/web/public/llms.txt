@@ -5,7 +5,6 @@
 - [Contact Us | Match by Birth](/contact): Get in touch with the Match by Birth team for support, feedback, or inquiries.
 - [Disclaimers | Match by Birth](/disclaimer): Important disclaimers about the use of our astrological compatibility calculator.
 - [Frequently Asked Questions | Match by Birth](/faq): Find answers to common questions about astrological compatibility, our calculator, and how to interpret your results.
-- [How Compatibility Is Calculated | Match by Birth](/howitworks): How we read compatibility: zodiac elements, element interactions, and what the score covers.
 - [Privacy Policy | Match by Birth](/privacypolicy): How Match by Birth processes calculator, result, payment, email, and analytics data.
 - [Terms and Conditions | Match by Birth](/termsandconditions): Terms and Conditions for using Match by Birth, covering user responsibilities, service limitations, and astrological disclaimers.
 - [Terms of Service | Match by Birth](/termsofservice): Terms of Service for using Match by Birth.

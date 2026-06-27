@@ -3,26 +3,11 @@ import { Helmet } from 'react-helmet';
 import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
+import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
 
 const POSTS_PER_PAGE = 6;
 
-const CATEGORIES = [
-  { key: 'all', label: 'All Posts' },
-  { key: 'sign-guide', label: 'By Zodiac Sign', description: 'Compatibility guides for each sign' },
-  { key: 'pair-deep-dive', label: 'Pair Deep Dives', description: 'In-depth analysis of specific pairings' },
-  { key: 'learn-astrology', label: 'Learn Astrology', description: 'Elements, planets, and chart basics' },
-  { key: 'seasonal', label: 'Seasonal', description: 'Retrogrades, transits, and timely guides' },
-  { key: 'relationships', label: 'Relationships', description: 'Love, friendship, work, and family' },
-];
-
-function getCategory(post) {
-  if (post.category) return post.category;
-  // Fallback for any posts without category field
-  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
-  if (post.tags.includes('compatibility')) return 'pair-deep-dive';
-  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water'].includes(t))) return 'learn-astrology';
-  return 'relationships';
-}
+const CATEGORIES = [ALL_POSTS_CATEGORY, ...BLOG_CATEGORIES];
 
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -30,7 +15,7 @@ function BlogPage() {
 
   // Enrich posts with category
   const enrichedPosts = useMemo(() => {
-    return posts.map(p => ({ ...p, category: getCategory(p) }));
+    return posts.map(p => ({ ...p, category: getPostCategory(p) }));
   }, [posts]);
 
   // Filter by category
@@ -120,7 +105,7 @@ function BlogPage() {
                 <p className="post-date">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                 <p className="post-description">{post.description}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-                  {post.tags.slice(0, 4).map((t) => (
+                  {(post.tags || []).slice(0, 4).map((t) => (
                     <span key={t} className="tag">{t}</span>
                   ))}
                 </div>
