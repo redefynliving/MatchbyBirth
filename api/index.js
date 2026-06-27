@@ -3,20 +3,20 @@
 const urlModule = require('url');
 
 const routes = {
-  '/api/calculate-result': './_lib/calculate-result.js',
-  '/api/create-checkout-session': './_lib/create-checkout-session.js',
-  '/api/create-subscription-checkout': './_lib/create-subscription-checkout.js',
-  '/api/og': './_lib/og.js',
-  '/api/purchase-status': './_lib/purchase-status.js',
-  '/api/report': './_lib/report.js',
-  '/api/result': './_lib/result.js',
-  '/api/retry-failed-reports': './_lib/retry-failed-reports.js',
-  '/api/send-weekly-updates': './_lib/send-weekly-updates.js',
-  '/api/webhook': './_lib/webhook.js',
-  '/api/stripe-webhook': './_lib/webhook.js',
-  '/api/subscribe': './_lib/subscribe.js',
-  '/api/unsubscribe': './_lib/unsubscribe.js',
-  '/api/places': './_lib/places.js',
+  '/api/calculate-result': require('./_lib/calculate-result.js'),
+  '/api/create-checkout-session': require('./_lib/create-checkout-session.js'),
+  '/api/create-subscription-checkout': require('./_lib/create-subscription-checkout.js'),
+  '/api/og': require('./_lib/og.js'),
+  '/api/purchase-status': require('./_lib/purchase-status.js'),
+  '/api/report': require('./_lib/report.js'),
+  '/api/result': require('./_lib/result.js'),
+  '/api/retry-failed-reports': require('./_lib/retry-failed-reports.js'),
+  '/api/send-weekly-updates': require('./_lib/send-weekly-updates.js'),
+  '/api/webhook': require('./_lib/webhook.js'),
+  '/api/stripe-webhook': require('./_lib/webhook.js'),
+  '/api/subscribe': require('./_lib/subscribe.js'),
+  '/api/unsubscribe': require('./_lib/unsubscribe.js'),
+  '/api/places': require('./_lib/places.js'),
 };
 
 module.exports = async (req, res) => {
@@ -63,8 +63,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const handler = require(targetModule);
-    return await handler(req, res);
+    return await targetModule(req, res);
   } catch (error) {
     console.error(`Error in handler for ${path}:`, error);
     if (!res.writableEnded && !res.headersSent) {
