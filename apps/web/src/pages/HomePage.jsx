@@ -131,7 +131,7 @@ function HomePage() {
           <div className="content-container max-w-3xl">
             <div className="mb-6 text-center">
               <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
-                Calculations & E-E-A-T
+                Methodology & Trust
               </p>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Cosmic Logic & Methodology</h2>
             </div>

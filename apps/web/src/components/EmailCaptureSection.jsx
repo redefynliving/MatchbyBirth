@@ -11,7 +11,7 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
       title="Get your result by email"
       description={(
         <>
-          Enter your email and we&apos;ll send a private copy of <strong>{names}</strong>, plus useful compatibility notes.
+          Enter your email and we&apos;ll send a private copy of <strong>{names}</strong>, plus your personalized compatibility insights.
         </>
       )}
       buttonLabel="Send result"
