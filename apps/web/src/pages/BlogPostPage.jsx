@@ -1,31 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Mail, ArrowRight, Calendar, Sparkles } from 'lucide-react';
 import posts from '@/data/posts';
 import BackButton from '@/components/BackButton.jsx';
+import NewsletterCapture from '@/components/NewsletterCapture.jsx';
 
 function BlogPostPage() {
   const { slug } = useParams();
   const post = posts.find((p) => p.slug === slug);
-  const [email, setEmail] = useState('');
-  const [subStatus, setSubStatus] = useState('idle');
-
-  const handleSubscribe = async (e) => {
-    e.preventDefault();
-    setSubStatus('loading');
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, consent: true, consentSource: 'blog_post' }),
-      });
-      if (!res.ok) throw new Error('Failed');
-      setSubStatus('success');
-    } catch {
-      setSubStatus('error');
-    }
-  };
 
   if (!post) {
     return (
@@ -101,6 +84,15 @@ function BlogPostPage() {
               </div>
             </header>
 
+            {post.heroImage?.url && (
+              <img
+                src={post.heroImage.url}
+                alt={post.heroImage.alt || ''}
+                loading="eager"
+                className="w-full rounded-2xl border border-border mb-8 object-cover aspect-video bg-muted"
+              />
+            )}
+
             <div 
               className="blog-content" 
               dangerouslySetInnerHTML={{ __html: post.content }} 
@@ -140,62 +132,14 @@ function BlogPostPage() {
             </div>
           </article>
 
-          {/* Newsletter subscribe */}
-          <div className="relative overflow-hidden bg-gradient-to-br from-primary to-violet-700 text-white rounded-3xl p-8 md:p-10 shadow-lg shadow-primary/10 mt-12">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
-            
-            {subStatus === 'success' ? (
-              <div className="text-center py-4">
-                <span className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-white">
-                  <Sparkles className="h-6 w-6" />
-                </span>
-                <p className="font-extrabold text-xl text-white mb-2">You&apos;re subscribed!</p>
-                <p className="text-sm text-white/80 max-w-sm mx-auto leading-relaxed">
-                  Check your inbox for a welcome email and your first weekly digest.
-                </p>
-              </div>
-            ) : (
-              <div className="relative z-10">
-                <header className="text-center mb-8">
-                  <span className="mx-auto mb-4 grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white">
-                    <Mail className="h-5 w-5" />
-                  </span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Get weekly astrology insights</h3>
-                  <p className="text-sm text-white/80 max-w-md mx-auto leading-relaxed">
-                    Join thousands getting our weekly digest of compatibility guides and astrology tips.
-                  </p>
-                </header>
+          <NewsletterCapture className="mt-12" consentSource="blog_post" />
 
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    autoComplete="email"
-                    className="flex-grow h-12 rounded-xl px-4 text-sm bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 transition-all"
-                  />
-                  <button
-                    type="submit"
-                    disabled={subStatus === 'loading'}
-                    className="h-12 rounded-xl bg-white text-primary hover:bg-white/95 font-bold text-sm px-6 transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed shadow-sm"
-                  >
-                    {subStatus === 'loading' ? 'Subscribing...' : (
-                      <>
-                        Subscribe
-                        <ArrowRight className="h-4 w-4" />
-                      </>
-                    )}
-                  </button>
-                </form>
-                
-                <p className="text-xs text-white/60 text-center mt-4">
-                  Free. Unsubscribe anytime. We&apos;ll never spam you.
-                </p>
-              </div>
-            )}
-          </div>
+          <style>{`
+            .blog-content h2 { font-size: 1.5rem; font-weight: 700; color: #6c4de6; margin-top: 40px; }
+            .blog-content h3 { font-size: 1.25rem; font-weight: 600; color: #6c4de6; }
+            .blog-content strong, .blog-content b { color: #1a1a2e; font-weight: 700; }
+            .blog-content p { margin-bottom: 20px; }
+          `}</style>
         </div>
       </main>
     </>

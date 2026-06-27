@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 
@@ -25,4 +26,12 @@ test('production API modules load before deployment', () => {
       `${modulePath} should load without syntax or module initialization errors`,
     );
   }
+});
+
+test('production API router uses static handler imports for Vercel bundling', () => {
+  const source = fs.readFileSync(path.join(root, 'api/index.js'), 'utf8');
+
+  assert.match(source, /require\('.*_lib\/subscribe\.js'\)/);
+  assert.match(source, /require\('.*_lib\/unsubscribe\.js'\)/);
+  assert.doesNotMatch(source, /require\(targetModule\)/);
 });

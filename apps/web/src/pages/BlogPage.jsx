@@ -5,26 +5,11 @@ import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
 import { Calendar, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
+import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
 
 const POSTS_PER_PAGE = 6;
 
-const CATEGORIES = [
-  { key: 'all', label: 'All Posts' },
-  { key: 'sign-guide', label: 'By Zodiac Sign', description: 'Compatibility guides for each sign' },
-  { key: 'pair-deep-dive', label: 'Pair Deep Dives', description: 'In-depth analysis of specific pairings' },
-  { key: 'learn-astrology', label: 'Learn Astrology', description: 'Elements, planets, and chart basics' },
-  { key: 'seasonal', label: 'Seasonal', description: 'Retrogrades, transits, and timely guides' },
-  { key: 'relationships', label: 'Relationships', description: 'Love, friendship, work, and family' },
-];
-
-function getCategory(post) {
-  if (post.category) return post.category;
-  // Fallback for any posts without category field
-  if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
-  if (post.tags.includes('compatibility')) return 'pair-deep-dive';
-  if (post.tags.some(t => ['elements', 'fire', 'earth', 'air', 'water'].includes(t))) return 'learn-astrology';
-  return 'relationships';
-}
+const CATEGORIES = [ALL_POSTS_CATEGORY, ...BLOG_CATEGORIES];
 
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -32,7 +17,7 @@ function BlogPage() {
 
   // Enrich posts with category
   const enrichedPosts = useMemo(() => {
-    return posts.map(p => ({ ...p, category: getCategory(p) }));
+    return posts.map(p => ({ ...p, category: getPostCategory(p) }));
   }, [posts]);
 
   // Filter by category
@@ -123,10 +108,9 @@ function BlogPage() {
                   
                   <p className="text-sm text-muted-foreground/95 leading-relaxed mb-6">{post.description}</p>
                 </div>
-
                 <div>
                   <div className="flex flex-wrap gap-1.5 mb-6">
-                    {post.tags.slice(0, 3).map((t) => (
+                    {(post.tags || []).slice(0, 3).map((t) => (
                       <span key={t} className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-secondary text-secondary-foreground">
                         #{t}
                       </span>
