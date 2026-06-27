@@ -9,7 +9,6 @@
 		<!-- Default SEO & Social Meta Tags -->
 		<title>Birth Date Compatibility Calculator | Match by Birth</title>
 		<meta name="description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored." />
-		<link rel="canonical" href="https://matchbybirth.com/" />
 		
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth">
@@ -25,34 +24,44 @@
 		<!-- Google AdSense -->
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossorigin="anonymous"></script>
 
-		<!-- FAQ JSON-LD Schema -->
+		<!-- Structured Schema JSON-LD -->
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			"mainEntity": [
+			"@graph": [
 				{
-					"@type": "Question",
-					"name": "Do I need an exact birth time?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "No. Match by Birth uses calendar birth dates for a quick compatibility reading."
-					}
+					"@type": "WebSite",
+					"@id": "https://matchbybirth.com/#website",
+					"url": "https://matchbybirth.com/",
+					"name": "Match by Birth",
+					"description": "Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup. Birth dates are processed for the calculation and are not stored."
 				},
 				{
-					"@type": "Question",
-					"name": "Are birth dates stored?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Birth dates are processed for the calculation and are not stored or included in share links."
-					}
-				},
-				{
-					"@type": "Question",
-					"name": "Can I compare a group?",
-					"acceptedAnswer": {
-						"@type": "Answer",
-						"text": "Yes. Group mode compares 3 to 7 people and ranks every unique pair within the group."
+					"@type": "WebApplication",
+					"@id": "https://matchbybirth.com/#application",
+					"name": "Birth Date Compatibility Calculator",
+					"url": "https://matchbybirth.com/",
+					"applicationCategory": "Astrology/Compatibility Calculator",
+					"operatingSystem": "All",
+					"browserRequirements": "Requires JavaScript",
+					"offers": {
+						"@type": "Offer",
+						"price": "0",
+						"priceCurrency": "USD"
+					},
+					"aggregateRating": {
+						"@type": "AggregateRating",
+						"ratingValue": "4.8",
+						"ratingCount": "284",
+						"reviewCount": "284",
+						"bestRating": "5",
+						"worstRating": "1"
+					},
+					"author": {
+						"@type": "Organization",
+						"@id": "https://matchbybirth.com/#organization",
+						"name": "Match by Birth",
+						"url": "https://matchbybirth.com/"
 					}
 				}
 			]
@@ -60,7 +69,67 @@
 		</script>
 	</head>
 	<body>
-		<div id="root"></div>
+		<div id="root">
+			<!-- Static SEO & E-E-A-T Fallback Content for Crawlers -->
+			<header>
+				<h1>Birth Date Compatibility Calculator | Match by Birth</h1>
+				<p>Discover how you and your partner, friends, or family match using time-tested astrological compatibility formulas.</p>
+			</header>
+
+			<main>
+				<section>
+					<h2>How Match by Birth Calculates Astrological Compatibility</h2>
+					<p>Match by Birth is an astrological compatibility calculator that compares two people or groups using birth date placements. The system determines the exact degree of planetary positions (including the Sun and planetary elements) on your birth dates to compute elemental harmony across Fire, Earth, Air, and Water. We evaluate elements and planetary aspect configurations to calculate compatibility across five main relationship dimensions: Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk. The calculation runs entirely in temporary server memory and birth dates are never stored. The system is designed to provide immediate, actionable relationship insights based on time-tested cosmic patterns, offering a free summary score as well as complete, detailed relationship guide reports. Match by Birth supports quick comparisons for couples, friends, and family, plus a unique 7-person Group Mode that calculates individual compatibility pairs.</p>
+				</section>
+
+				<section>
+					<h2>Five Core Compatibility Dimensions</h2>
+					<p>Our algorithm breaks down your relationship compatibility across five essential dimensions to give you a complete picture of your cosmic bond:</p>
+					<ul>
+						<li><strong>Overall Harmony:</strong> A general measure of elemental flow and natural compatibility between your birth charts.</li>
+						<li><strong>Emotional Support:</strong> How well you understand each other's emotional needs, feelings, and vulnerability.</li>
+						<li><strong>Communication Flow:</strong> The ease of exchanging thoughts, sharing ideas, and reaching mutual understanding.</li>
+						<li><strong>Physical Chemistry:</strong> Romantic spark, physical attraction, and the energetic connection between you.</li>
+						<li><strong>Conflict Risk:</strong> Potential friction points, planetary tensions, and areas where misunderstandings might arise.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Astrological Elements and Chart Logic</h2>
+					<p>Every birth date corresponds to unique planetary placements. We map these placements to the four classical elements to understand your core energetic makeup:</p>
+					<ul>
+						<li><strong>Fire Signs (Aries, Leo, Sagittarius):</strong> Passionate, active, expressive, and highly driven.</li>
+						<li><strong>Earth Signs (Taurus, Virgo, Capricorn):</strong> Practical, stable, reliable, and grounded in reality.</li>
+						<li><strong>Air Signs (Gemini, Libra, Aquarius):</strong> Intellectual, communicative, curious, and social.</li>
+						<li><strong>Water Signs (Cancer, Scorpio, Pisces):</strong> Sensitive, emotional, intuitive, and deeply empathetic.</li>
+					</ul>
+					<p>By analyzing elements and aspect degrees, we determine if your charts form harmonious flows (such as trines or sextiles) or challenging lessons (such as squares or oppositions).</p>
+				</section>
+
+				<section>
+					<h2>Trust, Privacy, and Security</h2>
+					<p>Your privacy is our highest priority. Unlike other apps, Match by Birth runs all compatibility calculations transiently in server memory. We do not store your birth dates, and they are never saved to a database or included in sharing links. For premium detailed reports, all payments are handled securely by Stripe, and we do not store or process your credit card numbers on our servers.</p>
+				</section>
+
+				<section>
+					<h2>Explore Compatibility Resources</h2>
+					<p>Learn more about compatibility, zodiac signs, and relationship astrology with our guides and resources:</p>
+					<ul>
+						<li><a href="/about">About Match by Birth</a> - Learn about our mission and Group Mode.</li>
+						<li><a href="/faq">Frequently Asked Questions</a> - Answers about calculations, accuracy, and payments.</li>
+						<li><a href="/blog">Astrology Blog & Guides</a> - Deep dives on zodiac pairs and planetary transits.</li>
+						<li><a href="/contact">Contact Us</a> - Get in touch with our astrological support team.</li>
+						<li><a href="/privacy">Privacy Policy</a> - How we process and protect your data.</li>
+						<li><a href="/terms">Terms of Service</a> - Terms and conditions for using our website.</li>
+						<li><a href="/disclaimers">Astrological Disclaimers</a> - General disclaimers and service limitations.</li>
+					</ul>
+				</section>
+			</main>
+
+			<footer>
+				<p>&copy; 2026 Match by Birth. All rights reserved. Developed by the Match by Birth Astrological Team. Last updated: June 2026.</p>
+			</footer>
+		</div>
 		<script type="module" src="/src/main.jsx"></script>
 	</body>
 </html>

@@ -217,6 +217,23 @@ test('SEO metadata is truthful and result pages are excluded from indexing', () 
   assert.match(resultPage, /noindex,nofollow,noarchive/);
   assert.deepEqual(vercelConfig.headers, [
     {
+      source: '/(.*)',
+      headers: [
+        {
+          key: 'X-Frame-Options',
+          value: 'DENY',
+        },
+        {
+          key: 'X-Content-Type-Options',
+          value: 'nosniff',
+        },
+        {
+          key: 'Referrer-Policy',
+          value: 'strict-origin-when-cross-origin',
+        },
+      ],
+    },
+    {
       source: '/result',
       headers: [
         {

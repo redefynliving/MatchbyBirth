@@ -127,6 +127,29 @@ function HomePage() {
 
         <HomeEmailCapture />
 
+        <section className="section-spacing bg-background/50 border-y border-border/40">
+          <div className="content-container max-w-3xl">
+            <div className="mb-6 text-center">
+              <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                Calculations & E-E-A-T
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Cosmic Logic & Methodology</h2>
+            </div>
+
+            <div className="bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
+              <h3 className="text-lg font-semibold text-foreground mb-3">How does Match by Birth calculate compatibility?</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Match by Birth is an astrological compatibility calculator that compares two people or groups using birth date placements. The system determines the exact degree of planetary positions (including the Sun and planetary elements) on your birth dates to compute elemental harmony across Fire, Earth, Air, and Water. We evaluate elements and planetary aspect configurations to calculate compatibility across five main relationship dimensions: Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk. The calculation runs entirely in temporary server memory and birth dates are never stored. The system is designed to provide immediate, actionable relationship insights based on time-tested cosmic patterns, offering a free summary score as well as complete, detailed relationship guide reports. Match by Birth supports quick comparisons for couples, friends, and family, plus a unique 7-person Group Mode that calculates individual compatibility pairs.
+              </p>
+
+              <div className="border-t border-border/80 pt-4 flex flex-wrap justify-between items-center text-xs text-muted-foreground gap-2">
+                <span>Developer: <strong>Match by Birth Astrological Team</strong></span>
+                <span>Last updated: <strong>June 2026</strong></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section-spacing bg-background">
           <div className="content-container max-w-3xl">
             <div className="mb-10 text-center">

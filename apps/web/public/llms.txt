@@ -1,12 +1,5 @@
 ## Pages
-- [About Us | Match by Birth](/about): Learn about our mission to help you understand compatibility, including our unique 7-person Group Mode.
-- [Astrology Blog & Guides | Match by Birth](/blog): Explore astrology compatibility guides, zodiac pair deep dives, and relationship insights. Find out how the stars align for you.
 - [Birth Date Compatibility Calculator | Match by Birth](/home): Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored.
-- [Contact Us | Match by Birth](/contact): Get in touch with the Match by Birth team for support, feedback, or inquiries.
-- [Disclaimers | Match by Birth](/disclaimer): Important disclaimers about the use of our astrological compatibility calculator.
-- [Frequently Asked Questions | Match by Birth](/faq): Find answers to common questions about astrological compatibility, our calculator, and how to interpret your results.
-- [How Compatibility Is Calculated | Match by Birth](/howitworks): How we read compatibility: zodiac elements, element interactions, and what the score covers.
 - [Privacy Policy | Match by Birth](/privacypolicy): How Match by Birth processes calculator, result, payment, email, and analytics data.
 - [Terms and Conditions | Match by Birth](/termsandconditions): Terms and Conditions for using Match by Birth, covering user responsibilities, service limitations, and astrological disclaimers.
-- [Terms of Service | Match by Birth](/termsofservice): Terms of Service for using Match by Birth.
 - [Weekly Match Intel | Match by Birth](/premium): Get weekly astrology compatibility intel by email, with private delivery and premium relationship insights.

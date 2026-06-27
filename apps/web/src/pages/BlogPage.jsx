@@ -1,8 +1,10 @@
+
 import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
 import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
+import { Calendar, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 
 const POSTS_PER_PAGE = 6;
 
@@ -57,19 +59,28 @@ function BlogPage() {
       <Helmet>
         <title>Astrology Blog & Guides | Match by Birth</title>
         <meta name="description" content="Explore astrology compatibility guides, zodiac pair deep dives, and relationship insights. Find out how the stars align for you." />
+        <link rel="canonical" href="https://matchbybirth.com/blog" />
       </Helmet>
 
-      <main style={{ padding: '40px 24px' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto' }}>
+      <main className="py-16 md:py-24 bg-background min-h-screen relative overflow-hidden">
+        {/* Decorative background gradients */}
+        <div className="pointer-events-none absolute top-0 right-1/4 h-[400px] w-[400px] rounded-full opacity-[0.06] blur-3xl bg-primary" />
+        <div className="pointer-events-none absolute bottom-1/4 left-1/4 h-[350px] w-[350px] rounded-full opacity-[0.05] blur-3xl bg-violet-600" />
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <BackButton fallbackTo="/" label="Back to Calculator" />
+          
           {/* Header */}
-          <header style={{ textAlign: 'center', marginBottom: 32 }}>
-            <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>Blog & Guides</h1>
-            <p style={{ fontSize: '1rem', color: '#888', marginTop: 8 }}>Astrology insights for your relationships.</p>
+          <header className="text-center mb-12">
+            <span className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-primary/10 text-primary">
+              <BookOpen className="h-6 w-6" />
+            </span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">Blog & Guides</h1>
+            <p className="text-lg text-muted-foreground mt-4 max-w-md mx-auto">Astrological insights, compatibility deep dives, and relationship advice.</p>
           </header>
 
           {/* Category Filter */}
-          <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 32 }}>
+          <nav className="flex flex-wrap items-center justify-center gap-2 mb-12 pb-2 border-b border-border/50">
             {CATEGORIES.map(cat => {
               const count = cat.key === 'all' ? enrichedPosts.length : enrichedPosts.filter(p => p.category === cat.key).length;
               if (count === 0 && cat.key !== 'all') return null;
@@ -79,152 +90,124 @@ function BlogPage() {
                   key={cat.key}
                   onClick={() => handleCategoryChange(cat.key)}
                   title={cat.description}
-                  style={{
-                    padding: '8px 16px',
-                    borderRadius: 999,
-                    border: '1px solid ' + (isActive ? '#6c4de6' : '#e6e6f0'),
-                    background: isActive ? '#6c4de6' : '#fff',
-                    color: isActive ? '#fff' : '#1a1a2e',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    transition: 'all 0.15s',
-                  }}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-primary text-white border border-primary shadow-sm'
+                      : 'bg-card border border-border text-foreground hover:bg-muted/50 hover:border-muted-foreground/30'
+                  }`}
                 >
-                  {cat.label} ({count})
+                  {cat.label} <span className="opacity-70 ml-1">({count})</span>
                 </button>
               );
             })}
           </nav>
 
           {/* Posts Grid */}
-          <section className="posts-grid">
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {paginatedPosts.map((post) => (
-              <article key={post.slug} className="post-card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                  <span style={{
-                    background: '#f3f0ff',
-                    color: '#6c4de6',
-                    padding: '2px 8px',
-                    borderRadius: 999,
-                    fontSize: '0.7rem',
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                  }}>
-                    {CATEGORIES.find(c => c.key === post.category)?.label || 'Guide'}
-                  </span>
+              <article key={post.slug} className="group bg-card border border-border rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-primary/30 hover:shadow-md transition-all duration-300 shadow-sm relative overflow-hidden">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary">
+                      {CATEGORIES.find(c => c.key === post.category)?.label || 'Guide'}
+                    </span>
+                    <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5" />
+                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors mb-3">
+                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  
+                  <p className="text-sm text-muted-foreground/95 leading-relaxed mb-6">{post.description}</p>
                 </div>
-                <h3 className="post-title">
-                  <Link to={`/blog/${post.slug}`} className="post-link">{post.title}</Link>
-                </h3>
-                <p className="post-date">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
-                <p className="post-description">{post.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-                  {post.tags.slice(0, 4).map((t) => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
+
+                <div>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {post.tags.slice(0, 3).map((t) => (
+                      <span key={t} className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-secondary text-secondary-foreground">
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-all gap-1.5 group-hover:translate-x-1 duration-200">
+                    Read Article <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
-                <Link to={`/blog/${post.slug}`} className="read-more">Read More →</Link>
               </article>
             ))}
           </section>
 
           {/* Empty State */}
           {paginatedPosts.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '40px 0', color: '#888' }}>
-              <p>No posts in this category yet. Check back soon!</p>
+            <div className="bg-card border border-border rounded-3xl p-12 text-center shadow-sm max-w-md mx-auto">
+              <p className="text-muted-foreground">No posts found in this category. Check back soon!</p>
             </div>
           )}
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 32 }}>
+            <nav className="flex items-center justify-center gap-2 mt-8" aria-label="Pagination">
               <button
                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: 8,
-                  border: '1px solid #e6e6f0',
-                  background: currentPage === 1 ? '#f5f5f5' : '#fff',
-                  color: currentPage === 1 ? '#ccc' : '#1a1a2e',
-                  cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-                  fontWeight: 600,
-                }}
+                className="h-10 px-4 flex items-center justify-center gap-1.5 rounded-xl bg-card border border-border text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors font-semibold text-sm cursor-pointer"
               >
-                ← Previous
+                <ChevronLeft className="h-4 w-4" />
+                <span>Previous</span>
               </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  style={{
-                    padding: '8px 14px',
-                    borderRadius: 8,
-                    border: '1px solid ' + (page === currentPage ? '#6c4de6' : '#e6e6f0'),
-                    background: page === currentPage ? '#6c4de6' : '#fff',
-                    color: page === currentPage ? '#fff' : '#1a1a2e',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                  }}
-                >
-                  {page}
-                </button>
-              ))}
+              
+              <div className="hidden sm:flex items-center gap-1.5">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`h-10 w-10 flex items-center justify-center rounded-xl font-semibold text-sm transition-all cursor-pointer ${
+                      page === currentPage
+                        ? 'bg-primary text-white border border-primary shadow-sm'
+                        : 'bg-card border border-border text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+              
+              <div className="sm:hidden text-sm font-medium text-muted-foreground px-2">
+                Page {currentPage} of {totalPages}
+              </div>
+
               <button
                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: 8,
-                  border: '1px solid #e6e6f0',
-                  background: currentPage === totalPages ? '#f5f5f5' : '#fff',
-                  color: currentPage === totalPages ? '#ccc' : '#1a1a2e',
-                  cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-                  fontWeight: 600,
-                }}
+                className="h-10 px-4 flex items-center justify-center gap-1.5 rounded-xl bg-card border border-border text-foreground hover:bg-muted disabled:opacity-40 disabled:pointer-events-none transition-colors font-semibold text-sm cursor-pointer"
               >
-                Next →
+                <span>Next</span>
+                <ChevronRight className="h-4 w-4" />
               </button>
-            </div>
+            </nav>
           )}
 
-          {/* CTA */}
-          <div style={{ marginTop: 48, background: '#6c4de6', color: '#fff', padding: '24px', borderRadius: 16, textAlign: 'center' }}>
-            <h2 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>Ready to check your compatibility?</h2>
-            <p style={{ margin: '0 0 16px 0', opacity: 0.9, fontSize: '0.95rem' }}>Enter both birth dates for a free personalized reading.</p>
-            <Link to="/" style={{ color: '#fff', fontWeight: 800, textDecoration: 'underline', fontSize: '1.1rem' }}>Try the Calculator →</Link>
+          {/* CTA Banner */}
+          <div className="relative overflow-hidden bg-gradient-to-br from-primary to-violet-700 text-white rounded-3xl p-8 md:p-12 text-center shadow-lg shadow-primary/10 mt-20">
+            {/* Background elements */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute -top-12 -left-12 h-40 w-40 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+            
+            <div className="relative z-10 max-w-lg mx-auto">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">Ready to check your compatibility?</h2>
+              <p className="text-white/80 max-w-sm mx-auto mb-6 text-sm md:text-base leading-relaxed">Enter both birth dates for a free personalized astrological reading.</p>
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 bg-white text-primary font-bold rounded-xl px-6 py-3 hover:bg-white/95 transition-transform hover:scale-105 active:scale-100 shadow-md shadow-black/10"
+              >
+                Try the Calculator <ArrowRight className="h-4.5 w-4.5" />
+              </Link>
+            </div>
           </div>
-
-          <style>{`
-            .posts-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 20px;
-            }
-            @media (min-width: 720px) {
-              .posts-grid { grid-template-columns: 1fr 1fr; }
-            }
-            .post-card {
-              background: #ffffff;
-              border: 1px solid #e6e6f0;
-              border-radius: 16px;
-              padding: 20px;
-              box-shadow: 0 1px 4px rgba(16,24,40,0.04);
-              transition: box-shadow 0.15s;
-            }
-            .post-card:hover {
-              box-shadow: 0 4px 12px rgba(16,24,40,0.08);
-            }
-            .post-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 6px 0; color: #1a1a2e; line-height: 1.3; }
-            .post-link { color: inherit; text-decoration: none; }
-            .post-link:hover { text-decoration: underline; color: #6c4de6; }
-            .post-date { font-size: 0.8rem; color: #888; margin: 0 0 8px 0; }
-            .post-description { color: #555; font-size: 0.9rem; margin: 0 0 10px 0; line-height: 1.5; }
-            .tag { background: #f3f0ff; color: #6c4de6; padding: 3px 8px; border-radius: 999px; font-size: 0.7rem; }
-            .read-more { color: #6c4de6; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
-            .read-more:hover { text-decoration: underline; }
-          `}</style>
         </div>
       </main>
     </>
