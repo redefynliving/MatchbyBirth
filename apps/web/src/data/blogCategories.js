@@ -21,6 +21,13 @@ export const BLOG_CATEGORIES = [
     seoDescription: 'Learn how birth dates, zodiac signs, elements, timing, and compatibility scores can help you reflect on relationships.',
   },
   {
+    key: 'moon-signs',
+    label: 'Moon Signs',
+    description: 'Moon sign compatibility and emotional pattern guides',
+    seoTitle: 'Moon Sign Compatibility Guides | Match by Birth',
+    seoDescription: 'Read Moon sign compatibility guides focused on emotional needs, timing, friendship, and relationship patterns.',
+  },
+  {
     key: 'numerology',
     label: 'Numerology',
     description: 'Life path number compatibility guides',
@@ -55,6 +62,7 @@ export function getCategoryMeta(categoryKey) {
 
 export function getPostCategory(post) {
   if (post.category) return post.category;
+  if (post.tags?.some((tag) => ['moon-signs', 'moon-sign', 'moon'].includes(tag))) return 'moon-signs';
   if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
   if (post.tags?.some((tag) => ['life-path', 'numerology'].includes(tag))) return 'numerology';
   if (post.tags?.some((tag) => ['elements', 'fire', 'earth', 'air', 'water', 'synastry', 'natal-chart', 'birth-date', 'houses', 'planets'].includes(tag))) return 'learn-astrology';

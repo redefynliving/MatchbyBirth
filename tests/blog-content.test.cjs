@@ -14,13 +14,15 @@ function wordCount(html) {
 test('blog library includes 30 net-new AdSense growth articles', async () => {
   const postsModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/posts/index.js')));
   const growthModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/posts/adsense-growth-posts.js')));
+  const sanityModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/posts/sanity-posts.generated.js')));
   const categoriesModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/blogCategories.js')));
   const posts = postsModule.default;
   const growthPosts = growthModule.default;
+  const sanityPosts = sanityModule.default;
   const categoryKeys = new Set(categoriesModule.BLOG_CATEGORIES.map((category) => category.key));
 
   assert.equal(growthPosts.length, 30);
-  assert.equal(posts.length, 82);
+  assert.equal(posts.length, 82 + sanityPosts.length);
 
   for (const post of posts) {
     assert.equal(typeof post.slug, 'string', `missing slug for ${post.title}`);

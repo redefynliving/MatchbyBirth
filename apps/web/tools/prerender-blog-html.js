@@ -73,6 +73,7 @@ function renderDocument({ template, title, description, route, body, head = '' }
       .static-blog-shell a { color: #5b3fd6; font-weight: 700; }
       .static-post-card { border: 1px solid #e6e6f0; border-radius: 14px; padding: 18px; margin: 0 0 16px; background: #fff; }
       .static-post-card h2 { color: #1a1a2e; font-size: 1.1rem; margin-top: 0; }
+      .static-hero-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid #e6e1d8; border-radius: 8px; margin: 0 0 28px; background: #fbfaf8; }
       .static-article-body ul, .static-article-body ol { padding-left: 24px; }
       .static-enhancement { border: 1px solid #e6e6f0; border-radius: 8px; padding: 20px; margin: 24px 0; background: #fbfbff; }
       .static-enhancement table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
@@ -252,6 +253,7 @@ export function renderArticleHtml({ template, post, allPosts = posts } = {}) {
         <h1>${escapeHtml(post.title)}</h1>
         <p>${escapeHtml(new Date(post.date).toLocaleDateString('en-US'))}</p>
         <p>${escapeHtml(post.description)}</p>
+        ${post.heroImage?.url ? `<img class="static-hero-image" src="${escapeHtml(post.heroImage.url)}" alt="${escapeHtml(post.heroImage.alt || '')}" />` : ''}
         <div class="static-article-body">${post.content}</div>
         ${renderEnhancementHtml(post)}
         ${renderArticleNextSteps(post)}

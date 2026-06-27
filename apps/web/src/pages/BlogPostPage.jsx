@@ -189,6 +189,14 @@ function BlogPostPage() {
           <article>
             <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1a1a2e', margin: 0 }}>{post.title}</h1>
             <p style={{ fontSize: '0.875rem', color: '#888', marginBottom: 32 }}>{new Date(post.date).toLocaleDateString()}</p>
+            {post.heroImage?.url && (
+              <img
+                src={post.heroImage.url}
+                alt={post.heroImage.alt || ''}
+                loading="eager"
+                style={{ width: '100%', borderRadius: 8, border: '1px solid #e6e1d8', margin: '0 0 28px', objectFit: 'cover', aspectRatio: '16 / 9', background: '#fbfaf8' }}
+              />
+            )}
 
             <div className="blog-content" style={{ lineHeight: 1.8, fontSize: '1.125rem', color: '#2d2d2d' }} dangerouslySetInnerHTML={{ __html: post.content }} />
 

@@ -1,4 +1,5 @@
 import adsenseGrowthPosts from './adsense-growth-posts.js';
+import sanityPosts from './sanity-posts.generated.js';
 
 const posts = [
   {
@@ -2042,4 +2043,4 @@ const posts = [
 ];
 
 export const existingPosts = posts;
-export default [...posts, ...adsenseGrowthPosts];
+export default [...posts, ...adsenseGrowthPosts, ...sanityPosts];

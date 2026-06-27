@@ -103,7 +103,7 @@ function BlogPage() {
                 <p className="post-date">{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
                 <p className="post-description">{post.description}</p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-                  {post.tags.slice(0, 4).map((t) => (
+                  {(post.tags || []).slice(0, 4).map((t) => (
                     <span key={t} className="tag">{t}</span>
                   ))}
                 </div>
