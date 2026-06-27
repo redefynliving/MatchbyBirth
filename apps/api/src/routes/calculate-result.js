@@ -2,11 +2,11 @@ import express from 'express';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const store = require('../../../../api/lib/supabase-store.cjs');
+const store = require('../../../../api/_lib/supabase-store.cjs');
 const {
   ResultServiceError,
   calculateResultWithOptionalStorage,
-} = require('../../../../api/lib/result-service.cjs');
+} = require('../../../../api/_lib/result-service.cjs');
 
 const router = express.Router();
 
