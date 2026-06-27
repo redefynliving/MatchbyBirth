@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { ArrowLeft, Loader2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Loader2, RefreshCw, Star } from 'lucide-react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
 import BackButton from '@/components/BackButton.jsx';
@@ -8,6 +8,7 @@ import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.js
 import ResultCard from '@/components/ResultCard.jsx';
 import ShareButtons from '@/components/ShareButtons.jsx';
 import { Button } from '@/components/ui/button.jsx';
+import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import { getResultPrecisionDetails } from '@/lib/result-presentation.js';
@@ -53,6 +54,21 @@ function ResultPage() {
   const navigate = useNavigate();
   const shareSlug = searchParams.get('share');
   const legacyInput = useMemo(() => parseLegacyInput(searchParams), [searchParams]);
+
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
+  const [submittedRating, setSubmittedRating] = useState(false);
+
+  const handleRate = (score) => {
+    setRating(score);
+    setSubmittedRating(true);
+    trackEvent('result_rated', {
+      score,
+      resultId: resultState.resultId,
+      mode: resultState.result?.mode,
+    });
+    toast.success('Thank you for rating your compatibility result!');
+  };
   const [resultState, setResultState] = useState(() => {
     if (
       location.state?.result
@@ -224,6 +240,38 @@ function ResultPage() {
               precisionNote={precision.note}
             />
           )}
+
+          {/* Star Rating Feedback Collector */}
+          <div className="mx-auto mt-6 max-w-5xl bg-card border border-border rounded-3xl p-6 text-center shadow-sm relative overflow-hidden">
+            <h4 className="font-semibold text-foreground text-sm mb-3">How accurate does this calculation feel?</h4>
+            {!submittedRating ? (
+              <div className="flex items-center justify-center gap-1.5">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => handleRate(star)}
+                    onMouseEnter={() => setHoverRating(star)}
+                    onMouseLeave={() => setHoverRating(0)}
+                    className="p-1 cursor-pointer transition-transform duration-150 hover:scale-110 focus:outline-none"
+                    aria-label={`Rate ${star} stars out of 5`}
+                  >
+                    <Star
+                      className={`h-7 w-7 transition-colors ${
+                        star <= (hoverRating || rating)
+                          ? 'fill-amber-400 text-amber-400'
+                          : 'text-muted-foreground/35 fill-transparent'
+                      }`}
+                    />
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="text-sm font-semibold text-primary flex items-center justify-center gap-1.5 animate-fade-in">
+                <span>Thank you! You rated this calculation {rating}/5 stars.</span>
+              </div>
+            )}
+          </div>
 
           <div className="mx-auto mt-6 max-w-5xl">
             {canShare ? (

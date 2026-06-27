@@ -96,6 +96,7 @@ async function createCheckout(input, dependencies) {
       mode: 'payment',
       customer_email: email,
       line_items: lineItems,
+      allow_promotion_codes: true,
       success_url: new URL(
         '/report-success?session_id={CHECKOUT_SESSION_ID}',
         appUrl,

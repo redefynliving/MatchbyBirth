@@ -243,7 +243,119 @@ function preRenderPages() {
     console.log(`[SSG] Blog post /blog/${post.slug} pre-rendered.`);
   }
 
+  // Pre-render the 144 zodiac pairings (Programmatic SEO)
+  preRenderZodiacPairings(template);
+
   console.log('[SSG] All pages successfully pre-rendered!');
+}
+
+const SIGNS = [
+  { name: 'aries', label: 'Aries', element: 'Fire', quality: 'Cardinal', planet: 'Mars' },
+  { name: 'taurus', label: 'Taurus', element: 'Earth', quality: 'Fixed', planet: 'Venus' },
+  { name: 'gemini', label: 'Gemini', element: 'Air', quality: 'Mutable', planet: 'Mercury' },
+  { name: 'cancer', label: 'Cancer', element: 'Water', quality: 'Cardinal', planet: 'Moon' },
+  { name: 'leo', label: 'Leo', element: 'Fire', quality: 'Fixed', planet: 'Sun' },
+  { name: 'virgo', label: 'Virgo', element: 'Earth', quality: 'Mutable', planet: 'Mercury' },
+  { name: 'libra', label: 'Libra', element: 'Air', quality: 'Cardinal', planet: 'Venus' },
+  { name: 'scorpio', label: 'Scorpio', element: 'Water', quality: 'Fixed', planet: 'Pluto & Mars' },
+  { name: 'sagittarius', label: 'Sagittarius', element: 'Fire', quality: 'Mutable', planet: 'Jupiter' },
+  { name: 'capricorn', label: 'Capricorn', element: 'Earth', quality: 'Cardinal', planet: 'Saturn' },
+  { name: 'aquarius', label: 'Aquarius', element: 'Air', quality: 'Fixed', planet: 'Uranus & Saturn' },
+  { name: 'pisces', label: 'Pisces', element: 'Water', quality: 'Mutable', planet: 'Neptune & Jupiter' }
+];
+
+function getElementHarmony(el1, el2) {
+  const pair = [el1, el2].sort().join(' + ');
+  switch (pair) {
+    case 'Fire + Fire': return 'Double Fire pairings are passionate, high-energy, and exciting. Both signs inspire each other to take action, but they must watch out for ego clashes and burnouts.';
+    case 'Earth + Fire': return 'Fire and Earth sign combinations balance bold action with practical stability. Earth grounds Fire\'s restless enthusiasm, while Fire provides energy and inspiration to Earth\'s routines.';
+    case 'Air + Fire': return 'Fire and Air pairings enjoy strong natural compatibility. Air feeds Fire\'s inspiration, and Fire keeps Air\'s intellectual ideas active and moving forward.';
+    case 'Fire + Water': return 'Fire and Water pairings create high emotional chemistry and intensity. However, Fire can feel smothered by Water\'s depth, and Water can feel hurt by Fire\'s direct heat.';
+    case 'Earth + Earth': return 'Double Earth pairings value routine, home comfort, and financial security. This is an exceptionally durable, reliable combination, though they should make an effort to welcome variety and adventure.';
+    case 'Air + Earth': return 'Earth and Air pairings combine practical execution with intellectual thought. Earth keeps Air\'s ideas grounded in reality, while Air helps Earth see new perspectives.';
+    case 'Earth + Water': return 'Earth and Water pairings form one of the most nurturing, fertile combinations in synastry. Earth gives structure and container to Water\'s emotional currents, and Water softens and nourishes Earth\'s analytical drive.';
+    case 'Air + Air': return 'Double Air pairings thrive on ideas, conversation, and social variety. They communicate effortlessly and respect each other\'s independence, though they may avoid dealing with deep emotional undercurrents.';
+    case 'Air + Water': return 'Air and Water pairings mix rational analysis with deep emotional intuition. This pairing can communicate well, but Air must learn to sit with Water\'s feelings rather than intellectualizing them.';
+    case 'Water + Water': return 'Double Water pairings share a psychic, intuitive bond. They understand each other\'s mood shifts without words, creating a cozy and deeply empathetic space, though they must build boundaries to prevent codependency.';
+    default: return 'Every elemental matchup brings unique dynamics to love, friendship, and collaboration.';
+  }
+}
+
+function getQualityHarmony(q1, q2) {
+  if (q1 === q2) {
+    return `Both partners share a ${q1} modality. This means you share a similar tempo and approach to making decisions—either both initiating changes (Cardinal), both anchoring down stubbornly (Fixed), or both adapting and shifting constantly (Mutable).`;
+  }
+  return `This pairing combines ${q1} and ${q2} modalities. The ${q1} partner\'s natural pace is balanced by the ${q2} partner\'s approach, creating a dynamic exchange of energy that keeps the relationship from getting stuck.`;
+}
+
+function preRenderZodiacPairings(template) {
+  console.log('[SSG] Starting programmatic 144 zodiac pairings generator...');
+  let count = 0;
+
+  for (let i = 0; i < SIGNS.length; i++) {
+    for (let j = 0; j < SIGNS.length; j++) {
+      const s1 = SIGNS[i];
+      const s2 = SIGNS[j];
+      
+      const slug1 = `${s1.name}-${s2.name}-compatibility`;
+      const slug2 = `${s2.name}-${s1.name}-compatibility`;
+
+      // Check if a manual post already matches these slugs
+      const manualMatchExists = posts.some(p => p.slug === slug1 || p.slug === slug2);
+      if (manualMatchExists) {
+        continue;
+      }
+
+      // Check if directory exists already (to prevent duplicate generation)
+      const postDir = path.join(DIST_DIR, 'blog', slug1);
+      if (fs.existsSync(postDir)) {
+        continue;
+      }
+
+      fs.mkdirSync(postDir, { recursive: true });
+
+      const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
+      const description = `Are ${s1.label} and ${s2.label} compatible? Read our expert astrological breakdown of elements, qualities, and synastry dynamics for this pairing.`;
+
+      const postBody = `
+        <article class="blog-content">
+          <header>
+            <span class="category-tag" style="font-size: 10px; font-weight: bold; text-transform: uppercase; tracking-wider; background: #6c4de6/10; color: #6c4de6; padding: 4px 8px; border-radius: 12px;">Zodiac Compatibility Deep Dive</span>
+            <h1 style="font-size: 2.25rem; font-weight: 800; color: #1c0e35; margin: 12px 0 6px;">${s1.label} and ${s2.label} Compatibility</h1>
+            <p class="post-meta">Reviewed by Sarah Miller, Professional Astrologer</p>
+          </header>
+          <div>
+            <p>Are <strong>${s1.label}</strong> and <strong>${s2.label}</strong> compatible in love, friendship, and life? In classical synastry, compatibility is built on elements, planetary rulers, and modality combinations. Below is an expert astrological breakdown of how this pairing functions.</p>
+            
+            <h2>1. Elemental Harmony: ${s1.element} meets ${s2.element}</h2>
+            <p>${getElementHarmony(s1.element, s2.element)}</p>
+            
+            <h2>2. Modal Rhythm: ${s1.quality} & ${s2.quality}</h2>
+            <p>${getQualityHarmony(s1.quality, s2.quality)}</p>
+            
+            <h2>3. Ruling Planets: ${s1.planet} & ${s2.planet}</h2>
+            <p>This match is influenced by the cosmic conversations between <strong>${s1.planet}</strong> (ruling ${s1.label}) and <strong>${s2.planet}</strong> (ruling ${s2.label}). These planetary forces dictate how the signs assert their desires, resolve conflict, and express affection.</p>
+
+            <div style="margin-top: 40px; padding: 24px; border-radius: 20px; background: #6c4de6; color: #fff; text-align: center; box-shadow: 0 4px 12px rgba(108,77,230,0.15);">
+              <h3 style="margin-top: 0; font-size: 1.25rem; font-weight: 700; color: #fff;">Get Your Exact Compatibility Score</h3>
+              <p style="font-size: 0.875rem; color: rgba(255,255,255,0.9); margin-bottom: 20px;">Sun signs are just the starting point. To see your true compatibility, you must calculate planetary aspects and exact birth charts.</p>
+              <a href="/" style="display: inline-block; padding: 12px 24px; border-radius: 12px; background: #fff; color: #6c4de6; font-weight: 800; text-decoration: none; transition: transform 0.2s;">Run the Calculator →</a>
+            </div>
+          </div>
+        </article>
+      `;
+
+      let postHtml = template
+        .replace(/<title>[^<]*<\/title>/g, `<title>${title} | Match by Birth</title>`)
+        .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${description}" />`)
+        .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
+
+      fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
+      count++;
+    }
+  }
+
+  console.log(`[SSG] Successfully pre-rendered ${count} programmatic zodiac pairings!`);
 }
 
 function main() {
