@@ -3,20 +3,20 @@
 const urlModule = require('url');
 
 const routes = {
-  '/api/calculate-result': require('./_lib/calculate-result.js'),
-  '/api/create-checkout-session': require('./_lib/create-checkout-session.js'),
-  '/api/create-subscription-checkout': require('./_lib/create-subscription-checkout.js'),
-  '/api/og': require('./_lib/og.js'),
-  '/api/purchase-status': require('./_lib/purchase-status.js'),
-  '/api/report': require('./_lib/report.js'),
-  '/api/result': require('./_lib/result.js'),
-  '/api/retry-failed-reports': require('./_lib/retry-failed-reports.js'),
-  '/api/send-weekly-updates': require('./_lib/send-weekly-updates.js'),
-  '/api/webhook': require('./_lib/webhook.js'),
-  '/api/stripe-webhook': require('./_lib/webhook.js'),
-  '/api/subscribe': require('./_lib/subscribe.js'),
-  '/api/unsubscribe': require('./_lib/unsubscribe.js'),
-  '/api/places': require('./_lib/places.js'),
+  '/api/calculate-result': () => require('./_lib/calculate-result.js'),
+  '/api/create-checkout-session': () => require('./_lib/create-checkout-session.js'),
+  '/api/create-subscription-checkout': () => require('./_lib/create-subscription-checkout.js'),
+  '/api/og': () => require('./_lib/og.js'),
+  '/api/purchase-status': () => require('./_lib/purchase-status.js'),
+  '/api/report': () => require('./_lib/report.js'),
+  '/api/result': () => require('./_lib/result.js'),
+  '/api/retry-failed-reports': () => require('./_lib/retry-failed-reports.js'),
+  '/api/send-weekly-updates': () => require('./_lib/send-weekly-updates.js'),
+  '/api/webhook': () => require('./_lib/webhook.js'),
+  '/api/stripe-webhook': () => require('./_lib/webhook.js'),
+  '/api/subscribe': () => require('./_lib/subscribe.js'),
+  '/api/unsubscribe': () => require('./_lib/unsubscribe.js'),
+  '/api/places': () => require('./_lib/places.js'),
 };
 
 module.exports = async (req, res) => {
@@ -63,7 +63,8 @@ module.exports = async (req, res) => {
   }
 
   try {
-    return await targetModule(req, res);
+    const handler = targetModule();
+    return await handler(req, res);
   } catch (error) {
     console.error(`Error in handler for ${path}:`, error);
     if (!res.writableEnded && !res.headersSent) {

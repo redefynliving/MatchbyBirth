@@ -31,7 +31,8 @@ test('production API modules load before deployment', () => {
 test('production API router uses static handler imports for Vercel bundling', () => {
   const source = fs.readFileSync(path.join(root, 'api/index.js'), 'utf8');
 
-  assert.match(source, /require\('.*_lib\/subscribe\.js'\)/);
-  assert.match(source, /require\('.*_lib\/unsubscribe\.js'\)/);
+  assert.match(source, /\(\) => require\('.*_lib\/subscribe\.js'\)/);
+  assert.match(source, /\(\) => require\('.*_lib\/unsubscribe\.js'\)/);
+  assert.doesNotMatch(source, /'\/api\/subscribe': require\(/);
   assert.doesNotMatch(source, /require\(targetModule\)/);
 });
