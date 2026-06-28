@@ -124,12 +124,29 @@ function CalculatorWithPreview({ mode, setMode }) {
     }
   };
 
+  const buildSubmittedPeople = (form) => {
+    const formData = new FormData(form);
+    const fieldPrefix = mode === 'pair' ? '' : 'g';
+
+    return people.map((person) => ({
+      ...person,
+      name: String(formData.get(`${fieldPrefix}name-${person.id}`) ?? '').trim(),
+      birthDate: String(formData.get(`${fieldPrefix}dob-${person.id}`) ?? ''),
+      birthTime: exactMode
+        ? String(formData.get(`${fieldPrefix}time-${person.id}`) ?? '')
+        : '',
+      place: exactMode ? person.place : null,
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const submittedPeople = buildSubmittedPeople(event.currentTarget);
+
     if (mode === 'pair') {
-      submitCalculation({ mode: 'pair', relationshipType, people: pairPeople, exactMode });
+      submitCalculation({ mode: 'pair', relationshipType, people: submittedPeople, exactMode });
     } else {
-      submitCalculation({ mode: 'group', relationshipType: 'friendship', people: groupPeople, exactMode });
+      submitCalculation({ mode: 'group', relationshipType: 'friendship', people: submittedPeople, exactMode });
     }
   };
 
@@ -144,6 +161,7 @@ function CalculatorWithPreview({ mode, setMode }) {
           </Label>
           <Input
             id={`${prefix}time-${person.id}`}
+            name={`${prefix}time-${person.id}`}
             type="time"
             value={person.birthTime}
             onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}
@@ -220,6 +238,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                     </Label>
                     <Input
                       id={`name-${person.id}`}
+                      name={`name-${person.id}`}
                       value={person.name}
                       onChange={(event) => updatePerson(person.id, 'name', event.target.value)}
                       placeholder="Enter name"
@@ -234,6 +253,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                     </Label>
                     <Input
                       id={`dob-${person.id}`}
+                      name={`dob-${person.id}`}
                       type="date"
                       value={person.birthDate}
                       onChange={(event) => updatePerson(person.id, 'birthDate', event.target.value)}
@@ -300,6 +320,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                     </Label>
                     <Input
                       id={`gname-${person.id}`}
+                      name={`gname-${person.id}`}
                       value={person.name}
                       onChange={(event) => updatePerson(person.id, 'name', event.target.value)}
                       placeholder="Enter name"
@@ -314,6 +335,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                     </Label>
                     <Input
                       id={`gdob-${person.id}`}
+                      name={`gdob-${person.id}`}
                       type="date"
                       value={person.birthDate}
                       onChange={(event) => updatePerson(person.id, 'birthDate', event.target.value)}
@@ -330,6 +352,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                         </Label>
                         <Input
                           id={`gtime-${person.id}`}
+                          name={`gtime-${person.id}`}
                           type="time"
                           value={person.birthTime}
                           onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}

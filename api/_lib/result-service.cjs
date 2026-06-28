@@ -14,15 +14,44 @@ class ResultServiceError extends Error {
   }
 }
 
+const VALIDATION_ERROR_PATTERNS = [
+  /people must be provided/i,
+  /add at least \d+ people/i,
+  /add no more than \d+ people/i,
+  /needs a name/i,
+  /birth date/i,
+];
+
+function isCalculationValidationError(error) {
+  return error instanceof Error
+    && VALIDATION_ERROR_PATTERNS.some((pattern) => pattern.test(error.message));
+}
+
+function normalizeCalculationError(error) {
+  if (error instanceof ResultServiceError) {
+    return error;
+  }
+
+  if (isCalculationValidationError(error)) {
+    return new ResultServiceError(error.message, 400);
+  }
+
+  return error;
+}
+
 function createShareSlug() {
   return crypto.randomBytes(18).toString('base64url');
 }
 
 function calculateResult(input) {
   const mode = input?.mode === 'group' ? 'group' : 'pair';
-  return mode === 'group'
-    ? calculateGroupResult(input?.people)
-    : calculatePairResult(input?.people, input?.relationshipType);
+  try {
+    return mode === 'group'
+      ? calculateGroupResult(input?.people)
+      : calculatePairResult(input?.people, input?.relationshipType);
+  } catch (error) {
+    throw normalizeCalculationError(error);
+  }
 }
 
 async function calculateAndStoreResult(input, store, slugFactory = createShareSlug) {
@@ -88,4 +117,5 @@ module.exports = {
   calculateResultWithOptionalStorage,
   createShareSlug,
   getSharedResult,
+  normalizeCalculationError,
 };

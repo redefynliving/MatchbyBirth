@@ -5,6 +5,7 @@ const {
   calculateAndStoreResult,
   calculateResultWithOptionalStorage,
   getSharedResult,
+  ResultServiceError,
 } = require('../api/_lib/result-service.cjs');
 
 test('calculateAndStoreResult persists a sanitized pair result behind an opaque slug', async () => {
@@ -82,6 +83,32 @@ test('calculateResultWithOptionalStorage returns a usable result without databas
   assert.equal(response.shareSlug, null);
   assert.equal(response.result.mode, 'pair');
   assert.equal(JSON.stringify(response).includes('2001-08-15'), false);
+});
+
+test('calculateResultWithOptionalStorage reports invalid calculator input as a 400', async () => {
+  await assert.rejects(
+    () => calculateResultWithOptionalStorage(
+      {
+        mode: 'pair',
+        relationshipType: 'love',
+        people: [
+          { id: 'one', name: 'Alex', birthDate: '' },
+          { id: 'two', name: 'Jordan', birthDate: '1992-09-23' },
+        ],
+      },
+      {
+        isConfigured: () => false,
+        insertResult: async () => {
+          throw new Error('storage should not be called');
+        },
+      },
+    ),
+    (error) => (
+      error instanceof ResultServiceError
+      && error.statusCode === 400
+      && /valid birth date/i.test(error.message)
+    ),
+  );
 });
 
 test('getSharedResult rejects missing and expired records', async () => {
