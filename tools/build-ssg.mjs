@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import posts from '../apps/web/src/data/posts/index.js';
 import { getZodiacPairingPages } from './zodiac-pairings.mjs';
+import { prerenderBlogHtml } from '../apps/web/tools/prerender-blog-html.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist/apps/web');
@@ -60,19 +61,54 @@ function preRenderPages() {
   const pages = [
     {
       route: 'about',
-      title: 'About Us | Match by Birth',
-      description: 'Learn about our mission to help you understand compatibility, including our unique 7-person Group Mode.',
+      title: 'About Match by Birth | Compatibility Tool',
+      description: 'Learn who Match by Birth is for, what the compatibility calculator does, what it does not claim, and how birth details are handled.',
       content: `
         <header>
           <h1>About Match by Birth</h1>
-          <p>Astrology meets science. Love meets data.</p>
+          <p>A clearer way to talk about compatibility.</p>
         </header>
         <article>
-          <p>Match by Birth helps you understand the people in your life through the oldest compatibility system on earth. We believe that birth dates hold distinct energetic blueprints that influence how individuals relate, communicate, and support each other.</p>
-          <h2>Our Astrological Methodology</h2>
-          <p>Our algorithm maps your birth date to planetary alignments and elements. By calculating aspects, elemental balances (Fire, Earth, Air, Water), and chart logic, we compile a detailed compatibility profile across five dimensions: Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk.</p>
-          <h2>Our Team & Mission</h2>
-          <p>Match by Birth is developed by a dedicated team of astrologers, developers, and relationship researchers. Our mission is to make deep, meaningful chart interpretations accessible to everyone without requiring complex chart readings.</p>
+          <p>Match by Birth is a private compatibility tool for people who want a quick, readable way to compare birth patterns. It turns birth details into strengths, watch areas, and conversation prompts you can actually use.</p>
+          <h2>Who it is for</h2>
+          <p>Match by Birth is for people comparing romantic partners, friendships, families, work relationships, or groups.</p>
+          <h2>What the tool does</h2>
+          <p>The calculator uses birth date, zodiac sign, life path number, and pair or group context to create a compatibility snapshot. Optional birth time and place can refine sign placement for cusp birthdays.</p>
+          <h2>What it does not claim</h2>
+          <p>Match by Birth does not predict the future, diagnose relationships, promise outcomes, or decide whether someone is right for you. It is better used as entertainment, reflection, and a conversation starter.</p>
+          <h2>How privacy works</h2>
+          <p>Birth dates are processed for the calculation and are not used for identity profiling. Shared result links use opaque URLs and do not put raw birth details in the address.</p>
+          <h2>Support and feedback</h2>
+          <p>Questions, corrections, and support requests can be sent to support@matchbybirth.com.</p>
+        </article>
+      `
+    },
+    {
+      route: 'how-it-works',
+      title: 'How Match by Birth Works | Compatibility Methodology',
+      description: 'Learn how Match by Birth uses birth dates, optional birth time and place, zodiac signs, life path numbers, pair mode, and group mode to frame compatibility responsibly.',
+      content: `
+        <header>
+          <p>MBB methodology</p>
+          <h1>How Match by Birth works</h1>
+          <p>Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a reflection tool, not a prediction system or a relationship verdict.</p>
+        </header>
+        <article>
+          <h2>Birth date</h2>
+          <p>The core calculator starts with each person's birth date to identify sign placement, seasonal pattern, and date-based compatibility signals.</p>
+          <h2>Optional time and place</h2>
+          <p>MBB Exact Mode can use birth time and selected birth place when someone is close to a sign boundary and wants a more precise Sun sign check.</p>
+          <h2>Life path number</h2>
+          <p>The reading can include a simple numerology layer to give the score another reflection point beyond zodiac sign alone.</p>
+          <h2>Pair mode</h2>
+          <p>Pair mode focuses on two people and is built for romantic, friendship, work, family, or general connection checks.</p>
+          <h2>Group mode</h2>
+          <p>Group mode compares every person against every other person, then summarizes the group rhythm.</p>
+          <h2>Relationship timing</h2>
+          <p>Timing notes are written as conversation prompts, not guarantees. They should help people talk sooner and more clearly, not outsource judgment.</p>
+          <h2>Privacy and limits</h2>
+          <p>Birth dates are processed for the calculation and are not used for identity profiling. Shared result links are opaque and do not expose raw birth details in the URL.</p>
+          <p><a href="/#calculator">Try the calculator</a> or <a href="/blog/what-compatibility-score-means">read the score guide</a>.</p>
         </article>
       `
     },
@@ -197,52 +233,8 @@ function preRenderPages() {
     console.log(`[SSG] Route /${page.route} pre-rendered.`);
   }
 
-  // Pre-render blog list
-  const blogListDir = path.join(DIST_DIR, 'blog');
-  fs.mkdirSync(blogListDir, { recursive: true });
-  const blogListHtml = template
-    .replace(/<title>[^<]*<\/title>/g, `<title>Astrology Blog & Guides | Match by Birth</title>`)
-    .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="Explore astrology compatibility guides, zodiac pair deep dives, and relationship insights." />`)
-    .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">
-      <h1>Astrology Blog & Guides</h1>
-      <p>Read all our latest astrological compatibility articles.</p>
-      <ul>
-        ${posts.map(post => `<li><a href="/blog/${post.slug}">${post.title}</a> - ${post.description}</li>`).join('')}
-      </ul>
-    </div>`);
-  fs.writeFileSync(path.join(blogListDir, 'index.html'), blogListHtml, 'utf8');
-  console.log('[SSG] Route /blog pre-rendered.');
-
-  // Pre-render blog post detail pages
-  for (const post of posts) {
-    const postDir = path.join(DIST_DIR, 'blog', post.slug);
-    fs.mkdirSync(postDir, { recursive: true });
-
-    // Format content with E-E-A-T author attribution
-    const postBody = `
-      <article class="blog-content">
-        <header>
-          <h1>${post.title}</h1>
-          <p class="post-meta">Published on ${post.date} | Reviewed by Sarah Miller, Professional Astrologer</p>
-        </header>
-        <div>
-          ${post.content}
-        </div>
-        <footer class="author-bio-footer" style="margin-top: 40px; padding-top: 20px; border-t: 1px solid #ccc;">
-          <h3>Reviewed by Sarah Miller, Professional Astrologer</h3>
-          <p>Sarah Miller is a professional consultant astrologer with over 12 years of experience mapping natal charts, planetary transits, and relationship synastry. She holds credentials from international astrological registries and serves as the lead reviewer for Match by Birth.</p>
-        </footer>
-      </article>
-    `;
-
-    let postHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${post.title} | Match by Birth</title>`)
-      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${post.description}" />`)
-      .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
-
-    fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
-    console.log(`[SSG] Blog post /blog/${post.slug} pre-rendered.`);
-  }
+  const blogFiles = prerenderBlogHtml({ outputRoot: DIST_DIR, templatePath: TEMPLATE_PATH });
+  console.log(`[SSG] Blog HTML pre-rendered with ${blogFiles.length} files.`);
 
   // Pre-render the 144 zodiac pairings (Programmatic SEO)
   preRenderZodiacPairings(template);
@@ -284,17 +276,17 @@ function preRenderZodiacPairings(template) {
     fs.mkdirSync(postDir, { recursive: true });
 
     const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
-    const description = `Are ${s1.label} and ${s2.label} compatible? Read our expert astrological breakdown of elements, qualities, and synastry dynamics for this pairing.`;
+    const description = `Are ${s1.label} and ${s2.label} compatible? Read a practical compatibility breakdown of elements, qualities, and relationship dynamics for this pairing.`;
 
     const postBody = `
         <article class="blog-content">
           <header>
             <span class="category-tag" style="font-size: 10px; font-weight: bold; text-transform: uppercase; tracking-wider; background: #6c4de6/10; color: #6c4de6; padding: 4px 8px; border-radius: 12px;">Zodiac Compatibility Deep Dive</span>
             <h1 style="font-size: 2.25rem; font-weight: 800; color: #1c0e35; margin: 12px 0 6px;">${s1.label} and ${s2.label} Compatibility</h1>
-            <p class="post-meta">Reviewed by Sarah Miller, Professional Astrologer</p>
+            <p class="post-meta">Published by Match by Birth</p>
           </header>
           <div>
-            <p>Are <strong>${s1.label}</strong> and <strong>${s2.label}</strong> compatible in love, friendship, and life? In classical synastry, compatibility is built on elements, planetary rulers, and modality combinations. Below is an expert astrological breakdown of how this pairing functions.</p>
+            <p>Are <strong>${s1.label}</strong> and <strong>${s2.label}</strong> compatible in love, friendship, and life? In classical synastry, compatibility is often discussed through elements, planetary rulers, and modality combinations. Below is a practical compatibility breakdown of how this pairing may function.</p>
             
             <h2>1. Elemental Harmony: ${s1.element} meets ${s2.element}</h2>
             <p>${getElementHarmony(s1.element, s2.element)}</p>

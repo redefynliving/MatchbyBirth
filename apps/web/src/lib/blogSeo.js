@@ -73,13 +73,19 @@ export function getRelatedPosts(post, allPosts, limit = 3) {
   if (explicit.length >= limit) return explicit.slice(0, limit);
 
   const category = getPostCategory(post);
-  const fallback = allPosts.filter((candidate) => (
+  const sameCategoryFallback = allPosts.filter((candidate) => (
     candidate.slug !== post.slug
     && !explicit.some((related) => related.slug === candidate.slug)
     && getPostCategory(candidate) === category
   ));
 
-  return [...explicit, ...fallback].slice(0, limit);
+  const broadFallback = allPosts.filter((candidate) => (
+    candidate.slug !== post.slug
+    && !explicit.some((related) => related.slug === candidate.slug)
+    && !sameCategoryFallback.some((related) => related.slug === candidate.slug)
+  ));
+
+  return [...explicit, ...sameCategoryFallback, ...broadFallback].slice(0, limit);
 }
 
 export function hasEnhancedContent(post) {

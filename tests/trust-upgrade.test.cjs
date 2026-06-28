@@ -56,10 +56,12 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   const postsModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/posts/index.js')).href);
   const posts = postsModule.default;
   const post = posts.find((candidate) => candidate.slug === 'what-compatibility-score-means');
+  const sparsePost = posts.find((candidate) => candidate.slug === 'cancer-moon-compatibility');
 
   const article = helper.buildArticleSchema(post);
   const breadcrumbs = helper.buildBreadcrumbSchema(post);
   const related = helper.getRelatedPosts(post, posts);
+  const sparseRelated = helper.getRelatedPosts(sparsePost, posts);
 
   assert.equal(article['@type'], 'Article');
   assert.equal(article.headline, post.title);
@@ -70,11 +72,14 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   assert.equal(breadcrumbs.itemListElement.length, 3);
   assert.ok(related.length > 0);
   assert.equal(related.some((candidate) => candidate.slug === post.slug), false);
+  assert.ok(sparseRelated.length > 0);
+  assert.equal(sparseRelated.some((candidate) => candidate.slug === sparsePost.slug), false);
 });
 
 test('React and static article output include enhanced blocks and related links', () => {
   const reactPage = read('apps/web/src/pages/BlogPostPage.jsx');
   const staticRenderer = read('apps/web/tools/prerender-blog-html.js');
+  const ssg = read('tools/build-ssg.mjs');
 
   assert.match(reactPage, /buildArticleSchema/);
   assert.match(reactPage, /buildBreadcrumbSchema/);
@@ -89,4 +94,9 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(staticRenderer, /buildBreadcrumbSchema/);
   assert.match(staticRenderer, /static-related/);
   assert.match(staticRenderer, /Keep reading/);
+
+  assert.match(ssg, /prerenderBlogHtml/);
+  assert.match(ssg, /MBB methodology/);
+  assert.match(ssg, /What it does not claim/);
+  assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);
 });
