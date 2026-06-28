@@ -163,8 +163,8 @@ function CalculatorWithPreview({ mode, setMode }) {
             id={`${prefix}time-${person.id}`}
             name={`${prefix}time-${person.id}`}
             type="time"
-            value={person.birthTime}
-            onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}
+            defaultValue={person.birthTime}
+            onInput={(event) => updatePerson(person.id, 'birthTime', event.currentTarget.value)}
             placeholder="HH:MM"
             className="h-11 rounded-xl"
           />
@@ -239,8 +239,8 @@ function CalculatorWithPreview({ mode, setMode }) {
                     <Input
                       id={`name-${person.id}`}
                       name={`name-${person.id}`}
-                      value={person.name}
-                      onChange={(event) => updatePerson(person.id, 'name', event.target.value)}
+                      defaultValue={person.name}
+                      onInput={(event) => updatePerson(person.id, 'name', event.currentTarget.value)}
                       placeholder="Enter name"
                       maxLength={80}
                       required
@@ -255,8 +255,8 @@ function CalculatorWithPreview({ mode, setMode }) {
                       id={`dob-${person.id}`}
                       name={`dob-${person.id}`}
                       type="date"
-                      value={person.birthDate}
-                      onChange={(event) => updatePerson(person.id, 'birthDate', event.target.value)}
+                      defaultValue={person.birthDate}
+                      onInput={(event) => updatePerson(person.id, 'birthDate', event.currentTarget.value)}
                       max={new Date().toISOString().slice(0, 10)}
                       required
                       className="h-11 rounded-xl"
@@ -321,8 +321,8 @@ function CalculatorWithPreview({ mode, setMode }) {
                     <Input
                       id={`gname-${person.id}`}
                       name={`gname-${person.id}`}
-                      value={person.name}
-                      onChange={(event) => updatePerson(person.id, 'name', event.target.value)}
+                      defaultValue={person.name}
+                      onInput={(event) => updatePerson(person.id, 'name', event.currentTarget.value)}
                       placeholder="Enter name"
                       maxLength={80}
                       required
@@ -337,8 +337,8 @@ function CalculatorWithPreview({ mode, setMode }) {
                       id={`gdob-${person.id}`}
                       name={`gdob-${person.id}`}
                       type="date"
-                      value={person.birthDate}
-                      onChange={(event) => updatePerson(person.id, 'birthDate', event.target.value)}
+                      defaultValue={person.birthDate}
+                      onInput={(event) => updatePerson(person.id, 'birthDate', event.currentTarget.value)}
                       max={new Date().toISOString().slice(0, 10)}
                       required
                       className="h-11 rounded-xl"
@@ -354,8 +354,8 @@ function CalculatorWithPreview({ mode, setMode }) {
                           id={`gtime-${person.id}`}
                           name={`gtime-${person.id}`}
                           type="time"
-                          value={person.birthTime}
-                          onChange={(event) => updatePerson(person.id, 'birthTime', event.target.value)}
+                          defaultValue={person.birthTime}
+                          onInput={(event) => updatePerson(person.id, 'birthTime', event.currentTarget.value)}
                           placeholder="HH:MM"
                           className="h-11 rounded-xl"
                         />

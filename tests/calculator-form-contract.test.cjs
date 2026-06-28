@@ -17,3 +17,11 @@ test('calculator submits actual form field values for date-only mode', () => {
   assert.match(source, /name=\{`gname-\$\{person\.id\}`\}/);
   assert.match(source, /name=\{`gdob-\$\{person\.id\}`\}/);
 });
+
+test('calculator native inputs are not controlled by React state', () => {
+  assert.match(source, /defaultValue=\{person\.name\}/);
+  assert.match(source, /defaultValue=\{person\.birthDate\}/);
+  assert.match(source, /defaultValue=\{person\.birthTime\}/);
+  assert.doesNotMatch(source, /value=\{person\.birthDate\}/);
+  assert.doesNotMatch(source, /value=\{person\.birthTime\}/);
+});
