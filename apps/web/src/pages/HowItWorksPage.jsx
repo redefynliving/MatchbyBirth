@@ -1,206 +1,146 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
-import Footer from '@/components/Footer.jsx';
-import { 
-  Flame, 
-  Globe, 
-  Wind, 
-  Droplets, 
-  Sparkles, 
-  Heart, 
-  MessageCircle, 
-  Zap, 
-  AlertTriangle, 
-  Info,
-  Compass
-} from 'lucide-react';
+import { CalendarDays, Hash, Users, LockKeyhole, Clock3, Scale } from 'lucide-react';
 
 function HowItWorksPage() {
-  const elements = [
+  const inputs = [
     {
-      name: 'Fire',
-      icon: Flame,
-      signs: 'Aries, Leo, Sagittarius',
-      description: 'Passionate, energetic, and intuitive. Fire signs bring warmth, motivation, and inspiration to relationships.',
-      colorClass: 'from-orange-500/10 to-red-500/10 border-orange-500/20 text-orange-600 dark:text-orange-400',
-      iconBg: 'bg-orange-500/10 text-orange-500',
+      title: 'Birth date',
+      icon: CalendarDays,
+      body: 'The core calculator starts with each person\'s birth date to identify sign placement, seasonal pattern, and date-based compatibility signals.',
     },
     {
-      name: 'Earth',
-      icon: Globe,
-      signs: 'Taurus, Virgo, Capricorn',
-      description: 'Practical, grounded, and dependable. Earth signs offer structure, reliability, and security.',
-      colorClass: 'from-emerald-500/10 to-teal-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400',
-      iconBg: 'bg-emerald-500/10 text-emerald-500',
+      title: 'Optional time and place',
+      icon: Clock3,
+      body: 'MBB Exact Mode can use birth time and selected birth place when someone is close to a sign boundary and wants a more precise Sun sign check.',
     },
     {
-      name: 'Air',
-      icon: Wind,
-      signs: 'Gemini, Libra, Aquarius',
-      description: 'Intellectual, social, and communicative. Air signs focus on ideas, connection, and objective perspective.',
-      colorClass: 'from-sky-500/10 to-blue-500/10 border-sky-500/20 text-sky-600 dark:text-sky-400',
-      iconBg: 'bg-sky-500/10 text-sky-500',
+      title: 'Life path number',
+      icon: Hash,
+      body: 'The reading can include a simple numerology layer to give the score another reflection point beyond zodiac sign alone.',
     },
     {
-      name: 'Water',
-      icon: Droplets,
-      signs: 'Cancer, Scorpio, Pisces',
-      description: 'Emotional, sensitive, and empathetic. Water signs bring depth, intuition, and deep feeling.',
-      colorClass: 'from-blue-500/10 to-indigo-500/10 border-blue-500/20 text-indigo-600 dark:text-indigo-400',
-      iconBg: 'bg-blue-500/10 text-indigo-500',
+      title: 'Pair or group context',
+      icon: Users,
+      body: 'A two-person comparison is read differently from a group. Group mode looks at every pair ranking and the overall group rhythm.',
     },
   ];
 
-  const scoreDimensions = [
-    {
-      title: 'Overall Harmony',
-      icon: Sparkles,
-      description: 'General ease and connection based on how well your astrological elements flow together.',
-    },
-    {
-      title: 'Emotional Support',
-      icon: Heart,
-      description: 'How naturally you understand and support each other\'s feelings, vulnerabilities, and inner needs.',
-    },
-    {
-      title: 'Communication flow',
-      icon: MessageCircle,
-      description: 'The ease of exchanging ideas, talking through plans, and finding common ground during discussions.',
-    },
-    {
-      title: 'Chemistry & Attraction',
-      icon: Zap,
-      description: 'The natural spark, magnetic pull, and physical or energetic attraction between both signs.',
-    },
-    {
-      title: 'Conflict Risk',
-      icon: AlertTriangle,
-      description: 'Potential friction areas or blind spots where differences can lead to misunderstandings.',
-    },
+  const scoreNotes = [
+    'A high score means the inputs point to several easy connection patterns.',
+    'A middle score usually means a mix of natural overlap and useful differences.',
+    'A lower score is not a verdict. It points to places where expectations, timing, or communication may need more care.',
   ];
 
   return (
     <>
       <Helmet>
-        <title>How Compatibility Is Calculated | Match by Birth</title>
-        <meta name="description" content="How we read compatibility: zodiac elements, element interactions, and what the score covers." />
+        <title>How Match by Birth Works | Compatibility Methodology</title>
+        <meta
+          name="description"
+          content="Learn how Match by Birth uses birth dates, optional birth time and place, zodiac signs, life path numbers, pair mode, and group mode to frame compatibility responsibly."
+        />
+        <link rel="canonical" href="https://matchbybirth.com/how-it-works" />
       </Helmet>
 
-      <div className="min-h-screen flex flex-col bg-background">
-        <main className="flex-1 py-12 md:py-20 relative overflow-hidden">
-          {/* Subtle backdrop decoration */}
-          <div className="pointer-events-none absolute top-0 left-1/4 h-[500px] w-[500px] rounded-full opacity-10 blur-3xl bg-radial-gradient" style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)' }} />
+      <main className="min-h-screen bg-background py-12 md:py-20">
+        <div className="content-container max-w-5xl">
+          <BackButton fallbackTo="/" label="Back to Calculator" />
 
-          <div className="content-container max-w-4xl relative z-10">
-            <BackButton fallbackTo="/" label="Back to Calculator" />
-            
-            <header className="mb-12 md:mb-16">
-              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                How compatibility is calculated
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-                We compare each person&apos;s birth chart using zodiac elements, sign placements, and aspect patterns. The result shows where the relationship is naturally aligned and where it may require more work.
+          <header className="max-w-3xl mb-14">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+              MBB methodology
+            </p>
+            <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
+              How Match by Birth works
+            </h1>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a reflection tool, not a prediction system or a relationship verdict.
+            </p>
+          </header>
+
+          <section className="grid gap-4 md:grid-cols-2 mb-14" aria-label="Inputs used by Match by Birth">
+            {inputs.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+                  <span className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h2 className="text-lg font-semibold text-foreground">{item.title}</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                </article>
+              );
+            })}
+          </section>
+
+          <section className="mb-14 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+                <Scale className="h-5 w-5" />
+              </span>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground">What the score means</h2>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-5">
+              The score compresses several signals into one readable number so the result is quick to understand. The more useful part is the interpretation around it: strengths, watch areas, and the next conversation prompt.
+            </p>
+            <ul className="space-y-3">
+              {scoreNotes.map((note) => (
+                <li key={note} className="rounded-xl border border-border/70 bg-muted/20 px-4 py-3 text-sm text-muted-foreground">
+                  {note}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="grid gap-6 md:grid-cols-2 mb-14">
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground">Pair mode</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Pair mode focuses on two people. It is built for romantic, friendship, work, family, or general connection checks where the goal is to understand a direct dynamic between two birth patterns.
               </p>
-            </header>
-
-            {/* Elements Section */}
-            <section className="mb-16">
-              <div className="flex items-center gap-2 mb-6">
-                <span className="p-1.5 bg-primary/10 rounded-lg text-primary">
-                  <Info className="h-5 w-5" />
-                </span>
-                <h2 className="text-2xl font-semibold tracking-tight">The Zodiac Elements</h2>
-              </div>
-              <p className="text-muted-foreground mb-8 leading-relaxed max-w-2xl">
-                Every zodiac sign belongs to one of the four main elements. Understanding how these basic elements interact helps reveal the fundamental chemistry of your match.
+            </article>
+            <article className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h2 className="text-xl font-semibold text-foreground">Group mode</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Group mode compares every person against every other person, then summarizes the group rhythm. It is useful for friend groups, teams, families, and group trips where one pair can change the room.
               </p>
+            </article>
+          </section>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {elements.map((el) => {
-                  const Icon = el.icon;
-                  return (
-                    <div 
-                      key={el.name}
-                      className={`rounded-2xl border bg-gradient-to-br p-6 shadow-sm transition-shadow hover:shadow-md ${el.colorClass}`}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className={`grid h-10 w-10 place-items-center rounded-xl ${el.iconBg}`}>
-                          <Icon className="h-5 w-5" />
-                        </span>
-                        <div>
-                          <h3 className="font-semibold text-lg text-foreground">{el.name}</h3>
-                          <p className="text-xs font-medium opacity-85">{el.signs}</p>
-                        </div>
-                      </div>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {el.description}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
+          <section className="mb-14 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground">How relationship timing is framed</h2>
+            <p className="mt-3 text-muted-foreground leading-relaxed">
+              Timing notes are written as conversation prompts, not guarantees. A result may suggest when to name expectations early, slow down a decision, or clarify planning pace. It should help people talk sooner and more clearly, not outsource judgment.
+            </p>
+          </section>
 
-            {/* Element Interaction Section */}
-            <section className="mb-16 bg-card border border-border rounded-2xl p-6 md:p-8 shadow-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="p-1.5 bg-primary/10 rounded-lg text-primary">
-                  <Compass className="h-5 w-5" />
-                </span>
-                <h2 className="text-2xl font-semibold tracking-tight">How elements interact</h2>
-              </div>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Astrological compatibility is not about being identical; it&apos;s about how your energies complement each other.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <div className="border border-border/60 bg-muted/20 rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Flowing Connections</h4>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Fire and Air naturally feed and inspire each other, creating relationships filled with excitement, communication, and big ideas. Similarly, Earth and Water signs nurture one another, building highly supportive, secure, and deeply stable connections.
-                  </p>
-                </div>
-                <div className="border border-border/60 bg-muted/20 rounded-xl p-5">
-                  <h4 className="font-semibold text-foreground mb-2">Growth Connections</h4>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Pairings with different or contrasting elements (like Fire and Water, or Air and Earth) bring unique strengths to the table. These relationships are often highly transformative, encouraging both partners to learn, balance, and grow together.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Score Dimensions Section */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-semibold tracking-tight mb-6">What the score covers</h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed max-w-2xl">
-                We break compatibility down into five core dimensions to give you a clear, actionable picture of how you connect.
-              </p>
-
-              <div className="space-y-4">
-                {scoreDimensions.map((dim) => {
-                  const Icon = dim.icon;
-                  return (
-                    <div 
-                      key={dim.title}
-                      className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card shadow-sm hover:shadow-md transition-shadow"
-                    >
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <h3 className="font-semibold text-foreground">{dim.title}</h3>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{dim.description}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          </div>
-        </main>
-
-        <Footer />
-      </div>
+          <section className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10 text-primary">
+                <LockKeyhole className="h-5 w-5" />
+              </span>
+              <h2 className="text-2xl font-semibold tracking-tight text-foreground">Privacy and limits</h2>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              Birth dates are processed for the calculation and are not used for identity profiling. Optional birth time and place help refine sign placement, especially near cusp dates. Shared result links are opaque and do not expose raw birth details in the URL.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link to="/#calculator" className="btn-primary rounded-xl px-5 py-3 text-sm font-semibold text-center">
+                Try the calculator
+              </Link>
+              <Link to="/blog/what-compatibility-score-means" className="rounded-xl border border-border px-5 py-3 text-sm font-semibold text-primary text-center hover:bg-secondary/40">
+                Read the score guide
+              </Link>
+              <Link to="/blog" className="rounded-xl border border-border px-5 py-3 text-sm font-semibold text-primary text-center hover:bg-secondary/40">
+                Browse guides
+              </Link>
+            </div>
+          </section>
+        </div>
+      </main>
     </>
   );
 }

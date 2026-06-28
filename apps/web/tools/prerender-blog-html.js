@@ -4,6 +4,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
 import { BLOG_CATEGORIES, getPostCategory } from '../src/data/blogCategories.js';
+import {
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+  canonicalUrl,
+  getRelatedPosts,
+} from '../src/lib/blogSeo.js';
 
 const SITE_URL = 'https://matchbybirth.com';
 
@@ -21,11 +27,6 @@ function normalizeRoute(route) {
   return `/${route.replace(/^\/+|\/+$/g, '')}`;
 }
 
-function canonicalUrl(route) {
-  const normalizedRoute = normalizeRoute(route);
-  return normalizedRoute === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalizedRoute}`;
-}
-
 function stripHtml(html) {
   return String(html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -38,27 +39,6 @@ function extractAssetTags(template) {
 
 function renderJsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data).replaceAll('<', '\\u003c')}</script>`;
-}
-
-function articleSchema(post) {
-  const url = canonicalUrl(`/blog/${post.slug}`);
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.date,
-    articleSection: post.category || getPostCategory(post),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-    author: { '@type': 'Organization', name: 'Match by Birth' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Match by Birth',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
-    },
-    ...(post.ogImage || post.heroImage?.url ? { image: post.ogImage || post.heroImage.url } : {}),
-  };
 }
 
 function renderDocument({ template, title, description, route, body, head = '' }) {
@@ -93,6 +73,10 @@ function renderDocument({ template, title, description, route, body, head = '' }
       .static-enhancement { border: 1px solid #e6e6f0; border-radius: 8px; padding: 20px; margin: 24px 0; background: #fbfbff; }
       .static-enhancement table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
       .static-enhancement th, .static-enhancement td { border-top: 1px solid #e6e6f0; padding: 10px; text-align: left; vertical-align: top; }
+      .static-related { border-top: 1px solid #e6e6f0; margin-top: 36px; padding-top: 24px; }
+      .static-related a { display: block; border: 1px solid #e6e6f0; border-radius: 8px; padding: 14px; margin: 0 0 12px; text-decoration: none; }
+      .static-related strong { color: #1a1a2e; display: block; }
+      .static-related span { color: #6f6780; display: block; font-weight: 400; margin-top: 4px; }
     </style>
     ${head}
     ${assetTags}
@@ -221,6 +205,7 @@ export function renderCategoryHtml({ template, category, allPosts = posts } = {}
 
 export function renderArticleHtml({ template, post } = {}) {
   const description = post.description || stripHtml(post.content).slice(0, 155);
+  const relatedPosts = getRelatedPosts(post, posts);
   const body = `
     <main class="static-blog-shell">
       <article>
@@ -233,6 +218,17 @@ export function renderArticleHtml({ template, post } = {}) {
         ${renderEnhancementHtml(post)}
         <p><a href="/#calculator">Try the Match by Birth compatibility calculator</a></p>
         <p><a href="/how-it-works">Read how Match by Birth works</a></p>
+        ${relatedPosts.length > 0 ? `
+          <section class="static-related">
+            <h2>Keep reading</h2>
+            ${relatedPosts.map((related) => `
+              <a href="/blog/${escapeHtml(related.slug)}">
+                <strong>${escapeHtml(related.title)}</strong>
+                <span>${escapeHtml(related.description)}</span>
+              </a>
+            `).join('')}
+          </section>
+        ` : ''}
       </article>
     </main>
   `;
@@ -243,7 +239,8 @@ export function renderArticleHtml({ template, post } = {}) {
     description,
     route: `/blog/${post.slug}`,
     body,
-    head: renderJsonLd(articleSchema(post)),
+    head: `${renderJsonLd(buildArticleSchema(post))}
+    ${renderJsonLd(buildBreadcrumbSchema(post))}`,
   });
 }
 
