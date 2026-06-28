@@ -85,6 +85,10 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
     path.join(root, 'apps/web/src/components/CompatibilityCalculator.jsx'),
     'utf8',
   );
+  const calculatorWithPreview = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CalculatorWithPreview.jsx'),
+    'utf8',
+  );
   const header = fs.readFileSync(
     path.join(root, 'apps/web/src/components/Header.jsx'),
     'utf8',
@@ -102,6 +106,9 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
   assert.doesNotMatch(homePreview, />82% compatible</);
   assert.match(calculator, /Check your connection/);
   assert.match(calculator, /Private, with no signup required\./);
+  assert.match(calculatorWithPreview, /Secure & private/);
+  assert.match(calculatorWithPreview, /Instant results/);
+  assert.match(calculatorWithPreview, /No signup required/);
   assert.match(header, /\/how-it-works/);
   assert.match(app, /path="\/how-it-works"/);
 });
@@ -200,6 +207,9 @@ test('report checkout explains its value while retaining payment and privacy ass
   assert.match(checkout, /Where misunderstandings may happen/);
   assert.match(checkout, /Practical ways to handle differences/);
   assert.match(checkout, /Private link and PDF delivered by email/);
+  assert.match(checkout, /Refund support available/);
+  assert.match(checkout, /Secure Stripe checkout/);
+  assert.match(checkout, /Instant email delivery/);
   assert.match(checkout, /Buy report for \$9\.99/);
   assert.match(checkout, /Payment is handled by Stripe/);
   assert.match(checkout, /birth dates are not stored/i);

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
 import { BLOG_CATEGORIES } from '../src/data/blogCategories.js';
+import { getZodiacPairingPages } from '../../../tools/zodiac-pairings.mjs';
 
 const SITE_URL = 'https://matchbybirth.com';
 const PUBLIC_PAGES = [
@@ -67,12 +68,20 @@ export function generateSitemapXml() {
     priority: '0.8',
   }));
 
+  const pairingEntries = getZodiacPairingPages().map((page) => entry({
+    pagePath: page.path,
+    lastmod: '2026-06-28',
+    changefreq: 'monthly',
+    priority: '0.7',
+  }));
+
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...pageEntries,
     ...categoryEntries,
     ...postEntries,
+    ...pairingEntries,
     '</urlset>',
     '',
   ].join('\n');

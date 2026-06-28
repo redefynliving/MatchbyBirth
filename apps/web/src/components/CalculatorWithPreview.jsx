@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Loader2, ShieldCheck } from 'lucide-react';
+import { Loader2, LockKeyhole, ShieldCheck, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -18,6 +18,29 @@ import PlaceSearch from './PlaceSearch.jsx';
 const createPerson = (id) => ({ id, name: '', birthDate: '', place: null, birthTime: '' });
 const defaultPair = [createPerson('pair-1'), createPerson('pair-2')];
 const defaultGroup = [createPerson('group-1'), createPerson('group-2'), createPerson('group-3')];
+const calculatorTrustBadges = [
+  [LockKeyhole, 'Secure & private', 'No birth dates stored'],
+  [Zap, 'Instant results', 'Free compatibility score'],
+  [ShieldCheck, 'No signup required', 'Start with birth dates'],
+];
+
+function CalculatorTrustBadges() {
+  return (
+    <div className="grid gap-2 rounded-2xl border border-border bg-muted/20 p-3 sm:grid-cols-3">
+      {calculatorTrustBadges.map(([Icon, title, detail]) => (
+        <div key={title} className="flex items-start gap-2 text-left">
+          <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-card text-primary shadow-sm">
+            <Icon className="h-3.5 w-3.5" />
+          </span>
+          <span>
+            <span className="block text-xs font-semibold text-foreground">{title}</span>
+            <span className="block text-[11px] leading-4 text-muted-foreground">{detail}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function ExactModeToggle({ exactMode, onChange }) {
   return (
@@ -293,6 +316,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                 'Check compatibility'
               )}
             </Button>
+            <CalculatorTrustBadges />
             <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
               Private, with no signup required. Birth dates are not stored.
@@ -406,6 +430,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                 'See group compatibility'
               )}
             </Button>
+            <CalculatorTrustBadges />
             <p className="flex items-center justify-center gap-1.5 text-center text-xs text-muted-foreground">
               <ShieldCheck className="h-3.5 w-3.5 text-primary" />
               Private, with no signup required. Birth dates are not stored.

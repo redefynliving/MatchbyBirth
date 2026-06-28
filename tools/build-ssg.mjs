@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import posts from '../apps/web/src/data/posts/index.js';
+import { getZodiacPairingPages } from './zodiac-pairings.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist/apps/web');
@@ -249,21 +250,6 @@ function preRenderPages() {
   console.log('[SSG] All pages successfully pre-rendered!');
 }
 
-const SIGNS = [
-  { name: 'aries', label: 'Aries', element: 'Fire', quality: 'Cardinal', planet: 'Mars' },
-  { name: 'taurus', label: 'Taurus', element: 'Earth', quality: 'Fixed', planet: 'Venus' },
-  { name: 'gemini', label: 'Gemini', element: 'Air', quality: 'Mutable', planet: 'Mercury' },
-  { name: 'cancer', label: 'Cancer', element: 'Water', quality: 'Cardinal', planet: 'Moon' },
-  { name: 'leo', label: 'Leo', element: 'Fire', quality: 'Fixed', planet: 'Sun' },
-  { name: 'virgo', label: 'Virgo', element: 'Earth', quality: 'Mutable', planet: 'Mercury' },
-  { name: 'libra', label: 'Libra', element: 'Air', quality: 'Cardinal', planet: 'Venus' },
-  { name: 'scorpio', label: 'Scorpio', element: 'Water', quality: 'Fixed', planet: 'Pluto & Mars' },
-  { name: 'sagittarius', label: 'Sagittarius', element: 'Fire', quality: 'Mutable', planet: 'Jupiter' },
-  { name: 'capricorn', label: 'Capricorn', element: 'Earth', quality: 'Cardinal', planet: 'Saturn' },
-  { name: 'aquarius', label: 'Aquarius', element: 'Air', quality: 'Fixed', planet: 'Uranus & Saturn' },
-  { name: 'pisces', label: 'Pisces', element: 'Water', quality: 'Mutable', planet: 'Neptune & Jupiter' }
-];
-
 function getElementHarmony(el1, el2) {
   const pair = [el1, el2].sort().join(' + ');
   switch (pair) {
@@ -292,32 +278,15 @@ function preRenderZodiacPairings(template) {
   console.log('[SSG] Starting programmatic 144 zodiac pairings generator...');
   let count = 0;
 
-  for (let i = 0; i < SIGNS.length; i++) {
-    for (let j = 0; j < SIGNS.length; j++) {
-      const s1 = SIGNS[i];
-      const s2 = SIGNS[j];
-      
-      const slug1 = `${s1.name}-${s2.name}-compatibility`;
-      const slug2 = `${s2.name}-${s1.name}-compatibility`;
+  for (const { firstSign: s1, secondSign: s2, slug } of getZodiacPairingPages()) {
+    const postDir = path.join(DIST_DIR, 'blog', slug);
 
-      // Check if a manual post already matches these slugs
-      const manualMatchExists = posts.some(p => p.slug === slug1 || p.slug === slug2);
-      if (manualMatchExists) {
-        continue;
-      }
+    fs.mkdirSync(postDir, { recursive: true });
 
-      // Check if directory exists already (to prevent duplicate generation)
-      const postDir = path.join(DIST_DIR, 'blog', slug1);
-      if (fs.existsSync(postDir)) {
-        continue;
-      }
+    const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
+    const description = `Are ${s1.label} and ${s2.label} compatible? Read our expert astrological breakdown of elements, qualities, and synastry dynamics for this pairing.`;
 
-      fs.mkdirSync(postDir, { recursive: true });
-
-      const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
-      const description = `Are ${s1.label} and ${s2.label} compatible? Read our expert astrological breakdown of elements, qualities, and synastry dynamics for this pairing.`;
-
-      const postBody = `
+    const postBody = `
         <article class="blog-content">
           <header>
             <span class="category-tag" style="font-size: 10px; font-weight: bold; text-transform: uppercase; tracking-wider; background: #6c4de6/10; color: #6c4de6; padding: 4px 8px; border-radius: 12px;">Zodiac Compatibility Deep Dive</span>
@@ -345,14 +314,13 @@ function preRenderZodiacPairings(template) {
         </article>
       `;
 
-      let postHtml = template
-        .replace(/<title>[^<]*<\/title>/g, `<title>${title} | Match by Birth</title>`)
-        .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${description}" />`)
-        .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
+    let postHtml = template
+      .replace(/<title>[^<]*<\/title>/g, `<title>${title} | Match by Birth</title>`)
+      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${description}" />`)
+      .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
 
-      fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
-      count++;
-    }
+    fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
+    count++;
   }
 
   console.log(`[SSG] Successfully pre-rendered ${count} programmatic zodiac pairings!`);
