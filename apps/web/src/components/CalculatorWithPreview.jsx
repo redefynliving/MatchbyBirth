@@ -64,9 +64,18 @@ function ExactModeToggle({ exactMode, onChange }) {
   );
 }
 
-function CalculatorWithPreview({ mode, setMode }) {
+function CalculatorWithPreview({
+  mode,
+  setMode,
+  source = 'homepage',
+  title = 'Check compatibility',
+  subtitle = 'Start with two people or compare a full group.',
+  submitLabel = 'Check compatibility',
+  defaultRelationshipType = 'love',
+  showModeToggle = true,
+}) {
   const navigate = useNavigate();
-  const [relationshipType, setRelationshipType] = useState('love');
+  const [relationshipType, setRelationshipType] = useState(defaultRelationshipType);
   const [isCalculating, setIsCalculating] = useState(false);
   const [error, setError] = useState('');
   const [exactMode, setExactMode] = useState(false);
@@ -110,6 +119,7 @@ function CalculatorWithPreview({ mode, setMode }) {
     setError('');
     setIsCalculating(true);
     trackEvent('calculation_started', {
+      source,
       mode: payload.mode,
       relationship_type: payload.relationshipType,
       group_size: payload.people.length,
@@ -129,6 +139,7 @@ function CalculatorWithPreview({ mode, setMode }) {
       }
 
       trackEvent('calculation_completed', {
+        source,
         mode: data.result.mode,
         relationship_type: data.result.relationshipType,
         group_size: data.result.people.length,
@@ -141,7 +152,7 @@ function CalculatorWithPreview({ mode, setMode }) {
       navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {
       setError(calculationError.message || 'Unable to calculate this result.');
-      trackEvent('calculation_failed', { mode: payload.mode, exact_mode: payload.exactMode });
+      trackEvent('calculation_failed', { source, mode: payload.mode, exact_mode: payload.exactMode });
     } finally {
       setIsCalculating(false);
     }
@@ -211,11 +222,12 @@ function CalculatorWithPreview({ mode, setMode }) {
       <div id="calculator" className="h-full w-full bg-card">
         <div className="flex flex-col gap-4 border-b border-border px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-7">
           <div>
-            <h2 className="text-xl font-semibold tracking-tight">Check compatibility</h2>
+            <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Start with two people or compare a full group.
+              {subtitle}
             </p>
           </div>
+          {showModeToggle && (
           <div className="flex justify-center sm:justify-end">
             <div className="inline-flex items-center rounded-xl bg-secondary/80 p-1 ring-1 ring-border/50">
               <button
@@ -234,6 +246,7 @@ function CalculatorWithPreview({ mode, setMode }) {
               </button>
             </div>
           </div>
+          )}
         </div>
 
         {mode === 'pair' ? (
@@ -313,7 +326,7 @@ function CalculatorWithPreview({ mode, setMode }) {
                   Calculating...
                 </>
               ) : (
-                'Check compatibility'
+                submitLabel
               )}
             </Button>
             <CalculatorTrustBadges />

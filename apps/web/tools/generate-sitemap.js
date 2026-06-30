@@ -18,6 +18,7 @@ const PUBLIC_PAGES = [
   '/terms',
   '/disclaimers',
   '/premium',
+  '/tools/crush-birthday-compatibility',
 ];
 
 function xmlEscape(value) {

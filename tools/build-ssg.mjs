@@ -216,6 +216,30 @@ function preRenderPages() {
           <p>Subscribe to our premium astrological newsletter to receive weekly forecasts, element-specific tips, and zodiac compatibility updates. Unsubscribe anytime.</p>
         </article>
       `
+    },
+    {
+      route: 'tools/crush-birthday-compatibility',
+      title: 'Crush Birthday Compatibility Calculator | Match by Birth',
+      description: 'Compare your birthday with your crush birth date. Get a private compatibility score, strengths, watch area, and conversation prompt in seconds.',
+      content: `
+        <header>
+          <p>Private birthday compatibility check</p>
+          <h1>Crush Birthday Compatibility</h1>
+          <p>Enter your birthday and theirs. See the connection pattern in seconds: where it flows, where it may catch, and what to talk about next.</p>
+          <p><a href="/tools/crush-birthday-compatibility#calculator">Open the calculator</a></p>
+        </header>
+        <article>
+          <h2>What this checks</h2>
+          <p>Match by Birth compares two birth dates to frame natural rhythm, possible friction, and one useful next conversation prompt. It is designed for quick reflection, not a relationship verdict.</p>
+          <h2>Do I need their birth time?</h2>
+          <p>No. You can start with names and birth dates only. Birth time and place are optional for people who want a more precise Sun sign check near a sign boundary.</p>
+          <h2>Will they know I checked?</h2>
+          <p>No. Match by Birth does not notify anyone. You can use the result privately or share it only if you choose to.</p>
+          <h2>Is this a relationship verdict?</h2>
+          <p>No. The score is a conversation starter. It points to strengths, possible friction, and one useful next step, but it should not replace your own judgment.</p>
+          <p>Read <a href="/how-it-works">how Match by Birth works</a> or browse the <a href="/blog">compatibility guides</a>.</p>
+        </article>
+      `
     }
   ];
 

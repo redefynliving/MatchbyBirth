@@ -25,6 +25,7 @@ const ReportPage = lazy(() => import('@/pages/ReportPage.jsx'));
 const ReportSuccess = lazy(() => import('@/pages/ReportSuccess.jsx'));
 const PremiumPage = lazy(() => import('@/pages/premium.jsx'));
 const UnsubscribePage = lazy(() => import('@/pages/UnsubscribePage.jsx'));
+const CrushBirthdayCompatibilityPage = lazy(() => import('@/pages/CrushBirthdayCompatibilityPage.jsx'));
 
 function RouteFallback() {
   return (
@@ -60,6 +61,7 @@ function App() {
               <Route path="/report" element={<ReportPage />} />
               <Route path="/premium" element={<PremiumPage />} />
               <Route path="/unsubscribe" element={<UnsubscribePage />} />
+              <Route path="/tools/crush-birthday-compatibility" element={<CrushBirthdayCompatibilityPage />} />
 
               {/* Catch-all route */}
               <Route path="*" element={
