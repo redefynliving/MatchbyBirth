@@ -40,3 +40,10 @@ test('calculator can accept page-specific copy and analytics source without chan
   assert.match(source, /defaultRelationshipType = 'love'/);
   assert.match(source, /source,/);
 });
+
+test('homepage links visitors to the crush birthday compatibility page', () => {
+  const source = read('apps/web/src/pages/HomePage.jsx');
+
+  assert.match(source, /\/tools\/crush-birthday-compatibility/);
+  assert.match(source, /Crush birthday compatibility/);
+});
