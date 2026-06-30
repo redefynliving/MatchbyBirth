@@ -56,3 +56,14 @@ test('calculator prefill helper rejects invalid or incomplete data', async () =>
     people: [],
   }), null);
 });
+
+test('Life Path tool routes completed users into the full calculator funnel', () => {
+  const page = read('apps/web/src/pages/LifePathCompatibilityPage.jsx');
+
+  assert.match(page, /useNavigate/);
+  assert.match(page, /buildCalculatorPrefill/);
+  assert.match(page, /life_path_to_full_match_clicked/);
+  assert.match(page, /Compare full birth-date match/);
+  assert.match(page, /navigate\('\/#calculator'/);
+  assert.match(page, /calculatorPrefill/);
+});

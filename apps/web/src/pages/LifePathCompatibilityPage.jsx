@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Calculator, LockKeyhole, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { trackEvent } from '@/lib/analytics.js';
+import { buildCalculatorPrefill } from '@/lib/calculator-prefill.js';
 import {
   compareLifePaths,
   lifePathMeanings,
@@ -44,6 +45,35 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
   const [secondDate, setSecondDate] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleFullMatchClick = () => {
+    const calculatorPrefill = buildCalculatorPrefill({
+      firstName,
+      firstDate,
+      secondName,
+      secondDate,
+      relationshipType: 'love',
+      source,
+    });
+
+    if (!calculatorPrefill) {
+      setError('Enter two valid birth dates before opening the full compatibility calculator.');
+      return;
+    }
+
+    trackEvent('life_path_to_full_match_clicked', {
+      source,
+      first_life_path: result?.personA?.lifePath || null,
+      second_life_path: result?.personB?.lifePath || null,
+    });
+
+    navigate('/#calculator', {
+      state: {
+        calculatorPrefill,
+      },
+    });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -166,6 +196,24 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
             <div>
               <h4 className="text-sm font-semibold text-foreground">Next step</h4>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.nextStep}</p>
+            </div>
+          </div>
+          <div className="mt-5 rounded-2xl border border-primary/15 bg-card p-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h4 className="text-base font-semibold text-foreground">Want the full birth-date compatibility reading?</h4>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  Use the same names and birth dates to see the complete Match by Birth score, strengths, watch area, and report option.
+                </p>
+              </div>
+              <Button
+                type="button"
+                onClick={handleFullMatchClick}
+                className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
+              >
+                Compare full birth-date match
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
         </section>
