@@ -73,6 +73,7 @@ function CalculatorWithPreview({
   submitLabel = 'Check compatibility',
   defaultRelationshipType = 'love',
   showModeToggle = true,
+  prefill = null,
 }) {
   const navigate = useNavigate();
   const [relationshipType, setRelationshipType] = useState(defaultRelationshipType);
@@ -81,6 +82,21 @@ function CalculatorWithPreview({
   const [exactMode, setExactMode] = useState(false);
   const [pairPeople, setPairPeople] = useState(defaultPair);
   const [groupPeople, setGroupPeople] = useState(defaultGroup);
+
+  useEffect(() => {
+    if (!prefill) return;
+
+    setMode('pair');
+    setRelationshipType(prefill.relationshipType);
+    setPairPeople(prefill.people);
+    setExactMode(false);
+
+    trackEvent('calculator_prefilled', {
+      source: prefill.source,
+      mode: prefill.mode,
+      relationship_type: prefill.relationshipType,
+    });
+  }, [prefill, setMode]);
 
   useEffect(() => {
     if (!exactMode) {
@@ -148,6 +164,16 @@ function CalculatorWithPreview({
         ) * 10,
         exact_mode: payload.exactMode,
       });
+      if (prefill && prefill.source === 'life_path_compatibility') {
+        trackEvent('life_path_full_match_completed', {
+          source: prefill.source,
+          mode: data.result.mode,
+          relationship_type: data.result.relationshipType,
+          score_band: Math.floor(
+            (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
+          ) * 10,
+        });
+      }
       const navigation = buildResultNavigation(data);
       navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {

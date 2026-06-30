@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import CalculatorWithPreview from '@/components/CalculatorWithPreview.jsx';
@@ -14,7 +14,10 @@ import {
 function HomePage() {
   const [mode, setMode] = useState('pair');
   const location = useLocation();
-  const calculatorPrefill = normalizeCalculatorPrefill(location.state?.calculatorPrefill);
+  const calculatorPrefill = useMemo(
+    () => normalizeCalculatorPrefill(location.state?.calculatorPrefill),
+    [location.state?.calculatorPrefill],
+  );
 
   useEffect(() => {
     scrollToCalculatorFromHash();

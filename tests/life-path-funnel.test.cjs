@@ -76,3 +76,13 @@ test('homepage reads calculator prefill from route state and passes it into the 
   assert.match(page, /location\.state\?\.calculatorPrefill/);
   assert.match(page, /prefill=\{calculatorPrefill\}/);
 });
+
+test('calculator accepts route-state prefill and tracks Life Path-originated completion', () => {
+  const source = read('apps/web/src/components/CalculatorWithPreview.jsx');
+
+  assert.match(source, /prefill/);
+  assert.match(source, /setPairPeople\(prefill\.people\)/);
+  assert.match(source, /setRelationshipType\(prefill\.relationshipType\)/);
+  assert.match(source, /life_path_full_match_completed/);
+  assert.match(source, /prefill\.source === 'life_path_compatibility'/);
+});
