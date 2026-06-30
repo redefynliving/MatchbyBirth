@@ -26,3 +26,4 @@ apps/web/node_modules/
 .notion-token
 .env*.local
 scripts/setup-notion.js
+.aider*
