@@ -1,0 +1,169 @@
+const lifePathProfiles = {
+  1: {
+    theme: 'independent drive',
+    strength: 'clear initiative and confidence',
+    watch: 'turning every decision into a contest',
+  },
+  2: {
+    theme: 'emotional attunement',
+    strength: 'patience, care, and partnership instincts',
+    watch: 'avoiding direct conversations to keep the peace',
+  },
+  3: {
+    theme: 'creative expression',
+    strength: 'warmth, play, humor, and social ease',
+    watch: 'scattering focus when a connection needs follow-through',
+  },
+  4: {
+    theme: 'structure and loyalty',
+    strength: 'consistency, planning, and practical devotion',
+    watch: 'becoming rigid when plans change',
+  },
+  5: {
+    theme: 'freedom and movement',
+    strength: 'curiosity, adaptability, and fresh energy',
+    watch: 'resisting routines that would make trust easier',
+  },
+  6: {
+    theme: 'care and responsibility',
+    strength: 'protectiveness, repair, and emotional generosity',
+    watch: 'over-functioning or taking on too much',
+  },
+  7: {
+    theme: 'depth and reflection',
+    strength: 'discernment, inner clarity, and meaningful conversation',
+    watch: 'withdrawing instead of naming what is happening',
+  },
+  8: {
+    theme: 'focus and ambition',
+    strength: 'direction, standards, and real-world follow-through',
+    watch: 'measuring the connection by control or achievement',
+  },
+  9: {
+    theme: 'compassion and perspective',
+    strength: 'empathy, forgiveness, and big-picture thinking',
+    watch: 'giving too much without asking for enough clarity',
+  },
+};
+
+const compatibilityPairs = {
+  '1-2': { score: 78, pattern: 'initiative meeting emotional attunement' },
+  '1-3': { score: 84, pattern: 'bold energy with creative expression' },
+  '1-4': { score: 70, pattern: 'drive meeting structure' },
+  '1-5': { score: 82, pattern: 'independence with movement' },
+  '1-6': { score: 68, pattern: 'ambition meeting responsibility' },
+  '1-7': { score: 64, pattern: 'direct action meeting reflection' },
+  '1-8': { score: 86, pattern: 'two strong wills with real focus' },
+  '1-9': { score: 72, pattern: 'personal drive meeting compassion' },
+  '2-3': { score: 82, pattern: 'emotional warmth with creative ease' },
+  '2-4': { score: 86, pattern: 'care meeting consistency' },
+  '2-5': { score: 66, pattern: 'security needs meeting freedom needs' },
+  '2-6': { score: 90, pattern: 'mutual care and partnership' },
+  '2-7': { score: 76, pattern: 'sensitivity meeting depth' },
+  '2-8': { score: 69, pattern: 'soft connection meeting strong focus' },
+  '2-9': { score: 84, pattern: 'empathy meeting compassion' },
+  '3-4': { score: 67, pattern: 'creative expression meeting practical structure' },
+  '3-5': { score: 88, pattern: 'play, variety, and social movement' },
+  '3-6': { score: 80, pattern: 'joy meeting care' },
+  '3-7': { score: 65, pattern: 'expression meeting privacy' },
+  '3-8': { score: 70, pattern: 'creative energy meeting focus and different tempo' },
+  '3-9': { score: 86, pattern: 'creative expression meeting big-hearted perspective' },
+  '4-5': { score: 62, pattern: 'stability meeting change' },
+  '4-6': { score: 88, pattern: 'loyalty, care, and practical repair' },
+  '4-7': { score: 82, pattern: 'structure meeting depth' },
+  '4-8': { score: 90, pattern: 'discipline, standards, and building power' },
+  '4-9': { score: 70, pattern: 'practical devotion meeting broad compassion' },
+  '5-6': { score: 66, pattern: 'freedom meeting responsibility' },
+  '5-7': { score: 72, pattern: 'movement meeting reflection' },
+  '5-8': { score: 74, pattern: 'risk meeting ambition' },
+  '5-9': { score: 80, pattern: 'adventure meeting openness' },
+  '6-7': { score: 78, pattern: 'care meeting solitude and depth' },
+  '6-8': { score: 84, pattern: 'responsibility meeting focus' },
+  '6-9': { score: 88, pattern: 'care meeting compassion' },
+  '7-8': { score: 73, pattern: 'private depth meeting external drive' },
+  '7-9': { score: 82, pattern: 'reflection meeting wisdom' },
+  '8-9': { score: 76, pattern: 'achievement meeting perspective' },
+};
+
+function isValidDateString(dateString) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dateString))) return false;
+
+  const [year, month, day] = dateString.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return date.getUTCFullYear() === year
+    && date.getUTCMonth() === month - 1
+    && date.getUTCDate() === day;
+}
+
+function reduceDigits(value) {
+  let current = Number(value);
+
+  while (current > 9) {
+    current = String(current)
+      .split('')
+      .reduce((total, digit) => total + Number(digit), 0);
+  }
+
+  return current;
+}
+
+export function calculateLifePathNumber(dateString) {
+  if (!isValidDateString(dateString)) return null;
+
+  const total = String(dateString)
+    .replaceAll('-', '')
+    .split('')
+    .reduce((sum, digit) => sum + Number(digit), 0);
+
+  return reduceDigits(total);
+}
+
+export function getLifePathProfile(lifePath) {
+  return lifePathProfiles[lifePath] || null;
+}
+
+export function getLifePathCompatibility(first, second) {
+  if (!lifePathProfiles[first] || !lifePathProfiles[second]) return null;
+
+  if (first === second) {
+    return {
+      score: 84,
+      pattern: `shared ${lifePathProfiles[first].theme}`,
+    };
+  }
+
+  const key = [first, second].sort((a, b) => a - b).join('-');
+  return compatibilityPairs[key] || {
+    score: 72,
+    pattern: `${lifePathProfiles[first].theme} meeting ${lifePathProfiles[second].theme}`,
+  };
+}
+
+export function compareLifePaths(firstDate, secondDate) {
+  const first = calculateLifePathNumber(firstDate);
+  const second = calculateLifePathNumber(secondDate);
+
+  if (!first || !second) return null;
+
+  const compatibility = getLifePathCompatibility(first, second);
+  const firstProfile = getLifePathProfile(first);
+  const secondProfile = getLifePathProfile(second);
+
+  return {
+    personA: {
+      lifePath: first,
+      ...firstProfile,
+    },
+    personB: {
+      lifePath: second,
+      ...secondProfile,
+    },
+    score: compatibility.score,
+    pattern: compatibility.pattern,
+    watchArea: `${firstProfile.watch}; ${secondProfile.watch}.`,
+    nextStep: `Ask what each person needs to feel steady when ${firstProfile.theme} and ${secondProfile.theme} move at a different pace.`,
+  };
+}
+
+export const lifePathMeanings = lifePathProfiles;

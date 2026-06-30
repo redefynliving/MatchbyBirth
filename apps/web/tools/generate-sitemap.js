@@ -19,6 +19,7 @@ const PUBLIC_PAGES = [
   '/disclaimers',
   '/premium',
   '/tools/crush-birthday-compatibility',
+  '/tools/life-path-compatibility',
 ];
 
 function xmlEscape(value) {

@@ -113,12 +113,19 @@ function HomePage() {
               <div className="mt-8">
                 <HomeProofBand />
               </div>
-              <div className="mt-5">
+              <div className="mt-5 flex flex-wrap justify-center gap-2">
                 <Link
                   to="/tools/crush-birthday-compatibility"
                   className="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5"
                 >
                   Crush birthday compatibility
+                  <span aria-hidden="true" className="ml-1.5">-&gt;</span>
+                </Link>
+                <Link
+                  to="/tools/life-path-compatibility"
+                  className="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5"
+                >
+                  Life path compatibility
                   <span aria-hidden="true" className="ml-1.5">-&gt;</span>
                 </Link>
               </div>

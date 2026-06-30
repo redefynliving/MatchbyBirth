@@ -240,6 +240,32 @@ function preRenderPages() {
           <p>Read <a href="/how-it-works">how Match by Birth works</a> or browse the <a href="/blog">compatibility guides</a>.</p>
         </article>
       `
+    },
+    {
+      route: 'tools/life-path-compatibility',
+      title: 'Life Path Compatibility Calculator | Match by Birth',
+      description: 'Compare two birth dates by life path number. Learn what each number means, how life path compatibility works, and what to talk about next.',
+      content: `
+        <header>
+          <p>Birth date numerology compatibility</p>
+          <h1>Life Path Compatibility Calculator</h1>
+          <p>Compare two birth dates by life path number. See each number, the relationship pattern between them, and one practical conversation prompt.</p>
+          <p><a href="/tools/life-path-compatibility#calculator">Open the calculator</a></p>
+        </header>
+        <article>
+          <h2>What is a life path number?</h2>
+          <p>A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility.</p>
+          <h2>How to calculate your life path number</h2>
+          <p>Write the full birth date as digits, add every digit together, then reduce the total to one root number from 1 to 9.</p>
+          <h2>Life path meanings</h2>
+          <p>The nine root numbers describe patterns like independence, emotional attunement, creative expression, structure, freedom, care, depth, focus, and compassion.</p>
+          <h2>Compatibility table</h2>
+          <p>Some life paths share an easy pace, some create strong but intense chemistry, and some need more translation around freedom, structure, care, or privacy.</p>
+          <h2>Responsible use</h2>
+          <p>Life path compatibility is a reflection tool, not a relationship verdict. Use it to start a clearer conversation, not to outsource judgment.</p>
+          <p>Read <a href="/how-it-works">how Match by Birth works</a> or try the <a href="/tools/crush-birthday-compatibility">crush birthday compatibility calculator</a>.</p>
+        </article>
+      `
     }
   ];
 
