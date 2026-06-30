@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CalculatorWithPreview from '@/components/CalculatorWithPreview.jsx';
 import HomeEmailCapture from '@/components/HomeEmailCapture.jsx';
 import HomeHeroBackdrop from '@/components/home/HomeHeroBackdrop.jsx';
 import HomeProofBand from '@/components/home/HomeProofBand.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { normalizeCalculatorPrefill } from '@/lib/calculator-prefill.js';
 import {
   scrollToCalculatorFromHash,
 } from '@/lib/scroll-to-calculator.js';
 
 function HomePage() {
   const [mode, setMode] = useState('pair');
+  const location = useLocation();
+  const calculatorPrefill = normalizeCalculatorPrefill(location.state?.calculatorPrefill);
+
   useEffect(() => {
     scrollToCalculatorFromHash();
   }, []);
+
+  useEffect(() => {
+    if (calculatorPrefill) {
+      setMode('pair');
+    }
+  }, [calculatorPrefill]);
 
   return (
     <>
@@ -131,7 +141,7 @@ function HomePage() {
               </div>
             </div>
 
-            <CalculatorWithPreview mode={mode} setMode={setMode} />
+            <CalculatorWithPreview mode={mode} setMode={setMode} prefill={calculatorPrefill} />
 
           </div>
         </section>

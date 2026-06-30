@@ -67,3 +67,12 @@ test('Life Path tool routes completed users into the full calculator funnel', ()
   assert.match(page, /navigate\('\/#calculator'/);
   assert.match(page, /calculatorPrefill/);
 });
+
+test('homepage reads calculator prefill from route state and passes it into the calculator', () => {
+  const page = read('apps/web/src/pages/HomePage.jsx');
+
+  assert.match(page, /useLocation/);
+  assert.match(page, /normalizeCalculatorPrefill/);
+  assert.match(page, /location\.state\?\.calculatorPrefill/);
+  assert.match(page, /prefill=\{calculatorPrefill\}/);
+});
