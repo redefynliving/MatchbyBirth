@@ -256,9 +256,12 @@ function preRenderPages() {
           <h2>What is a life path number?</h2>
           <p>A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility.</p>
           <h2>How to calculate your life path number</h2>
-          <p>Write the full birth date as digits, add every digit together, then reduce the total to one root number from 1 to 9.</p>
+          <p>Start with the full birth date, add the month, day, and year separately, reduce each part, then add those three results together. Reduce again unless the final number is 11, 22, or 33.</p>
+          <p>Example: August 24, 1995 becomes month 8, day 6, and year 6. Together that is 20, then 2 + 0 = 2.</p>
+          <h2>Master numbers</h2>
+          <p>Most life path numbers reduce to one digit, but 11, 22, and 33 are kept as master numbers when the final calculation lands there.</p>
           <h2>Life path meanings</h2>
-          <p>The nine root numbers describe patterns like independence, emotional attunement, creative expression, structure, freedom, care, depth, focus, and compassion.</p>
+          <p>The root numbers describe patterns like independence, emotional attunement, creative expression, structure, freedom, care, depth, focus, and compassion. Master numbers add a stronger layer of sensitivity, responsibility, or devoted care.</p>
           <h2>Compatibility table</h2>
           <p>Some life paths share an easy pace, some create strong but intense chemistry, and some need more translation around freedom, structure, care, or privacy.</p>
           <h2>Responsible use</h2>

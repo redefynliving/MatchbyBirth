@@ -26,13 +26,14 @@ const faqItems = [
   },
   {
     question: 'Are master numbers included?',
-    answer: 'Some numerology systems keep 11, 22, and 33 as master numbers. This quick compatibility tool reduces birth dates to the root number from 1 to 9 so the comparison stays simple and readable.',
+    answer: 'Yes. Most life path numbers reduce to one digit, but Match by Birth keeps 11, 22, and 33 when the final calculation lands on one of those master numbers.',
   },
 ];
 
 const compatibilityRows = [
   ['Usually easy', '2 and 6, 3 and 5, 4 and 8, 6 and 9', 'Shared pace, mutual support, or similar priorities.'],
   ['Strong but intense', '1 and 8, 3 and 8, 5 and 8, 7 and 8', 'The connection may have drive, attraction, or ambition, but it needs clear expectations.'],
+  ['Master number layer', '11, 22, and 33', 'These numbers keep the root-number theme but add more sensitivity, responsibility, or care to the reading.'],
   ['Needs more translation', '2 and 5, 3 and 7, 4 and 5, 5 and 6', 'Different needs can work, but both people have to name what feels safe.'],
 ];
 
@@ -267,12 +268,17 @@ function LifePathCompatibilityPage() {
             <div className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-sm">
               <h3 className="text-xl font-semibold text-foreground">How to calculate your life path number</h3>
               <ol className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-                <li><strong className="text-foreground">1.</strong> Write the full birth date as digits. Example: January 1, 1990 becomes 19900101.</li>
-                <li><strong className="text-foreground">2.</strong> Add every digit together. 1 + 9 + 9 + 0 + 0 + 1 + 0 + 1 = 21.</li>
-                <li><strong className="text-foreground">3.</strong> Reduce the total to one digit. 2 + 1 = 3, so the life path is 3.</li>
+                <li><strong className="text-foreground">1.</strong> Start with the full birth date.</li>
+                <li><strong className="text-foreground">2.</strong> Add the month, day, and year separately, then reduce each part to one digit.</li>
+                <li><strong className="text-foreground">3.</strong> Add those three results together.</li>
+                <li><strong className="text-foreground">4.</strong> Reduce again, unless the final number is 11, 22, or 33.</li>
               </ol>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Some systems keep master numbers like 11, 22, and 33. This calculator reduces to the root number from 1 to 9 so compatibility stays clear and consistent.
+                Example: August 24, 1995 becomes month 8, day 6, and year 6. Together that is 20, then 2 + 0 = 2, so the life path number is 2.
+              </p>
+              <h4 className="mt-5 text-base font-semibold text-foreground">Master numbers</h4>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Most totals reduce to a single digit. The exception is 11, 22, or 33. Numerology treats those as master numbers, so Match by Birth keeps them instead of reducing 11 to 2, 22 to 4, or 33 to 6.
               </p>
             </div>
           </div>
@@ -282,7 +288,7 @@ function LifePathCompatibilityPage() {
           <div className="content-container max-w-6xl">
             <div className="mb-8 text-center">
               <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Life path meanings</p>
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">The nine root numbers</h2>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Root numbers and master numbers</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {Object.entries(lifePathMeanings).map(([number, profile]) => (

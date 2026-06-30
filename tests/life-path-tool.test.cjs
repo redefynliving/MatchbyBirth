@@ -15,6 +15,10 @@ test('life path helper calculates and compares birth dates', async () => {
 
   assert.equal(helper.calculateLifePathNumber('1990-01-01'), 3);
   assert.equal(helper.calculateLifePathNumber('1995-12-17'), 8);
+  assert.equal(helper.calculateLifePathNumber('1995-08-24'), 2);
+  assert.equal(helper.calculateLifePathNumber('1990-01-09'), 11);
+  assert.equal(helper.calculateLifePathNumber('1993-09-09'), 22);
+  assert.equal(helper.reduceLifePathTotal(33), 33);
   assert.equal(helper.calculateLifePathNumber('not-a-date'), null);
 
   const compatible = helper.compareLifePaths('1990-01-01', '1995-12-17');
@@ -43,8 +47,10 @@ test('life path compatibility page is routed, crawlable, and in the sitemap', as
   assert.match(page, /What is a life path number/);
   assert.match(page, /How to calculate your life path number/);
   assert.match(page, /Life path meanings/);
+  assert.match(page, /Master numbers/);
   assert.match(page, /Compatibility table/);
   assert.match(page, /source="life_path_compatibility"/);
+  assert.doesNotMatch(page, /reduces birth dates to the root number from 1 to 9/);
 });
 
 test('homepage links visitors to the life path compatibility page', () => {

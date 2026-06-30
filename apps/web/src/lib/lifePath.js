@@ -44,7 +44,24 @@ const lifePathProfiles = {
     strength: 'empathy, forgiveness, and big-picture thinking',
     watch: 'giving too much without asking for enough clarity',
   },
+  11: {
+    theme: 'heightened sensitivity',
+    strength: 'intuition, emotional perception, and subtle pattern recognition',
+    watch: 'absorbing too much tension before naming what is needed',
+  },
+  22: {
+    theme: 'builder energy',
+    strength: 'turning big ideas into practical structure',
+    watch: 'carrying responsibility alone instead of letting support in',
+  },
+  33: {
+    theme: 'devoted care',
+    strength: 'compassion, guidance, and a strong instinct to help others grow',
+    watch: 'becoming the caretaker instead of staying in mutual relationship',
+  },
 };
+
+const masterNumbers = new Set([11, 22, 33]);
 
 const compatibilityPairs = {
   '1-2': { score: 78, pattern: 'initiative meeting emotional attunement' },
@@ -96,27 +113,48 @@ function isValidDateString(dateString) {
     && date.getUTCDate() === day;
 }
 
-function reduceDigits(value) {
+function digitSum(value) {
+  return String(value)
+    .split('')
+    .reduce((total, digit) => total + Number(digit), 0);
+}
+
+function reduceToRootNumber(value) {
   let current = Number(value);
 
   while (current > 9) {
-    current = String(current)
-      .split('')
-      .reduce((total, digit) => total + Number(digit), 0);
+    current = digitSum(current);
   }
 
   return current;
 }
 
+export function reduceLifePathTotal(value) {
+  let current = Number(value);
+
+  while (current > 9 && !masterNumbers.has(current)) {
+    current = digitSum(current);
+  }
+
+  return current;
+}
+
+function rootForCompatibility(lifePath) {
+  if (lifePath === 11) return 2;
+  if (lifePath === 22) return 4;
+  if (lifePath === 33) return 6;
+  return lifePath;
+}
+
 export function calculateLifePathNumber(dateString) {
   if (!isValidDateString(dateString)) return null;
 
-  const total = String(dateString)
-    .replaceAll('-', '')
-    .split('')
-    .reduce((sum, digit) => sum + Number(digit), 0);
+  const [year, month, day] = dateString.split('-');
+  const total = reduceToRootNumber(month)
+    + reduceToRootNumber(day)
+    + reduceToRootNumber(year);
 
-  return reduceDigits(total);
+  return reduceLifePathTotal(total);
 }
 
 export function getLifePathProfile(lifePath) {
@@ -126,16 +164,27 @@ export function getLifePathProfile(lifePath) {
 export function getLifePathCompatibility(first, second) {
   if (!lifePathProfiles[first] || !lifePathProfiles[second]) return null;
 
+  const firstRoot = rootForCompatibility(first);
+  const secondRoot = rootForCompatibility(second);
+  const hasMasterNumber = first !== firstRoot || second !== secondRoot;
+
   if (first === second) {
     return {
-      score: 84,
+      score: hasMasterNumber ? 86 : 84,
       pattern: `shared ${lifePathProfiles[first].theme}`,
     };
   }
 
-  const key = [first, second].sort((a, b) => a - b).join('-');
-  return compatibilityPairs[key] || {
+  const key = [firstRoot, secondRoot].sort((a, b) => a - b).join('-');
+  const base = compatibilityPairs[key] || {
     score: 72,
+    pattern: `${lifePathProfiles[first].theme} meeting ${lifePathProfiles[second].theme}`,
+  };
+
+  if (!hasMasterNumber) return base;
+
+  return {
+    score: Math.min(base.score + 2, 95),
     pattern: `${lifePathProfiles[first].theme} meeting ${lifePathProfiles[second].theme}`,
   };
 }
