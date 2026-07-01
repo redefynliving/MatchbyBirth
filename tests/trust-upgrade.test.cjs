@@ -20,6 +20,15 @@ test('how it works page explains methodology, limits, privacy, and core links', 
   assert.match(source, /Pair mode/);
   assert.match(source, /Group mode/);
   assert.match(source, /Date-only results still work/);
+  assert.match(source, /How the reading is assembled/);
+  assert.match(source, /What the score is looking at/);
+  assert.match(source, /Example reading/);
+  assert.match(source, /Alex and Jordan/);
+  assert.match(source, /natural rhythm/i);
+  assert.match(source, /emotional support/i);
+  assert.match(source, /communication pace/i);
+  assert.match(source, /watch area/i);
+  assert.match(source, /Date-only vs\. Exact Mode/);
   assert.match(source, /not a soulmate detector/i);
   assert.match(source, /stronger conversation starter/i);
   assert.match(source, /not a prediction system/i);
@@ -102,6 +111,10 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(ssg, /prerenderBlogHtml/);
   assert.match(ssg, /MBB methodology/);
   assert.match(ssg, /Date-only results still work/);
+  assert.match(ssg, /How the reading is assembled/);
+  assert.match(ssg, /What the score is looking at/);
+  assert.match(ssg, /Example reading/);
+  assert.match(ssg, /Alex and Jordan/);
   assert.match(ssg, /not a soulmate detector/i);
   assert.match(ssg, /What it does not claim/);
   assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);

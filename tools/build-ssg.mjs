@@ -94,14 +94,26 @@ function preRenderPages() {
           <p>Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a stronger conversation starter, not a prediction system, not a soulmate detector, and not a relationship verdict.</p>
         </header>
         <article>
+          <h2>How the reading is assembled</h2>
+          <p>MBB first confirms each birth-date pattern: Sun sign, seasonal rhythm, life path number, and basic timing pattern. If time and place are added, Exact Mode can refine signs near a boundary.</p>
+          <p>Next, MBB reads the relationship context. A romantic comparison, friendship check, work dynamic, family connection, and group reading are not interpreted the same way.</p>
+          <p>Then the system compares strengths and friction: where the patterns naturally support each other and where timing, pace, emotional style, or expectations may need clearer language.</p>
+          <p>The final result turns that comparison into one practical next step: a strength to trust, a watch area to name, or a conversation to have earlier.</p>
           <h2>Birth date</h2>
           <p>Date-only results still work. MBB uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.</p>
           <h2>Optional time and place</h2>
           <p>Exact Mode is optional. Birth time and selected birth place help when someone was born near a sign boundary, where the same month and day can sometimes point to different signs.</p>
           <h2>Life path number</h2>
           <p>Life path numbers add a second lens for pace, motivation, and default relationship style. They do not replace the birth-date reading; they give the result more texture.</p>
+          <h2>Date-only vs. Exact Mode</h2>
+          <p>Date-only mode is best for fast readings, most birthdays, and anyone who does not know an exact birth time. Exact Mode is best for cusp birthdays or people who want a more precise Sun sign check.</p>
           <h2>What the score means</h2>
           <p>The score is only the entry point. The interpretation around it explains strengths, watch areas, and the next conversation prompt.</p>
+          <h2>What the score is looking at</h2>
+          <p>The score looks at natural rhythm, emotional support, communication pace, chemistry and interest, and the watch area most likely to create misunderstanding if nobody names it directly.</p>
+          <h2>Example reading</h2>
+          <p>Alex and Jordan: 82 overall fit. Strength: strong natural rhythm. Watch area: planning pace. Next step: name the timeline early.</p>
+          <p>This does not mean Alex and Jordan are guaranteed to work. It means their birth-date patterns suggest enough overlap for the connection to feel easy quickly, while the useful next conversation is about timing.</p>
           <h2>Pair mode</h2>
           <p>Pair mode focuses on two people and is built for romantic, friendship, work, family, or general connection checks where the goal is to understand what may feel natural, what may need translation, and what to discuss earlier.</p>
           <h2>Group mode</h2>
