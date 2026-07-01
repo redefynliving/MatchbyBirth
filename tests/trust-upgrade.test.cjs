@@ -19,7 +19,11 @@ test('how it works page explains methodology, limits, privacy, and core links', 
   assert.match(source, /life path number/i);
   assert.match(source, /Pair mode/);
   assert.match(source, /Group mode/);
-  assert.match(source, /not a prediction system or a relationship verdict/i);
+  assert.match(source, /Date-only results still work/);
+  assert.match(source, /not a soulmate detector/i);
+  assert.match(source, /stronger conversation starter/i);
+  assert.match(source, /not a prediction system/i);
+  assert.match(source, /not a relationship verdict/i);
   assert.match(source, /Birth dates are processed/);
   assert.match(source, /\/#calculator/);
   assert.match(source, /\/blog\/what-compatibility-score-means/);
@@ -97,6 +101,8 @@ test('React and static article output include enhanced blocks and related links'
 
   assert.match(ssg, /prerenderBlogHtml/);
   assert.match(ssg, /MBB methodology/);
+  assert.match(ssg, /Date-only results still work/);
+  assert.match(ssg, /not a soulmate detector/i);
   assert.match(ssg, /What it does not claim/);
   assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);
 });

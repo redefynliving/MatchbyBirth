@@ -91,23 +91,25 @@ function preRenderPages() {
         <header>
           <p>MBB methodology</p>
           <h1>How Match by Birth works</h1>
-          <p>Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a reflection tool, not a prediction system or a relationship verdict.</p>
+          <p>Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a stronger conversation starter, not a prediction system, not a soulmate detector, and not a relationship verdict.</p>
         </header>
         <article>
           <h2>Birth date</h2>
-          <p>The core calculator starts with each person's birth date to identify sign placement, seasonal pattern, and date-based compatibility signals.</p>
+          <p>Date-only results still work. MBB uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.</p>
           <h2>Optional time and place</h2>
-          <p>MBB Exact Mode can use birth time and selected birth place when someone is close to a sign boundary and wants a more precise Sun sign check.</p>
+          <p>Exact Mode is optional. Birth time and selected birth place help when someone was born near a sign boundary, where the same month and day can sometimes point to different signs.</p>
           <h2>Life path number</h2>
-          <p>The reading can include a simple numerology layer to give the score another reflection point beyond zodiac sign alone.</p>
+          <p>Life path numbers add a second lens for pace, motivation, and default relationship style. They do not replace the birth-date reading; they give the result more texture.</p>
+          <h2>What the score means</h2>
+          <p>The score is only the entry point. The interpretation around it explains strengths, watch areas, and the next conversation prompt.</p>
           <h2>Pair mode</h2>
-          <p>Pair mode focuses on two people and is built for romantic, friendship, work, family, or general connection checks.</p>
+          <p>Pair mode focuses on two people and is built for romantic, friendship, work, family, or general connection checks where the goal is to understand what may feel natural, what may need translation, and what to discuss earlier.</p>
           <h2>Group mode</h2>
-          <p>Group mode compares every person against every other person, then summarizes the group rhythm.</p>
+          <p>Group mode compares every person against every other person, then summarizes the group rhythm. It is useful for friend groups, teams, families, and group trips because one strong or tense pair can change how the whole group feels.</p>
           <h2>Relationship timing</h2>
-          <p>Timing notes are written as conversation prompts, not guarantees. They should help people talk sooner and more clearly, not outsource judgment.</p>
+          <p>Timing notes are written as conversation prompts, not guarantees. The point is not to tell people what will happen. The point is to make the next honest conversation easier to start.</p>
           <h2>Privacy and limits</h2>
-          <p>Birth dates are processed for the calculation and are not used for identity profiling. Shared result links are opaque and do not expose raw birth details in the URL.</p>
+          <p>Birth dates are processed for the calculation and are not used for identity profiling. Optional birth time and place help refine sign placement, especially near cusp dates, but date-only readings remain available. Shared result links are opaque and do not expose raw birth details in the URL.</p>
           <p><a href="/#calculator">Try the calculator</a> or <a href="/blog/what-compatibility-score-means">read the score guide</a>.</p>
         </article>
       `
