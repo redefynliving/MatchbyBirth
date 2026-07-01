@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
@@ -89,4 +90,13 @@ test('scrollToCalculatorFromHash handles a calculator link after the homepage mo
   assert.equal(didScroll, true);
   assert.equal(calls.length, 1);
   assert.equal(calls[0].top, 487);
+});
+
+test('global CSS does not force smooth scrolling for every scroll operation', () => {
+  const css = fs.readFileSync(
+    path.join(__dirname, '../apps/web/src/index.css'),
+    'utf8',
+  );
+
+  assert.doesNotMatch(css, /html\s*\{\s*scroll-behavior:\s*smooth;\s*\}/);
 });
