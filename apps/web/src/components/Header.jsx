@@ -11,6 +11,7 @@ function Header() {
 
   const navLinks = [
     { path: '/how-it-works', label: 'How It Works' },
+    { path: '/about', label: 'About' },
     { path: '/faq', label: 'FAQ' },
     { path: '/blog', label: 'Blog' },
   ];

@@ -41,6 +41,8 @@ test('how it works page explains methodology, limits, privacy, and core links', 
 
 test('about page uses grounded trust language and removes overclaims', () => {
   const source = read('apps/web/src/pages/AboutPage.jsx');
+  const header = read('apps/web/src/components/Header.jsx');
+  const footer = read('apps/web/src/components/Footer.jsx');
 
   assert.match(source, /Who it is for/);
   assert.match(source, /AJ FOX/);
@@ -50,6 +52,8 @@ test('about page uses grounded trust language and removes overclaims', () => {
   assert.match(source, /What it does not claim/);
   assert.match(source, /How privacy works/);
   assert.match(source, /support@matchbybirth\.com/);
+  assert.match(header, /\{ path: '\/about', label: 'About' \}/);
+  assert.match(footer, /to="\/about"[^>]*>About<\/Link>/);
   assert.doesNotMatch(source, /Astrology meets science/i);
   assert.doesNotMatch(source, /oldest compatibility system/i);
   assert.doesNotMatch(source, /certified experts|international astrological registries|Sarah Miller/i);
