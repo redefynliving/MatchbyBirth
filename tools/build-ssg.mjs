@@ -62,16 +62,16 @@ function preRenderPages() {
     {
       route: 'about',
       title: 'About Match by Birth | Compatibility Tool',
-      description: 'Learn about AJ Fox, why Match by Birth was created, what the compatibility calculator does, what it does not claim, and how birth details are handled.',
+      description: 'Learn about AJ FOX, why Match by Birth was created, what the compatibility calculator does, what it does not claim, and how birth details are handled.',
       content: `
         <header>
           <h1>About Match by Birth</h1>
           <p>A clearer way to talk about compatibility.</p>
         </header>
         <article>
-          <p>Match by Birth was created by AJ Fox as a private compatibility tool for people who want a quick, readable way to compare birth patterns. It turns birth details into strengths, watch areas, and conversation prompts you can actually use.</p>
+          <p>Match by Birth was created by AJ FOX as a private compatibility tool for people who want a quick, readable way to compare birth patterns. It turns birth details into strengths, watch areas, and conversation prompts you can actually use.</p>
           <h2>Who writes Match by Birth</h2>
-          <p>Match by Birth is written and edited by AJ Fox. AJ has a Leo Sun, Cancer Moon, and Libra Rising, which is part of why the site is built around both instinct and explanation.</p>
+          <p>Match by Birth is written and edited by AJ FOX. AJ has a Leo Sun, Cancer Moon, and Libra Rising, which is part of why the site is built around both instinct and explanation.</p>
           <p>Before building the calculator, AJ noticed a strange pattern: people who reminded him of his sister often felt like May birthdays. Astrology and numerology later gave that habit more language.</p>
           <h2>Who it is for</h2>
           <p>Match by Birth is for people comparing romantic partners, friendships, families, work relationships, or groups.</p>
@@ -357,7 +357,7 @@ function preRenderZodiacPairings(template) {
           <header>
             <span class="category-tag" style="font-size: 10px; font-weight: bold; text-transform: uppercase; tracking-wider; background: #6c4de6/10; color: #6c4de6; padding: 4px 8px; border-radius: 12px;">Zodiac Compatibility Deep Dive</span>
             <h1 style="font-size: 2.25rem; font-weight: 800; color: #1c0e35; margin: 12px 0 6px;">${s1.label} and ${s2.label} Compatibility</h1>
-            <p class="post-meta">By AJ Fox</p>
+            <p class="post-meta">By AJ FOX</p>
           </header>
           <div>
             <p>Are <strong>${s1.label}</strong> and <strong>${s2.label}</strong> compatible in love, friendship, and life? In classical synastry, compatibility is often discussed through elements, planetary rulers, and modality combinations. Below is a practical compatibility breakdown of how this pairing may function.</p>

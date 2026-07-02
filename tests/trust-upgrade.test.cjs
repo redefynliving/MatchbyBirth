@@ -43,7 +43,7 @@ test('about page uses grounded trust language and removes overclaims', () => {
   const source = read('apps/web/src/pages/AboutPage.jsx');
 
   assert.match(source, /Who it is for/);
-  assert.match(source, /AJ Fox/);
+  assert.match(source, /AJ FOX/);
   assert.match(source, /Leo Sun, Cancer Moon, and Libra Rising/);
   assert.match(source, /May birthdays/);
   assert.match(source, /What the tool does/);
@@ -84,7 +84,7 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   assert.equal(article.description, post.description);
   assert.equal(article.mainEntityOfPage['@id'], `https://matchbybirth.com/blog/${post.slug}`);
   assert.equal(article.author['@type'], 'Person');
-  assert.equal(article.author.name, 'AJ Fox');
+  assert.equal(article.author.name, 'AJ FOX');
   assert.equal(article.author.url, 'https://matchbybirth.com/about');
   assert.equal(article.publisher.name, 'Match by Birth');
   assert.equal(breadcrumbs['@type'], 'BreadcrumbList');
@@ -129,6 +129,6 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(ssg, /Alex and Jordan/);
   assert.match(ssg, /not a soulmate detector/i);
   assert.match(ssg, /What it does not claim/);
-  assert.match(ssg, /AJ Fox/);
+  assert.match(ssg, /AJ FOX/);
   assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);
 });

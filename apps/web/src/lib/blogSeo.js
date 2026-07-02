@@ -2,7 +2,7 @@ import { getPostCategory } from '../data/blogCategories.js';
 
 export const SITE_URL = 'https://matchbybirth.com';
 export const DEFAULT_AUTHOR = {
-  name: 'AJ Fox',
+  name: 'AJ FOX',
   url: `${SITE_URL}/about`,
 };
 

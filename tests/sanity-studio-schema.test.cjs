@@ -22,7 +22,7 @@ test('Sanity Studio defines a structured blog publishing schema', () => {
   assert.match(postSchema, /name: 'title'/);
   assert.match(postSchema, /name: 'slug'/);
   assert.match(postSchema, /name: 'author'/);
-  assert.match(postSchema, /initialValue: 'AJ Fox'/);
+  assert.match(postSchema, /initialValue: 'AJ FOX'/);
   assert.match(postSchema, /name: 'category'/);
   assert.match(postSchema, /name: 'metaDescription'/);
   assert.match(postSchema, /name: 'body'/);

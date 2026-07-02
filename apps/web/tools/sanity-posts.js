@@ -6,7 +6,7 @@ import path from 'node:path';
 const DEFAULT_PROJECT_ID = '4qj4p6px';
 const DEFAULT_DATASET = 'production';
 const DEFAULT_API_VERSION = '2025-01-01';
-const DEFAULT_AUTHOR = 'AJ Fox';
+const DEFAULT_AUTHOR = 'AJ FOX';
 
 const CATEGORY_KEYS = new Set([
   'sign-guide',

@@ -229,7 +229,7 @@ function BlogPostPage() {
                 <h4 className="font-semibold text-foreground text-sm">Written by {authorName}</h4>
                 <p className="text-xs text-primary font-medium mb-1">Creator of Match by Birth</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  AJ Fox writes about birth dates, zodiac signs, life path numbers, and the patterns people notice before they have language for them. Articles are for reflection and conversation, not professional advice.
+                  AJ FOX writes about birth dates, zodiac signs, life path numbers, and the patterns people notice before they have language for them. Articles are for reflection and conversation, not professional advice.
                 </p>
               </div>
             </div>

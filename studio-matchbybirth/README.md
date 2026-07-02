@@ -27,7 +27,7 @@ http://localhost:3333/
 2. Create a blog post
    - Go to `Blog Post`.
    - Add a clear title, slug, category, topic, publish date, author, excerpt, and meta description.
-   - Use `AJ Fox` as the public author unless you intentionally want a different byline.
+   - Use `AJ FOX` as the public author unless you intentionally want a different byline.
    - Write the main article in `Article body`.
    - Use headings, short paragraphs, and examples. Avoid generic filler.
 

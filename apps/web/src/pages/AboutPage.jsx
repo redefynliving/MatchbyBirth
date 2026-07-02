@@ -10,7 +10,7 @@ function AboutPage() {
         <title>About Match by Birth | Compatibility Tool</title>
         <meta
           name="description"
-          content="Learn about AJ Fox, why Match by Birth was created, what the compatibility calculator does, what it does not claim, and how birth details are handled."
+          content="Learn about AJ FOX, why Match by Birth was created, what the compatibility calculator does, what it does not claim, and how birth details are handled."
         />
         <link rel="canonical" href="https://matchbybirth.com/about" />
       </Helmet>
@@ -29,7 +29,7 @@ function AboutPage() {
                 A clearer way to talk about compatibility.
               </h1>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                Match by Birth was created by AJ Fox as a private compatibility tool for people who want a quick, readable way to compare birth patterns. It turns birth details into strengths, watch areas, and conversation prompts you can actually use.
+                Match by Birth was created by AJ FOX as a private compatibility tool for people who want a quick, readable way to compare birth patterns. It turns birth details into strengths, watch areas, and conversation prompts you can actually use.
               </p>
               <div className="mt-6">
                 <Link
@@ -46,7 +46,7 @@ function AboutPage() {
               <section className="border-t border-border pt-8">
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground">Who writes Match by Birth</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  Match by Birth is written and edited by AJ Fox. AJ has a Leo Sun, Cancer Moon, and Libra Rising, which is part of why the site is built around both instinct and explanation. Before building the calculator, AJ noticed a strange pattern: people who reminded him of his sister often felt like May birthdays. He would guess May before knowing their actual birthday, not because there was a system yet, but because the personality pattern felt familiar.
+                  Match by Birth is written and edited by AJ FOX. AJ has a Leo Sun, Cancer Moon, and Libra Rising, which is part of why the site is built around both instinct and explanation. Before building the calculator, AJ noticed a strange pattern: people who reminded him of his sister often felt like May birthdays. He would guess May before knowing their actual birthday, not because there was a system yet, but because the personality pattern felt familiar.
                 </p>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   Astrology and numerology later gave that habit more language. Match by Birth grew out of that same question: why do some people feel familiar before you can explain why?

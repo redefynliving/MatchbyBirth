@@ -167,7 +167,7 @@ function HomePage() {
               </p>
 
               <div className="border-t border-border/80 pt-4 flex flex-wrap justify-between items-center text-xs text-muted-foreground gap-2">
-                <span>Creator and editor: <strong>AJ Fox</strong></span>
+                <span>Creator and editor: <strong>AJ FOX</strong></span>
                 <span>Last updated: <strong>June 2026</strong></span>
               </div>
             </div>

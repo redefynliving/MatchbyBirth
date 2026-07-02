@@ -13,7 +13,7 @@ const fixtureDocument = {
   slug: { current: 'cancer-moon-compatibility' },
   status: 'published',
   publishedAt: '2026-06-27T02:30:00.000Z',
-  author: 'AJ Fox',
+  author: 'AJ FOX',
   category: {
     title: 'Moon Sign Compatibility',
     slug: { current: 'moon-signs' },
@@ -75,7 +75,7 @@ test('normalizes a published Sanity post into the Match by Birth blog shape', as
   assert.equal(post.slug, 'cancer-moon-compatibility');
   assert.equal(post.title, 'Cancer Moon Compatibility: Love, Friends, and Groups');
   assert.equal(post.date, '2026-06-27');
-  assert.equal(post.author, 'AJ Fox');
+  assert.equal(post.author, 'AJ FOX');
   assert.equal(post.authorUrl, 'https://matchbybirth.com/about');
   assert.equal(post.category, 'moon-signs');
   assert.deepEqual(post.tags, ['moon-signs', 'zodiac', 'sanity']);
