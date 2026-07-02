@@ -6,6 +6,7 @@ import path from 'node:path';
 const DEFAULT_PROJECT_ID = '4qj4p6px';
 const DEFAULT_DATASET = 'production';
 const DEFAULT_API_VERSION = '2025-01-01';
+const DEFAULT_AUTHOR = 'AJ Fox';
 
 const CATEGORY_KEYS = new Set([
   'sign-guide',
@@ -180,6 +181,8 @@ export function normalizeSanityBlogPost(document) {
     slug,
     title: document.title,
     date,
+    author: document.author || DEFAULT_AUTHOR,
+    authorUrl: 'https://matchbybirth.com/about',
     description,
     tags: [category, topicTag, 'sanity'],
     category,
@@ -216,6 +219,7 @@ export function buildSanityPostsQuery() {
     slug,
     status,
     publishedAt,
+    author,
     topic,
     excerpt,
     metaDescription,

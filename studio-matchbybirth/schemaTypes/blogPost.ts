@@ -61,6 +61,14 @@ export const blogPost = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'author',
+      title: 'Author',
+      type: 'string',
+      group: 'content',
+      initialValue: 'AJ Fox',
+      validation: (rule) => rule.required().min(2).max(80),
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'reference',

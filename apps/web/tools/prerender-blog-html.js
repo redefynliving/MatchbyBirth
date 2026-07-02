@@ -8,6 +8,7 @@ import {
   buildArticleSchema,
   buildBreadcrumbSchema,
   canonicalUrl,
+  DEFAULT_AUTHOR,
   getRelatedPosts,
 } from '../src/lib/blogSeo.js';
 
@@ -92,6 +93,7 @@ function articleCard(post) {
   return `
     <article class="static-post-card">
       <h2><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a></h2>
+      <p>By ${escapeHtml(post.author || DEFAULT_AUTHOR.name)}</p>
       <p>${escapeHtml(post.description)}</p>
     </article>
   `;
@@ -206,12 +208,14 @@ export function renderCategoryHtml({ template, category, allPosts = posts } = {}
 export function renderArticleHtml({ template, post } = {}) {
   const description = post.description || stripHtml(post.content).slice(0, 155);
   const relatedPosts = getRelatedPosts(post, posts);
+  const authorName = post.author || DEFAULT_AUTHOR.name;
   const body = `
     <main class="static-blog-shell">
       <article>
         <p>Match by Birth Guide</p>
         <h1>${escapeHtml(post.title)}</h1>
         <p>${escapeHtml(new Date(post.date).toLocaleDateString('en-US'))}</p>
+        <p>By <a href="/about">${escapeHtml(authorName)}</a></p>
         <p>${escapeHtml(description)}</p>
         ${post.heroImage?.url ? `<img class="static-hero-image" src="${escapeHtml(post.heroImage.url)}" alt="${escapeHtml(post.heroImage.alt || '')}" />` : ''}
         <div class="static-article-body">${post.content}</div>

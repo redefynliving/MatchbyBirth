@@ -6,6 +6,8 @@ const sanityPosts = [
     "slug": "cancer-moon-compatibility",
     "title": "Cancer Moon Compatibility: What This Placement Needs in Love, Friendship, and Groups",
     "date": "2026-06-26",
+    "author": "AJ Fox",
+    "authorUrl": "https://matchbybirth.com/about",
     "description": "Learn how Cancer Moon affects love, friendship, emotional needs, and group compatibility, plus when birth time improves accuracy.",
     "tags": [
       "moon-signs",

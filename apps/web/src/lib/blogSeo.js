@@ -1,6 +1,10 @@
 import { getPostCategory } from '../data/blogCategories.js';
 
 export const SITE_URL = 'https://matchbybirth.com';
+export const DEFAULT_AUTHOR = {
+  name: 'AJ Fox',
+  url: `${SITE_URL}/about`,
+};
 
 export function canonicalUrl(route) {
   const normalizedRoute = route === '/'
@@ -11,6 +15,9 @@ export function canonicalUrl(route) {
 
 export function buildArticleSchema(post) {
   const url = canonicalUrl(`/blog/${post.slug}`);
+  const authorName = post.author || DEFAULT_AUTHOR.name;
+  const authorUrl = post.authorUrl || DEFAULT_AUTHOR.url;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -21,9 +28,9 @@ export function buildArticleSchema(post) {
     articleSection: post.category || getPostCategory(post),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     author: {
-      '@type': 'Organization',
-      name: 'Match by Birth',
-      url: SITE_URL,
+      '@type': 'Person',
+      name: authorName,
+      url: authorUrl,
     },
     publisher: {
       '@type': 'Organization',

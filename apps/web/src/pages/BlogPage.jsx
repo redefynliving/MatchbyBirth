@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
 import { Calendar, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
+import { DEFAULT_AUTHOR } from '@/lib/blogSeo.js';
 
 const POSTS_PER_PAGE = 6;
 
@@ -101,7 +102,10 @@ function BlogPage() {
                       {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                   </div>
-                  
+                  <p className="mb-3 text-[11px] font-medium text-muted-foreground">
+                    By {post.author || DEFAULT_AUTHOR.name}
+                  </p>
+
                   <h3 className="text-xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors mb-3">
                     <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>

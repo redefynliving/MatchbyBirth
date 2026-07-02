@@ -43,6 +43,9 @@ test('about page uses grounded trust language and removes overclaims', () => {
   const source = read('apps/web/src/pages/AboutPage.jsx');
 
   assert.match(source, /Who it is for/);
+  assert.match(source, /AJ Fox/);
+  assert.match(source, /Leo Sun, Cancer Moon, and Libra Rising/);
+  assert.match(source, /May birthdays/);
   assert.match(source, /What the tool does/);
   assert.match(source, /What it does not claim/);
   assert.match(source, /How privacy works/);
@@ -80,6 +83,9 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   assert.equal(article.headline, post.title);
   assert.equal(article.description, post.description);
   assert.equal(article.mainEntityOfPage['@id'], `https://matchbybirth.com/blog/${post.slug}`);
+  assert.equal(article.author['@type'], 'Person');
+  assert.equal(article.author.name, 'AJ Fox');
+  assert.equal(article.author.url, 'https://matchbybirth.com/about');
   assert.equal(article.publisher.name, 'Match by Birth');
   assert.equal(breadcrumbs['@type'], 'BreadcrumbList');
   assert.equal(breadcrumbs.itemListElement.length, 3);
@@ -91,11 +97,16 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
 
 test('React and static article output include enhanced blocks and related links', () => {
   const reactPage = read('apps/web/src/pages/BlogPostPage.jsx');
+  const blogPage = read('apps/web/src/pages/BlogPage.jsx');
   const staticRenderer = read('apps/web/tools/prerender-blog-html.js');
   const ssg = read('tools/build-ssg.mjs');
 
+  assert.match(blogPage, /DEFAULT_AUTHOR/);
+  assert.match(blogPage, /By \{post\.author \|\| DEFAULT_AUTHOR\.name\}/);
   assert.match(reactPage, /buildArticleSchema/);
   assert.match(reactPage, /buildBreadcrumbSchema/);
+  assert.match(reactPage, /Written by \{authorName\}/);
+  assert.match(reactPage, /Creator of Match by Birth/);
   assert.match(reactPage, /Quick takeaways/);
   assert.match(reactPage, /Comparison guide/);
   assert.match(reactPage, /Example scenarios/);
@@ -105,6 +116,7 @@ test('React and static article output include enhanced blocks and related links'
 
   assert.match(staticRenderer, /buildArticleSchema/);
   assert.match(staticRenderer, /buildBreadcrumbSchema/);
+  assert.match(staticRenderer, /By \$\{escapeHtml\(post\.author \|\| DEFAULT_AUTHOR\.name\)\}/);
   assert.match(staticRenderer, /static-related/);
   assert.match(staticRenderer, /Keep reading/);
 
@@ -117,5 +129,6 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(ssg, /Alex and Jordan/);
   assert.match(ssg, /not a soulmate detector/i);
   assert.match(ssg, /What it does not claim/);
+  assert.match(ssg, /AJ Fox/);
   assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);
 });

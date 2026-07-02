@@ -9,6 +9,7 @@ import {
   buildArticleSchema,
   buildBreadcrumbSchema,
   canonicalUrl,
+  DEFAULT_AUTHOR,
   getRelatedPosts,
   hasEnhancedContent,
 } from '@/lib/blogSeo.js';
@@ -105,6 +106,9 @@ function BlogPostPage() {
     );
   }
 
+  const authorName = post.author || DEFAULT_AUTHOR.name;
+  const authorUrl = post.authorUrl || DEFAULT_AUTHOR.url;
+
   return (
     <>
       <Helmet>
@@ -149,7 +153,12 @@ function BlogPostPage() {
                   </time>
                 </div>
                 <span>•</span>
-                <span>Published by <strong>Match by Birth</strong></span>
+                <span>
+                  By{' '}
+                  <Link to={authorUrl.replace('https://matchbybirth.com', '')} className="font-semibold text-foreground hover:text-primary">
+                    {authorName}
+                  </Link>
+                </span>
               </div>
             </header>
 
@@ -214,13 +223,13 @@ function BlogPostPage() {
             {/* E-E-A-T Publisher Attribution Card */}
             <div className="mt-10 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center gap-4 text-left">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg">
-                M
+                AJ
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm">Published by Match by Birth</h4>
-                <p className="text-xs text-primary font-medium mb-1">Compatibility guides and calculator notes</p>
+                <h4 className="font-semibold text-foreground text-sm">Written by {authorName}</h4>
+                <p className="text-xs text-primary font-medium mb-1">Creator of Match by Birth</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Match by Birth publishes practical compatibility guides for reflection and conversation. Articles are informational and should not be treated as relationship, medical, legal, or financial advice.
+                  AJ Fox writes about birth dates, zodiac signs, life path numbers, and the patterns people notice before they have language for them. Articles are for reflection and conversation, not professional advice.
                 </p>
               </div>
             </div>

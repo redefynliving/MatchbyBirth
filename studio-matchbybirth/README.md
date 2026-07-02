@@ -26,7 +26,8 @@ http://localhost:3333/
 
 2. Create a blog post
    - Go to `Blog Post`.
-   - Add a clear title, slug, category, topic, publish date, excerpt, and meta description.
+   - Add a clear title, slug, category, topic, publish date, author, excerpt, and meta description.
+   - Use `AJ Fox` as the public author unless you intentionally want a different byline.
    - Write the main article in `Article body`.
    - Use headings, short paragraphs, and examples. Avoid generic filler.
 
@@ -51,11 +52,6 @@ http://localhost:3333/
 
 ## Going Live
 
-The Studio saves content in Sanity. The website still needs the next integration step before Sanity posts appear on `matchbybirth.com/blog`:
+The Studio saves content in Sanity. The website syncs published Sanity posts during the web build and includes them in blog pages, sitemap output, and static HTML.
 
-1. Add Sanity read credentials or public dataset config to the web app.
-2. Fetch published posts at build time.
-3. Merge Sanity posts into the sitemap and static HTML renderer.
-4. Add a Vercel Deploy Hook so publishing in Sanity rebuilds the live site.
-
-Until that integration is added, this Studio is the editor and content database, but the live website will not automatically show new Sanity posts.
+After publishing a post, trigger a Vercel deploy or use the configured Vercel Deploy Hook so the live site rebuilds with the latest Sanity content.
