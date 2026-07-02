@@ -274,7 +274,7 @@ export const blogPost = defineType({
       rows: 4,
       group: 'content',
       description:
-        'Internal notes only. Keep claims responsible: MBB Exact Mode improves Sun sign placement, not relationship certainty.',
+        'Internal notes only. Keep claims responsible: Match by Birth Exact Mode improves Sun sign placement, not relationship certainty.',
     }),
   ],
   preview: {

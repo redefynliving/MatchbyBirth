@@ -18,7 +18,7 @@ function HowItWorksPage() {
     {
       title: 'Birth date',
       icon: CalendarDays,
-      body: 'Date-only results still work. MBB uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.',
+      body: 'Date-only results still work. Match by Birth uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.',
     },
     {
       title: 'Optional time and place',
@@ -46,7 +46,7 @@ function HowItWorksPage() {
   const assemblySteps = [
     {
       title: '1. Confirm the birth-date pattern',
-      body: 'MBB starts with each date and identifies the Sun sign, seasonal rhythm, and life path number. If time and place are added, Exact Mode can refine signs near a boundary.',
+      body: 'Match by Birth starts with each date and identifies the Sun sign, seasonal rhythm, and life path number. If time and place are added, Exact Mode can refine signs near a boundary.',
     },
     {
       title: '2. Read the relationship context',
@@ -115,7 +115,7 @@ function HowItWorksPage() {
 
           <header className="max-w-3xl mb-14">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-              MBB methodology
+              Match by Birth methodology
             </p>
             <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
               How Match by Birth works
@@ -165,7 +165,7 @@ function HowItWorksPage() {
           <section className="mb-14 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">Date-only vs. Exact Mode</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Most people can use MBB with just names and birth dates. Time and place are optional because they matter most near sign boundaries, not because every reading requires them.
+              Most people can use Match by Birth with just names and birth dates. Time and place are optional because they matter most near sign boundaries, not because every reading requires them.
             </p>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {exactModeRows.map((row) => (
@@ -203,7 +203,7 @@ function HowItWorksPage() {
           <section className="mb-14 rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground">What the score is looking at</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              MBB does not treat the score as one magic number. The overall score is a summary of smaller relationship signals that are easier to talk about.
+              Match by Birth does not treat the score as one magic number. The overall score is a summary of smaller relationship signals that are easier to talk about.
             </p>
             <div className="mt-5 grid gap-3">
               {scoreDimensions.map((dimension) => (
@@ -248,7 +248,7 @@ function HowItWorksPage() {
                   The watch area matters because one person may want to move faster while the other needs more planning time. The useful takeaway is not "yes" or "no." The useful takeaway is: talk about timing before it becomes tension.
                 </p>
                 <p>
-                  That is the shape of a good MBB result: a clear strength, a real friction point, and one practical conversation prompt.
+                  That is the shape of a good Match by Birth result: a clear strength, a real friction point, and one practical conversation prompt.
                 </p>
               </div>
             </div>

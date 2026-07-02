@@ -92,18 +92,18 @@ function preRenderPages() {
       description: 'Learn how Match by Birth uses birth dates, optional birth time and place, zodiac signs, life path numbers, pair mode, and group mode to frame compatibility responsibly.',
       content: `
         <header>
-          <p>MBB methodology</p>
+          <p>Match by Birth methodology</p>
           <h1>How Match by Birth works</h1>
           <p>Match by Birth turns birth details into a compatibility snapshot: where a connection may feel easy, where it may catch, and what is worth talking about next. It is a stronger conversation starter, not a prediction system, not a soulmate detector, and not a relationship verdict.</p>
         </header>
         <article>
           <h2>How the reading is assembled</h2>
-          <p>MBB first confirms each birth-date pattern: Sun sign, seasonal rhythm, life path number, and basic timing pattern. If time and place are added, Exact Mode can refine signs near a boundary.</p>
-          <p>Next, MBB reads the relationship context. A romantic comparison, friendship check, work dynamic, family connection, and group reading are not interpreted the same way.</p>
+          <p>Match by Birth first confirms each birth-date pattern: Sun sign, seasonal rhythm, life path number, and basic timing pattern. If time and place are added, Exact Mode can refine signs near a boundary.</p>
+          <p>Next, Match by Birth reads the relationship context. A romantic comparison, friendship check, work dynamic, family connection, and group reading are not interpreted the same way.</p>
           <p>Then the system compares strengths and friction: where the patterns naturally support each other and where timing, pace, emotional style, or expectations may need clearer language.</p>
           <p>The final result turns that comparison into one practical next step: a strength to trust, a watch area to name, or a conversation to have earlier.</p>
           <h2>Birth date</h2>
-          <p>Date-only results still work. MBB uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.</p>
+          <p>Date-only results still work. Match by Birth uses each calendar birth date to read Sun sign placement, seasonal rhythm, life path number, and the basic timing pattern between people.</p>
           <h2>Optional time and place</h2>
           <p>Exact Mode is optional. Birth time and selected birth place help when someone was born near a sign boundary, where the same month and day can sometimes point to different signs.</p>
           <h2>Life path number</h2>

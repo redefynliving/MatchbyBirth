@@ -45,8 +45,8 @@ http://localhost:3333/
 ## Writing Rules
 
 - Keep Match by Birth grounded and responsible.
-- It is fine to say MBB Exact Mode can improve Sun sign placement when birth date, time, and selected birth place are provided.
-- Do not say MBB guarantees compatibility, predicts relationship success, or proves love.
+- It is fine to say Match by Birth Exact Mode can improve Sun sign placement when birth date, time, and selected birth place are provided.
+- Do not say Match by Birth guarantees compatibility, predicts relationship success, or proves love.
 - Prefer specific examples over broad astrology claims.
 - Every article should link readers back to the calculator or a related guide.
 

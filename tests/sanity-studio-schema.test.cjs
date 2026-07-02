@@ -29,7 +29,7 @@ test('Sanity Studio defines a structured blog publishing schema', () => {
   assert.match(postSchema, /name: 'quickTakeaways'/);
   assert.match(postSchema, /name: 'faq'/);
   assert.match(postSchema, /name: 'relatedPosts'/);
-  assert.match(postSchema, /MBB Exact Mode/);
+  assert.match(postSchema, /Match by Birth Exact Mode/);
   assert.match(categorySchema, /name: 'category'/);
   assert.match(categorySchema, /name: 'slug'/);
 });

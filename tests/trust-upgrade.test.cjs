@@ -13,7 +13,7 @@ function read(relativePath) {
 test('how it works page explains methodology, limits, privacy, and core links', () => {
   const source = read('apps/web/src/pages/HowItWorksPage.jsx');
 
-  assert.match(source, /MBB methodology/);
+  assert.match(source, /Match by Birth methodology/);
   assert.match(source, /birth date/i);
   assert.match(source, /Optional time and place/);
   assert.match(source, /life path number/i);
@@ -125,7 +125,7 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(staticRenderer, /Keep reading/);
 
   assert.match(ssg, /prerenderBlogHtml/);
-  assert.match(ssg, /MBB methodology/);
+  assert.match(ssg, /Match by Birth methodology/);
   assert.match(ssg, /Date-only results still work/);
   assert.match(ssg, /How the reading is assembled/);
   assert.match(ssg, /What the score is looking at/);
