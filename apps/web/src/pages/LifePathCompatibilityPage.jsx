@@ -8,13 +8,15 @@ import { Label } from '@/components/ui/label';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildCalculatorPrefill } from '@/lib/calculator-prefill.js';
 import {
+  calculateLifePathNumber,
   compareLifePaths,
+  getLifePathProfile,
   lifePathMeanings,
 } from '@/lib/lifePath.js';
 
 const pageUrl = 'https://matchbybirth.com/tools/life-path-compatibility';
-const pageTitle = 'Life Path Compatibility Calculator | Match by Birth';
-const pageDescription = 'Compare two birth dates by life path number. Learn what each number means, how life path compatibility works, and what to talk about next.';
+const pageTitle = 'Life Path Number Calculator & Compatibility | Match by Birth';
+const pageDescription = 'Find your life path number or compare two birth dates. Learn master numbers, life path meanings, compatibility patterns, and what to talk about next.';
 
 const faqItems = [
   {
@@ -38,7 +40,14 @@ const compatibilityRows = [
   ['Needs more translation', '2 and 5, 3 and 7, 4 and 5, 5 and 6', 'Different needs can work, but both people have to name what feels safe.'],
 ];
 
+const relatedGuides = [
+  ['Life Path Number Compatibility Guide', '/blog/life-path-number-compatibility-guide'],
+  ['Birth Date Compatibility vs. Zodiac Compatibility', '/blog/birth-date-compatibility-vs-zodiac-compatibility'],
+  ['How to Use Compatibility Results Responsibly', '/blog/how-to-use-compatibility-results-responsibly'],
+];
+
 function LifePathTool({ source = 'life_path_compatibility' }) {
+  const [mode, setMode] = useState('single');
   const [firstName, setFirstName] = useState('');
   const [secondName, setSecondName] = useState('');
   const [firstDate, setFirstDate] = useState('');
@@ -79,6 +88,33 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
     event.preventDefault();
     setError('');
 
+    if (mode === 'single') {
+      const lifePath = calculateLifePathNumber(firstDate);
+      const profile = getLifePathProfile(lifePath);
+      trackEvent('life_path_single_started', { source });
+
+      if (!lifePath || !profile) {
+        setResult(null);
+        setError('Enter a valid birth date to find your life path number.');
+        trackEvent('life_path_single_failed', { source });
+        return;
+      }
+
+      setResult({
+        type: 'single',
+        person: {
+          name: firstName,
+          lifePath,
+          ...profile,
+        },
+      });
+      trackEvent('life_path_single_completed', {
+        source,
+        life_path: lifePath,
+      });
+      return;
+    }
+
     const comparison = compareLifePaths(firstDate, secondDate);
     trackEvent('life_path_tool_started', { source });
 
@@ -89,7 +125,10 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
       return;
     }
 
-    setResult(comparison);
+    setResult({
+      type: 'compare',
+      ...comparison,
+    });
     trackEvent('life_path_tool_completed', {
       source,
       score_band: Math.floor(comparison.score / 10) * 10,
@@ -105,15 +144,42 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
           <Calculator className="h-5 w-5" />
         </span>
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">Compare two life paths</h2>
-          <p className="mt-1 text-sm text-muted-foreground">Two birth dates in. Life path numbers, compatibility pattern, and one next step out.</p>
+          <h2 className="text-xl font-semibold tracking-tight">Life Path Number Calculator</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Find your number first, then compare two people when you are ready.</p>
         </div>
+      </div>
+
+      <div className="mb-5 grid rounded-2xl bg-muted/40 p-1 text-sm font-semibold text-muted-foreground sm:grid-cols-2">
+        {[
+          ['single', 'Find my number'],
+          ['compare', 'Compare two people'],
+        ].map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => {
+              setMode(value);
+              setResult(null);
+              setError('');
+            }}
+            className={`rounded-xl px-4 py-2.5 transition-colors ${
+              mode === value
+                ? 'bg-card text-foreground shadow-sm'
+                : 'hover:text-foreground'
+            }`}
+            aria-pressed={mode === value}
+          >
+            {label}
+          </button>
+        ))}
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="life-path-name-a" className="text-xs text-muted-foreground">First name or nickname</Label>
+            <Label htmlFor="life-path-name-a" className="text-xs text-muted-foreground">
+              {mode === 'single' ? 'Name or nickname' : 'First name or nickname'}
+            </Label>
             <Input
               id="life-path-name-a"
               value={firstName}
@@ -134,32 +200,36 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
               className="h-11 rounded-xl"
             />
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="life-path-name-b" className="text-xs text-muted-foreground">Second name or nickname</Label>
-            <Input
-              id="life-path-name-b"
-              value={secondName}
-              onChange={(event) => setSecondName(event.currentTarget.value)}
-              placeholder="Them"
-              className="h-11 rounded-xl"
-            />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="life-path-date-b" className="text-xs text-muted-foreground">Second birth date</Label>
-            <Input
-              id="life-path-date-b"
-              type="date"
-              value={secondDate}
-              onChange={(event) => setSecondDate(event.currentTarget.value)}
-              max={new Date().toISOString().slice(0, 10)}
-              required
-              className="h-11 rounded-xl"
-            />
-          </div>
+          {mode === 'compare' && (
+            <>
+              <div className="space-y-1.5">
+                <Label htmlFor="life-path-name-b" className="text-xs text-muted-foreground">Second name or nickname</Label>
+                <Input
+                  id="life-path-name-b"
+                  value={secondName}
+                  onChange={(event) => setSecondName(event.currentTarget.value)}
+                  placeholder="Them"
+                  className="h-11 rounded-xl"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="life-path-date-b" className="text-xs text-muted-foreground">Second birth date</Label>
+                <Input
+                  id="life-path-date-b"
+                  type="date"
+                  value={secondDate}
+                  onChange={(event) => setSecondDate(event.currentTarget.value)}
+                  max={new Date().toISOString().slice(0, 10)}
+                  required
+                  className="h-11 rounded-xl"
+                />
+              </div>
+            </>
+          )}
         </div>
 
         <Button type="submit" className="btn-primary h-12 w-full rounded-xl text-sm">
-          Compare life paths
+          {mode === 'single' ? 'Find my life path number' : 'Compare life paths'}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
 
@@ -170,7 +240,47 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
         )}
       </form>
 
-      {result && (
+      {result?.type === 'single' && (
+        <section className="mt-5 rounded-2xl border border-border bg-muted/20 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Life path result</p>
+          <h3 className="mt-1 text-2xl font-semibold text-foreground">
+            {result.person.name || 'Your'} Life Path number is {result.person.lifePath}.
+          </h3>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            <div>
+              <h4 className="text-sm font-semibold text-foreground">Theme</h4>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.person.theme}</p>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-foreground">Strength</h4>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.person.strength}</p>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-foreground">Watch</h4>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.person.watch}</p>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-primary/15 bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Want to see how this number reads with someone else's birth date?
+            </p>
+            <Button
+              type="button"
+              onClick={() => {
+                setMode('compare');
+                setResult(null);
+                setError('');
+              }}
+              className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
+            >
+              Compare two people
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </section>
+      )}
+
+      {result?.type === 'compare' && (
         <section className="mt-5 rounded-2xl border border-border bg-muted/20 p-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
@@ -203,7 +313,7 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
               <div>
                 <h4 className="text-base font-semibold text-foreground">Want the full birth-date compatibility reading?</h4>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  Use the same names and birth dates to see the complete Match by Birth score, strengths, watch area, and report option.
+                  Use the same names and birth dates to see the complete Match by Birth score, strengths, watch area, timing notes, and report option.
                 </p>
               </div>
               <Button
@@ -276,13 +386,13 @@ function LifePathCompatibilityPage() {
             <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
               <div>
                 <p className="mb-4 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-primary">
-                  Birth date numerology compatibility
+                  Birth date numerology calculator
                 </p>
                 <h1 className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-foreground md:text-6xl">
-                  Life Path Compatibility Calculator
+                  Life Path Number Calculator & Compatibility
                 </h1>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                  Compare two birth dates by life path number. See each number, the relationship pattern between them, and one practical conversation prompt.
+                  Find your Life Path number from your birth date, then compare two people to see the relationship pattern, watch area, and one practical conversation prompt.
                 </p>
                 <div className="mt-7 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3 lg:max-w-xl">
                   <span className="flex items-center gap-2">
@@ -295,7 +405,7 @@ function LifePathCompatibilityPage() {
                   </span>
                   <span className="flex items-center gap-2">
                     <MessageCircle className="h-4 w-4 text-primary" />
-                    Built for reflection
+                    Single or pair mode
                   </span>
                 </div>
               </div>
@@ -310,7 +420,7 @@ function LifePathCompatibilityPage() {
             <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Method</p>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">What is a life path number?</h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility. It does not decide a relationship, but it can make patterns easier to name.
+              A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility. You can use this page as a life path number calculator for one person or as a compatibility calculator for two people.
             </p>
 
             <div className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-sm">
@@ -369,6 +479,30 @@ function LifePathCompatibilityPage() {
             <p className="mt-5 text-center text-sm leading-relaxed text-muted-foreground">
               Want the zodiac layer too? Try the <Link to="/#calculator" className="font-semibold text-primary hover:underline">birth date compatibility calculator</Link> or read <Link to="/how-it-works" className="font-semibold text-primary hover:underline">how Match by Birth works</Link>.
             </p>
+          </div>
+        </section>
+
+        <section className="section-spacing border-y border-border/60 bg-muted/20">
+          <div className="content-container max-w-5xl">
+            <div className="mb-8 text-center">
+              <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Related guides</p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Read next</h2>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              {relatedGuides.map(([title, href]) => (
+                <Link
+                  key={href}
+                  to={href}
+                  className="rounded-2xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary/30"
+                >
+                  <h3 className="text-base font-semibold text-foreground">{title}</h3>
+                  <p className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
+                    Open guide
+                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

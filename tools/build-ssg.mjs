@@ -257,16 +257,18 @@ function preRenderPages() {
     },
     {
       route: 'tools/life-path-compatibility',
-      title: 'Life Path Compatibility Calculator | Match by Birth',
-      description: 'Compare two birth dates by life path number. Learn what each number means, how life path compatibility works, and what to talk about next.',
+      title: 'Life Path Number Calculator & Compatibility | Match by Birth',
+      description: 'Find your life path number or compare two birth dates. Learn master numbers, life path meanings, compatibility patterns, and what to talk about next.',
       content: `
         <header>
-          <p>Birth date numerology compatibility</p>
-          <h1>Life Path Compatibility Calculator</h1>
-          <p>Compare two birth dates by life path number. See each number, the relationship pattern between them, and one practical conversation prompt.</p>
+          <p>Birth date numerology calculator</p>
+          <h1>Life Path Number Calculator & Compatibility</h1>
+          <p>Find your Life Path number from your birth date, then compare two people to see the relationship pattern, watch area, and one practical conversation prompt.</p>
           <p><a href="/tools/life-path-compatibility#calculator">Open the calculator</a></p>
         </header>
         <article>
+          <h2>Find your number or compare two people</h2>
+          <p>This page works as a life path number calculator for one person and a life path compatibility calculator for two people.</p>
           <h2>What is a life path number?</h2>
           <p>A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility.</p>
           <h2>How to calculate your life path number</h2>
@@ -280,6 +282,8 @@ function preRenderPages() {
           <p>Some life paths share an easy pace, some create strong but intense chemistry, and some need more translation around freedom, structure, care, or privacy.</p>
           <h2>Responsible use</h2>
           <p>Life path compatibility is a reflection tool, not a relationship verdict. Use it to start a clearer conversation, not to outsource judgment.</p>
+          <h2>Related guides</h2>
+          <p>Read the <a href="/blog/life-path-number-compatibility-guide">Life Path Number Compatibility Guide</a>, compare <a href="/blog/birth-date-compatibility-vs-zodiac-compatibility">birth date compatibility vs. zodiac compatibility</a>, or learn <a href="/blog/how-to-use-compatibility-results-responsibly">how to use compatibility results responsibly</a>.</p>
           <p>Read <a href="/how-it-works">how Match by Birth works</a> or try the <a href="/tools/crush-birthday-compatibility">crush birthday compatibility calculator</a>.</p>
         </article>
       `
