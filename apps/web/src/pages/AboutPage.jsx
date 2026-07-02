@@ -102,10 +102,10 @@ function AboutPage() {
                     The first clue
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-foreground">
-                    When someone reminded me of my sister, I would almost always guess May. I did not have a system for it yet. I just kept noticing the same feeling.
+                    If someone felt like my sister, I'd bet on a May birthday. No logic, just a gut feeling.
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    For the record: it still feels strange when the guess is right. Leo Sun, Cancer Moon, Libra Rising. Make of that what you will.
+                    It still feels strange when the feeling is right. Leo Sun, Cancer Moon, Libra Rising. Make of that what you will.
                   </p>
                 </div>
               </aside>

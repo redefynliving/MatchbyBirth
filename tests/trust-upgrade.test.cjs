@@ -50,8 +50,9 @@ test('about page uses grounded trust language and removes overclaims', () => {
   assert.match(source, /AJ FOX/);
   assert.match(source, /I kept guessing birthdays before people said them out loud/);
   assert.match(source, /Leo Sun, Cancer Moon, Libra Rising/);
-  assert.match(source, /guess May/);
-  assert.match(source, /it still feels strange when the guess is right/i);
+  assert.match(source, /I'd bet on a May birthday/);
+  assert.match(source, /No logic, just a gut feeling/);
+  assert.match(source, /It still feels strange when the feeling is right/);
   assert.match(source, /Make of that what you will/);
   assert.match(source, /What it reads/);
   assert.match(source, /What it refuses to do/);
