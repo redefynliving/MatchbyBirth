@@ -66,13 +66,13 @@ function preRenderPages() {
       content: `
         <header>
           <h1>About Match by Birth</h1>
-          <p>I kept noticing the same thing.</p>
+          <p>Some people feel familiar right away.</p>
         </header>
         <article>
-          <p>Some people just feel familiar right away. Match by Birth started from that feeling: a simple way to turn birth details into something more personal, more interesting, and easier to talk about.</p>
+          <p>Match by Birth started with a question: why do some people feel familiar before you know much about them? This site turns that curiosity into a simple way to explore connection.</p>
           <h2>Who writes Match by Birth</h2>
-          <p>Match by Birth is written and edited by AJ FOX. AJ has a Leo Sun, Cancer Moon, and Libra Rising. That mix is part of why the site is built around both instinct and explanation: what you notice first, and how you finally put words to it.</p>
-          <p>Before there was a calculator, AJ kept guessing May birthdays. People who reminded him of his sister had a familiar rhythm, and he would guess May before knowing their birthday. It still feels a little strange when the guess is right.</p>
+          <p>Match by Birth is written and edited by AJ FOX. AJ kept guessing birthdays before people said them out loud. That weird little habit turned into this project.</p>
+          <p>When someone reminded AJ of his sister, he would almost always guess May. He did not have a system for it yet. He just kept noticing the same feeling. For the record: it still feels strange when the guess is right. Leo Sun, Cancer Moon, Libra Rising.</p>
           <h2>Who it is for</h2>
           <p>Match by Birth is for romantic connections, friendships, family dynamics, work relationships, and groups. If the dynamic has a shape but not a name yet, this gives you a place to start.</p>
           <h2>What the tool does</h2>

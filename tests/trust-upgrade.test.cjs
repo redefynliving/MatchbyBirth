@@ -44,12 +44,15 @@ test('about page uses grounded trust language and removes overclaims', () => {
   const header = read('apps/web/src/components/Header.jsx');
   const footer = read('apps/web/src/components/Footer.jsx');
 
-  assert.match(source, /I kept noticing the same thing/);
+  assert.match(source, /Some people feel familiar right away/);
+  assert.match(source, /why do some people feel familiar before you know much about them/);
   assert.match(source, /For the connection you keep thinking about/);
   assert.match(source, /AJ FOX/);
-  assert.match(source, /Leo Sun, Cancer Moon, and Libra Rising/);
-  assert.match(source, /May birthdays/);
-  assert.match(source, /It still feels a little strange when the guess is right/);
+  assert.match(source, /I kept guessing birthdays before people said them out loud/);
+  assert.match(source, /Leo Sun, Cancer Moon, Libra Rising/);
+  assert.match(source, /guess May/);
+  assert.match(source, /it still feels strange when the guess is right/i);
+  assert.match(source, /Make of that what you will/);
   assert.match(source, /What it reads/);
   assert.match(source, /What it refuses to do/);
   assert.match(source, /How privacy works/);

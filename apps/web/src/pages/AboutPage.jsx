@@ -60,10 +60,10 @@ function AboutPage() {
                   About Match by Birth
                 </p>
                 <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-6xl">
-                  I kept noticing the same thing.
+                  Some people feel familiar right away.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                  Some people just feel familiar right away. Match by Birth started from that feeling: a simple way to turn birth details into something more personal, more interesting, and easier to talk about.
+                  Match by Birth started with a question: why do some people feel familiar before you know much about them? This site turns that curiosity into a simple way to explore connection.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link
@@ -95,17 +95,17 @@ function AboutPage() {
                   </div>
                 </div>
                 <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                  Leo Sun, Cancer Moon, and Libra Rising. That mix is part of why this site is built around both instinct and explanation: what you notice first, and how you finally put words to it.
+                  I kept guessing birthdays before people said them out loud. That weird little habit turned into this project.
                 </p>
                 <div className="mt-6 border-t border-border pt-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     The first clue
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-foreground">
-                    Before there was a calculator, AJ kept guessing May birthdays. People who reminded him of his sister had a familiar rhythm, and he would guess May before knowing their birthday. Match by Birth grew from that kind of question: why do some people feel familiar before you can explain why?
+                    When someone reminded me of my sister, I would almost always guess May. I did not have a system for it yet. I just kept noticing the same feeling.
                   </p>
                   <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                    It still feels a little strange when the guess is right.
+                    For the record: it still feels strange when the guess is right. Leo Sun, Cancer Moon, Libra Rising. Make of that what you will.
                   </p>
                 </div>
               </aside>
