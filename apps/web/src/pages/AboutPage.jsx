@@ -6,34 +6,34 @@ import BackButton from '@/components/BackButton.jsx';
 
 const trustNotes = [
   {
-    title: 'Who it is for',
-    body: 'People comparing a romantic connection, friendship, family dynamic, work relationship, or group. It is useful when a connection feels obvious, confusing, easy, tense, or hard to explain.',
+    title: 'For the connection you keep thinking about',
+    body: 'Romantic, friendship, family, work, or group. If the dynamic has a shape but not a name yet, this gives you a place to start.',
   },
   {
-    title: 'What the tool does',
-    body: 'The calculator uses birth date, zodiac sign, life path number, and pair or group context to create a compatibility snapshot. Optional birth time and place can refine sign placement for cusp birthdays.',
+    title: 'What it reads',
+    body: 'Birth date, zodiac sign, life path number, and the kind of relationship. Time and place are optional for sharper sign placement near cusp dates.',
   },
   {
-    title: 'What it does not claim',
-    body: 'Match by Birth does not predict the future, diagnose relationships, promise outcomes, or decide whether someone is right for you. It is for reflection, entertainment, and better conversation.',
+    title: 'What it refuses to do',
+    body: 'No soulmate verdict. No future prediction. No pretending a score knows more than the people in the relationship.',
   },
 ];
 
 const principles = [
   {
     icon: CalendarDays,
-    title: 'Birth details stay practical',
-    body: 'Names and dates are enough for a quick reading. Time and place are optional when someone wants a more precise sign check.',
+    title: 'Start simple',
+    body: 'Names and birth dates are enough. Add time and place only when precision matters.',
   },
   {
     icon: MessageCircle,
-    title: 'The result should start a real conversation',
-    body: 'A useful reading names a strength, a friction point, and one thing worth talking about next.',
+    title: 'Give it language',
+    body: 'A good result names what feels easy, what catches, and what to ask next.',
   },
   {
     icon: Lock,
-    title: 'Privacy matters',
-    body: 'Birth dates are processed for the calculation and are not used for identity profiling. Shared links do not expose raw birth details.',
+    title: 'Keep it private',
+    body: 'Birth details are used for the reading, not identity profiling. Shared links stay opaque.',
   },
 ];
 
@@ -60,10 +60,10 @@ function AboutPage() {
                   About Match by Birth
                 </p>
                 <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-6xl">
-                  Built from a pattern I kept noticing.
+                  I kept noticing the same thing.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-                  Match by Birth was created by AJ FOX as a private compatibility tool for people who want language for the connections they already feel. It turns simple birth details into strengths, watch areas, and conversation prompts you can actually use.
+                  Some people just feel familiar right away. Match by Birth started from that feeling: a simple way to turn birth details into something more personal, more interesting, and easier to talk about.
                 </p>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link
@@ -104,6 +104,9 @@ function AboutPage() {
                   <p className="mt-3 text-base leading-relaxed text-foreground">
                     Before there was a calculator, AJ kept guessing May birthdays. People who reminded him of his sister had a familiar rhythm, and he would guess May before knowing their birthday. Match by Birth grew from that kind of question: why do some people feel familiar before you can explain why?
                   </p>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    It still feels a little strange when the guess is right.
+                  </p>
                 </div>
               </aside>
             </div>
@@ -112,7 +115,7 @@ function AboutPage() {
 
         <section className="py-14 md:py-20">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-5 md:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-[1fr_1.12fr_0.92fr]">
               {principles.map((principle) => {
                 const Icon = principle.icon;
                 return (
@@ -136,16 +139,16 @@ function AboutPage() {
                 What this is
               </p>
               <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                A compatibility tool, not a verdict.
+                A lens, not a verdict.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                The point is not to flatten someone into a sign or number. The point is to notice patterns in timing, communication, emotional style, and group rhythm so people have something clearer to talk about.
+                The point is not to flatten someone into a sign or number. The point is to notice the rhythm: timing, communication, friction, ease.
               </p>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-7 pt-3 lg:pt-0">
               {trustNotes.map((note) => (
-                <article key={note.title} className="border-t border-border pt-5 first:border-t-0 first:pt-0">
+                <article key={note.title} className="max-w-2xl border-t border-border pt-5 first:ml-6 first:border-t-0 first:pt-0 md:odd:ml-8 md:even:ml-0">
                   <h3 className="text-xl font-semibold tracking-tight text-foreground">{note.title}</h3>
                   <p className="mt-2 text-base leading-relaxed text-muted-foreground">{note.body}</p>
                 </article>
@@ -165,7 +168,7 @@ function AboutPage() {
                   Private by default, useful by design.
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-                  Birth dates are processed for the calculation and are not used for identity profiling. Shared result links use opaque URLs and do not put raw birth details in the address. Paid report checkout is handled by Stripe, and email features include unsubscribe controls.
+                  Birth dates are used for the reading, not identity profiling. Shared result links use opaque URLs. Paid report checkout is handled by Stripe, and email features include unsubscribe controls.
                 </p>
               </div>
 
@@ -181,7 +184,7 @@ function AboutPage() {
                       <a href="mailto:support@matchbybirth.com" className="font-semibold text-primary hover:underline">
                         support@matchbybirth.com
                       </a>
-                      . Feedback helps make the calculator clearer, more useful, and easier to understand.
+                      . I actually read it. That is where the sharper version of this tool will come from.
                     </p>
                   </div>
                 </div>
@@ -195,7 +198,7 @@ function AboutPage() {
                     Start with two dates
                   </p>
                   <p className="mt-2 text-lg font-semibold text-foreground">
-                    See the pattern, then decide what conversation comes next.
+                    See what shows up.
                   </p>
                 </div>
                 <Link

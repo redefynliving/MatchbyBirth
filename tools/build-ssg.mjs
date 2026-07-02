@@ -66,23 +66,23 @@ function preRenderPages() {
       content: `
         <header>
           <h1>About Match by Birth</h1>
-          <p>Built from a pattern AJ FOX kept noticing.</p>
+          <p>I kept noticing the same thing.</p>
         </header>
         <article>
-          <p>Match by Birth was created by AJ FOX as a private compatibility tool for people who want language for the connections they already feel. It turns simple birth details into strengths, watch areas, and conversation prompts you can actually use.</p>
+          <p>Some people just feel familiar right away. Match by Birth started from that feeling: a simple way to turn birth details into something more personal, more interesting, and easier to talk about.</p>
           <h2>Who writes Match by Birth</h2>
           <p>Match by Birth is written and edited by AJ FOX. AJ has a Leo Sun, Cancer Moon, and Libra Rising. That mix is part of why the site is built around both instinct and explanation: what you notice first, and how you finally put words to it.</p>
-          <p>Before there was a calculator, AJ kept guessing May birthdays. People who reminded him of his sister had a familiar rhythm, and he would guess May before knowing their birthday. Match by Birth grew from that kind of question: why do some people feel familiar before you can explain why?</p>
+          <p>Before there was a calculator, AJ kept guessing May birthdays. People who reminded him of his sister had a familiar rhythm, and he would guess May before knowing their birthday. It still feels a little strange when the guess is right.</p>
           <h2>Who it is for</h2>
-          <p>Match by Birth is for people comparing a romantic connection, friendship, family dynamic, work relationship, or group. It is useful when a connection feels obvious, confusing, easy, tense, or hard to explain.</p>
+          <p>Match by Birth is for romantic connections, friendships, family dynamics, work relationships, and groups. If the dynamic has a shape but not a name yet, this gives you a place to start.</p>
           <h2>What the tool does</h2>
-          <p>The calculator uses birth date, zodiac sign, life path number, and pair or group context to create a compatibility snapshot. Optional birth time and place can refine sign placement for cusp birthdays.</p>
+          <p>The calculator reads birth date, zodiac sign, life path number, and the kind of relationship. Optional birth time and place can refine sign placement for cusp birthdays.</p>
           <h2>What it does not claim</h2>
-          <p>Match by Birth does not predict the future, diagnose relationships, promise outcomes, or decide whether someone is right for you. It is for reflection, entertainment, and better conversation.</p>
+          <p>No soulmate verdict. No future prediction. No pretending a score knows more than the people in the relationship.</p>
           <h2>How privacy works</h2>
-          <p>Birth dates are processed for the calculation and are not used for identity profiling. Shared result links use opaque URLs and do not put raw birth details in the address. Paid report checkout is handled by Stripe, and email features include unsubscribe controls.</p>
+          <p>Birth dates are used for the reading, not identity profiling. Shared result links use opaque URLs. Paid report checkout is handled by Stripe, and email features include unsubscribe controls.</p>
           <h2>Support and feedback</h2>
-          <p>Questions, corrections, and support requests can be sent to support@matchbybirth.com. Feedback helps make the calculator clearer, more useful, and easier to understand.</p>
+          <p>Questions, corrections, and support requests can be sent to support@matchbybirth.com. AJ reads the feedback; that is where the sharper version of this tool will come from.</p>
         </article>
       `
     },
