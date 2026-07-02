@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 
 const {
   generateStructuredReport,
+  REPORT_SECTION_KEYS,
 } = require('../api/_lib/report-generator.cjs');
 
 const result = {
@@ -28,18 +29,9 @@ test('generateStructuredReport returns a complete fallback without an AI key', a
 
   assert.equal(report.title, 'Alex & Jordan');
   assert.equal(report.sections.length, 9);
-  assert.deepEqual(report.sections.map((section) => section.key), [
-    'strengths',
-    'friction',
-    'communication',
-    'emotional_dynamic',
-    'stability',
-    'growth',
-    'practical_advice',
-    'do',
-    'avoid',
-  ]);
+  assert.deepEqual(report.sections.map((section) => section.key), REPORT_SECTION_KEYS);
   assert.equal(JSON.stringify(report).includes('birthDate'), false);
+  assert.match(JSON.stringify(report), /Conversation Prompts|Timing and Pace|Conflict and Repair/);
   assert.doesNotMatch(
     JSON.stringify(report),
     /benefit from intention|emotional safety|growth potential|strongest version of this connection/i,
@@ -100,4 +92,9 @@ test('generateStructuredReport asks the model for plain and qualified language',
   assert.match(requestBody.system, /plain, specific language/i);
   assert.match(requestBody.system, /avoid certainty/i);
   assert.match(requestBody.system, /growth edge/i);
+  assert.equal(requestBody.max_tokens, 4200);
+  assert.deepEqual(
+    requestBody.messages[0].content.includes('conversation prompts'),
+    true,
+  );
 });

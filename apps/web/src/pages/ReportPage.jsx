@@ -1,6 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Download, Loader2, LockKeyhole } from 'lucide-react';
+import {
+  ClipboardList,
+  Download,
+  Loader2,
+  LockKeyhole,
+  MessageCircle,
+  ShieldCheck,
+} from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import BackButton from '@/components/BackButton.jsx';
@@ -95,6 +102,12 @@ function ReportPage() {
   }
 
   const { report, result } = state;
+  const reportIncludes = [
+    [ClipboardList, '9 personalized sections'],
+    [MessageCircle, 'Conversation prompts'],
+    [ShieldCheck, 'Private access link'],
+  ];
+
   return (
     <>
       <Helmet>
@@ -123,21 +136,36 @@ function ReportPage() {
           <article ref={reportRef} className="bg-card border border-border rounded-3xl p-7 md:p-12 shadow-sm">
             <header className="text-center pb-10 border-b border-border">
               <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground font-semibold mb-4">
-                Match by Birth
+                Private Match by Birth Report
               </p>
               <h1 className="font-serif text-4xl md:text-5xl font-medium">{report.title}</h1>
               <p className="text-6xl font-semibold text-primary mt-5">{result.score}%</p>
               <p className="text-muted-foreground mt-5 max-w-xl mx-auto leading-relaxed">
                 {report.overview}
               </p>
+              <div className="mt-7 grid gap-3 text-left sm:grid-cols-3">
+                {reportIncludes.map(([Icon, label]) => (
+                  <div key={label} className="rounded-2xl border border-border bg-muted/35 p-4">
+                    <Icon className="h-4 w-4 text-primary" />
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                      {label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </header>
 
             <div className="py-4">
-              {report.sections.map((section) => (
+              {report.sections.map((section, index) => (
                 <section key={section.key} className="py-7 border-b border-border last:border-0">
-                  <h2 className="text-xs uppercase tracking-[0.16em] text-muted-foreground font-semibold mb-3">
-                    {section.title}
-                  </h2>
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
+                      {index + 1}
+                    </span>
+                    <h2 className="text-xs uppercase tracking-[0.16em] text-muted-foreground font-semibold">
+                      {section.title}
+                    </h2>
+                  </div>
                   <p className="font-serif text-lg leading-8 text-foreground/90">{section.body}</p>
                 </section>
               ))}

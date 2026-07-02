@@ -2,6 +2,17 @@
 
 const MODEL = 'claude-haiku-4-5-20251001';
 const PROMPT_VERSION = 'structured-v2';
+const REPORT_SECTION_KEYS = [
+  'relationship_snapshot',
+  'core_strengths',
+  'watch_area',
+  'communication_pattern',
+  'emotional_pattern',
+  'timing_and_pace',
+  'conflict_repair',
+  'conversation_prompts',
+  'next_steps',
+];
 
 function fallbackReport(result) {
   const [first, second] = result.people;
@@ -18,54 +29,57 @@ function fallbackReport(result) {
     .filter(([key]) => key !== 'overall')
     .sort((left, right) => left[1] - right[1])[0]?.[0] || 'communication';
 
+  const strongerLabel = stronger.replaceAll('_', ' ');
+  const gentlerLabel = gentler.replaceAll('_', ' ');
+
   return {
     title: `${first.name} & ${second.name}`,
-    overview: `${first.name} and ${second.name} share a ${score}% compatibility score. Their ${first.element} and ${second.element} signs point to several strengths and some differences in this ${relationship}.`,
+    overview: `${first.name} and ${second.name} share a ${score}% compatibility score. This report turns the free score into a practical reading for their ${relationship}: what may feel easier, where the match may ask for more care, and what to talk about next.`,
     sections: [
       {
-        key: 'strengths',
-        title: 'Where You Connect',
-        body: `${stronger} is the highest-scoring part of this result. ${first.name}'s ${first.sign} style and ${second.name}'s ${second.sign} style may make this area easier for them.`,
+        key: 'relationship_snapshot',
+        title: 'Relationship Snapshot',
+        body: `${first.name}'s ${first.sign} pattern and ${second.name}'s ${second.sign} pattern create a ${score}% match, which points to a connection with real usable strengths and a few places that deserve clearer language. The score is not a verdict on whether this ${relationship} will last. It is a map of where the two styles may cooperate quickly and where each person may need to slow down, ask better questions, or explain their needs before tension builds.`,
       },
       {
-        key: 'friction',
-        title: 'Where You May Clash',
-        body: `${gentler} is the lowest-scoring part of this result. This difference may cause confusion when each person expects the other to respond the same way.`,
+        key: 'core_strengths',
+        title: 'Core Strengths',
+        body: `${strongerLabel} is the strongest part of this reading. ${first.name} may bring a ${first.element} style of response, while ${second.name} may bring a ${second.element} style, so the match can work best when each person lets the other contribute differently instead of competing to handle everything the same way. This is the area to lean on when the connection feels good, because it shows the habit that may help the pair recover after smaller misunderstandings.`,
       },
       {
-        key: 'communication',
-        title: 'Communication',
-        body: `Short, direct conversations may work better than assumptions for this pair. Repeating back the main point before responding can help prevent misunderstandings.`,
+        key: 'watch_area',
+        title: 'Watch Area',
+        body: `${gentlerLabel} is the part of the result that may need the most patience. The risk is not that the match is wrong; the risk is that each person may assume their own pace or reaction is obvious. If ${first.name} expects one kind of response and ${second.name} offers another, the gap can feel personal even when it is mostly a difference in style. This is the area to name early instead of waiting for it to become a pattern.`,
       },
       {
-        key: 'emotional_dynamic',
-        title: 'Emotional Style',
-        body: `This pair may respond to feelings at different speeds. Allowing time before expecting an answer may make difficult conversations easier.`,
+        key: 'communication_pattern',
+        title: 'Communication Pattern',
+        body: `This match works better when both people say the actual concern instead of testing whether the other person will guess it. ${first.name} and ${second.name} may not always use the same tone, timing, or level of detail, so short check-ins can prevent small differences from turning into bigger stories. A useful rule is to repeat the main point before responding. That keeps the conversation focused on what was said, not on what each person feared it meant.`,
       },
       {
-        key: 'stability',
-        title: 'Stability',
-        body: `Clear expectations and reliable follow-through may make this connection easier to manage. Small promises matter more when both people keep them.`,
+        key: 'emotional_pattern',
+        title: 'Emotional Pattern',
+        body: `${first.name} and ${second.name} may show care in different ways. One person may want quick reassurance, while the other may show steadiness through action, consistency, or space. The report works best when it helps the pair ask what care looks like in real behavior. Instead of asking whether the match is good or bad, ask what each person does when they feel close, uncertain, ignored, or pressured.`,
       },
       {
-        key: 'growth',
-        title: 'What You Can Learn From Each Other',
-        body: `Each person may notice options the other overlooks. Asking why the other person prefers a different approach can make those differences more useful.`,
+        key: 'timing_and_pace',
+        title: 'Timing and Pace',
+        body: `Timing matters because compatibility is often felt through pace: how fast people reply, decide, commit, apologize, or need space. If one person moves quickly and the other needs more time, the slower pace can be misread as distance. If one person wants more certainty and the other wants room to feel things out, the faster pace can feel like pressure. This section is meant to help the pair set expectations before the timing mismatch becomes the problem.`,
       },
       {
-        key: 'practical_advice',
-        title: 'What May Help',
-        body: `Keep requests specific and discuss problems before they build up. Shared plans are easier when both people know what is flexible and what is not.`,
+        key: 'conflict_repair',
+        title: 'Conflict and Repair',
+        body: `When conflict shows up, the most useful question is not who is right. The better question is what each person needs in order to come back to the conversation clearly. ${first.name} and ${second.name} may repair faster when the issue is made specific: what happened, what it brought up, what needs to change, and what still feels good between them. Good repair does not erase friction. It gives the connection a way to keep moving without pretending nothing happened.`,
       },
       {
-        key: 'do',
-        title: 'Try More Of',
-        body: `Say what you appreciate, make requests directly, and notice which conversations go well. Repeat the habits that make those moments easier.`,
+        key: 'conversation_prompts',
+        title: 'Conversation Prompts',
+        body: `Use the report as a prompt, not a script. Start with: "What feels easy between us that we should protect?" Then ask: "Where do we move at different speeds?" and "What do you usually need when a conversation gets tense?" These questions turn the score into something practical. They also keep the focus on lived behavior instead of labels, which is where the reading becomes more useful.`,
       },
       {
-        key: 'avoid',
-        title: 'Watch For',
-        body: `Watch for assumptions, scorekeeping, and treating personality differences as permanent facts. Use the score as a conversation starter, not a verdict.`,
+        key: 'next_steps',
+        title: 'Next Steps',
+        body: `The strongest next step is to choose one part of this report and test it in real life. Notice whether the strongest area does feel easier, and whether the watch area shows up during planning, texting, conflict, or expectations. If it does, use the language from the report to name the pattern early. ${first.name} and ${second.name} do not need a perfect score. They need a clearer way to talk about what the score is pointing toward.`,
       },
     ],
     closing: `This score describes patterns based on the information provided. ${first.name} and ${second.name}'s choices and communication matter more than any compatibility score.`,
@@ -120,7 +134,7 @@ async function generateStructuredReport(result, options = {}) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 2600,
+      max_tokens: 4200,
       system: [
         'Write a grounded relationship compatibility report in plain, specific language and short sentences.',
         'Return valid JSON only. Do not use markdown or emojis.',
@@ -135,19 +149,17 @@ async function generateStructuredReport(result, options = {}) {
           requiredShape: {
             title: 'string',
             overview: 'string',
-            sections: [
-              'strengths',
-              'friction',
-              'communication',
-              'emotional_dynamic',
-              'stability',
-              'growth',
-              'practical_advice',
-              'do',
-              'avoid',
-            ].map((key) => ({ key, title: 'string', body: 'string' })),
+            sections: REPORT_SECTION_KEYS.map((key) => ({ key, title: 'string', body: 'string' })),
             closing: 'string',
           },
+          writingRules: [
+            'Each section body should be specific to the supplied names, signs, elements, relationship type, score, and breakdown.',
+            'Each section body should be 80 to 140 words.',
+            'Include at least three concrete conversation prompts across the report.',
+            'Do not describe the report as a prediction, diagnosis, soul match, or guaranteed outcome.',
+            'Do not claim scientific certainty.',
+            'Do not invent Moon signs, houses, birth times, birth dates, or planetary placements not included in the input.',
+          ],
           result,
         }),
       }],
@@ -171,4 +183,5 @@ module.exports = {
   fallbackReport,
   generateStructuredReport,
   parseModelReport,
+  REPORT_SECTION_KEYS,
 };

@@ -202,18 +202,19 @@ test('report checkout explains its value while retaining payment and privacy ass
   );
 
   assert.match(checkout, /9-section report/);
-  assert.match(checkout, /How you communicate/);
-  assert.match(checkout, /Where you connect naturally/);
-  assert.match(checkout, /Where misunderstandings may happen/);
-  assert.match(checkout, /Practical ways to handle differences/);
-  assert.match(checkout, /Private link and PDF delivered by email/);
+  assert.match(checkout, /Communication pattern/);
+  assert.match(checkout, /Connection strengths/);
+  assert.match(checkout, /Watch areas/);
+  assert.match(checkout, /Next conversation prompts/);
+  assert.match(checkout, /A private report page, email delivery, and a PDF you can keep/);
+  assert.match(checkout, /not a generic sign description/);
   assert.match(checkout, /Refund support available/);
   assert.match(checkout, /Secure Stripe checkout/);
   assert.match(checkout, /Instant email delivery/);
   assert.match(checkout, /Buy report for \$9\.99/);
   assert.match(checkout, /Payment is handled by Stripe/);
   assert.match(checkout, /birth dates are not stored/i);
-  assert.doesNotMatch(checkout, /friction patterns|go beyond the score|repair misunderstandings/i);
+  assert.doesNotMatch(checkout, /friction patterns|go beyond the score|repair misunderstandings|Urgency Discount|Claim Offer/i);
 });
 
 test('SEO metadata is truthful and result pages are excluded from indexing', () => {
