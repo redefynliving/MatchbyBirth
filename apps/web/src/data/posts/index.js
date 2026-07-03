@@ -2346,7 +2346,7 @@ const posts = [
 
       <p>That is also where astrology history becomes more than trivia. The old idea was that timing carries meaning. The modern version is quieter and more practical: timing can give people a language for reflection.</p>
 
-      <p>If you want a broad outside overview of astrology's development, Centre of Excellence has a general history article here: <a href="https://www.centreofexcellence.com/the-history-of-astrology/" rel="nofollow noopener noreferrer">The History of Astrology</a>. This Match by Birth guide takes a different angle: how that history connects to birth matching and compatibility conversations.</p>
+      <p>That is the Match by Birth version of the history: astrology matters here because it shows how old the human habit is. People keep looking for patterns in timing, personality, closeness, and friction. Match by Birth takes that old curiosity and turns it into a cleaner modern question: what can two birth patterns help people notice about how they connect?</p>
 
       <h2>The point is not prediction</h2>
 
