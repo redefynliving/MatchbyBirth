@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ScrollToTop from '@/components/ScrollToTop.jsx';
@@ -88,6 +89,7 @@ function App() {
         <CookieConsentBanner />
         <Toaster position="bottom-right" richColors />
         <Analytics />
+        <SpeedInsights />
       </div>
     </Router>
   );
