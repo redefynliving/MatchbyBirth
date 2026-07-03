@@ -31,7 +31,7 @@ function CookieConsentBanner() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="min-w-0 flex-1">
             <p className="text-xs leading-5 text-foreground sm:text-sm">
-              This site uses cookies for analytics and to remember your preferences. No personal data is shared with third parties.{' '}
+              This site uses cookies for analytics, preferences, and ads measurement. Google and other partners may use cookies as described in our policy.{' '}
               <Link to="/privacy" className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary">
                 Learn more
               </Link>

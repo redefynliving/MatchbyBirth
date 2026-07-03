@@ -67,9 +67,14 @@ function renderDocument({ template, title, description, route, body, head = '' }
       .static-blog-shell h3 { font-size: 1.1rem; margin: 24px 0 8px; }
       .static-blog-shell p { margin: 0 0 18px; }
       .static-blog-shell a { color: #5b3fd6; font-weight: 700; }
-      .static-post-card { border: 1px solid #e6e6f0; border-radius: 14px; padding: 18px; margin: 0 0 16px; background: #fff; }
-      .static-post-card h2 { color: #1a1a2e; font-size: 1.1rem; margin-top: 0; }
-      .static-hero-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid #e6e1d8; border-radius: 8px; margin: 0 0 28px; background: #fbfaf8; }
+	      .static-post-card { border: 1px solid #e6e6f0; border-radius: 14px; padding: 18px; margin: 0 0 16px; background: #fff; }
+	      .static-post-card h2 { color: #1a1a2e; font-size: 1.1rem; margin-top: 0; }
+	      .static-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+	      .static-guide-box { border: 1px solid #e6e6f0; border-radius: 8px; padding: 16px; background: #fff; text-decoration: none; }
+	      .static-guide-box strong { display: block; color: #1a1a2e; }
+	      .static-guide-box span { display: block; color: #6f6780; font-weight: 400; margin-top: 6px; }
+	      .static-topic-index { border-top: 1px solid #e6e6f0; margin-top: 32px; padding-top: 24px; }
+	      .static-hero-image { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid #e6e1d8; border-radius: 8px; margin: 0 0 28px; background: #fbfaf8; }
       .static-article-body ul, .static-article-body ol { padding-left: 24px; }
       .static-enhancement { border: 1px solid #e6e6f0; border-radius: 8px; padding: 20px; margin: 24px 0; background: #fbfbff; }
       .static-enhancement table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
@@ -163,14 +168,80 @@ function renderEnhancementHtml(post) {
 }
 
 export function renderBlogIndexHtml({ template, allPosts = posts } = {}) {
+  const sortedPosts = [...allPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const categoryCounts = BLOG_CATEGORIES.reduce((counts, category) => {
+    counts[category.key] = sortedPosts.filter((post) => getPostCategory(post) === category.key).length;
+    return counts;
+  }, {});
+  const featuredCategories = BLOG_CATEGORIES
+    .filter((category) => ['learn-astrology', 'pair-deep-dive', 'moon-signs', 'numerology'].includes(category.key))
+    .filter((category) => categoryCounts[category.key] > 0);
+  const popularPosts = [
+    'how-birth-date-affects-personality-relationships',
+    'history-of-astrology-birth-compatibility',
+    'what-compatibility-score-means',
+    'cancer-moon-compatibility',
+  ].map((slug) => sortedPosts.find((post) => post.slug === slug)).filter(Boolean);
+
   const body = `
     <main class="static-blog-shell">
       <header>
         <p>Match by Birth Guides</p>
-        <h1>Birth Matching, Zodiac Compatibility, and Relationship Guides</h1>
-        <p>Browse practical articles about birth date compatibility, zodiac signs, life path numbers, relationship timing, and group dynamics.</p>
+        <h1>Start with the question you actually have.</h1>
+        <p>Browse practical articles about birth matching, zodiac signs, Moon signs, life path numbers, relationship timing, and group dynamics.</p>
       </header>
-      <section>${allPosts.map(articleCard).join('')}</section>
+
+      <section>
+        <h2>Start here</h2>
+        <div class="static-guide-grid">
+          <a class="static-guide-box" href="/blog/how-birth-date-affects-personality-relationships">
+            <strong>Understand birth matching</strong>
+            <span>Start with the plain-English version of what Match by Birth compares.</span>
+          </a>
+          <a class="static-guide-box" href="/how-it-works">
+            <strong>Read the methodology</strong>
+            <span>See what the calculator uses, what it does not claim, and how to read results.</span>
+          </a>
+          <a class="static-guide-box" href="/tools/life-path-compatibility">
+            <strong>Try a simple tool</strong>
+            <span>Use Life Path compatibility before a full match.</span>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Featured topics</h2>
+        <div class="static-guide-grid">
+          ${featuredCategories.map((category) => `
+            <a class="static-guide-box" href="/blog/category/${escapeHtml(category.key)}">
+              <strong>${escapeHtml(category.label)}</strong>
+              <span>${escapeHtml(category.description)} (${categoryCounts[category.key]} guides)</span>
+            </a>
+          `).join('')}
+        </div>
+      </section>
+
+      <section>
+        <h2>Popular posts</h2>
+        ${popularPosts.map(articleCard).join('')}
+      </section>
+
+      <section>
+        <h2>Recent guides</h2>
+        ${sortedPosts.slice(0, 12).map(articleCard).join('')}
+      </section>
+
+      <section class="static-topic-index">
+        <h2>Topic index</h2>
+        <div class="static-guide-grid">
+          ${BLOG_CATEGORIES.filter((category) => categoryCounts[category.key] > 0).map((category) => `
+            <a class="static-guide-box" href="/blog/category/${escapeHtml(category.key)}">
+              <strong>${escapeHtml(category.label)}</strong>
+              <span>${escapeHtml(category.seoDescription)}</span>
+            </a>
+          `).join('')}
+        </div>
+      </section>
     </main>
   `;
 

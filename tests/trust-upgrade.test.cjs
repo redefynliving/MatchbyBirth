@@ -142,3 +142,25 @@ test('React and static article output include enhanced blocks and related links'
   assert.match(ssg, /AJ FOX/);
   assert.doesNotMatch(ssg, /Astrology meets science|oldest compatibility system|Professional Astrologer|Sarah Miller|expert astrological breakdown/i);
 });
+
+test('blog homepage works as a scan-friendly content hub', () => {
+  const blogPage = read('apps/web/src/pages/BlogPage.jsx');
+  const staticRenderer = read('apps/web/tools/prerender-blog-html.js');
+
+  assert.match(blogPage, /Start with the question you actually have/);
+  assert.match(blogPage, /startHereLinks/);
+  assert.match(blogPage, /featuredCategoryKeys/);
+  assert.match(blogPage, /popularPostSlugs/);
+  assert.match(blogPage, /Search guides/);
+  assert.match(blogPage, /Topic index/);
+  assert.match(blogPage, /Recent guides/);
+  assert.match(blogPage, /Beginner resources/);
+  assert.match(blogPage, /type="search"/);
+  assert.doesNotMatch(blogPage, /rounded-full opacity-\[0\.06\] blur-3xl/);
+
+  assert.match(staticRenderer, /Start here/);
+  assert.match(staticRenderer, /Featured topics/);
+  assert.match(staticRenderer, /Popular posts/);
+  assert.match(staticRenderer, /Recent guides/);
+  assert.match(staticRenderer, /Topic index/);
+});

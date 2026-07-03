@@ -23,3 +23,14 @@ test('production source cannot create raw birth-date result URLs', () => {
 test('diagnostic astrology endpoint is not deployed publicly', () => {
   assert.equal(fs.existsSync(path.join(root, 'api', 'test-swisseph.js')), false);
 });
+
+test('cookie banner uses ads-aware third-party disclosure language', () => {
+  const banner = fs.readFileSync(
+    path.join(root, 'apps', 'web', 'src', 'components', 'CookieConsentBanner.jsx'),
+    'utf8',
+  );
+
+  assert.match(banner, /Google and other partners may use cookies/);
+  assert.match(banner, /analytics, preferences, and ads measurement/);
+  assert.doesNotMatch(banner, /No personal data is shared with third parties/);
+});
