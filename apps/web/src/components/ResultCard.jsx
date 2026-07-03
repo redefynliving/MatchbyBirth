@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
+  ArrowRight,
   Compass,
   Download,
   FileHeart,
@@ -8,6 +10,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
+import { PRIVATE_REPORT_PRICE } from '@/data/privateReportOffer.js';
 import { buildPairHighlights } from '@/lib/result-presentation.js';
 import { trackEvent } from '@/lib/analytics.js';
 
@@ -138,30 +141,57 @@ function ResultCard({
           })}
         </section>
 
-        <footer className="border-t border-border p-5 sm:p-7">
-          <div className="flex flex-col gap-5 rounded-2xl border border-primary/15 bg-[linear-gradient(110deg,hsl(var(--secondary)),hsl(335_45%_95%)_70%,hsl(var(--card)))] p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="flex items-center gap-2 font-semibold">
-                <FileHeart className="h-4 w-4 text-primary" />
-                Want a more detailed breakdown?
-              </p>
-              <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                See all nine sections, including communication, likely disagreements, and practical suggestions.
-              </p>
+        <footer className="border-t border-border bg-[#fffdfb] p-5 sm:p-7">
+          <div className="rounded-2xl border border-primary/15 bg-white p-5 shadow-sm">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="mb-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary">
+                  Private read
+                </p>
+                <h2 className="flex items-center gap-2 text-xl font-semibold leading-tight text-foreground">
+                  <FileHeart className="h-5 w-5 text-primary" />
+                  Unlock the part people usually overthink.
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  Get a deeper read on why this feels familiar, where the rhythm may catch, what each person may misread, and what to say next.
+                </p>
+              </div>
+
+              <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col">
+                {canPurchase ? (
+                  <button
+                    type="button"
+                    onClick={openPurchaseModal}
+                    className="btn-primary inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm"
+                  >
+                    Unlock private report · {PRIVATE_REPORT_PRICE}
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                ) : (
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Private reports are temporarily unavailable.
+                  </p>
+                )}
+                <Link
+                  to="/reports/sample"
+                  className="inline-flex h-11 items-center justify-center rounded-xl border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+                >
+                  View sample report
+                </Link>
+              </div>
             </div>
-            {canPurchase ? (
-              <button
-                type="button"
-                onClick={openPurchaseModal}
-                className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
-              >
-                Get the detailed report · $9.99
-              </button>
-            ) : (
-              <p className="text-sm font-medium text-muted-foreground">
-                Detailed reports are temporarily unavailable.
-              </p>
-            )}
+
+            <div className="mt-5 grid gap-3 border-t border-border pt-5 text-sm md:grid-cols-3">
+              {[
+                'Green flags and yellow flags',
+                'What each person may misread',
+                'A line you could actually send',
+              ].map((item) => (
+                <div key={item} className="rounded-xl border border-border bg-[#fbfaf8] px-4 py-3 font-medium text-muted-foreground">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
 
           <button

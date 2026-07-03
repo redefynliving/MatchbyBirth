@@ -128,8 +128,9 @@ test('pair and group results progressively reveal detail instead of showing ever
   );
 
   assert.match(pairResult, /buildPairHighlights/);
-  assert.match(pairResult, /Want a more detailed breakdown\?/);
-  assert.match(pairResult, /Get the detailed report · \$9\.99/);
+  assert.match(pairResult, /Unlock the part people usually overthink/);
+  assert.match(pairResult, /Unlock private report/);
+  assert.match(pairResult, /\/reports\/sample/);
   assert.match(groupResult, /getVisibleGroupPairs/);
   assert.match(groupResult, /View all .* connections/);
   assert.match(shareButtons, /Share by link/);
