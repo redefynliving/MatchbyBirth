@@ -3,12 +3,12 @@ import { ArrowRight, CheckCircle2, Mail } from 'lucide-react';
 
 function NewsletterCapture({
   className = '',
-  title = 'Get better compatibility notes in your inbox',
-  description = 'One useful email with timing notes, relationship prompts, and new Match by Birth guides. No spam.',
+  title = 'Get Match by Birth updates',
+  description = 'Occasional notes when new compatibility guides, tools, or product updates go live. No account required.',
   buttonLabel = 'Subscribe',
   loadingLabel = 'Subscribing...',
   successTitle = "You're on the list.",
-  successDescription = 'Check your inbox for the first note.',
+  successDescription = 'Check your inbox for a confirmation email.',
   finePrint = 'Free. Unsubscribe anytime.',
   consentSource = 'newsletter_capture',
   resultId,

@@ -31,8 +31,8 @@ function FAQPage() {
       a: 'Yes. All payments are processed securely by Stripe, a world-class payment provider. Match by Birth does not store, see, or process your credit card numbers on our servers.',
     },
     {
-      q: 'How does the weekly forecast subscription work?',
-      a: 'If you opt in, we will send you a weekly astrological compatibility guide containing relationship tips, forecasts, and guide articles. It is completely free, and you can unsubscribe at any time with a single click using the link at the bottom of any email.',
+      q: 'What happens if I subscribe for email updates?',
+      a: 'If you opt in, we may send occasional Match by Birth updates when new guides, tools, or product changes go live. It is free, no account is required, and you can unsubscribe at any time with the link at the bottom of any email.',
     },
   ];
 

@@ -171,13 +171,14 @@ test('newsletter capture uses a readable editorial treatment instead of a purple
     'utf8',
   );
 
-  assert.match(newsletterCapture, /Get better compatibility notes in your inbox/);
-  assert.match(newsletterCapture, /One useful email with timing notes/);
+  assert.match(newsletterCapture, /Get Match by Birth updates/);
+  assert.match(newsletterCapture, /Occasional notes when new compatibility guides/);
   assert.match(newsletterCapture, /bg-card/);
   assert.match(newsletterCapture, /text-muted-foreground/);
   assert.match(newsletterCapture, /border-border/);
   assert.doesNotMatch(newsletterCapture, /linear-gradient\(135deg, #6c4de6 0%, #8b5cf6 100%\)/);
   assert.doesNotMatch(newsletterCapture, /Join thousands/i);
+  assert.doesNotMatch(newsletterCapture, /timing notes, relationship prompts/);
   assert.match(blogPostPage, /NewsletterCapture/);
   assert.doesNotMatch(blogPostPage, /Get weekly astrology insights/);
 });

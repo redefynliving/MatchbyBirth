@@ -5,8 +5,8 @@ function HomeEmailCapture() {
   return (
     <NewsletterCapture
       className="mx-auto mt-16 max-w-3xl px-4"
-      consentSource="home_weekly_forecast"
-      successDescription="Check your inbox for the first weekly note."
+      consentSource="home_updates"
+      successDescription="Check your inbox for a confirmation email."
     />
   );
 }

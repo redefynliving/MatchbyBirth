@@ -8,16 +8,16 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
   return (
     <NewsletterCapture
       className="mt-8"
-      title="Get your result by email"
+      title="Save updates for this match"
       description={(
         <>
-          Enter your email and we&apos;ll send a private copy of <strong>{names}</strong>, plus your personalized compatibility insights.
+          Enter your email to connect future Match by Birth updates to <strong>{names}</strong>. No account required.
         </>
       )}
-      buttonLabel="Send result"
+      buttonLabel="Subscribe"
       loadingLabel="Saving..."
       successTitle="You're on the list."
-      successDescription="Check your inbox for your result copy and future notes."
+      successDescription="Check your inbox for a confirmation email."
       finePrint="Free. Unsubscribe anytime."
       consentSource="result_updates"
       resultId={resultId}
