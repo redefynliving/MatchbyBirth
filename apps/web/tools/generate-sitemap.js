@@ -18,6 +18,8 @@ const PUBLIC_PAGES = [
   '/terms',
   '/disclaimers',
   '/premium',
+  '/reports/private-compatibility-read',
+  '/reports/sample',
   '/tools/crush-birthday-compatibility',
   '/tools/life-path-compatibility',
 ];

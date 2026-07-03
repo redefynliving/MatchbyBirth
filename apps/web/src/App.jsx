@@ -27,6 +27,8 @@ const PremiumPage = lazy(() => import('@/pages/premium.jsx'));
 const UnsubscribePage = lazy(() => import('@/pages/UnsubscribePage.jsx'));
 const CrushBirthdayCompatibilityPage = lazy(() => import('@/pages/CrushBirthdayCompatibilityPage.jsx'));
 const LifePathCompatibilityPage = lazy(() => import('@/pages/LifePathCompatibilityPage.jsx'));
+const PrivateCompatibilityReadPage = lazy(() => import('@/pages/PrivateCompatibilityReadPage.jsx'));
+const SampleReportPage = lazy(() => import('@/pages/SampleReportPage.jsx'));
 
 function RouteFallback() {
   return (
@@ -61,6 +63,8 @@ function App() {
               <Route path="/report-success" element={<ReportSuccess />} />
               <Route path="/report" element={<ReportPage />} />
               <Route path="/premium" element={<PremiumPage />} />
+              <Route path="/reports/private-compatibility-read" element={<PrivateCompatibilityReadPage />} />
+              <Route path="/reports/sample" element={<SampleReportPage />} />
               <Route path="/unsubscribe" element={<UnsubscribePage />} />
               <Route path="/tools/crush-birthday-compatibility" element={<CrushBirthdayCompatibilityPage />} />
               <Route path="/tools/life-path-compatibility" element={<LifePathCompatibilityPage />} />

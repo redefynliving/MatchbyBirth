@@ -33,6 +33,7 @@ function Footer() {
               <Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link>
+              <Link to="/reports/private-compatibility-read" className="text-muted-foreground hover:text-primary transition-colors">Private Report</Link>
               <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog & Guides</Link>
               <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
             </nav>

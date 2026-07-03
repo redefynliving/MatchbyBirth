@@ -235,6 +235,54 @@ function preRenderPages() {
       `
     },
     {
+      route: 'reports/private-compatibility-read',
+      title: 'Private Compatibility Report | Match by Birth',
+      description: 'Preview the private Match by Birth compatibility report: a deeper read on rhythm, friction, green flags, yellow flags, and what to say next.',
+      content: `
+        <header>
+          <p>Private compatibility report</p>
+          <h1>A private read for the connection you keep thinking about.</h1>
+          <p>Run the free comparison first. If the result feels like something you need to understand, unlock the deeper read: what pulls you together, where the rhythm catches, and what to say next.</p>
+          <p><a href="/#calculator">Run the free comparison</a> or <a href="/reports/sample">view the sample report</a>.</p>
+        </header>
+        <article>
+          <h2>What you get</h2>
+          <p>The private report explains why the connection may feel familiar, what pulls you together, where the rhythm catches, what each person may misunderstand, and what to ask before getting attached.</p>
+          <h2>Report sections</h2>
+          <p>Opening read, pull, friction, misread, green flags, yellow flags, conversation prompts, a line you could send, and a final read on chemistry, comfort, or chaos.</p>
+          <h2>How to unlock it</h2>
+          <p>Start with the free comparison. The paid report uses that result so the read is tied to your actual connection instead of a generic template.</p>
+          <h2>Responsible use</h2>
+          <p>No soulmate verdict. No future prediction. No professional relationship advice. Match by Birth is for reflection and conversation.</p>
+        </article>
+      `
+    },
+    {
+      route: 'reports/sample',
+      title: 'Sample Compatibility Report | Match by Birth',
+      description: 'See a fictional sample of the private Match by Birth compatibility report before unlocking your own deeper read.',
+      content: `
+        <header>
+          <p>Fictional sample</p>
+          <h1>Sample private compatibility read</h1>
+          <p>This is not a live result. It shows the kind of specificity the paid report is meant to deliver: what feels natural, where it may catch, and what to say next.</p>
+        </header>
+        <article>
+          <h2>Mara & Eli: 86 overall fit</h2>
+          <p>Strong natural rhythm with a planning pace mismatch. This sample shows how a private report can turn a result into a useful conversation.</p>
+          <h2>Why this feels easy</h2>
+          <p>Mara and Eli read each other quickly because both patterns respond to consistency. The connection can feel calm without becoming flat, especially when both people know where they stand.</p>
+          <h2>Where it may catch</h2>
+          <p>The watch area is pace. One person may want a clear plan earlier, while the other needs room before naming the direction.</p>
+          <h2>What to ask next</h2>
+          <p>A useful next question is: Do we move closer when things feel certain, or do we need space before we trust the timing?</p>
+          <h2>Full report sections</h2>
+          <p>Your private read includes green flags, yellow flags, what each person may misread, what to ask before getting attached, and a final read on chemistry, comfort, or chaos.</p>
+          <p><a href="/#calculator">Run your comparison</a> or <a href="/reports/private-compatibility-read">read what is included</a>.</p>
+        </article>
+      `
+    },
+    {
       route: 'tools/crush-birthday-compatibility',
       title: 'Crush Birthday Compatibility Calculator | Match by Birth',
       description: 'Compare your birthday with your crush birth date. Get a private compatibility score, strengths, watch area, and conversation prompt in seconds.',
