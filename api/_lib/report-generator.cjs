@@ -1,7 +1,7 @@
 'use strict';
 
 const MODEL = 'claude-haiku-4-5-20251001';
-const PROMPT_VERSION = 'structured-v3';
+const PROMPT_VERSION = 'structured-v4';
 const REQUIRED_SECTION_KEYS = [
   'strengths',
   'friction',
@@ -64,6 +64,11 @@ function buildReportFacts(result) {
   };
 }
 
+function buildConversationPrompt(result) {
+  const facts = buildReportFacts(result);
+  return `Say this first: "I think ${facts.strongestLabel.toLowerCase()} is where this feels easiest, but ${facts.watchLabel.toLowerCase()} is the part we should name early instead of guessing."`;
+}
+
 function fallbackReport(result) {
   const [first, second] = result.people;
   const facts = buildReportFacts(result);
@@ -72,52 +77,52 @@ function fallbackReport(result) {
 
   const report = {
     title: `${first.name} & ${second.name}`,
-    overview: `${first.name} and ${second.name} have a ${facts.score}% compatibility score for this ${facts.relationship}. The strongest area is ${facts.strongestLabel}, while ${facts.watchLabel} is the part to handle with more care. Use this report as a reflection and conversation starter, not a relationship verdict.`,
+    overview: `${first.name} and ${second.name} have a ${facts.score}% compatibility score for this ${facts.relationship}. The strongest area is ${facts.strongestLabel}; the watch area is ${facts.watchLabel}. The useful question is not whether this is perfect. It is whether both people can name the pattern early enough to work with it.`,
     sections: [
       {
         key: 'strengths',
         title: 'Where You Connect',
-        body: `${facts.strongestLabel} is the clearest strength in this reading. ${firstStyle} and ${secondStyle} may make this part of the connection easier to notice, especially when both people give the other room to show care in their own way.`,
+        body: `${facts.strongestLabel} is the clearest strength in this reading. ${firstStyle} and ${secondStyle} may make this part of the connection easier to notice, especially when both people let the other person's style count as real effort instead of waiting for it to look identical.`,
       },
       {
         key: 'friction',
         title: 'Where You May Clash',
-        body: `${facts.watchLabel} is the watch area. This does not make the connection wrong; it means the pair may need clearer language when expectations, timing, or reactions do not match at first.`,
+        body: `${facts.watchLabel} is the watch area. This does not make the connection wrong; it means the pair should avoid testing each other silently when expectations, timing, or reactions do not match at first.`,
       },
       {
         key: 'communication',
         title: 'Communication',
-        body: `This pair benefits from saying the practical thing earlier instead of waiting for the other person to read the room perfectly. A useful next step is to ask, "What did you mean by that?" before turning a small mismatch into a bigger story.`,
+        body: `This pair benefits from saying the practical thing earlier instead of waiting for the other person to read the room perfectly. A useful move is to ask, "What did you mean by that?" before turning a small mismatch into a bigger story.`,
       },
       {
         key: 'emotional_dynamic',
         title: 'Emotional Style',
-        body: `The emotional pace may not be identical. One person may want the moment named quickly while the other needs time to sort through the feeling, so the report works best when both people treat pace as information instead of rejection.`,
+        body: `The emotional pace may not be identical. One person may want the moment named quickly while the other needs time to sort through the feeling, so this works best when both people treat pace as information instead of rejection.`,
       },
       {
         key: 'stability',
         title: 'Stability',
-        body: `Stability comes from small proof, not big declarations. If this connection is going to feel steadier, both people should be clear about plans, follow-through, and what they need when life gets busy.`,
+        body: `Stability comes from small proof, not big declarations. If this connection is going to feel steadier, both people should be clear about plans, follow-through, and what they need when life gets busy or distracted.`,
       },
       {
         key: 'growth',
         title: 'What You Can Learn From Each Other',
-        body: `The difference between these two styles can be useful when neither person treats their own reflex as the only correct one. Ask what the other person notices first, because that answer will usually reveal the part of the connection that needs the most translation.`,
+        body: `The difference between these two styles can be useful when neither person treats their own reflex as the only correct one. Ask what the other person notices first; that answer usually reveals the part of the connection that needs the most translation.`,
       },
       {
         key: 'practical_advice',
         title: 'What May Help',
-        body: `The practical next step is to name one expectation before it becomes a test. Say what would make the connection easier this week, then ask the other person what would make it easier for them too.`,
+        body: `${buildConversationPrompt(result)} Then each person should name one small thing that would make the connection easier this week, before it becomes a test.`,
       },
       {
         key: 'do',
         title: 'Try More Of',
-        body: `Try more direct appreciation, specific requests, and repair after a tense moment. The score is most useful when it points to a behavior both people can repeat, not when it becomes a label for the whole relationship.`,
+        body: `Try more direct appreciation, specific requests, and repair after a tense moment. The score is most useful when it points to a behavior both people can repeat, not when it becomes a label for the whole connection.`,
       },
       {
         key: 'avoid',
         title: 'Watch For',
-        body: `Watch for assumptions, scorekeeping, and treating one difficult pattern as the full truth about the connection. This report should help the pair talk with more precision, not decide the future for them.`,
+        body: `Watch for assumptions, scorekeeping, and treating one difficult pattern as the full truth about the connection. This report should help the pair talk with more precision, not turn the future into a pass/fail result.`,
       },
     ],
     closing: `This report describes patterns from the compatibility result. ${first.name} and ${second.name}'s choices, honesty, and follow-through matter more than any score.`,
@@ -223,6 +228,8 @@ async function generateStructuredReport(result, options = {}) {
         'Write a grounded relationship compatibility report in plain, specific language and short sentences.',
         'Return valid JSON only. Do not use markdown or emojis.',
         'Treat astrology as reflective entertainment and a conversation starter, not a relationship verdict.',
+        'Make the report feel paid-worthy by naming specific behaviors, timing mismatches, repair moves, and one line the reader can actually say.',
+        'Every section should include a concrete action, warning, or interpretation tied to the supplied facts.',
         'Avoid certainty, predictions, guarantees, soulmate language, diagnosis, therapy language, or medical, legal, financial, or professional advice.',
         'Avoid vague AI-style phrases, including natural alignment, natural rhythm, growth edge, intention, emotional safety, meaningful connection, communication is important, and go deeper.',
         'Use the supplied sanitized names, signs, elements, scores, and relationship context only. Birth dates and email addresses are not provided to you and must not be invented or referenced.',
@@ -264,6 +271,7 @@ async function generateStructuredReport(result, options = {}) {
 }
 
 module.exports = {
+  buildConversationPrompt,
   buildReportFacts,
   fallbackReport,
   generateStructuredReport,

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs'
+import {analyzeDraftQuality} from './content-quality.mjs'
 
 const projectId = process.env.SANITY_PROJECT_ID || '4qj4p6px'
 const dataset = process.env.SANITY_DATASET || 'production'
@@ -36,6 +37,21 @@ if (!slug || !input.title || !input.excerpt || !input.metaDescription || !input.
   process.exit(1)
 }
 
+const quality = analyzeDraftQuality(input)
+if (!quality.ok) {
+  console.error('Draft blocked before Sanity. Fix these quality issues:')
+  for (const error of quality.errors) {
+    console.error(`- ${error}`)
+  }
+  if (quality.warnings.length > 0) {
+    console.error('\nWarnings:')
+    for (const warning of quality.warnings) {
+      console.error(`- ${warning}`)
+    }
+  }
+  process.exit(1)
+}
+
 const document = {
   _id: `drafts.blogPost.${slug}`,
   _type: 'blogPost',
@@ -44,7 +60,10 @@ const document = {
   status: 'draft',
   approvalStatus: 'raw',
   aiGenerated: true,
-  slopFlags: Array.isArray(input.slopFlags) ? input.slopFlags : [],
+  slopFlags: [
+    ...(Array.isArray(input.slopFlags) ? input.slopFlags : []),
+    ...quality.flags,
+  ].slice(0, 12),
   excerpt: input.excerpt,
   metaTitle: input.metaTitle || input.title.slice(0, 60),
   metaDescription: input.metaDescription,

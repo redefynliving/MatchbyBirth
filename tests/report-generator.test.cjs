@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 
 const {
   buildReportFacts,
+  buildConversationPrompt,
   fallbackReport,
   generateStructuredReport,
   validateReportQuality,
@@ -71,7 +72,7 @@ test('generateStructuredReport returns a complete fallback without an AI key', a
     'avoid',
   ]);
   assert.equal(JSON.stringify(report).includes('birthDate'), false);
-  assert.equal(report.promptVersion, 'structured-v3');
+  assert.equal(report.promptVersion, 'structured-v4');
   assert.equal(validateReportQuality(report, result), true);
   assert.doesNotMatch(
     JSON.stringify(report),
@@ -94,7 +95,7 @@ test('generateStructuredReport parses a strict JSON model response', async () =>
   assert.equal(report.overview, generated.overview);
   assert.equal(report.title, 'Alex & Jordan');
   assert.equal(report.model, 'claude-haiku-4-5-20251001');
-  assert.equal(report.promptVersion, 'structured-v3');
+  assert.equal(report.promptVersion, 'structured-v4');
 });
 
 test('generateStructuredReport asks the model for plain and qualified language', async () => {
@@ -114,12 +115,22 @@ test('generateStructuredReport asks the model for plain and qualified language',
   });
 
   assert.match(requestBody.system, /plain, specific language/i);
+  assert.match(requestBody.system, /paid-worthy/i);
+  assert.match(requestBody.system, /one line the reader can actually say/i);
   assert.match(requestBody.system, /avoid certainty/i);
   assert.match(requestBody.system, /conversation starter/i);
   assert.match(requestBody.system, /Birth dates and email addresses are not provided/i);
   assert.match(requestBody.system, /strongest area, the watch area, and one practical next step/i);
   assert.match(requestBody.system, /growth edge/i);
   assert.deepEqual(requestBody.messages[0].content.includes('requiredFacts'), true);
+});
+
+test('buildConversationPrompt creates a concrete line to say', () => {
+  const prompt = buildConversationPrompt(result);
+
+  assert.match(prompt, /Say this first/);
+  assert.match(prompt, /chemistry/i);
+  assert.match(prompt, /stability/i);
 });
 
 test('buildReportFacts identifies score, relationship, strongest area, and watch area', () => {

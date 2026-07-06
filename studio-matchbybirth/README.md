@@ -58,7 +58,13 @@ To create or update a raw automation draft from JSON:
 SANITY_API_TOKEN=your_write_token node tools/upsert-ai-draft.mjs ./draft.json
 ```
 
-The script writes to `drafts.blogPost.<slug>`, which keeps the Sanity draft/published relationship intact.
+The script runs the content quality scanner first. It blocks drafts that are too short, too generic, missing examples, missing internal Match by Birth links, or using weak SEO metadata. If the draft passes, it writes to `drafts.blogPost.<slug>`, which keeps the Sanity draft/published relationship intact.
+
+To check a draft without sending it to Sanity:
+
+```bash
+npm run content:check -- ./draft.json
+```
 
 ### Draft Prompt
 

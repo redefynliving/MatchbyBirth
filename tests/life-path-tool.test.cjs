@@ -45,6 +45,10 @@ test('life path compatibility page is routed, crawlable, and in the sitemap', as
 
   assert.match(page, /Life Path Compatibility Calculator/);
   assert.match(page, /What is a life path number/);
+  assert.match(page, /Life Path compatibility is a lens/);
+  assert.match(page, /Easy match/);
+  assert.match(page, /Growth match/);
+  assert.match(page, /Challenging match/);
   assert.match(page, /How to calculate your life path number/);
   assert.match(page, /Life path meanings/);
   assert.match(page, /Master numbers/);

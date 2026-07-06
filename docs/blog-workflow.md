@@ -35,10 +35,16 @@ Nothing publishes until the user approves the full draft.
 1. Pull the next planned item from the ledger.
 2. Verify it does not collide with published content.
 3. Draft the post in the site’s existing blog structure.
-4. Show the draft to the user.
-5. Revise if needed.
-6. Only publish after explicit approval.
-7. Mark the item as published in the archive.
+4. Run the slop scanner before sending it to Sanity:
+
+   ```bash
+   npm run content:check -- ./draft.json
+   ```
+
+5. Show the draft to the user.
+6. Revise if needed.
+7. Only publish after explicit approval.
+8. Mark the item as published in the archive.
 
 ## What to track
 - slug

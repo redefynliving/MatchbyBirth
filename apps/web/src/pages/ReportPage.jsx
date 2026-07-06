@@ -5,6 +5,24 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import BackButton from '@/components/BackButton.jsx';
 
+function titleCase(value) {
+  return String(value || '')
+    .replaceAll('_', ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function getReportSnapshot(report, result) {
+  const breakdownEntries = Object.entries(result?.breakdown || {})
+    .filter(([key, value]) => key !== 'overall' && Number.isFinite(Number(value)))
+    .sort((left, right) => Number(right[1]) - Number(left[1]));
+  const strongest = titleCase(breakdownEntries[0]?.[0] || 'connection');
+  const watch = titleCase(breakdownEntries[breakdownEntries.length - 1]?.[0] || 'timing');
+  const practical = report.sections.find((section) => section.key === 'practical_advice')?.body || '';
+  const sayThis = practical.match(/"([^"]+)"/)?.[1] || `Name where ${strongest.toLowerCase()} feels easy, then talk about ${watch.toLowerCase()} before it turns into guessing.`;
+
+  return { strongest, watch, sayThis };
+}
+
 function ReportPage() {
   const [searchParams] = useSearchParams();
   const purchase = searchParams.get('purchase');
@@ -95,6 +113,7 @@ function ReportPage() {
   }
 
   const { report, result } = state;
+  const snapshot = getReportSnapshot(report, result);
   return (
     <>
       <Helmet>
@@ -130,9 +149,29 @@ function ReportPage() {
               <p className="text-muted-foreground mt-5 max-w-xl mx-auto leading-relaxed">
                 {report.overview}
               </p>
-            </header>
+	            </header>
 
-            <div className="py-4">
+	            <section className="my-8 rounded-3xl border border-primary/15 bg-primary/[0.035] p-5 md:p-6">
+	              <p className="text-xs uppercase tracking-[0.16em] text-primary font-semibold mb-4">
+	                Report snapshot
+	              </p>
+	              <div className="grid gap-4 md:grid-cols-3">
+	                <div className="rounded-2xl bg-card border border-border p-4">
+	                  <p className="text-xs text-muted-foreground mb-1">Strongest area</p>
+	                  <p className="font-serif text-xl text-foreground">{snapshot.strongest}</p>
+	                </div>
+	                <div className="rounded-2xl bg-card border border-border p-4">
+	                  <p className="text-xs text-muted-foreground mb-1">Watch area</p>
+	                  <p className="font-serif text-xl text-foreground">{snapshot.watch}</p>
+	                </div>
+	                <div className="rounded-2xl bg-card border border-border p-4 md:col-span-1">
+	                  <p className="text-xs text-muted-foreground mb-1">Say this first</p>
+	                  <p className="font-serif text-base leading-7 text-foreground">"{snapshot.sayThis}"</p>
+	                </div>
+	              </div>
+	            </section>
+
+	            <div className="py-4">
               {report.sections.map((section) => (
                 <section key={section.key} className="py-7 border-b border-border last:border-0">
                   <h2 className="text-xs uppercase tracking-[0.16em] text-muted-foreground font-semibold mb-3">

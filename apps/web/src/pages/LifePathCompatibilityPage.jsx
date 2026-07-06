@@ -40,6 +40,21 @@ const compatibilityRows = [
   ['Needs more translation', '2 and 5, 3 and 7, 4 and 5, 5 and 6', 'Different needs can work, but both people have to name what feels safe.'],
 ];
 
+const readingModes = [
+  {
+    title: 'Easy match',
+    body: 'The numbers support each other without much translation. This does not mean perfect; it means the default pace, care style, or priorities may be easier to understand.',
+  },
+  {
+    title: 'Growth match',
+    body: 'The numbers are different enough to create balance. One person may bring structure while the other brings movement, expression, care, or depth.',
+  },
+  {
+    title: 'Challenging match',
+    body: 'The numbers may clash more often, so the connection needs clearer expectations, flexibility, and real-world communication before friction becomes a story.',
+  },
+];
+
 const relatedGuides = [
   ['Life Path Number Compatibility Guide', '/blog/life-path-number-compatibility-guide'],
   ['Birth Date Compatibility vs. Zodiac Compatibility', '/blog/birth-date-compatibility-vs-zodiac-compatibility'],
@@ -443,6 +458,39 @@ function LifePathCompatibilityPage() {
         </section>
 
         <section className="section-spacing border-y border-border/60 bg-muted/20">
+          <div className="content-container max-w-5xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">How to read the match</p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+                Life Path compatibility is a lens, not a yes-or-no test
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                Use the result to compare two people's core patterns: pacing, communication, emotional needs, and lifestyle preferences. The point is not to reduce someone to a number. The point is to notice where a connection may flow, where it may need translation, and what to talk about first.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {readingModes.map((mode) => (
+                <article key={mode.title} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                  <h3 className="text-lg font-semibold text-foreground">{mode.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{mode.body}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-3xl border border-primary/15 bg-card p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-foreground">A simple example</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                A Life Path 3 and Life Path 7 can work well, but they may need different rhythms. The 3 often brings expression, play, and outward energy. The 7 often brings reflection, privacy, and depth. The useful question is not "are these numbers good?" It is "can both people respect the other person's pace?"
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                After you compare the numbers, use the <Link to="/#calculator" className="font-semibold text-primary hover:underline">full birth date compatibility calculator</Link> to add zodiac, timing, and relationship context.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-spacing bg-background">
           <div className="content-container max-w-6xl">
             <div className="mb-8 text-center">
               <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Life path meanings</p>
@@ -461,7 +509,7 @@ function LifePathCompatibilityPage() {
           </div>
         </section>
 
-        <section className="section-spacing bg-background">
+        <section className="section-spacing border-y border-border/60 bg-muted/20">
           <div className="content-container max-w-5xl">
             <div className="mb-8 text-center">
               <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Compatibility table</p>
