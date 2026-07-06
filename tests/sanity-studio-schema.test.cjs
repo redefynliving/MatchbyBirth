@@ -27,7 +27,10 @@ test('Sanity Studio defines a structured blog publishing schema', () => {
   assert.match(postSchema, /name: 'quickTakeaways'/);
   assert.match(postSchema, /name: 'faq'/);
   assert.match(postSchema, /name: 'relatedPosts'/);
-  assert.match(postSchema, /MBB Exact Mode/);
+  assert.match(postSchema, /name: 'approvalStatus'/);
+  assert.match(postSchema, /name: 'rawBody'/);
+  assert.match(postSchema, /name: 'aiGenerated'/);
+  assert.match(postSchema, /Match by Birth Exact Mode/);
   assert.match(categorySchema, /name: 'category'/);
   assert.match(categorySchema, /name: 'slug'/);
 });
@@ -39,6 +42,6 @@ test('Sanity Studio README explains how to publish a Match by Birth article', ()
   assert.match(readme, /npm run dev/);
   assert.match(readme, /Create a category/);
   assert.match(readme, /Create a blog post/);
-  assert.match(readme, /Publish/);
-  assert.match(readme, /Vercel Deploy Hook/);
+  assert.match(readme, /Approve & Publish/);
+  assert.match(readme, /Vercel rebuild\/deploy hook/);
 });

@@ -18,6 +18,7 @@ export const blogPost = defineType({
   groups: [
     {name: 'content', title: 'Content', default: true},
     {name: 'seo', title: 'SEO'},
+    {name: 'workflow', title: 'Workflow'},
     {name: 'enhancements', title: 'Enhancements'},
     {name: 'links', title: 'Links'},
   ],
@@ -54,11 +55,60 @@ export const blogPost = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'approvalStatus',
+      title: 'Approval status',
+      type: 'string',
+      group: 'workflow',
+      initialValue: 'raw',
+      description: 'Automation writes raw drafts, the rewrite pass marks ready, and Studio publish marks approved.',
+      options: {
+        layout: 'radio',
+        list: [
+          {title: 'Raw automation draft', value: 'raw'},
+          {title: 'Ready for review', value: 'ready'},
+          {title: 'Approved and published', value: 'approved'},
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'aiGenerated',
+      title: 'AI-assisted draft',
+      type: 'boolean',
+      group: 'workflow',
+      initialValue: false,
+      description: 'Keeps provenance clear for posts that started from automation.',
+    }),
+    defineField({
+      name: 'slopFlags',
+      title: 'Rewrite / quality flags',
+      type: 'array',
+      group: 'workflow',
+      of: [defineArrayMember({type: 'string'})],
+      description: 'Automation can list generic phrasing, weak claims, or missing checks here.',
+      validation: (rule) => rule.max(12),
+    }),
+    defineField({
+      name: 'rawBody',
+      title: 'Raw automation draft',
+      type: 'text',
+      rows: 12,
+      group: 'workflow',
+      description: 'First-pass Hermes draft. The reviewed article should live in Article body.',
+    }),
+    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
       group: 'content',
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const document = context.document || {}
+          if ((document.status === 'published' || document.approvalStatus === 'approved') && !value) {
+            return 'Published posts need a publish date.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'category',
@@ -86,6 +136,14 @@ export const blogPost = defineType({
       group: 'seo',
       description: 'One or two sentences shown in cards and previews.',
       validation: (rule) => rule.required().min(80).max(220),
+    }),
+    defineField({
+      name: 'metaTitle',
+      title: 'Meta title',
+      type: 'string',
+      group: 'seo',
+      description: 'Optional search title. Keep it under 60 characters.',
+      validation: (rule) => rule.max(60),
     }),
     defineField({
       name: 'metaDescription',
@@ -163,7 +221,20 @@ export const blogPost = defineType({
           },
         }),
       ],
-      validation: (rule) => rule.required().min(8),
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const document = context.document || {}
+          const needsFinalBody =
+            document.status === 'published' ||
+            document.approvalStatus === 'ready' ||
+            document.approvalStatus === 'approved'
+
+          if (!needsFinalBody) return true
+          if (!Array.isArray(value) || value.length < 8) {
+            return 'Ready or approved posts need a reviewed article body.'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'exampleScenarios',
@@ -264,21 +335,24 @@ export const blogPost = defineType({
       title: 'Editor notes',
       type: 'text',
       rows: 4,
-      group: 'content',
+      group: 'workflow',
       description:
-        'Internal notes only. Keep claims responsible: MBB Exact Mode improves Sun sign placement, not relationship certainty.',
+        'Internal notes only. Keep claims responsible: Match by Birth Exact Mode improves Sun sign placement, not relationship certainty.',
     }),
   ],
   preview: {
     select: {
       title: 'title',
       subtitle: 'category.title',
+      approvalStatus: 'approvalStatus',
       media: 'heroImage',
     },
-    prepare({title, subtitle, media}) {
+    prepare({title, subtitle, approvalStatus, media}) {
       return {
         title,
-        subtitle: subtitle ? `Category: ${subtitle}` : 'No category selected',
+        subtitle: [approvalStatus, subtitle ? `Category: ${subtitle}` : 'No category selected']
+          .filter(Boolean)
+          .join(' · '),
         media,
       }
     },

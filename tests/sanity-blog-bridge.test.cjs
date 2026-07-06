@@ -51,3 +51,61 @@ test('writes a generated Sanity posts module that can be imported by the blog', 
   assert.equal(generatedPosts.length, 1);
   assert.equal(generatedPosts[0].slug, 'cancer-moon-compatibility');
 });
+
+test('Sanity sync only exposes published and approved workflow posts', async () => {
+  const {
+    buildSanityPostsQuery,
+    normalizeSanityBlogPost,
+  } = await import(pathToFileURL(path.join(root, 'apps/web/tools/sanity-posts.js')));
+
+  const query = buildSanityPostsQuery();
+  assert.match(query, /status == "published"/);
+  assert.match(query, /approvalStatus == "approved"/);
+  assert.match(query, /!\(_id in path\("drafts\.\*\*"\)\)/);
+
+  const baseDocument = {
+    title: 'Cancer Moon Compatibility',
+    slug: { current: 'cancer-moon-compatibility' },
+    status: 'published',
+    publishedAt: '2026-06-27T12:00:00.000Z',
+    topic: 'zodiac',
+    category: { title: 'Moon Signs', slug: { current: 'moon-signs' } },
+    metaDescription: 'A practical Cancer Moon compatibility guide.',
+    body: [{
+      _type: 'block',
+      style: 'normal',
+      children: [{ _type: 'span', text: 'Original Sanity article.' }],
+    }],
+  };
+
+  assert.equal(normalizeSanityBlogPost({ ...baseDocument, approvalStatus: 'ready' }), null);
+  assert.equal(normalizeSanityBlogPost({ ...baseDocument, approvalStatus: 'raw' }), null);
+  assert.equal(
+    normalizeSanityBlogPost({ ...baseDocument, approvalStatus: 'approved' }).slug,
+    'cancer-moon-compatibility',
+  );
+  assert.equal(
+    normalizeSanityBlogPost(baseDocument).slug,
+    'cancer-moon-compatibility',
+    'legacy published posts without approvalStatus stay live',
+  );
+});
+
+test('Sanity Studio has one-click approval fields and publish action', () => {
+  const schema = fs.readFileSync(path.join(root, 'studio-matchbybirth/schemaTypes/blogPost.ts'), 'utf8');
+  const config = fs.readFileSync(path.join(root, 'studio-matchbybirth/sanity.config.ts'), 'utf8');
+  const action = fs.readFileSync(
+    path.join(root, 'studio-matchbybirth/actions/ApproveAndPublishAction.tsx'),
+    'utf8',
+  );
+
+  for (const field of ['approvalStatus', 'aiGenerated', 'slopFlags', 'rawBody', 'metaTitle']) {
+    assert.match(schema, new RegExp(`name: '${field}'`));
+  }
+
+  assert.match(config, /ApproveAndPublishAction/);
+  assert.match(config, /schemaType === 'blogPost'/);
+  assert.match(action, /approvalStatus === 'ready'/);
+  assert.match(action, /approvalStatus: 'approved'/);
+  assert.match(action, /status: 'published'/);
+});

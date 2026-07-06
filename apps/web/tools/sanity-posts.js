@@ -158,6 +158,7 @@ function sanitizeArray(items, mapper = (item) => item) {
 
 export function normalizeSanityBlogPost(document) {
   if (!document || document.status !== 'published') return null;
+  if (document.approvalStatus && document.approvalStatus !== 'approved') return null;
 
   const slug = slugValue(document.slug);
   const date = dateOnly(document.publishedAt);
@@ -179,6 +180,7 @@ export function normalizeSanityBlogPost(document) {
     source: 'sanity',
     slug,
     title: document.title,
+    ...(document.metaTitle ? { metaTitle: document.metaTitle } : {}),
     date,
     description,
     tags: [category, topicTag, 'sanity'],
@@ -208,6 +210,7 @@ export function buildSanityPostsQuery() {
   return `*[
     _type == "blogPost" &&
     status == "published" &&
+    (!defined(approvalStatus) || approvalStatus == "approved") &&
     defined(slug.current) &&
     !(_id in path("drafts.**"))
   ] | order(publishedAt desc) {
@@ -215,9 +218,12 @@ export function buildSanityPostsQuery() {
     title,
     slug,
     status,
+    approvalStatus,
+    aiGenerated,
     publishedAt,
     topic,
     excerpt,
+    metaTitle,
     metaDescription,
     category->{title, slug, description},
     "heroImage": {

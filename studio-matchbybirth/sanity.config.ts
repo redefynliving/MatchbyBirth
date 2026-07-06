@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
+import {ApproveAndPublishAction} from './actions/ApproveAndPublishAction'
 
 export default defineConfig({
   name: 'default',
@@ -14,5 +15,14 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
+  },
+
+  document: {
+    actions: (prev, context) =>
+      context.schemaType === 'blogPost'
+        ? prev.map((action) =>
+            action.action === 'publish' ? ApproveAndPublishAction : action,
+          )
+        : prev,
   },
 })
