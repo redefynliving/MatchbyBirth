@@ -1,0 +1,379 @@
+{
+  "site": "Match by Birth",
+  "version": 2,
+  "approval_policy": {
+    "publish_only_after_user_approval": true,
+    "draft_shown_for_review": true,
+    "status_flow": [
+      "planned",
+      "drafted",
+      "awaiting_approval",
+      "approved",
+      "scheduled",
+      "published"
+    ]
+  },
+  "duplicate_rules": [
+    "Never reuse an existing slug.",
+    "Never reuse the same topic angle within the next 30 posts.",
+    "Avoid near-duplicate titles that target the same intent with only wording changes.",
+    "If a topic is already published, mark it archived and do not repeat it unless the angle changes materially."
+  ],
+  "workflow": [
+    "Pick the next planned item from the queue.",
+    "Check the existing post archive for slug and intent collisions.",
+    "Draft the post in the Match by Birth structure.",
+    "Show the full draft to the user for approval.",
+    "Only after approval, publish live and move the item to published.",
+    "Log the final slug and date in the archive so it cannot be repeated."
+  ],
+  "quality_rules": [
+    "Tailored to Match by Birth, not generic astrology filler.",
+    "Premium, clean, intentional, and easy to scan.",
+    "Human-like voice with specific examples and practical takeaways.",
+    "No placeholder content, no duplicated sections, no AI slop."
+  ],
+  "fields": [
+    "day",
+    "publish_date",
+    "slug",
+    "title",
+    "category",
+    "primary_keyword",
+    "angle",
+    "status",
+    "notes"
+  ],
+  "queue": [
+    {
+      "day": 1,
+      "publish_date": "2026-07-06",
+      "slug": "how-to-read-synastry-chart",
+      "title": "How to Read a Synastry Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "synastry",
+      "angle": "synastry basics step-by-step",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 2,
+      "publish_date": "2026-07-07",
+      "slug": "synastry-vs-composite-chart",
+      "title": "Synastry vs Composite Chart: Which One to Trust First?",
+      "category": "learn-astrology",
+      "primary_keyword": "composite chart",
+      "angle": "when to use each chart type",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 3,
+      "publish_date": "2026-07-08",
+      "slug": "why-birth-time-matters-in-compatibility",
+      "title": "Why Birth Time Matters More Than You Think in Compatibility",
+      "category": "learn-astrology",
+      "primary_keyword": "birth time",
+      "angle": "why exact time changes the read",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 4,
+      "publish_date": "2026-07-09",
+      "slug": "house-overlays-in-synastry",
+      "title": "House Overlays in Synastry: What They Really Mean",
+      "category": "learn-astrology",
+      "primary_keyword": "house overlays",
+      "angle": "where one chart lands in the other",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 5,
+      "publish_date": "2026-07-10",
+      "slug": "seventh-house-partnership-axis",
+      "title": "The 7th House in Astrology: The Partnership Axis",
+      "category": "learn-astrology",
+      "primary_keyword": "7th house",
+      "angle": "commitment, mirroring, and roles",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 6,
+      "publish_date": "2026-07-11",
+      "slug": "venus-sign-love-style",
+      "title": "What Your Venus Sign Says About How You Love",
+      "category": "learn-astrology",
+      "primary_keyword": "venus sign",
+      "angle": "love style and attraction patterns",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 7,
+      "publish_date": "2026-07-12",
+      "slug": "venus-mars-aspects-attraction",
+      "title": "Venus-Mars Aspects: Where Attraction Actually Starts",
+      "category": "learn-astrology",
+      "primary_keyword": "venus mars aspects",
+      "angle": "desire, chemistry, and pursuit",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 8,
+      "publish_date": "2026-07-13",
+      "slug": "saturn-in-synastry",
+      "title": "Saturn in Synastry: The Reality Check That Makes Love Last",
+      "category": "learn-astrology",
+      "primary_keyword": "saturn synastry",
+      "angle": "stability, boundaries, and tests",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 9,
+      "publish_date": "2026-07-14",
+      "slug": "descendant-relationship-mirror",
+      "title": "The Descendant in Astrology: Your Relationship Mirror",
+      "category": "learn-astrology",
+      "primary_keyword": "descendant",
+      "angle": "partner archetype and projection",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 10,
+      "publish_date": "2026-07-15",
+      "slug": "mercury-in-synastry-communication",
+      "title": "Mercury in Synastry: How Couples Talk, Argue, and Repair",
+      "category": "learn-astrology",
+      "primary_keyword": "mercury synastry",
+      "angle": "conversation, conflict, repair",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 11,
+      "publish_date": "2026-07-16",
+      "slug": "fifth-house-romance",
+      "title": "The 5th House in Astrology: Where Romance Feels Alive",
+      "category": "learn-astrology",
+      "primary_keyword": "5th house",
+      "angle": "dating spark and creative chemistry",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 12,
+      "publish_date": "2026-07-17",
+      "slug": "eighth-house-intimacy",
+      "title": "The 8th House in Astrology: Trust, Intimacy, and Merging",
+      "category": "learn-astrology",
+      "primary_keyword": "8th house",
+      "angle": "trust, vulnerability, shared resources",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 13,
+      "publish_date": "2026-07-18",
+      "slug": "north-node-synastry",
+      "title": "North Node Contacts in Synastry: The Karmic Pull Explained",
+      "category": "learn-astrology",
+      "primary_keyword": "north node synastry",
+      "angle": "growth lessons and pull",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 14,
+      "publish_date": "2026-07-19",
+      "slug": "vertex-in-synastry",
+      "title": "Vertex in Synastry: Why Some Encounters Feel Fated",
+      "category": "learn-astrology",
+      "primary_keyword": "vertex synastry",
+      "angle": "unexpected but persistent attraction",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 15,
+      "publish_date": "2026-07-20",
+      "slug": "juno-commitment-patterns",
+      "title": "Juno in Astrology: The Commitment Pattern You Repeat",
+      "category": "learn-astrology",
+      "primary_keyword": "juno",
+      "angle": "marriage ideals and commitment habits",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 16,
+      "publish_date": "2026-07-21",
+      "slug": "chiron-in-relationships",
+      "title": "Chiron in Relationships: Where Old Wounds Get Reopened",
+      "category": "relationships",
+      "primary_keyword": "chiron relationships",
+      "angle": "relationship wounds and healing",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 17,
+      "publish_date": "2026-07-22",
+      "slug": "eleventh-house-friendship-love",
+      "title": "The 11th House in Love: When Friendship Becomes the Match",
+      "category": "relationships",
+      "primary_keyword": "11th house love",
+      "angle": "best-friend-to-partner transitions",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 18,
+      "publish_date": "2026-07-23",
+      "slug": "twelfth-house-hidden-patterns",
+      "title": "The 12th House in Relationships: Hidden Bonds and Quiet Patterns",
+      "category": "relationships",
+      "primary_keyword": "12th house relationships",
+      "angle": "subconscious bonds and secrecy",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 19,
+      "publish_date": "2026-07-24",
+      "slug": "chemistry-vs-compatibility",
+      "title": "Chemistry vs Compatibility: How to Tell the Difference",
+      "category": "relationships",
+      "primary_keyword": "chemistry vs compatibility",
+      "angle": "spark versus real fit",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 20,
+      "publish_date": "2026-07-25",
+      "slug": "what-makes-love-feel-safe",
+      "title": "What Makes a Relationship Feel Safe in Astrology",
+      "category": "relationships",
+      "primary_keyword": "relationship safety",
+      "angle": "emotional security markers",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 21,
+      "publish_date": "2026-07-26",
+      "slug": "mutual-effort-synastry",
+      "title": "How to Spot Mutual Effort in a Synastry Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "mutual effort",
+      "angle": "reciprocity signals in the chart",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 22,
+      "publish_date": "2026-07-27",
+      "slug": "easy-matches-never-deepen",
+      "title": "Why Some Easy Matches Never Deepen",
+      "category": "relationships",
+      "primary_keyword": "easy matches",
+      "angle": "low-friction, low-depth dynamics",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 23,
+      "publish_date": "2026-07-28",
+      "slug": "hard-matches-still-last",
+      "title": "Why Some Difficult Matches Still Last",
+      "category": "relationships",
+      "primary_keyword": "hard matches",
+      "angle": "hard-but-stable relationship patterns",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 24,
+      "publish_date": "2026-07-29",
+      "slug": "venus-retrograde-dating",
+      "title": "Venus Retrograde and Dating: What to Reassess",
+      "category": "seasonal",
+      "primary_keyword": "venus retrograde",
+      "angle": "pause, revisit, refine dating",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 25,
+      "publish_date": "2026-07-30",
+      "slug": "saturn-return-relationship-decisions",
+      "title": "Saturn Return and Relationship Decisions",
+      "category": "seasonal",
+      "primary_keyword": "saturn return relationships",
+      "angle": "adult choices and long-term realism",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 26,
+      "publish_date": "2026-07-31",
+      "slug": "jupiter-transits-relationship-growth",
+      "title": "Jupiter Transits and Relationship Growth",
+      "category": "seasonal",
+      "primary_keyword": "jupiter transits",
+      "angle": "growth windows and expansion",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 27,
+      "publish_date": "2026-08-01",
+      "slug": "eclipse-season-relationship-turning-points",
+      "title": "Eclipse Season and Relationship Turning Points",
+      "category": "seasonal",
+      "primary_keyword": "eclipse season",
+      "angle": "turning points and recalibration",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 28,
+      "publish_date": "2026-08-02",
+      "slug": "relationship-timing-in-astrology",
+      "title": "Relationship Timing in Astrology: When to Start, Define, or Wait",
+      "category": "seasonal",
+      "primary_keyword": "relationship timing",
+      "angle": "practical timing for love",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 29,
+      "publish_date": "2026-08-03",
+      "slug": "first-date-energy-birth-chart",
+      "title": "How to Read First-Date Energy in a Birth Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "first date energy",
+      "angle": "first-date impression clues",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 30,
+      "publish_date": "2026-08-04",
+      "slug": "long-term-potential-synastry",
+      "title": "Long-Term Potential in a Synastry Chart: What to Look For",
+      "category": "learn-astrology",
+      "primary_keyword": "long-term potential",
+      "angle": "staying power markers",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    }
+  ]
+}
