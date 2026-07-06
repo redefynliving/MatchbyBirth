@@ -207,12 +207,15 @@ test('report checkout explains its value while retaining payment and privacy ass
   assert.match(checkout, /Where misunderstandings may happen/);
   assert.match(checkout, /Practical ways to handle differences/);
   assert.match(checkout, /Private link and PDF delivered by email/);
+  assert.match(checkout, /Birth dates and your email are not sent to the AI provider/);
+  assert.match(checkout, /One-time digital report/);
   assert.match(checkout, /Refund support available/);
   assert.match(checkout, /Secure Stripe checkout/);
   assert.match(checkout, /Instant email delivery/);
   assert.match(checkout, /Buy report for \$9\.99/);
   assert.match(checkout, /Payment is handled by Stripe/);
-  assert.match(checkout, /birth dates are not stored/i);
+  assert.match(checkout, /reflection and conversation, not professional advice/i);
+  assert.doesNotMatch(checkout, /Urgency Discount|COSMIC30|Claim Offer/i);
   assert.doesNotMatch(checkout, /friction patterns|go beyond the score|repair misunderstandings/i);
 });
 

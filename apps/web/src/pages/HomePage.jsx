@@ -7,6 +7,7 @@ import HomeHeroBackdrop from '@/components/home/HomeHeroBackdrop.jsx';
 import HomeProofBand from '@/components/home/HomeProofBand.jsx';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { normalizeCalculatorPrefill } from '@/lib/calculator-prefill.js';
+import { SITE_URL } from '@/lib/blogSeo.js';
 import {
   scrollToCalculatorFromHash,
 } from '@/lib/scroll-to-calculator.js';
@@ -37,8 +38,8 @@ function HomePage() {
         <meta property="og:title" content="Birth Date Compatibility Calculator | Match by Birth" />
         <meta property="og:description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds." />
         <meta property="og:image" content="https://matchbybirth.com/og-image.png" />
-        <meta property="og:url" content={`${window.location.origin}/`} />
-        <link rel="canonical" href={`${window.location.origin}/`} />
+        <meta property="og:url" content={SITE_URL} />
+        <link rel="canonical" href={SITE_URL} />
 
         {/* AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossOrigin="anonymous"></script>

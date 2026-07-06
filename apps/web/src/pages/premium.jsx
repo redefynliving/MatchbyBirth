@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { SITE_URL } from '@/lib/blogSeo.js';
 import { Check, Crown, Heart, Mail, Sparkles, Stars, Zap } from 'lucide-react';
 import BackButton from '@/components/BackButton.jsx';
 
@@ -29,7 +30,7 @@ export default function PremiumPage() {
     },
     {
       title: 'Premium depth without noise',
-      text: 'Short, polished, high-signal emails — no spam, no filler, no AI slop.',
+      text: 'Short, practical emails with timing notes, reflection prompts, and new compatibility guides.',
       icon: Stars,
     },
   ]), []);
@@ -61,12 +62,12 @@ export default function PremiumPage() {
     <>
       <Helmet>
         <title>Weekly Match Intel | Match by Birth</title>
-        <meta
-          name="description"
-          content="Get weekly astrology compatibility intel by email, with private delivery and premium relationship insights."
-        />
+	        <meta
+	          name="description"
+	          content="Get weekly Match by Birth compatibility notes by email, with private delivery, unsubscribe controls, and practical relationship prompts."
+	        />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={`${window.location.origin}/premium`} />
+        <link rel="canonical" href={`${SITE_URL}/premium`} />
       </Helmet>
 
       <main className="relative overflow-hidden bg-background">
@@ -98,12 +99,12 @@ export default function PremiumPage() {
                     <Crown className="h-3.5 w-3.5" />
                     Weekly match intel
                   </p>
-                  <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
-                    Make the weekly relationship guidance feel premium.
-                  </h1>
-                  <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
-                    Get one polished email a week with compatibility insights, next-step prompts, and a private path back to your saved result.
-                  </p>
+	                  <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
+	                    Compatibility notes you can actually use.
+	                  </h1>
+	                  <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
+	                    Get one polished email a week with timing notes, compatibility prompts, and a private path back to your saved result. It is built for reflection and conversation, not predictions.
+	                  </p>
 
                   <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
                     <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2">
@@ -142,9 +143,9 @@ export default function PremiumPage() {
                 <p className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-foreground">
                   {SUBSCRIPTION_PRICE}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  A recurring subscription for weekly intel, saved-result connections, and deeper relationship guidance.
-                </p>
+	                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+	                  A recurring subscription for weekly notes, saved-result connections, and practical relationship prompts. Birth dates are not stored.
+	                </p>
 
                 <form onSubmit={startSubscription} className="mt-8 space-y-4">
                   <div>
@@ -171,17 +172,17 @@ export default function PremiumPage() {
                     {status === 'loading' ? 'Opening secure checkout...' : 'Join weekly intel'}
                   </button>
 
-                  <p className="text-center text-xs leading-5 text-muted-foreground">
-                    By continuing, you agree to recurring billing. Cancel anytime.
-                  </p>
+	                  <p className="text-center text-xs leading-5 text-muted-foreground">
+	                    By continuing, you agree to recurring billing. Cancel anytime. This is reflection content, not professional advice.
+	                  </p>
                 </form>
 
                 <div className="mt-8 space-y-3 rounded-3xl border border-border bg-muted/25 p-5">
                   {[
-                    'Weekly email with real relationship insight',
-                    'Private path back to your saved result',
-                    'No birth dates stored, ever',
-                    'Built for premium, not spam',
+	                    'Weekly email with practical compatibility notes',
+	                    'Private path back to your saved result',
+	                    'No birth dates stored, ever',
+	                    'Unsubscribe controls included',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-3 text-sm text-foreground">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -202,7 +203,7 @@ export default function PremiumPage() {
               {[
                 ['Step 1', 'Free result', 'Run the calculator and get a polished compatibility score.'],
                 ['Step 2', 'Subscribe', 'Enter your email and join the weekly intel membership.'],
-                ['Step 3', 'Keep buying', 'Subscribers keep coming back because the guidance stays useful.'],
+	                ['Step 3', 'Use the prompts', 'Read the weekly note, save what feels useful, and unsubscribe anytime.'],
               ].map(([step, title, text]) => (
                 <div key={step} className="rounded-2xl border border-border bg-muted/20 p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{step}</p>
@@ -210,8 +211,20 @@ export default function PremiumPage() {
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
                 </div>
               ))}
-            </section>
-          </div>
+	            </section>
+
+	            <section className="mt-8 rounded-[2rem] border border-border bg-card p-6 shadow-sm md:p-8">
+	              <h2 className="text-xl font-semibold tracking-tight text-foreground">Paid report support</h2>
+	              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+	                One-time compatibility reports are delivered by private link and email after Stripe checkout. Birth dates and checkout emails are not sent to the AI provider.
+	              </p>
+	              <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+	                <Link to="/report-delivery" className="text-primary hover:underline">Report delivery</Link>
+	                <Link to="/refund-policy" className="text-primary hover:underline">Refund policy</Link>
+	                <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline">support@matchbybirth.com</a>
+	              </div>
+	            </section>
+	          </div>
         </div>
       </main>
     </>

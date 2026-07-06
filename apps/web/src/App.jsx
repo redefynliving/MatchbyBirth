@@ -20,6 +20,8 @@ const ContactPage = lazy(() => import('@/pages/ContactPage.jsx'));
 const PrivacyPolicyPage = lazy(() => import('@/pages/PrivacyPolicyPage.jsx'));
 const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage.jsx'));
 const DisclaimerPage = lazy(() => import('@/pages/DisclaimerPage.jsx'));
+const RefundPolicyPage = lazy(() => import('@/pages/RefundPolicyPage.jsx'));
+const ReportDeliveryPage = lazy(() => import('@/pages/ReportDeliveryPage.jsx'));
 const ResultPage = lazy(() => import('@/pages/ResultPage.jsx'));
 const ReportPage = lazy(() => import('@/pages/ReportPage.jsx'));
 const ReportSuccess = lazy(() => import('@/pages/ReportSuccess.jsx'));
@@ -56,9 +58,11 @@ function App() {
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPolicyPage />} />
-              <Route path="/terms" element={<TermsOfServicePage />} />
-              <Route path="/disclaimers" element={<DisclaimerPage />} />
-              <Route path="/report-success" element={<ReportSuccess />} />
+	              <Route path="/terms" element={<TermsOfServicePage />} />
+	              <Route path="/disclaimers" element={<DisclaimerPage />} />
+	              <Route path="/refund-policy" element={<RefundPolicyPage />} />
+	              <Route path="/report-delivery" element={<ReportDeliveryPage />} />
+	              <Route path="/report-success" element={<ReportSuccess />} />
               <Route path="/report" element={<ReportPage />} />
               <Route path="/premium" element={<PremiumPage />} />
               <Route path="/unsubscribe" element={<UnsubscribePage />} />

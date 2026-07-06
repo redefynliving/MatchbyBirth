@@ -218,16 +218,61 @@ function preRenderPages() {
       `
     },
     {
+      route: 'refund-policy',
+      title: 'Refund Policy | Match by Birth',
+      description: 'Refund and support policy for paid Match by Birth compatibility reports.',
+      content: `
+        <header>
+          <p>Paid reports</p>
+          <h1>Refund Policy</h1>
+          <p>Last updated: July 5, 2026</p>
+        </header>
+        <article>
+          <h2>What you are buying</h2>
+          <p>A paid Match by Birth report is a one-time digital compatibility report delivered by private link and email. It expands the free result into strengths, friction points, communication notes, a watch area, and practical conversation prompts.</p>
+          <h2>When refunds are available</h2>
+          <p>Email support@matchbybirth.com if you paid and did not receive access, received a broken report link, were charged incorrectly, or the report could not be generated.</p>
+          <h2>When refunds may not apply</h2>
+          <p>Because reports are digital goods delivered after checkout, refunds are not guaranteed simply because a reading is not the answer someone hoped for. Match by Birth is designed for reflection and conversation, not certainty, prediction, or a relationship verdict.</p>
+          <h2>How fast support replies</h2>
+          <p>We review report and payment support requests as quickly as possible, usually within 1-2 business days. If a technical issue blocked delivery, we will restore access, resend the private link, or help with a refund.</p>
+        </article>
+      `
+    },
+    {
+      route: 'report-delivery',
+      title: 'Report Delivery | Match by Birth',
+      description: 'How paid Match by Birth compatibility reports are generated, delivered, and handled privately.',
+      content: `
+        <header>
+          <p>Private paid reports</p>
+          <h1>How report delivery works</h1>
+          <p>Paid reports are designed to be clear, private, and useful without turning compatibility into a verdict.</p>
+        </header>
+        <article>
+          <h2>What the report includes</h2>
+          <p>The paid report expands your free compatibility result into nine sections: strengths, friction, communication, emotional style, stability, growth, practical advice, what to try more of, and what to watch for.</p>
+          <h2>How delivery happens</h2>
+          <p>After Stripe checkout, Match by Birth prepares the report and sends a private report link to the checkout email. The success page also checks for the report and redirects you when it is ready.</p>
+          <h2>What data is used</h2>
+          <p>The report uses sanitized compatibility data: display names, signs, elements, scores, relationship type, and the result summary. Birth dates and the checkout email are not sent to the AI provider. Payment details are handled by Stripe.</p>
+          <h2>If something goes wrong</h2>
+          <p>If the first report attempt fails, delivery is retried automatically. If you paid but cannot access the report, email support@matchbybirth.com with your checkout email and any result link you have.</p>
+        </article>
+      `
+    },
+    {
       route: 'premium',
       title: 'Weekly Match Intel | Match by Birth',
-      description: 'Get weekly astrology compatibility intel by email, with private delivery and premium relationship insights.',
+      description: 'Get weekly Match by Birth compatibility notes by email, with private delivery, unsubscribe controls, and practical relationship prompts.',
       content: `
         <header>
           <h1>Weekly Match Intel</h1>
-          <p>Get premium cosmic relationship guides delivered to your inbox.</p>
+          <p>Get practical compatibility notes delivered to your inbox.</p>
         </header>
         <article>
-          <p>Subscribe to our premium astrological newsletter to receive weekly forecasts, element-specific tips, and zodiac compatibility updates. Unsubscribe anytime.</p>
+          <p>Subscribe to receive weekly timing notes, relationship prompts, and compatibility guides. This is reflection content, not professional advice. Unsubscribe anytime.</p>
+          <p>One-time compatibility reports are delivered by private link and email after Stripe checkout. Birth dates and checkout emails are not sent to the AI provider.</p>
         </article>
       `
     },

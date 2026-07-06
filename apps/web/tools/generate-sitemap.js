@@ -17,6 +17,8 @@ const PUBLIC_PAGES = [
   '/privacy',
   '/terms',
   '/disclaimers',
+  '/refund-policy',
+  '/report-delivery',
   '/premium',
   '/tools/crush-birthday-compatibility',
   '/tools/life-path-compatibility',

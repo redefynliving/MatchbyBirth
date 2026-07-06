@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { SITE_URL } from '@/lib/blogSeo.js';
 import BackButton from '@/components/BackButton.jsx';
 
 function PrivacyPolicyPage() {
@@ -9,7 +10,7 @@ function PrivacyPolicyPage() {
         <title>Privacy Policy | Match by Birth</title>
         <meta name="description" content="How Match by Birth processes calculator, result, payment, email, and analytics data." />
         <meta name="robots" content="index,follow" />
-        <link rel="canonical" href={`${window.location.origin}/privacy`} />
+        <link rel="canonical" href={`${SITE_URL}/privacy`} />
       </Helmet>
 
       <main className="py-16 md:py-24 bg-background min-h-screen relative overflow-hidden">

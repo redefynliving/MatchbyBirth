@@ -8,7 +8,6 @@ import {
   TriangleAlert,
   X,
   Eye,
-  Timer,
   Sparkles,
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -18,7 +17,6 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
   const [email, setEmail] = useState('');
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [status, setStatus] = useState('idle');
-  const [timeRemaining, setTimeRemaining] = useState(900);
   const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
@@ -28,23 +26,8 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
         price: 999,
         currency: 'usd',
       });
-
-      // Initialize or read offer expiry time
-      let expiry = localStorage.getItem('mb_offer_expires');
-      if (!expiry) {
-        expiry = (Date.now() + 15 * 60 * 1000).toString();
-        localStorage.setItem('mb_offer_expires', expiry);
-      }
-
-      const updateTimer = () => {
-        const remaining = Math.max(0, Math.floor((parseInt(expiry, 10) - Date.now()) / 1000));
-        setTimeRemaining(remaining);
-      };
-
-      updateTimer();
-      const interval = setInterval(updateTimer, 1000);
-      return () => clearInterval(interval);
     }
+    return undefined;
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -58,12 +41,12 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
   const startCheckout = async (event) => {
     event.preventDefault();
     setStatus('loading');
-    trackEvent('checkout_started', {
-      mode: 'pair',
-      price: timeRemaining > 0 ? 699 : 999,
-      currency: 'usd',
-      discount_applied: timeRemaining > 0,
-    });
+	    trackEvent('checkout_started', {
+	      mode: 'pair',
+	      price: 999,
+	      currency: 'usd',
+	      discount_applied: false,
+	    });
 
     try {
       const response = await fetch('/api/create-checkout-session', {
@@ -81,11 +64,11 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
         throw new Error(data.error || 'Unable to start checkout.');
       }
       if (!data.url) throw new Error('Checkout did not return a payment link.');
-      trackEvent('checkout_redirected', {
-        mode: 'pair',
-        price: timeRemaining > 0 ? 699 : 999,
-        currency: 'usd',
-      });
+	      trackEvent('checkout_redirected', {
+	        mode: 'pair',
+	        price: 999,
+	        currency: 'usd',
+	      });
       window.location.assign(data.url);
     } catch (error) {
       setStatus('error');
@@ -130,26 +113,26 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
             <div className="flex-1 space-y-6 max-w-xl mx-auto text-left">
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">Section 1 of 9</span>
-                <h4 className="font-extrabold text-foreground mt-2 mb-3">Solar ego alignments & life directions</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  The Sun represents your core identity, ego drive, and where you seek expression. {names[0]}'s Sun in Aries forms a trine aspect to {names[1]}'s Sun in Leo, creating a powerful flow of mutual creative encouragement.
-                </p>
-                <div className="mt-4 filter blur-[3.5px] select-none text-xs text-muted-foreground leading-relaxed space-y-2">
-                  <p>In this solar relationship, your wills are aligned. You push one another to lead and take calculated risks, finding validation in each other's achievements. You operate at a fast pace and share a love for active recognition.</p>
-                  <p>However, when Martian impulses conflict, Aries may spark Leo's pride, creating a localized storm of wills. This can be mitigated by remembering to delegate roles rather than trying to rule the same space at once.</p>
-                </div>
+	                <h4 className="font-extrabold text-foreground mt-2 mb-3">Strengths, friction, and timing</h4>
+	                <p className="text-xs text-muted-foreground leading-relaxed">
+	                  The report expands the free score into the clearest strength, the watch area, how communication may cross, and one practical conversation to have next.
+	                </p>
+	                <div className="mt-4 filter blur-[3.5px] select-none text-xs text-muted-foreground leading-relaxed space-y-2">
+	                  <p>The strongest area shows where the connection may feel easier to name. The friction section explains where expectations, pace, or reactions may need more direct language.</p>
+	                  <p>The practical advice section turns the reading into one useful next step instead of a vague compatibility label.</p>
+	                </div>
               </div>
 
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent flex flex-col justify-end items-center p-6 text-center pb-8 z-10">
                   <LockKeyhole className="h-8 w-8 text-primary mb-3" />
                   <p className="font-bold text-sm text-foreground">Purchase to unlock sections 2-9</p>
-                  <p className="text-xs text-muted-foreground max-w-xs mt-1">Unlock emotional synastry, communication flows, planetary houses, and conflict mitigation guides.</p>
-                </div>
-                <div className="filter blur-[5px] select-none text-xs text-muted-foreground leading-relaxed space-y-2">
-                  <h4 className="font-bold text-foreground">Section 2: Emotional synastry (Lunar elements)</h4>
-                  <p>The Moon represents your emotional safety, pacing, and subconscious habits. Here we calculate how your watery and earthy moon placements connect, showing why you find intuitive comfort in each other's quiet presence.</p>
-                </div>
+	                  <p className="text-xs text-muted-foreground max-w-xs mt-1">Unlock all nine sections, private link access, and a PDF copy delivered by email.</p>
+	                </div>
+	                <div className="filter blur-[5px] select-none text-xs text-muted-foreground leading-relaxed space-y-2">
+	                  <h4 className="font-bold text-foreground">Section 2: Communication pattern</h4>
+	                  <p>This section explains what may need to be said earlier, what can be misunderstood, and how to turn the score into a clearer conversation.</p>
+	                </div>
               </div>
             </div>
           </div>
@@ -165,9 +148,9 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
           <p className="mt-2 text-sm font-medium text-foreground">
             {names.join(' + ')}
           </p>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1">
-            <span>A 9-section report based on your compatibility result.</span>
-            <button
+	          <p className="mt-3 text-sm leading-6 text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1">
+	            <span>A $9.99 one-time 9-section report based on your sanitized compatibility result.</span>
+	            <button
               type="button"
               onClick={() => setShowPreview(true)}
               className="text-primary hover:text-primary/80 font-bold inline-flex items-center gap-1 hover:underline"
@@ -202,28 +185,21 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
               <LockKeyhole className="h-4 w-4" />
             </span>
             <h3 className="mt-5 text-xl font-semibold text-foreground">Get the full report</h3>
-            <p className="mt-2 text-sm leading-6 text-foreground/90">
-              Private link and PDF delivered by email.
-            </p>
+	            <p className="mt-2 text-sm leading-6 text-foreground/90">
+	              Private link and PDF delivered by email. Birth dates and your email are not sent to the AI provider.
+	            </p>
 
-            {timeRemaining > 0 ? (
-              <div className="mt-5 bg-card/60 border border-primary/20 rounded-2xl p-4 space-y-1 text-left relative overflow-hidden">
-                <p className="text-xs font-bold text-primary flex items-center gap-1 uppercase tracking-wider">
-                  <Timer className="h-3.5 w-3.5 animate-pulse" /> 15m Urgency Discount
-                </p>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-3xl font-black tracking-tight text-foreground">$6.99</p>
-                  <p className="text-sm line-through text-muted-foreground">$9.99</p>
-                </div>
-                <p className="text-[10px] text-muted-foreground/95 leading-relaxed">
-                  Enter coupon code <strong className="text-primary font-bold">COSMIC30</strong> in checkout. Expires in <strong>{Math.floor(timeRemaining / 60)}:{(timeRemaining % 60).toString().padStart(2, '0')}</strong>
-                </p>
-              </div>
-            ) : (
-              <p className="mt-5 text-3xl font-semibold tracking-tight text-foreground">
-                $9.99 <span className="text-xs font-medium tracking-normal text-foreground/80">one-time</span>
-              </p>
-            )}
+	            <div className="mt-5 rounded-2xl border border-primary/20 bg-card/70 p-4">
+	              <p className="text-xs font-bold uppercase tracking-wider text-primary">
+	                One-time digital report
+	              </p>
+	              <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">
+	                $9.99 <span className="text-xs font-medium tracking-normal text-foreground/80">one-time</span>
+	              </p>
+	              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+	                Includes strengths, friction, communication pattern, watch area, and one practical conversation prompt. Refund support is available for delivery or access issues.
+	              </p>
+	            </div>
           </div>
 
           <form onSubmit={startCheckout} className="mt-4 space-y-4">
@@ -267,14 +243,14 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
               className="btn-primary h-12 w-full rounded-xl font-semibold cursor-pointer"
               disabled={status === 'loading'}
             >
-              {status === 'loading' ? 'Opening secure checkout...' : timeRemaining > 0 ? 'Claim Offer for $6.99' : 'Buy report for $9.99'}
+	              {status === 'loading' ? 'Opening secure checkout...' : 'Buy report for $9.99'}
             </button>
           </form>
 
           <p className="mt-4 flex items-center justify-center gap-1.5 text-center text-xs text-foreground/80">
             <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-            Payment is handled by Stripe. Your birth dates are not stored.
-          </p>
+	            Payment is handled by Stripe. Reports are for reflection and conversation, not professional advice.
+	          </p>
         </section>
       </div>
     </div>

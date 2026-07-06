@@ -61,7 +61,36 @@ test('non-home routes are lazy loaded while homepage stays eager', () => {
   assert.match(source, /const ResultPage = lazy/);
   assert.match(source, /const ReportPage = lazy/);
   assert.match(source, /const PrivacyPolicyPage = lazy/);
+  assert.match(source, /const RefundPolicyPage = lazy/);
+  assert.match(source, /const ReportDeliveryPage = lazy/);
+  assert.match(source, /path="\/refund-policy"/);
+  assert.match(source, /path="\/report-delivery"/);
   assert.match(source, /<Suspense fallback=\{<RouteFallback \/>}/);
+});
+
+test('refund and report delivery pages explain paid report trust details', () => {
+  const refund = read('apps/web/src/pages/RefundPolicyPage.jsx');
+  const delivery = read('apps/web/src/pages/ReportDeliveryPage.jsx');
+  const footer = read('apps/web/src/components/Footer.jsx');
+
+  assert.match(refund, /support@matchbybirth\.com/);
+  assert.match(refund, /Refund Policy/);
+  assert.match(refund, /digital compatibility report/);
+  assert.match(refund, /reflection and conversation/);
+  assert.match(refund, /not certainty, prediction, or a relationship verdict/);
+  assert.match(refund, /1-2 business days/);
+
+  assert.match(delivery, /How report delivery works/);
+  assert.match(delivery, /private report link/);
+  assert.match(delivery, /sanitized compatibility data/);
+  assert.match(delivery, /Birth dates and the checkout email are not sent to the AI provider/);
+  assert.match(delivery, /not prediction or professional advice/);
+  assert.match(delivery, /support@matchbybirth\.com/);
+
+  assert.match(footer, /\/refund-policy/);
+  assert.match(footer, /Refund Policy/);
+  assert.match(footer, /\/report-delivery/);
+  assert.match(footer, /Report Delivery/);
 });
 
 test('blog SEO helper builds Article schema, breadcrumbs, and related posts', async () => {

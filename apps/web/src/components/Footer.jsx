@@ -41,10 +41,12 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-6">Legal</h4>
             <nav className="flex flex-col gap-3">
-              <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
-              <Link to="/disclaimers" className="text-muted-foreground hover:text-primary transition-colors">Disclaimers</Link>
-            </nav>
+	              <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
+	              <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link>
+	              <Link to="/disclaimers" className="text-muted-foreground hover:text-primary transition-colors">Disclaimers</Link>
+	              <Link to="/refund-policy" className="text-muted-foreground hover:text-primary transition-colors">Refund Policy</Link>
+	              <Link to="/report-delivery" className="text-muted-foreground hover:text-primary transition-colors">Report Delivery</Link>
+	            </nav>
           </div>
 
         </div>
