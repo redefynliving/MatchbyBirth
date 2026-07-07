@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
+import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 
 function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
   const [email, setEmail] = useState('');
@@ -25,6 +26,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
         mode: 'pair',
         price: 999,
         currency: 'usd',
+        ...getFunnelAttribution(),
       });
     }
     return undefined;
@@ -46,6 +48,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 	      price: 999,
 	      currency: 'usd',
 	      discount_applied: false,
+	      ...getFunnelAttribution(),
 	    });
 
     try {
@@ -68,6 +71,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 	        mode: 'pair',
 	        price: 999,
 	        currency: 'usd',
+	        ...getFunnelAttribution(),
 	      });
       window.location.assign(data.url);
     } catch (error) {

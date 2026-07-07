@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { trackEvent } from '@/lib/analytics.js';
+import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import GroupInputForm from './GroupInputForm.jsx';
 import GroupModeToggle from './GroupModeToggle.jsx';
@@ -43,10 +44,12 @@ function CompatibilityCalculator() {
   const submitCalculation = async (payload) => {
     setError('');
     setIsCalculating(true);
+    const funnelAttribution = getFunnelAttribution();
     trackEvent('calculation_started', {
       mode: payload.mode,
       relationship_type: payload.relationshipType,
       group_size: payload.people.length,
+      ...funnelAttribution,
     });
 
     try {
@@ -68,12 +71,13 @@ function CompatibilityCalculator() {
         score_band: Math.floor(
           (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
         ) * 10,
+        ...funnelAttribution,
       });
       const navigation = buildResultNavigation(data);
       navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {
       setError(calculationError.message || 'Unable to calculate this result.');
-      trackEvent('calculation_failed', { mode: payload.mode });
+      trackEvent('calculation_failed', { mode: payload.mode, ...funnelAttribution });
     } finally {
       setIsCalculating(false);
     }

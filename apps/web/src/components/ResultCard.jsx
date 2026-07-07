@@ -11,6 +11,7 @@ import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
 import { buildPairHighlights } from '@/lib/result-presentation.js';
 import { trackEvent } from '@/lib/analytics.js';
+import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 
 const HIGHLIGHT_ICONS = {
   communication: MessageCircle,
@@ -47,6 +48,7 @@ function ResultCard({
       mode: 'pair',
       price: 999,
       currency: 'usd',
+      ...getFunnelAttribution(),
     });
     setIsModalOpen(true);
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics.js';
+import { setFunnelAttribution } from '@/lib/funnel-attribution.js';
 
 export default function ReportCta({
   title,
@@ -11,11 +12,21 @@ export default function ReportCta({
   secondaryTo = '/#calculator',
   compact = false,
   placement = 'sample',
+  variant = 'default',
 }) {
-  const trackClick = (label) => {
+  const trackClick = (label, text) => {
+    setFunnelAttribution({
+      source: 'sample_report',
+      placement,
+      label,
+      text,
+      variant,
+    });
     trackEvent('sample_report_cta_clicked', {
       placement,
       label,
+      text,
+      variant,
     });
   };
 
@@ -36,7 +47,7 @@ export default function ReportCta({
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Link
           to={primaryTo}
-          onClick={() => trackClick('primary')}
+          onClick={() => trackClick('primary', primaryLabel)}
           className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground"
         >
           {primaryLabel}
@@ -44,7 +55,7 @@ export default function ReportCta({
 
         <Link
           to={secondaryTo}
-          onClick={() => trackClick('secondary')}
+          onClick={() => trackClick('secondary', secondaryLabel)}
           className="inline-flex items-center justify-center rounded-xl border border-border bg-card px-6 py-3 font-semibold text-foreground"
         >
           {secondaryLabel}

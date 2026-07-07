@@ -26,6 +26,10 @@ test('sample report route uses the shared report view and sample data', async ()
   const page = read('apps/web/src/pages/SampleReportPage.jsx');
   const view = read('apps/web/src/components/report/ReportView.jsx');
   const cta = read('apps/web/src/components/report/ReportCta.jsx');
+  const attribution = read('apps/web/src/lib/funnel-attribution.js');
+  const calculator = read('apps/web/src/components/CalculatorWithPreview.jsx');
+  const legacyCalculator = read('apps/web/src/components/CompatibilityCalculator.jsx');
+  const saveModal = read('apps/web/src/components/SaveResultModal.jsx');
   const resultCard = read('apps/web/src/components/ResultCard.jsx');
   const ssg = read('tools/build-ssg.mjs');
   const { generateSitemapXml } = await import(pathToFileURL(
@@ -41,6 +45,14 @@ test('sample report route uses the shared report view and sample data', async ()
   assert.match(view, /Want a report that's actually yours/);
   assert.match(view, /Ready to see your real match/);
   assert.match(cta, /sample_report_cta_clicked/);
+  assert.match(cta, /setFunnelAttribution/);
+  assert.match(cta, /variant/);
+  assert.match(attribution, /cta_variant/);
+  assert.match(attribution, /MAX_AGE_MS/);
+  assert.match(calculator, /getFunnelAttribution/);
+  assert.match(legacyCalculator, /getFunnelAttribution/);
+  assert.match(resultCard, /getFunnelAttribution/);
+  assert.match(saveModal, /getFunnelAttribution/);
   assert.match(cta, /\/#calculator/);
   assert.match(resultCard, /View sample report/);
   assert.match(ssg, /route: 'sample-report'/);

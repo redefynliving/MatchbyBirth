@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { trackEvent } from '@/lib/analytics.js';
+import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import PlaceSearch from './PlaceSearch.jsx';
 
@@ -134,12 +135,14 @@ function CalculatorWithPreview({
   const submitCalculation = async (payload) => {
     setError('');
     setIsCalculating(true);
+    const funnelAttribution = getFunnelAttribution();
     trackEvent('calculation_started', {
       source,
       mode: payload.mode,
       relationship_type: payload.relationshipType,
       group_size: payload.people.length,
       exact_mode: payload.exactMode,
+      ...funnelAttribution,
     });
 
     try {
@@ -163,6 +166,7 @@ function CalculatorWithPreview({
           (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
         ) * 10,
         exact_mode: payload.exactMode,
+        ...funnelAttribution,
       });
       if (prefill && prefill.source === 'life_path_compatibility') {
         trackEvent('life_path_full_match_completed', {
@@ -178,7 +182,12 @@ function CalculatorWithPreview({
       navigate(navigation.path, { state: navigation.state });
     } catch (calculationError) {
       setError(calculationError.message || 'Unable to calculate this result.');
-      trackEvent('calculation_failed', { source, mode: payload.mode, exact_mode: payload.exactMode });
+      trackEvent('calculation_failed', {
+        source,
+        mode: payload.mode,
+        exact_mode: payload.exactMode,
+        ...funnelAttribution,
+      });
     } finally {
       setIsCalculating(false);
     }
