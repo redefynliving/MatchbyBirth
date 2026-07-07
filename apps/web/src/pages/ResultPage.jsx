@@ -7,11 +7,13 @@ import BackButton from '@/components/BackButton.jsx';
 import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.jsx';
 import ResultCard from '@/components/ResultCard.jsx';
 import ShareButtons from '@/components/ShareButtons.jsx';
+import SharedResultConversion from '@/components/share/SharedResultConversion.jsx';
 import { Button } from '@/components/ui/button.jsx';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import { getResultPrecisionDetails } from '@/lib/result-presentation.js';
+import { buildSharePageModel } from '@/lib/share-page.js';
 import { getShareDescription, getShareTitle } from '@/lib/share-copy.js';
 
 function parseLegacyInput(searchParams) {
@@ -47,6 +49,13 @@ function parseLegacyInput(searchParams) {
       { id: 'legacy-2', name: secondName, birthDate: secondBirthDate },
     ],
   };
+}
+
+function getShareSource(searchParams) {
+  const utmSource = searchParams.get('utm_source');
+  if (utmSource) return utmSource;
+  if (typeof document !== 'undefined' && document.referrer) return 'referral';
+  return 'direct';
 }
 
 function ResultPage() {
@@ -156,6 +165,19 @@ function ResultPage() {
     };
   }, [shareSlug, legacyInput, navigate, reloadKey, hasLocalResult]);
 
+  useEffect(() => {
+    if (!shareSlug || resultState.status !== 'ready' || !resultState.result) return;
+
+    const shareModel = buildSharePageModel(resultState.result);
+    trackEvent('share_page_view', {
+      share_id: shareSlug,
+      relationship_type: shareModel.relationshipType,
+      score: shareModel.score,
+      score_band: shareModel.scoreBand,
+      source: getShareSource(searchParams),
+    });
+  }, [shareSlug, resultState.status, resultState.result, searchParams]);
+
   if (resultState.status === 'invalid') {
     return <Navigate to="/" replace />;
   }
@@ -198,6 +220,8 @@ function ResultPage() {
     : null;
   const names = result.people.map((person) => person.name);
   const precision = getResultPrecisionDetails(result.people);
+  const shareModel = canShare ? buildSharePageModel(result) : null;
+  const shareSource = canShare ? getShareSource(searchParams) : 'direct';
   const pageTitle = getShareTitle(result);
   const pageDescription = getShareDescription(result);
   const canonicalResultUrl = canShare
@@ -249,6 +273,14 @@ function ResultPage() {
             />
           )}
 
+          {canShare && shareModel && (
+            <SharedResultConversion
+              model={shareModel}
+              shareId={shareSlug}
+              source={shareSource}
+            />
+          )}
+
           {/* Star Rating Feedback Collector */}
           <div className="mx-auto mt-6 max-w-5xl bg-card border border-border rounded-3xl p-6 text-center shadow-sm relative overflow-hidden">
             <h4 className="font-semibold text-foreground text-sm mb-3">How accurate does this calculation feel?</h4>
@@ -290,6 +322,9 @@ function ResultPage() {
                 score={result.score}
                 groupVibeScore={result.groupScore}
                 resultUrl={resultUrl}
+                shareId={shareSlug}
+                relationshipType={shareModel?.relationshipType}
+                scoreBand={shareModel?.scoreBand}
               />
             ) : (
               <p className="mt-6 text-center text-sm text-muted-foreground">

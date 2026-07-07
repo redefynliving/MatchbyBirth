@@ -3,18 +3,39 @@ import React from 'react';
 import { Copy, Share2, Twitter } from 'lucide-react';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
+import { getShareBandKey } from '@/lib/share-page.js';
 import { getShareBand, getShareText } from '@/lib/share-copy.js';
 
-function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl }) {
+function ShareButtons({
+  mode = 'pair',
+  p1,
+  p2,
+  score,
+  groupVibeScore,
+  resultUrl,
+  shareId,
+  relationshipType,
+  scoreBand: scoreBandOverride,
+  placement = 'share_module',
+}) {
   const shareUrl = resultUrl || window.location.href;
   const shareScore = Number(mode === 'group' ? groupVibeScore : score) || 0;
-  const scoreBand = getShareBand(shareScore);
+  const scoreBandLabel = getShareBand(shareScore);
+  const scoreBand = scoreBandOverride || getShareBandKey(shareScore);
   const shareText = getShareText({ mode, p1, p2, score, groupVibeScore });
-  const eventPayload = { mode, score_band: scoreBand };
+  const eventPayload = {
+    share_id: shareId || 'unknown',
+    mode,
+    relationship_type: relationshipType || mode,
+    score: Math.round(shareScore),
+    score_band: scoreBand,
+    placement,
+  };
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+      trackEvent('share_page_copy_link_click', eventPayload);
       trackEvent('result_shared', { ...eventPayload, channel: 'copy' });
       toast.success('Result link copied.');
     } catch {
@@ -25,6 +46,7 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
   const handleTwitterShare = () => {
     const urlWithUtm = `${shareUrl}${shareUrl.includes('?') ? '&' : '?'}utm_source=x&utm_medium=share`;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(urlWithUtm)}`;
+    trackEvent('share_page_x_share_click', eventPayload);
     trackEvent('result_shared', { ...eventPayload, channel: 'x' });
     window.open(twitterUrl, '_blank', 'noopener,noreferrer');
   };
@@ -36,7 +58,7 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
         <h2 className="text-sm font-semibold">Share by link</h2>
       </div>
       <p className="mb-3 text-xs leading-5 text-muted-foreground">
-        Anyone with the link can view this private-safe result. Birth dates are not shown.
+        Anyone with the link can view this private-safe result. Birth dates are not shown. Score band: {scoreBandLabel}.
       </p>
       <div className="grid grid-cols-2 gap-3">
         <button

@@ -38,6 +38,8 @@ export function getFunnelAttribution() {
       cta_label: parsed.label || 'unknown',
       cta_text: parsed.text || 'unknown',
       cta_variant: parsed.variant || 'default',
+      share_id: parsed.share_id || 'none',
+      score_band: parsed.score_band || 'none',
     };
   } catch {
     return {};

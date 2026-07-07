@@ -65,6 +65,14 @@ test('share copy and result metadata use the branded share layer', async () => {
     path.join(root, 'apps/web/src/components/ShareButtons.jsx'),
     'utf8',
   );
+  const sharePage = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/share/SharedResultConversion.jsx'),
+    'utf8',
+  );
+  const sharePageModel = fs.readFileSync(
+    path.join(root, 'apps/web/src/lib/share-page.js'),
+    'utf8',
+  );
 
   assert.equal(getScoreBand(49).label, 'Different rhythms');
   assert.equal(shareCopy.getShareBand(86), 'Strong natural rhythm');
@@ -75,6 +83,25 @@ test('share copy and result metadata use the branded share layer', async () => {
   assert.match(resultPage, /twitter:card/);
   assert.match(resultPage, /getShareTitle/);
   assert.match(resultPage, /getShareDescription/);
+  assert.match(resultPage, /share_page_view/);
+  assert.match(resultPage, /SharedResultConversion/);
   assert.match(shareButtons, /Birth dates are not shown/);
   assert.match(shareButtons, /score_band/);
+  assert.match(shareButtons, /share_page_copy_link_click/);
+  assert.match(shareButtons, /share_page_x_share_click/);
+  assert.match(sharePage, /Try your own match/);
+  assert.match(sharePage, /\/#calculator/);
+  assert.match(sharePage, /\/sample-report/);
+  assert.match(sharePage, /share_page_cta_click/);
+  assert.match(sharePage, /share_page_sample_report_click/);
+  assert.match(sharePage, /placement="top"/);
+  assert.match(sharePage, /placement="middle"/);
+  assert.match(sharePage, /placement="bottom"/);
+  assert.match(sharePage, /Birth dates are not shown on shared pages/);
+  assert.match(sharePageModel, /strong_natural_rhythm/);
+  assert.match(sharePageModel, /good_compatibility/);
+  assert.match(sharePageModel, /mixed_rhythm/);
+  assert.match(sharePageModel, /different_rhythms/);
+  assert.match(sharePageModel, /strongestArea/);
+  assert.match(sharePageModel, /watchArea/);
 });
