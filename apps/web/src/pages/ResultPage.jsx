@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import { getResultPrecisionDetails } from '@/lib/result-presentation.js';
+import { getShareDescription, getShareTitle } from '@/lib/share-copy.js';
 
 function parseLegacyInput(searchParams) {
   const groupParam = searchParams.get('group');
@@ -197,23 +198,30 @@ function ResultPage() {
     : null;
   const names = result.people.map((person) => person.name);
   const precision = getResultPrecisionDetails(result.people);
-  const pageTitle = isGroup
-    ? `Group Compatibility — ${result.groupScore}% | Match by Birth`
-    : `${names[0]} & ${names[1]} Compatibility — ${result.score}% | Match by Birth`;
+  const pageTitle = getShareTitle(result);
+  const pageDescription = getShareDescription(result);
+  const canonicalResultUrl = canShare
+    ? `${globalThis.location.origin}/result?share=${encodeURIComponent(shareSlug)}`
+    : `${globalThis.location.origin}/`;
+  const ogImageUrl = canShare
+    ? `${globalThis.location.origin}/api/og?share=${encodeURIComponent(shareSlug)}`
+    : `${globalThis.location.origin}/og-image.png`;
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
-        <meta name="description" content="A shared Match by Birth compatibility result." />
+        <meta name="description" content={pageDescription} />
         <meta name="robots" content="noindex,nofollow,noarchive" />
         <meta property="og:title" content={pageTitle} />
-        {canShare && (
-          <meta
-            property="og:image"
-            content={`${globalThis.location.origin}/api/og?share=${encodeURIComponent(shareSlug)}`}
-          />
-        )}
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalResultUrl} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={ogImageUrl} />
       </Helmet>
 
       <main className="result-page-bg min-h-screen py-10 md:py-14">

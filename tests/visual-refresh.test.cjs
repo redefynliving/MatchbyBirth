@@ -133,8 +133,8 @@ test('pair and group results progressively reveal detail instead of showing ever
   assert.match(groupResult, /getVisibleGroupPairs/);
   assert.match(groupResult, /View all .* connections/);
   assert.match(shareButtons, /Share by link/);
-  assert.match(shareButtons, /Anyone with the link can view this result/);
-  assert.doesNotMatch(shareButtons, /private/i);
+  assert.match(shareButtons, /Birth dates are not shown/);
+  assert.doesNotMatch(shareButtons, /birthDate|p1_dob|p2_dob/);
 });
 
 test('marketing subscription UI confirms delivery and requires an unsubscribe action', () => {

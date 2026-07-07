@@ -3,18 +3,19 @@ import React from 'react';
 import { Copy, Share2, Twitter } from 'lucide-react';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
+import { getShareBand, getShareText } from '@/lib/share-copy.js';
 
 function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl }) {
   const shareUrl = resultUrl || window.location.href;
-  
-  const shareText = mode === 'group'
-    ? `Our group compatibility is ${groupVibeScore}%. Check your group at Match by Birth.`
-    : `${p1} and ${p2} are ${score}% compatible. Check your match at Match by Birth.`;
+  const shareScore = Number(mode === 'group' ? groupVibeScore : score) || 0;
+  const scoreBand = getShareBand(shareScore);
+  const shareText = getShareText({ mode, p1, p2, score, groupVibeScore });
+  const eventPayload = { mode, score_band: scoreBand };
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-      trackEvent('result_shared', { mode, channel: 'copy' });
+      trackEvent('result_shared', { ...eventPayload, channel: 'copy' });
       toast.success('Result link copied.');
     } catch {
       toast.error('The link could not be copied.');
@@ -24,7 +25,7 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
   const handleTwitterShare = () => {
     const urlWithUtm = `${shareUrl}${shareUrl.includes('?') ? '&' : '?'}utm_source=x&utm_medium=share`;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(urlWithUtm)}`;
-    trackEvent('result_shared', { mode, channel: 'x' });
+    trackEvent('result_shared', { ...eventPayload, channel: 'x' });
     window.open(twitterUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -35,7 +36,7 @@ function ShareButtons({ mode = 'pair', p1, p2, score, groupVibeScore, resultUrl 
         <h2 className="text-sm font-semibold">Share by link</h2>
       </div>
       <p className="mb-3 text-xs leading-5 text-muted-foreground">
-        Anyone with the link can view this result.
+        Anyone with the link can view this private-safe result. Birth dates are not shown.
       </p>
       <div className="grid grid-cols-2 gap-3">
         <button
