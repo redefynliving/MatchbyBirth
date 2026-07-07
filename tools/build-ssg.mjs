@@ -287,15 +287,21 @@ function preRenderPages() {
           <p>Preview the kind of private paid report Match by Birth creates from a compatibility result.</p>
         </header>
         <article>
+          <h2>See your own private report</h2>
+          <p>This sample shows the format. Your full report is built from your actual birth details and gives you a more personal compatibility reading.</p>
+          <p><a href="/#calculator">Get your full private report</a></p>
           <h2>Report snapshot</h2>
           <p>Score: 86%. Strongest area: Chemistry. Watch area: Stability. Say this first: "I think chemistry is where this feels easiest, but stability is the part we should name early instead of guessing."</p>
+          <h2>Want a report that's actually yours?</h2>
+          <p>The sample gives you the feel of the experience. Your private report is based on your real match, with deeper insight and a personalized reading.</p>
+          <p><a href="/#calculator">Unlock my full report</a></p>
           <h2>Where you connect</h2>
           <p>This sample shows how a paid report turns a score into readable strengths, friction, communication style, and a practical next conversation.</p>
           <h2>Where it may catch</h2>
           <p>The watch area is not a verdict. It is the part of the connection that may need clearer language before either person starts guessing.</p>
-          <h2>Want your full report?</h2>
-          <p>Run your own comparison, then unlock the private nine-section report from your actual result.</p>
-          <p><a href="/#calculator">Try the comparison</a></p>
+          <h2>Ready to see your real match?</h2>
+          <p>Run your own birth match and get the complete private report.</p>
+          <p><a href="/#calculator">Get my report</a></p>
         </article>
       `
     },

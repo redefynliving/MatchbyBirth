@@ -44,6 +44,10 @@ test('sample report route uses the shared report view and sample data', async ()
   assert.match(cta, /\/#calculator/);
   assert.match(resultCard, /View sample report/);
   assert.match(ssg, /route: 'sample-report'/);
+  assert.match(ssg, /See your own private report/);
+  assert.match(ssg, /Want a report that's actually yours/);
+  assert.match(ssg, /Ready to see your real match/);
+  assert.doesNotMatch(ssg, /Want your full report/);
   assert.match(generateSitemapXml(), /https:\/\/matchbybirth\.com\/sample-report/);
 });
 
