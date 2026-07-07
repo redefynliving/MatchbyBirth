@@ -1,6 +1,12 @@
-import { getPostCategory } from '../data/blogCategories.js';
+import { getCategoryMeta, getPostCategory } from '../data/blogCategories.js';
 
 export const SITE_URL = 'https://matchbybirth.com';
+export const SITE_NAME = 'Match by Birth';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const BLOG_AUTHOR = {
+  name: 'AJ Fox',
+  url: `${SITE_URL}/about`,
+};
 
 export function canonicalUrl(route) {
   const normalizedRoute = route === '/'
@@ -9,29 +15,54 @@ export function canonicalUrl(route) {
   return normalizedRoute === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalizedRoute}`;
 }
 
-export function buildArticleSchema(post) {
+export function getBlogPostSeo(post) {
+  const categoryKey = post.category || getPostCategory(post);
+  const category = getCategoryMeta(categoryKey);
+  const image = post.ogImage || post.heroImage?.url || DEFAULT_OG_IMAGE;
+  const description = post.description || '';
   const url = canonicalUrl(`/blog/${post.slug}`);
+  const tags = Array.isArray(post.tags) ? post.tags.filter(Boolean) : [];
+
+  return {
+    title: `${post.title} | ${SITE_NAME}`,
+    socialTitle: post.title,
+    description,
+    url,
+    image,
+    authorName: post.author || BLOG_AUTHOR.name,
+    authorUrl: post.authorUrl || BLOG_AUTHOR.url,
+    datePublished: post.date,
+    dateModified: post.updatedAt || post.modifiedAt || post.date,
+    categoryKey,
+    categoryLabel: category?.label || categoryKey || 'Guide',
+    tags,
+  };
+}
+
+export function buildArticleSchema(post) {
+  const seo = getBlogPostSeo(post);
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.updatedAt || post.date,
-    articleSection: post.category || getPostCategory(post),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    description: seo.description,
+    image: [seo.image],
+    datePublished: seo.datePublished,
+    dateModified: seo.dateModified,
+    articleSection: seo.categoryLabel,
+    keywords: seo.tags,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': seo.url },
     author: {
-      '@type': 'Organization',
-      name: 'Match by Birth',
-      url: SITE_URL,
+      '@type': 'Person',
+      name: seo.authorName,
+      url: seo.authorUrl,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Match by Birth',
+      name: SITE_NAME,
       url: SITE_URL,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
     },
-    ...(post.ogImage || post.heroImage?.url ? { image: post.ogImage || post.heroImage.url } : {}),
   };
 }
 

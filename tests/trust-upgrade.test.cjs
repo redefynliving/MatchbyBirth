@@ -101,15 +101,21 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   const sparsePost = posts.find((candidate) => candidate.slug === 'cancer-moon-compatibility');
 
   const article = helper.buildArticleSchema(post);
+  const seo = helper.getBlogPostSeo(post);
   const breadcrumbs = helper.buildBreadcrumbSchema(post);
   const related = helper.getRelatedPosts(post, posts);
   const sparseRelated = helper.getRelatedPosts(sparsePost, posts);
 
-  assert.equal(article['@type'], 'Article');
+  assert.equal(article['@type'], 'BlogPosting');
   assert.equal(article.headline, post.title);
   assert.equal(article.description, post.description);
   assert.equal(article.mainEntityOfPage['@id'], `https://matchbybirth.com/blog/${post.slug}`);
+  assert.equal(article.author['@type'], 'Person');
+  assert.equal(article.author.name, 'AJ Fox');
   assert.equal(article.publisher.name, 'Match by Birth');
+  assert.equal(seo.authorName, 'AJ Fox');
+  assert.equal(seo.url, `https://matchbybirth.com/blog/${post.slug}`);
+  assert.ok(seo.image.startsWith('https://matchbybirth.com/') || seo.image.startsWith('https://cdn.sanity.io/'));
   assert.equal(breadcrumbs['@type'], 'BreadcrumbList');
   assert.equal(breadcrumbs.itemListElement.length, 3);
   assert.ok(related.length > 0);
@@ -125,6 +131,11 @@ test('React and static article output include enhanced blocks and related links'
 
   assert.match(reactPage, /buildArticleSchema/);
   assert.match(reactPage, /buildBreadcrumbSchema/);
+  assert.match(reactPage, /meta name="author"/);
+  assert.match(reactPage, /twitter:card/);
+  assert.match(reactPage, /article:published_time/);
+  assert.match(reactPage, /article:modified_time/);
+  assert.match(reactPage, /article:section/);
   assert.match(reactPage, /Quick takeaways/);
   assert.match(reactPage, /Comparison guide/);
   assert.match(reactPage, /Example scenarios/);
@@ -134,8 +145,16 @@ test('React and static article output include enhanced blocks and related links'
 
   assert.match(staticRenderer, /buildArticleSchema/);
   assert.match(staticRenderer, /buildBreadcrumbSchema/);
+  assert.match(staticRenderer, /meta name="author"/);
+  assert.match(staticRenderer, /twitter:card/);
+  assert.match(staticRenderer, /article:published_time/);
+  assert.match(staticRenderer, /article:modified_time/);
+  assert.match(staticRenderer, /article:section/);
   assert.match(staticRenderer, /static-related/);
   assert.match(staticRenderer, /Keep reading/);
+
+  const llmsGenerator = read('apps/web/tools/generate-llms.js');
+  assert.match(llmsGenerator, /url\.includes\(':'\)/);
 
   assert.match(ssg, /prerenderBlogHtml/);
   assert.match(ssg, /MBB methodology/);

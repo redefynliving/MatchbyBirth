@@ -8,7 +8,7 @@ import NewsletterCapture from '@/components/NewsletterCapture.jsx';
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
-  canonicalUrl,
+  getBlogPostSeo,
   getRelatedPosts,
   hasEnhancedContent,
 } from '@/lib/blogSeo.js';
@@ -92,6 +92,7 @@ function BlogPostPage() {
   const { slug } = useParams();
   const post = posts.find((p) => p.slug === slug);
   const relatedPosts = post ? getRelatedPosts(post, posts) : [];
+  const seo = post ? getBlogPostSeo(post) : null;
 
   if (!post) {
     return (
@@ -108,13 +109,28 @@ function BlogPostPage() {
   return (
     <>
       <Helmet>
-        <title>{post.title} | Match by Birth</title>
-        <meta name="description" content={post.description} />
-        <link rel="canonical" href={canonicalUrl(`/blog/${post.slug}`)} />
-        <meta property="og:title" content={`${post.title} | Match by Birth`} />
-        <meta property="og:description" content={post.description} />
-        <meta property="og:image" content={post.ogImage || 'https://matchbybirth.com/og-image.png'} />
-        <meta property="og:url" content={canonicalUrl(`/blog/${post.slug}`)} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="robots" content="index,follow" />
+        <meta name="author" content={seo.authorName} />
+        <link rel="canonical" href={seo.url} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={seo.socialTitle} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={seo.url} />
+        <meta property="og:site_name" content="Match by Birth" />
+        <meta property="og:image" content={seo.image} />
+        <meta property="article:published_time" content={seo.datePublished} />
+        <meta property="article:modified_time" content={seo.dateModified} />
+        <meta property="article:section" content={seo.categoryLabel} />
+        {seo.tags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seo.socialTitle} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={seo.image} />
         <script type="application/ld+json">
           {JSON.stringify(buildArticleSchema(post))}
         </script>
@@ -149,7 +165,7 @@ function BlogPostPage() {
                   </time>
                 </div>
                 <span>•</span>
-                <span>Published by <strong>Match by Birth</strong></span>
+                <span>By <strong>{seo.authorName}</strong></span>
               </div>
             </header>
 
@@ -214,10 +230,10 @@ function BlogPostPage() {
             {/* E-E-A-T Publisher Attribution Card */}
             <div className="mt-10 pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center gap-4 text-left">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg">
-                M
+                AJ
               </div>
               <div>
-                <h4 className="font-semibold text-foreground text-sm">Published by Match by Birth</h4>
+                <h4 className="font-semibold text-foreground text-sm">Written and edited by {seo.authorName}</h4>
                 <p className="text-xs text-primary font-medium mb-1">Compatibility guides and calculator notes</p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Match by Birth publishes practical compatibility guides for reflection and conversation. Articles are informational and should not be treated as relationship, medical, legal, or financial advice.

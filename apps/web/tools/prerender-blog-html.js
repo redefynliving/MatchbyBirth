@@ -8,10 +8,9 @@ import {
   buildArticleSchema,
   buildBreadcrumbSchema,
   canonicalUrl,
+  getBlogPostSeo,
   getRelatedPosts,
 } from '../src/lib/blogSeo.js';
-
-const SITE_URL = 'https://matchbybirth.com';
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -41,11 +40,21 @@ function renderJsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data).replaceAll('<', '\\u003c')}</script>`;
 }
 
-function renderDocument({ template, title, description, route, body, head = '' }) {
+function renderDocument({
+  template,
+  title,
+  description,
+  route,
+  body,
+  head = '',
+  image = 'https://matchbybirth.com/og-image.png',
+  type = 'website',
+}) {
   const assetTags = extractAssetTags(template);
   const safeTitle = escapeHtml(title);
   const safeDescription = escapeHtml(description);
   const safeCanonical = escapeHtml(canonicalUrl(route));
+  const safeImage = escapeHtml(image);
 
   return `<!doctype html>
 <html lang="en">
@@ -54,11 +63,19 @@ function renderDocument({ template, title, description, route, body, head = '' }
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${safeTitle}</title>
     <meta name="description" content="${safeDescription}" />
+    <meta name="robots" content="index,follow" />
     <link rel="canonical" href="${safeCanonical}" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="${escapeHtml(type)}" />
     <meta property="og:title" content="${safeTitle}" />
     <meta property="og:description" content="${safeDescription}" />
     <meta property="og:url" content="${safeCanonical}" />
-    <meta property="og:image" content="${SITE_URL}/og-image.png" />
+    <meta property="og:site_name" content="Match by Birth" />
+    <meta property="og:image" content="${safeImage}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${safeTitle}" />
+    <meta name="twitter:description" content="${safeDescription}" />
+    <meta name="twitter:image" content="${safeImage}" />
     <style>
       .static-blog-shell { max-width: 760px; margin: 0 auto; padding: 48px 20px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a2e; line-height: 1.7; }
       .static-blog-shell h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; margin: 0 0 16px; }
@@ -206,12 +223,13 @@ export function renderCategoryHtml({ template, category, allPosts = posts } = {}
 export function renderArticleHtml({ template, post } = {}) {
   const description = post.description || stripHtml(post.content).slice(0, 155);
   const relatedPosts = getRelatedPosts(post, posts);
+  const seo = getBlogPostSeo({ ...post, description });
   const body = `
     <main class="static-blog-shell">
       <article>
         <p>Match by Birth Guide</p>
         <h1>${escapeHtml(post.title)}</h1>
-        <p>${escapeHtml(new Date(post.date).toLocaleDateString('en-US'))}</p>
+        <p>${escapeHtml(new Date(post.date).toLocaleDateString('en-US'))} · By ${escapeHtml(seo.authorName)}</p>
         <p>${escapeHtml(description)}</p>
         ${post.heroImage?.url ? `<img class="static-hero-image" src="${escapeHtml(post.heroImage.url)}" alt="${escapeHtml(post.heroImage.alt || '')}" />` : ''}
         <div class="static-article-body">${post.content}</div>
@@ -235,11 +253,18 @@ export function renderArticleHtml({ template, post } = {}) {
 
   return renderDocument({
     template,
-    title: `${post.title} | Match by Birth`,
-    description,
+    title: seo.title,
+    description: seo.description,
     route: `/blog/${post.slug}`,
     body,
-    head: `${renderJsonLd(buildArticleSchema(post))}
+    image: seo.image,
+    type: 'article',
+    head: `<meta name="author" content="${escapeHtml(seo.authorName)}" />
+    <meta property="article:published_time" content="${escapeHtml(seo.datePublished)}" />
+    <meta property="article:modified_time" content="${escapeHtml(seo.dateModified)}" />
+    <meta property="article:section" content="${escapeHtml(seo.categoryLabel)}" />
+    ${seo.tags.map((tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" />`).join('\n    ')}
+    ${renderJsonLd(buildArticleSchema({ ...post, description }))}
     ${renderJsonLd(buildBreadcrumbSchema(post))}`,
   });
 }

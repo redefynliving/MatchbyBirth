@@ -110,6 +110,8 @@ function extractHelmetData(content, filePath, routes) {
 		? routes.get(fileName)
 		: generateFallbackUrl(fileName);
 
+	if (!url || url.includes(':') || url.includes('*')) return null;
+
 	return {
 		url,
 		title: title || 'Untitled Page',
