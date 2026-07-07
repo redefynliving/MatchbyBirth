@@ -24,6 +24,7 @@ const RefundPolicyPage = lazy(() => import('@/pages/RefundPolicyPage.jsx'));
 const ReportDeliveryPage = lazy(() => import('@/pages/ReportDeliveryPage.jsx'));
 const ResultPage = lazy(() => import('@/pages/ResultPage.jsx'));
 const ReportPage = lazy(() => import('@/pages/ReportPage.jsx'));
+const SampleReportPage = lazy(() => import('@/pages/SampleReportPage.jsx'));
 const ReportSuccess = lazy(() => import('@/pages/ReportSuccess.jsx'));
 const PremiumPage = lazy(() => import('@/pages/premium.jsx'));
 const UnsubscribePage = lazy(() => import('@/pages/UnsubscribePage.jsx'));
@@ -61,9 +62,10 @@ function App() {
 	              <Route path="/terms" element={<TermsOfServicePage />} />
 	              <Route path="/disclaimers" element={<DisclaimerPage />} />
 	              <Route path="/refund-policy" element={<RefundPolicyPage />} />
-	              <Route path="/report-delivery" element={<ReportDeliveryPage />} />
-	              <Route path="/report-success" element={<ReportSuccess />} />
+              <Route path="/report-delivery" element={<ReportDeliveryPage />} />
+              <Route path="/report-success" element={<ReportSuccess />} />
               <Route path="/report" element={<ReportPage />} />
+              <Route path="/sample-report" element={<SampleReportPage />} />
               <Route path="/premium" element={<PremiumPage />} />
               <Route path="/unsubscribe" element={<UnsubscribePage />} />
               <Route path="/tools/crush-birthday-compatibility" element={<CrushBirthdayCompatibilityPage />} />

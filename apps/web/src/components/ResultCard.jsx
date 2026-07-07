@@ -6,6 +6,7 @@ import {
   HeartHandshake,
   MessageCircle,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
 import { buildPairHighlights } from '@/lib/result-presentation.js';
@@ -150,13 +151,18 @@ function ResultCard({
               </p>
             </div>
             {canPurchase ? (
-              <button
-                type="button"
-                onClick={openPurchaseModal}
-                className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
-              >
-                Get the detailed report · $9.99
-              </button>
+              <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+                <button
+                  type="button"
+                  onClick={openPurchaseModal}
+                  className="btn-primary h-11 rounded-xl px-5 text-sm"
+                >
+                  Get the detailed report · $9.99
+                </button>
+                <Link to="/sample-report" className="text-center text-xs font-semibold text-primary hover:underline">
+                  View sample report
+                </Link>
+              </div>
             ) : (
               <p className="text-sm font-medium text-muted-foreground">
                 Detailed reports are temporarily unavailable.
