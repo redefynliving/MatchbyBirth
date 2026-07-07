@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 import SaveResultModal from '@/components/SaveResultModal.jsx';
 import { buildPairHighlights } from '@/lib/result-presentation.js';
 import { trackEvent } from '@/lib/analytics.js';
-import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
+import { getFunnelAttribution, setFunnelAttribution } from '@/lib/funnel-attribution.js';
 
 const HIGHLIGHT_ICONS = {
   communication: MessageCircle,
@@ -37,6 +37,7 @@ function ResultCard({
   resultUrl,
   precisionLabel,
   precisionNote,
+  funnelContext = null,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInProgress, setDownloadInProgress] = useState(false);
@@ -44,10 +45,22 @@ function ResultCard({
   const names = people.map((person) => person.name);
 
   const openPurchaseModal = () => {
+    if (funnelContext) {
+      setFunnelAttribution({
+        source: funnelContext.funnel_source || 'share_page',
+        placement: funnelContext.cta_placement || 'result_card',
+        label: funnelContext.cta_label || 'direct_report_upsell',
+        text: 'Get the detailed report',
+        variant: funnelContext.score_band || 'default',
+        share_id: funnelContext.share_id,
+        score_band: funnelContext.score_band,
+      });
+    }
     trackEvent('report_upsell_clicked', {
       mode: 'pair',
       price: 999,
       currency: 'usd',
+      ...(funnelContext || {}),
       ...getFunnelAttribution(),
     });
     setIsModalOpen(true);
@@ -191,6 +204,7 @@ function ResultCard({
           resultId={resultId}
           resultUrl={resultUrl}
           names={names}
+          funnelContext={funnelContext}
         />
       )}
     </>

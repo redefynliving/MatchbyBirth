@@ -6,6 +6,7 @@ const routes = {
   '/api/calculate-result': () => require('./_lib/calculate-result.js'),
   '/api/create-checkout-session': () => require('./_lib/create-checkout-session.js'),
   '/api/create-subscription-checkout': () => require('./_lib/create-subscription-checkout.js'),
+  '/api/funnel-summary': () => require('./_lib/funnel-summary.js'),
   '/api/og': () => require('./_lib/og.js'),
   '/api/purchase-status': () => require('./_lib/purchase-status.js'),
   '/api/report': () => require('./_lib/report.js'),
@@ -15,6 +16,7 @@ const routes = {
   '/api/webhook': () => require('./_lib/webhook.js'),
   '/api/stripe-webhook': () => require('./_lib/webhook.js'),
   '/api/subscribe': () => require('./_lib/subscribe.js'),
+  '/api/track-event': () => require('./_lib/track-event.js'),
   '/api/unsubscribe': () => require('./_lib/unsubscribe.js'),
   '/api/places': () => require('./_lib/places.js'),
 };

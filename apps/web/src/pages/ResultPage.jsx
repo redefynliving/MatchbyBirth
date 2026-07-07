@@ -222,6 +222,14 @@ function ResultPage() {
   const precision = getResultPrecisionDetails(result.people);
   const shareModel = canShare ? buildSharePageModel(result) : null;
   const shareSource = canShare ? getShareSource(searchParams) : 'direct';
+  const shareFunnelContext = shareModel ? {
+    funnel_source: 'share_page',
+    share_id: shareSlug,
+    score_band: shareModel.scoreBand,
+    source: shareSource,
+    cta_placement: 'result_card',
+    cta_label: 'direct_report_upsell',
+  } : null;
   const pageTitle = getShareTitle(result);
   const pageDescription = getShareDescription(result);
   const canonicalResultUrl = canShare
@@ -270,6 +278,7 @@ function ResultPage() {
               resultUrl={resultUrl}
               precisionLabel={precision.label}
               precisionNote={precision.note}
+              funnelContext={shareFunnelContext}
             />
           )}
 

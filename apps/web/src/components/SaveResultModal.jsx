@@ -14,7 +14,7 @@ import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 
-function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
+function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names, funnelContext = null }) {
   const [email, setEmail] = useState('');
   const [marketingConsent, setMarketingConsent] = useState(false);
   const [status, setStatus] = useState('idle');
@@ -26,6 +26,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
         mode: 'pair',
         price: 999,
         currency: 'usd',
+        ...(funnelContext || {}),
         ...getFunnelAttribution(),
       });
     }
@@ -48,6 +49,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 	      price: 999,
 	      currency: 'usd',
 	      discount_applied: false,
+	      ...(funnelContext || {}),
 	      ...getFunnelAttribution(),
 	    });
 
@@ -71,6 +73,7 @@ function SaveResultModal({ isOpen, onClose, resultId, resultUrl, names }) {
 	        mode: 'pair',
 	        price: 999,
 	        currency: 'usd',
+	        ...(funnelContext || {}),
 	        ...getFunnelAttribution(),
 	      });
       window.location.assign(data.url);

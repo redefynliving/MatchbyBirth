@@ -1,5 +1,44 @@
 'use strict';
 
+const {
+  getScoreBandKey,
+  recordFunnelEvent,
+} = require('./funnel-service.cjs');
+
+function getResultScore(resultPayload) {
+  const score = Number(resultPayload?.mode === 'group'
+    ? resultPayload?.groupScore
+    : resultPayload?.score);
+  return Number.isFinite(score) ? Math.max(0, Math.min(100, Math.round(score))) : null;
+}
+
+async function recordPurchaseCompleted(store, purchaseId) {
+  if (!store?.findPurchaseWithResult || !store?.insertFunnelEvent) return;
+
+  try {
+    const purchase = await store.findPurchaseWithResult(purchaseId);
+    const resultPayload = purchase?.result?.result_payload;
+    const score = getResultScore(resultPayload);
+    await recordFunnelEvent({
+      name: 'purchase_completed',
+      properties: {
+        source: 'stripe_webhook',
+        mode: resultPayload?.mode,
+        relationship_type: resultPayload?.relationshipType || resultPayload?.relationship_type,
+        score,
+        score_band: getScoreBandKey(score),
+        price: purchase?.amount_cents || 999,
+        currency: purchase?.currency || 'usd',
+      },
+    }, store);
+  } catch (error) {
+    console.error('purchase funnel event failed', {
+      purchaseId,
+      message: error.message,
+    });
+  }
+}
+
 async function processStripeEvent(event, dependencies) {
   const { store, fulfillPurchase } = dependencies;
   const claimed = await store.claimWebhookEvent(event.id, event.type);
@@ -40,6 +79,7 @@ async function processStripeEvent(event, dependencies) {
           paid_at: new Date().toISOString(),
           last_error: null,
         });
+        await recordPurchaseCompleted(store, purchaseId);
         console.log(`WEBHOOK FULFILLING: purchase ${purchaseId}`);
 
         await fulfillPurchase(purchaseId);

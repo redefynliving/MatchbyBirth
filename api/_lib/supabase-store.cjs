@@ -61,6 +61,25 @@ async function insertResult(record) {
   return rows[0];
 }
 
+async function insertFunnelEvent(record) {
+  const rows = await request('funnel_events', {
+    method: 'POST',
+    headers: { Prefer: 'return=representation' },
+    body: JSON.stringify(record),
+  });
+  return rows[0] || null;
+}
+
+async function listFunnelEventsSince(sinceIso, limit = 5000) {
+  const query = new URLSearchParams({
+    select: 'event_name,properties,session_id,share_id,score_band,relationship_type,source,placement,cta_label,created_at',
+    created_at: `gte.${sinceIso}`,
+    order: 'created_at.asc',
+    limit: String(limit),
+  });
+  return request(`funnel_events?${query.toString()}`);
+}
+
 async function findResultBySlug(shareSlug) {
   const query = new URLSearchParams({
     select: 'id,share_slug,result_payload,created_at,expires_at',
@@ -251,8 +270,10 @@ module.exports = {
   findResultBySlug,
   isConfigured,
   insertReport,
+  insertFunnelEvent,
   insertResult,
   insertPurchase,
+  listFunnelEventsSince,
   listRetryablePurchases,
   listActiveSubscribers,
   request,
