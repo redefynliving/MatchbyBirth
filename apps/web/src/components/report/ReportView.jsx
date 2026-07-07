@@ -1,27 +1,8 @@
 import React from 'react';
 import { Download, LockKeyhole } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
+import ReportCta from '@/components/report/ReportCta.jsx';
 import { getReportSnapshot } from '@/components/report/reportUtils.js';
-
-function SampleCta() {
-  return (
-    <section className="pt-8 border-t border-border">
-      <div className="rounded-3xl border border-primary/15 bg-primary/[0.035] p-6 text-center">
-        <p className="text-xs uppercase tracking-[0.16em] text-primary font-semibold mb-3">
-          Private paid report
-        </p>
-        <h2 className="font-serif text-2xl mb-3">Want your full report?</h2>
-        <p className="text-muted-foreground leading-relaxed max-w-lg mx-auto">
-          Run your own comparison, then unlock a private report built from your actual compatibility result.
-        </p>
-        <Link to="/#calculator" className="btn-primary mt-5 inline-flex rounded-xl px-5 py-3 text-sm font-semibold">
-          Try the comparison
-        </Link>
-      </div>
-    </section>
-  );
-}
 
 export default function ReportView({
   report,
@@ -71,6 +52,19 @@ export default function ReportView({
             </p>
           </header>
 
+          {mode === 'sample' && (
+            <div className="mt-8">
+              <ReportCta
+                title="See your own private report"
+                body="This sample shows the format. Your full report is built from your actual birth details and gives you a more personal compatibility reading."
+                primaryLabel="Get your full private report"
+                secondaryLabel="Run your own match"
+                placement="top"
+                compact
+              />
+            </div>
+          )}
+
           <section className="my-8 rounded-3xl border border-primary/15 bg-primary/[0.035] p-5 md:p-6">
             <p className="text-xs uppercase tracking-[0.16em] text-primary font-semibold mb-4">
               Report snapshot
@@ -91,6 +85,19 @@ export default function ReportView({
             </div>
           </section>
 
+          {mode === 'sample' && (
+            <div className="mb-8">
+              <ReportCta
+                title="Want a report that's actually yours?"
+                body="The sample gives you the feel of the experience. Your private report is based on your real match, with deeper insight and a personalized reading."
+                primaryLabel="Unlock my full report"
+                secondaryLabel="Try the calculator"
+                placement="middle"
+                compact
+              />
+            </div>
+          )}
+
           <div className="py-4">
             {report.sections.map((section) => (
               <section key={section.key} className="py-7 border-b border-border last:border-0">
@@ -102,7 +109,17 @@ export default function ReportView({
             ))}
           </div>
 
-          {mode === 'sample' && <SampleCta />}
+          {mode === 'sample' && (
+            <div className="pt-8 border-t border-border">
+              <ReportCta
+                title="Ready to see your real match?"
+                body="Run your own birth match and get the complete private report."
+                primaryLabel="Get my report"
+                secondaryLabel="Start with a match"
+                placement="bottom"
+              />
+            </div>
+          )}
 
           <footer className="pt-8 border-t border-border">
             <p className="font-serif text-lg italic leading-8 text-muted-foreground">{report.closing}</p>

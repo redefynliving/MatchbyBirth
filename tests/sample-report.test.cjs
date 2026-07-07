@@ -25,6 +25,7 @@ test('sample report route uses the shared report view and sample data', async ()
   const app = read('apps/web/src/App.jsx');
   const page = read('apps/web/src/pages/SampleReportPage.jsx');
   const view = read('apps/web/src/components/report/ReportView.jsx');
+  const cta = read('apps/web/src/components/report/ReportCta.jsx');
   const resultCard = read('apps/web/src/components/ResultCard.jsx');
   const ssg = read('tools/build-ssg.mjs');
   const { generateSitemapXml } = await import(pathToFileURL(
@@ -36,7 +37,11 @@ test('sample report route uses the shared report view and sample data', async ()
   assert.match(page, /sampleReport/);
   assert.match(page, /ReportView/);
   assert.match(view, /Report snapshot/);
-  assert.match(view, /Want your full report/);
+  assert.match(view, /See your own private report/);
+  assert.match(view, /Want a report that's actually yours/);
+  assert.match(view, /Ready to see your real match/);
+  assert.match(cta, /sample_report_cta_clicked/);
+  assert.match(cta, /\/#calculator/);
   assert.match(resultCard, /View sample report/);
   assert.match(ssg, /route: 'sample-report'/);
   assert.match(generateSitemapXml(), /https:\/\/matchbybirth\.com\/sample-report/);
