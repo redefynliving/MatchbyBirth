@@ -16,6 +16,7 @@
 - Create the live Stripe price for the report
 - Set `STRIPE_SECRET_KEY` in production
 - Set `STRIPE_PRICE_ID` in production
+- Set `STRIPE_SUBSCRIPTION_PRICE_ID` in production for the recurring premium plan
 - Set `STRIPE_WEBHOOK_SECRET` in production
 - Set `APP_URL` in production
 - Set `REPORT_TOKEN_SECRET` in production

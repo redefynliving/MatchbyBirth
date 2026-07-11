@@ -25,6 +25,13 @@ function normalizeEmail(value) {
   return email;
 }
 
+function validateCheckoutInput(input) {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) {
+    throw new CheckoutError('Invalid checkout request body.');
+  }
+  return input;
+}
+
 async function buildReportLineItem(stripe, priceId) {
   if (priceId.startsWith('price_')) {
     return [{ price: priceId, quantity: 1 }];
@@ -57,13 +64,13 @@ async function buildReportLineItem(stripe, priceId) {
 }
 
 async function createCheckout(input, dependencies) {
+  validateCheckoutInput(input);
   const {
     store,
     stripe,
     appUrl,
     priceId,
-    subscribeMarketing,
-    onMarketingError = () => {},
+
   } = dependencies;
   if (!appUrl || !priceId) {
     throw new CheckoutError('Checkout is not configured.', 500);
@@ -108,8 +115,9 @@ async function createCheckout(input, dependencies) {
       metadata: {
         purchase_id: purchase.id,
         result_id: result.id,
+        marketing_consent: input?.marketingConsent === true ? 'true' : 'false',
       },
-    });
+    }, { idempotencyKey: `report-checkout:${purchase.id}` });
 
     await store.updatePurchase(purchase.id, {
       stripe_checkout_session_id: session.id,
@@ -122,17 +130,6 @@ async function createCheckout(input, dependencies) {
     throw error;
   }
 
-  if (input?.marketingConsent === true && subscribeMarketing) {
-    try {
-      await subscribeMarketing({
-        email,
-        resultId: result.id,
-        consentSource: 'report_checkout',
-      });
-    } catch (error) {
-      onMarketingError(error);
-    }
-  }
 
   return {
     purchaseId: purchase.id,
@@ -142,6 +139,7 @@ async function createCheckout(input, dependencies) {
 }
 
 async function createSubscriptionCheckout(input, dependencies) {
+  validateCheckoutInput(input);
   const {
     store,
     stripe,
@@ -195,4 +193,5 @@ module.exports = {
   createCheckout,
   createSubscriptionCheckout,
   normalizeEmail,
+  validateCheckoutInput,
 };

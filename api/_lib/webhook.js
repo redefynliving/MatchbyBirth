@@ -3,6 +3,7 @@
 const Stripe = require('stripe');
 const { processStripeEvent } = require('./webhook-service.cjs');
 const { fulfillConfiguredPurchase } = require('./fulfillment.cjs');
+const { getServerConfig, subscribePaidReportBuyer } = require('../backend.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -11,7 +12,8 @@ module.exports = async (req, res) => {
   }
 
   const sig = req.headers['stripe-signature'];
-  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+  const config = getServerConfig();
+  const secret = config.stripeWebhookSecret;
 
   if (!secret) {
     console.error('WEBHOOK ERROR: STRIPE_WEBHOOK_SECRET is not configured');
@@ -25,7 +27,11 @@ module.exports = async (req, res) => {
 
   let event;
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    if (!config.stripeSecretKey) {
+      console.error('WEBHOOK ERROR: STRIPE_SECRET_KEY is not configured');
+      return res.status(500).json({ ok: false, error: 'Webhook not configured.' });
+    }
+    const stripe = new Stripe(config.stripeSecretKey);
     event = stripe.webhooks.constructEvent(req.body, sig, secret);
     console.log(`WEBHOOK RECEIVED: ${event.type} (${event.id})`);
   } catch (err) {
@@ -37,6 +43,7 @@ module.exports = async (req, res) => {
     const result = await processStripeEvent(event, {
       store: require('./supabase-store.cjs'),
       fulfillPurchase: fulfillConfiguredPurchase,
+      subscribeMarketing: subscribePaidReportBuyer,
     });
     console.log(`WEBHOOK PROCESSED: ${event.type} (${event.id}) → ${result}`);
     return res.status(200).json({ ok: true, result });

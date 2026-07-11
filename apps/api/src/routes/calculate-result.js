@@ -1,9 +1,5 @@
 import express from 'express';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const store = require('../../../../api/_lib/supabase-store.cjs');
-const { createCalculateResultHandler } = require('../../../../shared/api-handlers.cjs');
+import { createCalculateResultHandler, store } from '../backend-bridge.js';
 
 const router = express.Router();
 const calculateResultHandler = createCalculateResultHandler(store);

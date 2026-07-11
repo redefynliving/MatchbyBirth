@@ -40,7 +40,7 @@ async function recordPurchaseCompleted(store, purchaseId) {
 }
 
 async function processStripeEvent(event, dependencies) {
-  const { store, fulfillPurchase } = dependencies;
+  const { store, fulfillPurchase, subscribeMarketing } = dependencies;
   const claimed = await store.claimWebhookEvent(event.id, event.type);
   if (!claimed) {
     console.log(`WEBHOOK DUPLICATE: ${event.type} (${event.id}) — already processed`);
@@ -56,6 +56,15 @@ async function processStripeEvent(event, dependencies) {
       const checkoutType = session.metadata?.checkout_type || 'report';
       const email = session.customer_details?.email || session.customer_email || session.metadata?.email;
       const resultId = session.metadata?.result_id || null;
+
+      if (session.payment_status !== 'paid') {
+        await store.completeWebhookEvent(event.id, {
+          status: 'ignored',
+          processed_at: new Date().toISOString(),
+          last_error: null,
+        });
+        return 'payment_pending';
+      }
 
       if (checkoutType === 'subscription') {
         if (!email) throw new Error('Stripe subscription session is missing an email.');
@@ -80,6 +89,20 @@ async function processStripeEvent(event, dependencies) {
           last_error: null,
         });
         await recordPurchaseCompleted(store, purchaseId);
+        if (session.metadata?.marketing_consent === 'true' && subscribeMarketing && email) {
+          try {
+            await subscribeMarketing({
+              email,
+              resultId,
+              consentSource: 'report_checkout_paid',
+            });
+          } catch (error) {
+            console.error('paid checkout marketing opt-in failed', {
+              purchaseId,
+              message: error.message,
+            });
+          }
+        }
         console.log(`WEBHOOK FULFILLING: purchase ${purchaseId}`);
 
         await fulfillPurchase(purchaseId);

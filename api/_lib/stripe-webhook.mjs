@@ -2,16 +2,19 @@ import Stripe from 'stripe';
 import store from './supabase-store.cjs';
 import fulfillment from './fulfillment.cjs';
 import webhookService from './webhook-service.cjs';
+import backend from '../backend.cjs';
 
 const { fulfillConfiguredPurchase } = fulfillment;
 const { processStripeEvent } = webhookService;
+const { getServerConfig, subscribePaidReportBuyer } = backend;
 
 export async function POST(request) {
-  if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
+  const config = getServerConfig();
+  if (!config.stripeSecretKey || !config.stripeWebhookSecret) {
     console.error('Stripe webhook configuration is incomplete.');
     return new Response('Server misconfiguration', { status: 500 });
   }
-  if (!process.env.REPORT_TOKEN_SECRET || !process.env.APP_URL) {
+  if (!config.reportTokenSecret || !config.appUrl) {
     console.error('Report fulfillment configuration is incomplete.');
     return new Response('Server misconfiguration', { status: 500 });
   }
@@ -23,12 +26,12 @@ export async function POST(request) {
 
   let event;
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new Stripe(config.stripeSecretKey);
     const rawBody = await request.text();
     event = stripe.webhooks.constructEvent(
       rawBody,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET,
+      config.stripeWebhookSecret,
     );
   } catch {
     return new Response('Webhook signature verification failed', { status: 400 });
@@ -38,6 +41,7 @@ export async function POST(request) {
     const status = await processStripeEvent(event, {
       store,
       fulfillPurchase: fulfillConfiguredPurchase,
+      subscribeMarketing: subscribePaidReportBuyer,
     });
     return Response.json({ received: true, status });
   } catch (error) {

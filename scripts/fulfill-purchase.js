@@ -22,8 +22,7 @@ const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env.local') });
 
 const { createClient } = require('@supabase/supabase-js');
-const { generateStructuredReport } = require('../api/lib/report-generator.cjs');
-const { createReportAccess, fulfillPurchase } = require('../api/lib/report-service.cjs');
+const { generateStructuredReport, fulfillPurchase } = require('../api/backend.cjs');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;

@@ -7,7 +7,7 @@ test('createCheckout controls price and keeps personal result data out of Stripe
   let purchaseRecord;
   let stripePayload;
   let purchaseUpdate;
-  let marketingSubscriber;
+
   const store = {
     findResultById: async () => ({
       id: 'result-id',
@@ -49,9 +49,7 @@ test('createCheckout controls price and keeps personal result data out of Stripe
       stripe,
       appUrl: 'https://matchbybirth.com',
       priceId: 'price_report',
-      subscribeMarketing: async (subscriber) => {
-        marketingSubscriber = subscriber;
-      },
+
     },
   );
 
@@ -62,22 +60,17 @@ test('createCheckout controls price and keeps personal result data out of Stripe
   assert.deepEqual(stripePayload.metadata, {
     purchase_id: 'purchase-id',
     result_id: 'result-id',
+    marketing_consent: 'true',
   });
   assert.equal(JSON.stringify(stripePayload.metadata).includes('Alex'), false);
   assert.deepEqual(purchaseUpdate, {
     id: 'purchase-id',
     values: { stripe_checkout_session_id: 'checkout-id' },
   });
-  assert.deepEqual(marketingSubscriber, {
-    email: 'buyer@example.com',
-    resultId: 'result-id',
-    consentSource: 'report_checkout',
-  });
 });
 
-test('createCheckout does not block payment when optional marketing subscription fails', async () => {
-  let attemptedSubscription = false;
-  let reportedError;
+test('createCheckout records marketing consent without checkout-time side effects', async () => {
+  let stripePayload;
   const store = {
     findResultById: async () => ({
       id: 'result-id',
@@ -90,10 +83,10 @@ test('createCheckout does not block payment when optional marketing subscription
   const stripe = {
     checkout: {
       sessions: {
-        create: async () => ({
-          id: 'checkout-id',
-          url: 'https://checkout.stripe.test/session',
-        }),
+        create: async (payload) => {
+          stripePayload = payload;
+          return { id: 'checkout-id', url: 'https://checkout.stripe.test/session' };
+        },
       },
     },
   };
@@ -109,18 +102,11 @@ test('createCheckout does not block payment when optional marketing subscription
       stripe,
       appUrl: 'https://matchbybirth.com',
       priceId: 'price_report',
-      subscribeMarketing: async () => {
-        attemptedSubscription = true;
-        throw new Error('Welcome delivery failed');
-      },
-      onMarketingError: (error) => {
-        reportedError = error;
-      },
+
     },
   );
 
-  assert.equal(attemptedSubscription, true);
-  assert.equal(reportedError.message, 'Welcome delivery failed');
+  assert.equal(stripePayload.metadata.marketing_consent, 'true');
   assert.equal(response.url, 'https://checkout.stripe.test/session');
 });
 
@@ -224,4 +210,36 @@ test('createCheckout rejects group reports and invalid email addresses', async (
     ),
     /valid email/i,
   );
+});
+
+test('checkout services reject non-object request bodies', async () => {
+  await assert.rejects(
+    () => createCheckout('invalid', { store: {}, stripe: {}, appUrl: 'https://matchbybirth.com', priceId: 'price_report' }),
+    /request body/i,
+  );
+  await assert.rejects(
+    () => createSubscriptionCheckout([], { store: {}, stripe: {}, appUrl: 'https://matchbybirth.com', priceId: 'price_subscription' }),
+    /request body/i,
+  );
+});
+
+test('createCheckout gives Stripe a stable idempotency key for the purchase', async () => {
+  let stripeOptions;
+  const store = {
+    findResultById: async () => ({ id: 'result-id', share_slug: 'share-slug', mode: 'pair' }),
+    insertPurchase: async (record) => ({ ...record, id: 'purchase-id' }),
+    updatePurchase: async () => {},
+  };
+  const stripe = {
+    checkout: { sessions: { create: async (_payload, options) => {
+      stripeOptions = options;
+      return { id: 'checkout-id', url: 'https://checkout.stripe.test/session' };
+    } } },
+  };
+
+  await createCheckout(
+    { resultId: 'result-id', email: 'buyer@example.com' },
+    { store, stripe, appUrl: 'https://matchbybirth.com', priceId: 'price_report' },
+  );
+  assert.deepEqual(stripeOptions, { idempotencyKey: 'report-checkout:purchase-id' });
 });
