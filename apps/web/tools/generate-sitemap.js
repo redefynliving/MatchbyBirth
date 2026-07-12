@@ -3,10 +3,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
-import { BLOG_CATEGORIES } from '../src/data/blogCategories.js';
+import { BLOG_CATEGORIES, getPostCategory } from '../src/data/blogCategories.js';
 import { getZodiacPairingPages } from '../../../tools/zodiac-pairings.mjs';
 
 const SITE_URL = 'https://matchbybirth.com';
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
 const PUBLIC_PAGES = [
   '/',
   '/about',
@@ -44,7 +45,7 @@ function urlForPath(pagePath) {
   return normalized === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalized}`;
 }
 
-function entry({ pagePath, lastmod = '2026-05-24' }) {
+function entry({ pagePath, lastmod = BUILD_DATE }) {
   return [
     '  <url>',
     `    <loc>${xmlEscape(urlForPath(pagePath))}</loc>`,
@@ -62,20 +63,21 @@ export function generateSitemapXml() {
 
   const categoryEntries = BLOG_CATEGORIES.map((category) => entry({
     pagePath: `/blog/category/${category.key}`,
+    lastmod: latestPostDateForCategory(category.key),
     changefreq: 'weekly',
     priority: '0.7',
   }));
 
   const postEntries = posts.map((post) => entry({
     pagePath: `/blog/${post.slug}`,
-    lastmod: post.date,
+    lastmod: post.updatedAt || post.modifiedAt || post.date || BUILD_DATE,
     changefreq: 'monthly',
     priority: '0.8',
   }));
 
   const pairingEntries = getZodiacPairingPages().map((page) => entry({
     pagePath: page.path,
-    lastmod: '2026-06-28',
+    lastmod: BUILD_DATE,
     changefreq: 'monthly',
     priority: '0.7',
   }));
@@ -90,6 +92,16 @@ export function generateSitemapXml() {
     '</urlset>',
     '',
   ].join('\n');
+}
+
+function latestPostDateForCategory(categoryKey) {
+  const dates = posts
+    .filter((post) => getPostCategory(post) === categoryKey)
+    .map((post) => post.updatedAt || post.modifiedAt || post.date)
+    .filter(Boolean)
+    .sort((left, right) => right.localeCompare(left));
+
+  return dates[0] || BUILD_DATE;
 }
 
 export function writeSitemap(outputPath = path.join(process.cwd(), 'public', 'sitemap.xml')) {

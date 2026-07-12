@@ -247,8 +247,20 @@ test('SEO metadata is truthful and result pages are excluded from indexing', () 
   assert.match(index, /Birth dates are processed for the calculation and are not stored/);
   assert.doesNotMatch(index, /highly accurate|happens instantly in your browser|Hostinger Horizons|vite\.svg/i);
   assert.doesNotMatch(sitemap, /<loc>https:\/\/matchbybirth\.com\/result<\/loc>/);
+  assert.doesNotMatch(sitemap, /<lastmod>2026-05-24<\/lastmod>/);
   assert.doesNotMatch(llms, /\]\(\/result\)|\]\(\/report\)/);
   assert.match(resultPage, /noindex,nofollow,noarchive/);
+  assert.deepEqual(vercelConfig.redirects[0], {
+    source: '/',
+    has: [
+      {
+        type: 'host',
+        value: 'www.matchbybirth.com',
+      },
+    ],
+    destination: 'https://matchbybirth.com/',
+    permanent: true,
+  });
   assert.deepEqual(vercelConfig.headers, [
     {
       source: '/(.*)',
@@ -269,6 +281,15 @@ test('SEO metadata is truthful and result pages are excluded from indexing', () 
     },
     {
       source: '/result',
+      headers: [
+        {
+          key: 'X-Robots-Tag',
+          value: 'noindex, nofollow, noarchive',
+        },
+      ],
+    },
+    {
+      source: '/admin/funnel',
       headers: [
         {
           key: 'X-Robots-Tag',

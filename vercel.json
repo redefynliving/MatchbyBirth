@@ -5,6 +5,17 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.matchbybirth.com"
+        }
+      ],
+      "destination": "https://matchbybirth.com/",
+      "permanent": true
+    },
+    {
       "source": "/blog/mercury-retrograde-dating-guide",
       "destination": "/blog/mercury-retrograde-2026-relationships",
       "permanent": true
@@ -45,6 +56,15 @@
     },
     {
       "source": "/result",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/admin/funnel",
       "headers": [
         {
           "key": "X-Robots-Tag",
