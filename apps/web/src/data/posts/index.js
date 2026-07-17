@@ -1,4 +1,5 @@
 import sanityPosts from './sanity-posts.generated.js';
+import searchOpportunityPosts from './search-opportunity-posts.js';
 
 const posts = [
   {
@@ -2218,5 +2219,10 @@ const posts = [
 
 ];
 
-export const existingPosts = posts;
-export default [...posts, ...sanityPosts];
+const codedPosts = [...posts, ...searchOpportunityPosts];
+export const existingPosts = codedPosts;
+
+export default [
+  ...codedPosts,
+  ...sanityPosts.filter((post) => !codedPosts.some((codedPost) => codedPost.slug === post.slug)),
+];
