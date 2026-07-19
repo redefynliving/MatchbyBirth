@@ -83,6 +83,8 @@ test('first-party funnel routes and dashboard are wired', () => {
   assert.match(router, /\/api\/funnel-summary/);
   assert.match(analytics, /\/api\/track-event/);
   assert.match(analytics, /sendBeacon/);
+  assert.match(analytics, /randomUUID|getRandomValues/);
+  assert.doesNotMatch(analytics, /Math\.random/);
   assert.match(app, /\/admin\/funnel/);
   assert.match(dashboard, /share_page_view/);
   assert.match(dashboard, /checkout_started_from_share/);
