@@ -1,7 +1,5 @@
 'use strict';
 
-const urlModule = require('url');
-
 const routes = {
   '/api/calculate-result': () => require('./_lib/calculate-result.js'),
   '/api/create-checkout-session': () => require('./_lib/create-checkout-session.js'),
@@ -21,8 +19,38 @@ const routes = {
   '/api/places': () => require('./_lib/places.js'),
 };
 
+function addResponseHelpers(res) {
+  if (typeof res.status !== 'function') {
+    res.status = (statusCode) => {
+      res.statusCode = statusCode;
+      return res;
+    };
+  }
+  if (typeof res.json !== 'function') {
+    res.json = (payload) => {
+      if (!res.headersSent) {
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      }
+      res.end(JSON.stringify(payload));
+      return res;
+    };
+  }
+  if (typeof res.send !== 'function') {
+    res.send = (payload) => {
+      if (Buffer.isBuffer(payload) || typeof payload === 'string') {
+        res.end(payload);
+      } else {
+        res.json(payload);
+      }
+      return res;
+    };
+  }
+  return res;
+}
+
 module.exports = async (req, res) => {
-  const parsedUrl = urlModule.parse(req.url, true);
+  addResponseHelpers(res);
+  const parsedUrl = new URL(req.url, 'http://localhost');
   const path = parsedUrl.pathname;
 
   // Find routing target
@@ -32,7 +60,7 @@ module.exports = async (req, res) => {
   }
 
   // Ensure query is populated
-  req.query = { ...parsedUrl.query, ...req.query };
+  req.query = { ...Object.fromEntries(parsedUrl.searchParams), ...req.query };
 
   // Parse body if method expects one
   if (req.method === 'POST' || req.method === 'PUT' || req.method === 'PATCH') {
@@ -81,3 +109,5 @@ module.exports.config = {
     bodyParser: false,
   },
 };
+
+module.exports.addResponseHelpers = addResponseHelpers;
