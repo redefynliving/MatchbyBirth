@@ -271,11 +271,10 @@ export function renderArticleHtml({ template, post } = {}) {
 
 function writeHtmlFile(outputRoot, route, html) {
   const normalizedRoute = normalizeRoute(route);
-  const directory = normalizedRoute === '/'
-    ? outputRoot
-    : path.join(outputRoot, normalizedRoute.replace(/^\//, ''));
-  const filePath = path.join(directory, 'index.html');
-  fs.mkdirSync(directory, { recursive: true });
+  const filePath = normalizedRoute === '/'
+    ? path.join(outputRoot, 'index.html')
+    : path.join(outputRoot, `${normalizedRoute.replace(/^\//, '')}.html`);
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, html, 'utf8');
   return filePath;
 }

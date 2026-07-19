@@ -8,6 +8,7 @@ import { prerenderBlogHtml } from '../apps/web/tools/prerender-blog-html.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist/apps/web');
 const TEMPLATE_PATH = path.join(DIST_DIR, 'index.html');
+const SITE_URL = 'https://matchbybirth.com';
 
 function escapeXml(unsafe) {
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -20,6 +21,59 @@ function escapeXml(unsafe) {
       default: return c;
     }
   });
+}
+
+function canonicalUrl(route) {
+  const normalizedRoute = route === '/'
+    ? '/'
+    : `/${String(route || '').replace(/^\/+|\/+$/g, '')}`;
+  return normalizedRoute === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalizedRoute}`;
+}
+
+function upsertHeadTag(html, matcher, tag) {
+  return matcher.test(html)
+    ? html.replace(matcher, tag)
+    : html.replace('</head>', `\t\t${tag}\n\t</head>`);
+}
+
+function renderRouteHtml(template, {
+  route,
+  title,
+  description,
+  content,
+  type = 'website',
+}) {
+  const safeTitle = escapeXml(title);
+  const safeDescription = escapeXml(description);
+  const safeCanonical = escapeXml(canonicalUrl(route));
+
+  let html = template
+    .replace(/<title>[^<]*<\/title>/i, `<title>${safeTitle}</title>`)
+    .replace(/<div id="root">[\s\S]*?<\/div>/i, `<div id="root">${content}</div>`);
+
+  const tags = [
+    [/<meta\s+name=["']description["'][^>]*>/i, `<meta name="description" content="${safeDescription}" />`],
+    [/<link\s+rel=["']canonical["'][^>]*>/i, `<link rel="canonical" href="${safeCanonical}" />`],
+    [/<meta\s+property=["']og:type["'][^>]*>/i, `<meta property="og:type" content="${type}">`],
+    [/<meta\s+property=["']og:title["'][^>]*>/i, `<meta property="og:title" content="${safeTitle}">`],
+    [/<meta\s+property=["']og:description["'][^>]*>/i, `<meta property="og:description" content="${safeDescription}">`],
+    [/<meta\s+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${safeCanonical}">`],
+    [/<meta\s+name=["']twitter:title["'][^>]*>/i, `<meta name="twitter:title" content="${safeTitle}">`],
+    [/<meta\s+name=["']twitter:description["'][^>]*>/i, `<meta name="twitter:description" content="${safeDescription}">`],
+  ];
+
+  for (const [matcher, tag] of tags) {
+    html = upsertHeadTag(html, matcher, tag);
+  }
+
+  return html;
+}
+
+function routeFilePath(outputRoot, route) {
+  const normalizedRoute = String(route || '').replace(/^\/+|\/+$/g, '');
+  return normalizedRoute
+    ? path.join(outputRoot, `${normalizedRoute}.html`)
+    : path.join(outputRoot, 'index.html');
 }
 
 function generateRssFeed() {
@@ -366,15 +420,17 @@ function preRenderPages() {
 
   // Pre-render standard pages
   for (const page of pages) {
-    const pageDir = path.join(DIST_DIR, page.route);
-    fs.mkdirSync(pageDir, { recursive: true });
+    const pageFile = routeFilePath(DIST_DIR, page.route);
+    fs.mkdirSync(path.dirname(pageFile), { recursive: true });
 
-    let pageHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${page.title}</title>`)
-      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${page.description}" />`)
-      .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${page.content}</div>`);
+    const pageHtml = renderRouteHtml(template, {
+      route: `/${page.route}`,
+      title: page.title,
+      description: page.description,
+      content: page.content,
+    });
 
-    fs.writeFileSync(path.join(pageDir, 'index.html'), pageHtml, 'utf8');
+    fs.writeFileSync(pageFile, pageHtml, 'utf8');
     console.log(`[SSG] Route /${page.route} pre-rendered.`);
   }
 
@@ -416,9 +472,8 @@ function preRenderZodiacPairings(template) {
   let count = 0;
 
   for (const { firstSign: s1, secondSign: s2, slug } of getZodiacPairingPages()) {
-    const postDir = path.join(DIST_DIR, 'blog', slug);
-
-    fs.mkdirSync(postDir, { recursive: true });
+    const postFile = routeFilePath(DIST_DIR, `blog/${slug}`);
+    fs.mkdirSync(path.dirname(postFile), { recursive: true });
 
     const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
     const description = `Are ${s1.label} and ${s2.label} compatible? Read a practical compatibility breakdown of elements, qualities, and relationship dynamics for this pairing.`;
@@ -451,12 +506,15 @@ function preRenderZodiacPairings(template) {
         </article>
       `;
 
-    let postHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${title} | Match by Birth</title>`)
-      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${description}" />`)
-      .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
+    const postHtml = renderRouteHtml(template, {
+      route: `/blog/${slug}`,
+      title: `${title} | Match by Birth`,
+      description,
+      content: postBody,
+      type: 'article',
+    });
 
-    fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
+    fs.writeFileSync(postFile, postHtml, 'utf8');
     count++;
   }
 

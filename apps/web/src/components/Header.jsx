@@ -2,7 +2,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, Sparkles } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTrigger,
+  SheetTitle,
+} from '@/components/ui/sheet';
 import { scrollToCalculator } from '@/lib/scroll-to-calculator.js';
 
 function Header() {
@@ -65,6 +71,9 @@ function Header() {
                 <Sparkles className="w-5 h-5 text-primary" />
                 Match by Birth
               </SheetTitle>
+              <SheetDescription className="sr-only">
+                Site navigation and calculator shortcut.
+              </SheetDescription>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <Link

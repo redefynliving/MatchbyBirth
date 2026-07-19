@@ -3,6 +3,7 @@
   "buildCommand": "cd apps/web && npm ci && npm run build",
   "outputDirectory": "dist/apps/web",
   "framework": null,
+  "cleanUrls": true,
   "redirects": [
     {
       "source": "/",
