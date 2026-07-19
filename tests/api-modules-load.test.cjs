@@ -29,6 +29,11 @@ test('production API modules load before deployment', () => {
   }
 });
 
+test('apps API declares dependencies required by its production bridge', () => {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'apps/api/package.json'), 'utf8'));
+  assert.match(packageJson.dependencies.stripe, /^\^22\./);
+});
+
 test('production API router uses static handler imports for Vercel bundling', () => {
   const source = fs.readFileSync(path.join(root, 'api/index.js'), 'utf8');
   assert.match(source, /\(\) => require\('.*_lib\/subscribe\.js'\)/);
