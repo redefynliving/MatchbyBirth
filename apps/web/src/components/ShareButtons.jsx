@@ -15,6 +15,8 @@ function ShareButtons({
   resultUrl,
   shareId,
   relationshipType,
+  calculationMode,
+  topAspectLabel,
   scoreBand: scoreBandOverride,
   placement = 'share_module',
 }) {
@@ -22,7 +24,15 @@ function ShareButtons({
   const shareScore = Number(mode === 'group' ? groupVibeScore : score) || 0;
   const scoreBandLabel = getShareBand(shareScore);
   const scoreBand = scoreBandOverride || getShareBandKey(shareScore);
-  const shareText = getShareText({ mode, p1, p2, score, groupVibeScore });
+  const shareText = getShareText({
+    mode,
+    p1,
+    p2,
+    score,
+    groupVibeScore,
+    calculationMode,
+    topAspectLabel,
+  });
   const eventPayload = {
     share_id: shareId || 'unknown',
     mode,
@@ -30,6 +40,7 @@ function ShareButtons({
     score: Math.round(shareScore),
     score_band: scoreBand,
     placement,
+    calculation_mode: calculationMode || 'basic-sun',
   };
 
   const handleCopy = async () => {
@@ -52,13 +63,13 @@ function ShareButtons({
   };
 
   return (
-    <div className="mx-auto mt-6 w-full max-w-lg rounded-2xl border border-border bg-card p-4">
+    <div className="mx-auto w-full max-w-lg rounded-lg border border-border bg-card p-4">
       <div className="mb-3 flex items-center gap-2">
         <Share2 className="h-4 w-4 text-primary" />
         <h2 className="text-sm font-semibold">Share by link</h2>
       </div>
       <p className="mb-3 text-xs leading-5 text-muted-foreground">
-        Anyone with the link can view this private-safe result. Birth dates are not shown. Score band: {scoreBandLabel}.
+        Anyone with the link can view this private-safe result. Birth dates are not shown. {calculationMode === 'full-synastry' ? 'The leading aspect is included.' : `Score band: ${scoreBandLabel}.`}
       </p>
       <div className="grid grid-cols-2 gap-3">
         <button

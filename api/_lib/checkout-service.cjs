@@ -1,5 +1,12 @@
 'use strict';
 
+const crypto = require('node:crypto');
+
+const {
+  normalizeClarityGoal,
+  normalizeReportFocus,
+} = require('../../shared/report-evidence.cjs');
+
 class CheckoutError extends Error {
   constructor(message, statusCode = 400) {
     super(message);
@@ -32,7 +39,20 @@ function validateCheckoutInput(input) {
   return input;
 }
 
-async function buildReportLineItem(stripe, priceId) {
+const REPORT_OFFERS = {
+  standard: {
+    amountCents: 999,
+    name: 'Match by Birth compatibility report',
+    description: 'Private compatibility report delivered by email.',
+  },
+  deep_synastry: {
+    amountCents: 999,
+    name: 'Match by Birth Deep Synastry report',
+    description: 'Private timed synastry report with calculated aspect evidence.',
+  },
+};
+
+async function buildReportLineItem(stripe, priceId, offer = REPORT_OFFERS.standard) {
   if (priceId.startsWith('price_')) {
     return [{ price: priceId, quantity: 1 }];
   }
@@ -53,10 +73,10 @@ async function buildReportLineItem(stripe, priceId) {
   return [{
     price_data: {
       currency: 'usd',
-      unit_amount: 999,
+      unit_amount: offer.amountCents,
       product_data: {
-        name: product.name || 'Match by Birth report',
-        description: product.description || 'Private compatibility report delivered by email.',
+        name: product.name || offer.name,
+        description: product.description || offer.description,
       },
     },
     quantity: 1,
@@ -70,7 +90,6 @@ async function createCheckout(input, dependencies) {
     stripe,
     appUrl,
     priceId,
-
   } = dependencies;
   if (!appUrl || !priceId) {
     throw new CheckoutError('Checkout is not configured.', 500);
@@ -86,20 +105,70 @@ async function createCheckout(input, dependencies) {
     throw new CheckoutError('Paid reports are currently available for pair reports only.');
   }
 
+  const reportType = String(input?.reportType || 'standard').trim();
+  if (!Object.hasOwn(REPORT_OFFERS, reportType)) {
+    throw new CheckoutError('Unknown report type.');
+  }
+  if (
+    reportType === 'deep_synastry'
+    && (
+      result.result_payload?.calculationMode !== 'full-synastry'
+      || !Array.isArray(result.result_payload?.synastry?.evidence)
+      || result.result_payload.synastry.evidence.length === 0
+    )
+  ) {
+    throw new CheckoutError('Deep Synastry requires a full timed synastry result.');
+  }
+  const offer = REPORT_OFFERS[reportType];
+  const existingContext = result.result_payload?.reportContext || {};
+  const reportFocus = normalizeReportFocus(existingContext.focus || input?.reportFocus);
+  const clarityGoal = normalizeClarityGoal(
+    reportFocus,
+    input?.clarityGoal || existingContext.clarityGoal,
+  );
+  const nextPayload = {
+    ...(result.result_payload || {}),
+    reportContext: {
+      ...existingContext,
+      focus: reportFocus,
+      clarityGoal,
+      reportType,
+    },
+  };
+
+  if (typeof store.insertResult !== 'function') {
+    throw new CheckoutError('Purchase storage is unavailable.', 500);
+  }
+
+  const purchaseResultRecord = {
+    share_slug: `purchase-${crypto.randomUUID()}`,
+    mode: result.mode,
+    relationship_type: result.relationship_type
+      || result.result_payload?.relationshipType
+      || 'love',
+    result_payload: nextPayload,
+  };
+  if (result.expires_at) {
+    purchaseResultRecord.expires_at = result.expires_at;
+  }
+  const purchaseResult = await store.insertResult(purchaseResultRecord);
+  if (!purchaseResult?.id) {
+    throw new CheckoutError('Unable to preserve this report selection.', 500);
+  }
+
   const purchase = await store.insertPurchase({
-    result_id: result.id,
+    result_id: purchaseResult.id,
     email,
-    amount_cents: 999,
+    amount_cents: offer.amountCents,
     currency: 'usd',
     status: 'checkout_created',
   });
 
   let session;
   try {
-    const lineItems = await buildReportLineItem(stripe, priceId);
+    const lineItems = await buildReportLineItem(stripe, priceId, offer);
 
     session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
       line_items: lineItems,
@@ -114,7 +183,10 @@ async function createCheckout(input, dependencies) {
       ).toString(),
       metadata: {
         purchase_id: purchase.id,
-        result_id: result.id,
+        result_id: purchaseResult.id,
+        report_type: reportType,
+        report_focus: reportFocus,
+        clarity_goal: clarityGoal,
         marketing_consent: input?.marketingConsent === true ? 'true' : 'false',
       },
     }, { idempotencyKey: `report-checkout:${purchase.id}` });
@@ -189,6 +261,7 @@ async function createSubscriptionCheckout(input, dependencies) {
 }
 
 module.exports = {
+  REPORT_OFFERS,
   CheckoutError,
   createCheckout,
   createSubscriptionCheckout,

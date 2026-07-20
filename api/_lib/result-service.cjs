@@ -48,7 +48,11 @@ function calculateResult(input) {
   try {
     return mode === 'group'
       ? calculateGroupResult(input?.people)
-      : calculatePairResult(input?.people, input?.relationshipType);
+      : calculatePairResult(input?.people, input?.relationshipType, {
+        reportFocus: input?.reportFocus,
+        source: input?.source,
+        clarityGoal: input?.clarityGoal,
+      });
   } catch (error) {
     throw normalizeCalculationError(error);
   }

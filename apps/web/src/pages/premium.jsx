@@ -216,7 +216,7 @@ export default function PremiumPage() {
 	            <section className="mt-8 rounded-[2rem] border border-border bg-card p-6 shadow-sm md:p-8">
 	              <h2 className="text-xl font-semibold tracking-tight text-foreground">Paid report support</h2>
 	              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-	                One-time compatibility reports are delivered by private link and email after Stripe checkout. Birth dates and checkout emails are not sent to the AI provider.
+	                One-time compatibility reports are delivered by private link and email after Stripe checkout. Birth dates and checkout emails stay out of the report-writing request.
 	              </p>
 	              <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
 	                <Link to="/report-delivery" className="text-primary hover:underline">Report delivery</Link>

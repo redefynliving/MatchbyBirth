@@ -25,7 +25,6 @@ test('sample report route uses the shared report view and sample data', async ()
   const app = read('apps/web/src/App.jsx');
   const page = read('apps/web/src/pages/SampleReportPage.jsx');
   const view = read('apps/web/src/components/report/ReportView.jsx');
-  const cta = read('apps/web/src/components/report/ReportCta.jsx');
   const attribution = read('apps/web/src/lib/funnel-attribution.js');
   const calculator = read('apps/web/src/components/CalculatorWithPreview.jsx');
   const legacyCalculator = read('apps/web/src/components/CompatibilityCalculator.jsx');
@@ -41,25 +40,30 @@ test('sample report route uses the shared report view and sample data', async ()
   assert.match(page, /sampleReport/);
   assert.match(page, /ReportView/);
   assert.match(view, /Report snapshot/);
-  assert.match(view, /See your own private report/);
-  assert.match(view, /Want a report that's actually yours/);
-  assert.match(view, /Ready to see your real match/);
-  assert.match(cta, /sample_report_cta_clicked/);
-  assert.match(cta, /setFunnelAttribution/);
-  assert.match(cta, /variant/);
+  assert.match(view, /Sample compatibility report/);
+  assert.match(view, /Run a private comparison first/);
+  assert.match(view, /Run a private comparison/);
+  assert.match(view, /sample_report_cta_clicked/);
+  assert.match(view, /setFunnelAttribution/);
+  assert.match(view, /placement: 'score_card'/);
+  assert.match(view, /\/#calculator/);
+  assert.doesNotMatch(view, /<ReportCta/);
+  assert.doesNotMatch(view, /Read your own result this way/);
+  assert.doesNotMatch(view, /See what this looks like with your names and scores/);
+  assert.doesNotMatch(view, /Want a report that's actually yours/);
   assert.match(attribution, /cta_variant/);
   assert.match(attribution, /MAX_AGE_MS/);
   assert.match(calculator, /getFunnelAttribution/);
   assert.match(legacyCalculator, /getFunnelAttribution/);
   assert.match(resultCard, /getFunnelAttribution/);
   assert.match(saveModal, /getFunnelAttribution/);
-  assert.match(cta, /\/#calculator/);
-  assert.match(resultCard, /View sample report/);
+  assert.match(resultCard, /See exactly what is included/);
   assert.match(ssg, /route: 'sample-report'/);
-  assert.match(ssg, /See your own private report/);
-  assert.match(ssg, /Want a report that's actually yours/);
-  assert.match(ssg, /Ready to see your real match/);
-  assert.doesNotMatch(ssg, /Want your full report/);
+  assert.match(ssg, /Alex &amp; Jordan score 86/);
+  assert.match(ssg, /Run a private comparison first/);
+  assert.doesNotMatch(ssg, /Read your own result this way/);
+  assert.doesNotMatch(ssg, /See what this looks like with your names and scores/);
+  assert.doesNotMatch(ssg, /Want a report that's actually yours/);
   assert.match(generateSitemapXml(), /https:\/\/matchbybirth\.com\/sample-report/);
 });
 
@@ -70,7 +74,24 @@ test('sample report data demonstrates the paid report value clearly', () => {
   assert.match(sample, /86/);
   assert.match(sample, /Chemistry/);
   assert.match(sample, /Stability/);
-  assert.match(sample, /Say this first/);
-  assert.match(sample, /practical_advice/);
-  assert.match(sample, /entertainment|verdict/i);
+  assert.match(sample, /focusLabel: 'Full Compatibility Report'/);
+  assert.match(sample, /evidenceSummary/);
+  assert.match(sample, /precisionNote/);
+  assert.match(sample, /words_to_use/);
+  assert.match(sample, /Chemistry leads at 90/);
+  assert.match(sample, /What did you mean by that/);
+  assert.match(sample, /seven-day plan/i);
+  assert.match(sample, /structured-v7/);
+  assert.doesNotMatch(sample, /soulmate|fated|guaranteed|meaningful connection/i);
+});
+
+test('shared report renderer groups all nine sections into four backward-compatible chapters', () => {
+  const view = read('apps/web/src/components/report/ReportView.jsx');
+
+  assert.match(view, /Overview/);
+  assert.match(view, /Relating/);
+  assert.match(view, /Building/);
+  assert.match(view, /Action plan/);
+  assert.match(view, /report\.sections\.slice/);
+  assert.doesNotMatch(view, /promptVersion === 'structured-v7'/);
 });

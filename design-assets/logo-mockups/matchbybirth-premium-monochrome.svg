@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="260" viewBox="0 0 780 260" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth monochrome logo test</title>
+  <desc id="desc">Black and white tests for the refined Match by Birth logo system.</desc>
+  <rect x="0" y="0" width="780" height="130" fill="#FFFFFF"/>
+  <g color="#000000" transform="translate(38 26)">
+    <path fill="currentColor" fill-rule="evenodd" d="M12 39C27 15 105 15 120 39C105 63 27 63 12 39ZM25 39C39 23 93 23 107 39C93 55 39 55 25 39Z"/>
+    <path d="M53 39H79" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="51.5" cy="39" r="6.4" fill="currentColor"/>
+    <circle cx="80.5" cy="39" r="6.4" fill="currentColor"/>
+  </g>
+  <text x="188" y="80" fill="#000000" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" letter-spacing="0">Match by Birth</text>
+  <rect x="0" y="130" width="780" height="130" fill="#000000"/>
+  <g color="#FFFFFF" transform="translate(38 156)">
+    <path fill="currentColor" fill-rule="evenodd" d="M12 39C27 15 105 15 120 39C105 63 27 63 12 39ZM25 39C39 23 93 23 107 39C93 55 39 55 25 39Z"/>
+    <path d="M53 39H79" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+    <circle cx="51.5" cy="39" r="6.4" fill="currentColor"/>
+    <circle cx="80.5" cy="39" r="6.4" fill="currentColor"/>
+  </g>
+  <text x="188" y="210" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" letter-spacing="0">Match by Birth</text>
+</svg>

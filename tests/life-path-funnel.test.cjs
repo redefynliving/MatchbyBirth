@@ -57,15 +57,57 @@ test('calculator prefill helper rejects invalid or incomplete data', async () =>
   }), null);
 });
 
-test('Life Path tool routes completed users into the full calculator funnel', () => {
+test('calculator prefill preserves sanitized exact data from another compatibility tool', async () => {
+  const helper = await import(pathToFileURL(
+    path.join(root, 'apps/web/src/lib/calculator-prefill.js'),
+  ).href);
+  const place = {
+    label: ' London, UK ',
+    city: 'London',
+    country: 'GB',
+    timezone: 'Europe/London',
+    lat: 51.5,
+    lng: -0.12,
+    ignored: 'not copied',
+  };
+
+  const prefill = helper.buildCalculatorPrefill({
+    firstName: 'Alex',
+    firstDate: '1990-01-09',
+    firstBirthTime: '09:15',
+    firstPlace: place,
+    secondName: 'Jordan',
+    secondDate: '1993-09-09',
+    secondBirthTime: '18:45',
+    secondPlace: place,
+    source: 'moon_sign_compatibility',
+  });
+
+  assert.equal(prefill.exactMode, true);
+  assert.equal(prefill.people[0].birthTime, '09:15');
+  assert.deepEqual(prefill.people[0].place, {
+    label: 'London, UK',
+    timezone: 'Europe/London',
+    city: 'London',
+    country: 'GB',
+    lat: 51.5,
+    lng: -0.12,
+  });
+  assert.deepEqual(helper.normalizeCalculatorPrefill(prefill), prefill);
+});
+
+test('Life Path tool opens the stored full result without a second calculator submission', () => {
   const page = read('apps/web/src/pages/LifePathCompatibilityPage.jsx');
 
   assert.match(page, /useNavigate/);
-  assert.match(page, /buildCalculatorPrefill/);
+  assert.match(page, /requestCompatibilityResult/);
+  assert.match(page, /buildResultNavigation/);
   assert.match(page, /life_path_to_full_match_clicked/);
-  assert.match(page, /Compare full birth-date match/);
-  assert.match(page, /navigate\('\/#calculator'/);
-  assert.match(page, /calculatorPrefill/);
+  assert.match(page, /reportFocus: 'life_path'/);
+  assert.match(page, /clarityGoal: 'long_term_fit'/);
+  assert.match(page, /Continue to full Life Path result/);
+  assert.match(page, /navigate\(navigation\.path/);
+  assert.doesNotMatch(page, /navigate\('\/#calculator'/);
 });
 
 test('Life Path page works as one SEO hub for number and compatibility intent', () => {

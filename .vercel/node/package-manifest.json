@@ -1,0 +1,82 @@
+{
+  "version": "20260304",
+  "runtime": "node",
+  "runtimeVersion": {
+    "resolved": "24",
+    "requested": ">=18",
+    "requestedSource": "package.json"
+  },
+  "dependencies": [
+    {
+      "name": "@rollup/rollup-linux-x64-gnu",
+      "type": "direct",
+      "scopes": [
+        "optional"
+      ],
+      "requested": "^4.0.0",
+      "resolved": ""
+    },
+    {
+      "name": "@vercel/og",
+      "type": "direct",
+      "scopes": [
+        "prod"
+      ],
+      "requested": "^0.11.1",
+      "resolved": ""
+    },
+    {
+      "name": "astronomia",
+      "type": "direct",
+      "scopes": [
+        "prod"
+      ],
+      "requested": "^4.2.0",
+      "resolved": "4.2.0",
+      "source": "registry",
+      "sourceUrl": "https://registry.npmjs.org"
+    },
+    {
+      "name": "city-timezones",
+      "type": "direct",
+      "scopes": [
+        "prod"
+      ],
+      "requested": "^1.3.4",
+      "resolved": "1.3.4",
+      "source": "registry",
+      "sourceUrl": "https://registry.npmjs.org"
+    },
+    {
+      "name": "concurrently",
+      "type": "direct",
+      "scopes": [
+        "dev"
+      ],
+      "requested": "^9.1.2",
+      "resolved": ""
+    },
+    {
+      "name": "luxon",
+      "type": "direct",
+      "scopes": [
+        "prod"
+      ],
+      "requested": "^3.7.2",
+      "resolved": "3.7.2",
+      "source": "registry",
+      "sourceUrl": "https://registry.npmjs.org"
+    },
+    {
+      "name": "stripe",
+      "type": "direct",
+      "scopes": [
+        "prod"
+      ],
+      "requested": "^22.2.0",
+      "resolved": "22.2.0",
+      "source": "registry",
+      "sourceUrl": "https://registry.npmjs.org"
+    }
+  ]
+}

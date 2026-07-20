@@ -88,11 +88,19 @@ function getWatchArea(result) {
   return 'The next conversation';
 }
 
+function getTopAspect(result) {
+  if (result?.calculationMode !== 'full-synastry') return '';
+  const evidence = Array.isArray(result?.synastry?.evidence) ? result.synastry.evidence : [];
+  return clampText(evidence.find((item) => item?.label)?.label, 48);
+}
+
 function buildShareCardMeta(result) {
   const score = getScore(result);
   const band = getScoreBand(score);
   const names = clampText(getNames(result), 44);
   const watchArea = clampText(getWatchArea(result), 30);
+  const topAspect = getTopAspect(result);
+  const readingLabel = topAspect ? 'Full timed synastry' : 'Birth-date compatibility';
   const title = result?.mode === 'group'
     ? `${names}: ${score}% group fit`
     : `${names}: ${score}% compatibility`;
@@ -102,14 +110,19 @@ function buildShareCardMeta(result) {
     band,
     names,
     watchArea,
+    topAspect,
+    readingLabel,
     title,
-    description: `${band.label}. Watch area: ${watchArea}.`,
+    description: topAspect
+      ? `${band.label}. Top synastry aspect: ${topAspect}.`
+      : `${band.label}. Watch area: ${watchArea}.`,
   };
 }
 
 function buildShareCardSvg(result) {
   const meta = buildShareCardMeta(result);
-  const { score, band, names, watchArea } = meta;
+  const { score, band, names, watchArea, topAspect, readingLabel } = meta;
+  const evidenceLine = topAspect ? `Top aspect: ${topAspect}` : `Watch area: ${watchArea}`;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
@@ -118,14 +131,15 @@ function buildShareCardSvg(result) {
   <circle cx="982" cy="120" r="116" fill="${band.wash}"/>
   <circle cx="198" cy="508" r="138" fill="#f5efe8"/>
   <text x="120" y="132" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="6" fill="#7a559f">MATCH BY BIRTH</text>
+  <text x="1080" y="132" text-anchor="end" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#7a559f">${escapeXml(readingLabel.toUpperCase())}</text>
   <text x="120" y="218" font-family="Georgia, serif" font-size="68" fill="#27222d">${escapeXml(names)}</text>
   <text x="120" y="286" font-family="Arial, sans-serif" font-size="30" fill="#71687b">${escapeXml(band.label)}</text>
   <text x="120" y="397" font-family="Georgia, serif" font-size="142" font-weight="700" fill="${band.accent}">${score}%</text>
   <text x="425" y="388" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#7a559f">OVERALL FIT</text>
   <text x="425" y="430" font-family="Arial, sans-serif" font-size="28" fill="#5f5668">${escapeXml(band.note)}</text>
-  <rect x="425" y="462" width="430" height="62" rx="31" fill="${band.wash}" stroke="#dfd3e9"/>
-  <text x="455" y="503" font-family="Arial, sans-serif" font-size="24" fill="#3a3342">Watch area: ${escapeXml(watchArea)}</text>
-  <text x="885" y="503" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#7a559f">matchbybirth.com</text>
+  <rect x="425" y="462" width="560" height="62" rx="31" fill="${band.wash}" stroke="#dfd3e9"/>
+  <text x="455" y="503" font-family="Arial, sans-serif" font-size="22" fill="#3a3342">${escapeXml(evidenceLine)}</text>
+  <text x="1080" y="503" text-anchor="end" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#7a559f">matchbybirth.com</text>
 </svg>`;
 }
 

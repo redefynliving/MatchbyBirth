@@ -175,6 +175,29 @@ function getSunSignDateOnly(dateStr) {
 
 // ── Place lookup ────────────────────────────────────────────────────
 
+const US_STATE_CODES = Object.fromEntries([
+  'Alabama AL', 'Alaska AK', 'Arizona AZ', 'Arkansas AR', 'California CA',
+  'Colorado CO', 'Connecticut CT', 'Delaware DE', 'Florida FL', 'Georgia GA',
+  'Hawaii HI', 'Idaho ID', 'Illinois IL', 'Indiana IN', 'Iowa IA', 'Kansas KS',
+  'Kentucky KY', 'Louisiana LA', 'Maine ME', 'Maryland MD', 'Massachusetts MA',
+  'Michigan MI', 'Minnesota MN', 'Mississippi MS', 'Missouri MO', 'Montana MT',
+  'Nebraska NE', 'Nevada NV', 'New Hampshire NH', 'New Jersey NJ', 'New Mexico NM',
+  'New York NY', 'North Carolina NC', 'North Dakota ND', 'Ohio OH', 'Oklahoma OK',
+  'Oregon OR', 'Pennsylvania PA', 'Rhode Island RI', 'South Carolina SC',
+  'South Dakota SD', 'Tennessee TN', 'Texas TX', 'Utah UT', 'Vermont VT',
+  'Virginia VA', 'Washington WA', 'West Virginia WV', 'Wisconsin WI', 'Wyoming WY',
+  'District of Columbia DC',
+].map((entry) => {
+  const code = entry.slice(-2);
+  return [entry.slice(0, -3).toLowerCase(), code];
+}));
+
+function normalizeStateCode(value) {
+  const normalized = String(value || '').trim().replace(/\./g, '');
+  if (/^[a-z]{2}$/i.test(normalized)) return normalized.toUpperCase();
+  return US_STATE_CODES[normalized.toLowerCase()] || null;
+}
+
 /**
  * Search for cities by name, optionally filtered by state/province code.
  * Returns results sorted by population (largest first).
@@ -188,16 +211,23 @@ function getSunSignDateOnly(dateStr) {
 function searchPlaces(query, { stateCode, limit = 8 } = {}) {
   if (typeof query !== 'string' || !query.trim()) return [];
 
-  const trimmed = query.trim();
+  const trimmed = query.trim().replace(/\s+/g, ' ');
 
-  // Parse "City ST" format
+  // Parse "City ST", "City, ST", or "City, State" formats.
   let cityQuery = trimmed;
   let stateFilter = stateCode || null;
-  const parts = trimmed.split(/\s+/);
+  const commaParts = trimmed.split(',').map((part) => part.trim()).filter(Boolean);
+  if (commaParts.length >= 2 && !stateFilter) {
+    const parsedState = normalizeStateCode(commaParts.at(-1));
+    if (parsedState) {
+      cityQuery = commaParts.slice(0, -1).join(' ');
+      stateFilter = parsedState;
+    }
+  }
+  const parts = cityQuery.split(/\s+/);
   if (parts.length >= 2 && !stateFilter) {
     const possibleState = parts[parts.length - 1].toUpperCase();
-    // Check if the last part looks like a 2-letter state code
-    if (/^[A-Z]{2}$/.test(possibleState)) {
+    if (normalizeStateCode(possibleState)) {
       cityQuery = parts.slice(0, -1).join(' ');
       stateFilter = possibleState;
     }
@@ -263,4 +293,5 @@ module.exports = {
   // Place lookup
   searchPlaces,
   isValidPlace,
+  normalizeStateCode,
 };

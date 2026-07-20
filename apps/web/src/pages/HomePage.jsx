@@ -142,6 +142,13 @@ function HomePage() {
                   Life path compatibility
                   <span aria-hidden="true" className="ml-1.5">-&gt;</span>
                 </Link>
+                <Link
+                  to="/tools/moon-sign-compatibility"
+                  className="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5"
+                >
+                  Moon sign compatibility
+                  <span aria-hidden="true" className="ml-1.5">-&gt;</span>
+                </Link>
               </div>
             </div>
 

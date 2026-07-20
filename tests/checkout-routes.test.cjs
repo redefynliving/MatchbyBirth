@@ -36,3 +36,24 @@ test('subscription checkout route never exposes unexpected internal errors', asy
   assert.equal(res.statusCode, 500);
   assert.deepEqual(res.payload, { ok: false, error: 'checkout_unavailable' });
 });
+
+test('live checkout is gated until Match by Birth branding is explicitly verified', async () => {
+  const handler = createReportCheckoutHandler({
+    env: {
+      APP_URL: 'https://matchbybirth.com',
+      STRIPE_SECRET_KEY: 'sk_live_example',
+      STRIPE_PRICE_ID: 'price_report',
+      STRIPE_MERCHANT_NAME: 'enset',
+      STRIPE_LIVE_CHECKOUT_ENABLED: 'true',
+    },
+    stripe: {},
+    store: {},
+    logger: { error() {} },
+  });
+  const res = responseRecorder();
+
+  await handler({ method: 'POST', body: {} }, res);
+
+  assert.equal(res.statusCode, 503);
+  assert.match(res.payload.error, /Match by Birth Stripe branding/i);
+});

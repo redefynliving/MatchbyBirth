@@ -36,7 +36,7 @@ function ReportDeliveryPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground">What the report includes</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  The paid report expands your free compatibility result into nine sections: strengths, friction, communication, emotional style, stability, growth, practical advice, what to try more of, and what to watch for. It is written for reflection and conversation, not prediction or professional advice.
+                  Every paid report has nine substantial sections, but the sections change with the calculator you used. Moon reports focus on emotional needs and repair. Crush reports focus on chemistry, mixed signals, consistency, and the next move. Life Path reports focus on effort, goals, responsibility, and long-term fit. The full compatibility report connects all five score areas with emotional pace and follow-through.
                 </p>
               </section>
 
@@ -50,7 +50,7 @@ function ReportDeliveryPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground">What data is used</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  The report uses sanitized compatibility data: display names, signs, elements, scores, relationship type, and the result summary. Birth dates and the checkout email are not sent to the AI provider. Payment details are handled by Stripe.
+                  The report uses sanitized compatibility data: display names, calculated signs, Life Path numbers, score dimensions, relationship type, and any supplied aspect evidence. Raw birth dates, birth times, birthplaces, and the checkout email are not sent to the text provider. Payment details are handled by Stripe.
                 </p>
               </section>
 

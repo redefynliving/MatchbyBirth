@@ -157,7 +157,7 @@ function CompatibilityCalculator() {
                 </div>
                 <div className="space-y-1.5">
                     <Label htmlFor={`dob-${person.id}`} className="text-xs text-muted-foreground">
-                      Birth date
+                      Birth date (day / month / year)
                     </Label>
                     <Input
                       id={`dob-${person.id}`}

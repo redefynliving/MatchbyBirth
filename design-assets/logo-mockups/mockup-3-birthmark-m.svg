@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth logo mockup 3 - Birthmark M</title>
+  <desc id="desc">A distinctive M-shaped birthmark symbol with two date points and a Match by Birth wordmark.</desc>
+  <g transform="translate(56 42)">
+    <rect x="0" y="0" width="156" height="156" rx="36" fill="#F8F6F2"/>
+    <path d="M38 112V48L78 94L118 48V112" fill="none" stroke="#806AB5" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="38" cy="44" r="11" fill="#D88EA7"/>
+    <circle cx="118" cy="44" r="11" fill="#D8B15D"/>
+    <path d="M78 34L81 41L88 44L81 47L78 54L75 47L68 44L75 41Z" fill="#806AB5"/>
+  </g>
+  <g transform="translate(250 86)" fill="#241D2D" font-family="Outfit, Inter, Arial, sans-serif" letter-spacing="0">
+    <text font-size="58" font-weight="760">
+      <tspan>Match</tspan><tspan font-weight="520"> by Birth</tspan>
+    </text>
+    <text y="52" font-size="20" font-weight="500" fill="#75677D">a memorable mark for birthday matches</text>
+  </g>
+</svg>

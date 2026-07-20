@@ -21,25 +21,55 @@ const interpretationModuleUrl = pathToFileURL(
 ).href;
 
 test('buildPairHighlights reduces the detailed breakdown to three readable insights', async () => {
-  const { buildPairHighlights } = await import(presentationModuleUrl);
-  const highlights = buildPairHighlights({
+  const {
+    buildPairHighlights,
+    buildPairScoreProfile,
+    buildPairSnapshot,
+  } = await import(presentationModuleUrl);
+  const breakdown = {
     chemistry: 82,
     communication: 91,
     stability: 74,
     growth: 68,
     intuition: 79,
     overall: 80,
+  };
+  const highlights = buildPairHighlights({
+    ...breakdown,
   });
+  const profile = buildPairScoreProfile(breakdown);
+  const snapshot = buildPairSnapshot(breakdown);
 
   assert.deepEqual(highlights.map((highlight) => highlight.label), [
     'Communication',
     'Emotional style',
-    'Where you differ',
+    'Area to clarify',
   ]);
   assert.equal(highlights[0].score, 91);
   assert.equal(highlights[1].score, 78);
   assert.equal(highlights[2].score, 68);
-  assert.match(highlights[2].summary, /lowest score/i);
+  assert.match(highlights[2].summary, /lowest category/i);
+  assert.deepEqual(profile.map((item) => item.label), [
+    'Chemistry',
+    'Communication',
+    'Stability',
+    'Growth',
+    'Intuition',
+  ]);
+  assert.equal(snapshot.strongest.label, 'Communication');
+  assert.equal(snapshot.watch.label, 'Growth');
+  assert.equal(snapshot.watch.eyebrow, 'Area to clarify');
+  assert.match(snapshot.nextStep, /difference/i);
+});
+
+test('score focus language distinguishes strong relative edges from real watch areas', async () => {
+  const { getFocusFraming } = await import(presentationModuleUrl);
+
+  assert.equal(getFocusFraming(59).label, 'Watch area');
+  assert.equal(getFocusFraming(60).label, 'Area to clarify');
+  assert.equal(getFocusFraming(79).label, 'Area to clarify');
+  assert.equal(getFocusFraming(80).label, 'Relative growth edge');
+  assert.match(getFocusFraming(84).summary, /still a strong part/i);
 });
 
 test('score interpretations use plain, qualified language', async () => {
@@ -109,6 +139,7 @@ test('homepage and navigation use the approved simplified content hierarchy', ()
   assert.match(calculatorWithPreview, /Secure & private/);
   assert.match(calculatorWithPreview, /Instant results/);
   assert.match(calculatorWithPreview, /No signup required/);
+  assert.match(calculatorWithPreview, /Birth date \(day \/ month \/ year\)/);
   assert.match(header, /\/how-it-works/);
   assert.match(app, /path="\/how-it-works"/);
 });
@@ -128,13 +159,34 @@ test('pair and group results progressively reveal detail instead of showing ever
   );
 
   assert.match(pairResult, /buildPairHighlights/);
-  assert.match(pairResult, /Want a more detailed breakdown\?/);
-  assert.match(pairResult, /Get the detailed report · \$9\.99/);
+  assert.match(pairResult, /What stands out first/);
+  assert.match(pairResult, /How the connection is distributed/);
+  assert.match(pairResult, /Inside the full report/);
+  assert.match(pairResult, /Get the full report/);
+  assert.match(pairResult, /report_sample_opened_from_result/);
   assert.match(groupResult, /getVisibleGroupPairs/);
   assert.match(groupResult, /View all .* connections/);
+  assert.match(groupResult, /One useful group action/);
+  assert.match(groupResult, /balance gap/i);
   assert.match(shareButtons, /Share by link/);
   assert.match(shareButtons, /Birth dates are not shown/);
   assert.doesNotMatch(shareButtons, /birthDate|p1_dob|p2_dob/);
+});
+
+test('Exact Mode requires selected places instead of silently downgrading', () => {
+  const calculator = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/CalculatorWithPreview.jsx'),
+    'utf8',
+  );
+  const placeSearch = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/PlaceSearch.jsx'),
+    'utf8',
+  );
+
+  assert.match(calculator, /Exact Mode needs a birth time and a selected birthplace for every person/);
+  assert.match(calculator, /Select a birthplace from the suggestions/);
+  assert.match(calculator, /value \? \{ label: value \} : null/);
+  assert.match(placeSearch, /aria-invalid/);
 });
 
 test('marketing subscription UI confirms delivery and requires an unsubscribe action', () => {
@@ -200,19 +252,28 @@ test('report checkout explains its value while retaining payment and privacy ass
     path.join(root, 'apps/web/src/components/SaveResultModal.jsx'),
     'utf8',
   );
+  const editions = fs.readFileSync(
+    path.join(root, 'apps/web/src/lib/report-focus.js'),
+    'utf8',
+  );
 
-  assert.match(checkout, /9-section report/);
-  assert.match(checkout, /How you communicate/);
-  assert.match(checkout, /Where you connect naturally/);
-  assert.match(checkout, /Where misunderstandings may happen/);
-  assert.match(checkout, /Practical ways to handle differences/);
+  assert.match(editions, /nine-section report/);
+  assert.match(editions, /Moon Sign Match Report/);
+  assert.match(editions, /Crush Compatibility Report/);
+  assert.match(editions, /Life Path Compatibility Report/);
+  assert.match(editions, /A message you can send/);
+  assert.match(editions, /A thirty-day test/);
+  assert.match(checkout, /clarityGoal/);
+  assert.match(checkout, /reportFocus/);
   assert.match(checkout, /Private link and PDF delivered by email/);
-  assert.match(checkout, /Birth dates and your email are not sent to the AI provider/);
+  assert.match(checkout, /Birth dates and your email stay out of the report-writing request/);
   assert.match(checkout, /One-time digital report/);
   assert.match(checkout, /Refund support available/);
   assert.match(checkout, /Secure Stripe checkout/);
   assert.match(checkout, /Instant email delivery/);
-  assert.match(checkout, /Buy report for \$9\.99/);
+  assert.match(editions, /Buy the Moon report for \$9\.99/);
+  assert.match(editions, /Buy the Crush report for \$9\.99/);
+  assert.match(editions, /Buy the Life Path report for \$9\.99/);
   assert.match(checkout, /Payment is handled by Stripe/);
   assert.match(checkout, /reflection and conversation, not professional advice/i);
   assert.doesNotMatch(checkout, /Urgency Discount|COSMIC30|Claim Offer/i);

@@ -24,6 +24,7 @@ const PUBLIC_PAGES = [
   '/premium',
   '/tools/crush-birthday-compatibility',
   '/tools/life-path-compatibility',
+  '/tools/moon-sign-compatibility',
 ];
 
 function xmlEscape(value) {

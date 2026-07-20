@@ -83,8 +83,8 @@ test('refund and report delivery pages explain paid report trust details', () =>
   assert.match(delivery, /How report delivery works/);
   assert.match(delivery, /private report link/);
   assert.match(delivery, /sanitized compatibility data/);
-  assert.match(delivery, /Birth dates and the checkout email are not sent to the AI provider/);
-  assert.match(delivery, /not prediction or professional advice/);
+  assert.match(delivery, /Raw birth dates, birth times, birthplaces, and the checkout email are not sent to the text provider/);
+  assert.match(delivery, /Moon reports focus on emotional needs and repair/);
   assert.match(delivery, /support@matchbybirth\.com/);
 
   assert.match(footer, /\/refund-policy/);

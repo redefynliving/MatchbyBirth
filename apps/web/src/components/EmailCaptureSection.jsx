@@ -7,7 +7,7 @@ function EmailCaptureSection({ resultId, people, score, signs }) {
 
   return (
     <NewsletterCapture
-      className="mt-8"
+      className="h-full"
       title="Get your result by email"
       description={(
         <>

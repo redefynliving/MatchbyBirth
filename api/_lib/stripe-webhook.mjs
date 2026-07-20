@@ -1,4 +1,3 @@
-import Stripe from 'stripe';
 import store from './supabase-store.cjs';
 import fulfillment from './fulfillment.cjs';
 import webhookService from './webhook-service.cjs';
@@ -6,7 +5,7 @@ import backend from '../backend.cjs';
 
 const { fulfillConfiguredPurchase } = fulfillment;
 const { processStripeEvent } = webhookService;
-const { getServerConfig, subscribePaidReportBuyer } = backend;
+const { getServerConfig, getStripeClient, subscribePaidReportBuyer } = backend;
 
 export async function POST(request) {
   const config = getServerConfig();
@@ -26,7 +25,7 @@ export async function POST(request) {
 
   let event;
   try {
-    const stripe = new Stripe(config.stripeSecretKey);
+    const stripe = getStripeClient(config.stripeSecretKey);
     const rawBody = await request.text();
     event = stripe.webhooks.constructEvent(
       rawBody,

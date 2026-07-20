@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="120" viewBox="0 0 180 120" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth premium mark</title>
+  <desc id="desc">A refined one-color eye-shaped compatibility mark with two balanced birth points.</desc>
+  <g color="#241D2D">
+    <path fill="currentColor" fill-rule="evenodd" d="M18 60C39 23 141 23 162 60C141 97 39 97 18 60ZM34 60C53 35 127 35 146 60C127 85 53 85 34 60Z"/>
+    <path d="M72 60H108" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="70" cy="60" r="8" fill="currentColor"/>
+    <circle cx="110" cy="60" r="8" fill="currentColor"/>
+  </g>
+</svg>

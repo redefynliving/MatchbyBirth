@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { ArrowLeft, Loader2, RefreshCw, Star } from 'lucide-react';
+import { ArrowLeft, ChevronDown, Loader2, RefreshCw, Share2, Star } from 'lucide-react';
 import { Link, Navigate, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import EmailCaptureSection from '@/components/EmailCaptureSection.jsx';
 import BackButton from '@/components/BackButton.jsx';
@@ -222,6 +222,10 @@ function ResultPage() {
   const precision = getResultPrecisionDetails(result.people);
   const shareModel = canShare ? buildSharePageModel(result) : null;
   const shareSource = canShare ? getShareSource(searchParams) : 'direct';
+  const isFreshCalculation = Boolean(
+    location.state?.result
+    && location.state?.shareSlug === shareSlug,
+  );
   const shareFunnelContext = shareModel ? {
     funnel_source: 'share_page',
     share_id: shareSlug,
@@ -278,11 +282,15 @@ function ResultPage() {
               resultUrl={resultUrl}
               precisionLabel={precision.label}
               precisionNote={precision.note}
+              calculationMode={result.calculationMode}
+              synastry={result.synastry}
+              precisionComparison={result.precisionComparison}
+              reportContext={result.reportContext}
               funnelContext={shareFunnelContext}
             />
           )}
 
-          {canShare && shareModel && (
+          {canShare && shareModel && !isFreshCalculation && (
             <SharedResultConversion
               model={shareModel}
               shareId={shareSlug}
@@ -290,78 +298,88 @@ function ResultPage() {
             />
           )}
 
-          {/* Star Rating Feedback Collector */}
-          <div className="mx-auto mt-6 max-w-5xl bg-card border border-border rounded-3xl p-6 text-center shadow-sm relative overflow-hidden">
-            <h4 className="font-semibold text-foreground text-sm mb-3">How accurate does this calculation feel?</h4>
-            {!submittedRating ? (
-              <div className="flex items-center justify-center gap-1.5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    type="button"
-                    onClick={() => handleRate(star)}
-                    onMouseEnter={() => setHoverRating(star)}
-                    onMouseLeave={() => setHoverRating(0)}
-                    className="p-1 cursor-pointer transition-transform duration-150 hover:scale-110 focus:outline-none"
-                    aria-label={`Rate ${star} stars out of 5`}
-                  >
-                    <Star
-                      className={`h-7 w-7 transition-colors ${
-                        star <= (hoverRating || rating)
-                          ? 'fill-amber-400 text-amber-400'
-                          : 'text-muted-foreground/35 fill-transparent'
-                      }`}
-                    />
-                  </button>
-                ))}
+          <section className="mx-auto mt-5 max-w-5xl overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+            <div className="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                <p className="text-sm font-semibold text-foreground">
+                  {submittedRating ? `You rated this ${rating}/5` : 'Did this result feel useful?'}
+                </p>
+                {!submittedRating && (
+                  <div className="flex items-center gap-0.5">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => handleRate(star)}
+                        onMouseEnter={() => setHoverRating(star)}
+                        onMouseLeave={() => setHoverRating(0)}
+                        className="rounded-md p-1 transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        aria-label={`Rate ${star} stars out of 5`}
+                      >
+                        <Star
+                          className={`h-5 w-5 transition-colors ${
+                            star <= (hoverRating || rating)
+                              ? 'fill-amber-400 text-amber-400'
+                              : 'fill-transparent text-muted-foreground/35'
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="text-sm font-semibold text-primary flex items-center justify-center gap-1.5 animate-fade-in">
-                <span>Thank you! You rated this calculation {rating}/5 stars.</span>
-              </div>
-            )}
-          </div>
 
-          <div className="mx-auto mt-6 max-w-5xl">
-            {canShare ? (
-              <ShareButtons
-                mode={result.mode}
-                p1={names[0]}
-                p2={names[1]}
-                score={result.score}
-                groupVibeScore={result.groupScore}
-                resultUrl={resultUrl}
-                shareId={shareSlug}
-                relationshipType={shareModel?.relationshipType}
-                scoreBand={shareModel?.scoreBand}
-              />
-            ) : (
-              <p className="mt-6 text-center text-sm text-muted-foreground">
-                Sharing is temporarily unavailable. Your result remains visible in this tab.
-              </p>
-            )}
-
-            <div className="mt-6 text-center">
               <Link
                 to="/"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-6 py-3 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-secondary/80"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Try Another Match
+                Try another match
               </Link>
             </div>
 
-            {resultId && (
-              <div className="mx-auto mt-8 max-w-3xl">
-                <EmailCaptureSection
-                  resultId={resultId}
-                  people={result.people}
-                  score={result.score}
-                  signs={[result.people[0]?.sign, result.people[1]?.sign]}
-                />
-              </div>
+            {(canShare || resultId) && (
+              <details className="group border-t border-border">
+                <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:px-6">
+                  <span className="flex items-center gap-2">
+                    <Share2 className="h-4 w-4 text-primary" />
+                    Save, share, or email this result
+                  </span>
+                  <ChevronDown className="h-4 w-4 text-muted-foreground transition-transform group-open:rotate-180" />
+                </summary>
+                <div className="grid gap-6 border-t border-border bg-muted/20 p-5 sm:p-6 lg:grid-cols-2">
+                  {canShare ? (
+                    <ShareButtons
+                      mode={result.mode}
+                      p1={names[0]}
+                      p2={names[1]}
+                      score={result.score}
+                      groupVibeScore={result.groupScore}
+                      resultUrl={resultUrl}
+                      shareId={shareSlug}
+                      relationshipType={shareModel?.relationshipType}
+                      calculationMode={result.calculationMode}
+                      topAspectLabel={shareModel?.topAspect}
+                      scoreBand={shareModel?.scoreBand}
+                    />
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Sharing is temporarily unavailable. Your result remains visible in this tab.
+                    </p>
+                  )}
+
+                  {resultId && (
+                    <EmailCaptureSection
+                      resultId={resultId}
+                      people={result.people}
+                      score={result.score}
+                      signs={[result.people[0]?.sign, result.people[1]?.sign]}
+                    />
+                  )}
+                </div>
+              </details>
             )}
-          </div>
+          </section>
         </div>
       </main>
     </>

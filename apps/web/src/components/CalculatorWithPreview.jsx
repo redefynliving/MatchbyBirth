@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { trackEvent } from '@/lib/analytics.js';
+import { requestCompatibilityResult } from '@/lib/compatibility-api.js';
 import { getFunnelAttribution } from '@/lib/funnel-attribution.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import PlaceSearch from './PlaceSearch.jsx';
@@ -81,6 +82,7 @@ function CalculatorWithPreview({
   const [isCalculating, setIsCalculating] = useState(false);
   const [error, setError] = useState('');
   const [exactMode, setExactMode] = useState(false);
+  const [exactFieldErrors, setExactFieldErrors] = useState({});
   const [pairPeople, setPairPeople] = useState(defaultPair);
   const [groupPeople, setGroupPeople] = useState(defaultGroup);
 
@@ -90,12 +92,13 @@ function CalculatorWithPreview({
     setMode('pair');
     setRelationshipType(prefill.relationshipType);
     setPairPeople(prefill.people);
-    setExactMode(false);
+    setExactMode(prefill.exactMode === true);
 
     trackEvent('calculator_prefilled', {
       source: prefill.source,
       mode: prefill.mode,
       relationship_type: prefill.relationshipType,
+      exact_mode: prefill.exactMode === true,
     });
   }, [prefill, setMode]);
 
@@ -108,6 +111,7 @@ function CalculatorWithPreview({
       }));
       setPairPeople((prev) => clearTimeAndPlace(prev));
       setGroupPeople((prev) => clearTimeAndPlace(prev));
+      setExactFieldErrors({});
     }
   }, [exactMode]);
 
@@ -116,6 +120,12 @@ function CalculatorWithPreview({
 
   const updatePerson = (id, field, value) => {
     setPeople((prev) => prev.map((person) => (person.id === id ? { ...person, [field]: value } : person)));
+    if (field === 'birthTime' || field === 'place') {
+      setExactFieldErrors((current) => ({
+        ...current,
+        [`${id}:${field}`]: '',
+      }));
+    }
   };
 
   const addGroupPerson = () => {
@@ -146,16 +156,11 @@ function CalculatorWithPreview({
     });
 
     try {
-      const response = await fetch('/api/calculate-result', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+      const data = await requestCompatibilityResult({
+        ...payload,
+        source,
+        reportFocus: source,
       });
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Unable to calculate this result.');
-      }
 
       trackEvent('calculation_completed', {
         source,
@@ -176,6 +181,15 @@ function CalculatorWithPreview({
           score_band: Math.floor(
             (data.result.mode === 'group' ? data.result.groupScore : data.result.score) / 10,
           ) * 10,
+        });
+      }
+      if (prefill && prefill.source === 'moon_sign_compatibility') {
+        trackEvent('moon_sign_full_match_completed', {
+          source: prefill.source,
+          mode: data.result.mode,
+          relationship_type: data.result.relationshipType,
+          calculation_mode: data.result.calculationMode,
+          score_band: Math.floor(data.result.score / 10) * 10,
         });
       }
       const navigation = buildResultNavigation(data);
@@ -212,6 +226,23 @@ function CalculatorWithPreview({
     event.preventDefault();
     const submittedPeople = buildSubmittedPeople(event.currentTarget);
 
+    if (exactMode) {
+      const fieldErrors = {};
+      for (const person of submittedPeople) {
+        if (!person.birthTime) {
+          fieldErrors[`${person.id}:birthTime`] = 'Enter a birth time or turn Exact Mode off.';
+        }
+        if (!person.place?.timezone) {
+          fieldErrors[`${person.id}:place`] = 'Select a birthplace from the suggestions.';
+        }
+      }
+      if (Object.keys(fieldErrors).length > 0) {
+        setExactFieldErrors(fieldErrors);
+        setError('Exact Mode needs a birth time and a selected birthplace for every person.');
+        return;
+      }
+    }
+
     if (mode === 'pair') {
       submitCalculation({ mode: 'pair', relationshipType, people: submittedPeople, exactMode });
     } else {
@@ -237,15 +268,22 @@ function CalculatorWithPreview({
             placeholder="HH:MM"
             className="h-11 rounded-xl"
           />
+          {exactFieldErrors[`${person.id}:birthTime`] && (
+            <p className="text-xs font-medium text-destructive">
+              {exactFieldErrors[`${person.id}:birthTime`]}
+            </p>
+          )}
         </div>
         <div className="space-y-1.5">
           <Label htmlFor={`${prefix}place-${person.id}`} className="text-xs text-muted-foreground">
             Birth place (city, state)
           </Label>
           <PlaceSearch
+            id={`${prefix}place-${person.id}`}
             value={person.place?.label || ''}
-            onChange={(value) => updatePerson(person.id, 'place', { ...(person.place || {}), label: value })}
+            onChange={(value) => updatePerson(person.id, 'place', value ? { label: value } : null)}
             onSelect={(place) => updatePerson(person.id, 'place', place)}
+            error={exactFieldErrors[`${person.id}:place`] || ''}
           />
         </div>
       </>
@@ -320,7 +358,7 @@ function CalculatorWithPreview({
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor={`dob-${person.id}`} className="text-xs text-muted-foreground">
-                      Birth date
+                      Birth date (day / month / year)
                     </Label>
                     <Input
                       id={`dob-${person.id}`}
@@ -403,7 +441,7 @@ function CalculatorWithPreview({
                   </div>
                   <div className="flex-1 space-y-1.5">
                     <Label htmlFor={`gdob-${person.id}`} className="text-xs text-muted-foreground">
-                      Birth date
+                      Birth date (day / month / year)
                     </Label>
                     <Input
                       id={`gdob-${person.id}`}
@@ -416,34 +454,7 @@ function CalculatorWithPreview({
                       className="h-11 rounded-xl"
                     />
                   </div>
-                  {exactMode && (
-                    <>
-                      <div className="flex-1 space-y-1.5">
-                        <Label htmlFor={`gtime-${person.id}`} className="text-xs text-muted-foreground">
-                          Birth time (HH:MM)
-                        </Label>
-                        <Input
-                          id={`gtime-${person.id}`}
-                          name={`gtime-${person.id}`}
-                          type="time"
-                          defaultValue={person.birthTime}
-                          onInput={(event) => updatePerson(person.id, 'birthTime', event.currentTarget.value)}
-                          placeholder="HH:MM"
-                          className="h-11 rounded-xl"
-                        />
-                      </div>
-                      <div className="flex-1 space-y-1.5">
-                        <Label htmlFor={`gplace-${person.id}`} className="text-xs text-muted-foreground">
-                          Birth place (city, state)
-                        </Label>
-                        <PlaceSearch
-                          value={person.place?.label || ''}
-                          onChange={(value) => updatePerson(person.id, 'place', { ...(person.place || {}), label: value })}
-                          onSelect={(place) => updatePerson(person.id, 'place', place)}
-                        />
-                      </div>
-                    </>
-                  )}
+                  {renderExactFields(person, 'g')}
                   {groupPeople.length > 3 && (
                     <button
                       type="button"

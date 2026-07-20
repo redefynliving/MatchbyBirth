@@ -28,6 +28,9 @@ test('life path helper calculates and compares birth dates', async () => {
   assert.ok(compatible.score >= 0 && compatible.score <= 100);
   assert.match(compatible.pattern, /creative|focus|tempo|different/i);
   assert.match(compatible.nextStep, /ask|notice|name|talk/i);
+  assert.match(compatible.sharedTranslation, /shared plan/i);
+  assert.match(compatible.watchArea, /real behavior/i);
+  assert.match(compatible.personA.action, /promise|choose|name|ask|finish|set|tell|define|write|break|offer/i);
 });
 
 test('life path compatibility page is routed, crawlable, and in the sitemap', async () => {
@@ -58,6 +61,10 @@ test('life path compatibility page is routed, crawlable, and in the sitemap', as
   assert.match(page, /Life path meanings/);
   assert.match(page, /Master numbers/);
   assert.match(page, /Compatibility table/);
+  assert.match(page, /Evidence/);
+  assert.match(page, /Real-life meaning/);
+  assert.match(page, /One useful action/);
+  assert.match(page, /Try this/);
   assert.match(page, /source="life_path_compatibility"/);
   assert.doesNotMatch(page, /reduces birth dates to the root number from 1 to 9/);
 });

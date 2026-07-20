@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth logo mockup 1 - Orbit Pair</title>
+  <desc id="desc">A minimal orbital compatibility mark with two birth points and a Match by Birth wordmark.</desc>
+  <g transform="translate(56 42)">
+    <rect x="0" y="0" width="156" height="156" rx="36" fill="#F7F2FA"/>
+    <path d="M32 83C43 48 113 48 124 83C113 118 43 118 32 83Z" fill="none" stroke="#806AB5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="12" fill="#D88EA7"/>
+    <circle cx="100" cy="90" r="12" fill="#D8B15D"/>
+    <path d="M78 39L82 48L91 52L82 56L78 65L74 56L65 52L74 48Z" fill="#806AB5"/>
+  </g>
+  <g transform="translate(250 86)" fill="#241D2D" font-family="Outfit, Inter, Arial, sans-serif" letter-spacing="0">
+    <text font-size="58" font-weight="760">
+      <tspan>Match</tspan><tspan font-weight="520"> by Birth</tspan>
+    </text>
+    <text y="52" font-size="20" font-weight="500" fill="#75677D">birth date compatibility, simplified</text>
+  </g>
+</svg>

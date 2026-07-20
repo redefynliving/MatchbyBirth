@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
  * Place search input with suggestions.
  * Uses /api/places search endpoint for server-side place lookup.
  */
-function PlaceSearch({ onSelect, value, onChange }) {
+function PlaceSearch({ id = 'place-search', onSelect, value, onChange, error = '' }) {
   const [suggestions, setSuggestions] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,11 +55,14 @@ function PlaceSearch({ onSelect, value, onChange }) {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
+          id={id}
           ref={inputRef}
           type="text"
           value={value || ''}
           onChange={handleInputChange}
           placeholder="City, State (optional)"
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `${id}-error` : undefined}
           className="h-11 rounded-xl pl-10 pr-10"
         />
         {value && (
@@ -87,6 +90,11 @@ function PlaceSearch({ onSelect, value, onChange }) {
             </li>
           ))}
         </ul>
+      )}
+      {error && (
+        <p id={`${id}-error`} className="mt-1.5 text-xs font-medium text-destructive">
+          {error}
+        </p>
       )}
     </div>
   );

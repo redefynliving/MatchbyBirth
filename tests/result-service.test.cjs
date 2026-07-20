@@ -34,7 +34,39 @@ test('calculateAndStoreResult persists a sanitized pair result behind an opaque 
   assert.equal(response.shareSlug, 'private-share-token');
   assert.equal(inserted.mode, 'pair');
   assert.equal(inserted.result_payload.people[0].birthDate, undefined);
+  assert.equal(inserted.result_payload.people[0].moon.precision, 'date-only');
+  assert.equal(typeof inserted.result_payload.people[0].lifePath.number, 'number');
   assert.equal(JSON.stringify(inserted).includes('1990-03-21'), false);
+});
+
+test('calculateAndStoreResult persists the calculator report focus and clarity goal', async () => {
+  let inserted;
+  const store = {
+    insertResult: async (record) => {
+      inserted = record;
+      return { ...record, id: 'moon-result-id' };
+    },
+  };
+
+  await calculateAndStoreResult(
+    {
+      mode: 'pair',
+      relationshipType: 'love',
+      reportFocus: 'moon_sign',
+      clarityGoal: 'emotional_distance',
+      people: [
+        { id: 'one', name: 'Alex', birthDate: '1990-03-21' },
+        { id: 'two', name: 'Jordan', birthDate: '1992-09-23' },
+      ],
+    },
+    store,
+    () => 'moon-share-token',
+  );
+
+  assert.deepEqual(inserted.result_payload.reportContext, {
+    focus: 'moon_sign',
+    clarityGoal: 'emotional_distance',
+  });
 });
 
 test('calculateAndStoreResult makes group mode friendship-only', async () => {

@@ -287,21 +287,16 @@ function preRenderPages() {
           <p>Preview the kind of private paid report Match by Birth creates from a compatibility result.</p>
         </header>
         <article>
-          <h2>See your own private report</h2>
-          <p>This sample shows the format. Your full report is built from your actual birth details and gives you a more personal compatibility reading.</p>
-          <p><a href="/#calculator">Get your full private report</a></p>
+          <h2>Alex &amp; Jordan score 86</h2>
+          <p>Chemistry is highest at 90. Stability is lowest at 76. The easy start is believable; the question is whether Alex and Jordan can make it dependable.</p>
+          <p>Run a private comparison first. Review the free result, then decide whether the full $9.99 report is worth opening.</p>
+          <p><a href="/#calculator">Run a private comparison</a></p>
           <h2>Report snapshot</h2>
           <p>Score: 86%. Strongest area: Chemistry. Watch area: Stability. Say this first: "I think chemistry is where this feels easiest, but stability is the part we should name early instead of guessing."</p>
-          <h2>Want a report that's actually yours?</h2>
-          <p>The sample gives you the feel of the experience. Your private report is based on your real match, with deeper insight and a personalized reading.</p>
-          <p><a href="/#calculator">Unlock my full report</a></p>
-          <h2>Where you connect</h2>
-          <p>This sample shows how a paid report turns a score into readable strengths, friction, communication style, and a practical next conversation.</p>
-          <h2>Where it may catch</h2>
-          <p>The watch area is not a verdict. It is the part of the connection that may need clearer language before either person starts guessing.</p>
-          <h2>Ready to see your real match?</h2>
-          <p>Run your own birth match and get the complete private report.</p>
-          <p><a href="/#calculator">Get my report</a></p>
+          <h2>Where this feels easiest</h2>
+          <p>Chemistry scores 90 and communication follows at 88. Alex is likely to make interest obvious. Jordan is likely to keep the exchange moving with questions, jokes, and quick replies.</p>
+          <h2>Where the same problem may repeat</h2>
+          <p>Stability is the low score at 76. A canceled plan can turn into an argument about commitment when the original problem was simply that the plan was never firm.</p>
         </article>
       `
     },
@@ -361,6 +356,32 @@ function preRenderPages() {
           <h2>Related guides</h2>
           <p>Read the <a href="/blog/life-path-number-compatibility-guide">Life Path Number Compatibility Guide</a>, compare <a href="/blog/birth-date-compatibility-vs-zodiac-compatibility">birth date compatibility vs. zodiac compatibility</a>, or learn <a href="/blog/how-to-use-compatibility-results-responsibly">how to use compatibility results responsibly</a>.</p>
           <p>Read <a href="/how-it-works">how Match by Birth works</a> or try the <a href="/tools/crush-birthday-compatibility">crush birthday compatibility calculator</a>.</p>
+        </article>
+      `
+    },
+    {
+      route: 'tools/moon-sign-compatibility',
+      title: 'Moon Sign Calculator & Compatibility | Match by Birth',
+      description: 'Find your Moon sign or compare two Moon signs. See emotional needs, compatibility patterns, watch areas, and one useful conversation prompt.',
+      content: `
+        <header>
+          <p>Emotional astrology calculator</p>
+          <h1>Moon Sign Calculator &amp; Compatibility</h1>
+          <p>Find your Moon sign, then compare two people to see emotional needs, the natural rhythm, the watch area, and one useful conversation prompt.</p>
+          <p><a href="/tools/moon-sign-compatibility#calculator">Open the calculator</a></p>
+        </header>
+        <article>
+          <h2>Find your Moon sign or compare two people</h2>
+          <p>This page works as a Moon sign calculator for one person and a Moon sign compatibility calculator for two people.</p>
+          <h2>What is a Moon sign?</h2>
+          <p>Your Moon sign is the zodiac sign occupied by the Moon when you were born. Astrology uses it to describe emotional instincts, comfort, reactions under stress, and the kind of care that feels easiest to receive.</p>
+          <h2>Do I need an exact birth time?</h2>
+          <p>A birth date gives a useful estimate. Birth time and birthplace make the result more precise, especially on a day when the Moon changed signs.</p>
+          <h2>How to read Moon sign compatibility</h2>
+          <p>Easy matches often recognize each other's emotional language quickly. Supportive matches bring complementary styles. Growth matches benefit from clear requests instead of expecting mind reading.</p>
+          <h2>Responsible use</h2>
+          <p>Moon sign compatibility is a reflection tool, not a relationship verdict. Use it to name emotional needs and start a clearer conversation.</p>
+          <p>Read the <a href="/blog/category/moon-signs">Moon Sign compatibility guides</a>, try the <a href="/tools/life-path-compatibility">Life Path compatibility calculator</a>, or check <a href="/tools/crush-birthday-compatibility">crush birthday compatibility</a>.</p>
         </article>
       `
     }
