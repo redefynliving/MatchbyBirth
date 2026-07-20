@@ -15,8 +15,8 @@ import {
 } from '@/lib/lifePath.js';
 
 const pageUrl = 'https://matchbybirth.com/tools/life-path-compatibility';
-const pageTitle = 'Life Path Number Calculator & Compatibility | Match by Birth';
-const pageDescription = 'Find your life path number or compare two birth dates. Learn master numbers, life path meanings, compatibility patterns, and what to talk about next.';
+const pageTitle = 'Life Path Compatibility Calculator & Chart | Match by Birth';
+const pageDescription = 'Compare two birth dates with a free Life Path compatibility calculator. See every number pairing in a 1–9 chart, including master numbers 11, 22, and 33.';
 
 const faqItems = [
   {
@@ -33,11 +33,16 @@ const faqItems = [
   },
 ];
 
-const compatibilityRows = [
-  ['Usually easy', '2 and 6, 3 and 5, 4 and 8, 6 and 9', 'Shared pace, mutual support, or similar priorities.'],
-  ['Strong but intense', '1 and 8, 3 and 8, 5 and 8, 7 and 8', 'The connection may have drive, attraction, or ambition, but it needs clear expectations.'],
-  ['Master number layer', '11, 22, and 33', 'These numbers keep the root-number theme but add more sensitivity, responsibility, or care to the reading.'],
-  ['Needs more translation', '2 and 5, 3 and 7, 4 and 5, 5 and 6', 'Different needs can work, but both people have to name what feels safe.'],
+const compatibilityChart = [
+  { number: '1', easyFlow: '3, 5, 8', moreTranslation: '4, 6, 7', need: 'Independence without turning decisions into a contest.' },
+  { number: '2', easyFlow: '4, 6, 9', moreTranslation: '5, 8', need: 'Reassurance, reciprocity, and direct communication.' },
+  { number: '3', easyFlow: '1, 5, 9', moreTranslation: '4, 7', need: 'Expression and play with enough follow-through.' },
+  { number: '4', easyFlow: '2, 6, 8', moreTranslation: '1, 3, 5', need: 'Reliability with room for plans to change.' },
+  { number: '5', easyFlow: '1, 3, 9', moreTranslation: '2, 4, 6', need: 'Freedom that still makes trust feel steady.' },
+  { number: '6', easyFlow: '2, 4, 9', moreTranslation: '1, 5', need: 'Mutual care without one person carrying everything.' },
+  { number: '7', easyFlow: '4, 6, 9', moreTranslation: '1, 3', need: 'Privacy and depth without disappearing from the conversation.' },
+  { number: '8', easyFlow: '1, 4, 6', moreTranslation: '2, 3', need: 'Shared ambition without control becoming the measure of love.' },
+  { number: '9', easyFlow: '2, 3, 6', moreTranslation: '1, 4', need: 'Compassion with clear limits and specific asks.' },
 ];
 
 const readingModes = [
@@ -62,7 +67,7 @@ const relatedGuides = [
 ];
 
 function LifePathTool({ source = 'life_path_compatibility' }) {
-  const [mode, setMode] = useState('single');
+  const [mode, setMode] = useState('compare');
   const [firstName, setFirstName] = useState('');
   const [secondName, setSecondName] = useState('');
   const [firstDate, setFirstDate] = useState('');
@@ -159,8 +164,8 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
           <Calculator className="h-5 w-5" />
         </span>
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">Life Path Number Calculator</h2>
-          <p className="mt-1 text-sm text-muted-foreground">Find your number first, then compare two people when you are ready.</p>
+          <h2 className="text-xl font-semibold tracking-tight">Life Path Number Calculator & Compatibility</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Compare two birth dates, or switch modes to calculate one Life Path number.</p>
         </div>
       </div>
 
@@ -404,10 +409,10 @@ function LifePathCompatibilityPage() {
                   Birth date numerology calculator
                 </p>
                 <h1 className="max-w-xl text-4xl font-semibold leading-[1.05] tracking-[-0.035em] text-foreground md:text-6xl">
-                  Life Path Number Calculator & Compatibility
+                  Life Path Compatibility Calculator & Number Chart
                 </h1>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                  Find your Life Path number from your birth date, then compare two people to see the relationship pattern, watch area, and one practical conversation prompt.
+                  Compare two birth dates for free, see both Life Path numbers, and get a relationship pattern, watch area, and practical conversation prompt.
                 </p>
                 <div className="mt-7 grid gap-3 text-sm text-muted-foreground sm:grid-cols-3 lg:max-w-xl">
                   <span className="flex items-center gap-2">
@@ -513,16 +518,35 @@ function LifePathCompatibilityPage() {
           <div className="content-container max-w-5xl">
             <div className="mb-8 text-center">
               <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">Compatibility table</p>
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">How to read life path compatibility</h2>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Life Path number compatibility chart</h2>
+              <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+                Use this 1–9 chart as a quick starting point, then run the calculator for the actual pairing. “More translation” means the two patterns may need clearer expectations; it does not mean the relationship cannot work.
+              </p>
             </div>
             <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              {compatibilityRows.map(([label, examples, meaning]) => (
-                <div key={label} className="grid gap-3 border-b border-border p-5 last:border-b-0 md:grid-cols-[0.7fr_1fr_1.4fr]">
-                  <h3 className="font-semibold text-foreground">{label}</h3>
-                  <p className="text-sm text-muted-foreground">{examples}</p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{meaning}</p>
+              <div className="hidden grid-cols-[0.45fr_0.8fr_0.9fr_1.6fr] gap-3 border-b border-border bg-muted/40 px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground md:grid">
+                <span>Life Path</span>
+                <span>Easier flow</span>
+                <span>More translation</span>
+                <span>Core relationship need</span>
+              </div>
+              {compatibilityChart.map((row) => (
+                <div key={row.number} className="grid gap-3 border-b border-border p-5 last:border-b-0 md:grid-cols-[0.45fr_0.8fr_0.9fr_1.6fr] md:items-center">
+                  <h3 className="font-semibold text-foreground">Life Path {row.number}</h3>
+                  <p className="text-sm text-muted-foreground"><strong className="text-foreground md:hidden">Easier flow: </strong>{row.easyFlow}</p>
+                  <p className="text-sm text-muted-foreground"><strong className="text-foreground md:hidden">More translation: </strong>{row.moreTranslation}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{row.need}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-5 rounded-2xl border border-primary/15 bg-card p-5 text-sm leading-relaxed text-muted-foreground">
+              <h3 className="font-semibold text-foreground">How master numbers fit the chart</h3>
+              <p className="mt-2">
+                Life Path 11 uses the relationship pattern of 2, 22 uses 4, and 33 uses 6. The calculator keeps the master number visible while adding its heightened sensitivity, responsibility, or care to the reading.
+              </p>
+              <p className="mt-2">
+                For example, Life Path 1 and 4 compatibility can feel productive but firm: 1 pushes for movement while 4 protects structure. It works best when both agree on who leads, what stays flexible, and which promises cannot move.
+              </p>
             </div>
             <p className="mt-5 text-center text-sm leading-relaxed text-muted-foreground">
               Want the zodiac layer too? Try the <Link to="/#calculator" className="font-semibold text-primary hover:underline">birth date compatibility calculator</Link> or read <Link to="/how-it-works" className="font-semibold text-primary hover:underline">how Match by Birth works</Link>.

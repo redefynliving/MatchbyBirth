@@ -27,3 +27,6 @@ apps/web/node_modules/
 .env*.local
 scripts/setup-notion.js
 .aider*
+
+# Local SEO audit cache
+.seo-cache/

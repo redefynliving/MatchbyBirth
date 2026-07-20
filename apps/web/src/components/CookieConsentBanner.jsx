@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
+import { loadClarity } from '@/lib/clarity.js';
 
 function CookieConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie_consent');
+    if (consent === 'accepted') {
+      loadClarity();
+      return;
+    }
+
     if (!consent) {
       const timer = setTimeout(() => setIsVisible(true), 1000);
       return () => clearTimeout(timer);
@@ -15,6 +21,7 @@ function CookieConsentBanner() {
 
   const handleAccept = () => {
     localStorage.setItem('cookie_consent', 'accepted');
+    loadClarity();
     setIsVisible(false);
   };
 

@@ -98,7 +98,7 @@ function BlogPage() {
                     </span>
                     <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
                       <Calendar className="h-3.5 w-3.5" />
-                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
                     </span>
                   </div>
                   

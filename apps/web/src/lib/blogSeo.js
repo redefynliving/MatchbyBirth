@@ -24,7 +24,7 @@ export function getBlogPostSeo(post) {
   const tags = Array.isArray(post.tags) ? post.tags.filter(Boolean) : [];
 
   return {
-    title: `${post.title} | ${SITE_NAME}`,
+    title: post.metaTitle || `${post.title} | ${SITE_NAME}`,
     socialTitle: post.title,
     description,
     url,

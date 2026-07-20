@@ -73,6 +73,9 @@ test('Life Path page works as one SEO hub for number and compatibility intent', 
   const ssg = read('tools/build-ssg.mjs');
 
   assert.match(page, /Life Path Number Calculator/);
+  assert.match(page, /Life Path Compatibility Calculator & Number Chart/);
+  assert.match(page, /Life Path number compatibility chart/);
+  assert.match(page, /useState\('compare'\)/);
   assert.match(page, /Find my number/);
   assert.match(page, /Compare two people/);
   assert.match(page, /calculateLifePathNumber/);
@@ -80,8 +83,8 @@ test('Life Path page works as one SEO hub for number and compatibility intent', 
   assert.match(page, /\/blog\/life-path-number-compatibility-guide/);
   assert.match(page, /\/blog\/how-to-use-compatibility-results-responsibly/);
 
-  assert.match(ssg, /Life Path Number Calculator/);
-  assert.match(ssg, /Find your number or compare two people/);
+  assert.match(ssg, /Life Path Compatibility Calculator & Number Chart/);
+  assert.match(ssg, /Compare two people or find one number/);
   assert.match(ssg, /life path number calculator/i);
 });
 

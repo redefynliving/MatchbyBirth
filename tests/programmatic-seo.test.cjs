@@ -24,7 +24,7 @@ test('zodiac pairing helper creates 144 non-colliding and-style URLs', async () 
 test('SSG pairing generator does not skip stale dist directories', () => {
   const source = fs.readFileSync(path.join(root, 'tools/build-ssg.mjs'), 'utf8');
 
-  assert.match(source, /getZodiacPairingPages\(\)/);
+  assert.match(source, /getZodiacPairingPosts\(\)/);
   assert.doesNotMatch(source, /fs\.existsSync\(postDir\)/);
 });
 
@@ -38,4 +38,29 @@ test('sitemap includes generated zodiac pairing pages', async () => {
   assert.match(sitemap, /https:\/\/matchbybirth\.com\/blog\/aries-and-scorpio-compatibility/);
   assert.match(sitemap, /https:\/\/matchbybirth\.com\/blog\/pisces-and-pisces-compatibility/);
   assert.equal((sitemap.match(/-and-[a-z]+-compatibility/g) || []).length, 144);
+});
+
+test('generated zodiac pairing routes resolve to substantive runtime posts', async () => {
+  const { getZodiacPairingPostBySlug } = await import(pathToFileURL(
+    path.join(root, 'tools/zodiac-pairings.mjs'),
+  ));
+
+  const post = getZodiacPairingPostBySlug('aries-and-scorpio-compatibility');
+
+  assert.equal(post.slug, 'aries-and-scorpio-compatibility');
+  assert.equal(post.category, 'pair-deep-dive');
+  assert.match(post.title, /Aries and Scorpio Compatibility/);
+  assert.match(post.content, /Elemental rhythm: Fire and Water/);
+  assert.ok(post.content.replace(/<[^>]+>/g, ' ').length > 1500);
+  assert.equal(getZodiacPairingPostBySlug('not-a-real-pairing'), null);
+});
+
+test('runtime blog route falls back to generated pairing data', () => {
+  const source = fs.readFileSync(
+    path.join(root, 'apps/web/src/pages/BlogPostPage.jsx'),
+    'utf8',
+  );
+
+  assert.match(source, /getZodiacPairingPostBySlug\(slug\)/);
+  assert.match(source, /noindex,nofollow/);
 });

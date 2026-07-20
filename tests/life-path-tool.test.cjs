@@ -41,9 +41,14 @@ test('life path compatibility page is routed, crawlable, and in the sitemap', as
   assert.match(app, /const LifePathCompatibilityPage = lazy/);
   assert.match(app, /path="\/tools\/life-path-compatibility"/);
   assert.match(ssg, /route: 'tools\/life-path-compatibility'/);
+  assert.match(ssg, /rel="canonical" href="\$\{canonicalUrl\}"/);
+  assert.match(ssg, /property="og:title" content="\$\{safeTitle\}"/);
   assert.match(generateSitemapXml(), /https:\/\/matchbybirth\.com\/tools\/life-path-compatibility/);
 
-  assert.match(page, /Life Path Compatibility Calculator/);
+  assert.match(page, /Life Path Compatibility Calculator & Number Chart/);
+  assert.match(page, /Life Path number compatibility chart/);
+  assert.match(page, /Life Path 1 and 4 compatibility/);
+  assert.match(page, /useState\('compare'\)/);
   assert.match(page, /What is a life path number/);
   assert.match(page, /Life Path compatibility is a lens/);
   assert.match(page, /Easy match/);

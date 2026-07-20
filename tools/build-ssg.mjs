@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import posts from '../apps/web/src/data/posts/index.js';
-import { getZodiacPairingPages } from './zodiac-pairings.mjs';
-import { prerenderBlogHtml } from '../apps/web/tools/prerender-blog-html.js';
+import { getZodiacPairingPosts } from './zodiac-pairings.mjs';
+import { prerenderBlogHtml, renderArticleHtml } from '../apps/web/tools/prerender-blog-html.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.resolve(__dirname, '../dist/apps/web');
@@ -331,18 +331,18 @@ function preRenderPages() {
     },
     {
       route: 'tools/life-path-compatibility',
-      title: 'Life Path Number Calculator & Compatibility | Match by Birth',
-      description: 'Find your life path number or compare two birth dates. Learn master numbers, life path meanings, compatibility patterns, and what to talk about next.',
+      title: 'Life Path Compatibility Calculator & Chart | Match by Birth',
+      description: 'Compare two birth dates with a free Life Path compatibility calculator. See every number pairing in a 1–9 chart, including master numbers 11, 22, and 33.',
       content: `
         <header>
-          <p>Birth date numerology calculator</p>
-          <h1>Life Path Number Calculator & Compatibility</h1>
-          <p>Find your Life Path number from your birth date, then compare two people to see the relationship pattern, watch area, and one practical conversation prompt.</p>
-          <p><a href="/tools/life-path-compatibility#calculator">Open the calculator</a></p>
+          <p>Free birth date numerology calculator</p>
+          <h1>Life Path Compatibility Calculator & Number Chart</h1>
+          <p>Compare two birth dates, see both Life Path numbers, and get a relationship pattern, watch area, and practical conversation prompt.</p>
+          <p><a href="/tools/life-path-compatibility#calculator">Compare two Life Path numbers</a></p>
         </header>
         <article>
-          <h2>Find your number or compare two people</h2>
-          <p>This page works as a life path number calculator for one person and a life path compatibility calculator for two people.</p>
+          <h2>Compare two people or find one number</h2>
+          <p>This free Life Path compatibility calculator compares two birth dates by default. You can also switch modes to use it as a Life Path number calculator for one person.</p>
           <h2>What is a life path number?</h2>
           <p>A life path number is a numerology shorthand made from the digits in a birth date. On Match by Birth, it is used as one reflection layer beside zodiac and birthday-based compatibility.</p>
           <h2>How to calculate your life path number</h2>
@@ -352,8 +352,10 @@ function preRenderPages() {
           <p>Most life path numbers reduce to one digit, but 11, 22, and 33 are kept as master numbers when the final calculation lands there.</p>
           <h2>Life path meanings</h2>
           <p>The root numbers describe patterns like independence, emotional attunement, creative expression, structure, freedom, care, depth, focus, and compassion. Master numbers add a stronger layer of sensitivity, responsibility, or devoted care.</p>
-          <h2>Compatibility table</h2>
-          <p>Some life paths share an easy pace, some create strong but intense chemistry, and some need more translation around freedom, structure, care, or privacy.</p>
+          <h2>Life Path number compatibility chart</h2>
+          <p>Life Path 1 tends to flow more easily with 3, 5, and 8, while pairings with 4, 6, and 7 may need more translation. Life Path 2 tends to flow with 4, 6, and 9. Life Path 3 tends to flow with 1, 5, and 9. Life Path 4 tends to flow with 2, 6, and 8. Life Path 5 tends to flow with 1, 3, and 9. Life Path 6 tends to flow with 2, 4, and 9. Life Path 7 tends to flow with 4, 6, and 9. Life Path 8 tends to flow with 1, 4, and 6. Life Path 9 tends to flow with 2, 3, and 6.</p>
+          <h2>Life Path 1 and 4 compatibility</h2>
+          <p>Life Path 1 and 4 can feel productive but firm: 1 pushes for movement while 4 protects structure. The pairing works best when both people agree on who leads, what stays flexible, and which promises cannot move.</p>
           <h2>Responsible use</h2>
           <p>Life path compatibility is a reflection tool, not a relationship verdict. Use it to start a clearer conversation, not to outsource judgment.</p>
           <h2>Related guides</h2>
@@ -369,9 +371,20 @@ function preRenderPages() {
     const pageDir = path.join(DIST_DIR, page.route);
     fs.mkdirSync(pageDir, { recursive: true });
 
+    const canonicalUrl = `https://matchbybirth.com/${page.route}`;
+    const safeTitle = escapeXml(page.title);
+    const safeDescription = escapeXml(page.description);
     let pageHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${page.title}</title>`)
-      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${page.description}" />`)
+      .replace(/<title>[^<]*<\/title>/g, `<title>${safeTitle}</title>`)
+      .replace(
+        /<meta name="description" content="[^"]*"\s*\/>/g,
+        `<meta name="description" content="${safeDescription}" />\n\t\t<link rel="canonical" href="${canonicalUrl}" />`,
+      )
+      .replace(/<meta property="og:title" content="[^"]*"\s*\/?>/g, `<meta property="og:title" content="${safeTitle}">`)
+      .replace(/<meta property="og:description" content="[^"]*"\s*\/?>/g, `<meta property="og:description" content="${safeDescription}">`)
+      .replace(/<meta property="og:url" content="[^"]*"\s*\/?>/g, `<meta property="og:url" content="${canonicalUrl}">`)
+      .replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/g, `<meta name="twitter:title" content="${safeTitle}">`)
+      .replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/g, `<meta name="twitter:description" content="${safeDescription}">`)
       .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${page.content}</div>`);
 
     fs.writeFileSync(path.join(pageDir, 'index.html'), pageHtml, 'utf8');
@@ -387,75 +400,15 @@ function preRenderPages() {
   console.log('[SSG] All pages successfully pre-rendered!');
 }
 
-function getElementHarmony(el1, el2) {
-  const pair = [el1, el2].sort().join(' + ');
-  switch (pair) {
-    case 'Fire + Fire': return 'Double Fire pairings are passionate, high-energy, and exciting. Both signs inspire each other to take action, but they must watch out for ego clashes and burnouts.';
-    case 'Earth + Fire': return 'Fire and Earth sign combinations balance bold action with practical stability. Earth grounds Fire\'s restless enthusiasm, while Fire provides energy and inspiration to Earth\'s routines.';
-    case 'Air + Fire': return 'Fire and Air pairings enjoy strong natural compatibility. Air feeds Fire\'s inspiration, and Fire keeps Air\'s intellectual ideas active and moving forward.';
-    case 'Fire + Water': return 'Fire and Water pairings create high emotional chemistry and intensity. However, Fire can feel smothered by Water\'s depth, and Water can feel hurt by Fire\'s direct heat.';
-    case 'Earth + Earth': return 'Double Earth pairings value routine, home comfort, and financial security. This is an exceptionally durable, reliable combination, though they should make an effort to welcome variety and adventure.';
-    case 'Air + Earth': return 'Earth and Air pairings combine practical execution with intellectual thought. Earth keeps Air\'s ideas grounded in reality, while Air helps Earth see new perspectives.';
-    case 'Earth + Water': return 'Earth and Water pairings form one of the most nurturing, fertile combinations in synastry. Earth gives structure and container to Water\'s emotional currents, and Water softens and nourishes Earth\'s analytical drive.';
-    case 'Air + Air': return 'Double Air pairings thrive on ideas, conversation, and social variety. They communicate effortlessly and respect each other\'s independence, though they may avoid dealing with deep emotional undercurrents.';
-    case 'Air + Water': return 'Air and Water pairings mix rational analysis with deep emotional intuition. This pairing can communicate well, but Air must learn to sit with Water\'s feelings rather than intellectualizing them.';
-    case 'Water + Water': return 'Double Water pairings share a psychic, intuitive bond. They understand each other\'s mood shifts without words, creating a cozy and deeply empathetic space, though they must build boundaries to prevent codependency.';
-    default: return 'Every elemental matchup brings unique dynamics to love, friendship, and collaboration.';
-  }
-}
-
-function getQualityHarmony(q1, q2) {
-  if (q1 === q2) {
-    return `Both partners share a ${q1} modality. This means you share a similar tempo and approach to making decisions—either both initiating changes (Cardinal), both anchoring down stubbornly (Fixed), or both adapting and shifting constantly (Mutable).`;
-  }
-  return `This pairing combines ${q1} and ${q2} modalities. The ${q1} partner\'s natural pace is balanced by the ${q2} partner\'s approach, creating a dynamic exchange of energy that keeps the relationship from getting stuck.`;
-}
-
 function preRenderZodiacPairings(template) {
   console.log('[SSG] Starting programmatic 144 zodiac pairings generator...');
   let count = 0;
 
-  for (const { firstSign: s1, secondSign: s2, slug } of getZodiacPairingPages()) {
-    const postDir = path.join(DIST_DIR, 'blog', slug);
+  for (const post of getZodiacPairingPosts()) {
+    const postDir = path.join(DIST_DIR, 'blog', post.slug);
 
     fs.mkdirSync(postDir, { recursive: true });
-
-    const title = `${s1.label} and ${s2.label} Compatibility: Love, Friendship & Chemistry`;
-    const description = `Are ${s1.label} and ${s2.label} compatible? Read a practical compatibility breakdown of elements, qualities, and relationship dynamics for this pairing.`;
-
-    const postBody = `
-        <article class="blog-content">
-          <header>
-            <span class="category-tag" style="font-size: 10px; font-weight: bold; text-transform: uppercase; tracking-wider; background: #6c4de6/10; color: #6c4de6; padding: 4px 8px; border-radius: 12px;">Zodiac Compatibility Deep Dive</span>
-            <h1 style="font-size: 2.25rem; font-weight: 800; color: #1c0e35; margin: 12px 0 6px;">${s1.label} and ${s2.label} Compatibility</h1>
-            <p class="post-meta">Published by Match by Birth</p>
-          </header>
-          <div>
-            <p>Are <strong>${s1.label}</strong> and <strong>${s2.label}</strong> compatible in love, friendship, and life? In classical synastry, compatibility is often discussed through elements, planetary rulers, and modality combinations. Below is a practical compatibility breakdown of how this pairing may function.</p>
-            
-            <h2>1. Elemental Harmony: ${s1.element} meets ${s2.element}</h2>
-            <p>${getElementHarmony(s1.element, s2.element)}</p>
-            
-            <h2>2. Modal Rhythm: ${s1.quality} & ${s2.quality}</h2>
-            <p>${getQualityHarmony(s1.quality, s2.quality)}</p>
-            
-            <h2>3. Ruling Planets: ${s1.planet} & ${s2.planet}</h2>
-            <p>This match is influenced by the cosmic conversations between <strong>${s1.planet}</strong> (ruling ${s1.label}) and <strong>${s2.planet}</strong> (ruling ${s2.label}). These planetary forces dictate how the signs assert their desires, resolve conflict, and express affection.</p>
-
-            <div style="margin-top: 40px; padding: 24px; border-radius: 20px; background: #6c4de6; color: #fff; text-align: center; box-shadow: 0 4px 12px rgba(108,77,230,0.15);">
-              <h3 style="margin-top: 0; font-size: 1.25rem; font-weight: 700; color: #fff;">Get Your Exact Compatibility Score</h3>
-              <p style="font-size: 0.875rem; color: rgba(255,255,255,0.9); margin-bottom: 20px;">Sun signs are just the starting point. To see your true compatibility, you must calculate planetary aspects and exact birth charts.</p>
-              <a href="/" style="display: inline-block; padding: 12px 24px; border-radius: 12px; background: #fff; color: #6c4de6; font-weight: 800; text-decoration: none; transition: transform 0.2s;">Run the Calculator →</a>
-            </div>
-          </div>
-        </article>
-      `;
-
-    let postHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${title} | Match by Birth</title>`)
-      .replace(/<meta name="description" content="[^"]*"\s*\/>/g, `<meta name="description" content="${description}" />`)
-      .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${postBody}</div>`);
-
+    const postHtml = renderArticleHtml({ template, post });
     fs.writeFileSync(path.join(postDir, 'index.html'), postHtml, 'utf8');
     count++;
   }

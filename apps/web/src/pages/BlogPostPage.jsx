@@ -5,6 +5,7 @@ import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
 import posts from '@/data/posts';
 import BackButton from '@/components/BackButton.jsx';
 import NewsletterCapture from '@/components/NewsletterCapture.jsx';
+import { getZodiacPairingPostBySlug } from '../../../../tools/zodiac-pairings.mjs';
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
@@ -90,19 +91,25 @@ function EditorialEnhancements({ post }) {
 
 function BlogPostPage() {
   const { slug } = useParams();
-  const post = posts.find((p) => p.slug === slug);
+  const post = posts.find((p) => p.slug === slug) || getZodiacPairingPostBySlug(slug);
   const relatedPosts = post ? getRelatedPosts(post, posts) : [];
   const seo = post ? getBlogPostSeo(post) : null;
 
   if (!post) {
     return (
-      <main className="py-24 bg-background min-h-screen flex items-center justify-center">
-        <div className="max-w-md mx-auto text-center px-4">
-          <h1 className="text-4xl font-extrabold text-foreground mb-4">Post not found</h1>
-          <p className="text-muted-foreground mb-8">We couldn&apos;t find the article you&apos;re looking for.</p>
-          <Link to="/" className="btn-primary px-6 py-3 rounded-xl">Back to calculator</Link>
-        </div>
-      </main>
+      <>
+        <Helmet>
+          <title>Post not found | Match by Birth</title>
+          <meta name="robots" content="noindex,nofollow" />
+        </Helmet>
+        <main className="py-24 bg-background min-h-screen flex items-center justify-center">
+          <div className="max-w-md mx-auto text-center px-4">
+            <h1 className="text-4xl font-extrabold text-foreground mb-4">Post not found</h1>
+            <p className="text-muted-foreground mb-8">We couldn&apos;t find the article you&apos;re looking for.</p>
+            <Link to="/" className="btn-primary px-6 py-3 rounded-xl">Back to calculator</Link>
+          </div>
+        </main>
+      </>
     );
   }
 
@@ -161,6 +168,7 @@ function BlogPostPage() {
                       month: 'long',
                       day: 'numeric',
                       year: 'numeric',
+                      timeZone: 'UTC',
                     })}
                   </time>
                 </div>

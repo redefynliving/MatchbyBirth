@@ -24,7 +24,7 @@ function PrivacyPolicyPage() {
             <header className="mb-10 border-b border-border pb-6">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">Privacy Policy</h1>
               <p className="text-sm font-medium uppercase tracking-wider text-primary mt-2">
-                Last Updated: June 9, 2026
+                Last Updated: July 19, 2026
               </p>
             </header>
 
@@ -76,7 +76,7 @@ function PrivacyPolicyPage() {
               <div>
                 <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">6. Analytics and Cookies</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. Analytics events do not include names, birth dates, emails, or private result tokens. Advertising or other optional services may use cookies where disclosed by the site and permitted by your browser or consent settings.
+                  We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. With your consent, we also use Microsoft Clarity to understand page interactions, such as clicks, scrolling, and navigation. Analytics events do not include names, birth dates, emails, or private result tokens. Advertising or other optional services may use cookies where disclosed by the site and permitted by your browser or consent settings.
                 </p>
               </div>
 
@@ -84,6 +84,7 @@ function PrivacyPolicyPage() {
                 <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">7. Service Providers</h2>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2 leading-relaxed">
                   <li><strong className="text-foreground font-semibold">Vercel:</strong> website hosting, server functions, and aggregate analytics.</li>
+                  <li><strong className="text-foreground font-semibold">Microsoft Clarity:</strong> consent-based website interaction analytics.</li>
                   <li><strong className="text-foreground font-semibold">Supabase:</strong> secure database storage.</li>
                   <li><strong className="text-foreground font-semibold">Stripe:</strong> payment processing.</li>
                   <li><strong className="text-foreground font-semibold">Anthropic:</strong> paid report generation using sanitized result data.</li>
