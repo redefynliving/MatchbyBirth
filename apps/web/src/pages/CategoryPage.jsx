@@ -5,6 +5,7 @@ import posts from '@/data/posts';
 import BackButton from '@/components/BackButton.jsx';
 import { Calendar, ArrowRight, BookOpen } from 'lucide-react';
 import { getCategoryMeta, getPostCategory } from '@/data/blogCategories.js';
+import { getBlogPostPath } from '@/lib/blogSeo.js';
 
 function CategoryPage() {
   const { category } = useParams();
@@ -65,7 +66,7 @@ function CategoryPage() {
                   </div>
                   
                   <h3 className="text-xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors mb-3">
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link to={getBlogPostPath(post)}>{post.title}</Link>
                   </h3>
                   
                   <p className="text-sm text-muted-foreground/95 leading-relaxed mb-6">{post.description}</p>
@@ -80,7 +81,7 @@ function CategoryPage() {
                     ))}
                   </div>
                   
-                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-all gap-1.5 group-hover:translate-x-1 duration-200">
+                  <Link to={getBlogPostPath(post)} className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-all gap-1.5 group-hover:translate-x-1 duration-200">
                     Read Article <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

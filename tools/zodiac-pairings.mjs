@@ -14,6 +14,36 @@ export const ZODIAC_SIGNS = [
 ];
 
 const PUBLISHED_DATE = '2026-07-12';
+const CANONICAL_BLOG_SLUG_OVERRIDES = {
+  'aries-and-leo-compatibility': 'aries-leo-compatibility',
+  'aries-and-sagittarius-compatibility': 'aries-sagittarius-compatibility',
+  'aries-and-scorpio-compatibility': 'aries-scorpio-compatibility',
+  'taurus-and-cancer-compatibility': 'taurus-cancer-nurturing-pair',
+  'taurus-and-virgo-compatibility': 'taurus-virgo-compatibility',
+  'taurus-and-capricorn-compatibility': 'capricorn-taurus-compatibility',
+  'gemini-and-libra-compatibility': 'libra-gemini-air-sign-romance',
+  'gemini-and-sagittarius-compatibility': 'gemini-sagittarius-opposites-that-work',
+  'gemini-and-aquarius-compatibility': 'aquarius-gemini-compatibility',
+  'cancer-and-scorpio-compatibility': 'cancer-scorpio-compatibility',
+  'cancer-and-pisces-compatibility': 'pisces-cancer-compatibility',
+  'leo-and-sagittarius-compatibility': 'leo-sagittarius-compatibility',
+  'leo-and-aquarius-compatibility': 'leo-aquarius-fixed-signs-big-sparks',
+  'virgo-and-pisces-compatibility': 'virgo-pisces-logic-intuition-love',
+  'scorpio-and-capricorn-compatibility': 'scorpio-capricorn-compatibility',
+  'gemini-libra-compatibility': 'libra-gemini-air-sign-romance',
+};
+
+export function getCanonicalBlogPostSlug(slug) {
+  return CANONICAL_BLOG_SLUG_OVERRIDES[slug] || slug;
+}
+
+function canonicalizeSigns(firstSign, secondSign) {
+  const firstIndex = ZODIAC_SIGNS.findIndex((sign) => sign.name === firstSign.name);
+  const secondIndex = ZODIAC_SIGNS.findIndex((sign) => sign.name === secondSign.name);
+  return firstIndex <= secondIndex
+    ? [firstSign, secondSign]
+    : [secondSign, firstSign];
+}
 
 function getElementHarmony(first, second) {
   const pair = [first.element, second.element].sort().join(' + ');
@@ -47,12 +77,15 @@ function getQualityHarmony(first, second) {
 
 export function getZodiacPairingPost(page) {
   if (!page) return null;
-  const { firstSign: first, secondSign: second, slug } = page;
+  const { slug } = page;
+  const [first, second] = canonicalizeSigns(page.firstSign, page.secondSign);
+  const canonicalSlug = getCanonicalBlogPostSlug(getZodiacPairingSlug(first, second));
   const sameSign = first.name === second.name;
   const title = `${first.label} and ${second.label} Compatibility: Love, Friendship & Chemistry`;
 
   return {
     slug,
+    canonicalSlug,
     title,
     date: PUBLISHED_DATE,
     updatedAt: PUBLISHED_DATE,
@@ -131,6 +164,26 @@ export function getZodiacPairingPages() {
       path: `/blog/${getZodiacPairingSlug(firstSign, secondSign)}`,
     }))
   ));
+}
+
+export function getCanonicalZodiacPairingPages() {
+  return ZODIAC_SIGNS.flatMap((firstSign, firstIndex) => (
+    ZODIAC_SIGNS.slice(firstIndex).map((secondSign) => {
+      const slug = getZodiacPairingSlug(firstSign, secondSign);
+      const canonicalSlug = getCanonicalBlogPostSlug(slug);
+      return {
+        firstSign,
+        secondSign,
+        slug,
+        canonicalSlug,
+        path: `/blog/${canonicalSlug}`,
+      };
+    })
+  ));
+}
+
+export function getCanonicalZodiacPairingPosts() {
+  return getCanonicalZodiacPairingPages().map(getZodiacPairingPost);
 }
 
 export function getZodiacPairingPosts() {

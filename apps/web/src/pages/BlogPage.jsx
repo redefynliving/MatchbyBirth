@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
 import { Calendar, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
+import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages } from '../../../../tools/zodiac-pairings.mjs';
+import { getBlogPostPath } from '@/lib/blogSeo.js';
 
 const POSTS_PER_PAGE = 6;
 
 const CATEGORIES = [ALL_POSTS_CATEGORY, ...BLOG_CATEGORIES];
+const PAIRING_PAGES = getCanonicalZodiacPairingPages();
 
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -103,7 +106,7 @@ function BlogPage() {
                   </div>
                   
                   <h3 className="text-xl font-bold text-foreground leading-snug group-hover:text-primary transition-colors mb-3">
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    <Link to={getBlogPostPath(post)}>{post.title}</Link>
                   </h3>
                   
                   <p className="text-sm text-muted-foreground/95 leading-relaxed mb-6">{post.description}</p>
@@ -117,7 +120,7 @@ function BlogPage() {
                     ))}
                   </div>
                   
-                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-all gap-1.5 group-hover:translate-x-1 duration-200">
+                  <Link to={getBlogPostPath(post)} className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-all gap-1.5 group-hover:translate-x-1 duration-200">
                     Read Article <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -174,6 +177,47 @@ function BlogPage() {
               </button>
             </nav>
           )}
+
+          <section className="mt-20" aria-labelledby="pairing-directory-title">
+            <div className="mx-auto mb-8 max-w-2xl text-center">
+              <h2 id="pairing-directory-title" className="text-2xl md:text-3xl font-extrabold text-foreground">
+                Find your zodiac pairing
+              </h2>
+              <p className="mt-3 text-sm md:text-base text-muted-foreground">
+                Pick either sign to reach the same compatibility guide.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {ZODIAC_SIGNS.map((sign) => {
+                const signPages = PAIRING_PAGES.filter((page) => (
+                  page.firstSign.name === sign.name || page.secondSign.name === sign.name
+                ));
+
+                return (
+                  <details key={sign.name} className="group self-start rounded-2xl border border-border bg-card p-4 shadow-sm">
+                    <summary className="cursor-pointer font-bold text-foreground">
+                      {sign.label} compatibility
+                    </summary>
+                    <ul className="mt-3 grid grid-cols-2 gap-2 border-t border-border pt-3">
+                      {signPages.map((page) => {
+                        const partner = page.firstSign.name === sign.name ? page.secondSign : page.firstSign;
+                        return (
+                          <li key={page.slug}>
+                            <Link
+                              to={page.path}
+                              className="block rounded-lg px-2 py-1.5 text-sm font-medium text-primary hover:bg-primary/10"
+                            >
+                              {sign.label} + {partner.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
+                );
+              })}
+            </div>
+          </section>
 
           {/* CTA Banner */}
           <div className="relative overflow-hidden bg-gradient-to-br from-primary to-violet-700 text-white rounded-3xl p-8 md:p-12 text-center shadow-lg shadow-primary/10 mt-20">
