@@ -4,10 +4,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
 import { BLOG_CATEGORIES, getPostCategory } from '../src/data/blogCategories.js';
+import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages } from '../../../tools/zodiac-pairings.mjs';
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
   canonicalUrl,
+  getBlogPostPath,
   getBlogPostSeo,
   getRelatedPosts,
 } from '../src/lib/blogSeo.js';
@@ -47,13 +49,14 @@ function renderDocument({
   route,
   body,
   head = '',
+  canonical = '',
   image = 'https://matchbybirth.com/og-image.png',
   type = 'website',
 }) {
   const assetTags = extractAssetTags(template);
   const safeTitle = escapeHtml(title);
   const safeDescription = escapeHtml(description);
-  const safeCanonical = escapeHtml(canonicalUrl(route));
+  const safeCanonical = escapeHtml(canonical || canonicalUrl(route));
   const safeImage = escapeHtml(image);
 
   return `<!doctype html>
@@ -61,10 +64,10 @@ function renderDocument({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${safeTitle}</title>
-    <meta name="description" content="${safeDescription}" />
+    <title data-react-helmet="true">${safeTitle}</title>
+    <meta name="description" content="${safeDescription}" data-react-helmet="true" />
     <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="${safeCanonical}" />
+    <link rel="canonical" href="${safeCanonical}" data-react-helmet="true" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="${escapeHtml(type)}" />
     <meta property="og:title" content="${safeTitle}" />
@@ -108,9 +111,36 @@ function renderDocument({
 function articleCard(post) {
   return `
     <article class="static-post-card">
-      <h2><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a></h2>
+      <h2><a href="${escapeHtml(getBlogPostPath(post))}">${escapeHtml(post.title)}</a></h2>
       <p>${escapeHtml(post.description)}</p>
     </article>
+  `;
+}
+
+function renderPairingDirectoryHtml() {
+  const pages = getCanonicalZodiacPairingPages();
+
+  return `
+    <section class="static-pairing-directory" aria-labelledby="pairing-directory-title">
+      <h2 id="pairing-directory-title">Find your zodiac pairing</h2>
+      <p>Choose either sign to open the same canonical compatibility guide.</p>
+      ${ZODIAC_SIGNS.map((sign) => {
+        const signPages = pages.filter((page) => (
+          page.firstSign.name === sign.name || page.secondSign.name === sign.name
+        ));
+        return `
+          <details>
+            <summary>${escapeHtml(sign.label)} compatibility</summary>
+            <ul>
+              ${signPages.map((page) => {
+                const partner = page.firstSign.name === sign.name ? page.secondSign : page.firstSign;
+                return `<li><a href="${escapeHtml(page.path)}">${escapeHtml(sign.label)} and ${escapeHtml(partner.label)}</a></li>`;
+              }).join('')}
+            </ul>
+          </details>
+        `;
+      }).join('')}
+    </section>
   `;
 }
 
@@ -186,6 +216,7 @@ export function renderBlogIndexHtml({ template, allPosts = posts } = {}) {
         <p>Browse practical articles about birth date compatibility, zodiac signs, life path numbers, relationship timing, and group dynamics.</p>
       </header>
       <section>${allPosts.map(articleCard).join('')}</section>
+      ${renderPairingDirectoryHtml()}
     </main>
   `;
 
@@ -240,7 +271,7 @@ export function renderArticleHtml({ template, post } = {}) {
           <section class="static-related">
             <h2>Keep reading</h2>
             ${relatedPosts.map((related) => `
-              <a href="/blog/${escapeHtml(related.slug)}">
+              <a href="${escapeHtml(getBlogPostPath(related))}">
                 <strong>${escapeHtml(related.title)}</strong>
                 <span>${escapeHtml(related.description)}</span>
               </a>
@@ -256,6 +287,7 @@ export function renderArticleHtml({ template, post } = {}) {
     title: seo.title,
     description: seo.description,
     route: `/blog/${post.slug}`,
+    canonical: seo.url,
     body,
     image: seo.image,
     type: 'article',

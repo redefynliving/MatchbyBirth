@@ -1,4 +1,5 @@
 import { getCategoryMeta, getPostCategory } from '../data/blogCategories.js';
+import { getCanonicalBlogPostSlug } from '../../../../tools/zodiac-pairings.mjs';
 
 export const SITE_URL = 'https://matchbybirth.com';
 export const SITE_NAME = 'Match by Birth';
@@ -15,12 +16,17 @@ export function canonicalUrl(route) {
   return normalizedRoute === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalizedRoute}`;
 }
 
+export function getBlogPostPath(post) {
+  const slug = getCanonicalBlogPostSlug(post.canonicalSlug || post.slug);
+  return `/blog/${slug}`;
+}
+
 export function getBlogPostSeo(post) {
   const categoryKey = post.category || getPostCategory(post);
   const category = getCategoryMeta(categoryKey);
   const image = post.ogImage || post.heroImage?.url || DEFAULT_OG_IMAGE;
   const description = post.description || '';
-  const url = canonicalUrl(`/blog/${post.slug}`);
+  const url = canonicalUrl(getBlogPostPath(post));
   const tags = Array.isArray(post.tags) ? post.tags.filter(Boolean) : [];
 
   return {
@@ -67,6 +73,7 @@ export function buildArticleSchema(post) {
 }
 
 export function buildBreadcrumbSchema(post) {
+  const seo = getBlogPostSeo(post);
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -87,7 +94,7 @@ export function buildBreadcrumbSchema(post) {
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: canonicalUrl(`/blog/${post.slug}`),
+        item: seo.url,
       },
     ],
   };

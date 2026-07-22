@@ -4,7 +4,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
 import { BLOG_CATEGORIES, getPostCategory } from '../src/data/blogCategories.js';
-import { getZodiacPairingPages } from '../../../tools/zodiac-pairings.mjs';
+import {
+  getCanonicalBlogPostSlug,
+  getCanonicalZodiacPairingPosts,
+} from '../../../tools/zodiac-pairings.mjs';
 
 const SITE_URL = 'https://matchbybirth.com';
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
@@ -68,16 +71,20 @@ export function generateSitemapXml() {
     priority: '0.7',
   }));
 
-  const postEntries = posts.map((post) => entry({
+  const postEntries = posts.filter((post) => (
+    getCanonicalBlogPostSlug(post.slug) === post.slug
+  )).map((post) => entry({
     pagePath: `/blog/${post.slug}`,
     lastmod: post.updatedAt || post.modifiedAt || post.date || BUILD_DATE,
     changefreq: 'monthly',
     priority: '0.8',
   }));
 
-  const pairingEntries = getZodiacPairingPages().map((page) => entry({
-    pagePath: page.path,
-    lastmod: BUILD_DATE,
+  const pairingEntries = getCanonicalZodiacPairingPosts().filter((post) => (
+    post.canonicalSlug === post.slug
+  )).map((post) => entry({
+    pagePath: `/blog/${post.canonicalSlug}`,
+    lastmod: post.updatedAt,
     changefreq: 'monthly',
     priority: '0.7',
   }));

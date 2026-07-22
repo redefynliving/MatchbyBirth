@@ -9,6 +9,7 @@ import { getZodiacPairingPostBySlug } from '../../../../tools/zodiac-pairings.mj
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
+  getBlogPostPath,
   getBlogPostSeo,
   getRelatedPosts,
   hasEnhancedContent,
@@ -219,7 +220,7 @@ function BlogPostPage() {
                   {relatedPosts.map((related) => (
                     <Link
                       key={related.slug}
-                      to={`/blog/${related.slug}`}
+                      to={getBlogPostPath(related)}
                       className="group rounded-2xl border border-border bg-muted/20 p-5 transition-colors hover:bg-secondary/40"
                     >
                       <span className="flex items-center justify-between gap-4">

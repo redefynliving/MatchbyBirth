@@ -375,10 +375,10 @@ function preRenderPages() {
     const safeTitle = escapeXml(page.title);
     const safeDescription = escapeXml(page.description);
     let pageHtml = template
-      .replace(/<title>[^<]*<\/title>/g, `<title>${safeTitle}</title>`)
+      .replace(/<title(?:\s[^>]*)?>[^<]*<\/title>/g, `<title data-react-helmet="true">${safeTitle}</title>`)
       .replace(
-        /<meta name="description" content="[^"]*"\s*\/>/g,
-        `<meta name="description" content="${safeDescription}" />\n\t\t<link rel="canonical" href="${canonicalUrl}" />`,
+        /<meta[^>]*name="description"[^>]*\/?>/g,
+        `<meta name="description" content="${safeDescription}" data-react-helmet="true" />\n\t\t<link rel="canonical" href="${canonicalUrl}" data-react-helmet="true" />`,
       )
       .replace(/<meta property="og:title" content="[^"]*"\s*\/?>/g, `<meta property="og:title" content="${safeTitle}">`)
       .replace(/<meta property="og:description" content="[^"]*"\s*\/?>/g, `<meta property="og:description" content="${safeDescription}">`)
