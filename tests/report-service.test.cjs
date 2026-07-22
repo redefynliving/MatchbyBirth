@@ -22,6 +22,7 @@ test('fulfillPurchase stores one structured report, emails it, and marks deliver
   const updates = [];
   let insertedReport;
   let sentEmail;
+  let reportOptions;
   const purchase = {
     id: 'purchase-id',
     result_id: 'result-id',
@@ -43,6 +44,11 @@ test('fulfillPurchase stores one structured report, emails it, and marks deliver
           intuition: 81,
           overall: 82,
         },
+        reportContext: {
+          reportType: 'standard',
+          focus: 'moon_sign',
+          clarityGoal: 'reassurance',
+        },
       },
     },
   };
@@ -62,12 +68,15 @@ test('fulfillPurchase stores one structured report, emails it, and marks deliver
     store,
     appUrl: 'https://matchbybirth.com',
     tokenSecret: 'test-secret',
-    generateReport: async () => ({
+    generateReport: async (_result, options) => {
+      reportOptions = options;
+      return ({
       title: 'Alex & Jordan',
       overview: 'A thoughtful overview.',
       sections: [{ key: 'strengths', title: 'Strengths', body: 'Shared momentum.' }],
       closing: 'Use this as a reflection.',
-    }),
+      });
+    },
     sendReportEmail: async (input) => {
       sentEmail = input;
       return { id: 'email-id' };
@@ -75,6 +84,11 @@ test('fulfillPurchase stores one structured report, emails it, and marks deliver
   });
 
   assert.equal(response.status, 'delivered');
+  assert.deepEqual(reportOptions, {
+    reportType: 'standard',
+    reportFocus: 'moon_sign',
+    clarityGoal: 'reassurance',
+  });
   assert.equal(insertedReport.purchase_id, 'purchase-id');
   assert.equal(insertedReport.access_token_hash.length, 64);
   assert.equal(sentEmail.idempotencyKey, 'report-delivery/purchase-id');

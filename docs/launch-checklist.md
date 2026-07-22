@@ -12,16 +12,21 @@
 ## Still to do before pushing fully live
 
 ### Stripe / payments
+- Use a dedicated Match by Birth Stripe account; do not reuse or rename the ENSET merchant account
+- Set the Stripe public business name, icon/logo, support URL, receipt identity, and statement descriptor to Match by Birth
 - Create the live Stripe product for the private report
 - Create the live Stripe price for the report
 - Set `STRIPE_SECRET_KEY` in production
 - Set `STRIPE_PRICE_ID` in production
 - Set `STRIPE_SUBSCRIPTION_PRICE_ID` in production for the recurring premium plan
 - Set `STRIPE_WEBHOOK_SECRET` in production
+- Set Preview-only `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, and `STRIPE_WEBHOOK_SECRET` to test-mode values
+- Keep `STRIPE_LIVE_CHECKOUT_ENABLED=false` until hosted Checkout visibly says Match by Birth
+- Set `STRIPE_MERCHANT_NAME=Match by Birth` and `STRIPE_LIVE_CHECKOUT_ENABLED=true` only after that visual check
 - Set `APP_URL` in production
 - Set `REPORT_TOKEN_SECRET` in production
 - Add `/api/webhook` as a Stripe webhook endpoint
-- Test a real checkout end-to-end in test mode
+- Test checkout end-to-end in Preview with Stripe test cards, including success, decline, and 3DS
 - Confirm webhook → fulfillment → email delivery works
 - Confirm the report link opens after payment
 

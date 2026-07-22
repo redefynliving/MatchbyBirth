@@ -1,9 +1,8 @@
 'use strict';
 
-const Stripe = require('stripe');
 const { processStripeEvent } = require('./webhook-service.cjs');
 const { fulfillConfiguredPurchase } = require('./fulfillment.cjs');
-const { getServerConfig, subscribePaidReportBuyer } = require('../backend.cjs');
+const { getServerConfig, getStripeClient, subscribePaidReportBuyer } = require('../backend.cjs');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -31,7 +30,7 @@ module.exports = async (req, res) => {
       console.error('WEBHOOK ERROR: STRIPE_SECRET_KEY is not configured');
       return res.status(500).json({ ok: false, error: 'Webhook not configured.' });
     }
-    const stripe = new Stripe(config.stripeSecretKey);
+    const stripe = getStripeClient(config.stripeSecretKey);
     event = stripe.webhooks.constructEvent(req.body, sig, secret);
     console.log(`WEBHOOK RECEIVED: ${event.type} (${event.id})`);
   } catch (err) {

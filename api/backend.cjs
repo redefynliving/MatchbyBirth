@@ -9,8 +9,15 @@ const { generateStructuredReport } = require('./_lib/report-generator.cjs');
 const { fulfillPurchase } = require('./_lib/report-service.cjs');
 const { createCalculateResultHandler } = require('../shared/api-handlers.cjs');
 
+const STRIPE_API_VERSION = '2026-02-25.clover';
+const REQUIRED_STRIPE_MERCHANT_NAME = 'match by birth';
+
 let stripeClient;
 let stripeClientKey;
+
+function normalizeMerchantName(value) {
+  return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
 
 function getServerConfig(env = process.env) {
   return {
@@ -20,6 +27,8 @@ function getServerConfig(env = process.env) {
     stripeWebhookSecret: String(env.STRIPE_WEBHOOK_SECRET || '').trim(),
     reportPriceId: String(env.STRIPE_PRICE_ID || '').trim(),
     subscriptionPriceId: String(env.STRIPE_SUBSCRIPTION_PRICE_ID || '').trim(),
+    stripeMerchantName: String(env.STRIPE_MERCHANT_NAME || '').trim(),
+    stripeLiveCheckoutEnabled: String(env.STRIPE_LIVE_CHECKOUT_ENABLED || '').trim().toLowerCase() === 'true',
   };
 }
 
@@ -36,10 +45,24 @@ function getCheckoutConfig(kind, env = process.env) {
 
 function getStripeClient(secretKey) {
   if (!stripeClient || stripeClientKey !== secretKey) {
-    stripeClient = new Stripe(secretKey);
+    stripeClient = new Stripe(secretKey, { apiVersion: STRIPE_API_VERSION });
     stripeClientKey = secretKey;
   }
   return stripeClient;
+}
+
+function isCheckoutEnvironmentSafe(config) {
+  if (!String(config?.stripeSecretKey || '').startsWith('sk_live_')) return true;
+  return config.stripeLiveCheckoutEnabled === true
+    && normalizeMerchantName(config.stripeMerchantName) === REQUIRED_STRIPE_MERCHANT_NAME;
+}
+
+function unsafeLiveCheckoutResponse(res, logger) {
+  logger.error('Live Stripe checkout is gated until Match by Birth merchant branding is verified.');
+  return res.status(503).json({
+    ok: false,
+    error: 'Live checkout is disabled until Match by Birth Stripe branding is verified.',
+  });
 }
 
 function checkoutErrorCode(error) {
@@ -82,6 +105,9 @@ function createReportCheckoutHandler(dependencies = {}) {
       logger.error('Checkout configuration is incomplete.');
       return res.status(500).json({ ok: false, error: 'Checkout is not configured.' });
     }
+    if (!isCheckoutEnvironmentSafe(config)) {
+      return unsafeLiveCheckoutResponse(res, logger);
+    }
     try {
       const stripe = dependencies.stripe || getStripeClient(config.stripeSecretKey);
       const response = await checkoutService.createCheckout(req.body, {
@@ -109,6 +135,9 @@ function createSubscriptionCheckoutHandler(dependencies = {}) {
     if (!config.stripeSecretKey || !config.priceId || !config.appUrl) {
       logger.error('Subscription checkout configuration is incomplete.');
       return res.status(500).json({ ok: false, error: 'Subscription checkout is not configured.' });
+    }
+    if (!isCheckoutEnvironmentSafe(config)) {
+      return unsafeLiveCheckoutResponse(res, logger);
     }
     try {
       const stripe = dependencies.stripe || getStripeClient(config.stripeSecretKey);
@@ -138,6 +167,7 @@ function subscribePaidReportBuyer(input) {
 }
 
 module.exports = {
+  STRIPE_API_VERSION,
   ...checkoutService,
   createReportCheckoutHandler,
   createSubscriptionCheckoutHandler,
@@ -146,6 +176,8 @@ module.exports = {
   generateStructuredReport,
   getCheckoutConfig,
   getServerConfig,
+  getStripeClient,
+  isCheckoutEnvironmentSafe,
   store,
   subscribePaidReportBuyer,
 };

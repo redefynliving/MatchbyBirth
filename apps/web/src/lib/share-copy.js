@@ -30,15 +30,33 @@ export function getShareTitle(result) {
 export function getShareDescription(result) {
   const score = getShareScore(result);
   const band = getShareBand(score);
+  const topAspect = result?.calculationMode === 'full-synastry'
+    ? result?.synastry?.evidence?.find((item) => item?.label)?.label
+    : '';
+  if (topAspect) {
+    return `${band}. Full timed synastry with ${topAspect} as a leading aspect. Birth details stay private.`;
+  }
   return `${band}. A private-safe Match by Birth result with strengths, watch area, and one useful next conversation.`;
 }
 
-export function getShareText({ mode = 'pair', p1, p2, score, groupVibeScore }) {
+export function getShareText({
+  mode = 'pair',
+  p1,
+  p2,
+  score,
+  groupVibeScore,
+  calculationMode,
+  topAspectLabel,
+}) {
   const shareScore = Number(mode === 'group' ? groupVibeScore : score) || 0;
   const band = getShareBand(shareScore);
 
   if (mode === 'group') {
     return `Our Match by Birth group result is ${shareScore}%: ${band}.`;
+  }
+
+  if (calculationMode === 'full-synastry' && topAspectLabel) {
+    return `${p1} and ${p2} got ${shareScore}% in a full Match by Birth synastry reading. Top aspect: ${topAspectLabel}.`;
   }
 
   return `${p1} and ${p2} got ${shareScore}% on Match by Birth: ${band}.`;

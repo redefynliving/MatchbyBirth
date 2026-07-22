@@ -3,6 +3,11 @@
   "buildCommand": "npm ci && npm run build --prefix apps/web",
   "outputDirectory": "dist/apps/web",
   "framework": null,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "node_modules/{astronomia,city-timezones,luxon}/**"
+    }
+  },
   "redirects": [
     {
       "source": "/",

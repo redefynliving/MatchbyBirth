@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Calculator, LockKeyhole, MessageCircle, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Calculator, Loader2, LockKeyhole, MessageCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { trackEvent } from '@/lib/analytics.js';
-import { buildCalculatorPrefill } from '@/lib/calculator-prefill.js';
+import { requestCompatibilityResult } from '@/lib/compatibility-api.js';
+import { buildResultNavigation } from '@/lib/result-navigation.js';
 import {
   calculateLifePathNumber,
   compareLifePaths,
@@ -74,34 +75,49 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
   const [secondDate, setSecondDate] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const [isOpeningFullResult, setIsOpeningFullResult] = useState(false);
   const navigate = useNavigate();
 
-  const handleFullMatchClick = () => {
-    const calculatorPrefill = buildCalculatorPrefill({
-      firstName,
-      firstDate,
-      secondName,
-      secondDate,
-      relationshipType: 'love',
-      source,
-    });
-
-    if (!calculatorPrefill) {
-      setError('Enter two valid birth dates before opening the full compatibility calculator.');
+  const handleFullMatchClick = async () => {
+    const normalizedFirstName = firstName.trim();
+    const normalizedSecondName = secondName.trim();
+    if (!normalizedFirstName || !normalizedSecondName) {
+      setError('Add both names so the full result and report can be written for you.');
       return;
     }
 
+    setError('');
+    setIsOpeningFullResult(true);
     trackEvent('life_path_to_full_match_clicked', {
       source,
       first_life_path: result?.personA?.lifePath || null,
       second_life_path: result?.personB?.lifePath || null,
     });
 
-    navigate('/#calculator', {
-      state: {
-        calculatorPrefill,
-      },
-    });
+    try {
+      const data = await requestCompatibilityResult({
+        mode: 'pair',
+        relationshipType: 'love',
+        source,
+        reportFocus: 'life_path',
+        clarityGoal: 'long_term_fit',
+        people: [
+          { id: 'life-path-pair-1', name: normalizedFirstName, birthDate: firstDate },
+          { id: 'life-path-pair-2', name: normalizedSecondName, birthDate: secondDate },
+        ],
+      });
+      const navigation = buildResultNavigation(data);
+      trackEvent('life_path_full_match_completed', {
+        source,
+        score_band: Math.floor(data.result.score / 10) * 10,
+      });
+      navigate(navigation.path, { state: navigation.state });
+    } catch (calculationError) {
+      setError(calculationError.message || 'Unable to open the full Life Path result.');
+      trackEvent('life_path_full_match_failed', { source });
+    } finally {
+      setIsOpeningFullResult(false);
+    }
   };
 
   const handleSubmit = (event) => {
@@ -276,9 +292,13 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.person.strength}</p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-foreground">Watch</h4>
+              <h4 className="text-sm font-semibold text-foreground">Where to notice yourself</h4>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.person.watch}</p>
             </div>
+          </div>
+          <div className="mt-4 rounded-2xl border border-primary/15 bg-card p-4">
+            <h4 className="text-sm font-semibold text-primary">Try this</h4>
+            <p className="mt-1 text-sm leading-relaxed text-foreground">{result.person.action}</p>
           </div>
           <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-primary/15 bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm leading-relaxed text-muted-foreground">
@@ -316,15 +336,17 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
           </div>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
             <div>
-              <h4 className="text-sm font-semibold text-foreground">Pattern</h4>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.pattern}</p>
+              <h4 className="text-sm font-semibold text-foreground">Evidence</h4>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Life Path {result.personA.lifePath} centers on {result.personA.theme}; Life Path {result.personB.lifePath} centers on {result.personB.theme}. The fit score is {result.score}.
+              </p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-foreground">Watch area</h4>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.watchArea}</p>
+              <h4 className="text-sm font-semibold text-foreground">Real-life meaning</h4>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.sharedTranslation} {result.watchArea}</p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-foreground">Next step</h4>
+              <h4 className="text-sm font-semibold text-foreground">One useful action</h4>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{result.nextStep}</p>
             </div>
           </div>
@@ -339,10 +361,14 @@ function LifePathTool({ source = 'life_path_compatibility' }) {
               <Button
                 type="button"
                 onClick={handleFullMatchClick}
+                disabled={isOpeningFullResult}
                 className="btn-primary h-11 shrink-0 rounded-xl px-5 text-sm"
               >
-                Compare full birth-date match
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {isOpeningFullResult ? (
+                  <>Opening full result <Loader2 className="ml-2 h-4 w-4 animate-spin" /></>
+                ) : (
+                  <>Continue to full Life Path result <ArrowRight className="ml-2 h-4 w-4" /></>
+                )}
               </Button>
             </div>
           </div>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="180" viewBox="0 0 820 180" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth refined logo</title>
+  <desc id="desc">A refined one-color Match by Birth logo with a calm orbital birth-match mark and strong wordmark.</desc>
+  <g fill="none" stroke="#241D2D" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M44 90C61 52 139 52 156 90C139 128 61 128 44 90Z" stroke-width="11"/>
+    <path d="M79 90H121" stroke-width="8"/>
+  </g>
+  <g fill="#241D2D">
+    <circle cx="78" cy="90" r="11"/>
+    <circle cx="122" cy="90" r="11"/>
+  </g>
+  <g fill="#241D2D" font-family="Outfit, Inter, Avenir Next, Arial, sans-serif" letter-spacing="0">
+    <text x="210" y="100" font-size="58" font-weight="760">Match by Birth</text>
+    <text x="212" y="132" font-size="17" font-weight="560" fill="#5E5368">Birth date compatibility, made clear.</text>
+  </g>
+</svg>

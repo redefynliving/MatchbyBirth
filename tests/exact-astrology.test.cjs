@@ -167,6 +167,14 @@ test('searchPlaces filters by state code', () => {
   });
 });
 
+test('searchPlaces accepts comma-separated full state names', () => {
+  const results = searchPlaces('Indianapolis, Indiana');
+
+  assert.ok(results.length > 0);
+  assert.equal(results[0].city, 'Indianapolis');
+  assert.equal(results[0].state, 'IN');
+});
+
 test('searchPlaces returns empty for empty query', () => {
   assert.deepEqual(searchPlaces(''), []);
   assert.deepEqual(searchPlaces(null), []);

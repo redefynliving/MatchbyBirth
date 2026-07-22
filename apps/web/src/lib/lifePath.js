@@ -63,6 +63,21 @@ const lifePathProfiles = {
 
 const masterNumbers = new Set([11, 22, 33]);
 
+const lifePathActions = {
+  1: 'Choose one decision to make directly, then ask where collaboration would improve it.',
+  2: 'Name one need directly instead of waiting for someone else to notice it.',
+  3: 'Finish one small promise before starting the next interesting idea.',
+  4: 'Leave one part of this week flexible and notice how you respond when the plan changes.',
+  5: 'Choose one routine that protects freedom by making expectations easier to trust.',
+  6: 'Ask someone to share one responsibility you usually carry alone.',
+  7: 'Tell someone what you are processing before taking space to think.',
+  8: 'Define one goal by the experience you want, not only the result you can measure.',
+  9: 'Set one kind boundary before offering more time, energy, or forgiveness.',
+  11: 'Write down what you sensed, then check it with a direct question before treating it as fact.',
+  22: 'Break one large plan into a first step that another person can help complete.',
+  33: 'Offer care once, then ask what support would make the relationship feel mutual.',
+};
+
 const compatibilityPairs = {
   '1-2': { score: 78, pattern: 'initiative meeting emotional attunement' },
   '1-3': { score: 84, pattern: 'bold energy with creative expression' },
@@ -158,7 +173,8 @@ export function calculateLifePathNumber(dateString) {
 }
 
 export function getLifePathProfile(lifePath) {
-  return lifePathProfiles[lifePath] || null;
+  const profile = lifePathProfiles[lifePath];
+  return profile ? { ...profile, action: lifePathActions[lifePath] } : null;
 }
 
 export function getLifePathCompatibility(first, second) {
@@ -210,8 +226,9 @@ export function compareLifePaths(firstDate, secondDate) {
     },
     score: compatibility.score,
     pattern: compatibility.pattern,
-    watchArea: `${firstProfile.watch}; ${secondProfile.watch}.`,
-    nextStep: `Ask what each person needs to feel steady when ${firstProfile.theme} and ${secondProfile.theme} move at a different pace.`,
+    sharedTranslation: `In a shared plan, ${firstProfile.theme} may prioritize a different pace or proof point than ${secondProfile.theme}. The useful question is which expectation each person thought was already understood.`,
+    watchArea: `${firstProfile.watch} can meet ${secondProfile.watch}. Treat that as a pattern to check in real behavior, not a fixed trait.`,
+    nextStep: `Ask: “What would steady support look like this week when ${firstProfile.theme} and ${secondProfile.theme} pull us toward different priorities?”`,
   };
 }
 

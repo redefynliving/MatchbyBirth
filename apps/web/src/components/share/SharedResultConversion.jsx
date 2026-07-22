@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, LockKeyhole, Sparkles } from 'lucide-react';
+import { ArrowRight, LockKeyhole } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics.js';
 import { setFunnelAttribution } from '@/lib/funnel-attribution.js';
@@ -56,15 +56,15 @@ function ShareCta({
   };
 
   return (
-    <section className="rounded-3xl border border-primary/15 bg-primary/[0.035] p-5 text-center sm:p-6 md:p-8">
-      <h2 className="text-2xl font-semibold tracking-[-0.02em] text-foreground md:text-3xl">
+    <section className="text-left">
+      <h2 className="text-2xl font-semibold text-foreground md:text-3xl">
         {title}
       </h2>
-      <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground md:text-base md:leading-7">
+      <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground md:text-base md:leading-7">
         {body}
       </p>
 
-      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <Link
           to="/#calculator"
           onClick={trackPrimary}
@@ -88,92 +88,44 @@ function ShareCta({
 
 export default function SharedResultConversion({ model, shareId, source = 'direct' }) {
   return (
-    <section className="mx-auto mt-6 w-full max-w-5xl space-y-6">
-      <div className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-7">
-        <div className="mb-5 flex items-center gap-2">
-          <Sparkles className="h-4 w-4 text-primary" />
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-            Shared result preview
-          </p>
+    <section className="mx-auto mt-6 grid w-full max-w-5xl overflow-hidden rounded-lg border border-border bg-card shadow-sm lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="p-5 sm:p-7 md:p-8">
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary">Shared result preview</p>
+        <div className={`mt-5 grid gap-5 ${model.topAspect ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
+          <div className="border-l-2 border-primary pl-4">
+            <p className="text-xs font-semibold text-muted-foreground">Strongest area</p>
+            <h2 className="mt-1 text-xl font-semibold text-foreground">{model.strongestArea}</h2>
+          </div>
+          <div className="border-l-2 border-border pl-4">
+            <p className="text-xs font-semibold text-muted-foreground">Watch area</p>
+            <h2 className="mt-1 text-xl font-semibold text-foreground">{model.watchArea}</h2>
+          </div>
+          {model.topAspect && (
+            <div className="border-l-2 border-primary/50 pl-4">
+              <p className="text-xs font-semibold text-muted-foreground">Leading timed aspect</p>
+              <h2 className="mt-1 text-lg font-semibold capitalize text-foreground">{model.topAspect}</h2>
+            </div>
+          )}
         </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="rounded-2xl border border-border bg-background p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Strongest area
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">{model.strongestArea}</h2>
-          </article>
-
-          <article className="rounded-2xl border border-border bg-background p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Watch area
-            </p>
-            <h2 className="mt-2 text-xl font-semibold text-foreground">{model.watchArea}</h2>
-          </article>
-        </div>
-
-        <p className="mt-5 max-w-3xl text-base leading-7 text-foreground/90 md:text-lg md:leading-8">
+        <p className="mt-6 max-w-3xl text-base leading-7 text-foreground/90 md:text-lg md:leading-8">
           {model.previewInsight}
         </p>
-      </div>
-
-      <ShareCta
-        model={model}
-        shareId={shareId}
-        source={source}
-        placement="top"
-        title={model.ctaTitle}
-        body={model.ctaBody}
-      />
-
-      <div className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-7">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-          A small preview
+        <p className="mt-5 flex items-start gap-2 text-xs leading-5 text-muted-foreground">
+          <LockKeyhole className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+          Birth dates are not shown on shared pages.
         </p>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <p className="rounded-2xl bg-muted/35 p-4 text-sm leading-7 text-muted-foreground">
-            {model.previewParagraphOne}
-          </p>
-          <p className="rounded-2xl bg-muted/35 p-4 text-sm leading-7 text-muted-foreground">
-            {model.previewParagraphTwo}
-          </p>
-        </div>
       </div>
 
-      <ShareCta
-        model={model}
-        shareId={shareId}
-        source={source}
-        placement="middle"
-        title="Want to see your own result?"
-        body="Run your own match to see the score, the strongest area, the watch area, and the private report path built from your details."
-        primaryLabel="Start your match"
-      />
-
-      <div className="rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-            <LockKeyhole className="h-4 w-4" />
-          </span>
-          <div>
-            <h2 className="font-semibold text-foreground">Private-safe by design</h2>
-            <p className="mt-1 text-sm leading-6 text-muted-foreground">
-              Birth dates are not shown on shared pages. Full readings are private and generated only for the people who request them.
-            </p>
-          </div>
-        </div>
+      <div className="border-t border-border bg-muted/25 p-5 sm:p-7 lg:border-l lg:border-t-0 lg:p-8">
+        <ShareCta
+          model={model}
+          shareId={shareId}
+          source={source}
+          placement="shared_result"
+          title={model.ctaTitle}
+          body={model.ctaBody}
+        />
       </div>
-
-      <ShareCta
-        model={model}
-        shareId={shareId}
-        source={source}
-        placement="bottom"
-        title="Ready to try your own match?"
-        body="See what flows, what may catch, and what is worth naming before the pattern repeats."
-        primaryLabel="Try the comparison"
-      />
     </section>
   );
 }

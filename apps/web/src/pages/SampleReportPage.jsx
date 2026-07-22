@@ -10,10 +10,10 @@ function SampleReportPage() {
     <>
       <Helmet>
         <title>Sample Compatibility Report | Match by Birth</title>
-        <meta name="description" content="Preview a Match by Birth paid compatibility report before checkout, including strengths, friction, communication, watch area, and one practical conversation prompt." />
+        <meta name="description" content="Preview a full Match by Birth paid report before checkout, including calculated evidence, nine practical sections, scripts, and a seven-day plan." />
         <link rel="canonical" href="https://matchbybirth.com/sample-report" />
         <meta property="og:title" content="Sample Compatibility Report | Match by Birth" />
-        <meta property="og:description" content="Preview a Match by Birth paid compatibility report before checkout, including strengths, friction, communication, watch area, and one practical conversation prompt." />
+        <meta property="og:description" content="Preview a full Match by Birth paid report before checkout, including calculated evidence, nine practical sections, scripts, and a seven-day plan." />
         <meta property="og:url" content="https://matchbybirth.com/sample-report" />
       </Helmet>
 

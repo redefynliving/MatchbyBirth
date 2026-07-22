@@ -50,6 +50,54 @@ test('pair results are order independent and include five breakdown scores', () 
   ]);
   assert.equal(forward.people[0].birthDate, undefined);
   assert.equal(forward.people[0].sign, 'Aries');
+  assert.equal(typeof forward.people[0].moon.sign, 'string');
+  assert.equal(typeof forward.people[0].lifePath.number, 'number');
+  assert.equal(forward.people[0].moon.precision, 'date-only');
+});
+
+test('report focus changes the paid edition without changing the pair evidence', () => {
+  const people = [
+    { id: 'alex', name: 'Alex', birthDate: '1990-03-21' },
+    { id: 'jordan', name: 'Jordan', birthDate: '1992-09-23' },
+  ];
+
+  const moon = calculatePairResult(people, 'love', {
+    source: 'moon_sign_compatibility',
+    clarityGoal: 'reassurance',
+  });
+  const lifePath = calculatePairResult(people, 'love', {
+    reportFocus: 'life_path',
+    clarityGoal: 'shared_goals',
+  });
+
+  assert.deepEqual(moon.reportContext, {
+    focus: 'moon_sign',
+    clarityGoal: 'reassurance',
+  });
+  assert.deepEqual(lifePath.reportContext, {
+    focus: 'life_path',
+    clarityGoal: 'shared_goals',
+  });
+  assert.equal(moon.score, lifePath.score);
+  assert.deepEqual(moon.breakdown, lifePath.breakdown);
+  assert.deepEqual(moon.people, lifePath.people);
+  assert.equal(JSON.stringify(moon).includes('1990-03-21'), false);
+  assert.equal(JSON.stringify(lifePath).includes('1992-09-23'), false);
+});
+
+test('invalid clarity goals fall back to the chosen report edition default', () => {
+  const result = calculatePairResult([
+    { id: 'alex', name: 'Alex', birthDate: '1990-03-21' },
+    { id: 'jordan', name: 'Jordan', birthDate: '1992-09-23' },
+  ], 'love', {
+    source: 'crush_birthday_compatibility',
+    clarityGoal: 'repair_after_conflict',
+  });
+
+  assert.deepEqual(result.reportContext, {
+    focus: 'crush',
+    clarityGoal: 'mixed_signals',
+  });
 });
 
 test('group results contain each unique pair and preserve duplicate display names', () => {
@@ -66,6 +114,10 @@ test('group results contain each unique pair and preserve duplicate display name
   assert.ok(result.groupScore >= 0 && result.groupScore <= 100);
   assert.ok(result.bestPair);
   assert.ok(result.groupGlue);
+  assert.equal(result.groupInsights.bridgePerson.id, result.groupGlue.id);
+  assert.equal(result.groupInsights.focusPair.score, result.pairs.at(-1).score);
+  assert.equal(result.groupInsights.balanceGap, result.bestPair.score - result.pairs.at(-1).score);
+  assert.match(result.groupInsights.action, /group plan|shared expectation/i);
   assert.equal(result.people.every((person) => person.birthDate === undefined), true);
 });
 
@@ -184,4 +236,3 @@ test('exact sign calculation rejects invalid place objects', () => {
   // Should fall back to date-only because place is invalid
   assert.equal(result.people[0].precision, 'date-only');
 });
-

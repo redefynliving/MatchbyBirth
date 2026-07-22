@@ -30,6 +30,7 @@ const PremiumPage = lazy(() => import('@/pages/premium.jsx'));
 const UnsubscribePage = lazy(() => import('@/pages/UnsubscribePage.jsx'));
 const CrushBirthdayCompatibilityPage = lazy(() => import('@/pages/CrushBirthdayCompatibilityPage.jsx'));
 const LifePathCompatibilityPage = lazy(() => import('@/pages/LifePathCompatibilityPage.jsx'));
+const MoonSignCompatibilityPage = lazy(() => import('@/pages/MoonSignCompatibilityPage.jsx'));
 const FunnelDashboardPage = lazy(() => import('@/pages/FunnelDashboardPage.jsx'));
 
 function RouteFallback() {
@@ -71,6 +72,7 @@ function App() {
               <Route path="/unsubscribe" element={<UnsubscribePage />} />
               <Route path="/tools/crush-birthday-compatibility" element={<CrushBirthdayCompatibilityPage />} />
               <Route path="/tools/life-path-compatibility" element={<LifePathCompatibilityPage />} />
+              <Route path="/tools/moon-sign-compatibility" element={<MoonSignCompatibilityPage />} />
               <Route path="/admin/funnel" element={<FunnelDashboardPage />} />
 
               {/* Catch-all route */}

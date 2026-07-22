@@ -43,11 +43,19 @@ test('production API router uses static handler imports for Vercel bundling', ()
 });
 
 test('backend bridge normalizes env without conflating report and subscription prices', () => {
-  const { getCheckoutConfig } = require('../api/backend.cjs');
+  const { STRIPE_API_VERSION, getCheckoutConfig, isCheckoutEnvironmentSafe } = require('../api/backend.cjs');
   const env = { APP_URL: ' https://matchbybirth.com ', STRIPE_PRICE_ID: 'price_report', STRIPE_SUBSCRIPTION_PRICE_ID: 'price_subscription' };
   assert.equal(getCheckoutConfig('report', env).priceId, 'price_report');
   assert.equal(getCheckoutConfig('subscription', env).priceId, 'price_subscription');
   assert.equal(getCheckoutConfig('report', env).appUrl, 'https://matchbybirth.com');
+  assert.equal(STRIPE_API_VERSION, '2026-02-25.clover');
+  assert.equal(isCheckoutEnvironmentSafe({ stripeSecretKey: 'sk_test_example' }), true);
+  assert.equal(isCheckoutEnvironmentSafe({ stripeSecretKey: 'sk_live_example' }), false);
+  assert.equal(isCheckoutEnvironmentSafe({
+    stripeSecretKey: 'sk_live_example',
+    stripeLiveCheckoutEnabled: true,
+    stripeMerchantName: ' Match   by Birth ',
+  }), true);
 });
 
 test('apps API uses one CommonJS bridge instead of route-level createRequire calls', () => {

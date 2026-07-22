@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="156" height="156" viewBox="0 0 156 156" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth icon</title>
+  <desc id="desc">A minimal compatibility logo with a purple orbit, rose and blue birth points, and a centered star.</desc>
+  <rect x="0" y="0" width="156" height="156" rx="36" fill="#F7F2FA"/>
+  <path d="M32 83C43 48 113 48 124 83C113 118 43 118 32 83Z" fill="none" stroke="#806AB5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="55" cy="84" r="12" fill="#D88EA7"/>
+  <circle cx="101" cy="84" r="12" fill="#77A7D8"/>
+  <path d="M78 69L82 79L93 83L82 87L78 98L74 87L63 83L74 79Z" fill="#806AB5"/>
+</svg>

@@ -7,6 +7,13 @@ const ELEMENTS = {
   water: ['Cancer', 'Scorpio', 'Pisces'],
 };
 
+const { calculateNatalChart } = require('./astro/natal-chart.cjs');
+const { detectSynastryAspects } = require('./astro/synastry-aspects.cjs');
+const {
+  buildPersonReportEvidence,
+  buildReportContext,
+} = require('./report-evidence.cjs');
+
 // Optional exact astrology integration
 let exactAstrology;
 try {
@@ -210,6 +217,105 @@ function calculateBreakdown(personA, personB, baseScore) {
   return scores;
 }
 
+function applySynastryEvidence(breakdown, aspects) {
+  const categoryToScore = {
+    emotional: 'intuition',
+    communication: 'communication',
+    chemistry: 'chemistry',
+    stability: 'stability',
+    growth: 'growth',
+  };
+  const adjustments = Object.fromEntries(
+    Object.values(categoryToScore).map((key) => [key, 0]),
+  );
+
+  for (const aspect of aspects) {
+    const direction = aspect.polarity === 'supportive'
+      ? 1
+      : aspect.polarity === 'tension'
+        ? -1
+        : 0.25;
+    const impact = direction * (1.5 + 3.5 * aspect.strength);
+    for (const category of aspect.categoryHints) {
+      const scoreKey = categoryToScore[category];
+      if (scoreKey) adjustments[scoreKey] += impact;
+    }
+  }
+
+  const clamp = (value) => Math.max(20, Math.min(98, Math.round(value)));
+  const scores = Object.fromEntries(
+    Object.entries(adjustments).map(([key, adjustment]) => [
+      key,
+      clamp(breakdown[key] + Math.max(-12, Math.min(12, adjustment))),
+    ]),
+  );
+  scores.overall = Math.round(
+    Object.entries(BREAKDOWN_WEIGHTS).reduce(
+      (total, [key, weight]) => total + scores[key] * weight,
+      0,
+    ),
+  );
+  return scores;
+}
+
+function aspectLabel(aspect) {
+  return `${aspect.from.body} ${aspect.aspect} ${aspect.to.body} (${aspect.orb}\u00b0 orb)`;
+}
+
+function buildPrecisionComparison(dateOnlyBreakdown, exactBreakdown) {
+  return {
+    dateOnlyScore: dateOnlyBreakdown.overall,
+    exactScore: exactBreakdown.overall,
+    delta: exactBreakdown.overall - dateOnlyBreakdown.overall,
+    categoryDeltas: Object.keys(BREAKDOWN_WEIGHTS).map((key) => ({
+      key,
+      dateOnly: dateOnlyBreakdown[key],
+      exact: exactBreakdown[key],
+      delta: exactBreakdown[key] - dateOnlyBreakdown[key],
+    })),
+  };
+}
+
+function calculateFullSynastry(personA, personB) {
+  if (
+    !personA.birthTime
+    || !personB.birthTime
+    || !exactAstrology.isValidPlace(personA.place)
+    || !exactAstrology.isValidPlace(personB.place)
+  ) {
+    return null;
+  }
+
+  const chartA = calculateNatalChart(personA);
+  const chartB = calculateNatalChart(personB);
+  if (chartA.precision !== 'timed' || chartB.precision !== 'timed') return null;
+
+  const aspects = detectSynastryAspects(chartA, chartB);
+  if (aspects.length === 0) return null;
+
+  const topSupportiveAspects = aspects
+    .filter((aspect) => aspect.polarity === 'supportive')
+    .slice(0, 3);
+  const topTensionAspects = aspects
+    .filter((aspect) => aspect.polarity === 'tension')
+    .slice(0, 2);
+  const evidenceAspects = [...topSupportiveAspects, ...topTensionAspects]
+    .sort((left, right) => right.strength - left.strength);
+
+  return {
+    aspects,
+    topSupportiveAspects,
+    topTensionAspects,
+    evidence: evidenceAspects.map((aspect) => ({
+      aspectId: aspect.id,
+      label: aspectLabel(aspect),
+      polarity: aspect.polarity,
+      strength: aspect.strength,
+      categories: aspect.categoryHints,
+    })),
+  };
+}
+
 function getSignForPerson(person) {
   // Exact mode: use place and time if available and valid
   if (person.place && person.birthTime && exactAstrology.isValidPlace(person.place)) {
@@ -224,9 +330,9 @@ function getSignForPerson(person) {
   return { sign: getZodiacSign(person.birthDate), exact: false };
 }
 
-function sanitizePerson(person) {
+function sanitizePerson(person, options = {}) {
   const { sign, exact } = getSignForPerson(person);
-  return {
+  const sanitized = {
     id: person.id,
     name: person.name,
     sign,
@@ -234,25 +340,52 @@ function sanitizePerson(person) {
     exactSunSign: sign,
     precision: exact ? 'exact' : 'date-only',
   };
+
+  return options.includeReportEvidence
+    ? { ...sanitized, ...buildPersonReportEvidence(person) }
+    : sanitized;
 }
 
-function calculatePairResult(people, relationshipType = 'love') {
+function calculatePairResult(people, relationshipType = 'love', reportInput = {}) {
   const [personA, personB] = validatePeople(people, 2, 2);
-  const sanitizedPeople = [sanitizePerson(personA), sanitizePerson(personB)];
+  const sanitizedPeople = [
+    sanitizePerson(personA, { includeReportEvidence: true }),
+    sanitizePerson(personB, { includeReportEvidence: true }),
+  ];
   const baseScore = calculateBaseCompatibility(
     sanitizedPeople[0].sign,
     sanitizedPeople[1].sign,
   );
-  const breakdown = calculateBreakdown(personA, personB, baseScore);
+  const basicBreakdown = calculateBreakdown(personA, personB, baseScore);
+  const synastry = calculateFullSynastry(personA, personB);
+  const breakdown = synastry
+    ? applySynastryEvidence(basicBreakdown, synastry.aspects)
+    : basicBreakdown;
+  const dateOnlyBreakdown = synastry
+    ? calculateBreakdown(
+      personA,
+      personB,
+      calculateBaseCompatibility(
+        getZodiacSign(personA.birthDate),
+        getZodiacSign(personB.birthDate),
+      ),
+    )
+    : null;
   const interpretation = scoreInterpretation(breakdown.overall, relationshipType);
 
   return {
     mode: 'pair',
     relationshipType,
+    calculationMode: synastry ? 'full-synastry' : 'basic-sun',
+    reportContext: buildReportContext(reportInput),
     people: sanitizedPeople,
     score: breakdown.overall,
     breakdown,
     interpretation,
+    ...(synastry ? {
+      synastry,
+      precisionComparison: buildPrecisionComparison(dateOnlyBreakdown, breakdown),
+    } : {}),
   };
 }
 
@@ -268,7 +401,8 @@ function calculateGroupResult(people) {
       const personB = validated[secondIndex];
       const publicA = sanitizedPeople[firstIndex];
       const publicB = sanitizedPeople[secondIndex];
-      const score = calculatePairResult([personA, personB], 'friendship').score;
+      const baseScore = calculateBaseCompatibility(publicA.sign, publicB.sign);
+      const score = calculateBreakdown(personA, personB, baseScore).overall;
 
       pairs.push({
         personA: publicA,
@@ -297,6 +431,9 @@ function calculateGroupResult(people) {
   const groupScore = Math.round(
     pairs.reduce((total, pair) => total + pair.score, 0) / pairs.length,
   );
+  const focusPair = pairs[pairs.length - 1];
+  const bridgePerson = memberAverages[0];
+  const balanceGap = pairs[0].score - focusPair.score;
 
   return {
     mode: 'group',
@@ -306,7 +443,15 @@ function calculateGroupResult(people) {
     groupScore,
     interpretation: scoreInterpretation(groupScore, 'friendship'),
     bestPair: pairs[0],
-    groupGlue: memberAverages[0],
+    groupGlue: bridgePerson,
+    groupInsights: {
+      balanceGap,
+      bridgePerson,
+      focusPair,
+      action: balanceGap >= 20
+        ? `Before the next group plan, ask ${focusPair.personA.name} and ${focusPair.personB.name} what would make it easier to participate, then let ${bridgePerson.name} summarize the shared expectation.`
+        : `Before the next group plan, have each person name one preference, then let ${bridgePerson.name} summarize what the group agreed to.`,
+    },
     memberAverages,
     pairs,
   };

@@ -6,7 +6,7 @@ import {
   Route,
   Sparkles,
 } from 'lucide-react';
-import { getVisibleGroupPairs } from '@/lib/result-presentation.js';
+import { buildGroupInsights, getVisibleGroupPairs } from '@/lib/result-presentation.js';
 
 function PairRow({ pair, rank }) {
   return (
@@ -31,7 +31,7 @@ function PairRow({ pair, rank }) {
 function GroupCompatibilityResults({ result, precisionLabel, precisionNote }) {
   const [showAllPairs, setShowAllPairs] = useState(false);
   const visiblePairs = getVisibleGroupPairs(result.pairs, showAllPairs);
-  const lowestPair = result.pairs[result.pairs.length - 1];
+  const insights = buildGroupInsights(result);
 
   return (
     <div className="animate-fade-in mx-auto w-full max-w-5xl space-y-4">
@@ -100,9 +100,9 @@ function GroupCompatibilityResults({ result, precisionLabel, precisionNote }) {
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
             Group glue
           </p>
-          <h2 className="mt-1 text-lg font-semibold">{result.groupGlue.name}</h2>
+          <h2 className="mt-1 text-lg font-semibold">{insights.bridgePerson.name}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Connects with the group at an average of {result.groupGlue.average}%.
+            Likely bridge person, with an average connection score of {insights.bridgePerson.average}%.
           </p>
         </article>
 
@@ -112,26 +112,31 @@ function GroupCompatibilityResults({ result, precisionLabel, precisionNote }) {
             Best dynamic
           </p>
           <h2 className="mt-1 text-lg font-semibold">
-            {result.bestPair.personA.name} + {result.bestPair.personB.name}
+            {insights.bestPair.personA.name} + {insights.bestPair.personB.name}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Highest-scoring pair at {result.bestPair.score}%.
+            Highest-scoring pair at {insights.bestPair.score}%. The group balance gap is {insights.balanceGap} points.
           </p>
         </article>
 
         <article className="rounded-2xl border border-border bg-card p-5">
           <Route className="h-5 w-5 text-primary" />
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Lowest-scoring pair
+            {insights.focus.label}
           </p>
           <h2 className="mt-1 text-lg font-semibold">
-            {lowestPair.personA.name} + {lowestPair.personB.name}
+            {insights.focusPair.personA.name} + {insights.focusPair.personB.name}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            This pair has more differences to work through.
+            This connection scores {insights.focusPair.score}%. {insights.focus.summary}
           </p>
         </article>
       </div>
+
+      <section className="rounded-2xl border border-primary/20 bg-secondary/45 p-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">One useful group action</p>
+        <p className="mt-2 text-sm font-medium leading-6 text-foreground">{insights.action}</p>
+      </section>
     </div>
   );
 }

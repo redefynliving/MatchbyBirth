@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="180" viewBox="0 0 520 180" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth monochrome logo test</title>
+  <desc id="desc">Black and white tests of the refined Match by Birth mark.</desc>
+  <rect x="0" y="0" width="260" height="180" fill="#FFFFFF"/>
+  <g transform="translate(46 45)" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 45C17 7 95 7 112 45C95 83 17 83 0 45Z" stroke-width="11"/>
+    <path d="M35 45H77" stroke-width="8"/>
+  </g>
+  <g transform="translate(46 45)" fill="#000000">
+    <circle cx="34" cy="45" r="11"/>
+    <circle cx="78" cy="45" r="11"/>
+  </g>
+  <rect x="260" y="0" width="260" height="180" fill="#000000"/>
+  <g transform="translate(306 45)" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 45C17 7 95 7 112 45C95 83 17 83 0 45Z" stroke-width="11"/>
+    <path d="M35 45H77" stroke-width="8"/>
+  </g>
+  <g transform="translate(306 45)" fill="#FFFFFF">
+    <circle cx="34" cy="45" r="11"/>
+    <circle cx="78" cy="45" r="11"/>
+  </g>
+</svg>

@@ -53,14 +53,19 @@ async function fulfillPurchase(purchaseId, dependencies) {
 
     if (!report) {
       console.log(`FULFILL GENERATING: purchase ${purchaseId} — calling report generator`);
-      const content = await generateReport(purchase.result.result_payload);
+      const reportContext = purchase.result.result_payload?.reportContext || {};
+      const content = await generateReport(purchase.result.result_payload, {
+        reportType: purchase.report_type || reportContext.reportType || 'standard',
+        reportFocus: purchase.report_focus || reportContext.focus,
+        clarityGoal: purchase.clarity_goal || reportContext.clarityGoal,
+      });
       console.log(`FULFILL GENERATED: purchase ${purchaseId} — model: ${content.model || 'unknown'}`);
       
       report = await store.insertReport({
         purchase_id: purchaseId,
         access_token_hash: access.tokenHash,
         content,
-        model: content.model || 'fallback-v1',
+        model: content.model || 'fallback-v3',
         promptVersion: content.promptVersion || 'structured-v1',
       });
     }

@@ -1,1 +1,16 @@
-{"projectId":"prj_On5YW4346Sn5dGpVbKEybUrTwRJ9","orgId":"team_DP0RA18LJHJRCfJvPK6ObT8Q","projectName":"matchby-birth"}
+{
+  "projectId": "prj_On5YW4346Sn5dGpVbKEybUrTwRJ9",
+  "orgId": "team_DP0RA18LJHJRCfJvPK6ObT8Q",
+  "projectName": "matchby-birth",
+  "settings": {
+    "createdAt": 1779651820991,
+    "framework": null,
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}

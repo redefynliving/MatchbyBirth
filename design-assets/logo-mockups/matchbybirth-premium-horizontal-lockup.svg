@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="160" viewBox="0 0 780 160" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth premium horizontal lockup</title>
+  <desc id="desc">A mature Match by Birth horizontal logo lockup with a refined eye-shaped compatibility mark and stronger editorial wordmark.</desc>
+  <g color="#241D2D" transform="translate(34 34) scale(.9)">
+    <path fill="currentColor" fill-rule="evenodd" d="M16 52C34 20 122 20 140 52C122 84 34 84 16 52ZM30 52C46 31 110 31 126 52C110 73 46 73 30 52Z"/>
+    <path d="M63 52H93" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/>
+    <circle cx="61" cy="52" r="7.2" fill="currentColor"/>
+    <circle cx="95" cy="52" r="7.2" fill="currentColor"/>
+  </g>
+  <text x="192" y="98" fill="#241D2D" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700" letter-spacing="0">Match by Birth</text>
+</svg>

@@ -53,6 +53,28 @@ test('share card svg is private-safe and supports group scores', () => {
   assert.doesNotMatch(svg, /\d{4}-\d{2}-\d{2}/);
 });
 
+test('full synastry share cards expose calculated evidence without birth details', () => {
+  const result = {
+    mode: 'pair',
+    calculationMode: 'full-synastry',
+    people: [{ name: 'Alex' }, { name: 'Jordan' }],
+    score: 82,
+    breakdown: { chemistry: 88, communication: 76, stability: 72, growth: 84, intuition: 80 },
+    synastry: {
+      evidence: [{ label: 'Moon trine Venus (0.5° orb)', polarity: 'supportive' }],
+    },
+  };
+  const meta = buildShareCardMeta(result);
+  const svg = buildShareCardSvg(result);
+
+  assert.equal(meta.readingLabel, 'Full timed synastry');
+  assert.equal(meta.topAspect, 'Moon trine Venus (0.5° orb)');
+  assert.match(meta.description, /Top synastry aspect/);
+  assert.match(svg, /FULL TIMED SYNASTRY/);
+  assert.match(svg, /Moon trine Venus/);
+  assert.doesNotMatch(svg, /birthDate|birthTime|timezone/);
+});
+
 test('share copy and result metadata use the branded share layer', async () => {
   const shareCopy = await import(pathToFileURL(
     path.join(root, 'apps/web/src/lib/share-copy.js'),
@@ -80,6 +102,17 @@ test('share copy and result metadata use the branded share layer', async () => {
     shareCopy.getShareText({ mode: 'pair', p1: 'Alex', p2: 'Jordan', score: 86 }),
     'Alex and Jordan got 86% on Match by Birth: Strong natural rhythm.',
   );
+  assert.equal(
+    shareCopy.getShareText({
+      mode: 'pair',
+      p1: 'Alex',
+      p2: 'Jordan',
+      score: 82,
+      calculationMode: 'full-synastry',
+      topAspectLabel: 'Moon trine Venus (0.5° orb)',
+    }),
+    'Alex and Jordan got 82% in a full Match by Birth synastry reading. Top aspect: Moon trine Venus (0.5° orb).',
+  );
   assert.match(resultPage, /twitter:card/);
   assert.match(resultPage, /getShareTitle/);
   assert.match(resultPage, /getShareDescription/);
@@ -94,9 +127,10 @@ test('share copy and result metadata use the branded share layer', async () => {
   assert.match(sharePage, /\/sample-report/);
   assert.match(sharePage, /share_page_cta_click/);
   assert.match(sharePage, /share_page_sample_report_click/);
-  assert.match(sharePage, /placement="top"/);
-  assert.match(sharePage, /placement="middle"/);
-  assert.match(sharePage, /placement="bottom"/);
+  assert.match(sharePage, /placement="shared_result"/);
+  assert.doesNotMatch(sharePage, /placement="top"/);
+  assert.doesNotMatch(sharePage, /placement="middle"/);
+  assert.doesNotMatch(sharePage, /placement="bottom"/);
   assert.match(sharePage, /Birth dates are not shown on shared pages/);
   assert.match(sharePageModel, /strong_natural_rhythm/);
   assert.match(sharePageModel, /good_compatibility/);
@@ -104,4 +138,6 @@ test('share copy and result metadata use the branded share layer', async () => {
   assert.match(sharePageModel, /different_rhythms/);
   assert.match(sharePageModel, /strongestArea/);
   assert.match(sharePageModel, /watchArea/);
+  assert.match(sharePageModel, /topAspect/);
+  assert.match(sharePage, /Leading timed aspect/);
 });

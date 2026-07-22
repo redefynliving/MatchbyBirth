@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240" role="img" aria-labelledby="title desc">
+  <title id="title">Match by Birth logo mockup 2 - Date Pair</title>
+  <desc id="desc">A simple calendar mark with two connected birth dates and a Match by Birth wordmark.</desc>
+  <g transform="translate(56 42)">
+    <rect x="0" y="0" width="156" height="156" rx="36" fill="#FBF8F1"/>
+    <rect x="35" y="31" width="86" height="92" rx="18" fill="none" stroke="#806AB5" stroke-width="10"/>
+    <path d="M35 59H121" stroke="#806AB5" stroke-width="10" stroke-linecap="round"/>
+    <path d="M58 90H98" stroke="#806AB5" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="58" cy="90" r="12" fill="#D88EA7"/>
+    <circle cx="98" cy="90" r="12" fill="#D8B15D"/>
+    <circle cx="58" cy="44" r="5" fill="#806AB5"/>
+    <circle cx="98" cy="44" r="5" fill="#806AB5"/>
+  </g>
+  <g transform="translate(250 86)" fill="#241D2D" font-family="Outfit, Inter, Arial, sans-serif" letter-spacing="0">
+    <text font-size="58" font-weight="760">
+      <tspan>Match</tspan><tspan font-weight="520"> by Birth</tspan>
+    </text>
+    <text y="52" font-size="20" font-weight="500" fill="#75677D">two dates, one compatibility score</text>
+  </g>
+</svg>

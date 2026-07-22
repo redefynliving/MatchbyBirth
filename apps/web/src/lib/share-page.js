@@ -86,6 +86,12 @@ function getDisplayName(result) {
   return names.length >= 2 ? `${names[0]} + ${names[1]}` : 'Shared compatibility result';
 }
 
+function getTopAspect(result) {
+  if (result?.calculationMode !== 'full-synastry') return '';
+  const evidence = Array.isArray(result?.synastry?.evidence) ? result.synastry.evidence : [];
+  return evidence.find((item) => item?.label)?.label || '';
+}
+
 function getPreviewInsight(scoreBand, strongestArea, watchArea) {
   const insights = {
     strong_natural_rhythm: `The strongest signal is ${strongestArea}. The watch area is ${watchArea}, which is more of a tuning point than a warning sign.`,
@@ -109,6 +115,7 @@ export function buildSharePageModel(result) {
     ? getGroupArea(result, 'watch')
     : getPairArea(result, 'watch');
   const relationshipType = result?.relationshipType || (isGroup ? 'group' : 'connection');
+  const topAspect = getTopAspect(result);
 
   return {
     displayName: getDisplayName(result),
@@ -122,7 +129,11 @@ export function buildSharePageModel(result) {
     ctaBody: band.ctaBody,
     strongestArea,
     watchArea,
-    previewInsight: getPreviewInsight(scoreBand, strongestArea, watchArea),
+    readingMode: topAspect ? 'Full timed synastry' : 'Birth-date compatibility',
+    topAspect,
+    previewInsight: topAspect
+      ? `${getPreviewInsight(scoreBand, strongestArea, watchArea)} The leading timed aspect is ${topAspect}.`
+      : getPreviewInsight(scoreBand, strongestArea, watchArea),
     previewParagraphOne: `This shared result shows the public outline: score, rhythm, strongest area, and watch area. It is enough to start the conversation without exposing private birth details.`,
     previewParagraphTwo: `The full reading is meant to go deeper into why the connection feels the way it does, what can create friction, and what to talk about before the pattern repeats.`,
   };
