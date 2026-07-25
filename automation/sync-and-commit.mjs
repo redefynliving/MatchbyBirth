@@ -23,7 +23,9 @@ globalThis.fetch = (url, opts = {}) => {
 };
 
 try {
-  await import(`../apps/web/tools/sync-sanity-posts.js`);
+  const mod = await import(`../apps/web/tools/sync-sanity-posts.js`);
+  const posts = await mod.fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });
+  console.log(`[sync] fetched ${posts.length} posts:`, posts.map((p) => p.slug).join(', '));
 } catch (e) {
   console.error('[sync] failed:', e.message);
   process.exit(1);
