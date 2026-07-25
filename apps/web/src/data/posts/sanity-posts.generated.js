@@ -3,6 +3,32 @@
 const sanityPosts = [
   {
     "source": "sanity",
+    "slug": "lunar-eclipse-pisces-2026",
+    "title": "Pisces Eclipse 2026: Face the Escape Pattern",
+    "metaTitle": "Pisces Eclipse 2026: Face the Escape Pattern",
+    "date": "2026-07-25",
+    "description": "Lunar eclipse Pisces 2026: facing escapist patterns in partnerships and friend groups. A lunar eclipse in Pisces falls on Aug 27, 2026. A practical, no-jargo",
+    "tags": [
+      "relationships",
+      "friendship",
+      "sanity"
+    ],
+    "category": "relationships",
+    "content": "\u003ch2>The short version\u003c/h2>\n\u003cp>Lunar eclipse Pisces 2026 matters because facing escapist patterns in partnerships and friend groups. It is a lens for noticing what is already happening between people — not a verdict, and not a scoreboard. A lunar eclipse in Pisces falls on Aug 27, 2026. Most friction that people blame on compatibility is really just two people running on different clocks: one processes out loud, the other needs to sit with it; one wants the plan named now, the other wants to feel safe first. When lunar eclipse pisces 2026 is in play, those differences get louder, and louder differences get misread as distance. The useful move is to name the pattern early instead of overwriting it with assumption.\u003c/p>\n\u003ch2>What actually shifts when this is active\u003c/h2>\n\u003cp>The change shows up in *how people talk and decide*, not in whether they care. A transit or a number does not end a bond; silence about the shift is what quietly erodes one. Imagine a group where one person reads the change as distance and another as normal recharge. The fix is not a grand romantic gesture — it is a small shared rule like &quot;we reconnect after dinner, no phones.&quot; Structure beats guessing. The bond does not need more love; it needs one agreed habit that removes the ambiguity and lets both people relax.\u003c/p>\n\u003ch2>Two examples that show the pattern\u003c/h2>\n\u003cp>Now picture a workspace where the loudest voice is read as the only one who cares. Naming the pattern — &quot;I go quiet when I&#39;m processing, not when I&#39;ve checked out&quot; — turns a recurring loop into a joke everyone understands, and jokes defuse more than lectures. Or watch a group chat when energy spikes: the planner wants the date locked, the skeptic wants to wait, the cheerleader wants everyone together now. Same pattern, different room. &quot;We&#39;re in a timing crunch, let&#39;s just pick Friday&quot; is the whole skill, and it works because it names the clock instead of the person.\u003c/p>\n\u003ch2>What Lunar eclipse Pisces 2026 is not\u003c/h2>\n\u003cp>It is not a prediction, and not a ranking of who is &quot;better&quot; at relationships. It describes a tendency, not a destiny. People change their patterns on purpose all the time; the forecast cannot see the conversation you had last night. Treat it as a map of common friction, not a sentence. The useful move is to ask a better question, then let the answer come from the actual person in front of you rather than from a calendar. Attention shapes perception, so point it at the quiet okay moments, not only the loud ones.\u003c/p>\n\u003ch2>The one habit that helps most\u003c/h2>\n\u003cp>Pick one low-effort ritual — a Sunday reset, a post-argument reset, a two-minute &quot;how are we&quot; text — and protect it. The lens explains the weather; the ritual is the umbrella. People overestimate insights and underestimate small repeatable structures, which is why one dependable habit does more for a bond than any forecast. When lunar eclipse pisces 2026 trends, it is tempting to read every off day as a sign. It usually isn&#39;t. A relationship has a thousand quiet okay moments for every loud one, and the forecast only names the loud ones.\u003c/p>\n\u003ch2>How to use this without overthinking it\u003c/h2>\n\u003cp>Use the lens to start a conversation, then check the real thing. [How compatibility results work](https://matchbybirth.com/how-it-works) weighs full birth charts — Sun, Moon, Venus, and the aspects between them — not just one placement or one transit. That is where a specific percentage and the specific friction points actually live, and where you can see whether a pattern is a real mismatch or just a timing effect. Keep the calculator as the second step, not the first: talk first, confirm second, and let the number add detail instead of pressure.\u003c/p>\n\u003ch2>A practical way to start tonight\u003c/h2>\n\u003cp>You do not need a special moment to use this. Pick the one relationship or group that has felt slightly off, and name one pattern out loud using this lens — not as a complaint, but as a description. &quot;I think we&#39;ve been on different clocks this week&quot; lands differently than &quot;you&#39;ve been distant.&quot; The first opens a conversation; the second closes one. That single habit, repeated, is most of what people mean when they say a bond &quot;communicates well.&quot;\u003c/p>\n\u003ch2>Related reading\u003c/h2>\n\u003cul>\n\u003cli>Aries and Scorpio compatibilityMost compatible zodiac signs of 2026Try the Match by Birth calculator\u003c/li>\n\u003c/ul>",
+    "quickTakeaways": [
+      "Lunar eclipse Pisces 2026: facing escapist patterns in partnerships and friend groups.",
+      "Notice the shift in how people talk, not whether they care.",
+      "Name it early; small structure beats guessing.",
+      "Check the real charts for the exact score."
+    ],
+    "exampleScenarios": [],
+    "comparisonRows": [],
+    "faq": [],
+    "relatedSlugs": [],
+    "calculatorCta": true
+  },
+  {
+    "source": "sanity",
     "slug": "compatibility-for-teams",
     "title": "Compatibility for Work Teams",
     "metaTitle": "Compatibility for Work Teams",
