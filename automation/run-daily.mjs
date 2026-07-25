@@ -3,7 +3,7 @@
 import { execSync } from 'node:child_process';
 import { nextTopic, markPublished } from './queue.mjs';
 import { draftPost } from './editorial.mjs';
-import { publishPost, triggerDeploy } from './publish.mjs';
+import { publishPost } from './publish.mjs';
 import { analyzeDraftQuality } from '../studio-matchbybirth/tools/content-quality.mjs';
 
 const AUTO_PUBLISH = process.env.BLOG_AUTO_PUBLISH === '1' || process.env.BLOG_AUTO_PUBLISH === 'true';
@@ -25,17 +25,16 @@ async function main() {
   }
   await publishPost(post, { autoPublish: AUTO_PUBLISH });
   markPublished(topic.slug, today);
-  // Regenerate the committed generated posts file and push it FIRST, so the
-  // Vercel deploy hook (fired next) promotes a build of main that INCLUDES the
-  // new post in sanity-posts.generated.js. This is the ONLY deploy trigger —
-  // disable Vercel's Git auto-deploy production promotion to avoid a second
-  // hook racing and aliasing a stale build.
+  // Regenerate sanity-posts.generated.js and commit+push it. This single push
+  // to main is the ONLY deploy trigger: Vercel's Git auto-deploy builds this
+  // commit (which includes the new post) after the commit exists, so ordering
+  // is always correct. No separate deploy hook — a second trigger would race
+  // and risk aliasing a stale build.
   try {
     execSync('node automation/sync-and-commit.mjs', { stdio: 'inherit' });
   } catch (e) {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
-  await triggerDeploy();
   console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
 }
 
