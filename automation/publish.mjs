@@ -67,6 +67,13 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     const vtext = await vres.text();
     console.log(`[debug] /v1/projects HTTP ${vres.status}: ${vtext.slice(0, 200)}`);
   } catch (e) { console.log('[debug] projects err', e.message); }
+  // DEBUG: authenticated count + slug check in production
+  try {
+    const cq = encodeURIComponent('count(*[_type=="blogPost"])');
+    const cres = await fetch(`https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${cq}`, { headers: { Authorization: `Bearer ${token}` } });
+    const cjson = await cres.json();
+    console.log(`[debug] AUTH blogPost count in ${PROJECT_ID}/${DATASET}: ${cjson.result}`);
+  } catch (e) { console.log('[debug] count err', e.message); }
   const slug = slugify(post.slug || post.title);
   const now = new Date().toISOString();
   // Published docs MUST use a bare _id (no `drafts.` prefix) or the static
