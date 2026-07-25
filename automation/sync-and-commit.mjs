@@ -1,18 +1,16 @@
-// Regenerate src/data/posts/sanity-posts.generated.js from Sanity (with the
-// write token, which also has read) and commit it so the Vercel build picks up
-// new posts without needing Sanity credentials in the Vercel build environment.
-// We inject the token into the fetch so the query bypasses the public CDN cache
-// and sees freshly-published docs immediately.
+// Regenerate apps/web/src/data/posts/sanity-posts.generated.js from Sanity and
+// commit it so the Vercel build (which has no Sanity creds) picks up new posts.
+// Runs in-process so the patched global fetch (auth + cache-bust) applies.
 import { execSync } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const repoRoot = new URL('../', import.meta.url).pathname;
-process.chdir(repoRoot);
-
+const repoRoot = path.resolve(fileURLToPath(import.meta.url), '../..');
 const token = process.env.SANITY_API_TOKEN;
-const outputPath = 'apps/web/src/data/posts/sanity-posts.generated.js';
+const outputPath = path.join(repoRoot, 'apps/web/src/data/posts/sanity-posts.generated.js');
 
-// Wrap global fetch to add the Authorization header (bypasses cache) and a
-// cache-buster so freshly-published docs are visible immediately.
+// Patch global fetch: add Authorization + cache-bust so freshly-published docs
+// are visible immediately (the Sanity query API CDN-caches public responses).
 const origFetch = globalThis.fetch;
 globalThis.fetch = (url, opts = {}) => {
   let u = url;
@@ -23,7 +21,12 @@ globalThis.fetch = (url, opts = {}) => {
 };
 
 try {
-  execSync('node apps/web/tools/sync-sanity-posts.js', { stdio: 'inherit', env: { ...process.env, SANITY_API_TOKEN: token } });
+  const { fetchSanityBlogPosts, writeSanityPostsModule } = await import(
+    path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
+  );
+  const posts = await fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });
+  console.log(`[sync] fetched ${posts.length} posts:`, posts.map((p) => p.slug).join(', '));
+  writeSanityPostsModule({ posts, outputPath });
 } catch (e) {
   console.error('[sync] failed:', e.message);
   process.exit(1);
