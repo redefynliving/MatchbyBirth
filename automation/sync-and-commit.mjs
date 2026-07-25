@@ -9,29 +9,14 @@ const repoRoot = path.resolve(fileURLToPath(import.meta.url), '../..');
 const token = process.env.SANITY_API_TOKEN;
 const outputPath = path.join(repoRoot, 'apps/web/src/data/posts/sanity-posts.generated.js');
 
-// Patch global fetch: add Authorization + cache-bust so freshly-published docs
-// are visible immediately (the Sanity query API CDN-caches public responses).
+// Patch global fetch: add Authorization so the query bypasses the public CDN
+// cache and sees freshly-published docs immediately.
 const origFetch = globalThis.fetch;
-globalThis.fetch = (url, opts = {}) => {
-  let u = url;
-  if (typeof u === 'string' && u.includes('api.sanity.io/v') && u.includes('/data/query/')) {
-    u = u + (u.includes('?') ? '&' : '?') + '_cachebust=' + Date.now();
-  }
-  return origFetch(u, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
-};
+globalThis.fetch = (url, opts = {}) =>
+  origFetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
 
 try {
-  const { writeSanityPostsModule } = await import(
-    path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
-  );
-  // DEBUG: raw query (no cache-bust) to see if new posts are visible
-  const rawQ = encodeURIComponent('*[_type=="blogPost" && status=="published"]{slug, approvalStatus, status, _id}');
-  const rawRes = await origFetch(`https://4qj4p6px.api.sanity.io/v2025-01-01/data/query/production?query=${rawQ}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  const rawJson = await rawRes.json();
-  console.log(`[sync] RAW published docs (${rawJson.result?.length}):`, (rawJson.result || []).map((d) => d.slug?.current || d._id).join(', '));
-  const { fetchSanityBlogPosts } = await import(
+  const { fetchSanityBlogPosts, writeSanityPostsModule } = await import(
     path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
   );
   const posts = await fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });
