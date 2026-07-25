@@ -21,11 +21,21 @@ globalThis.fetch = (url, opts = {}) => {
 };
 
 try {
-  const { fetchSanityBlogPosts, writeSanityPostsModule } = await import(
+  const { writeSanityPostsModule } = await import(
+    path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
+  );
+  // DEBUG: raw query (no cache-bust) to see if new posts are visible
+  const rawQ = encodeURIComponent('*[_type=="blogPost" && status=="published"]{slug, approvalStatus, status, _id}');
+  const rawRes = await origFetch(`https://4qj4p6px.api.sanity.io/v2025-01-01/data/query/production?query=${rawQ}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  const rawJson = await rawRes.json();
+  console.log(`[sync] RAW published docs (${rawJson.result?.length}):`, (rawJson.result || []).map((d) => d.slug?.current || d._id).join(', '));
+  const { fetchSanityBlogPosts } = await import(
     path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
   );
   const posts = await fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });
-  console.log(`[sync] fetched ${posts.length} posts:`, posts.map((p) => p.slug).join(', '));
+  console.log(`[sync] normalized ${posts.length} posts:`, posts.map((p) => p.slug).join(', '));
   writeSanityPostsModule({ posts, outputPath });
 } catch (e) {
   console.error('[sync] failed:', e.message);
