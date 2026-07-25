@@ -95,7 +95,14 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     body: JSON.stringify({ mutations: [{ createOrReplace: document }] }),
   });
   const body = await res.text();
-  console.log(`[publish] HTTP ${res.status} | body: ${body.slice(0, 300)}`);
+  console.log(`[publish] HTTP ${res.status} | tokenlen=${token.length} | body: ${body}`);
+  // Re-query immediately with token to confirm persistence
+  try {
+    const rq = encodeURIComponent('*[_id=="'+_id+'"][0]{_id,status}');
+    const rres = await fetch(`https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${rq}`, { headers: { Authorization: `Bearer ${token}` } });
+    const rjson = await rres.json();
+    console.log(`[publish] re-query _id=${_id}: ${JSON.stringify(rjson.result)}`);
+  } catch (e) { console.log('[publish] requery err', e.message); }
   if (!res.ok) {
     console.error(`[publish] Sanity HTTP ${res.status}: ${body}`);
     throw new Error(`Sanity publish failed ${res.status}`);
