@@ -16,7 +16,7 @@
     "content:check": "node scripts/check-content-quality.mjs"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.2.4"
   },
   "workspaces": [
     "apps/*"
