@@ -61,18 +61,6 @@ function markdownToBlocks(md) {
 export async function publishPost(post, { autoPublish = false } = {}) {
   const token = process.env.SANITY_API_TOKEN;
   if (!token) throw new Error('SANITY_API_TOKEN required to publish.');
-  // DEBUG: list projects this token can access
-  try {
-    const vres = await fetch('https://api.sanity.io/v1/projects', { headers: { Authorization: `Bearer ${token}` } });
-    const vtext = await vres.text();
-    console.log(`[debug] /v1/projects HTTP ${vres.status}: ${vtext.slice(0, 200)}`);
-  } catch (e) { console.log('[debug] projects err', e.message); }
-  // DEBUG: list datasets in the project
-  try {
-    const dres = await fetch(`https://api.sanity.io/v1/projects/${PROJECT_ID}/datasets`, { headers: { Authorization: `Bearer ${token}` } });
-    const dtext = await dres.text();
-    console.log(`[debug] datasets HTTP ${dres.status}: ${dtext.slice(0, 200)}`);
-  } catch (e) { console.log('[debug] datasets err', e.message); }
   const slug = slugify(post.slug || post.title);
   const now = new Date().toISOString();
   // Published docs MUST use a bare _id (no `drafts.` prefix) or the static
