@@ -39,6 +39,9 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index.js" },
+    { "source": "/blog/category/:slug", "destination": "/blog/category/:slug/index.html" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
+    { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
