@@ -95,6 +95,7 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     body: JSON.stringify({ mutations: [{ createOrReplace: document }] }),
   });
   const body = await res.text();
+  console.log(`[publish] HTTP ${res.status} | body: ${body.slice(0, 300)}`);
   if (!res.ok) {
     console.error(`[publish] Sanity HTTP ${res.status}: ${body}`);
     throw new Error(`Sanity publish failed ${res.status}`);
