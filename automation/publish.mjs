@@ -63,8 +63,12 @@ export async function publishPost(post, { autoPublish = false } = {}) {
   if (!token) throw new Error('SANITY_API_TOKEN required to publish.');
   const slug = slugify(post.slug || post.title);
   const now = new Date().toISOString();
+  // Published docs MUST use a bare _id (no `drafts.` prefix) or the static
+  // build's query `!(_id in path("drafts.**"))` filters them out. Drafts keep
+  // the prefix so they appear as drafts in the Studio.
+  const _id = autoPublish ? `blogPost.${slug}` : `drafts.blogPost.${slug}`;
   const document = {
-    _id: `drafts.blogPost.${slug}`,
+    _id,
     _type: 'blogPost',
     title: post.title,
     slug: { _type: 'slug', current: slug },
