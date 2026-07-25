@@ -36,5 +36,6 @@ async function main() {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
   console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
+}
 
 main().catch((e) => { console.error(e); process.exit(1); });
