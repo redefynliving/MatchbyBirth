@@ -96,13 +96,6 @@ export async function publishPost(post, { autoPublish = false } = {}) {
   });
   const body = await res.text();
   console.log(`[publish] HTTP ${res.status} | body: ${body.slice(0, 300)}`);
-  // DEBUG: what does THIS token see?
-  try {
-    const cq = encodeURIComponent('count(*[_type=="blogPost"])');
-    const cres = await fetch(`https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${cq}`, { headers: { Authorization: `Bearer ${token}` } });
-    const cjson = await cres.json();
-    console.log(`[debug] token-seen blogPost count in ${PROJECT_ID}/${DATASET}: ${cjson.result}`);
-  } catch (e) { console.log('[debug] count err', e.message); }
   if (!res.ok) {
     console.error(`[publish] Sanity HTTP ${res.status}: ${body}`);
     throw new Error(`Sanity publish failed ${res.status}`);
