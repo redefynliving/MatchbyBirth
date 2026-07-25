@@ -11,10 +11,16 @@ process.chdir(repoRoot);
 const token = process.env.SANITY_API_TOKEN;
 const outputPath = 'apps/web/src/data/posts/sanity-posts.generated.js';
 
-// Wrap global fetch to add the Authorization header (bypasses cache).
+// Wrap global fetch to add the Authorization header (bypasses cache) and a
+// cache-buster so freshly-published docs are visible immediately.
 const origFetch = globalThis.fetch;
-globalThis.fetch = (url, opts = {}) =>
-  origFetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
+globalThis.fetch = (url, opts = {}) => {
+  let u = url;
+  if (typeof u === 'string' && u.includes('api.sanity.io/v') && u.includes('/data/query/')) {
+    u = u + (u.includes('?') ? '&' : '?') + '_cachebust=' + Date.now();
+  }
+  return origFetch(u, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
+};
 
 try {
   await import(`../apps/web/tools/sync-sanity-posts.js`);
