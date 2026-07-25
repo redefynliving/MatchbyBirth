@@ -1,0 +1,310 @@
+{
+  "year": 2026,
+  "categories": {
+    "numerology": "Numerology",
+    "relationship-timing": "Relationship Timing",
+    "friendship": "Friendship",
+    "responsible-use": "Responsible Use",
+    "zodiac": "Zodiac Signs",
+    "birth-matching": "Birth Matching",
+    "family": "Family",
+    "workplace": "Workplace"
+  },
+  "seasonal": [
+    {
+      "date": "2026-01-26",
+      "name": "Neptune enters Aries",
+      "slug": "neptune-in-aries-2026",
+      "keyword": "Neptune in Aries 2026",
+      "angle": "the generational shift from fog to action, and what it changes about how we initiate",
+      "category": "relationship-timing",
+      "fact": "Neptune moves into Aries on Jan 26, 2026, its first visit to the sign in roughly 165 years.",
+      "title": "Neptune in Aries 2026: From Fog to Fire"
+    },
+    {
+      "date": "2026-02-13",
+      "name": "Saturn enters Aries",
+      "slug": "saturn-in-aries-2026",
+      "keyword": "Saturn in Aries 2026",
+      "angle": "discipline meeting impulse, and how to build under a do-it-now planet",
+      "category": "relationship-timing",
+      "fact": "Saturn enters Aries on Feb 13, 2026, beginning a multi-year stretch of structured, self-directed effort.",
+      "title": "Saturn in Aries 2026: Discipline Meets Drive"
+    },
+    {
+      "date": "2026-02-20",
+      "name": "Saturn conjunct Neptune",
+      "slug": "saturn-neptune-conjunction-2026",
+      "keyword": "Saturn Neptune conjunction 2026",
+      "angle": "structure meeting illusion at 0 Aries, and how to tell a real plan from a daydream",
+      "category": "relationship-timing",
+      "fact": "Saturn and Neptune meet at 0 Aries on Feb 20, 2026 \u2014 the first such conjunction in Aries in centuries.",
+      "title": "Saturn Meets Neptune 2026: Plan vs Daydream"
+    },
+    {
+      "date": "2026-02-17",
+      "name": "Solar Eclipse in Aquarius",
+      "slug": "solar-eclipse-aquarius-2026",
+      "keyword": "Solar eclipse Aquarius 2026",
+      "angle": "plot twists on the friendship and community axis",
+      "category": "friendship",
+      "fact": "A solar eclipse in Aquarius falls on Feb 17, 2026.",
+      "title": "Aquarius Eclipse 2026: Friend Group Shifts"
+    },
+    {
+      "date": "2026-03-03",
+      "name": "Lunar Eclipse in Virgo",
+      "slug": "lunar-eclipse-virgo-2026",
+      "keyword": "Lunar eclipse Virgo 2026",
+      "angle": "releasing self-criticism in how you relate and work",
+      "category": "workplace",
+      "fact": "A lunar eclipse in Virgo falls on Mar 3, 2026.",
+      "title": "Virgo Eclipse 2026: Release the Self-Critic"
+    },
+    {
+      "date": "2026-02-25",
+      "name": "Mercury retrograde (Pisces)",
+      "slug": "mercury-retrograde-pisces-2026",
+      "keyword": "Mercury retrograde Pisces 2026",
+      "angle": "miscommunicated feelings at home, with friends, and at work",
+      "category": "relationship-timing",
+      "fact": "Mercury stations retrograde in Pisces on Feb 25, 2026, through Mar 20.",
+      "title": "Mercury Retrograde Pisces 2026: Feelings Misread"
+    },
+    {
+      "date": "2026-04-25",
+      "name": "Uranus enters Gemini",
+      "slug": "uranus-in-gemini-2026",
+      "keyword": "Uranus in Gemini 2026",
+      "angle": "how sudden change reshapes communication in groups and couples",
+      "category": "relationship-timing",
+      "fact": "Uranus enters Gemini on Apr 25, 2026, beginning a long stay in the sign of communication.",
+      "title": "Uranus in Gemini 2026: Communication Upended"
+    },
+    {
+      "date": "2026-05-06",
+      "name": "Pluto retrograde",
+      "slug": "pluto-retrograde-2026",
+      "keyword": "Pluto retrograde 2026",
+      "angle": "power and control themes under review, in groups and one-on-one",
+      "category": "relationship-timing",
+      "fact": "Pluto stations retrograde on May 6, 2026.",
+      "title": "Pluto Retrograde 2026: Power Under Review"
+    },
+    {
+      "date": "2026-06-29",
+      "name": "Mercury retrograde (Cancer)",
+      "slug": "mercury-retrograde-cancer-2026",
+      "keyword": "Mercury retrograde Cancer 2026",
+      "angle": "family and emotional texts gone sideways, and how to repair",
+      "category": "family",
+      "fact": "Mercury stations retrograde in Cancer on Jun 29, 2026, through Jul 23.",
+      "title": "Mercury Retrograde Cancer 2026: Family Texts"
+    },
+    {
+      "date": "2026-06-30",
+      "name": "Jupiter enters Leo",
+      "slug": "jupiter-in-leo-2026",
+      "keyword": "Jupiter in Leo 2026",
+      "angle": "expansion through expressive, generous confidence",
+      "category": "zodiac",
+      "fact": "Jupiter enters Leo on Jun 30, 2026, boosting creative and social confidence.",
+      "title": "Jupiter in Leo 2026: Confidence Expands"
+    },
+    {
+      "date": "2026-07-07",
+      "name": "Neptune retrograde",
+      "slug": "neptune-retrograde-2026",
+      "keyword": "Neptune retrograde 2026",
+      "angle": "when the romance or friendship fog clears",
+      "category": "friendship",
+      "fact": "Neptune stations retrograde on Jul 7, 2026.",
+      "title": "Neptune Retrograde 2026: The Fog Clears"
+    },
+    {
+      "date": "2026-07-26",
+      "name": "Saturn retrograde",
+      "slug": "saturn-retrograde-2026",
+      "keyword": "Saturn retrograde 2026",
+      "angle": "recommitting to the bonds and routines you actually want",
+      "category": "relationship-timing",
+      "fact": "Saturn stations retrograde on Jul 26, 2026.",
+      "title": "Saturn Retrograde 2026: Recommit to What Works"
+    },
+    {
+      "date": "2026-08-12",
+      "name": "Solar Eclipse in Leo",
+      "slug": "solar-eclipse-leo-2026",
+      "keyword": "Solar eclipse Leo 2026",
+      "angle": "dropping self-centered habits in love and leadership",
+      "category": "zodiac",
+      "fact": "A solar eclipse in Leo falls on Aug 12, 2026.",
+      "title": "Leo Eclipse 2026: Drop the Self-Centered Habit"
+    },
+    {
+      "date": "2026-08-27",
+      "name": "Lunar Eclipse in Pisces",
+      "slug": "lunar-eclipse-pisces-2026",
+      "keyword": "Lunar eclipse Pisces 2026",
+      "angle": "facing escapist patterns in partnerships and friend groups",
+      "category": "friendship",
+      "fact": "A lunar eclipse in Pisces falls on Aug 27, 2026.",
+      "title": "Pisces Eclipse 2026: Face the Escape Pattern"
+    },
+    {
+      "date": "2026-09-10",
+      "name": "Uranus retrograde",
+      "slug": "uranus-retrograde-2026",
+      "keyword": "Uranus retrograde 2026",
+      "angle": "steady surprises: reviewing the changes you made",
+      "category": "relationship-timing",
+      "fact": "Uranus stations retrograde on Sep 10, 2026.",
+      "title": "Uranus Retrograde 2026: Review the Changes"
+    },
+    {
+      "date": "2026-10-03",
+      "name": "Venus retrograde (Scorpio/Libra)",
+      "slug": "venus-retrograde-2026",
+      "keyword": "Venus retrograde 2026",
+      "angle": "reassessing desire, self-worth, and people-pleasing beyond just couples",
+      "category": "responsible-use",
+      "fact": "Venus stations retrograde on Oct 3, 2026, through Nov 13, moving through Scorpio and Libra.",
+      "title": "Venus Retrograde 2026: Desire and Self-Worth"
+    },
+    {
+      "date": "2026-10-24",
+      "name": "Mercury retrograde (Scorpio)",
+      "slug": "mercury-retrograde-scorpio-2026",
+      "keyword": "Mercury retrograde Scorpio 2026",
+      "angle": "unspoken truths surfacing in tense talks with friends and coworkers",
+      "category": "workplace",
+      "fact": "Mercury stations retrograde in Scorpio on Oct 24, 2026, through Nov 13.",
+      "title": "Mercury Retrograde Scorpio 2026: Unspoken Truths"
+    },
+    {
+      "date": "2026-12-12",
+      "name": "Jupiter retrograde",
+      "slug": "jupiter-retrograde-2026",
+      "keyword": "Jupiter retrograde 2026",
+      "angle": "slowing the growth story to make it real",
+      "category": "relationship-timing",
+      "fact": "Jupiter stations retrograde on Dec 12, 2026.",
+      "title": "Jupiter Retrograde 2026: Slow the Growth Story"
+    }
+  ],
+  "evergreen": [
+    {
+      "slug": "life-path-1-connection-style",
+      "keyword": "Life Path 1 connection style",
+      "angle": "how a 1 leads, initiates, and needs independence in bonds",
+      "category": "numerology",
+      "title": "Life Path 1: How the Initiator Connects"
+    },
+    {
+      "slug": "life-path-2-connection-style",
+      "keyword": "Life Path 2 connection style",
+      "angle": "how a 2 builds safety through attunement and diplomacy",
+      "category": "numerology",
+      "title": "Life Path 2: The Diplomat's Connection Style"
+    },
+    {
+      "slug": "life-path-3-connection-style",
+      "keyword": "Life Path 3 connection style",
+      "angle": "how a 3 connects through expression and play",
+      "category": "numerology",
+      "title": "Life Path 3: Connecting Through Expression"
+    },
+    {
+      "slug": "life-path-4-connection-style",
+      "keyword": "Life Path 4 connection style",
+      "angle": "how a 4 shows care through reliability and structure",
+      "category": "numerology",
+      "title": "Life Path 4: The Builder's Connection Style"
+    },
+    {
+      "slug": "life-path-5-connection-style",
+      "keyword": "Life Path 5 connection style",
+      "angle": "how a 5 needs freedom and novelty to stay engaged",
+      "category": "numerology",
+      "title": "Life Path 5: Freedom as Connection"
+    },
+    {
+      "slug": "life-path-6-connection-style",
+      "keyword": "Life Path 6 connection style",
+      "angle": "how a 6 leads with caretaking and responsibility",
+      "category": "numerology",
+      "title": "Life Path 6: The Nurturer's Connection Style"
+    },
+    {
+      "slug": "life-path-7-connection-style",
+      "keyword": "Life Path 7 connection style",
+      "angle": "how a 7 connects through depth and space",
+      "category": "numerology",
+      "title": "Life Path 7: Connection Through Depth"
+    },
+    {
+      "slug": "master-numbers-11-22-33",
+      "keyword": "master numbers 11 22 33 meaning",
+      "angle": "what master numbers add to compatibility and groups",
+      "category": "numerology",
+      "title": "Master Numbers 11, 22, 33 in Compatibility"
+    },
+    {
+      "slug": "life-path-vs-zodiac",
+      "keyword": "life path vs zodiac sign",
+      "angle": "two different lenses on the same person",
+      "category": "numerology",
+      "title": "Life Path vs Zodiac: Two Lenses, One Person"
+    },
+    {
+      "slug": "life-path-in-friendships",
+      "keyword": "life path number friendships",
+      "angle": "how life path shows up with friends, not just partners",
+      "category": "friendship",
+      "title": "What Your Life Path Says About Friendships"
+    },
+    {
+      "slug": "group-compatibility-roommates",
+      "keyword": "group compatibility roommates",
+      "angle": "using Group Mode to read a shared household",
+      "category": "family",
+      "title": "Reading Group Compatibility for Roommates"
+    },
+    {
+      "slug": "friend-group-click",
+      "keyword": "why friend groups click",
+      "angle": "the quiet patterns that make a group gel or grind",
+      "category": "friendship",
+      "title": "Why Some Friend Groups Just Click"
+    },
+    {
+      "slug": "compatibility-for-teams",
+      "keyword": "workplace compatibility teams",
+      "angle": "using compatibility for working groups, not just couples",
+      "category": "workplace",
+      "title": "Compatibility for Work Teams"
+    },
+    {
+      "slug": "exact-mode-vs-sun-sign",
+      "keyword": "exact mode vs sun sign",
+      "angle": "why birth time sharpens the read",
+      "category": "birth-matching",
+      "title": "Exact Mode vs Sun Sign: What Birth Time Changes"
+    },
+    {
+      "slug": "how-to-read-compatibility-responsibly",
+      "keyword": "how to use compatibility responsibly",
+      "angle": "reflection, not labels or decisions",
+      "category": "responsible-use",
+      "title": "How to Use a Compatibility Score Responsibly"
+    },
+    {
+      "slug": "when-not-to-use-compatibility",
+      "keyword": "when not to use a compatibility score",
+      "angle": "the moments a number gets in the way",
+      "category": "responsible-use",
+      "title": "When NOT to Use a Compatibility Score"
+    }
+  ],
+  "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here \u2014 those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
+}
