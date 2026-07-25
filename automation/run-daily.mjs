@@ -3,7 +3,7 @@
 import { execSync } from 'node:child_process';
 import { nextTopic, markPublished } from './queue.mjs';
 import { draftPost } from './editorial.mjs';
-import { publishPost, triggerDeploy } from './publish.mjs';
+import { publishPost } from './publish.mjs';
 import { analyzeDraftQuality } from '../studio-matchbybirth/tools/content-quality.mjs';
 
 const AUTO_PUBLISH = process.env.BLOG_AUTO_PUBLISH === '1' || process.env.BLOG_AUTO_PUBLISH === 'true';
@@ -25,15 +25,16 @@ async function main() {
   }
   await publishPost(post, { autoPublish: AUTO_PUBLISH });
   markPublished(topic.slug, today);
-  // Regenerate the committed generated posts file and push it FIRST, so the
-  // Vercel build (triggered next) picks up the new post from the committed file.
+  // Regenerate the committed generated posts file and push it LAST. Vercel's
+  // Git auto-deploy (one trigger, no race) builds this commit, which includes
+  // the new post in sanity-posts.generated.js. We do NOT call a deploy hook
+  // here — a second hook would race Git auto-deploy and risk aliasing a stale
+  // build (two hooks were double-firing per push).
   try {
     execSync('node automation/sync-and-commit.mjs', { stdio: 'inherit' });
   } catch (e) {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
-  await triggerDeploy();
   console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
-}
 
 main().catch((e) => { console.error(e); process.exit(1); });
