@@ -94,7 +94,22 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ mutations: [{ createOrReplace: document }] }),
   });
-  if (!res.ok) { console.error(await res.text()); throw new Error(`Sanity publish failed ${res.status}`); }
+  const body = await res.text();
+  if (!res.ok) {
+    console.error(`[publish] Sanity HTTP ${res.status}: ${body}`);
+    throw new Error(`Sanity publish failed ${res.status}`);
+  }
+  try {
+    const json = JSON.parse(body);
+    const mutationErrors = (json.results || []).filter((r) => r.error);
+    if (mutationErrors.length) {
+      console.error('[publish] Sanity mutation errors:', JSON.stringify(mutationErrors));
+      throw new Error('Sanity mutation rejected the document');
+    }
+  } catch (e) {
+    if (e.message.includes('mutation')) throw e;
+    // non-JSON body on 200 is unexpected but not fatal
+  }
   console.log(`[publish] ${autoPublish ? 'published' : 'drafted'}: ${document._id}`);
   return document;
 }
