@@ -25,14 +25,14 @@ async function main() {
   }
   await publishPost(post, { autoPublish: AUTO_PUBLISH });
   markPublished(topic.slug, today);
-  await triggerDeploy();
-  // Regenerate the committed generated posts file and push it so the Vercel
-  // build (which has no Sanity creds) picks up the new post.
+  // Regenerate the committed generated posts file and push it FIRST, so the
+  // Vercel build (triggered next) picks up the new post from the committed file.
   try {
     execSync('node automation/sync-and-commit.mjs', { stdio: 'inherit' });
   } catch (e) {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
+  await triggerDeploy();
   console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
 }
 
