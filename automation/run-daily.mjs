@@ -1,5 +1,6 @@
 // Daily orchestrator: pick topic -> draft -> slop gate -> publish to Sanity.
 // Runs from GitHub Actions at 0 15 * * * (08:00 PT). Reads secrets at runtime.
+import { execSync } from 'node:child_process';
 import { nextTopic, markPublished } from './queue.mjs';
 import { draftPost } from './editorial.mjs';
 import { publishPost, triggerDeploy } from './publish.mjs';
@@ -25,6 +26,13 @@ async function main() {
   await publishPost(post, { autoPublish: AUTO_PUBLISH });
   markPublished(topic.slug, today);
   await triggerDeploy();
+  // Regenerate the committed generated posts file and push it so the Vercel
+  // build (which has no Sanity creds) picks up the new post.
+  try {
+    execSync('node automation/sync-and-commit.mjs', { stdio: 'inherit' });
+  } catch (e) {
+    console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
+  }
   console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
 }
 
