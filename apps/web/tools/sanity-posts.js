@@ -161,7 +161,7 @@ export function normalizeSanityBlogPost(document) {
   if (document.approvalStatus && document.approvalStatus !== 'approved') return null;
 
   const slug = slugValue(document.slug);
-  const date = dateOnly(document.publishedAt);
+  const date = dateOnly(document.publishedAt) || dateOnly(document._createdAt) || new Date().toISOString().slice(0, 10);
   const content = portableTextToHtml(document.body || []);
 
   if (!slug || !document.title || !date || !content) return null;

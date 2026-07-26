@@ -107,6 +107,14 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     console.error(`[publish] Sanity HTTP ${res.status}: ${body}`);
     throw new Error(`Sanity publish failed ${res.status}`);
   }
+  // Regression guards: these two bugs silently dropped posts from the static
+  // build earlier. Fail loud instead of publishing into the void.
+  if (!token || token === '***' || token.startsWith('***')) {
+    throw new Error('[publish] SANITY_API_TOKEN missing/masked — write would not persist');
+  }
+  if (autoPublish && _id.startsWith('drafts.')) {
+    throw new Error('[publish] autoPublish doc has drafts. _id — static build would exclude it');
+  }
   try {
     const json = JSON.parse(body);
     const mutationErrors = (json.results || []).filter((r) => r.error);

@@ -35,7 +35,18 @@ async function main() {
   } catch (e) {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
-  console.log(`[daily] done. autoPublish=${AUTO_PUBLISH}`);
+  // Verification: confirm the just-published slug actually landed in the
+  // generated file (the build input). If normalizeSanityBlogPost dropped it
+  // (e.g. missing publishedAt/body), the post is in Sanity but not on the
+  // site. Fail loud so the gap is visible; the slug stays queued and the next
+  // cron run republishes it correctly.
+  const fs = await import('node:fs');
+  const genPath = 'apps/web/src/data/posts/sanity-posts.generated.js';
+  if (fs.existsSync(genPath) && !fs.readFileSync(genPath, 'utf8').includes(topic.slug)) {
+    console.error(`[daily] VERIFY FAIL: ${topic.slug} published to Sanity but missing from generated file — not on site. Will retry next run.`);
+    process.exit(1);
+  }
+  console.log(`[daily] verified ${topic.slug} in generated file. done. autoPublish=${AUTO_PUBLISH}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
