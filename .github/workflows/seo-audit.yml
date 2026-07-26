@@ -1,0 +1,21 @@
+name: SEO Audit (weekly)
+on:
+  schedule:
+    - cron: '0 17 * * 1'   # 10:00 PT Monday, folds into the weekly money-scan
+  workflow_dispatch:
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run SEO audit
+        env:
+          SC_SERVICE_ACCOUNT_JSON: ${{ secrets.SC_SERVICE_ACCOUNT_JSON }}
+          SITE_URL: https://matchbybirth.com
+          GEN_PATH: apps/web/src/data/posts/sanity-posts.generated.js
+        run: node automation/seo-audit.mjs
