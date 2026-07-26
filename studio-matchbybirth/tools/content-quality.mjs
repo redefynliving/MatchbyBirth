@@ -104,7 +104,39 @@ function hasExample(body) {
 }
 
 function hasInternalLink(body) {
-  return INTERNAL_LINK_PATTERNS.some((pattern) => pattern.test(body))
+  return INTERNAL_LINK_PATTERNS.some((pattern) => pattern.test(body));
+}
+
+// Lightweight similarity: shared 4-word shingles between the new draft and any
+// already-published post. Near-duplicate pages (e.g. the life-path-N series
+// all saying the same thing) get flagged so Google doesn't see a site full of
+// repetitive AI pages. Returns the max overlap ratio found.
+const SHINGLE_SIZE = 4;
+function shingles(text) {
+  const words = stripMarkup(text).toLowerCase().split(/\s+/).filter(Boolean);
+  const set = new Set();
+  for (let i = 0; i + SHINGLE_SIZE <= words.length; i++) {
+    set.add(words.slice(i, i + SHINGLE_SIZE).join(' '));
+  }
+  return set;
+}
+
+export function maxSimilarityToCorpus(input, corpusBodies = []) {
+  if (!corpusBodies.length) return 0;
+  const body = getBody(input);
+  if (!body) return 0;
+  const a = shingles(body);
+  if (!a.size) return 0;
+  let worst = 0;
+  for (const other of corpusBodies) {
+    const b = shingles(other);
+    if (!b.size) continue;
+    let shared = 0;
+    for (const shingle of a) if (b.has(shingle)) shared++;
+    const ratio = shared / Math.min(a.size, b.size);
+    if (ratio > worst) worst = ratio;
+  }
+  return worst;
 }
 
 function countGenericPhrases(body) {
