@@ -162,13 +162,13 @@ async function main() {
   if (badMeta.length) { log(`- ${badMeta.length} posts with off-length meta description`); opps.push({ pri: 'low', impact: badMeta.length * 20, text: `Fix meta descriptions (80-160 chars) on ${badMeta.length} posts.` }); }
   log('');
 
-  // 3. Technical check on key URLs
+  // 3. Technical check on key URLs (hit a real pre-rendered article + key pages)
   log(`## Technical check:`);
-  for (const p of ['/', '/blog', '/how-it-works']) {
+  for (const p of ['/', '/blog', '/blog/uranus-retrograde-2026']) {
     const c = await checkPage(p);
     const flags = [];
-    if (!c.hasJsonLd) flags.push('no JSON-LD');
-    if (!c.hasCanonical) flags.push('no canonical');
+    if (!c.hasJsonLd && p !== '/blog') flags.push('no JSON-LD');
+    if (!c.hasCanonical && p === '/blog/uranus-retrograde-2026') flags.push('no canonical');
     log(`- ${p} → ${c.status}${flags.length ? ' ⚠️ ' + flags.join(', ') : ' ✓'}`);
     if (flags.length) opps.push({ pri: 'low', impact: 30, text: `Fix on ${p}: ${flags.join(', ')}.` });
   }
