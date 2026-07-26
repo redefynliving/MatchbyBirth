@@ -304,6 +304,146 @@
       "angle": "the moments a number gets in the way",
       "category": "responsible-use",
       "title": "When NOT to Use a Compatibility Score"
+    },
+    {
+      "slug": "life-path-8-connection-style",
+      "keyword": "Life Path 8 connection style",
+      "angle": "how an 8 builds trust through competence and results",
+      "category": "numerology",
+      "title": "Life Path 8: Connection Through Competence"
+    },
+    {
+      "slug": "life-path-9-connection-style",
+      "keyword": "Life Path 9 connection style",
+      "angle": "how a 9 connects through ideals and letting go",
+      "category": "numerology",
+      "title": "Life Path 9: The Idealist's Connection Style"
+    },
+    {
+      "slug": "expression-number-compatibility",
+      "keyword": "expression number compatibility",
+      "angle": "what your name's number reveals about how you show up",
+      "category": "numerology",
+      "title": "Expression Number in Compatibility"
+    },
+    {
+      "slug": "destiny-number-relationships",
+      "keyword": "destiny number relationships",
+      "angle": "the life-path-adjacent number that shapes long-term direction",
+      "category": "numerology",
+      "title": "What Your Destiny Number Says About Relationships"
+    },
+    {
+      "slug": "moon-sign-compatibility-guide",
+      "keyword": "moon sign compatibility",
+      "angle": "why emotional needs (not Sun signs) decide daily comfort",
+      "category": "zodiac",
+      "title": "Moon Sign Compatibility: The Emotional Layer"
+    },
+    {
+      "slug": "rising-sign-in-compatibility",
+      "keyword": "rising sign compatibility",
+      "angle": "how the Ascendant shapes first impressions and friction",
+      "category": "zodiac",
+      "title": "Rising Sign in Compatibility: First Impressions"
+    },
+    {
+      "slug": "the-big-three-compatibility",
+      "keyword": "Sun Moon Rising compatibility",
+      "angle": "why all three lenses matter more than Sun alone",
+      "category": "zodiac",
+      "title": "Sun, Moon, Rising: Reading the Big Three"
+    },
+    {
+      "slug": "gemini-and-virgo-compatibility",
+      "keyword": "Gemini and Virgo compatibility",
+      "angle": "two Mercury signs, very different rhythms",
+      "category": "zodiac",
+      "title": "Gemini and Virgo: Quick Mind, Quiet Mind"
+    },
+    {
+      "slug": "cancer-and-pisces-compatibility",
+      "keyword": "Cancer and Pisces compatibility",
+      "angle": "two water signs and the comfort of being felt",
+      "category": "zodiac",
+      "title": "Cancer and Pisces: The Water Sign Bond"
+    },
+    {
+      "slug": "leo-and-aquarius-compatibility",
+      "keyword": "Leo and Aquarius compatibility",
+      "angle": "spotlight and orbit — a fixed-sign polarity that works",
+      "category": "zodiac",
+      "title": "Leo and Aquarius: Spotlight Meets Orbit"
+    },
+    {
+      "slug": "taurus-and-capricorn-compatibility",
+      "keyword": "Taurus and Capricorn compatibility",
+      "angle": "two earth signs building something that lasts",
+      "category": "zodiac",
+      "title": "Taurus and Capricorn: The Earth Sign Foundation"
+    },
+    {
+      "slug": "parent-child-compatibility",
+      "keyword": "parent child compatibility astrology",
+      "angle": "reading the bond without labeling the kid",
+      "category": "family",
+      "title": "Parent-Child Compatibility: A Gentle Read"
+    },
+    {
+      "slug": "sibling-compatibility",
+      "keyword": "sibling compatibility astrology",
+      "angle": "why birth order and charts both shape the rivalry",
+      "category": "family",
+      "title": "Sibling Compatibility: Rivalry and Repair"
+    },
+    {
+      "slug": "compatibility-when-you-dont-know-birth-time",
+      "keyword": "compatibility without birth time",
+      "angle": "what you can still read from date alone",
+      "category": "birth-matching",
+      "title": "No Birth Time? What You Can Still Read"
+    },
+    {
+      "slug": "timezone-effects-on-birth-chart",
+      "keyword": "timezone birth chart accuracy",
+      "angle": "why the recorded local time matters more than you think",
+      "category": "birth-matching",
+      "title": "How Timezones Change a Birth Chart"
+    },
+    {
+      "slug": "compatibility-for-hiring-teams",
+      "keyword": "using compatibility for hiring",
+      "angle": "team fit without bias or boxes",
+      "category": "workplace",
+      "title": "Compatibility for Hiring and Team Fit"
+    },
+    {
+      "slug": "new-moon-rituals-compatibility",
+      "keyword": "new moon relationship rituals",
+      "angle": "using the lunar cycle to reset a bond",
+      "category": "friendship",
+      "title": "New Moon Rituals for Stronger Bonds"
+    },
+    {
+      "slug": "astrology-for-long-distance-relationships",
+      "keyword": "astrology long distance relationship",
+      "angle": "what the chart says about distance and timing",
+      "category": "relationship-timing",
+      "title": "Astrology for Long-Distance Relationships"
+    },
+    {
+      "slug": "2027-astrology-preview",
+      "keyword": "2027 astrology predictions",
+      "angle": "the shifts worth planning around a year early",
+      "category": "relationship-timing",
+      "title": "2027 Astrology Preview: What's Coming"
+    },
+    {
+      "slug": "best-zodiac-signs-for-business-partners",
+      "keyword": "best zodiac signs for business partnership",
+      "angle": "which pairings build vs burn out",
+      "category": "workplace",
+      "title": "Best Zodiac Signs for Business Partners"
     }
   ],
   "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here \u2014 those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
