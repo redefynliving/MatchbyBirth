@@ -24,7 +24,19 @@ jobs:
       - name: Submit changed URLs to IndexNow
         if: success()
         run: |
-          npm run indexnow -- \
-            https://matchbybirth.com/blog \
-            https://matchbybirth.com/blog/category/seasonal \
-            https://matchbybirth.com/blog/category/relationships
+          MANIFEST="apps/web/src/data/posts/sanity-posts.generated.js.changes.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "No change manifest found; skipping IndexNow."
+            exit 0
+          fi
+
+          URLS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('$MANIFEST','utf8')); const base='https://matchbybirth.com'; const out=[base+'/blog']; const slugs = data.changedSlugs || []; for (const s of slugs) out.push(base+'/blog/'+s); console.log(out.join('\n'));")
+
+          if [ -z "$URLS" ]; then
+            echo "No changed blog URLs; skipping IndexNow."
+            exit 0
+          fi
+
+          echo "$URLS" | while IFS= read -r url; do
+            npm run indexnow -- "$url"
+          done

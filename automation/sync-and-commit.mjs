@@ -21,13 +21,15 @@ try {
   );
   const posts = await fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });
   console.log(`[sync] normalized ${posts.length} posts:`, posts.map((p) => p.slug).join(', '));
+  writeChangeManifest({ posts, outputPath });
   writeSanityPostsModule({ posts, outputPath });
 } catch (e) {
   console.error('[sync] failed:', e.message);
   process.exit(1);
 }
 
-const status = execSync(`git status --porcelain ${outputPath}`).toString().trim();
+const manifestPath = `${outputPath}.changes.json`;
+const status = execSync(`git status --porcelain ${outputPath} ${manifestPath}`).toString().trim();
 if (!status) {
   console.log('[sync] generated file unchanged; nothing to commit.');
   process.exit(0);

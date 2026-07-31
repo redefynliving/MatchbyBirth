@@ -273,6 +273,27 @@ export function generatedModuleSource(posts) {
   ].join('\n');
 }
 
+export function writeChangeManifest({ posts, outputPath }) {
+  const manifestPath = `${outputPath}.changes.json`;
+  const current = new Set(posts.map((p) => p.slug).sort());
+  let previous = new Set();
+
+  try {
+    const previousModule = fs.readFileSync(outputPath, 'utf8');
+    const match = previousModule.match(/const sanityPosts = (\[[\s\S]*?\]);/);
+    if (match) {
+      const previousPosts = JSON.parse(match[1]);
+      previous = new Set(previousPosts.map((p) => p.slug).sort());
+    }
+  } catch {
+    // ignore missing previous module on first run
+  }
+
+  const changed = [...current].filter((slug) => !previous.has(slug));
+  fs.writeFileSync(manifestPath, JSON.stringify({ changedSlugs: changed }, null, 2), 'utf8');
+  return manifestPath;
+}
+
 export function writeSanityPostsModule({
   posts,
   outputPath = path.resolve(process.cwd(), 'src/data/posts/sanity-posts.generated.js'),
