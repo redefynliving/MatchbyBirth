@@ -36,6 +36,7 @@ if (!status) {
 const ts = new Date().toISOString();
 execSync('git config user.email "bot@matchbybirth.com"');
 execSync('git config user.name "Blog Automation"');
+execSync('git pull --rebase origin main');
 execSync(`git add ${outputPath}`);
 execSync(`git commit -m "chore: regenerate Sanity blog posts (${ts})"`);
 execSync('git push origin main');

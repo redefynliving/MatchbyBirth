@@ -2553,6 +2553,79 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'mercury-retrograde-survival-guide',
+    title: 'Mercury Retrograde Survival Guide',
+    date: '2026-07-26',
+    description: 'Mercury retrograde isn\'t cosmic sabotage. Here are the 2026 retrograde dates, what the science actually says, and a practical playbook for getting through it without losing your data — or your temper.',
+    tags: ['mercury', 'retrograde', '2026', 'communication', 'astrology', 'survival-guide'],
+    category: 'seasonal',
+    content: `
+      <p>Three times a year, the internet fills with the same joke: Mercury is retrograde again, so that's why everything is broken. Your phone died. The email bounced. Your ex resurfaced at 2 AM. Coincidence? Maybe. But the pattern is real enough that people plan around it.</p>
+
+      <p>Here's the straight version — no fear-mongering, no mystic hand-waving. What Mercury retrograde is, what the 2026 dates are, what's worth taking seriously, and what to actually do when it hits.</p>
+
+      <h2>What Mercury retrograde really is</h2>
+
+      <p>Mercury is the fastest planet in our solar system, orbiting the Sun in about 88 days. From Earth, it usually moves steadily eastward against the background stars. But a few times a year, because Earth's orbit is wider and faster, Mercury appears to slow, stop, and reverse direction for a few weeks. That's the "retrograde" — a line-of-sight illusion, not an actual reversal in space.</p>
+
+      <p>In astrology, Mercury rules communication, technology, travel, and contracts. The logic is simple: if the planet of messaging and movement appears to stumble, the areas it governs are more likely to get disrupted. Whether you treat that as symbolic or literal, the practical effect is the same — these windows are when miscommunication and tech failures cluster.</p>
+
+      <h2>The 2026 Mercury retrograde dates</h2>
+
+      <p>Mark these on your calendar. Each retrograde runs roughly three weeks, with a "shadow period" of a few days on either side where the effects start creeping in:</p>
+
+      <ul>
+        <li><strong>February 25 – March 19, 2026:</strong> In Pisces — confusion around feelings, intuition, and boundaries. Themes of blurred lines.</li>
+        <li><strong>June 29 – July 23, 2026:</strong> In Cancer — home, family, and emotional security take the hit. Old family patterns resurface.</li>
+        <li><strong>October 21 – November 10, 2026:</strong> In Scorpio — intensity, secrets, and shared resources. Trust and control issues come up.</li>
+      </ul>
+
+      <p>The retrograde before this one (Cancer, ended July 23, 2026) is the one most people felt in their home and family life. The next one — Scorpio, starting October 21, 2026 — tends to stir intensity and trust issues. Knowing which sign Mercury is reversing through tells you which area of life to watch.</p>
+
+      <h2>What's real vs. what's folklore</h2>
+
+      <p>Be honest about the limits. Astrology is a symbolic system, not a laboratory-tested predictor. There's no peer-reviewed study proving Mercury retrograde causes car crashes or deleted files. What we do have is a useful framework for attention: when you expect communication to be fragile, you communicate more carefully.</p>
+
+      <p>The folklore parts worth keeping: back up your data, reread before you send, and don't make irreversible decisions on a bad day. The folklore parts to drop: "Mercury made me do it" as an excuse for behavior you control. Retrograde doesn't sign your texts. You do.</p>
+
+      <h2>The practical survival playbook</h2>
+
+      <p>You don't need crystals or a panic room. You need a short checklist for the weeks Mercury appears to move backward:</p>
+
+      <ul>
+        <li><strong>Back up everything.</strong> Phones, laptops, client docs. If it lives on one device, assume it can vanish during retrograde.</li>
+        <li><strong>Reread before you send.</strong> The classic retrograde mistake is the angry email, the typo'd contract, the text to the wrong person. Pause, read twice, send once.</li>
+        <li><strong>Avoid signing major contracts.</strong> Big commitments made in haste during these windows often need renegotiation. If you must sign, get a lawyer to read it.</li>
+        <li><strong>Expect travel friction.</strong> Flights delay, routes change, bookings glitch. Build buffer time and screenshot your confirmations.</li>
+        <li><strong>Don't ghost the hard conversation.</strong> Retrograde dredges up unresolved stuff. Use it to clear the air, not avoid it.</li>
+      </ul>
+
+      <h2>The part people miss: retrograde is also a gift</h2>
+
+      <p>Everyone talks about survival, but retrograde is the one astrological window explicitly built for revisiting. Mercury rules the mind — and when it appears to reverse, the mind turns inward. That's why exes resurface, why old projects call you back, why things you "finished" suddenly need a second pass.</p>
+
+      <p>Instead of bracing against it, use the three weeks to:</p>
+
+      <ul>
+        <li>Finish the draft you abandoned.</li>
+        <li>Repair the friendship you let drift.</li>
+        <li>Revisit the business idea you shelved.</li>
+        <li>Fix the thing that's been "good enough" for too long.</li>
+      </ul>
+
+      <p>The relationships, deals, and habits that survive a retrograde usually come out cleaner — because you were forced to look at what you'd been avoiding.</p>
+
+      <h2>Where astrology actually helps your relationships</h2>
+
+      <p>If Mercury retrograde has you thinking about communication patterns in your love life, you're onto something bigger than one planet. The real compatibility story lives in the full chart — your moon sign (how you feel safe), your Venus sign (how you love), and your rising sign (how you meet the world).</p>
+
+      <p>For a relationship-specific take on the 2026 retrogrades, read our guide to <a href="https://matchbybirth.com/blog/mercury-retrograde-2026-relationships">Mercury retrograde and your relationships</a>. And to go deeper on the building blocks, see our guides to <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon signs</a>, <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus signs</a>, and <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising signs</a>.</p>
+
+      <p>Ready to see how your chart actually lines up with someone you care about? <a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> and get a full reading built from your real birth data — Mercury and all.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
