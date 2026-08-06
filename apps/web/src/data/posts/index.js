@@ -2691,6 +2691,64 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'planets-in-astrology-guide',
+    title: 'The Planets in Astrology — What Each One Actually Means',
+    date: '2026-08-06',
+    description: 'The sun and moon get all the attention, but the other planets carry the real detail of your chart. Learn what each planet rules and why it matters more for compatibility than your sun sign.',
+    tags: ['planets','astrology','birth-chart','learn-astrology','compatibility','synastry'],
+    category: 'learn-astrology',
+    content: `
+      <h1>The Planets in Astrology — What Each One Actually Means</h1>
+
+      <p>You know your sun sign. Maybe you've gone deeper and learned your moon, Venus, and rising signs. But those are just a few points on a wheel of ten planets — and the ones people skip are often the ones that explain the most. If the signs are the personality costumes and the houses are the stage, the planets are the actors doing the actual work. Here's what each one means, and why it matters far more for compatibility than your sun sign ever will.</p>
+
+      <h2>Two kinds of planets</h2>
+
+      <p>Astrology splits the ten planets into two groups. The personal planets — Sun, Moon, Mercury, Venus, Mars — move fast and describe you as an individual: how you think, love, fight, and feel. The outer or generational planets — Jupiter, Saturn, Uranus, Neptune, Pluto — move slowly. Everyone born within a few years shares the same outer-planet placements, so they describe the generation you belong to more than the person you are. That distinction is the first thing people miss when they over-read a Pluto sign.</p>
+
+      <h2>The Sun: your directed self</h2>
+
+      <p>The Sun is the headline. It's your identity when you're trying, your sense of purpose, the part of you that wants to be somebody. In compatibility, the Sun shows where two people want to shine — and whether those directions complement or collide. A great sun-sign match is a good start. It is not the whole story, and anyone who tells you it is hasn't read a real chart.</p>
+
+      <h2>The Moon: your private weather</h2>
+
+      <p>If the Sun is how you lead, the Moon is how you recover. It's your emotional default, what makes you feel safe, and how you behave under stress. This is the single most important planet for relationship comfort. Two suns can adore each other while two moons quietly exhaust each other. We go deep on this in our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon signs guide</a> — it's where emotional compatibility actually lives.</p>
+
+      <h2>Mercury: how you think and talk</h2>
+
+      <p>Mercury rules communication, humor, and the speed of your mind. In a relationship, Mercury explains why some couples finish each other's sentences and others argue about what the other meant. When Mercuries clash, you get the classic "we're saying the same thing!" fight. Note that Mercury goes retrograde several times a year — the famous communication-chaos window — but that's a transit, not a placement.</p>
+
+      <h2>Venus and Mars: the love-and-want pair</h2>
+
+      <p>These two are the engine of attraction. Venus is how you love and what you find beautiful — we cover it in the <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus signs guide</a>. Mars is how you pursue, assert, and handle conflict — covered in our <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">Mars signs guide</a>. A relationship where Venus and Mars talk to each other across charts tends to have real chemistry. Where they're silent, the connection can be friendly but flat.</p>
+
+      <h2>Jupiter and Saturn: growth and gravity</h2>
+
+      <p>Jupiter expands whatever it touches — optimism, generosity, sometimes excess. Saturn contracts — responsibility, boundaries, the long haul. In a partnership, Jupiter shows where you encourage each other; Saturn shows where you're forced to grow up. A little Saturn friction is often what turns infatuation into something that lasts.</p>
+
+      <h2>Uranus, Neptune, Pluto: the generational layer</h2>
+
+      <p>These move so slowly that your entire cohort shares them. Uranus disrupts, Neptune dissolves, Pluto transforms. On a personal-compatibility level they matter less than the inner five — but when one of them hits a partner's personal planet by transit, expect a plot twist. Don't build a relationship verdict on a Pluto sign alone. It says more about your birth era than your bond.</p>
+
+      <h2>How to actually read a planet</h2>
+
+      <p>Every planet in your chart has three coordinates, and all three matter. The sign tells you the style — how that planet expresses. The house tells you the arena — which area of life it plays out in (see our <a href="https://matchbybirth.com/blog/twelve-astrological-houses-explained">houses guide</a>). The aspects — the angles it makes to other planets — tell you whether its energy flows easily or grates. A planet is never just "in Scorpio." It's in Scorpio, in your 8th house, squaring your Mercury. That specificity is why two Scorpio suns can be nothing alike.</p>
+
+      <h2>Why planets beat signs for compatibility</h2>
+
+      <p>Here's the honest part most sun-sign content ignores. Two people can have incompatible sun signs and a fantastic relationship because their Venus, Mars, and Moon placements interlock beautifully. Conversely, a perfect sun match can feel hollow if the personal planets don't speak. Real compatibility tools — like the ones we build at <a href="https://matchbybirth.com">Match by Birth</a> — read the whole planet set across both charts, not just the headline sign. That's synastry, and it's the difference between a horoscope and a reading.</p>
+
+      <h2>The caveat worth repeating</h2>
+
+      <p>Astrology is symbolic, not a proven predictor of behavior. The planets don't make you do anything. What they offer is a vocabulary — a set of patterns that, taken with free will, communication, and effort, can help you understand why a relationship feels the way it does. Use it to ask better questions, not to write someone off.</p>
+
+      <h2>Where to go next</h2>
+
+      <p>If you've only ever read your sun sign, you've read maybe a tenth of your chart. Map the houses next, then pull your actual birth chart and see where your planets landed. And if you want to skip the manual work, <a href="https://matchbybirth.com">check your compatibility on Match by Birth</a> and get a full synastry read built from real birth data — every planet included.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
