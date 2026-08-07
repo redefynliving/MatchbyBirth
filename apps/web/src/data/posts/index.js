@@ -2816,6 +2816,44 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'astrology-aspects-explained',
+    title: 'Astrology Aspects Explained: Conjunction, Sextile, Square, Trine, Opposition',
+    date: '2026-08-06',
+    description: 'Planets don\'t act alone. Learn how astrological aspects — conjunction, sextile, square, trine, and opposition — shape the conversation inside your birth chart.',
+    tags: ['astrology','aspects','conjunction','trine','square','learn-astrology','birth-chart'],
+
+    category: 'learn-astrology',    content: `
+      <h1>Astrology Aspects Explained</h1>
+      <p>Your birth chart is a map of where every planet sat the moment you were born. But a map of isolated dots tells you nothing. The meaning shows up in the relationships between those planets — the angles they form with each other. In astrology, those angles are called <strong>aspects</strong>, and they're the difference between a chart that reads like a list and one that reads like a story.</p>
+      <h2>What an aspect actually is</h2>
+      <p>An aspect is simply the distance, measured in degrees, between two points in your chart. If Mars and Venus are 10 degrees apart, they're in close conversation. If they're 90 degrees apart, the conversation is tense. Astrologers have found that certain distances — the ones that divide a circle into clean fractions — produce consistent, recognizable dynamics. Those are the major aspects.</p>
+      <p>Think of it like music. Two planets are notes; the aspect is the interval between them. A harmonious interval sounds smooth. A clashing one creates tension that demands resolution. Neither is "bad" — tension is what drives a song, and a life, forward.</p>
+      <h2>The five major aspects</h2>
+      <h3>Conjunction (0°) — the blend</h3>
+      <p>Two planets sit in nearly the same spot. Their energies merge into one force. A Mars–Venus conjunction doesn't debate whether to act or to love — it does both at once. Conjunctions are powerful and unambiguous: whatever those planets rule gets fused and amplified.</p>
+      <h3>Sextile (60°) — the easy opening</h3>
+      <p>This is a gentle, cooperative angle. The planets help each other without much effort. Sextiles show where opportunity comes naturally — but because they're easy, people often overlook them. They're the open door you walk through without noticing.</p>
+      <h3>Square (90°) — the friction</h3>
+      <p>The square is the aspect people love to fear, but it's better understood as the engine. Two planets pull in different directions, and that tension forces growth. A square between your sun and Saturn can show up as a lifelong struggle with self-doubt — and as the discipline that ultimately makes you unstoppable. Squares create the problems you're built to solve.</p>
+      <h3>Trine (120°) — the flow</h3>
+      <p>The trine is the smoothest aspect: planets in the same element flowing effortlessly. Trines are gifts — talent, ease, natural charisma. The catch is that because they're effortless, they can go unused. A trine is a strength you have to choose to activate.</p>
+      <h3>Opposition (180°) — the mirror</h3>
+      <p>Two planets face each other across the chart. This is the relationship aspect: it shows up as "me versus the other," or as two halves of yourself in dialogue. Oppositions pull you between extremes, but they also create awareness. You can't ignore what's staring you in the face.</p>
+      <h2>Hard versus soft</h2>
+      <p>Astrologers split aspects into "hard" (conjunction, square, opposition) and "soft" (sextile, trine). Hard aspects generate friction and visible results; soft aspects offer ease and support. A chart with only soft aspects can feel directionless; a chart with only hard aspects can feel like a constant storm. The most interesting people usually have a mix.</p>
+      <h2>Why aspects matter more than signs</h2>
+      <p>A beginner fixates on sun signs. An intermediate student learns the houses and planets. The practitioner pays attention to aspects, because aspects are where the action is. Your Venus might be in romantic Libra, but if it squares a restrictive Saturn, your love life won't be a fairy tale — it'll be a negotiation. The aspect tells you how the energy actually behaves, not just where it sits.</p>
+      <p>This is also why two people with "incompatible" sun signs can be deeply compatible: their aspects might create supportive bridges the sun signs alone would never suggest. If you've read our <a href="https://matchbybirth.com/blog/planets-in-astrology-guide">planets guide</a>, aspects are the next layer — the grammar that connects those nouns into sentences.</p>
+      <h2>Aspects in relationship astrology</h2>
+      <p>When two charts meet, astrologers compare aspects between them — a technique called synastry. Your Venus might trine their Mars, a classic "we just click" pattern. Or your Saturn might square their sun, which can feel like one partner is the other's strict teacher. These inter-chart aspects often explain more about a relationship than either person's individual chart.</p>
+      <p>Our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon signs guide</a> covers the emotional baseline; aspects tell you how the two charts actually interact once the first rush fades.</p>
+      <h2>Where astrology fits — and where it doesn't</h2>
+      <p>Be clear-eyed: aspects are a symbolic framework, not a proven causal mechanism. No study has shown that a 90-degree angle between two planets at your birth determines your personality. What aspects offer is a structured language for noticing patterns in how you relate to yourself and others. Used as a mirror rather than a verdict, they're genuinely useful.</p>
+      <p>Want to see your own aspects in action? <a href="https://matchbybirth.com">Pull your real birth chart on Match by Birth</a> and watch how your planets actually talk to each other. Then compare it with someone you love and see which aspects light up.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
