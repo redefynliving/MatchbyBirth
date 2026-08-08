@@ -3759,6 +3759,77 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'august-2026-eclipse-season-leo',
+    title: 'August 2026 Eclipse Season: The Leo Total Solar Eclipse and What It Means for Love',
+    date: '2026-08-08',
+    description: 'August 2026 brings the Lion\'s Gate Portal, a total solar eclipse in Leo, and a Pisces lunar eclipse. Here is what this eclipse season means for your relationships — and how to use it.',
+    tags: ['eclipse-season','leo-solar-eclipse','lions-gate','pisces-lunar-eclipse','august-2026','saturn-retrograde','seasonal-astrology','relationships'],
+    category: 'seasonal',
+    content: `
+      <h1>August 2026 Eclipse Season: The Leo Total Solar Eclipse and What It Means for Love</h1>
+
+      <p>Something is moving in the sky this month that astrologers wait years for. August 2026 opens with the Lion's Gate Portal on the 8th, builds to a total solar eclipse in Leo on the 12th — the first eclipse in a brand-new Leo–Aquarius cycle — and closes with a lunar eclipse in Pisces on the 27th. Three weeks. Two eclipses. One doorway.</p>
+
+      <p>If you have been feeling restless, itchy for change, or suddenly clear about what you will no longer tolerate in love, the sky is not random. Here is what is actually happening and how to use it — without the doom-mongering.</p>
+
+      <h2>First: the Lion's Gate Portal (August 8)</h2>
+
+      <p>Every year around August 8, the Sun in Leo aligns with Sirius, the brightest star in the night sky, and with the Earth in what spiritual astrology calls the Lion's Gate Portal. The astronomy is real: Sirius does rise near the Sun in late summer. The meaning people attach to it is ritual and belief, not physics — treat it as a prompt, not a promise.</p>
+
+      <p>What makes 2026's Lion's Gate different is the setup. It lands four days before a total solar eclipse in Leo — the same sign the portal already amplifies. That stacks Leo energy (confidence, visibility, creative self-expression, romance) on top of eclipse energy (endings, beginnings, fate). The combined message is blunt: stop dimming. Be seen. Decide who you are before the world decides for you.</p>
+
+      <h2>The main event: total solar eclipse in Leo (August 12)</h2>
+
+      <p>This is the one to circle. A total solar eclipse happens when the Moon passes directly between the Earth and the Sun, briefly blotting out the light. Astrologically, a solar eclipse is a supercharged new moon — a beginning with acceleration built in.</p>
+
+      <p>The August 12 eclipse falls at roughly 20 degrees of Leo, near the South Node (the point of release in the sky). That placement matters: this is the first eclipse in a new Leo–Aquarius axis that will run through 2027 and 2028. Eclipses in Leo shake up your relationship with your own light — your creativity, your confidence, your romance, and the parts of your life where you either shine or hide.</p>
+
+      <p>For relationships, a Leo eclipse asks one question: are you performing for approval, or creating for meaning? If your partnership runs on being impressive rather than being known, this eclipse will expose the gap. If you have been waiting for a sign to start something, begin it within two weeks of the 12th — eclipse windows reward motion.</p>
+
+      <h2>The closer: lunar eclipse in Pisces (August 27)</h2>
+
+      <p>Two weeks after the Leo new-moon eclipse, we get the opposite: a full-moon lunar eclipse in Pisces. Lunar eclipses bring conclusions. Pisces rules intuition, boundaries, and the emotions you swallow without naming. This one tightens the month's theme — what began in fire (Leo) resolves in water (Pisces).</p>
+
+      <p>Expect clarity about who drains you and who fills you. Pisces eclipses have a way of ending things you were already done with but had not admitted. That is not loss. That is room.</p>
+
+      <h2>Why this matters for compatibility</h2>
+
+      <p>Eclipse season is relationship season whether you plan it or not. The Leo eclipse touches your 5th-house themes — romance, dating, creative expression with a partner — while the Pisces eclipse pulls at your 12th-house themes — the subconscious patterns and inherited fears you bring to love.</p>
+
+      <p>This is exactly why sun-sign matching falls short. Two people can have compatible suns and still be wrecked by an eclipse that hits one of their charts and not the other's. The real read is in the full charts: where your Venus sits (your love language, covered in our <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus sign guide</a>), how you meet the world (our <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising signs guide</a>), and whether a Leo or Pisces eclipse is landing on a personal planet.</p>
+
+      <h2>The retrograde backdrop: Saturn and Neptune in Aries</h2>
+
+      <p>While the eclipses play out, two outer planets are already retrograde in Aries: Saturn (since July 26) and Neptune (since July 7), both running through December. Retrograde does not mean broken — it means review. In Aries, the lesson is about the self: where you have been rushing, where you have been avoiding, where you need to rebuild your sense of "I."</p>
+
+      <p>For couples, Aries retrogrades can surface the question of independence inside commitment. Are you two, or are you one person wearing a couple costume? The eclipse season will hand you the answer whether you ask for it or not.</p>
+
+      <p>Note what is NOT happening: Mercury is direct right now (its last retrograde ended July 23), and Uranus does not turn retrograde until September 10. So if your texts are misfiring and your ex is quiet, blame the eclipses and the Aries retrogrades — not Mercury.</p>
+
+      <h2>Which signs feel this eclipse season most</h2>
+
+      <p>Because the eclipses hit Leo and Pisces, the fixed signs — Leo, Aquarius, Scorpio, Taurus — feel it first. If you are a Leo or have Leo rising, the August 12 eclipse is personal; read our <a href="https://matchbybirth.com/blog/leo-compatibility">Leo compatibility guide</a> and our <a href="https://matchbybirth.com/blog/aquarius-compatibility">Aquarius compatibility guide</a> to see how the Leo–Aquarius axis plays out in love. Water signs (Pisces, Cancer, Scorpio) will feel the August 27 lunar eclipse in their bones — intuition spikes, boundaries blur, old feelings resurface. Everyone feels it; these groups feel it loudest.</p>
+
+      <h2>How to actually use this window</h2>
+
+      <ul>
+        <li><strong>Before August 12:</strong> write down the version of you that wants out. The Lion's Gate is for intention, not manifestation theater.</li>
+        <li><strong>Around August 12:</strong> start one thing you have been deferring in love or creative work. Eclipse energy rewards the first move.</li>
+        <li><strong>By August 27:</strong> let something end that has been ending. Pisces does not do partial goodbyes well.</li>
+        <li><strong>All month:</strong> check whether your relationship is built on performance or presence. That distinction is the whole eclipse.</li>
+      </ul>
+
+      <h2>The honest caveat</h2>
+
+      <p>Eclipses are symbolic, not a proven predictor of events. No planet forces a breakup or a wedding. What the sky offers is timing and a mirror — a concentrated few weeks when the patterns you have been ignoring get loud. Used as self-knowledge, that is valuable. Used as a verdict, it is a cage. The choice to act is still yours.</p>
+
+      <h2>See where the eclipses hit you</h2>
+
+      <p>An eclipse only transforms you if you know where it lands. <a href="https://matchbybirth.com">Pull your full birth chart on Match by Birth</a> using your birth date, time, and location, and compare it with a partner's. You will see in seconds whether the Leo or Pisces eclipse is touching your Venus, your moon, or your rising sign — and exactly which part of your love life this season is rearranging. Most people feel eclipse season without ever seeing the mechanism. This shows you the wiring.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
