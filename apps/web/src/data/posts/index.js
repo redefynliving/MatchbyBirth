@@ -3383,6 +3383,69 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'synastry-vs-composite-charts',
+    title: 'Synastry vs Composite Charts: Two Ways to Read a Relationship',
+    date: '2026-08-08',
+    description: 'Synastry reads the chemistry between two people; composite reads the relationship as its own entity. Learn both and why together they beat sun-sign compatibility.',
+    tags: ['synastry', 'composite-chart', 'relationship-astrology', 'compatibility', 'learn-astrology', 'couples'],
+
+    category: 'learn-astrology',
+    content: `
+      <h1>Synastry vs Composite Charts: Two Ways to Read a Relationship</h1>
+
+      <p>Most people stop at "are our signs compatible?" — and most compatibility content lets them. But once you have two real birth charts, there are two completely different ways astrologers read a relationship, and they answer different questions. One looks at how two people push and pull on each other. The other looks at the relationship as if it were its own living thing with its own personality. Those are synastry and composite charts, and if you only know one, you are missing half the picture.</p>
+
+      <h2>Synastry: the chemistry read</h2>
+
+      <p>Synastry is the overlay. You take person A's chart and lay person B's chart on top, then read the aspects between them — where B's planets land in A's houses, where A's Mars squares B's Venus, where B's moon sits on A's ascendant. Synastry describes the dynamic between two individuals. It answers: what happens when these two specific people are in the same room?</p>
+
+      <p>This is the layer most people actually feel. The instant click when someone's Venus touches your rising sign. The friction when their Saturn opposes your sun. Synastry is the spark and the grind — the moment-to-moment "us" that you experience day to day.</p>
+
+      <p>Where to look first in synastry:</p>
+
+      <ul>
+        <li><strong>The personal planets:</strong> sun, moon, Mercury, Venus, Mars. These drive daily life. A hard Mars-Venus aspect creates a specific kind of sexual tension; a soft moon-Mercury aspect makes you easy to talk to.</li>
+        <li><strong>The angles:</strong> when someone's planet hits your ascendant or descendant, the effect is loud and immediate — you feel seen, or challenged, right away.</li>
+        <li><strong>Juno contacts:</strong> as we covered in the <a href="https://matchbybirth.com/blog/juno-asteroid-commitment-astrology">Juno guide</a>, Juno hitting a partner's personal planet often signals the "I could build a life with you" pull.</li>
+      </ul>
+
+      <p>Synastry is great for explaining why you fight the way you do — pair it with the <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">Mars conflict styles guide</a> and the <a href="https://matchbybirth.com/blog/mercury-signs-communication-style">Mercury communication guide</a> and the patterns get obvious fast.</p>
+
+      <h2>Composite: the relationship as a third entity</h2>
+
+      <p>The composite chart is weirder and more useful than people expect. You don't overlay the charts — you compute the midpoint between every planet in both charts and draw a brand-new chart from those midpoints. The result is not either person. It is the relationship itself, treated as if the couple were a single entity with its own sun, moon, and rising sign.</p>
+
+      <p>This matters because a couple can have terrible synastry and still function beautifully, or amazing synastry and still fall apart. The composite chart explains the second case. Two people might spark hard (great synastry) but the composite shows a sun square Saturn — a relationship that, as a unit, carries built-in pressure, duty, or restriction. The bond feels heavy even when the individuals adore each other.</p>
+
+      <p>Conversely, modest synastry with a strong composite — a composite sun trine moon, say — often describes couples who aren't fireworks but are quietly unshakable. The relationship itself is stable even if the day-to-day spark is moderate.</p>
+
+      <h2>What each one tells you</h2>
+
+      <p>Use synastry to understand the interaction: who triggers whom, where the attraction lives, how you argue. Use composite to understand the bond's character: is this relationship expansive or contractive, easy or effortful, built to last or built to teach?</p>
+
+      <p>A clean way to think about it: synastry is the two actors. Composite is the play they create together. You can have brilliant actors (synastry) in a weak script (composite), or average actors in a script that elevates them.</p>
+
+      <h2>Where the moon and Venus still rule</h2>
+
+      <p>Don't abandon the basics. The composite moon tells you the emotional tone of the relationship as a unit — is the household warm, tense, or distant? The composite Venus tells you how the couple expresses affection together, which is different from either person's individual <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus love language</a>. And the composite's rising sign colors how the world sees the pair — something the <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising signs guide</a> covers on the individual level.</p>
+
+      <h2>Why this beats sun-sign compatibility</h2>
+
+      <p>Sun-sign columns compare one factor in two charts and call it a verdict. Synastry and composite use the whole chart and separate two different questions — personal chemistry versus relational destiny. That's the difference between a horoscope you scroll past and a read that actually explains your last three relationships.</p>
+
+      <p>If you want the foundation first, our <a href="https://matchbybirth.com/blog/planets-in-astrology-guide">planets guide</a> and <a href="https://matchbybirth.com/blog/twelve-astrological-houses-explained">houses guide</a> explain the building blocks before you start overlaying charts.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Neither technique is a proven predictor. Astrology is a symbolic language, not a science with peer-reviewed predictive power. Synastry and composite are best read as maps of tendency — patterns you can notice and work with, not sentences you're forced to serve. Plenty of "difficult" composite charts describe marriages that last decades because the people chose effort. And plenty of "easy" ones still end. The charts show the weather; they don't fly the plane.</p>
+
+      <h2>Run both reads on your relationship</h2>
+
+      <p><a href="https://matchbybirth.com">Pull both birth charts on Match by Birth</a>, then run the synastry overlay and the composite midpoint side by side. Within minutes you'll see where the personal chemistry is hot, where the relationship's own character is strong or strained, and exactly which patterns are worth a conversation. Most couples only ever see the spark — this shows you the structure underneath it.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
