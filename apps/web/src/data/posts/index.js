@@ -3769,9 +3769,9 @@ const posts = [
     content: `
       <h1>August 2026 Eclipse Season: The Leo Total Solar Eclipse and What It Means for Love</h1>
 
-      <p>Something is moving in the sky this month that astrologers wait years for. August 2026 opens with the Lion's Gate Portal on the 8th, builds to a total solar eclipse in Leo on the 12th — the first eclipse in a brand-new Leo–Aquarius cycle — and closes with a lunar eclipse in Pisces on the 27th. Three weeks. Two eclipses. One doorway.</p>
+      <p>This is for you if you've felt restless this summer — itchy for change, suddenly clear about what you'll no longer tolerate in love, or like a door you didn't know was closed just cracked open. That feeling isn't random. Something is moving in the sky that astrologers wait years for, and it lands in the next three weeks.</p>
 
-      <p>If you have been feeling restless, itchy for change, or suddenly clear about what you will no longer tolerate in love, the sky is not random. Here is what is actually happening and how to use it — without the doom-mongering.</p>
+      <p>August 2026 opens with the Lion's Gate Portal on the 8th, builds to a total solar eclipse in Leo on the 12th — the first eclipse in a brand-new Leo–Aquarius cycle — and closes with a lunar eclipse in Pisces on the 27th. Three weeks. Two eclipses. One doorway. If you're a Leo, tag your Leo friend now — this one is personal for them.</p>
 
       <h2>First: the Lion's Gate Portal (August 8)</h2>
 
@@ -3809,7 +3809,67 @@ const posts = [
 
       <h2>Which signs feel this eclipse season most</h2>
 
-      <p>Because the eclipses hit Leo and Pisces, the fixed signs — Leo, Aquarius, Scorpio, Taurus — feel it first. If you are a Leo or have Leo rising, the August 12 eclipse is personal; read our <a href="https://matchbybirth.com/blog/leo-compatibility">Leo compatibility guide</a> and our <a href="https://matchbybirth.com/blog/aquarius-compatibility">Aquarius compatibility guide</a> to see how the Leo–Aquarius axis plays out in love. Water signs (Pisces, Cancer, Scorpio) will feel the August 27 lunar eclipse in their bones — intuition spikes, boundaries blur, old feelings resurface. Everyone feels it; these groups feel it loudest.</p>
+      <p>Because the eclipses hit Leo and Pisces, the fixed signs — Leo, Aquarius, Scorpio, Taurus — feel the solar eclipse first, while water signs feel the Pisces lunar eclipse in their bones. Here is the priority map:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sign</th>
+            <th>What this eclipse season triggers</th>
+            <th>Intensity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Leo (or Leo rising)</td>
+            <td>The August 12 eclipse is personal — identity, visibility, and how you are seen in love get reset.</td>
+            <td>Highest</td>
+          </tr>
+          <tr>
+            <td>Aquarius (or Aquarius rising)</td>
+            <td>The axis partner to Leo — lessons around detachment versus real connection.</td>
+            <td>Highest</td>
+          </tr>
+          <tr>
+            <td>Taurus &amp; Scorpio</td>
+            <td>Fixed-sign square — pressure on stability, money, and intimacy.</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Pisces (or Pisces rising)</td>
+            <td>The August 27 lunar eclipse lands on you — endings, boundaries, old feelings.</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Cancer &amp; Scorpio</td>
+            <td>Water signs absorb the Pisces eclipse — intuition spikes, blurred boundaries.</td>
+            <td>Medium-High</td>
+          </tr>
+          <tr>
+            <td>Aries</td>
+            <td>Saturn and Neptune retrograde in Aries add the "who am I" pressure underneath it all.</td>
+            <td>Medium</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Eclipse season by sign: one line each</h3>
+      <ul>
+        <li><strong>Aries:</strong> the Aries retrogrades plus the eclipse push you off autopilot — your independence is the lesson, not your temper.</li>
+        <li><strong>Taurus:</strong> fixed-sign tension hits your security axis — a relationship that costs you peace is now too expensive.</li>
+        <li><strong>Gemini:</strong> Mercury is direct, so your mind is clear — use it to say the thing you've been editing in your head.</li>
+        <li><strong>Cancer:</strong> the Pisces eclipse builds your boundary muscles — stop absorbing a partner's moods as your own.</li>
+        <li><strong>Leo:</strong> this is your eclipse. The 12th rewrites how you're seen in love. Be undeniable, not agreeable.</li>
+        <li><strong>Virgo:</strong> the noise exposes a perfectionism loop in love — you don't have to be fixed to be chosen.</li>
+        <li><strong>Libra:</strong> your relationship axis lights up — the question isn't "are they right?" it's "am I disappearing?"</li>
+        <li><strong>Scorpio:</strong> fixed-sign intensity plus the water eclipse — old trust wounds surface to be released, not re-opened.</li>
+        <li><strong>Sagittarius:</strong> freedom versus commitment recalibrates — running isn't the only way to stay free.</li>
+        <li><strong>Capricorn:</strong> the Aries retrogrades test your armor — softness isn't a risk, it's a love skill.</li>
+        <li><strong>Aquarius:</strong> axis partner to Leo — the eclipse asks whether your detachment is wisdom or avoidance.</li>
+        <li><strong>Pisces:</strong> the 27th is yours — end what you've outgrown; your sensitivity is data, not a flaw.</li>
+      </ul>
+
+      <p>For the full love picture, read our <a href="https://matchbybirth.com/blog/leo-compatibility">Leo compatibility guide</a> and our <a href="https://matchbybirth.com/blog/aquarius-compatibility">Aquarius compatibility guide</a> to see how the Leo–Aquarius axis plays out in relationships.</p>
 
       <h2>How to actually use this window</h2>
 
@@ -3820,6 +3880,20 @@ const posts = [
         <li><strong>All month:</strong> check whether your relationship is built on performance or presence. That distinction is the whole eclipse.</li>
       </ul>
 
+      <h2>Frequently asked questions</h2>
+
+      <h3>Is the August 2026 eclipse season bad?</h3>
+      <p>No — and that framing is the single most harmful myth about eclipses. Eclipses are accelerants, not punishments. They don't send bad luck; they surface what's already true and give it momentum. A relationship that was already ending ends faster. A love that was already real gets a green light. The eclipse just removes the buffer you'd been hiding behind.</p>
+
+      <h3>What does the Leo solar eclipse mean for my specific sign?</h3>
+      <p>It depends where Leo and Pisces sit in your chart — which is why the one-line-per-sign list above is a starting point, not a verdict. The precise read comes from your full birth chart: an eclipse landing on your Venus, moon, or rising sign hits far harder than one brushing your 12th house. Pull your chart and see where the 12th and 27th actually land for you.</p>
+
+      <h3>What should I actually do during eclipse season?</h3>
+      <p>Three moves: set intention before the 12th (the Lion's Gate is for clarity, not manifestation theater), take one real action around the 12th (eclipse windows reward the first move), and let something end by the 27th (Pisces doesn't do partial goodbyes). Beyond that, pay attention. The pattern you notice this month is the one worth acting on.</p>
+
+      <h3>Why do my ex or old feelings resurface during eclipses?</h3>
+      <p>The August 27 lunar eclipse falls on the 12th house — the subconscious, the patterns you inherited, the feelings you shelved. It drags the unfinished into the light so you can release it. That surge of nostalgia is pattern-release, not a sign to go back. Notice the feeling; don't text the feeling.</p>
+
       <h2>The honest caveat</h2>
 
       <p>Eclipses are symbolic, not a proven predictor of events. No planet forces a breakup or a wedding. What the sky offers is timing and a mirror — a concentrated few weeks when the patterns you have been ignoring get loud. Used as self-knowledge, that is valuable. Used as a verdict, it is a cage. The choice to act is still yours.</p>
@@ -3827,6 +3901,96 @@ const posts = [
       <h2>See where the eclipses hit you</h2>
 
       <p>An eclipse only transforms you if you know where it lands. <a href="https://matchbybirth.com">Pull your full birth chart on Match by Birth</a> using your birth date, time, and location, and compare it with a partner's. You will see in seconds whether the Leo or Pisces eclipse is touching your Venus, your moon, or your rising sign — and exactly which part of your love life this season is rearranging. Most people feel eclipse season without ever seeing the mechanism. This shows you the wiring.</p>
+    `,
+  },
+
+  {
+    slug: 'twelve-astrological-houses-explained',
+    title: 'The 12 Astrological Houses Explained: What Each House Means in Your Chart',
+    date: '2026-08-08',
+    description: 'The zodiac wheel is only half the story. Learn what the 12 astrological houses mean, how they map to real life, and why house placements shape compatibility.',
+    tags: ['astrology','houses','birth-chart','compatibility','learn-astrology','zodiac'],
+    category: 'learn-astrology',
+    content: `
+      <h1>The 12 Astrological Houses Explained: What Each House Means in Your Chart</h1>
+
+      <p>Most compatibility talk stops at the zodiac signs. That's a mistake. Signs describe energy — how a planet behaves. Houses describe arena — where that energy plays out in your actual life. Skip the houses and you miss half the chart.</p>
+
+      <p>The birth chart is a wheel split into twelve segments. Each segment rules a different slice of human experience: identity, money, communication, home, romance, work, partnership, transformation, belief, career, community, and the subconscious. A planet sitting in a house activates that area. A sign on a house cusp colors how that area feels to you.</p>
+
+      <p>If you've read our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon sign guide</a> or our <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus love language piece</a>, you already know your sun sign is just one layer. The houses are what turn those layers into a life story.</p>
+
+      <h2>The angular houses (1, 4, 7, 10): where life gets loud</h2>
+
+      <p>These four are the backbone of the chart. They sit on the cardinal points and carry the most weight in how a life actually unfolds.</p>
+
+      <h3>1st house — the self</h3>
+      <p>Identity, body, first impressions, how you meet the world. This is the house your <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising sign</a> rules — it shapes what people see before you say a word.</p>
+
+      <h3>4th house — roots</h3>
+      <p>Home, family, childhood, the private foundation. It governs where you recharge and what "safe" means to you.</p>
+
+      <h3>7th house — partnership</h3>
+      <p>The big one for relationships. Marriage, committed partnership, and the traits you're drawn to in others. This is the house most directly tied to compatibility.</p>
+
+      <h3>10th house — public life</h3>
+      <p>Career, reputation, ambition, how the world knows you. It's the opposite of the private 4th.</p>
+
+      <h2>The succedent houses (2, 5, 8, 11): where things build</h2>
+
+      <p>These follow the angles and tend to be about accumulation and stability.</p>
+
+      <h3>2nd house — resources</h3>
+      <p>Money, possessions, self-worth, what you value. Not just income — it's your relationship with having.</p>
+
+      <h3>5th house — expression</h3>
+      <p>Romance, creativity, children, pleasure, play. The fun house. First-date energy lives here more than the 7th.</p>
+
+      <h3>8th house — intimacy</h3>
+      <p>Shared resources, sex, debt, transformation, the psychological underbelly of relationships. The deepest merging.</p>
+
+      <h3>11th house — community</h3>
+      <p>Friends, networks, hopes, the future you're building with others.</p>
+
+      <h2>The cadent houses (3, 6, 9, 12): where things process</h2>
+
+      <p>These trail the angles and govern thinking, service, and the invisible.</p>
+
+      <h3>3rd house — communication</h3>
+      <p>How you think and talk, siblings, short trips, daily information flow.</p>
+
+      <h3>6th house — routine</h3>
+      <p>Work, health, habits, service, the daily grind that holds a life together.</p>
+
+      <h3>9th house — belief</h3>
+      <p>Travel, higher education, philosophy, meaning. The house of the bigger picture.</p>
+
+      <h3>12th house — the unseen</h3>
+      <p>The subconscious, secrets, endings, what you hide even from yourself. Eclipses here hit hard, as our <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">conflict styles guide</a> shows when internal patterns erupt outward.</p>
+
+      <h2>Why houses matter for compatibility</h2>
+
+      <p>Two people can share a sign but live it in totally different houses. Your Venus in the 7th wants partnership front and center. A partner's Venus in the 12th expresses love quietly, almost invisibly. Same planet, same sign energy, completely different relationship rhythm. That's a house-story mismatch — and it explains more relationship friction than sun signs ever will.</p>
+
+      <p>The 7th house is the headline for couples. It shows what you seek in a partner and what you'd rather not see about yourself (the 7th is the 1st's opposite, so it mirrors your blind spots). When someone's planets fall in your 7th, the relationship tends to feel fated. When your 7th ruler clashes with a partner's chart, the work is translation, not chemistry.</p>
+
+      <h2>Houses vs. signs: the fast rule</h2>
+
+      <ul>
+        <li><strong>Signs</strong> = how the energy behaves (fiery, earthy, detached, emotional).</li>
+        <li><strong>Houses</strong> = where that behavior shows up (in your love life, your career, your private mind).</li>
+        <li><strong>Planets</strong> = what is acting (Venus loves, Mars fights, the moon feels).</li>
+      </ul>
+
+      <p>Put them together — planet, sign, house — and you get a sentence: "My Venus (love) in Taurus (steady) in the 7th (partnership) means I show love through reliable, physical devotion in committed relationships." That sentence is worth more than a hundred sun-sign memes.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Houses are a symbolic framework, not a proven science. No house "causes" an outcome. What they offer is a structured way to notice your patterns — where you invest, where you hide, where you love. Used as a map for self-awareness, that's genuinely useful. Used as a fixed verdict, it's just another story you tell yourself.</p>
+
+      <h2>See your houses in action</h2>
+
+      <p>You can't read your houses without your exact birth time — the wheel rotates on time, so a few minutes changes which sign sits on which cusp. <a href="https://matchbybirth.com">Pull your full chart on Match by Birth</a> with your birth date, time, and location, and you'll see exactly which houses your Venus, moon, and Mars occupy — and how that shapes who you click with. The signs tell you who you are. The houses tell you where it all happens.</p>
     `,
   },
 
