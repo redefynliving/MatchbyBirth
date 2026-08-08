@@ -3446,6 +3446,64 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'black-moon-lilith-astrology',
+    title: 'Black Moon Lilith: The Shadow Sign That Explains Your Edge',
+    date: '2026-08-08',
+    description: 'Black Moon Lilith is the chart point for your boundaries, raw desire, and refusal to be controlled. Learn what your Lilith sign says about your edge and your dealbreakers.',
+    tags: ['black-moon-lilith', 'lilith', 'learn-astrology', 'shadow-work', 'boundaries', 'relationship-astrology'],
+
+    category: 'learn-astrology',
+    content: `
+      <h1>Black Moon Lilith: The Shadow Sign That Explains Your Edge</h1>
+
+      <p>Most people learn their sun, moon, and rising and stop there. But there's a point in your chart astrologers treat very differently — one that has nothing to do with who you appear to be and everything to do with the part of you that refuses to be controlled. That point is Black Moon Lilith, and once you find it, a lot of your "why do I react like that?" moments start to make sense.</p>
+
+      <h2>What Black Moon Lilith actually is</h2>
+
+      <p>The honest version first: Lilith is not a planet. There's no rock out in space with her name on it. Black Moon Lilith is a calculated point — the lunar apogee, the spot in the moon's orbit where it sits farthest from Earth. In myth she's the first woman, the one who refused to lie beneath Adam and was cast out for saying no. In a birth chart, that story translates into the part of your psyche that holds your raw, unapologetic, taboo energy — the desires and boundaries you were taught to hide.</p>
+
+      <p>This is symbolism, not astronomy with a verdict. But the pattern is useful: Lilith shows where you draw your hardest line, where you bite back, and where you've been conditioned to shrink.</p>
+
+      <h2>Why Lilith matters more than people expect</h2>
+
+      <p>Your sun sign is who you're becoming. Your moon sign is how you feel safe. Your Venus sign is how you love. Lilith is where you refuse. And refusal — healthy, angry, sovereign refusal — is the thing most compatibility advice skips entirely. A relationship can look perfect on paper and still leave you feeling like you've gone quiet. Nine times out of ten, the quiet is your Lilith not being honored.</p>
+
+      <p>Read your <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon sign</a> for emotional needs and your <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus sign</a> for love language first — Lilith is the layer on top that tells you what you will not tolerate.</p>
+
+      <h2>What each Lilith sign tends to look like</h2>
+
+      <p>Lilith moves through the zodiac, and her sign points to the flavor of your edge:</p>
+
+      <ul>
+        <li><strong>Lilith in fire signs (Aries, Leo, Sagittarius):</strong> your rage and ambition are loud. You rebel by taking up space. The lesson is directing that heat without burning your own bridges.</li>
+        <li><strong>Lilith in earth signs (Taurus, Virgo, Capricorn):</strong> your "no" is embodied — about bodies, boundaries, money, and worth. You rebel by refusing to be used or undervalued.</li>
+        <li><strong>Lilith in air signs (Gemini, Libra, Aquarius):</strong> your edge lives in your mind and your voice. You rebel by thinking out loud and refusing to be silenced or "polite."</li>
+        <li><strong>Lilith in water signs (Cancer, Scorpio, Pisces):</strong> your power is emotional and psychic. You rebel by feeling everything and refusing to apologize for the depth.</li>
+      </ul>
+
+      <h2>Lilith in relationships: the dealbreaker map</h2>
+
+      <p>In synastry, Lilith contacts are some of the most electric — and most destabilizing — aspects there are. When your Lilith touches a partner's personal planet, the pull is magnetic and a little dangerous: it's the part of you that wants to be seen exactly as you are, taboo and all. But it's also where the power struggles live.</p>
+
+      <p>A partner who triggers your Lilith can make you feel both obsessed and exposed. That's not automatically a red flag — sometimes it's the relationship finally letting you be honest about what you want. But if the contact is harsh and the dynamic is consistently about control, that's your Lilith telling you the cost of staying is too high. Pair this read with the <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">Mars conflict styles guide</a> to see how the friction actually plays out in arguments.</p>
+
+      <h2>Lilith vs the rest of your chart</h2>
+
+      <p>Lilith works best as a contrast. Your <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising sign</a> is the mask you wear; Lilith is what's under it. Your <a href="https://matchbybirth.com/blog/chiron-sign-wounded-healer">Chiron</a> is the wound; Lilith is the part that fought back. Your <a href="https://matchbybirth.com/blog/north-south-node-astrology">north and south nodes</a> are the karmic arc; Lilith is the instinct that refuses to follow it quietly.</p>
+
+      <p>None of these contradict. They're different instruments in the same chart. The <a href="https://matchbybirth.com/blog/planets-in-astrology-guide">planets guide</a> covers the core actors; Lilith is the wildcard point that shows where you stop performing.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Black Moon Lilith is a symbolic point, not a measured body, and the "Lilith" you read depends on which of several calculations an astrologer uses (mean versus true). Treat it as insight, not instruction. The goal isn't to romanticize being difficult — it's to notice where you've been taught to apologize for your boundaries, and to decide, consciously, which ones are actually yours.</p>
+
+      <h2>Find your Lilith</h2>
+
+      <p><a href="https://matchbybirth.com">Pull your full birth chart on Match by Birth</a> and locate Black Moon Lilith by sign and house. Within seconds you'll see where your edge lives, what triggers it, and whether the relationships around you are honoring it or quietly eroding it. Most people never meet this part of themselves on purpose — this is the fastest way to.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
