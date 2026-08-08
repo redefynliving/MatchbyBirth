@@ -3504,6 +3504,85 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'zodiac-signs-attachment-styles',
+    title: 'Your Zodiac Sign and Attachment Style: Anxious, Avoidant, or Secure?',
+    date: '2026-08-08',
+    description: 'Attachment theory explains how you bond — and your zodiac sign adds a layer most people miss. Here is how each sign tends to love, cling, or pull away.',
+    tags: ['attachment-styles','zodiac','relationships','love','psychology','compatibility'],
+
+    category: 'relationships',
+    content: `
+      <h1>Your Zodiac Sign and Attachment Style</h1>
+
+      <p>Attachment theory is the closest thing psychology has to a map of how we love. It says the way you bonded with your first caregivers predicts how you bond as an adult — anxious, avoidant, secure, or a blend. Astrology doesn't replace that science. But your zodiac sign adds a layer that explains the flavor of your pattern: how you express need, how you handle closeness, and why certain partners set off alarms others don't.</p>
+
+      <h2>The three patterns, fast</h2>
+
+      <p>Before the signs, the basics. <strong>Anxious attachment</strong> craves closeness and fears abandonment; distance reads as danger. <strong>Avoidant attachment</strong> prizes independence and gets uncomfortable when things get too close; intimacy can feel like a threat to self. <strong>Secure attachment</strong> gets close without losing themselves and alone without panicking. Most people are a mix, and anyone can move toward secure with awareness.</p>
+
+      <p>Your <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon sign</a> tells you what makes you feel safe. Your <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus sign</a> tells you how you express love. Attachment style is the wiring underneath both. Here's how the elements tend to lean.</p>
+
+      <h2>Fire signs: big feelings, faster triggers</h2>
+
+      <h3>Aries</h3>
+      <p>Aries runs hot and direct. In love that can tip anxious — they want to know where they stand now — but pride can flip them avoidant the second they feel weak. The work is staying present instead of turning anger into distance.</p>
+
+      <h3>Leo</h3>
+      <p>Leo loves loudly and needs to feel chosen. Unmet, that need reads anxious: they test, perform, or demand reassurance. Secure Leo is generous and steady. Insecure Leo withdraws pride first, affection second.</p>
+
+      <h3>Sagittarius</h3>
+      <p>Sagittarius is the avoidant-leaning fire sign. Freedom is safety. They'll bolt from anything that feels like a cage, sometimes before real problems start. The growth edge is learning commitment isn't confinement.</p>
+
+      <h2>Earth signs: steady outside, careful inside</h2>
+
+      <h3>Taurus</h3>
+      <p>Taurus wants security and builds it slowly. They can look avoidant because they move at their own pace, but once committed they're loyal to a fault. The trap is staying in something dead just because leaving feels destabilizing.</p>
+
+      <h3>Virgo</h3>
+      <p>Virgo shows love through service, not vulnerability. That can mask anxious attachment — they caretake instead of asking to be cared for. The pattern hides need behind usefulness. Secure Virgo learns to receive.</p>
+
+      <h3>Capricorn</h3>
+      <p>Capricorn is the most avoidant-leaning earth sign. Achievement feels safer than intimacy. They build a whole life to avoid depending on anyone. The unlock: connection doesn't threaten the plan, it's the point of it.</p>
+
+      <h2>Air signs: connect through mind, protect through space</h2>
+
+      <h3>Gemini</h3>
+      <p>Gemini connects through talking and variety. Under stress they can seem avoidant — diverting, joking, changing the subject — when what they need is to feel their feelings out loud. The work is depth over distraction.</p>
+
+      <h3>Libra</h3>
+      <p>Libra leans anxious toward people-pleasing. They merge easily and lose themselves in "us." Secure Libra keeps a self inside the couple. The red flag: saying yes when every cell means no.</p>
+
+      <h3>Aquarius</h3>
+      <p>Aquarius is the textbook avoidant of the zodiac. They love humanity, struggle with one human up close. Closeness triggers the independence reflex. Growth means letting someone in without losing the self they prize.</p>
+
+      <h2>Water signs: feel everything, guard the soft spots</h2>
+
+      <h3>Cancer</h3>
+      <p>Cancer is the archetypal anxious sign — deeply attuned, quick to sense withdrawal, prone to cling when scared. Secure Cancer is the safe harbor. Insecure Cancer withdraws first to avoid being left.</p>
+
+      <h3>Scorpio</h3>
+      <p>Scorpio is a paradox: all or nothing. They crave fusion but fear betrayal, so they test, withhold, and armor up — a push-pull that looks anxious and avoidant at once. Trust is the whole game. Without it, they're gone.</p>
+
+      <h3>Pisces</h3>
+      <p>Pisces merges and escapes. Anxious-leaning, they absorb the partner's moods and lose boundaries. The danger is romanticizing rescue and ignoring real incompatibility. Secure Pisces loves with eyes open.</p>
+
+      <h2>Why this matters for compatibility</h2>
+
+      <p>Attachment style explains more about relationship survival than sun-sign matches ever will. Two anxious people spiral together. Two avoidants drift forever. An anxious-avoidant pair creates the most addictive, exhausting loop in dating — chase and distance, repeat. Naming your pattern is the first move toward breaking it.</p>
+
+      <p>Pair this with the <a href="https://matchbybirth.com/blog/zodiac-compatibility-red-flags">compatibility red flags guide</a> and the <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">Mars conflict styles guide</a> to see how attachment shows up in real fights, not just feelings.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Astrology is symbolic, not diagnostic. Attachment style is real psychology built from lived experience — your sign describes tendencies, not destiny, and your actual history matters more than your chart. Use this as a lens, not a label. People change. So do relationships.</p>
+
+      <h2>See your full picture</h2>
+
+      <p><a href="https://matchbybirth.com">Get your complete birth chart on Match by Birth</a> and cross-reference your moon, Venus, and rising with the patterns above. The sign tells you the flavor; the rest of your chart tells you the recipe. Most people fix their love life faster once they can finally name the pattern running it.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
