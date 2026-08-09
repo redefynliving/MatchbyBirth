@@ -9,6 +9,7 @@ import { getZodiacPairingPostBySlug } from '../../../../tools/zodiac-pairings.mj
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
+  buildFaqSchema,
   getBlogPostPath,
   getBlogPostSeo,
   getRelatedPosts,
@@ -145,6 +146,11 @@ function BlogPostPage() {
         <script type="application/ld+json">
           {JSON.stringify(buildBreadcrumbSchema(post))}
         </script>
+        {buildFaqSchema(post) && (
+          <script type="application/ld+json">
+            {JSON.stringify(buildFaqSchema(post))}
+          </script>
+        )}
       </Helmet>
 
       <main className="py-16 md:py-24 bg-background min-h-screen relative overflow-hidden">

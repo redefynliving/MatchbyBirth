@@ -72,6 +72,24 @@ export function buildArticleSchema(post) {
   };
 }
 
+export function buildFaqSchema(post) {
+  if (!Array.isArray(post?.faq) || post.faq.length === 0) return null;
+  const base = canonicalUrl(getBlogPostPath(post));
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${base}#faq`,
+    mainEntity: post.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export function buildBreadcrumbSchema(post) {
   const seo = getBlogPostSeo(post);
   return {

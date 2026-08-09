@@ -8,6 +8,7 @@ import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages } from '../../../tools/zod
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
+  buildFaqSchema,
   canonicalUrl,
   getBlogPostPath,
   getBlogPostSeo,
@@ -297,7 +298,8 @@ export function renderArticleHtml({ template, post } = {}) {
     <meta property="article:section" content="${escapeHtml(seo.categoryLabel)}" />
     ${seo.tags.map((tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" />`).join('\n    ')}
     ${renderJsonLd(buildArticleSchema({ ...post, description }))}
-    ${renderJsonLd(buildBreadcrumbSchema(post))}`,
+    ${renderJsonLd(buildBreadcrumbSchema(post))}
+    ${buildFaqSchema(post) ? renderJsonLd(buildFaqSchema(post)) : ''}`,
   });
 }
 

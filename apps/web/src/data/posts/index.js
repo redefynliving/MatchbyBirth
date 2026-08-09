@@ -3741,20 +3741,6 @@ const posts = [
         <li><strong>All month:</strong> check whether your relationship is built on performance or presence. That distinction is the whole eclipse.</li>
       </ul>
 
-      <h2>Frequently asked questions</h2>
-
-      <h3>Is the August 2026 eclipse season bad?</h3>
-      <p>No — and that framing is the single most harmful myth about eclipses. Eclipses are accelerants, not punishments. They don't send bad luck; they surface what's already true and give it momentum. A relationship that was already ending ends faster. A love that was already real gets a green light. The eclipse just removes the buffer you'd been hiding behind.</p>
-
-      <h3>What does the Leo solar eclipse mean for my specific sign?</h3>
-      <p>It depends where Leo and Pisces sit in your chart — which is why the one-line-per-sign list above is a starting point, not a verdict. The precise read comes from your full birth chart: an eclipse landing on your Venus, moon, or rising sign hits far harder than one brushing your 12th house. Pull your chart and see where the 12th and 27th actually land for you.</p>
-
-      <h3>What should I actually do during eclipse season?</h3>
-      <p>Three moves: set intention before the 12th (the Lion's Gate is for clarity, not manifestation theater), take one real action around the 12th (eclipse windows reward the first move), and let something end by the 27th (Pisces doesn't do partial goodbyes). Beyond that, pay attention. The pattern you notice this month is the one worth acting on.</p>
-
-      <h3>Why do my ex or old feelings resurface during eclipses?</h3>
-      <p>The August 27 lunar eclipse falls on the 12th house — the subconscious, the patterns you inherited, the feelings you shelved. It drags the unfinished into the light so you can release it. That surge of nostalgia is pattern-release, not a sign to go back. Notice the feeling; don't text the feeling.</p>
-
       <h2>The honest caveat</h2>
 
       <p>Eclipses are symbolic, not a proven predictor of events. No planet forces a breakup or a wedding. What the sky offers is timing and a mirror — a concentrated few weeks when the patterns you have been ignoring get loud. Used as self-knowledge, that is valuable. Used as a verdict, it is a cage. The choice to act is still yours.</p>
@@ -3763,6 +3749,24 @@ const posts = [
 
       <p>An eclipse only transforms you if you know where it lands. <a href="https://matchbybirth.com">Pull your full birth chart on Match by Birth</a> using your birth date, time, and location, and compare it with a partner's. You will see in seconds whether the Leo or Pisces eclipse is touching your Venus, your moon, or your rising sign — and exactly which part of your love life this season is rearranging. Most people feel eclipse season without ever seeing the mechanism. This shows you the wiring.</p>
     `,
+    faq: [
+      {
+        question: 'Is the August 2026 eclipse season bad?',
+        answer: 'No — and that framing is the single most harmful myth about eclipses. Eclipses are accelerants, not punishments. They don\'t send bad luck; they surface what\'s already true and give it momentum. A relationship that was already ending ends faster. A love that was already real gets a green light. The eclipse just removes the buffer you\'d been hiding behind.',
+      },
+      {
+        question: 'What does the Leo solar eclipse mean for my specific sign?',
+        answer: 'It depends where Leo and Pisces sit in your chart — which is why the one-line-per-sign list above is a starting point, not a verdict. The precise read comes from your full birth chart: an eclipse landing on your Venus, moon, or rising sign hits far harder than one brushing your 12th house. Pull your chart and see where the 12th and 27th actually land for you.',
+      },
+      {
+        question: 'What should I actually do during eclipse season?',
+        answer: 'Three moves: set intention before the 12th (the Lion\'s Gate is for clarity, not manifestation theater), take one real action around the 12th (eclipse windows reward the first move), and let something end by the 27th (Pisces doesn\'t do partial goodbyes). Beyond that, pay attention. The pattern you notice this month is the one worth acting on.',
+      },
+      {
+        question: 'Why do my ex or old feelings resurface during eclipses?',
+        answer: 'The August 27 lunar eclipse falls on the 12th house — the subconscious, the patterns you inherited, the feelings you shelved. It drags the unfinished into the light so you can release it. That surge of nostalgia is pattern-release, not a sign to go back. Notice the feeling; don\'t text the feeling.',
+      },
+    ],
   },
 
   {
