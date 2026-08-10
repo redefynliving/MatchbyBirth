@@ -3859,6 +3859,91 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'venus-in-libra-august-10-2026-relationships',
+    title: 'Venus in Libra, August 10 2026: What Today\'s Love Sky Means for Your Relationships',
+    date: '2026-08-10',
+    description: 'Venus sits in Libra — its cosmic home — on August 10, 2026, while three outer planets retrograde. Here\'s what today\'s transits mean for your love life.',
+    tags: ['venus in libra','august 10 2026 astrology','venus libra love','planetary retrograde','zodiac compatibility','love horoscope','transits'],
+    category: 'seasonal',
+    faq: [
+      { question: 'What does Venus in Libra mean for relationships?', answer: 'Venus is the planet of love and Libra is the sign of partnership, so Venus is considered "in dignity" here — love energy expresses clearly and leans toward harmony, fairness, and attraction.' },
+      { question: 'Which planets are retrograde on August 10, 2026?', answer: 'Saturn in Aries, Neptune in Aries, and Pluto in Aquarius are all retrograde. None of the inner personal planets (Mercury, Venus, Mars) are retrograde that day, so daily communication stays steadier than during a Mercury retrograde.' },
+      { question: 'Is Venus in Libra a good time for love?', answer: 'Symbolically, yes — it is one of the most relationship-friendly placements. It is a strong window for honest conversations, reconciliations, and clarifying what you actually want from a partner.' },
+      { question: 'How is astrology different from a proven science?', answer: 'Astrology is a symbolic framework for noticing patterns, not a predictive science. Use transits as prompts for self-reflection, not as fixed verdicts about your relationship.' }
+    ],
+    content: `
+      <h1>Venus in Libra, August 10 2026: What Today's Love Sky Means for Your Relationships</h1>
+
+      <p>On Monday, August 10, 2026, the planet of love is sitting in the one sign that speaks its language best. <strong>Venus is in Libra</strong> — the sign of partnership, balance, and attraction. At the same time, three of the outer planets are retrograde, quietly restructuring how we relate. If you've been feeling a pull toward clarity in your love life, the sky is with you today.</p>
+
+      <p>Here's the exact picture for August 10, 2026, and what each piece tends to bring to your relationships — no vague horoscope fog, just the transits and what they mean.</p>
+
+      <h2>The headline: Venus is home in Libra</h2>
+
+      <p>In astrology, every planet expresses differently depending on the sign it moves through. When Venus is in Libra, it's in its <em>home sign</em> — astrologers call this "dignity." Venus rules Libra, so the planet of love gets to act like itself: oriented toward partnership, fairness, beauty, and the kind of steady attraction that builds over time rather than burning out fast.</p>
+
+      <p>Venus sits at roughly 3° Libra on this date. That placement puts relationship themes front and center. People tend to crave more harmony, more honesty about what they want, and less tolerance for one-sided dynamics. If a connection has been wobbling, this is the energy that makes you finally name the problem.</p>
+
+      <h2>The aspects firing around Venus</h2>
+
+      <p>Venus doesn't move alone. Three exact aspects shape the day's relationship weather:</p>
+
+      <ul>
+        <li><strong>Venus trine Pluto</strong> — a deep, magnetic current. This is the aspect of "I see you, all of you, and I'm not leaving." It can pull buried feelings to the surface and intensify commitment. The risk is intensity tipping into control — name your needs instead of testing your partner.</li>
+        <li><strong>Venus opposition Neptune</strong> — the romance fog. Neptune blurs edges, which can feel dreamy or can mean you're projecting a fantasy onto someone. The upside is tenderness; the trap is ignoring red flags because the vibe is pretty. Keep one foot on the ground.</li>
+        <li><strong>Venus sextile Jupiter and Uranus</strong> — luck and surprise. Jupiter widens the field (new connections, easier conversations); Uranus adds the unexpected (a sudden clarity, an unconventional turn). This is the part of the sky that rewards a small, brave honest move.</li>
+      </ul>
+
+      <p>Together, that's a rare combination: the desire for real depth (Pluto), the temptation to idealize (Neptune), and the opening for something genuinely new (Jupiter–Uranus). The work is to want depth without confusing it with fantasy.</p>
+
+      <h2>Three retrogrades are restructuring relationships</h2>
+
+      <p>On August 10, 2026, <strong>Saturn (Aries), Neptune (Aries), and Pluto (Aquarius)</strong> are all retrograde. None of the personal inner planets — Mercury, Venus, Mars — are retrograde, so day-to-day communication stays steadier than during a Mercury retrograde (see our <a href="https://matchbybirth.com/blog/mercury-retrograde-2026-relationships">2026 Mercury retrograde relationships guide</a>).</p>
+
+      <p>Each outer retrograde works a different layer:</p>
+
+      <ul>
+        <li><strong>Saturn retrograde in Aries</strong> — restructuring where you take responsibility. In love, it asks: are you avoiding the hard conversation, or are you the one always carrying the relationship alone?</li>
+        <li><strong>Neptune retrograde in Aries</strong> — lifting the fog on who someone really is. Illusions about a partner tend to thin out. Painful, sometimes — but it's the clarity that lets you choose truthfully.</li>
+        <li><strong>Pluto retrograde in Aquarius</strong> — deep transformation in how you connect as equals. Power dynamics in relationships get examined and, often, rebalanced.</li>
+      </ul>
+
+      <p>The throughline: these retrogrades aren't about new romance so much as <em>rebuilding the foundation</em> of the relationships you already have.</p>
+
+      <h2>What today's sky means by element</h2>
+
+      <p>The Venus-in-Libra emphasis lands differently depending on your sign's element:</p>
+
+      <ul>
+        <li><strong>Fire (Aries, Leo, Sagittarius):</strong> You want the truth fast. Use the Venus–Pluto trine to go deep without bulldozing. Say the real thing once, clearly.</li>
+        <li><strong>Earth (Taurus, Virgo, Capricorn):</strong> You'll feel the steadiness Venus brings and like it. This is your window to define the terms of a connection in practical, committed language.</li>
+        <li><strong>Air (Gemini, Libra, Aquarius):</strong> Venus is practically in your living room. Talk it out — but watch the Neptune opposition; don't confuse a good conversation with a finished relationship.</li>
+        <li><strong>Water (Cancer, Scorpio, Pisces):</strong> The Pluto trine hits you hardest emotionally. Let the depth in, but check the Neptune fog before you rewrite your whole love story around a feeling.</li>
+      </ul>
+
+      <h2>Venus in Libra vs. your Venus sign</h2>
+
+      <p>Today's Venus-in-Libra energy is the <em>weather</em> — a temporary current everyone feels. Your <strong>natal Venus sign</strong> is the <em>climate</em>: how you personally love, what you're drawn to, what makes you stay. A Libra Venus and a Scorpio Venus both feel the harmony pull today, but they'll act on it completely differently. Knowing your Venus sign (and your partner's) explains more about daily friction than a sun-sign column ever will. Our <a href="https://matchbybirth.com/blog/best-zodiac-matches-for-each-sign-2026">2026 match guide by sign</a> breaks down who tends to click, and our <a href="https://matchbybirth.com/blog/how-to-use-zodiac-compatibility-in-real-life">real-life compatibility guide</a> shows how to use it without turning it into a verdict.</p>
+
+      <h2>How to actually use this energy</h2>
+
+      <p>Transits are prompts, not prophecies. Three moves make the most of August 10, 2026:</p>
+
+      <ol>
+        <li><strong>Have the one honest conversation you've been avoiding.</strong> Venus in Libra rewards fairness over winning. Name what you want without blame.</li>
+        <li><strong>Catch the Neptune fog.</strong> If someone feels "too perfect" today, pause. The opposition can glamorize; the retrograde Saturn–Neptune clarity is the better guide.</li>
+        <li><strong>Act on one small brave thing.</strong> The Jupiter–Uranus sextile favors a low-stakes risk — a message sent, a date proposed, a boundary set. Momentum beats overthinking.</li>
+      </ol>
+
+      <h2>The honest caveat</h2>
+
+      <p>Astrology is a symbolic framework for noticing patterns — not a proven science, and not a predictor of who you'll end up with. Venus in Libra makes a good backdrop for relationship clarity, but the real work is yours: the conversation, the boundary, the choice. Use the sky as a mirror, not a script.</p>
+
+      <p>Want to see how your actual chart lines up with someone else's? <a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> — free, private, no signup. Pull both charts by birth date, time, and location and see where Venus, Mars, and the moon actually land. The signs set the stage. Your choices write the story.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
