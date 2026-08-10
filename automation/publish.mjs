@@ -127,7 +127,27 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     // non-JSON body on 200 is unexpected but not fatal
   }
   console.log(`[publish] ${autoPublish ? 'published' : 'drafted'}: ${document._id}`);
+  if (!autoPublish) appendDraftLedger({ slug, title: post.title, topic: post.topic || 'birth-matching', draftedAt: now });
   return document;
+}
+
+// Local, token-free record of what the cron drafted, committed to the repo so
+// the local `npm run blog:drafts` viewer can list drafts without Sanity
+// draft-read permission. Only written in draft mode (autoPublish=false).
+function appendDraftLedger({ slug, title, topic, draftedAt }) {
+  try {
+    const repoRoot = process.env.GITHUB_WORKSPACE || process.cwd();
+    const ledgerPath = `${repoRoot}/automation/draft-ledger.json`;
+    let ledger = [];
+    try { ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8')); } catch { ledger = []; }
+    if (!Array.isArray(ledger)) ledger = [];
+    if (!ledger.find((d) => d.slug === slug)) {
+      ledger.unshift({ slug, title, topic, draftedAt, approved: false });
+      fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 2));
+    }
+  } catch (e) {
+    console.log('[publish] ledger write skipped:', e.message);
+  }
 }
 
 // Trigger Vercel deploy hook so the static site rebuilds with the new post.

@@ -29,13 +29,12 @@ try {
 }
 
 const manifestPath = `${outputPath}.changes.json`;
-// Only the generated posts file ships to the site. The .changes.json manifest
-// is a transient artifact consumed by the IndexNow step in the same run; its
-// regeneration every run would make `git status` look dirty even when no post
-// changed, which caused "nothing to commit" crashes on draft-only runs.
-const status = execSync(`git status --porcelain ${outputPath}`).toString().trim();
+const ledgerPath = path.join(repoRoot, 'automation/draft-ledger.json');
+// Only the generated posts file + the draft ledger ship. The .changes.json
+// manifest is transient (see below).
+const status = execSync(`git status --porcelain ${outputPath} ${ledgerPath}`).toString().trim();
 if (!status) {
-  console.log('[sync] generated file unchanged; nothing to commit.');
+  console.log('[sync] generated file + ledger unchanged; nothing to commit.');
   process.exit(0);
 }
 
@@ -43,7 +42,7 @@ const ts = new Date().toISOString();
 execSync('git config user.email "bot@matchbybirth.com"');
 execSync('git config user.name "Blog Automation"');
 execSync('git pull --rebase origin main');
-execSync(`git add ${outputPath}`);
-execSync(`git commit -m "chore: regenerate Sanity blog posts (${ts})"`);
+execSync(`git add ${outputPath} ${ledgerPath}`);
+execSync(`git commit -m "chore: regenerate Sanity blog posts + draft ledger (${ts})"`);
 execSync('git push origin main');
-console.log('[sync] committed + pushed updated generated posts.');
+console.log('[sync] committed + pushed updated generated posts + ledger.');
