@@ -37,6 +37,7 @@ jobs:
 
       - name: Submit changed URLs to IndexNow
         if: success()
+        continue-on-error: true
         run: |
           MANIFEST="apps/web/src/data/posts/sanity-posts.generated.js.changes.json"
           if [ ! -f "$MANIFEST" ]; then
