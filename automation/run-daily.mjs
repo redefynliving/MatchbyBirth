@@ -55,8 +55,15 @@ async function main() {
   } catch (e) {
     console.error('[daily] sync-and-commit failed (non-fatal):', e.message);
   }
-  // Verification: confirm the just-published slug actually landed in the
-  // generated file (the build input). If normalizeSanityBlogPost dropped it
+  // In draft mode the post is intentionally a Sanity draft, so it is excluded
+  // from the generated file until you approve it in the Studio. Don't fail the
+  // job on a verify that only makes sense for auto-published posts.
+  if (!AUTO_PUBLISH) {
+    console.log(`[daily] draft '${topic.slug}' written to Sanity (status: draft). Approve it in the Studio; the next sync run builds + ships it. autoPublish=${AUTO_PUBLISH}`);
+    return;
+  }
+  // Verification (auto-publish only): confirm the just-published slug landed in
+  // the generated file (the build input). If normalizeSanityBlogPost dropped it
   // (e.g. missing publishedAt/body), the post is in Sanity but not on the
   // site. Fail loud so the gap is visible; the slug stays queued and the next
   // cron run republishes it correctly.
