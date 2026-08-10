@@ -127,22 +127,72 @@ export async function publishPost(post, { autoPublish = false } = {}) {
     // non-JSON body on 200 is unexpected but not fatal
   }
   console.log(`[publish] ${autoPublish ? 'published' : 'drafted'}: ${document._id}`);
-  if (!autoPublish) appendDraftLedger({ slug, title: post.title, topic: post.topic || 'birth-matching', draftedAt: now });
+  if (!autoPublish) appendDraftLedger(post);
   return document;
 }
 
 // Local, token-free record of what the cron drafted, committed to the repo so
-// the local `npm run blog:drafts` viewer can list drafts without Sanity
-// draft-read permission. Only written in draft mode (autoPublish=false).
-function appendDraftLedger({ slug, title, topic, draftedAt }) {
+// the local `npm run blog:drafts` viewer can list drafts (with live SEO data)
+// without Sanity draft-read permission. Only written in draft mode.
+function appendDraftLedger(post) {
   try {
     const repoRoot = process.env.GITHUB_WORKSPACE || process.cwd();
     const ledgerPath = `${repoRoot}/automation/draft-ledger.json`;
     let ledger = [];
     try { ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8')); } catch { ledger = []; }
     if (!Array.isArray(ledger)) ledger = [];
-    if (!ledger.find((d) => d.slug === slug)) {
-      ledger.unshift({ slug, title, topic, draftedAt, approved: false });
+
+    const body = post.rawBody || '';
+    const text = body
+      .replace(/```[\s\S]*?```/g, ' ')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\[[^\]]+\]\(([^)]+)\)/g, ' $1 ')
+      .replace(/[#*_>`~|]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    const metaDescLen = String(post.metaDescription || '').length;
+    const hasInternalLink = /https:\/\/matchbybirth\.com\//i.test(body) || /\/blog\/[a-z0-9-]+/i.test(body) || /\/tools\/[a-z0-9-]+/i.test(body);
+    const hasExample = /\b(for example|example:|simple example|imagine|if one person|if someone|a pairing like|scenario)\b/i.test(body);
+    const headings = [...body.matchAll(/^\s{0,3}#{2,3}\s+.+$/gm)].length;
+    const generic = [
+      /\bwhen it comes to\b/i, /\bit'?s important to note\b/i, /\bin today'?s (fast[- ]paced )?world\b/i,
+      /\bwhether you'?re\b/i, /\blet'?s dive in\b/i, /\bdelve into\b/i, /\bunlock the secrets\b/i,
+      /\bjourney of self[- ]discovery\b/i, /\bat the end of the day\b/i, /\bcommunication is key\b/i,
+      /\bopen communication\b/i, /\bmeaningful connection\b/i, /\bdeep dive\b/i, /\bcosmic blueprint\b/i, /\bultimate guide\b/i,
+    ].filter((re) => re.test(body)).length;
+    const intro = (body.split(/\n\s*\n/).map((p) => p.replace(/[#*_>`~|]/g, ' ').trim()).find(Boolean) || '');
+    const weakIntro = /^(compatibility|astrology|numerology|relationships)\s+(is|can be|has long been)\b/i.test(intro) || /^in today'?s\b/i.test(intro) || /^when it comes to\b/i.test(intro) || /^have you ever wondered\b/i.test(intro) || /^whether you'?re\b/i.test(intro);
+
+    const checks = [
+      ['wordCount>=650', words >= 650],
+      ['metaDesc 80-160', metaDescLen >= 80 && metaDescLen <= 160],
+      ['internal link', hasInternalLink],
+      ['example/scenario', hasExample],
+      ['>=3 headings', headings >= 3],
+      ['no weak intro', !weakIntro],
+      ['<3 generic phrases', generic < 3],
+    ];
+    const passed = checks.filter(([, ok]) => ok).length;
+    const seoScore = Math.round((passed / checks.length) * 100);
+
+    const entry = {
+      slug: slugify(post.slug || post.title),
+      title: post.title,
+      focusKeyword: post.topic || 'birth-matching',
+      metaTitle: post.metaTitle || post.title?.slice(0, 60),
+      metaDescription: post.metaDescription,
+      wordCount: words,
+      headingCount: headings,
+      faqCount: Array.isArray(post.faq) ? post.faq.length : 0,
+      takeawayCount: Array.isArray(post.quickTakeaways) ? post.quickTakeaways.length : 0,
+      seoScore,
+      seoChecks: checks.map(([name, ok]) => ({ name, ok })),
+      draftedAt: new Date().toISOString(),
+      approved: false,
+    };
+    if (!ledger.find((d) => d.slug === entry.slug)) {
+      ledger.unshift(entry);
       fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 2));
     }
   } catch (e) {

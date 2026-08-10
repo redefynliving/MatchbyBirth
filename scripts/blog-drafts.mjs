@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Quick view of the drafts the daily cron has generated.
+// Quick view of the drafts the daily cron has generated — with live SEO status.
 // Run: npm run blog:drafts   (or: node scripts/blog-drafts.mjs)
 //
 // PRIMARY: reads automation/draft-ledger.json — a token-free record the cron
-//   commits to the repo on every draft run. `git pull` first so it's fresh.
+//   commits to the repo on every draft run (with computed SEO metrics). `git
+//   pull` first so it's fresh.
 // FALLBACK: if the ledger is missing, tries Sanity directly (needs a token in
 //   .env.local that can READ drafts — a published-only token will show nothing).
 import { execSync } from 'node:child_process';
@@ -24,6 +25,11 @@ function readLedger() {
   catch { return null; }
 }
 
+const seoBar = (score) => {
+  const filled = Math.round(score / 10);
+  return '█'.repeat(filled) + '░'.repeat(10 - filled) + ` ${score}%`;
+};
+
 function render(drafts) {
   if (!drafts || drafts.length === 0) {
     console.log('\n  No drafts yet. The cron drafts one each morning (08:00 PT / 15:00 UTC).');
@@ -32,14 +38,27 @@ function render(drafts) {
   }
   const when = (iso) => (iso ? new Date(iso).toISOString().slice(0, 16).replace('T', ' ') : '?');
   console.log(`\n  CRON DRAFTS — ${drafts.length} waiting for your review\n`);
-  console.log('  #  ' + 'TITLE'.padEnd(48) + 'SLUG'.padEnd(36) + 'DRAFTED');
-  console.log('  ' + '-'.repeat(104));
+
   drafts.forEach((d, i) => {
-    const title = String(d.title || d.slug || '(untitled)').slice(0, 44).padEnd(46);
-    const slug = String(d.slug || '').slice(0, 32).padEnd(34);
-    console.log(`  ${String(i + 1).padStart(2)} ${title}${slug}${when(d.draftedAt)}`);
+    const score = typeof d.seoScore === 'number' ? d.seoScore : null;
+    console.log(`  ${String(i + 1).padStart(2)}. ${d.title || d.slug}`);
+    console.log(`      slug:     ${d.slug}`);
+    console.log(`      keyword:  ${d.focusKeyword || '-'}`);
+    console.log(`      drafted:  ${when(d.draftedAt)}`);
+    if (score !== null) {
+      console.log(`      SEO:      ${seoBar(score)}`);
+      console.log(`      words:    ${d.wordCount || '?'}   headings: ${d.headingCount ?? '?'}   faq: ${d.faqCount ?? '?'}   takeaways: ${d.takeawayCount ?? '?'}`);
+      if (Array.isArray(d.seoChecks)) {
+        const fails = d.seoChecks.filter((c) => !c.ok).map((c) => c.name);
+        console.log(`      meta:     ${(d.metaTitle || '').slice(0, 64) || '-'}`);
+        console.log(`      desc:     ${(d.metaDescription || '').slice(0, 64) || '-'}`);
+        console.log(`      flags:    ${fails.length ? fails.join(', ') : 'none — clean'}`);
+      }
+    }
+    console.log('');
   });
-  console.log('\n  To publish: open the Studio, find the draft, set status -> published,');
+
+  console.log('  To publish: open the Studio, find the draft, set status -> published,');
   console.log(`  then the next cron sync run (08:00 PT) builds + ships it. ${STUDIO_URL}\n`);
 }
 
@@ -74,4 +93,4 @@ const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DA
 const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
 if (!res.ok) { console.error(`Sanity query failed: ${res.status}`); process.exit(1); }
 const { result } = await res.json();
-render((result || []).map((d) => ({ title: d.title, slug: d.slug?.current, draftedAt: d._createdAt })));
+render((result || []).map((d) => ({ title: d.title, slug: d.slug?.current, focusKeyword: d.topic, draftedAt: d._createdAt })));
