@@ -16,7 +16,7 @@ globalThis.fetch = (url, opts = {}) =>
   origFetch(url, { ...opts, headers: { ...(opts.headers || {}), Authorization: `Bearer ${token}` } });
 
 try {
-  const { fetchSanityBlogPosts, writeSanityPostsModule } = await import(
+  const { fetchSanityBlogPosts, writeSanityPostsModule, writeChangeManifest } = await import(
     path.join(repoRoot, 'apps/web/tools/sanity-posts.js')
   );
   const posts = await fetchSanityBlogPosts({ fetchImpl: globalThis.fetch });

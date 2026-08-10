@@ -10,6 +10,13 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      SANITY_API_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_API_URL: ${{ secrets.LLM_API_URL }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}
+      BLOG_AUTO_PUBLISH: ${{ secrets.BLOG_AUTO_PUBLISH }}
+      VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,7 +28,10 @@ jobs:
           node-version: '20'
 
       - run: npm ci
-      - run: SANITY_API_TOKEN="${{ secrets.SANITY_API_TOKEN }}" node automation/sync-and-commit.mjs
+      - name: Generate + publish daily post (draft for review)
+        run: node automation/run-daily.mjs
+      - name: Sync generated posts to repo
+        run: node automation/sync-and-commit.mjs
 
       - name: Submit changed URLs to IndexNow
         if: success()
