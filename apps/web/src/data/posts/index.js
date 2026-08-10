@@ -41,9 +41,9 @@ const posts = [
   },
   {
     slug: 'most-compatible-zodiac-signs-2026',
-    title: 'Most Compatible Zodiac Signs of 2026',
+    title: 'Best Zodiac Match 2026: Top Compatible Signs',
     date: '2026-05-25',
-    description: 'Which zodiac signs are most compatible in 2026? We break down the top pairings for love, friendship, and everything in between based on elemental astrology.',
+    description: 'Looking for the best zodiac match in 2026? See the top compatible signs for love, friendship, and work — ranked by elemental astrology. Find your match now.',
     tags: ['compatibility','zodiac','2026','love'],
 
     category: 'seasonal',    content: `
@@ -1430,9 +1430,9 @@ const posts = [
   },
   {
     slug: 'mercury-retrograde-2026-relationships',
-    title: 'Mercury Retrograde 2026: What It Means for Your Relationships',
+    title: 'August 2026 Mercury Retrograde: Relationship Messages',
     date: '2026-06-15',
-    description: 'Mercury retrograde is infamous for communication breakdowns. Here\'s what the 2026 retrogrades mean for your love life, friendships, and work relationships.',
+    description: 'Mercury retrograde is in Leo Aug 7–11, 2026 — expect relationship text mix-ups, exes resurfacing, and ego clashes. Here\'s what the messages really mean.',
     tags: ['mercury','retrograde','2026','relationships','communication','astrology'],
 
     category: 'seasonal',
