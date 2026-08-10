@@ -29,7 +29,11 @@ try {
 }
 
 const manifestPath = `${outputPath}.changes.json`;
-const status = execSync(`git status --porcelain ${outputPath} ${manifestPath}`).toString().trim();
+// Only the generated posts file ships to the site. The .changes.json manifest
+// is a transient artifact consumed by the IndexNow step in the same run; its
+// regeneration every run would make `git status` look dirty even when no post
+// changed, which caused "nothing to commit" crashes on draft-only runs.
+const status = execSync(`git status --porcelain ${outputPath}`).toString().trim();
 if (!status) {
   console.log('[sync] generated file unchanged; nothing to commit.');
   process.exit(0);
