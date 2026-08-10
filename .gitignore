@@ -14,6 +14,7 @@ supabase/.temp/
 
 # Vite output for apps/web
 apps/web/dist
+apps/web/public/sitemap.xml
 
 # local dist output root (some environments)
 dist/
