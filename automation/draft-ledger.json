@@ -1,5 +1,49 @@
 [
   {
+    "slug": "compatibility-when-you-dont-know-birth-time",
+    "title": "No Birth Time? What You Can Still Read",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "No Birth Time? What You Can Still Read",
+    "metaDescription": "compatibility without birth time: what you can still read from date alone. A practical, no-jargon read",
+    "wordCount": 751,
+    "headingCount": 3,
+    "faqCount": 2,
+    "takeawayCount": 0,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-11T16:05:07.772Z",
+    "approved": false
+  },
+  {
     "slug": "sibling-compatibility",
     "title": "Sibling Compatibility: Rivalry and Repair",
     "focusKeyword": "family",
