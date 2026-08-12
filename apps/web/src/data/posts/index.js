@@ -4018,6 +4018,99 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'leo-solar-eclipse-august-12-2026-relationships',
+    title: 'Total Solar Eclipse in Leo, August 12 2026: The Love Reset Your Relationships Have Been Waiting For',
+    date: '2026-08-12',
+    description: 'The August 12 2026 total solar eclipse in Leo meets Venus in Libra — a once-a-year reset for love, romance, and how you show up in relationships. Here is what it means.',
+    tags: ['leo solar eclipse', 'august 12 2026 astrology', 'total solar eclipse leo', 'venus in libra', 'zodiac compatibility', 'love horoscope', 'eclipse season 2026', 'relationship astrology'],
+    category: 'seasonal',
+    faq: [
+      {
+        question: 'What is the August 12 2026 solar eclipse in Leo?',
+        answer: 'A total solar eclipse at 20 degrees Leo on August 12, 2026 — a supercharged New Moon that opens a new chapter, especially around identity, self-expression, and the heart.',
+      },
+      {
+        question: 'How does the Leo eclipse affect relationships?',
+        answer: 'Leo rules the heart and being seen. Eclipses here push you to love as your real self. With Venus in Libra at the same time, the focus is on honesty, fairness, and dropping the performed version of love.',
+      },
+      {
+        question: 'Is Venus in Libra good for love?',
+        answer: 'Yes. Venus rules Libra, so she is at home there — favoring harmony, fairness, and meeting someone halfway. Around the eclipse she forms supportive aspects that help hard talks land and existing bonds deepen.',
+      },
+      {
+        question: 'How long does eclipse energy last?',
+        answer: 'Astrologers generally read eclipse effects as lasting about six months. The August 12 Leo eclipse sets relationship themes that play out through the rest of 2026, with the August 27 Pisces lunar eclipse as the next amplifier.',
+      },
+    ],
+    content: `
+      <p>Today is the astrological event of the year for your love life. On August 12, 2026, a Total Solar Eclipse lands in Leo at 20 degrees — and it arrives with Venus, the planet of love, sitting comfortably at home in Libra. That combination is rare, and it is loaded for relationships. An eclipse opens a door. Venus in her own sign tells you what to walk through it with: steadiness, honesty, and a clear sense of your own worth.</p>
+
+      <p>If you have felt stuck in a pattern, half-in on a person, or unsure whether something is actually going somewhere, this is the sky handing you a reset button. Here is exactly what is happening and how to use it.</p>
+
+      <h2>The eclipse: a new chapter in how you love</h2>
+
+      <p>A solar eclipse is a supercharged New Moon — a beginning, but one with consequences that echo for months. This one is in Leo, the sign of the heart, self-expression, and being seen. Eclipses in Leo ask a blunt question: are you loving as the person you actually are, or as the person you think you are supposed to be?</p>
+
+      <p>The eclipse degree (20 Leo) conjuncts the South Node, which astrologers read as a karmic hinge — old relationship patterns surfacing so you can finally close them. Paired with Venus in Libra, the message is consistent: stop performing love. Start practicing it.</p>
+
+      <h2>Venus in Libra: the love planet is home</h2>
+
+      <p>Venus rules Libra, so when she is there she works at full strength. This is the relationship sign — harmony, fairness, and the art of meeting someone halfway. Through the eclipse window, Venus is throwing some of the year's most useful aspects:</p>
+
+      <ul>
+        <li><strong>Venus trine Uranus</strong> — a spark of honest surprise. A small, brave, unusual move in love pays off disproportionately. The trap: do not mistake chaos for excitement.</li>
+        <li><strong>Venus trine Pluto</strong> — magnetic depth. Buried feelings surface; an existing bond can deepen or a real one can form. The trap: intensity can tip into control. Depth is not ownership.</li>
+        <li><strong>Venus opposite Neptune</strong> — the romance fog. You will see people the way you wish they were, not the way they are. The trap: ignoring a red flag because the fantasy is prettier. Let the fog lift before you commit.</li>
+      </ul>
+
+      <h2>The supporting cast</h2>
+
+      <p>Mercury in Leo sextiles Venus — your words and your affection are finally speaking the same language, which makes hard conversations land softer. Mercury also opposes Pluto, so some talk will get deep fast; that is the point, not a problem. The Moon in Leo trines Saturn, giving the day a surprising steadiness under the drama — good for the boundary you have been avoiding.</p>
+
+      <h2>The retrogrades: what is being restructured</h2>
+
+      <p>Three outer planets are retrograde right now, and none of them are about new romance — they are about rebuilding the foundation under the love you already have:</p>
+
+      <ul>
+        <li><strong>Saturn retrograde in Aries</strong> — renegotiating responsibility and independence in your partnerships. Where have you been over-functioning or under-committing?</li>
+        <li><strong>Neptune retrograde in Aries</strong> — dissolving illusions about who someone is. Wishful thinking drains out; clarity comes in.</li>
+        <li><strong>Pluto retrograde in Aquarius</strong> — transforming how you relate to power and freedom within relationships. Old control patterns built on shaky ground keep dissolving.</li>
+      </ul>
+
+      <p>Together they are not asking you to start over. They are asking you to start honest.</p>
+
+      <h2>How each element feels this eclipse</h2>
+
+      <ul>
+        <li><strong>Fire (Aries, Leo, Sagittarius):</strong> you feel the call to be seen and to act. Channel it into honesty, not grand gestures that evaporate by Friday.</li>
+        <li><strong>Earth (Taurus, Virgo, Capricorn):</strong> you want proof, not promises. Use the Saturn trine to set one boundary you can actually keep.</li>
+        <li><strong>Air (Gemini, Libra, Aquarius):</strong> Venus is practically parked in your corner. Talk it out — but run it through the Neptune filter before you believe the pretty version.</li>
+        <li><strong>Water (Cancer, Scorpio, Pisces):</strong> the eclipse hits your feeling body hardest. Let the Pluto depth surface without drowning in it; name what you need out loud.</li>
+      </ul>
+
+      <h2>Your Venus sign vs. today's weather</h2>
+
+      <p>Think of your natal Venus as the climate of how you love, and today's transits as the weather. A Venus in Capricorn (climate: loyal, slow-building) under this breezy Libra sky (weather: light, social, open) might feel tempted to loosen up — fun, but do not mistake a good conversation for a foundation. Your Venus sign is the part of you that does not change much. The eclipse is an invitation to let the unchanging part lead. If you do not know your Venus sign yet, our <a href="https://matchbybirth.com/blog/venus-signs-love-language">love language guide</a> breaks it down sign by sign.</p>
+
+      <h2>Three moves to actually use this energy</h2>
+
+      <ul>
+        <li><strong>Have the honest conversation you have been dodging.</strong> Mercury-Venus makes it land; Saturn gives it a spine. One real talk beats a week of guessing.</li>
+        <li><strong>Catch the Neptune fog.</strong> Before you romanticize someone or something, ask: would I believe this if they had not smiled at me? If not, wait for the fog to clear.</li>
+        <li><strong>Make one small brave move.</strong> Venus-Uranus rewards the unexpected. A direct message, a stated feeling, a plan you usually would not propose. Small risk, real signal.</li>
+      </ul>
+
+      <h2>The honest caveat</h2>
+
+      <p>Astrology is a symbolic lens for noticing patterns in yourself and your relationships — not a proven science and not a predictor of who you will end up with. An eclipse does not make someone love you. What it does is widen a window where your own clarity travels further. Use it as a mirror, not a script.</p>
+
+      <h2>See your real compatibility</h2>
+
+      <p>Today's sky sets the stage, but your actual chart is where the story plays out. <a href="https://matchbybirth.com">Run your synastry on Match by Birth</a> from real birth data — not sun-sign clichés — and see how your Venus, Mars, and moon line up with someone else's. Pair this read with our <a href="https://matchbybirth.com/blog/venus-in-libra-august-10-2026-relationships">Venus in Libra breakdown</a> and the <a href="https://matchbybirth.com/blog/how-to-use-zodiac-compatibility-in-real-life">real-life compatibility guide</a> to turn the eclipse energy into a relationship you can actually build on.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
