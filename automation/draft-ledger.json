@@ -1,5 +1,49 @@
 [
   {
+    "slug": "timezone-effects-on-birth-chart",
+    "title": "How Timezones Change a Birth Chart",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "How Timezones Change a Birth Chart",
+    "metaDescription": "timezone birth chart accuracy: why the recorded local time matters more than you think. A practical, no-jargon read",
+    "wordCount": 750,
+    "headingCount": 4,
+    "faqCount": 2,
+    "takeawayCount": 0,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-12T16:03:50.779Z",
+    "approved": false
+  },
+  {
     "slug": "compatibility-when-you-dont-know-birth-time",
     "title": "No Birth Time? What You Can Still Read",
     "focusKeyword": "birth-matching",
