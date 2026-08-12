@@ -86,6 +86,8 @@ export function getZodiacPairingPost(page) {
   return {
     slug,
     canonicalSlug,
+    firstSign: first,
+    secondSign: second,
     title,
     date: PUBLISHED_DATE,
     updatedAt: PUBLISHED_DATE,
@@ -188,6 +190,35 @@ export function getCanonicalZodiacPairingPosts() {
 
 export function getZodiacPairingPosts() {
   return getZodiacPairingPages().map(getZodiacPairingPost);
+}
+
+export function getRelatedPairings(post, limit = 8) {
+  if (!post?.firstSign || !post?.secondSign) return [];
+  const target = post.firstSign.name;
+  const partner = post.secondSign.name;
+  const pages = getCanonicalZodiacPairingPages();
+  const scored = pages
+    .filter((page) => page.canonicalSlug !== post.canonicalSlug)
+    .map((page) => {
+      const sharesFirst = page.firstSign.name === target;
+      const sharesSecond = page.secondSign.name === partner;
+      const sharesElement = [page.firstSign.element, page.secondSign.element]
+        .some((el) => [post.firstSign.element, post.secondSign.element].includes(el));
+      const score = (sharesFirst ? 3 : 0) + (sharesSecond ? 3 : 0) + (sharesElement ? 1 : 0);
+      return { page, score };
+    })
+    .filter((entry) => entry.score > 0)
+    .sort((left, right) => right.score - left.score);
+
+  const seen = new Set();
+  const out = [];
+  for (const { page } of scored) {
+    if (seen.has(page.path)) continue;
+    seen.add(page.path);
+    out.push(page);
+    if (out.length >= limit) break;
+  }
+  return out;
 }
 
 export function getZodiacPairingPostBySlug(slug) {

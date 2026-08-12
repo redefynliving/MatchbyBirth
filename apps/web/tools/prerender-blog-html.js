@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import posts from '../src/data/posts/index.js';
 import { BLOG_CATEGORIES, getPostCategory } from '../src/data/blogCategories.js';
-import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages } from '../../../tools/zodiac-pairings.mjs';
+import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages, getRelatedPairings } from '../../../tools/zodiac-pairings.mjs';
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
@@ -255,6 +255,7 @@ export function renderCategoryHtml({ template, category, allPosts = posts } = {}
 export function renderArticleHtml({ template, post } = {}) {
   const description = post.description || stripHtml(post.content).slice(0, 155);
   const relatedPosts = getRelatedPosts(post, posts);
+  const relatedPairings = Array.isArray(post.firstSign) || post.firstSign ? getRelatedPairings(post, 8) : [];
   const seo = getBlogPostSeo({ ...post, description });
   const body = `
     <main class="static-blog-shell">
@@ -275,6 +276,17 @@ export function renderArticleHtml({ template, post } = {}) {
               <a href="${escapeHtml(getBlogPostPath(related))}">
                 <strong>${escapeHtml(related.title)}</strong>
                 <span>${escapeHtml(related.description)}</span>
+              </a>
+            `).join('')}
+          </section>
+        ` : ''}
+        ${relatedPairings.length > 0 ? `
+          <section class="static-related">
+            <h2>More zodiac pairings</h2>
+            ${relatedPairings.map((page) => `
+              <a href="${escapeHtml(page.path)}">
+                <strong>${escapeHtml(page.firstSign.label)} and ${escapeHtml(page.secondSign.label)} compatibility</strong>
+                <span>Explore their elemental rhythm, communication style, and how to connect.</span>
               </a>
             `).join('')}
           </section>
