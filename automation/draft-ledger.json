@@ -1,5 +1,49 @@
 [
   {
+    "slug": "compatibility-for-hiring-teams",
+    "title": "Compatibility for Hiring and Team Fit",
+    "focusKeyword": "workplace",
+    "metaTitle": "Compatibility for Hiring and Team Fit",
+    "metaDescription": "using compatibility for hiring: team fit without bias or boxes. A practical, no-jargon read",
+    "wordCount": 664,
+    "headingCount": 4,
+    "faqCount": 2,
+    "takeawayCount": 0,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-13T16:03:57.679Z",
+    "approved": false
+  },
+  {
     "slug": "timezone-effects-on-birth-chart",
     "title": "How Timezones Change a Birth Chart",
     "focusKeyword": "birth-matching",
