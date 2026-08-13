@@ -4232,6 +4232,74 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'scorpio-pisces-compatibility',
+    title: 'Scorpio and Pisces: The Water Sign Depth Charge',
+    date: '2026-08-13',
+    description: 'Scorpio and Pisces compatibility: two water signs who speak in feeling, not words. Why this pair can be the most intuitive match in the zodiac — and where it drowns.',
+    tags: ['scorpio','pisces','water signs','compatibility','intuition','relationships'],
+    category: 'pair-deep-dive',
+    content: `
+      <h1>Scorpio and Pisces: The Water Sign Depth Charge</h1>
+
+      <p>Put two water signs in a room and something unspoken happens first. Scorpio and Pisces don't start with small talk — they start with a read. Both feel their way into a connection before they can explain it, and that shared instinct is why this pairing shows up again and again as the one that "just got each other" from day one. But water runs deep, and it also drowns. Here is what actually happens when Scorpio meets Pisces.</p>
+
+      <h2>Why water recognizes water</h2>
+
+      <p>Scorpio and Pisces are both water signs, which means their default language is emotion, not logic. Where a fire or air sign argues toward a conclusion, these two circle a feeling until it resolves on its own. That is a gift: they can sit in silence and still be communicating. Our <a href="https://matchbybirth.com/blog/four-elements-fire-earth-air-water-explained">four elements guide</a> explains why water pairs tend to intuit each other instead of negotiating — and why that can feel safer than any conversation.</p>
+
+      <p>The catch is that neither sign is loud about needs. Scorpio holds back to test trust; Pisces holds back to keep the peace. Early on, that looks like harmony. Later, it can look like two people drowning three feet apart.</p>
+
+      <h2>How they love</h2>
+
+      <p>Scorpio loves like a vault — slow to open, ferocious once committed, and quietly scanning for betrayal the whole time. Pisces loves like the tide — giving, dissolving boundaries, and soaking up the other person's mood as if it were their own. Together they build a private world. Outsiders often can't read it, and that is exactly the point. This is a pair that creates its own weather.</p>
+
+      <p>Psychologically, the draw is clear. Scorpio gets the unconditional acceptance it craves but won't ask for. Pisces gets the steady, protective grip it loses itself without. Each supplies what the other is secretly starving for.</p>
+
+      <h2>The emotional undertow</h2>
+
+      <p>Both signs avoid direct conflict and both are allergic to being seen as the "difficult" one. So resentment doesn't get spoken — it leaks. Scorpio goes cold and calculating; Pisces goes distant and foggy. From the outside nothing changed. Inside, the account is going negative.</p>
+
+      <p>A second undertow is rescuer fatigue. Pisces will absorb Scorpio's intensity until it vanishes; Scorpio will grip Pisces' softness until it panics. The fix is not less love. It is more honesty about the love — naming the fear instead of performing the calm.</p>
+
+      <h2>Trust and the jealousy edge</h2>
+
+      <p>Scorpio's ruler, Pluto, makes jealousy a reflex, not a choice. Pisces' openness to everyone can read as a threat even when it isn't. The danger is a control loop: Scorpio tightens, Pisces retreats, Scorpio tightens harder. Our <a href="https://matchbybirth.com/blog/zodiac-compatibility-red-flags">red-flags guide</a> covers the early signals — surveillance, guilt, fading communication — so you can catch it before it hardens.</p>
+
+      <p>Pisces needs to understand this isn't personal nitpicking; it's a fear of abandonment wearing the mask of suspicion. Scorpio needs to understand that Pisces' friendliness isn't betrayal — it's the sign's nature.</p>
+
+      <h2>In bed and in private</h2>
+
+      <p>Physically this is one of the most naturally aligned pairs in the zodiac. Scorpio brings focus, nerve, and a need to merge; Pisces brings surrender, imagination, and a refusal to keep intimacy shallow. The sex tends to be less about performance and more about disappearance — two people dissolving the boundary between them. The risk is using sex to avoid the conversation they're both avoiding. Intimacy that replaces communication becomes a trap.</p>
+
+      <h2>Friendship and work</h2>
+
+      <p>As friends they're the quiet confidants — the ones who know the thing nobody else knows. As coworkers they suit caregiving, therapy, the arts, or any field built on reading people. Scorpio sets the boundary; Pisces reads the room. The friction is pace: Scorpio wants depth now, Pisces drifts and resurfaces later. A clear division of "who holds the line" keeps the partnership from floating.</p>
+
+      <h2>Beyond the sun signs</h2>
+
+      <p>A sun-sign read is the headline, not the book. A Scorpio with a fire moon may need far more air than the brooding stereotype; a Pisces with an earth Venus may be far more grounded than the dreamy one. That is why the same pairing plays out a dozen different ways in real life. If the textbook match feels off, check the moon, Venus, and rising — our <a href="https://matchbybirth.com/blog/sun-moon-rising-signs-difference">sun, moon, and rising explainer</a> shows how those layers change everything, and our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon-sign compatibility guide</a> digs into the emotional core most sun-sign posts skip.</p>
+
+      <h2>How to make it work</h2>
+
+      <ul>
+        <li><strong>Name the fear, not the symptom.</strong> When Scorpio goes cold, say "I'm scared of losing you," not "you're distant." When Pisces goes foggy, say "I'm overwhelmed," not "nothing's wrong."</li>
+        <li><strong>Build one honest ritual.</strong> A weekly check-in with no phones and no fixing — just ten minutes of saying the true thing. Water pairs survive on the undisguised sentence.</li>
+        <li><strong>Let Pisces keep its friendships.</strong> Scorpio, the warmth toward others is not a leak in the bond. Treat it as proof the relationship is safe enough to be open.</li>
+        <li><strong>Let Scorpio name the boundary.</strong> Pisces, the "no" isn't rejection — it's the structure that lets you stop dissolving. Ask for it plainly.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Intuitive understanding, deep loyalty, private world-building, strong physical bond.</p>
+      <p>Challenges: Avoided conflict, jealousy loops, boundary blur, feeling overload.</p>
+
+      <p>Want the real number, not the sun-sign sketch? Use our calculator at <a href="https://matchbybirth.com">matchbybirth.com</a> and pull both charts from exact birth dates, times, and places — the moon and Venus placements decide more of this match than the suns do. For more on the emotional layer, our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon-signs guide</a> is the natural next read, and if you're untangling your own patterns first, the <a href="https://matchbybirth.com/blog/zodiac-compatibility-self-love">self-love piece</a> is a steady companion.</p>
+
+      <p>Scorpio and Pisces aren't the easy match. They're the deep one — the pair that can read each other across a crowded room and still fail to say the one true thing. Done with courage instead of avoidance, two water signs don't just float. They finally have a shore.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
