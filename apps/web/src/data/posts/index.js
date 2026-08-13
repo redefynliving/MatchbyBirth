@@ -4111,6 +4111,69 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'zodiac-decans-explained',
+    title: 'Zodiac Decans Explained: The Sub-Signs That Fine-Tune Your Personality',
+    date: '2026-08-13',
+    description: 'Your sun sign is only the headline. Learn what zodiac decans are, how to find your decan by birth date, and why this 30-degree split changes how your sign shows up.',
+    tags: ['decans','zodiac','astrology','birth-chart','learn-astrology','personality'],
+    category: 'learn-astrology',
+    faq: [
+      { question: 'What is a decan in astrology?', answer: 'A decan is one third of a zodiac sign, covering 10 degrees of the sky. Each of the three decans in a sign has its own co-ruling planet that refines how the sign energy expresses.' },
+      { question: 'How do I find my decan?', answer: 'Your decan is set by where your sun falls within your sign 30-degree span, which maps roughly to the first, middle, or final ten days of the sign date range. An exact chart calculation using your birth date, time, and location is the precise method.' },
+      { question: 'Do decans affect compatibility?', answer: 'They can explain mismatches that sun-sign compatibility misses. Two people of the same sign but different decans can feel quite different, and a decan co-ruler shared with a neighboring sign can create unexpected rapport.' },
+      { question: 'Is astrology a proven science?', answer: 'No. Decans and all astrological systems are symbolic frameworks for noticing patterns, not predictive science. Use them as tools for self-reflection rather than fixed verdicts.' }
+    ],
+    content: `
+
+      <h1>Zodiac Decans Explained: The Sub-Signs That Fine-Tune Your Personality</h1>
+
+      <p>You know your sun sign. Maybe you know your moon and rising too. But there is a layer most people never hear about, and it explains why two Leos can feel like completely different people. It is called a decan.</p>
+
+      <p>A decan is a subdivision of a zodiac sign. Every sign spans 30 degrees of the sky. Astrologers split those 30 degrees into three blocks of 10 degrees each. Each block gets its own co-ruling planet, which tints the sign energy in a distinct way. Your sun sign is the headline. Your decan is the sub-headline that tells you which flavor of that sign you actually are.</p>
+
+      <h2>Where decans come from</h2>
+
+      <p>The idea is old. The system traces back to Hellenistic and earlier Egyptian astronomy, where the sky was divided into 36 decans of 10 degrees, each watched over by its own star god. Later astrologers assigned a planetary ruler to each decan using the triplicity system, the three signs that share an element. The first decan of a sign is ruled by that sign own ruler. The second and third are ruled by the rulers of the other two signs in the same element.</p>
+
+      <p>That is why decans feel coherent: they are built on the elements, not bolted on. If you want the foundation first, our <a href="https://matchbybirth.com/blog/four-elements-fire-earth-air-water-explained">guide to the four elements</a> explains why fire, earth, air, and water are the real backbone of astrology.</p>
+
+      <h2>How to find your decan</h2>
+
+      <p>Your decan is determined by where your sun sits within your sign 30 degrees, which comes down to your birth date. The first decan covers roughly the first ten days of the sign, the second decan the middle ten, and the third decan the final ten. The exact cutoffs shift slightly year to year because the calendar and the sky do not line up perfectly, but the date-range method gets you close.</p>
+
+      <p>For example, Aries runs about March 21 to April 19. Aries decan 1 is roughly March 21 to March 30, ruled by Mars, Aries own ruler. Aries decan 2 is roughly March 31 to April 9, ruled by the Sun, the ruler of Leo. Aries decan 3 is roughly April 10 to April 19, ruled by Jupiter, the ruler of Sagittarius. Same sign, three different energetic fingerprints.</p>
+
+      <h2>What each decan ruler adds</h2>
+
+      <p>The co-ruler is what separates the decans. Take the three Aries decans:</p>
+
+      <ul>
+        <li><strong>First decan Aries, Mars:</strong> the purest Aries. Fast, initiating, impulsive, physically bold. This is the charges-in-first Aries everyone expects.</li>
+        <li><strong>Second decan Aries, Sun:</strong> the creative, attention-loving Aries. The Sun adds warmth, pride, and a need to be seen. More performative, more generous, a little less reckless.</li>
+        <li><strong>Third decan Aries, Jupiter:</strong> the expansive Aries. Jupiter stretches everything, bigger risks, bigger optimism, a missionary streak. Less about the self, more about the cause.</li>
+      </ul>
+
+      <p>The pattern repeats for every sign. Taurus decans run Venus, Mercury, Saturn. Cancer decans run the Moon, Mars, Jupiter. The ruler always cycles through the three signs of that element in order.</p>
+
+      <h2>Why decans matter for compatibility</h2>
+
+      <p>Decans matter most when sun-sign compatibility feels off. If a Leo and Aquarius match keeps tripping even though the textbooks say they are a fixed-sign power pair, the decan rulers may be the missing piece. A first-decan Leo, Sun-ruled and proud, and a third-decan Aquarius, Mercury-ruled via the air triplicity and network-oriented, are operating on different frequencies than the textbook assumes.</p>
+
+      <p>Decans also explain why you might relate more to a neighboring sign than your own. A late-degree, third-decan Scorpio shares a co-ruler with Pisces, so that Scorpio can feel more Piscean, intuitive and less armored, than a first-decan Scorpio. Our <a href="https://matchbybirth.com/blog/best-zodiac-matches-for-each-sign-2026">2026 match guide</a> works at the sign level; decans are the fine adjustment underneath it.</p>
+
+      <p>For the full picture, decans sit inside the broader chart story. Your decan is set by your sun degree, but your moon, Venus, and rising sign each carry their own weight. Our <a href="https://matchbybirth.com/blog/sun-moon-rising-signs-difference">sun, moon, and rising explainer</a> shows how those three layers interact, and our <a href="https://matchbybirth.com/blog/how-to-read-your-birth-chart-beginners">beginner chart guide</a> walks through reading the whole wheel.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Decans are a symbolic refinement, not a measurement of anything physical. There is no study showing decan rulers predict behavior, and the date-range method is approximate because the sun does not enter a sign on the exact same calendar day every year. Treat decans as a sharper lens for self-reflection, a way to notice nuance in yourself and the people you love, not as a verdict. The useful question is never whether you are really this decan, but whether the description helps you understand a pattern you keep living.</p>
+
+      <h2>See your decan in your real chart</h2>
+
+      <p>The precise way to know your decan is to calculate your sun's exact degree, which means you need your full birth data. <a href="https://matchbybirth.com">Pull your complete birth chart on Match by Birth</a> with your date, time, and location, and you will see not just your decan but how your sun, moon, Venus, and Mars actually line up with someone else's chart. Signs tell you who you are in broad strokes. Decans tell you which version of that sign is standing in front of you.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
