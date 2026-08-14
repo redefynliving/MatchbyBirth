@@ -261,7 +261,7 @@
       }
     ],
     "draftedAt": "2026-08-10T22:49:31.809Z",
-    "approved": false
+    "approved": true
   },
   {
     "slug": "parent-child-compatibility",
