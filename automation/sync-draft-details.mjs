@@ -13,10 +13,11 @@ const DATASET = process.env.SANITY_DATASET || 'production';
 const API_VERSION = process.env.SANITY_API_VERSION || '2025-01-01';
 const token = process.env.SANITY_API_TOKEN;
 
-function plainText(blocks = []) {
+function plainText(body) {
+  const blocks = Array.isArray(body) ? body : [];
   return blocks
     .filter((b) => b && b._type === 'block')
-    .map((b) => (b.children || []).map((c) => c.text || '').join(''))
+    .map((b) => (Array.isArray(b.children) ? b.children.map((c) => c.text || '').join('') : ''))
     .join('\n')
     .replace(/\s+/g, ' ')
     .trim();

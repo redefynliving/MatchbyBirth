@@ -66,5 +66,10 @@ jobs:
           fi
 
           echo "$URLS" | while IFS= read -r url; do
+            # Skip the bare base URL — it is not a submitted page and fails sitemap validation.
+            if [ "$url" = "https://matchbybirth.com/blog" ]; then
+              echo "Skipping base URL (not a submitted page)."
+              continue
+            fi
             npm run indexnow -- "$url"
           done
