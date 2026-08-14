@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Check, Loader2, Mail } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics.js';
@@ -85,6 +86,11 @@ export default function ReportSuccess() {
       : Loader2;
 
   return (
+    <>
+      <Helmet>
+        <title>Report Delivery | Match by Birth</title>
+        <meta name="robots" content="noindex,nofollow,noarchive" />
+      </Helmet>
     <main className="min-h-[70vh] flex items-center justify-center bg-background p-6">
       <div className="max-w-xl w-full text-center bg-card border border-border rounded-3xl p-8 md:p-12 shadow-lg">
         <BackButton fallbackTo="/" label="Back to Calculator" className="justify-center" />
@@ -104,5 +110,6 @@ export default function ReportSuccess() {
         </Link>
       </div>
     </main>
+    </>
   );
 }

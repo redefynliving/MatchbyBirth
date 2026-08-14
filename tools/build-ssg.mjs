@@ -111,6 +111,15 @@ function preRenderPages() {
           <p>The score is only the entry point. The interpretation around it explains strengths, watch areas, and the next conversation prompt.</p>
           <h2>What the score is looking at</h2>
           <p>The score looks at natural rhythm, emotional support, communication pace, chemistry and interest, and the watch area most likely to create misunderstanding if nobody names it directly.</p>
+          <h2>The MatchByBirth Compatibility Framework</h2>
+          <p>Every Match by Birth reading is built on the same five-dimension framework. Each dimension is turned into something usable: a strength to trust, a watch area to name, and one conversation to start earlier.</p>
+          <ul>
+            <li><strong>Overall Harmony:</strong> The natural elemental and rhythmic flow between two birth-date patterns.</li>
+            <li><strong>Emotional Support:</strong> How well each person is likely to read and meet the other's emotional needs.</li>
+            <li><strong>Communication Flow:</strong> How easily thoughts, expectations, and decisions move between you.</li>
+            <li><strong>Physical Chemistry:</strong> Romantic spark, attraction, and the energetic pull between you.</li>
+            <li><strong>Conflict Risk:</strong> Where misunderstandings are most likely, and how to name them early.</li>
+          </ul>
           <h2>Example reading</h2>
           <p>Alex and Jordan: 82 overall fit. Strength: strong natural rhythm. Watch area: planning pace. Next step: name the timeline early.</p>
           <p>This does not mean Alex and Jordan are guaranteed to work. It means their birth-date patterns suggest enough overlap for the connection to feel easy quickly, while the useful next conversation is about timing.</p>
@@ -273,6 +282,33 @@ function preRenderPages() {
         <article>
           <p>Subscribe to receive weekly timing notes, relationship prompts, and compatibility guides. This is reflection content, not professional advice. Unsubscribe anytime.</p>
           <p>One-time compatibility reports are delivered by private link and email after Stripe checkout. Birth dates and checkout emails are not sent to the AI provider.</p>
+          <h2>Plan</h2>
+          <p>Weekly Match Intel is a recurring membership priced at $9.99 per month, billed monthly and cancelable anytime. The free compatibility calculator stays free.</p>
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "Weekly Match Intel",
+            "description": "A recurring Match by Birth membership with weekly compatibility notes, private saved-result connection, and practical relationship prompts. Birth dates are not stored.",
+            "brand": { "@type": "Brand", "name": "Match by Birth" },
+            "url": "https://matchbybirth.com/premium",
+            "offers": {
+              "@type": "Offer",
+              "price": "9.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "billingDuration": "P1M",
+                "unitText": "month"
+              },
+              "url": "https://matchbybirth.com/premium",
+              "seller": { "@type": "Organization", "name": "Match by Birth", "url": "https://matchbybirth.com" }
+            }
+          }
+          </script>
         </article>
       `
     },

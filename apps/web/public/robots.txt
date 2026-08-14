@@ -1,3 +1,41 @@
-User-agent: *
+User-agent: Googlebot
 Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: *
+
+# Indexation control for user-specific and operational routes is handled with
+# noindex/noarchive meta tags on those pages (/result, /report, /report-success,
+# /admin/funnel). They are intentionally NOT blocked here: a crawler must be able
+# to fetch a page to read and honor its noindex directive. Blocking in robots.txt
+# would stop the crawl before the noindex is ever seen, and a blocked URL that is
+# linked from elsewhere can still appear in results.
+#
+# Durable fix (recommended): enforce server-side access control (auth + 404/410)
+# so these routes are never publicly reachable. noindex is the fallback, not the
+# primary gate, for anything truly private.
+
 Sitemap: https://matchbybirth.com/sitemap.xml

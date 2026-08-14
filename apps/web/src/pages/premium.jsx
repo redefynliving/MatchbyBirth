@@ -68,6 +68,33 @@ export default function PremiumPage() {
 	        />
         <meta name="robots" content="index,follow" />
         <link rel="canonical" href={`${SITE_URL}/premium`} />
+
+        {/* Structured Data: Product + Offer (Weekly Match Intel membership) */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: 'Weekly Match Intel',
+            description: 'A recurring Match by Birth membership with weekly compatibility notes, private saved-result connection, and practical relationship prompts. Birth dates are not stored.',
+            brand: { '@type': 'Brand', name: 'Match by Birth' },
+            url: `${SITE_URL}/premium`,
+            offers: {
+              '@type': 'Offer',
+              price: '9.99',
+              priceCurrency: 'USD',
+              availability: 'https://schema.org/InStock',
+              priceSpecification: {
+                '@type': 'UnitPriceSpecification',
+                price: '9.99',
+                priceCurrency: 'USD',
+                billingDuration: 'P1M',
+                unitText: 'month',
+              },
+              url: `${SITE_URL}/premium`,
+              seller: { '@type': 'Organization', name: 'Match by Birth', url: SITE_URL },
+            },
+          })}
+        </script>
       </Helmet>
 
       <main className="relative overflow-hidden bg-background">

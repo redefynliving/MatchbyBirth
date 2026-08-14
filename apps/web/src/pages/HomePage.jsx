@@ -105,6 +105,41 @@ function HomePage() {
                   text: 'Yes. Group mode compares 3–7 people and ranks every unique pair within the group.',
                 },
               },
+              {
+                '@type': 'Question',
+                name: 'What is the MatchByBirth Compatibility Framework?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'The MatchByBirth Compatibility Framework scores a relationship across five dimensions: Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk. Each dimension is translated into strengths, watch areas, and one practical conversation prompt.',
+                },
+              },
+            ],
+          })}
+        </script>
+
+        {/* Structured Data: the MatchByBirth Compatibility Framework (HowTo) */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            name: 'How MatchByBirth calculates a compatibility reading',
+            description: 'The MatchByBirth Compatibility Framework compares two birth-date patterns and scores five relationship dimensions: Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk.',
+            step: [
+              {
+                '@type': 'HowToStep',
+                name: 'Enter birth details',
+                text: 'Provide two people\'s birth dates (time and place optional for more precise sign placement near a boundary).',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Read the five dimensions',
+                text: 'MatchByBirth evaluates Overall Harmony, Emotional Support, Communication Flow, Physical Chemistry, and Conflict Risk.',
+              },
+              {
+                '@type': 'HowToStep',
+                name: 'Get a practical next step',
+                text: 'The result turns the comparison into a strength to trust, a watch area to name, and one conversation to have earlier.',
+              },
             ],
           })}
         </script>
@@ -179,6 +214,39 @@ function HomePage() {
                 <span>Last updated: <strong>June 2026</strong></span>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section-spacing bg-background/50 border-y border-border/40">
+          <div className="content-container max-w-3xl">
+            <div className="mb-6 text-center">
+              <p className="mb-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                The MatchByBirth Compatibility Framework
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Five dimensions, one practical next step</h2>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ['Overall Harmony', 'The natural elemental and rhythmic flow between two birth-date patterns.'],
+                ['Emotional Support', 'How well each person is likely to read and meet the other’s emotional needs.'],
+                ['Communication Flow', 'How easily thoughts, expectations, and decisions move between you.'],
+                ['Physical Chemistry', 'Romantic spark, attraction, and the energetic pull between you.'],
+                ['Conflict Risk', 'Where misunderstandings are most likely, and how to name them early.'],
+                ['One conversation prompt', 'Every reading ends with a single next step worth saying out loud.'],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                  <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              The MatchByBirth Compatibility Framework turns a score into something usable: a strength to trust, a watch area to name, and one conversation to start.
+              {' '}
+              <Link to="/how-it-works" className="font-semibold text-primary hover:underline">Read the full methodology</Link>.
+            </p>
           </div>
         </section>
 
