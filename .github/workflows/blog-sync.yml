@@ -43,6 +43,10 @@ jobs:
         run: node automation/run-daily.mjs
       - name: Sync generated posts to repo
         run: node automation/sync-and-commit.mjs
+      - name: Refresh pending-draft details (for MBBDrafts app)
+        if: always()
+        continue-on-error: true
+        run: node automation/sync-draft-details.mjs
 
       - name: Submit changed URLs to IndexNow
         if: success()
