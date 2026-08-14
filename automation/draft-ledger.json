@@ -1,5 +1,49 @@
 [
   {
+    "slug": "best-zodiac-signs-for-business-partners",
+    "title": "Best Zodiac Signs for Business Partners",
+    "focusKeyword": "workplace",
+    "metaTitle": "Best Zodiac Signs for Business Partners",
+    "metaDescription": "best zodiac signs for business partnership: which pairings build vs burn out. A practical, no-jargon read",
+    "wordCount": 717,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-14T23:35:50.320Z",
+    "approved": false
+  },
+  {
     "slug": "2027-astrology-preview",
     "title": "2027 Astrology Preview: What's Coming",
     "focusKeyword": "relationship-timing",
