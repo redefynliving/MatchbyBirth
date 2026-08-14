@@ -7,6 +7,9 @@ on:
   repository_dispatch:
     types: [sanity-publish]
 
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -30,7 +33,13 @@ jobs:
           node-version: '20'
 
       - run: npm ci
+      - name: Approve + publish a single draft (dispatched from MBBDrafts app)
+        if: github.event_name == 'repository_dispatch' && github.event.client_payload.slug != ''
+        env:
+          APPROVE_SLUG: ${{ github.event.client_payload.slug }}
+        run: node automation/approve-draft.mjs
       - name: Generate + publish daily post (draft for review)
+        if: github.event_name != 'repository_dispatch'
         run: node automation/run-daily.mjs
       - name: Sync generated posts to repo
         run: node automation/sync-and-commit.mjs
