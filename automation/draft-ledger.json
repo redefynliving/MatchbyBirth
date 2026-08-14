@@ -1,5 +1,49 @@
 [
   {
+    "slug": "new-moon-rituals-compatibility",
+    "title": "New Moon Rituals for Stronger Bonds",
+    "focusKeyword": "friendship",
+    "metaTitle": "New Moon Rituals for Stronger Bonds",
+    "metaDescription": "new moon relationship rituals: using the lunar cycle to reset a bond. A practical, no-jargon read",
+    "wordCount": 711,
+    "headingCount": 4,
+    "faqCount": 2,
+    "takeawayCount": 0,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-14T15:58:30.386Z",
+    "approved": false
+  },
+  {
     "slug": "compatibility-for-hiring-teams",
     "title": "Compatibility for Hiring and Team Fit",
     "focusKeyword": "workplace",
