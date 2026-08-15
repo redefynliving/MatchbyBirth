@@ -4370,6 +4370,40 @@ const posts = [
     ],
   },
 
+  {
+    slug: 'compatibility-for-teams',
+    title: 'Birth-Chart Compatibility for Teams: A Practical Guide',
+    date: '2026-08-15',
+    description:
+      'How birth-chart compatibility helps work teams collaborate better. Use it to spot collaboration strengths, watch areas, and bridging roles — not as a verdict.',
+    tags: ['teams', 'workplace', 'compatibility', 'collaboration', 'business'],
+    category: 'workplace',
+    content: `
+      <h1>Birth-Chart Compatibility for Teams</h1>
+      <p>Most people think of compatibility as a couples thing. But the same pattern-reading that helps two people understand each other also helps a <strong>team</strong> understand how it works. Birth-chart compatibility for teams is not about hiring astrologically or judging ability — it is a lightweight way to name working styles before they become friction.</p>
+
+      <h2>Why teams benefit from compatibility reads</h2>
+      <p>Every team has a rhythm: who initiates, who stabilizes, who questions, who bridges. When those roles are invisible, people fill the gaps with assumptions. A compatibility read makes the rhythm explicit. It gives a group language for "you move fast, I need to think" without it becoming personal.</p>
+
+      <h2>What a team compatibility check actually shows</h2>
+      <p>A group comparison ranks every pair in the team, then summarizes the overall "group vibe." For a work team, the useful outputs are:</p>
+      <ul>
+        <li><strong>Collaboration strengths</strong> — the pairings most likely to move work forward smoothly.</li>
+        <li><strong>Watch areas</strong> — where pace or communication style may need explicit alignment.</li>
+        <li><strong>Bridging roles</strong> — which teammates tend to connect different working styles across the group.</li>
+      </ul>
+
+      <h2>How to use it without overreaching</h2>
+      <p>Treat the result as a conversation starter, not a performance review. The point is to surface patterns the team already feels but hasn't named. Use it in onboarding, after a reorg, or when a project keeps hitting the same wall. Keep it light, keep it optional, and let people opt in.</p>
+
+      <h2>Try it with your team</h2>
+      <p>Our <a href="/tools/team-compatibility">Team Compatibility Calculator</a> compares 3 to 7 teammates by birth date and shows the group rhythm in seconds. No signup, and birth dates are not stored. For the framework behind it, read <a href="/how-it-works">how Match by Birth works</a>.</p>
+
+      <h2>The honest limit</h2>
+      <p>Compatibility is a lens on style, not a measure of skill or fit. It will not tell you who to hire or fire. What it can do is help a team talk about how it works — earlier, and with less friction.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;

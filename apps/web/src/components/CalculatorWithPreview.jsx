@@ -246,7 +246,7 @@ function CalculatorWithPreview({
     if (mode === 'pair') {
       submitCalculation({ mode: 'pair', relationshipType, people: submittedPeople, exactMode });
     } else {
-      submitCalculation({ mode: 'group', relationshipType: 'friendship', people: submittedPeople, exactMode });
+      submitCalculation({ mode: 'group', relationshipType, people: submittedPeople, exactMode });
     }
   };
 
