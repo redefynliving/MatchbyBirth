@@ -4300,6 +4300,76 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'pisces-lunar-eclipse-august-27-2026-relationships',
+    title: 'Pisces Lunar Eclipse August 27, 2026: What It Means for Your Relationship',
+    date: '2026-08-14',
+    description: 'The August 27, 2026 Pisces lunar eclipse is the emotional closer of eclipse season — and the one that hits couples hardest. Here is what it means for your relationship, and how to use it instead of fearing it.',
+    tags: ['pisces-lunar-eclipse','pisces-eclipse-relationships','august-2026-eclipse','lunar-eclipse-love','eclipse-season','pisces-compatibility','relationships','seasonal-astrology'],
+    category: 'seasonal',
+    content: `
+      <h1>Pisces Lunar Eclipse August 27, 2026: What It Means for Your Relationship</h1>
+
+      <p>The Leo solar eclipse on the 12th was about beginnings — the version of you that steps into the light. The <strong>Pisces lunar eclipse on August 27, 2026</strong> is the opposite move: it is about endings, the kind that clear the room so something real can finally breathe. For couples, this is the eclipse that matters most.</p>
+
+      <p>A lunar eclipse is a supercharged full moon. The Moon in Pisces sits opposite the Sun in Virgo, and the emotional volume goes up. Pisces rules the subconscious, the boundaries you never set, and the feelings you swallowed to keep the peace. When an eclipse lands there, the swallowed stuff comes back up — and in a relationship, that is either a reckoning or a release, depending on whether you have been honest.</p>
+
+      <h2>Why this eclipse hits relationships specifically</h2>
+
+      <p>Two weeks after the Leo eclipse fired up your 5th-house romance themes, the Pisces eclipse pulls at the 12th house — the inherited fears and silent patterns you bring to love. That is the whole arc of the season in one sentence: you decide who you are in love (Leo), then you confront what you have been hiding inside it (Pisces).</p>
+
+      <p>In practice, this eclipse tends to surface three relationship patterns:</p>
+
+      <ul>
+        <li><strong>The boundary you never named.</strong> Pisces blurs edges. The partner who "doesn't mean anything" by flirting, the friend who takes all your weekend energy — the eclipse makes the cost visible.</li>
+        <li><strong>The feeling you shelved to avoid conflict.</strong> Lunar eclipses in water signs drag the unfinished into the light. What you have been minimizing stops minimizing itself.</li>
+        <li><strong>The relationship you have already left emotionally.</strong> Pisces does not do partial goodbyes. If you are done and haven't said it, the 27th says it for you.</li>
+      </ul>
+
+      <h2>What to actually do in your partnership</h2>
+
+      <p>This is not a forecast of breakups. It is a prompt for honesty. Three moves that use the window instead of dreading it:</p>
+
+      <ul>
+        <li><strong>Name one true thing.</strong> Pick the sentence you have been editing in your head — "I feel distant," "I need more time alone," "I'm not okay" — and say it plainly. Pisces rewards the undisguised sentence.</li>
+        <li><strong>Set one boundary without apology.</strong> The eclipse exposes where your edges dissolved. Draw one line this week and hold it. A boundary is not a wall; it is the structure that lets intimacy stay safe.</li>
+        <li><strong>End what is already over.</strong> If a dynamic has been ending for months, let it. Releasing it is how the room clears for what is real.</li>
+      </ul>
+
+      <h2>Why sun signs won't tell you the whole story</h2>
+
+      <p>Every "Pisces eclipse will be hard for water signs" post stops at the sun. That is the part that misses. The eclipse lands on specific points in <em>your</em> chart — your Venus (your love language, covered in our <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus sign guide</a>), your moon (your emotional core, in our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon-sign compatibility guide</a>), and your rising sign (your first impression, in our <a href="https://matchbybirth.com/blog/rising-signs-compatibility-first-impressions">rising signs guide</a>). Two people with identical suns can feel this eclipse completely differently depending on where Pisces sits for each of them.</p>
+
+      <p>If you want the mechanics instead of the headline, our <a href="https://matchbybirth.com/blog/aquarius-compatibility">Aquarius compatibility guide</a> and <a href="https://matchbybirth.com/blog/leo-compatibility">Leo compatibility guide</a> show how the Leo–Aquarius eclipse axis actually plays out in a partnership.</p>
+
+      <h2>The honest caveat</h2>
+
+      <p>Eclipses are symbolic, not a verdict. No full moon ends a relationship you have not already been ending. What the sky offers is timing and a mirror — a few weeks when the patterns you have been ignoring get loud enough to act on. Used as self-knowledge, that is valuable. Used as a prediction, it is a cage. The choice is still yours.</p>
+
+      <h2>See where the eclipse lands in your chart</h2>
+
+      <p>An eclipse only transforms you if you know where it falls. <a href="https://matchbybirth.com">Pull your full birth chart on Match by Birth</a> using your exact birth date, time, and location, then compare it with a partner's. In seconds you will see whether the August 27 Pisces eclipse is touching your Venus, your moon, or your rising sign — and exactly which part of your love life this season is rearranging. Most people feel eclipse season without ever seeing the wiring. This shows you the mechanism, and whether the two of you are actually built to weather it.</p>
+    `,
+    faq: [
+      {
+        question: 'What does the Pisces lunar eclipse on August 27, 2026 mean for relationships?',
+        answer: 'It is the emotional closer of eclipse season — a full-moon eclipse in Pisces that surfaces unspoken boundaries, shelved feelings, and relationships that have already ended emotionally. For couples it is less a prediction of breakup and more a prompt for honesty: name the true thing, set the boundary you have avoided, and let what is already over actually end.',
+      },
+      {
+        question: 'Is the August 27 Pisces lunar eclipse bad for my relationship?',
+        answer: 'No. Eclipses are accelerants, not punishments. They surface what is already true and give it momentum. A partnership built on presence gets steadier; one built on performance gets exposed. The eclipse does not decide for you — it removes the buffer you had been hiding behind.',
+      },
+      {
+        question: 'Which signs feel the August 27 Pisces lunar eclipse most?',
+        answer: 'Water signs — Pisces, Cancer, and Scorpio — feel it most directly, with Virgo and the other mutable signs close behind because the eclipse is a Pisces–Virgo opposition. But the precise impact depends on where Pisces sits in your full birth chart, not just your sun sign. Your Venus, moon, and rising sign decide how hard it lands.',
+      },
+      {
+        question: 'What should I do during the Pisces lunar eclipse?',
+        answer: 'Three moves: say one true thing you have been editing in your head, set one boundary without apology, and let go of any dynamic that has already ended. The goal is honesty, not drama — use the window to clear the room, not to fill it with more noise.',
+      },
+    ],
+  },
+
 ];
 
 export const existingPosts = posts;
