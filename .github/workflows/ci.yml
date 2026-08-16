@@ -107,8 +107,7 @@ jobs:
         uses: actions/setup-node@v4.4.0
         with:
           node-version: '20'
-      - name: Install Node deps
-        working-directory: apps/api
+      - name: Install repo dependencies
         run: npm ci
       - name: Debug - try starting server directly
         working-directory: apps/api
