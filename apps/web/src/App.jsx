@@ -1,12 +1,15 @@
 
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import { Toaster } from 'sonner';
-import { Analytics } from '@vercel/analytics/react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ScrollToTop from '@/components/ScrollToTop.jsx';
-import CookieConsentBanner from '@/components/CookieConsentBanner.jsx';
+
+// Non-first-paint App-level imports are deferred so the hero/calculator
+// renders and LCP fires earlier. Toaster/Analytics/CookieConsent load async.
+const Toaster = lazy(() => import('sonner').then((m) => ({ default: m.Toaster })));
+const Analytics = lazy(() => import('@vercel/analytics/react').then((m) => ({ default: m.Analytics })));
+const CookieConsentBanner = lazy(() => import('@/components/CookieConsentBanner.jsx'));
 
 import HomePage from '@/pages/HomePage.jsx';
 
@@ -93,9 +96,11 @@ function App() {
 
         <Footer />
         
-        <CookieConsentBanner />
-        <Toaster position="bottom-right" richColors />
-        <Analytics />
+        <Suspense fallback={null}>
+          <CookieConsentBanner />
+          <Toaster position="bottom-right" richColors />
+          <Analytics />
+        </Suspense>
       </div>
     </Router>
   );
