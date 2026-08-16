@@ -249,6 +249,51 @@ function preRenderPages() {
       `
     },
     {
+      route: '',
+      title: 'Birth Date Compatibility Calculator | Match by Birth',
+      description: 'Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored.',
+      content: `
+        <main class="flex-1 bg-background">
+          <section class="brand-hero relative overflow-hidden py-16 md:py-24">
+            <div class="content-container relative z-10">
+              <div class="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+                <p class="mb-5 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary">Free birth date compatibility calculator</p>
+                <h1 class="mx-auto max-w-2xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-foreground md:text-[3.25rem]">Discover your birth date compatibility.</h1>
+                <p class="mx-auto mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">Compare two people or a group. Get a compatibility score and a clear breakdown in seconds.</p>
+                <div class="mt-5 flex flex-wrap justify-center gap-2">
+                  <a href="/tools/crush-birthday-compatibility" class="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5">Crush birthday compatibility &rarr;</a>
+                  <a href="/tools/life-path-compatibility" class="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5">Life path compatibility &rarr;</a>
+                  <a href="/tools/moon-sign-compatibility" class="inline-flex items-center justify-center rounded-full border border-primary/20 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm transition-colors hover:bg-primary/5">Moon sign compatibility &rarr;</a>
+                </div>
+              </div>
+              <div id="calculator" class="mx-auto max-w-xl rounded-2xl border border-border bg-card p-6 shadow-sm">
+                <h2 class="mb-4 text-lg font-semibold text-foreground">Compare two birth dates</h2>
+                <form class="space-y-4" onsubmit="return false;">
+                  <div>
+                    <label class="mb-1 block text-sm font-medium text-foreground">Person 1 name</label>
+                    <input type="text" placeholder="Alex" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label class="mb-1 block text-sm font-medium text-foreground">Person 1 birth date</label>
+                    <input type="date" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label class="mb-1 block text-sm font-medium text-foreground">Person 2 name</label>
+                    <input type="text" placeholder="Jordan" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
+                  </div>
+                  <div>
+                    <label class="mb-1 block text-sm font-medium text-foreground">Person 2 birth date</label>
+                    <input type="date" class="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
+                  </div>
+                  <button type="button" class="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90">See compatibility</button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </main>
+      `,
+    },
+    {
       route: 'report-delivery',
       title: 'Report Delivery | Match by Birth',
       description: 'How paid Match by Birth compatibility reports are generated, delivered, and handled privately.',
