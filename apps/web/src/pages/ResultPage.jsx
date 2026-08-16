@@ -8,12 +8,13 @@ import GroupCompatibilityResults from '@/components/GroupCompatibilityResults.js
 import ResultCard from '@/components/ResultCard.jsx';
 import ShareButtons from '@/components/ShareButtons.jsx';
 import SharedResultConversion from '@/components/share/SharedResultConversion.jsx';
+import RelationshipTimingContext from '@/components/RelationshipTimingContext.jsx';
 import { Button } from '@/components/ui/button.jsx';
 import { toast } from 'sonner';
 import { trackEvent } from '@/lib/analytics.js';
 import { buildResultNavigation } from '@/lib/result-navigation.js';
 import { getResultPrecisionDetails } from '@/lib/result-presentation.js';
-import { buildSharePageModel } from '@/lib/share-page.js';
+import { buildSharePageModel, getShareBandKey } from '@/lib/share-page.js';
 import { getShareDescription, getShareTitle } from '@/lib/share-copy.js';
 
 function parseLegacyInput(searchParams) {
@@ -287,6 +288,14 @@ function ResultPage() {
               precisionComparison={result.precisionComparison}
               reportContext={result.reportContext}
               funnelContext={shareFunnelContext}
+            />
+          )}
+
+          {!isGroup && (
+            <RelationshipTimingContext
+              shareId={shareSlug || ''}
+              relationshipType={result.relationshipType}
+              scoreBand={shareModel?.scoreBand || getShareBandKey(result.score)}
             />
           )}
 

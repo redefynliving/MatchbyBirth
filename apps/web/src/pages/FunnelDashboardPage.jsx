@@ -7,6 +7,7 @@ const METRICS = [
   ['share_page_view', 'Share views'],
   ['share_page_cta_click', 'CTA clicks'],
   ['share_page_sample_report_click', 'Sample clicks'],
+  ['timing_context_viewed', 'Timing views'],
   ['calculation_started_from_share', 'Calculator starts'],
   ['checkout_started_from_share', 'Checkout starts'],
   ['purchase_completed', 'Purchases'],

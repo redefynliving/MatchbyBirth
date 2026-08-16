@@ -58,6 +58,17 @@ function entry({ pagePath, lastmod = BUILD_DATE }) {
   ].join('\n');
 }
 
+function dedupeEntries(entries) {
+  const seen = new Set();
+  return entries.filter((sitemapEntry) => {
+    const match = sitemapEntry.match(/<loc>([^<]+)<\/loc>/);
+    const location = match ? match[1] : sitemapEntry;
+    if (seen.has(location)) return false;
+    seen.add(location);
+    return true;
+  });
+}
+
 export function generateSitemapXml() {
   const pageEntries = PUBLIC_PAGES.map((pagePath) => entry({
     pagePath,
@@ -93,10 +104,12 @@ export function generateSitemapXml() {
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...pageEntries,
-    ...categoryEntries,
-    ...postEntries,
-    ...pairingEntries,
+    ...dedupeEntries([
+      ...pageEntries,
+      ...categoryEntries,
+      ...postEntries,
+      ...pairingEntries,
+    ]),
     '</urlset>',
     '',
   ].join('\n');

@@ -14,10 +14,11 @@ const routes = {
   '/api/webhook': () => require('./_lib/webhook.js'),
   '/api/stripe-webhook': () => require('./_lib/webhook.js'),
   '/api/sanity-webhook': () => require('./webhook-sanity.js'),
-  '/api/subscribe': () => require('./subscribe.js'),
+  '/api/subscribe': () => require('./_lib/subscribe.js'),
   '/api/track-event': () => require('./_lib/track-event.js'),
   '/api/unsubscribe': () => require('./_lib/unsubscribe.js'),
   '/api/places': () => require('./_lib/places.js'),
+  '/api/cyclecalcs/moon': () => require('./_lib/cyclecalcs.js'),
 };
 
 function addResponseHelpers(res) {

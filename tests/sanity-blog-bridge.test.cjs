@@ -16,14 +16,19 @@ test('blog data imports generated Sanity posts and keeps coded posts first', () 
   assert.match(source, /export default \[\.\.\.posts, \.\.\.sanityPosts\];/);
 });
 
-test('web build syncs Sanity posts before generating SEO files', () => {
+test('web build uses committed Sanity posts before generating SEO files', () => {
   const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'apps/web/package.json'), 'utf8'));
+  const buildScript = packageJson.scripts.build;
 
-  assert.match(packageJson.scripts.build, /node tools\/sync-sanity-posts\.js/);
+  assert.doesNotMatch(buildScript, /sync-sanity-posts/);
+  assert.match(buildScript, /node tools\/generate-sitemap\.js/);
   assert.ok(
-    packageJson.scripts.build.indexOf('node tools/sync-sanity-posts.js') <
-      packageJson.scripts.build.indexOf('node tools/generate-sitemap.js'),
-    'Sanity sync must happen before sitemap generation',
+    buildScript.indexOf('node tools/generate-sitemap.js') < buildScript.indexOf('vite build'),
+    'SEO files must be generated before the web bundle',
+  );
+  assert.ok(
+    fs.existsSync(path.join(root, 'apps/web/src/data/posts/sanity-posts.generated.js')),
+    'the committed Sanity posts module must exist before the build',
   );
 });
 

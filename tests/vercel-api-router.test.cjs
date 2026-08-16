@@ -44,6 +44,11 @@ test('Vercel places route loads exact astrology dependencies', async () => {
   assert.deepEqual(await response.json(), []);
 });
 
+test('Vercel API router registers the CycleCalcs moon route', () => {
+  const source = fs.readFileSync(path.join(root, 'api/index.js'), 'utf8');
+  assert.match(source, /['"]\/api\/cyclecalcs\/moon['"]\s*:/);
+});
+
 test('Vercel build preserves root dependencies needed by serverless routes', () => {
   const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
   assert.equal(

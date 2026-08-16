@@ -98,13 +98,19 @@ test('blog SEO helper builds Article schema, breadcrumbs, and related posts', as
   const postsModule = await import(pathToFileURL(path.join(root, 'apps/web/src/data/posts/index.js')).href);
   const posts = postsModule.default;
   const post = posts.find((candidate) => candidate.slug === 'what-compatibility-score-means');
-  const sparsePost = posts.find((candidate) => candidate.slug === 'cancer-moon-compatibility');
-
   const article = helper.buildArticleSchema(post);
   const seo = helper.getBlogPostSeo(post);
   const breadcrumbs = helper.buildBreadcrumbSchema(post);
   const related = helper.getRelatedPosts(post, posts);
-  const sparseRelated = helper.getRelatedPosts(sparsePost, posts);
+  const sparsePost = {
+    slug: 'sparse-fixture',
+    title: 'Sparse Fixture',
+    date: '2026-01-01',
+    description: 'A minimal post used to exercise related-post fallback behavior.',
+    category: 'learn-astrology',
+    content: '<p>Fixture content.</p>',
+  };
+  const sparseRelated = helper.getRelatedPosts(sparsePost, [...posts, sparsePost]);
 
   assert.equal(article['@type'], 'BlogPosting');
   assert.equal(article.headline, post.title);

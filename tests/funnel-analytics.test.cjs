@@ -45,6 +45,11 @@ test('weekly funnel summary counts share traffic through purchase by score band'
     { event_name: 'share_page_cta_click', score_band: 'good_compatibility', properties: {} },
     { event_name: 'share_page_sample_report_click', score_band: 'good_compatibility', properties: {} },
     {
+      event_name: 'timing_context_viewed',
+      score_band: 'good_compatibility',
+      properties: { moon_phase: 'First Quarter' },
+    },
+    {
       event_name: 'calculation_started',
       score_band: 'good_compatibility',
       source: 'share_page',
@@ -64,6 +69,7 @@ test('weekly funnel summary counts share traffic through purchase by score band'
   assert.equal(summary.totals.share_page_view, 1);
   assert.equal(summary.totals.share_page_cta_click, 1);
   assert.equal(summary.totals.share_page_sample_report_click, 1);
+  assert.equal(summary.totals.timing_context_viewed, 1);
   assert.equal(summary.totals.calculation_started_from_share, 1);
   assert.equal(summary.totals.checkout_started_from_share, 1);
   assert.equal(summary.totals.purchase_completed, 1);
@@ -87,6 +93,7 @@ test('first-party funnel routes and dashboard are wired', () => {
   assert.doesNotMatch(analytics, /Math\.random/);
   assert.match(app, /\/admin\/funnel/);
   assert.match(dashboard, /share_page_view/);
+  assert.match(dashboard, /timing_context_viewed/);
   assert.match(dashboard, /checkout_started_from_share/);
   assert.match(dashboard, /purchase_completed/);
   assert.match(migration, /create table public\.funnel_events/);

@@ -6,6 +6,7 @@ const ALLOWED_EVENTS = new Set([
   'share_page_sample_report_click',
   'share_page_copy_link_click',
   'share_page_x_share_click',
+  'timing_context_viewed',
   'calculation_started',
   'calculation_completed',
   'checkout_started',
@@ -33,6 +34,7 @@ const SAFE_PROPERTY_KEYS = new Set([
   'currency',
   'discount_applied',
   'session_id',
+  'moon_phase',
 ]);
 
 const SCORE_BANDS = [
@@ -110,6 +112,7 @@ function createEmptyMetric() {
     share_page_view: 0,
     share_page_cta_click: 0,
     share_page_sample_report_click: 0,
+    timing_context_viewed: 0,
     calculation_started_from_share: 0,
     checkout_started_from_share: 0,
     purchase_completed: 0,
@@ -170,6 +173,10 @@ function summarizeFunnelEvents(rows = [], options = {}) {
     if (row.event_name === 'share_page_sample_report_click') {
       increment(summary.totals, 'share_page_sample_report_click');
       increment(bandMetrics, 'share_page_sample_report_click');
+    }
+    if (row.event_name === 'timing_context_viewed') {
+      increment(summary.totals, 'timing_context_viewed');
+      increment(bandMetrics, 'timing_context_viewed');
     }
     if (row.event_name === 'calculation_started' && isFromShare(row)) {
       increment(summary.totals, 'calculation_started_from_share');
