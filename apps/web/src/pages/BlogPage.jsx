@@ -1,9 +1,9 @@
 
 import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet';
-import posts from '@/data/posts';
 import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
+import { usePosts } from '@/lib/usePosts.js';
 import { Calendar, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
 import { ALL_POSTS_CATEGORY, BLOG_CATEGORIES, getPostCategory } from '@/data/blogCategories.js';
 import { ZODIAC_SIGNS, getCanonicalZodiacPairingPages } from '../../../../tools/zodiac-pairings.mjs';
@@ -17,6 +17,15 @@ const PAIRING_PAGES = getCanonicalZodiacPairingPages();
 function BlogPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const posts = usePosts();
+
+  if (!posts) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center bg-background px-4 text-sm font-medium text-muted-foreground">
+        Loading blog…
+      </main>
+    );
+  }
 
   // Enrich posts with category
   const enrichedPosts = useMemo(() => {

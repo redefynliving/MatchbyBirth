@@ -335,12 +335,15 @@ export default defineConfig({
 				'@babel/types'
 			],
 			output: {
+				// Only split React itself. Everything else uses Vite's default
+				// chunking, which respects dynamic import() boundaries so heavy
+				// libs (posts data, jspdf, html2canvas) stay in their own lazy
+				// chunks instead of being forced into one shared vendor bundle.
 				manualChunks(id) {
 					if (id.includes('node_modules')) {
-						if (id.includes('react') || id.includes('scheduler')) return 'react-vendor';
-						if (id.includes('react-router') || id.includes('@remix-run')) return 'router-vendor';
-						if (id.includes('framer-motion') || id.includes('lucide')) return 'ui-vendor';
-						return 'vendor';
+						if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/')) {
+							return 'react-vendor';
+						}
 					}
 				},
 			},

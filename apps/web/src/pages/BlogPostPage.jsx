@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
-import posts from '@/data/posts';
 import BackButton from '@/components/BackButton.jsx';
 import NewsletterCapture from '@/components/NewsletterCapture.jsx';
-import { getZodiacPairingPostBySlug } from '../../../../tools/zodiac-pairings.mjs';
+import { usePosts } from '@/lib/usePosts.js';
 import {
   buildArticleSchema,
   buildBreadcrumbSchema,
@@ -93,7 +92,34 @@ function EditorialEnhancements({ post }) {
 
 function BlogPostPage() {
   const { slug } = useParams();
-  const post = posts.find((p) => p.slug === slug) || getZodiacPairingPostBySlug(slug);
+  const posts = usePosts();
+  const [pairingPost, setPairingPost] = useState(null);
+
+  useEffect(() => {
+    if (!posts) return;
+    const found = posts.find((p) => p.slug === slug);
+    if (found) {
+      setPairingPost(null);
+      return;
+    }
+    let active = true;
+    import('../../../../tools/zodiac-pairings.mjs').then((mod) => {
+      if (active) setPairingPost(mod.getZodiacPairingPostBySlug(slug));
+    });
+    return () => {
+      active = false;
+    };
+  }, [posts, slug]);
+
+  if (!posts) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center bg-background px-4 text-sm font-medium text-muted-foreground">
+        Loading article…
+      </main>
+    );
+  }
+
+  const post = posts.find((p) => p.slug === slug) || pairingPost;
   const relatedPosts = post ? getRelatedPosts(post, posts) : [];
   const seo = post ? getBlogPostSeo(post) : null;
 

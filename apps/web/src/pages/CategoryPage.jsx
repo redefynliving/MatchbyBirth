@@ -1,14 +1,24 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useParams } from 'react-router-dom';
-import posts from '@/data/posts';
 import BackButton from '@/components/BackButton.jsx';
+import { usePosts } from '@/lib/usePosts.js';
 import { Calendar, ArrowRight, BookOpen } from 'lucide-react';
 import { getCategoryMeta, getPostCategory } from '@/data/blogCategories.js';
 import { getBlogPostPath } from '@/lib/blogSeo.js';
 
 function CategoryPage() {
   const { category } = useParams();
+  const posts = usePosts();
+
+  if (!posts) {
+    return (
+      <main className="flex min-h-[60vh] items-center justify-center bg-background px-4 text-sm font-medium text-muted-foreground">
+        Loading…
+      </main>
+    );
+  }
+
   const meta = getCategoryMeta(category);
   const categoryPosts = posts.filter(p => getPostCategory(p) === category);
 
