@@ -22,6 +22,14 @@ A rotating pool across your real verticals (not just relationships):
 3. `run-daily.mjs` gates it, then `publish.mjs` writes it to Sanity.
 4. `publish.mjs` triggers the Vercel deploy hook so the static site rebuilds and Google indexes it.
 
+## Keeping the queue flowing
+- `.github/workflows/topic-replenish.yml` runs weekly on Sunday and can also be run manually.
+- It queries all Sanity slugs, calculates the eligible runway, and does nothing while at least 12 topics remain.
+- Below 12, it asks the existing OpenAI-compatible LLM for evergreen candidates, rejects malformed/duplicate/pair-comparison topics, and commits enough clean topics to target a 24-topic runway.
+- Time-sensitive seasonal topics are deliberately not invented by the LLM. When fewer than two future seasonal entries remain, the workflow warns so the calendar can be refreshed with verified dates.
+- The daily workflow emits a warning below 10 eligible topics and fails loudly at zero instead of reporting a false green run.
+- Manual run: `npm run topics:replenish` with `SANITY_API_TOKEN`, `LLM_API_URL`, and `LLM_API_KEY` exported.
+
 ## Secrets (repo Settings → Secrets)
 - `SANITY_PROJECT_ID` (default `4qj4p6px`), `SANITY_DATASET` (`production`), `SANITY_API_VERSION` (`2025-01-01`)
 - `SANITY_API_TOKEN` — **write** token

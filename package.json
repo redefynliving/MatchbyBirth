@@ -14,7 +14,8 @@
     "indexnow": "node scripts/submit-indexnow.mjs",
     "blog:check": "node scripts/check-blog-ledger.mjs",
     "content:check": "node scripts/check-content-quality.mjs",
-    "blog:drafts": "node scripts/blog-drafts.mjs"
+    "blog:drafts": "node scripts/blog-drafts.mjs",
+    "topics:replenish": "node automation/replenish-topics.mjs"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

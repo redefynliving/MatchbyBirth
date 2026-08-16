@@ -22,10 +22,16 @@ function publishedBodies() {
 }
 
 async function main() {
-  const { topic, exhausted } = await nextTopic(today);
+  const { topic, exhausted, eligibleCount = 0 } = await nextTopic(today);
+  if (eligibleCount > 0 && eligibleCount <= 10) {
+    console.warn(`::warning::Topic runway is low: ${eligibleCount} eligible topics remain. Run the weekly topic-replenish workflow.`);
+  }
   if (!topic) {
-    console.log(exhausted ? '[daily] no eligible topics remain (all slugs taken in Sanity).' : '[daily] no eligible topic today.');
-    return;
+    const message = exhausted
+      ? '[daily] no eligible topics remain (all slugs taken in Sanity). Replenish the topic queue.'
+      : '[daily] no eligible topic today.';
+    console.error(`::error::${message}`);
+    process.exit(1);
   }
   console.log(`[daily] topic: ${topic.slug} (${topic.keyword})`);
   const post = await draftPost(topic);

@@ -28,23 +28,32 @@ function saveState(state) {
 
 // Query Sanity for slugs already used (published or draft). Prevents repeats
 // against the live blog — pair pages, seasonal posts, life-path posts, etc.
-async function existingSlugs() {
+export async function existingSlugs({ strict = false } = {}) {
   const token = process.env.SANITY_API_TOKEN;
-  if (!token) return new Set(); // no token: rely on local state only
+  if (!token) {
+    if (strict) throw new Error('[queue] SANITY_API_TOKEN is required for a strict topic-runway check.');
+    return new Set(); // no token: rely on local state only
+  }
   const query = encodeURIComponent('*[_type == "blogPost" && defined(slug.current)].slug.current');
   const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${query}`;
   try {
     const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-    if (!res.ok) { console.warn(`[queue] Sanity slug query failed ${res.status}; using local state.`); return new Set(); }
+    if (!res.ok) {
+      const message = `[queue] Sanity slug query failed ${res.status}`;
+      if (strict) throw new Error(message);
+      console.warn(`${message}; using local state.`);
+      return new Set();
+    }
     const data = await res.json();
     return new Set((data.result || []).map(String));
   } catch (e) {
+    if (strict) throw e;
     console.warn(`[queue] Sanity slug query error: ${e.message}; using local state.`);
     return new Set();
   }
 }
 
-function buildSchedule() {
+export function buildSchedule() {
   const seasonal = topics.seasonal.map((e) => {
     const target = new Date(e.date);
     target.setDate(target.getDate() - LEAD_DAYS);
@@ -57,19 +66,24 @@ function buildSchedule() {
   return master;
 }
 
-export async function nextTopic(today = new Date().toISOString().slice(0, 10)) {
+export async function eligibleTopics(today = new Date().toISOString().slice(0, 10), { strict = false } = {}) {
   const state = loadState();
   const recent = new Set(
     state.published.filter((p) => daysBetween(p.date, today) < 60).map((p) => p.slug),
   );
-  const taken = await existingSlugs();
+  const taken = await existingSlugs({ strict });
   const schedule = buildSchedule();
   const eligible = schedule.filter((t) => !recent.has(t.slug) && !taken.has(t.slug));
+  return { state, taken, schedule, eligible };
+}
+
+export async function nextTopic(today = new Date().toISOString().slice(0, 10)) {
+  const { state, eligible } = await eligibleTopics(today);
   const todays = eligible.find((t) => t.kind === 'seasonal' && t.target === today);
-  if (todays) return { topic: todays, state };
+  if (todays) return { topic: todays, state, eligibleCount: eligible.length };
   const next = eligible[0];
-  if (next) return { topic: next, state };
-  return { topic: null, state, exhausted: eligible.length === 0 };
+  if (next) return { topic: next, state, eligibleCount: eligible.length };
+  return { topic: null, state, exhausted: eligible.length === 0, eligibleCount: 0 };
 }
 
 export function markPublished(slug, today) {
