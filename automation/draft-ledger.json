@@ -1,5 +1,49 @@
 [
   {
+    "slug": "zodiac-compatibility-and-boundaries",
+    "title": "Zodiac Compatibility and Relationship Boundaries",
+    "focusKeyword": "responsible-use",
+    "metaTitle": "Zodiac Compatibility and Relationship Boundaries",
+    "metaDescription": "zodiac compatibility boundaries: how different signs may approach space, privacy, and saying no. A practical, no-jargon read",
+    "wordCount": 673,
+    "headingCount": 4,
+    "faqCount": 2,
+    "takeawayCount": 0,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-16T15:28:46.043Z",
+    "approved": false
+  },
+  {
     "slug": "astrology-compatibility-for-first-dates",
     "title": "Astrology Compatibility for a First Date",
     "focusKeyword": "relationship-timing",
