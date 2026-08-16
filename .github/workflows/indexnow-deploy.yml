@@ -1,0 +1,33 @@
+name: IndexNow Deploy Notify
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Notify search engines (Bing, Yandex, IndexNow partners) of all current pages
+# after every deploy to main. This flushes stale soft-404 flags (e.g. the
+# prerendered zodiac-pairing pages) within hours instead of waiting weeks for
+# organic recrawl. The pairing pages are indexable and in sitemap.xml; this
+# simply tells engines to re-fetch them.
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Submit full sitemap to IndexNow
+        if: success()
+        continue-on-error: true
+        run: npm run indexnow -- --all

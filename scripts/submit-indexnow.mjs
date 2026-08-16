@@ -15,12 +15,14 @@ const SITEMAP_PATH = path.resolve(SCRIPT_DIR, '../apps/web/public/sitemap.xml');
 function usage() {
   console.log(`Usage:
   npm run indexnow -- /blog/changed-page /another-page
+  npm run indexnow -- --all
   npm run indexnow -- --dry-run /blog/changed-page
   npm run indexnow -- --allow-missing /deleted-page
 
 Submit only URLs that were added, updated, or deleted. Paths are resolved against
 ${SITE_ORIGIN}. URLs absent from the sitemap are rejected unless --allow-missing
-is supplied for a deleted page.`);
+is supplied for a deleted page. Use --all to submit every URL in the sitemap
+(e.g. after a deploy, to notify search engines of all current pages).`);
 }
 
 function readSitemapUrls() {
@@ -54,23 +56,34 @@ async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes('--dry-run');
   const allowMissing = args.includes('--allow-missing');
+  const submitAll = args.includes('--all');
   const inputs = args.filter((arg) => !arg.startsWith('--'));
 
-  if (args.includes('--help') || inputs.length === 0) {
+  if (args.includes('--help') || (inputs.length === 0 && !submitAll)) {
     usage();
-    process.exitCode = inputs.length === 0 && !args.includes('--help') ? 1 : 0;
+    process.exitCode = inputs.length === 0 && !args.includes('--help') && !submitAll ? 1 : 0;
     return;
   }
 
-  const urls = [...new Set(inputs.map(canonicalUrl))];
-  const sitemapUrls = readSitemapUrls();
-  const missingUrls = urls.filter((url) => !sitemapUrls.has(url));
+  let urls;
+  if (submitAll) {
+    const sitemapUrls = readSitemapUrls();
+    if (sitemapUrls.size === 0) {
+      throw new Error('No URLs found in sitemap. Build the site first so sitemap.xml exists.');
+    }
+    urls = [...sitemapUrls];
+    console.log(`Submitting all ${urls.length} sitemap URLs to IndexNow.`);
+  } else {
+    urls = [...new Set(inputs.map(canonicalUrl))];
+    const sitemapUrls = readSitemapUrls();
+    const missingUrls = urls.filter((url) => !sitemapUrls.has(url));
 
-  if (missingUrls.length > 0 && !allowMissing) {
-    throw new Error(
-      `Not found in the sitemap:\n${missingUrls.join('\n')}\n` +
-      'Use --allow-missing only when notifying search engines about deleted URLs.',
-    );
+    if (missingUrls.length > 0 && !allowMissing) {
+      throw new Error(
+        `Not found in the sitemap:\n${missingUrls.join('\n')}\n` +
+          'Use --allow-missing only when notifying search engines about deleted URLs.',
+      );
+    }
   }
 
   const body = {
