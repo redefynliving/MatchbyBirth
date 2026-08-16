@@ -115,6 +115,12 @@ async function callLLM(prompt) {
 
 function validateCandidates(rawCandidates, config, occupied) {
   const allowed = new Set(Object.keys(config.categories));
+  const categoryAliases = new Map(
+    Object.entries(config.categories).flatMap(([key, label]) => [
+      [key, key],
+      [String(label).trim().toLowerCase(), key],
+    ]),
+  );
   const seen = new Set();
   const accepted = [];
   const rejected = [];
@@ -123,7 +129,8 @@ function validateCandidates(rawCandidates, config, occupied) {
     const slug = slugify(raw?.slug || raw?.title);
     const keyword = String(raw?.keyword || '').trim();
     const angle = String(raw?.angle || '').trim();
-    const category = String(raw?.category || '').trim().toLowerCase();
+    const rawCategory = String(raw?.category || '').trim().toLowerCase();
+    const category = categoryAliases.get(rawCategory) || rawCategory;
     const title = String(raw?.title || '').trim();
 
     let reason = '';
