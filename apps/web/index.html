@@ -6,6 +6,11 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
+		<!-- Performance: cut render-blocking on font/CDN origins -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="dns-prefetch" href="https://www.clarity.ms" />
+		<link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
 		<!-- Default SEO & Social Meta Tags -->
 		<title data-react-helmet="true">Birth Date Compatibility Calculator | Match by Birth</title>
 		<meta name="description" content="Compare two people or a group by birth date. Get a free compatibility score in seconds. No signup, and birth dates are not stored." data-react-helmet="true" />

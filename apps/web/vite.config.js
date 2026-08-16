@@ -10,7 +10,6 @@ import pocketbaseAuthPlugin from './plugins/vite-plugin-pocketbase-auth.js';
 import { readFileSync } from 'node:fs';
 
 const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
-const allDeps = Object.keys(pkg.dependencies || {});
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -286,7 +285,8 @@ logger.error = (msg, options) => {
 
 export default defineConfig({
 	optimizeDeps: {
-		include: allDeps,
+		// Intentionally NOT including allDeps — prebundling everything defeats
+		// route-level code splitting and inflates the initial bundle.
 	},
 	customLogger: logger,
 	plugins: [
@@ -325,13 +325,25 @@ export default defineConfig({
 		},
 	},
 	build: {
+		target: 'es2020',
+		cssCodeSplit: true,
 		rollupOptions: {
 			external: [
 				'@babel/parser',
 				'@babel/traverse',
 				'@babel/generator',
 				'@babel/types'
-			]
+			],
+			output: {
+				manualChunks(id) {
+					if (id.includes('node_modules')) {
+						if (id.includes('react') || id.includes('scheduler')) return 'react-vendor';
+						if (id.includes('react-router') || id.includes('@remix-run')) return 'router-vendor';
+						if (id.includes('framer-motion') || id.includes('lucide')) return 'ui-vendor';
+						return 'vendor';
+					}
+				},
+			},
 		}
 	}
 });
