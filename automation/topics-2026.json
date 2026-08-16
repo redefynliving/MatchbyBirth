@@ -444,7 +444,84 @@
       "angle": "which pairings build vs burn out",
       "category": "workplace",
       "title": "Best Zodiac Signs for Business Partners"
+    },
+    {
+      "slug": "astrology-compatibility-for-first-dates",
+      "keyword": "astrology compatibility first date",
+      "angle": "using a chart as a conversation starter without turning a first date into a test",
+      "category": "relationship-timing",
+      "title": "Astrology Compatibility for a First Date"
+    },
+    {
+      "slug": "zodiac-compatibility-and-boundaries",
+      "keyword": "zodiac compatibility boundaries",
+      "angle": "how different signs may approach space, privacy, and saying no",
+      "category": "responsible-use",
+      "title": "Zodiac Compatibility and Relationship Boundaries"
+    },
+    {
+      "slug": "how-to-read-a-compatibility-report",
+      "keyword": "how to read a compatibility report",
+      "angle": "turning a score and chart details into useful questions instead of fixed labels",
+      "category": "birth-matching",
+      "title": "How to Read a Compatibility Report"
+    },
+    {
+      "slug": "zodiac-signs-and-communication-repair",
+      "keyword": "zodiac signs communication repair",
+      "angle": "matching repair conversations to the way different signs process conflict",
+      "category": "friendship",
+      "title": "Zodiac Signs and the Art of Communication Repair"
+    },
+    {
+      "slug": "compatibility-for-creative-teams",
+      "keyword": "astrology compatibility creative teams",
+      "angle": "using complementary working rhythms to make creative collaboration easier",
+      "category": "workplace",
+      "title": "Compatibility for Creative Teams"
+    },
+    {
+      "slug": "friendship-compatibility-across-life-stages",
+      "keyword": "friendship compatibility life stages",
+      "angle": "why a friendship can change shape without becoming less real",
+      "category": "friendship",
+      "title": "Friendship Compatibility Across Life Stages"
+    },
+    {
+      "slug": "family-compatibility-communication-patterns",
+      "keyword": "family communication compatibility astrology",
+      "angle": "seeing recurring family communication patterns without blaming one person",
+      "category": "family",
+      "title": "Family Compatibility and Communication Patterns"
+    },
+    {
+      "slug": "zodiac-compatibility-and-personal-growth",
+      "keyword": "zodiac compatibility personal growth",
+      "angle": "using friction as a reflection point while keeping personal choice in charge",
+      "category": "responsible-use",
+      "title": "Zodiac Compatibility and Personal Growth"
+    },
+    {
+      "slug": "astrology-compatibility-without-stereotypes",
+      "keyword": "astrology compatibility stereotypes",
+      "angle": "reading patterns with nuance instead of reducing people to their Sun sign",
+      "category": "responsible-use",
+      "title": "Astrology Compatibility Without Stereotypes"
+    },
+    {
+      "slug": "love-language-and-birth-chart-compatibility",
+      "keyword": "love languages birth chart compatibility",
+      "angle": "where love-language habits and chart symbolism overlap, and where they do not",
+      "category": "zodiac",
+      "title": "Love Languages and Birth Chart Compatibility"
+    },
+    {
+      "slug": "sun-moon-venus-compatibility",
+      "keyword": "Sun Moon Venus compatibility",
+      "angle": "combining identity, emotional needs, and affection style in one practical read",
+      "category": "zodiac",
+      "title": "Sun, Moon, and Venus Compatibility"
     }
   ],
-  "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here \u2014 those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
+  "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here — those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
 }
