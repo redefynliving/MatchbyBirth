@@ -38,7 +38,7 @@
       "keyword": "Saturn Neptune conjunction 2026",
       "angle": "structure meeting illusion at 0 Aries, and how to tell a real plan from a daydream",
       "category": "relationship-timing",
-      "fact": "Saturn and Neptune meet at 0 Aries on Feb 20, 2026 \u2014 the first such conjunction in Aries in centuries.",
+      "fact": "Saturn and Neptune meet at 0 Aries on Feb 20, 2026 — the first such conjunction in Aries in centuries.",
       "title": "Saturn Meets Neptune 2026: Plan vs Daydream"
     },
     {
@@ -521,6 +521,104 @@
       "angle": "combining identity, emotional needs, and affection style in one practical read",
       "category": "zodiac",
       "title": "Sun, Moon, and Venus Compatibility"
+    },
+    {
+      "slug": "birth-time-precision-in-astrology",
+      "keyword": "birth time precision",
+      "angle": "importance of exact birth time in compatibility reports",
+      "category": "birth-matching",
+      "title": "Why Exact Birth Time Matters in Astrology"
+    },
+    {
+      "slug": "numerology-in-workplace-dynamics",
+      "keyword": "numerology in workplace",
+      "angle": "how numerology influences team compatibility and communication",
+      "category": "workplace",
+      "title": "The Role of Numerology in Workplace Dynamics"
+    },
+    {
+      "slug": "responsible-astrology-in-relationships",
+      "keyword": "responsible astrology",
+      "angle": "using astrology in a responsible and respectful manner in relationships",
+      "category": "responsible-use",
+      "title": "Practicing Responsible Astrology in Relationships"
+    },
+    {
+      "slug": "zodiac-signs-and-family-dynamics",
+      "keyword": "zodiac signs and family",
+      "angle": "how zodiac signs influence family relationships and communication",
+      "category": "family",
+      "title": "Zodiac Signs and Family Dynamics: Understanding the Connections"
+    },
+    {
+      "slug": "compatibility-and-communication-styles",
+      "keyword": "compatibility and communication",
+      "angle": "how compatibility reports can improve communication in relationships",
+      "category": "birth-matching",
+      "title": "Compatibility and Communication: How Astrology Can Help"
+    },
+    {
+      "slug": "friendship-compatibility-and-numerology",
+      "keyword": "friendship compatibility and numerology",
+      "angle": "how numerology influences friendship compatibility and dynamics",
+      "category": "friendship",
+      "title": "The Numerology of Friendship Compatibility"
+    },
+    {
+      "slug": "building-stronger-relationships-with-astrology",
+      "keyword": "building stronger relationships with astrology",
+      "angle": "using astrology to strengthen and deepen relationships",
+      "category": "zodiac",
+      "title": "Building Stronger Relationships with Astrology"
+    },
+    {
+      "slug": "workplace-communication-and-zodiac-signs",
+      "keyword": "workplace communication and zodiac signs",
+      "angle": "how zodiac signs influence communication styles in the workplace",
+      "category": "workplace",
+      "title": "Zodiac Signs and Workplace Communication: Understanding the Styles"
+    },
+    {
+      "slug": "astrology-and-relationship-boundaries",
+      "keyword": "astrology and relationship boundaries",
+      "angle": "how astrology can help establish and maintain healthy relationship boundaries",
+      "category": "zodiac",
+      "title": "Astrology and Relationship Boundaries: Finding Healthy Limits"
+    },
+    {
+      "slug": "the-importance-of-exact-birth-matching",
+      "keyword": "exact birth matching",
+      "angle": "why exact birth matching is crucial for accurate compatibility reports",
+      "category": "birth-matching",
+      "title": "The Importance of Exact Birth Matching in Astrology"
+    },
+    {
+      "slug": "numerology-and-relationship-timing",
+      "keyword": "numerology and relationship timing",
+      "angle": "how numerology influences the timing of relationships and life events",
+      "category": "relationship-timing",
+      "title": "Numerology and Relationship Timing: Understanding the Cycles"
+    },
+    {
+      "slug": "family-astrology-and-communication",
+      "keyword": "family astrology and communication",
+      "angle": "how astrology can improve communication and understanding within families",
+      "category": "family",
+      "title": "Family Astrology and Communication: Building Stronger Bonds"
+    },
+    {
+      "slug": "zodiac-signs-and-communication-patterns",
+      "keyword": "zodiac signs and communication patterns",
+      "angle": "how zodiac signs influence communication patterns in relationships",
+      "category": "zodiac",
+      "title": "Zodiac Signs and Communication Patterns: Understanding the Styles"
+    },
+    {
+      "slug": "compatibility-reports-and-relationship-growth",
+      "keyword": "compatibility reports and relationship growth",
+      "angle": "how compatibility reports can facilitate growth and development in relationships",
+      "category": "birth-matching",
+      "title": "Compatibility Reports and Relationship Growth: A Tool for Deepening Connections"
     }
   ],
   "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here — those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
