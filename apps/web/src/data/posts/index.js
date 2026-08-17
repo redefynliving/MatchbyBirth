@@ -4461,6 +4461,73 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'cancer-leo-compatibility',
+    title: 'Cancer and Leo Compatibility: The Nurturer and the Spotlight',
+    date: '2026-08-17',
+    description: 'Cancer and Leo sit side by side on the wheel — Moon meets Sun, nurture meets applause. Explore how this devoted summer pairing plays out in love, friendship, and work.',
+    tags: ['cancer','leo','compatibility','summer-signs','love','relationships'],
+    category: 'pair-deep-dive',
+    content: `
+      <h1>Cancer and Leo: The Nurturer and the Spotlight</h1>
+
+      <p>Cancer and Leo sit right next to each other on the zodiac wheel, and that proximity is no accident. They are the two relationship signs of the summer — Cancer ruled by the Moon, Leo ruled by the Sun. One leads with feeling; the other leads with pride. Put them together and you get one of the most devoted, quietly dramatic pairings in astrology: the person who wants to take care of everyone, and the person who wants to be adored by everyone.</p>
+
+      <p>This is a cardinal-water sign meeting a fixed-fire sign. On paper the elements look like a fight — water dampens fire, fire evaporates water. In practice, these two often feel like home and stage at the same time. Here is how the match actually plays out.</p>
+
+      <h2>Why the pull is strong</h2>
+
+      <p>Cancer is wired to nurture. Leo is wired to shine. That creates a loop that can be genuinely addictive: Cancer gives Leo the unconditional emotional care they crave, and Leo gives Cancer the open, loyal admiration they rarely get from more guarded signs. Leo makes Cancer feel seen. Cancer makes Leo feel safe. Both are deeply loyal, both take commitment seriously, and neither does casual well.</p>
+
+      <p>There is also a shared need for significance. Cancer wants to matter to the people they love; Leo wants to matter to the room. When they point that need at each other instead of competing for it, the relationship warms up fast.</p>
+
+      <h2>Love and romance</h2>
+
+      <p>In romance, Cancer and Leo build a nest with a spotlight in the middle. Cancer shows love through consistency, memory, and emotional attunement — they remember the small things and make home feel like a refuge. Leo shows love through grand gestures, protection, and open affection. Leo will introduce you like you are a trophy; Cancer will remember your grandmother's birthday.</p>
+
+      <p>The physical side runs hot. Leo is a fire sign that experiences love as presence and performance; Cancer is a water sign that experiences love as closeness and touch. Together they create a private world that feels both intimate and a little theatrical — date nights, gifts, and the kind of loyalty that makes other people mildly jealous.</p>
+
+      <p>The trouble starts when Leo's need for attention reads as neglect to Cancer, or when Cancer's need for reassurance reads as clinginess to Leo. Leo wants to be celebrated; Cancer wants to be needed. When those wires cross, Leo feels smothered and Cancer feels unseen — the exact inversion of why they got together.</p>
+
+      <h2>What each sign teaches the other</h2>
+
+      <p>Leo teaches Cancer that it is okay to take up space. Cancer spends so much time caring for others that they forget their own wants; Leo's sunny insistence on being witnessed pulls Cancer out of the background. Cancer teaches Leo that real love is not an audience — it is the quiet person who stays when the applause stops. The best versions of this couple make each other bigger and softer at the same time.</p>
+
+      <h2>Where they clash</h2>
+
+      <p>The core friction is pride versus sensitivity. Leo's ego is front-facing and easy to bruise; Cancer's feelings are under the surface and easy to ignore. A careless Leo joke can land on Cancer like a rejection. A silent Cancer mood can land on Leo like a verdict. Both take things personally — they just show it differently.</p>
+
+      <p>Money and attention are the other flashpoints. Cancer saves to feel safe and can resent spending on Leo's grand plans. Leo spends to express love and can read Cancer's caution as a lack of enthusiasm. And because Cancer is cardinal (initiates change) while Leo is fixed (holds the line), they can deadlock: Cancer wants to shift the plan, Leo refuses to budge.</p>
+
+      <h2>Friendship and family</h2>
+
+      <p>As friends, Cancer and Leo are the protective duo. Cancer remembers your story; Leo champions your wins. They show up hard — Leo with a grand gesture, Cancer with a casserole and a listening ear. The risk is rivalry for attention in group settings, which both handle better once they stop competing and start tag-teaming.</p>
+
+      <h2>Work and collaboration</h2>
+
+      <p>Professionally this is underrated. Cancer handles culture, care, and the human side; Leo handles vision, visibility, and the pitch. They are the founder pair that builds something people actually feel — Leo sells it, Cancer keeps the team human. The catch is credit: Leo wants the spotlight, Cancer wants quiet ownership. Name who does what out loud and the partnership hums.</p>
+
+      <h2>How to make it work</h2>
+
+      <ul>
+        <li>Say the need, do not imply it. Leo should ask for applause instead of pouting; Cancer should ask for reassurance instead of withdrawing.</li>
+        <li>Separate attention from love. Leo can reassure Cancer without performing; Cancer can celebrate Leo without merging.</li>
+        <li>Build one shared ritual. A weekly dinner, a Sunday call — Cancer needs the rhythm, Leo needs to be prioritized.</li>
+        <li>Agree on the money story. Give Leo room for generous gestures and Cancer room for security, on paper.</li>
+        <li>Catch the pride-versus-feeling loop early. When Leo gets defensive and Cancer goes quiet, that is the signal to talk, not to wait.</li>
+      </ul>
+
+      <h2>Quick compatibility snapshot</h2>
+
+      <p>Strengths: Loyalty, warmth, devotion, shared commitment, strong home life.</p>
+      <p>Challenges: Pride, sensitivity, attention rivalry, money friction, stubborn standoffs.</p>
+
+      <p>Your sun signs are only the headline. Cancer's Moon placement, Leo's Venus sign, and both of your rising signs change the texture of this match in ways a sun-sign read cannot capture. For the real picture, run your exact birth data through the <a href="https://matchbybirth.com">Match by Birth calculator</a> and see how your charts actually interact. The method behind the score is explained in <a href="https://matchbybirth.com/how-it-works">how Match by Birth works</a>.</p>
+
+      <p>If you want to go deeper on the building blocks, read our guides to <a href="https://matchbybirth.com/blog/cancer-compatibility">Cancer compatibility</a>, <a href="https://matchbybirth.com/blog/leo-compatibility">Leo compatibility</a>, and the difference between <a href="https://matchbybirth.com/blog/sun-moon-rising-signs-difference">sun, moon, and rising signs</a>. And for the emotional baseline, see our <a href="https://matchbybirth.com/blog/moon-signs-emotional-compatibility">moon signs guide</a> and the <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus signs love-language guide</a>.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
