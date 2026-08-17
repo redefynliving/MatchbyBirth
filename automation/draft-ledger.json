@@ -1,5 +1,49 @@
 [
   {
+    "slug": "how-to-read-a-compatibility-report",
+    "title": "How to Read a Compatibility Report",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "How to Read a Compatibility Report",
+    "metaDescription": "how to read a compatibility report: turning a score and chart details into useful questions instead of fixed labels. A practical, no-jargon read",
+    "wordCount": 724,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-17T15:32:38.550Z",
+    "approved": false
+  },
+  {
     "slug": "zodiac-compatibility-and-boundaries",
     "title": "Zodiac Compatibility and Relationship Boundaries",
     "focusKeyword": "responsible-use",
