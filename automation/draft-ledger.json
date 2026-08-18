@@ -1,5 +1,49 @@
 [
   {
+    "slug": "zodiac-signs-and-communication-repair",
+    "title": "Zodiac Signs and the Art of Communication Repair",
+    "focusKeyword": "friendship",
+    "metaTitle": "Zodiac Signs and the Art of Communication Repair",
+    "metaDescription": "zodiac signs communication repair: matching repair conversations to the way different signs process conflict. A practical, no-jargon read",
+    "wordCount": 713,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-18T15:39:03.871Z",
+    "approved": false
+  },
+  {
     "slug": "how-to-read-a-compatibility-report",
     "title": "How to Read a Compatibility Report",
     "focusKeyword": "birth-matching",
