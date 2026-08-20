@@ -1,19 +1,10 @@
-import { useEffect, useState } from 'react';
+import postsData from '@/data/posts';
 
-// Lazily loads the posts data module so its ~600KB payload stays out of the
-// initial bundle and is shared as a single async chunk across blog routes.
+// The posts payload is static data already shipped on every blog visit, so we
+// return it synchronously. The previous lazy `import()` gated rendering behind
+// a separate ~600KB chunk with no error handling: if that chunk was slow or
+// failed to evaluate, `posts` stayed null and the page showed "Loading blog…"
+// forever. Returning the static import removes the waterfall and any hang.
 export function usePosts() {
-  const [posts, setPosts] = useState(null);
-
-  useEffect(() => {
-    let active = true;
-    import('@/data/posts').then((mod) => {
-      if (active) setPosts(mod.default);
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  return posts;
+  return postsData;
 }
