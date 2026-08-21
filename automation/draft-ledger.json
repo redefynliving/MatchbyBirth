@@ -1,5 +1,49 @@
 [
   {
+    "slug": "family-compatibility-communication-patterns",
+    "title": "Family Compatibility and Communication Patterns",
+    "focusKeyword": "family",
+    "metaTitle": "Family Compatibility and Communication Patterns",
+    "metaDescription": "family communication compatibility astrology: seeing recurring family communication patterns without blaming one person. A practical, no-jargon read",
+    "wordCount": 712,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-21T15:40:46.863Z",
+    "approved": false
+  },
+  {
     "slug": "friendship-compatibility-across-life-stages",
     "title": "Friendship Compatibility Across Life Stages",
     "focusKeyword": "friendship",
