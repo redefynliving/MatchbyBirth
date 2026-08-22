@@ -1,5 +1,49 @@
 [
   {
+    "slug": "zodiac-compatibility-and-personal-growth",
+    "title": "Zodiac Compatibility and Personal Growth",
+    "focusKeyword": "responsible-use",
+    "metaTitle": "Zodiac Compatibility and Personal Growth",
+    "metaDescription": "zodiac compatibility personal growth: using friction as a reflection point while keeping personal choice in charge. A practical, no-jargon read",
+    "wordCount": 715,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-22T15:28:35.302Z",
+    "approved": false
+  },
+  {
     "slug": "family-compatibility-communication-patterns",
     "title": "Family Compatibility and Communication Patterns",
     "focusKeyword": "family",
