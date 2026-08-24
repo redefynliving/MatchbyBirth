@@ -1,5 +1,49 @@
 [
   {
+    "slug": "love-language-and-birth-chart-compatibility",
+    "title": "Love Languages and Birth Chart Compatibility",
+    "focusKeyword": "zodiac",
+    "metaTitle": "Love Languages and Birth Chart Compatibility",
+    "metaDescription": "love languages birth chart compatibility: where love-language habits and chart symbolism overlap, and where they do not. A practical, no-jargon read",
+    "wordCount": 719,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-24T15:48:16.918Z",
+    "approved": false
+  },
+  {
     "slug": "astrology-compatibility-without-stereotypes",
     "title": "Astrology Compatibility Without Stereotypes",
     "focusKeyword": "responsible-use",
