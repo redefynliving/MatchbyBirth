@@ -4680,6 +4680,79 @@ const posts = [
     `,
   },
 
+  {
+    slug: 'venus-saturn-eclipse-shadow-august-24-2026',
+    title: 'Venus Opposes Saturn at the Edge of the Pisces Eclipse: August 24, 2026',
+    date: '2026-08-24',
+    description: 'Venus sits in her home sign of Libra while opposing Saturn, three days before the Pisces lunar eclipse. Here is how today\'s sky changes the love conversation.',
+    tags: ['venus in libra','august 24 2026 astrology','venus opposes saturn','pisces lunar eclipse 2026','saturn retrograde','jupiter trine saturn','love horoscope','zodiac compatibility','astrology transits'],
+    category: 'seasonal',
+    faq: [
+      { question: 'What does Venus opposite Saturn mean for relationships?', answer: 'Venus opposite Saturn asks you to distinguish what needs to be preserved from what has already run its course. It is not a wall to love but a test of sustainability — the question is no longer \"do we care\" but \"what structure can hold this?\" The opposition peaks around August 21 and stays active through the August 27 Pisces lunar eclipse.' },
+      { question: 'Is August 24, 2026 a good day for love or dates?', answer: 'Yes, but with conditions. Venus is in her own sign of Libra until September 10, bringing natural charm and fairness to conversations. The Venus-Saturn opposition makes it ideal for serious relationship talks, not casual flirting. Mercury enters Virgo at 7:04 AM EDT, sharp and detail-oriented — so plan dates that involve real conversation.' },
+      { question: 'When is the Pisces lunar eclipse August 2026?', answer: 'The Pisces lunar eclipse occurs on August 27, 2026 at 9:12 PM PDT (4:12 AM UTC August 28) at 4 degrees 53 minutes Pisces, opposite a Virgo Sun at 4 degrees 53 minutes Virgo. It is the closing event of the Leo-Aquarius eclipse cycle that began with the August 12 solar eclipse in Leo.' },
+      { question: 'What signs are most affected by the Venus-Saturn opposition?', answer: 'Taurus, Virgo, and Capricorn (Saturn-ruled) plus Libra, Aries, and Aquarius (angular signs) feel the opposition most directly. If your Venus, Moon, or rising is in these signs, the theme of structure versus desire will feel especially personal. Use the opposition to ask what needs anchoring rather than what needs fixing.' }
+    ],
+    content: `
+      <h1>Venus Opposes Saturn at the Edge of the Pisces Eclipse: August 24, 2026</h1>
+
+      <p><em>By 8:15 PM tonight (EDT), Mercury squares Saturn exactly — the same degree range where Venus opposed Saturn three days ago. That overlap is the real story today: the love planet and the communication planet both hitting the same ceiling, three days before the <a href="https://matchbybirth.com/blog/august-2026-eclipse-season-leo">Pisces lunar eclipse</a> closes this cycle.</em></p>
+
+      <p>Drop a line and it lands in the right inbox — even if it is the one you have been avoiding writing.</p>
+
+      <h2>The headline: Venus in Libra, Saturn in Aries</h2>
+
+      <p>On August 24, 2026, Venus sits at 16&deg;22&acute; of Libra &mdash; her own sign, dignified and steady. But she stands opposite Saturn at 14&deg;05&acute; of Aries (retrograde), a pairing that already peaked in intensity on August 21 and holds through the eclipse on August 27. This is the sky&rsquo;s most useful contradiction right now: Venus in Libra wants harmony, wants to smooth things over with charm and aesthetic ease. Saturn in Aries wants structure, wants to know who is actually doing the work and whether it is sustainable. They oppose each other &mdash; not trine, not sextile, but a hard 180-degree push-pull that makes every relationship conversation feel like it has two correct but competing answers at once.</p>
+
+      <p>This is not a romantic blockage. It is a relationship audit. The eclipse is coming whether you schedule the conversation or not &mdash; better to have it now, under a Venus&ndash;Saturn opposition that at least gives you both the language to talk about what feels heavy, rather than waiting for the lunar eclipse to blow the lid off something you both already knew needed saying.</p>
+
+      <h2>The aspects firing today</h2>
+
+      <p>Pluto in Aquarius (retrograde) is still trining Venus at 3&deg;40&acute; &mdash; that aspect holds all month. When Pluto trines the planet of love, it does not bring passion so much as it strips away whatever is not real. You find out which parts of a connection survive being examined in the light. That is why the Venus&ndash;Saturn opposition does not feel brutal: Pluto&rsquo;s trine is quietly removing the scaffolding you built to avoid the real conversation.</p>
+
+      <p>Jupiter in Leo is still trining Saturn in Aries (retrograde), and that is the relief valve. This trine has been running since August 16 and stays active through September 8 &mdash; it is why the structure Saturn is demanding does not have to be grim. Build something that lets people play. Build something that rewards effort with genuine recognition. That is what the rare Jupiter-Saturn trine is for: turning discipline into something that does not exhaust.</p>
+
+      <p>Sun in Virgo is square Uranus in Gemini today &mdash; the Sun entered Virgo at 9:17 AM EDT and immediately wants to organize, systematize, make sense. Uranus says nope, the facts just changed. This is why you can read all the right analysis about your relationship and still feel like the ground shifted under you. The brain has a plan; the body knows something else.</p>
+
+      <p>Mars in Cancer continues squaring Neptune in Aries through August 27 &mdash; motivation gets foggy, the boundary between care and control blurs. In relationships this is the day you are sure you are right but cannot quite prove it. Do not push. Wait for the eclipse light.</p>
+
+      <p><strong>Mercury</strong> in Leo until 7:04 AM EDT (then into Virgo) squares Saturn exact at 8:15 PM tonight. Words feel heavy. Messages get delayed or rewritten three times. The sky is telling you: write the useful version, not the perfect version. The version that says what you mean and nothing else.</p>
+
+      <h2>The outer retrogrades: foundation work, not matchmaking</h2>
+
+      <p>Three outer planets are retrograde right now, and none of them are doing relationship makeovers. They are doing foundation repairs, which is exactly what the Venus&ndash;Saturn opposition needs:</p>
+
+      <ul>
+        <li><strong>Saturn retrograde in Aries (14&deg;05&acute;):</strong> Who is carrying the weight? This is the planet that makes you pay attention to who actually shows up. It asks you to name, before the eclipse, what you will no longer carry alone.</li>
+        <li><strong>Neptune retrograde in Aries (3&deg;51&acute;):</strong> The fantasy is thinning. What you romanticized about a person, a situation, a dynamic &mdash; it is losing its polished coating. You can see the edges now. Use that clarity before the eclipse amplifies it.</li>
+        <li><strong>Pluto retrograde in Aquarius (3&deg;40&acute;):</strong> Power and control issues are being rebalanced. This is the generational work of figuring out how groups, communities, and chosen families hold authority. The Venus&ndash;Pluto trine means the personal version of this is also active: where do you hand over power versus where do you take it back?</li>
+      </ul>
+
+      <h2>How this lands by element</h2>
+
+      <ul>
+        <li><strong>Fire (Aries, Leo, Sagittarius):</strong> The Sun in Virgo will feel like someone dimmed the lights after August 12&rsquo;s solar eclipse. That is intentional. The spotlight is off so you can see what is actually there. Use the quiet.</li>
+        <li><strong>Earth (Taurus, Virgo, Capricorn):</strong> This is your weather. Venus in your sister sign Libra + Saturn in your opposite Aries = the day rewards concrete conversation. Name the one thing that has been floating in theory and make it a plan.</li>
+        <li><strong>Air (Gemini, Libra, Aquarius):</strong> Venus is speaking your language, but Mercury just entered Virgo (your opposite). The gift today is precision: say it once, say it clearly, then stop editing.</li>
+        <li><strong>Water (Cancer, Scorpio, Pisces):</strong> Mars in Cancer plus a Saturn opposition can make care feel like a test. Ask for what would actually soothe you. Do not make your partner guess &mdash; the eclipse is coming whether you ask or not.</li>
+      </ul>
+
+      <h2>Your natal Venus vs. today&rsquo;s weather</h2>
+
+      <p>Today&rsquo;s sky is weather. Your natal Venus is climate: how you attach, what you find beautiful, what makes you stay. A Virgo Venus hears today&rsquo;s sky as a love language &mdash; finally, something concrete to hold. A Leo Venus hears it as a comedown &mdash; the eclipse shadow is removing the audience, leaving just you and the work. Both can use it. The transit does not replace the birth chart. If you want the layer that actually predicts friction, start with your <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus sign</a> and then run the full picture, not a sun-sign headline. Our <a href="https://matchbybirth.com/blog/how-to-use-zodiac-compatibility-in-real-life">real-life compatibility guide</a> covers how to use that without turning it into a verdict.</p>
+
+      <h2>Three moves that fit August 24</h2>
+
+      <ol>
+        <li><strong>Send the useful message, not the dramatic one.</strong> Mercury squares Saturn tonight. The dramatic version will write itself. The useful version takes editing. Keep it to three short lines: situation, feeling, ask.</li>
+        <li><strong>Let Pluto&rsquo;s trine do the pruning for you.</strong> You don&rsquo;t have to burn it down &mdash; Pluto is already stripping away what is not real. Just name what survives contact with the truth.</li>
+        <li><strong>Build the structure that rewards play.</strong> Jupiter trines Saturn through September 8. Whatever agreement you make today should leave room for joy, not just duty. If it does not feel sustainable, it is not sustainable.</li>
+      </ol>
+
+      <p>Want to see how your actual chart lines up with someone else&rsquo;s? <a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> &mdash; free, private, no signup. Pull both charts by birth date, time, and location and see where Venus, Mars, and the Moon actually land. The sign sets the stage. Your placements write the details.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
