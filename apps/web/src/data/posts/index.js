@@ -4753,6 +4753,92 @@ const posts = [
     `,
   },
 
+
+{
+    slug: 'pisces-lunar-eclipse-august-28-2026-relationship-endings',
+    title: 'The Pisces Lunar Eclipse in Virgo: August 28, 2026 — When the Idealized Relationship Dissolves',
+    date: '2026-08-27',
+    description: 'The August 28 Pisces lunar eclipse at 4 degrees opposite a Virgo Sun forces a reckoning in relationships. Here is how the eclipse closing the Leo-Aquarius cycle affects love, partnership, and compatibility.',
+    tags: ['pisces lunar eclipse','august 28 2026 astrology','eclipse season 2026','lunar eclipse in pisces','virgo sun','venus in libra','jupiter trine saturn','relationship endings','astrology transits'],
+    category: 'seasonal',
+    faq: [
+      { question: 'What does the August 28 2026 lunar eclipse mean?', answer: 'The Pisces lunar eclipse on August 28, 2026 at 4 degrees Pisces (opposing a 4-degree Virgo Sun) is a full moon that brings hidden relationship dynamics to light. It closes the Leo-Aquarius eclipse cycle that began on August 12, 2026 with the Leo solar eclipse. This eclipse reveals what has been idealized or avoided.' },
+      { question: 'When is the next lunar eclipse after August 2026?', answer: 'The next lunar eclipse after August 28, 2026 occurs on February 21, 2027 — a partial lunar eclipse at 3 degrees Virgo, continuing the Virgo-Pisces axis that this eclipse opens. The cycle then completes with a solar eclipse in Pisces on March 29, 2027.' },
+      { question: 'Which zodiac signs are most affected by the Pisces lunar eclipse?', answer: 'Pisces, Virgo, Gemini, and Sagittarius feel this eclipse most directly. If you have Venus, Moon, or rising in these mutable signs, the eclipse theme of dissolving illusions hits close to home. Taurus, Cancer, Scorpio, and Capricorn (other mutable/water signs) also experience the eclipse through their opposite-sign axis.' },
+      { question: 'How does a lunar eclipse affect relationships?', answer: 'A lunar eclipse in the relationship axis (Pisces-Virgo) surfaces what is real versus what was hoped for. It does not cause breakups by itself, but it removes the fog that kept unworkable dynamics alive. The eclipse asks: what can you actually sustain once the romantic ideal falls away?' }
+    ],
+    content: `
+      <h1>The Pisces Lunar Eclipse in Virgo: August 28, 2026 — When the Idealized Relationship Dissolves</h1>
+
+      <p><em>At 4 degrees 53 minutes of Pisces on August 28, 2026, the Moon stands opposite a 4-degree Virgo Sun in a partial lunar eclipse. This is not the dramatic total eclipse some predicted &mdash; it is a partial eclipse, visible in the Pacific and eastern Asia, carrying a quieter but sharper edge. Where the August 12 Leo solar eclipse opened a door, this one closes it behind you. And what it closes: the gap between what you imagined a relationship could be and what actually showed up on the ground.</em></p>
+
+      <p><a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> to see how your actual birth chart intersects with this eclipse axis.</p>
+
+      <h2>Why this eclipse hits relationships now</h2>
+
+      <p>The Leo-Aquarius eclipse cycle opened on August 12 with a total solar eclipse in Leo &mdash; dramatic, visible, demanding spotlight. Three weeks later, the Moon answers from the opposite pole: Pisces, dissolving the mask the Leo eclipse put on. This is the cycle's release phase. The questions it forces:</p>
+
+      <ol>
+        <li>What part of your relationship identity was performance, not substance?</li>
+        <li>What did you romanticize because the alternative &mdash; seeing clearly &mdash; felt too raw?</li>
+        <li>What can you actually sustain once the eclipse light strips away the version of each other you preferred?</li>
+      </ol>
+
+      <p>Venus remains in Libra through September 10, still trining Pluto in Aquarius. That aspect is doing quiet, unseen work while the eclipse takes the stage: it is removing the scaffolding of denial you built around the parts of this person you kept forgetting. Pluto does not announce itself. It just makes the false things collapse under their own weight.</p>
+
+      <h2>The Virgo-Pisces axis: detail vs. dissolution</h2>
+
+      <p>A full Moon in Virgo opposite the Sun is the sky&rsquo;s most practical placement &mdash; Virgo wants lists, wants to sort what is real from what is clutter. But this is a Pisces eclipse, and Pisces does not sort. Pisces dissolves. So the eclipse lands as a tension between wanting concrete answers (Virgo Sun) and being handed a situation that refuses to resolve into clean categories (Pisces Moon). You see clearly that the thing you wanted to measure and manage &mdash; the relationship, the dynamic, the shared future &mdash; has been floating in a space it never agreed to occupy.</p>
+
+      <p>This is not a crisis. It is a calibration. The eclipse does not ask you to end anything you do not want to end. It asks you to stop pouring energy into maintaining a version of reality that no longer matches what is in front of you. That energy redirected toward what actually exists &mdash; one real conversation, one honest boundary, one small act of presence &mdash; becomes the new foundation.</p>
+
+      <h2>Jupiter trine Saturn: the structure that survives</h2>
+
+      <p>While the eclipse opens, Jupiter in Leo still trines Saturn retrograde in Aries (active through September 8). This is the aspect that answers the eclipse&rsquo;s question: what structure can hold this? Jupiter in Leo brings generosity, celebration, the willingness to show up big even when it is risky. Saturn in Aries demands accountability, the actual showing up, the doing the thing even when no one is watching. The trine says: the relationships that survive this eclipse are the ones where both people bring both &mdash; heart and follow-through.</p>
+
+      <p>That is the eclipse&rsquo;s actual lesson. Not every connection is meant to last. The ones that are meant to last get rebuilt under a standard that no longer tolerates the gap between what is said and what is done. The ones that are not, dissolve without drama because the truth was already there &mdash; the eclipse just made it undeniable.</p>
+
+      <h2>The supporting retrogrades: cleaning up the basement</h2>
+
+      <p>All three outer planets remain retrograde during this eclipse, and they are not side players. They are the foundation crew working while the eclipse spotlight hits the main stage:</p>
+
+      <ul>
+        <li><strong>Saturn retrograde in Aries (14&deg;05&rsquo;):</strong> Who is accountable? The eclipse amplifies Saturn&rsquo;s question: not just who shows up, but who shows up consistently. This is the eclipse that ends relationships where the effort was lopsided or imaginary.</li>
+        <li><strong>Neptune retrograde in Aries (3&deg;51&rsquo;):</strong> What did you pretend was passion? What did you confuse with destiny? Neptune retrograde strips the cinematic overlay from your relationship narrative. You see the actual two people who have been sitting across from each other &mdash; not the archetypes, not the potential, not the story you told yourself about what this would become.</li>
+        <li><strong>Pluto retrograde in Aquarius (3&deg;40&rsquo;):</strong> Who controls the narrative in your shared social circles? The eclipse in your 7th house (partnerships) opposite Pluto asks: what power dynamics have you been avoiding? This is the eclipse that forces you to name what you knew but refused to name.</li>
+      </ul>
+
+      <p>Notice what these three are doing together: Saturn builds the wall, Neptune removes the veil, Pluto rebalances the power. This is the eclipse that does not just end relationships &mdash; it ends the versions of relationships you kept alive past their expiration by sheer narrative force.</p>
+
+      <h2>How this lands by element</h2>
+
+      <ul>
+        <li><strong>Fire (Aries, Leo, Sagittarius):</strong> The eclipse asks you to feel the gap between performance and substance. Where did you play a role in a relationship dynamic instead of showing up as yourself? The answer will not be comfortable, but it will be clean.</li>
+        <li><strong>Earth (Taurus, Virgo, Capricorn):</strong> This is your eclipse. The Virgo Sun opposing the Pisces Moon means your need for concrete reality is being tested against a situation that refuses to stabilize. Your move: decide what you will anchor and what you will release. The eclipse rewards the anchor.</li>
+        <li><strong>Air (Gemini, Libra, Aquarius):</strong> Venus in Libra is still trining Pluto &mdash; your loyalty radar is upgraded. The eclipse reveals which relationships have been surviving on shared illusions versus shared labor. The ones worth keeping will survive the removal of the fantasy. The ones that do not, will not fight for you.</li>
+        <li><strong>Water (Cancer, Scorpio, Pisces):</strong> Mars in Cancer continues squaring Neptune &mdash; your protective instincts are active but foggy. The eclipse asks: are you protecting a relationship or a version of yourself within it? The distinction will save you from making a choice you regret.</li>
+      </ul>
+
+      <h2>Your natal eclipse axis vs. today&rsquo;s sky</h2>
+
+      <p>If you have planets or angles near 4 degrees of Gemini/Virgo (mutable air + earth) or 4 degrees of Sagittarius/Pisces (mutable fire + water), this eclipse activates your 3rd, 6th, 9th, or 12th house axis directly. If your Sun, Moon, or rising is in Virgo or Pisces, the eclipse is conjunct or opposite your core identity points &mdash; this is your year-defining moment for relationships.</p>
+
+      <p>The eclipse does not override your birth chart. It illuminates it. Your natal placements are the ground rules; the eclipse is the event that makes those rules impossible to ignore. If your Venus is in Virgo in the 7th house of partnership, this eclipse asks whether you can sustain a relationship built on practical compatibility rather than romantic fantasy. If your Moon is in Pisces in the 12th house, the eclipse asks whether you can grieve what was never real and still find peace afterward.</p>
+
+      <p>Use the eclipse as data, not destiny. The people you check against the birth chart with &mdash; that is your real baseline. The eclipse is just the moment the sky insists you see it.</p>
+
+      <h2>Three moves that fit August 28</h2>
+
+      <ol>
+        <li><strong>Write the inventory before the conversation.</strong> Not the emotional inventory &mdash; the practical one. One page. What is actually shared. What is actually yours. What is actually theirs. The eclipse rewards the people who can separate the real from the remembered.</li>
+        <li><strong>Do not rebuild on a foundation the eclipse just cleared.</strong> If something dissolved under this eclipse, resist the urge to immediately patch it. Let the clearing sit for a full lunar cycle (until the September 26 Full Moon in Aries). New foundations built on cleared ground last longer.</li>
+        <li><strong>Use Jupiter-Saturn trine energy to rebuild the right way.</strong> Whatever survives the eclipse gets rebuilt with both generosity (Jupiter) and accountability (Saturn). The combination that got you here &mdash; intense feelings without follow-through, or steady effort without celebration &mdash; will not work on the other side of this eclipse.</li>
+      </ol>
+
+      <p>Want to see how your actual natal chart interacts with this eclipse? <a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> &mdash; free, private, no signup. Pull both birth charts by date, time, and location. See where Venus, Mars, and the Moon actually land in each person&rsquo;s houses. The eclipse sets the tone. Your placements write the details.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
