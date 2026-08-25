@@ -1,5 +1,49 @@
 [
   {
+    "slug": "sun-moon-venus-compatibility",
+    "title": "Sun, Moon, and Venus Compatibility",
+    "focusKeyword": "zodiac",
+    "metaTitle": "Sun, Moon, and Venus Compatibility",
+    "metaDescription": "Sun Moon Venus compatibility: combining identity, emotional needs, and affection style in one practical read. A practical, no-jargon read",
+    "wordCount": 714,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-25T15:51:23.615Z",
+    "approved": false
+  },
+  {
     "slug": "love-language-and-birth-chart-compatibility",
     "title": "Love Languages and Birth Chart Compatibility",
     "focusKeyword": "zodiac",
