@@ -1,5 +1,49 @@
 [
   {
+    "slug": "numerology-in-workplace-dynamics",
+    "title": "The Role of Numerology in Workplace Dynamics",
+    "focusKeyword": "workplace",
+    "metaTitle": "The Role of Numerology in Workplace Dynamics",
+    "metaDescription": "numerology in workplace: how numerology influences team compatibility and communication. A practical, no-jargon read",
+    "wordCount": 706,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-28T00:21:01.561Z",
+    "approved": false
+  },
+  {
     "slug": "birth-time-precision-in-astrology",
     "title": "Why Exact Birth Time Matters in Astrology",
     "focusKeyword": "birth-matching",
