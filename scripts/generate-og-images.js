@@ -75,6 +75,16 @@ const posts = [
     title: 'Saturn Signs',
     subtitle: 'How Your Saturn Placement Reveals Commitment',
   },
+  {
+    slug: 'daily-horoscope-guide',
+    title: 'Daily Horoscope Guide',
+    subtitle: 'What It Actually Means and How to Use It',
+  },
+  {
+    slug: 'chinese-zodiac-compatibility-guide',
+    title: 'Chinese Zodiac Compatibility',
+    subtitle: 'How the 12 Animal Signs Match Up',
+  },
 ];
 
 function createSVG(title, subtitle) {
