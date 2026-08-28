@@ -1,5 +1,49 @@
 [
   {
+    "slug": "responsible-astrology-in-relationships",
+    "title": "Practicing Responsible Astrology in Relationships",
+    "focusKeyword": "responsible-use",
+    "metaTitle": "Practicing Responsible Astrology in Relationships",
+    "metaDescription": "responsible astrology: using astrology in a responsible and respectful manner in relationships. A practical, no-jargon read",
+    "wordCount": 705,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-28T23:59:06.124Z",
+    "approved": false
+  },
+  {
     "slug": "numerology-in-workplace-dynamics",
     "title": "The Role of Numerology in Workplace Dynamics",
     "focusKeyword": "workplace",
