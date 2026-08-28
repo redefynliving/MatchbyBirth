@@ -267,7 +267,7 @@ function ResultCard({
             <div className="mt-6 border-l-2 border-primary pl-4">
               <p className="text-xs font-semibold uppercase tracking-widest text-primary">Your report preview</p>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-foreground">
-                {`${names[0]} and ${names[1]} score ${snapshot.strongest.score} in ${snapshot.strongest.label.toLowerCase()}. ${snapshot.watch.summary} ${reportConfig.resultPreview}${isFullSynastry ? ` It also uses ${synastryEvidenceCount} supplied timed aspect signals and measured orbs.` : ''}`}
+                {`${names[0]} and ${names[1]} score ${snapshot.strongest.score} in ${snapshot.strongest.label.toLowerCase()}. ${snapshot.watch.label.toLowerCase()} scores ${snapshot.watch.score} — the area the full report turns into repair words. ${reportConfig.resultPreview}${isFullSynastry ? ` It also uses ${synastryEvidenceCount} supplied timed aspect signals and measured orbs.` : ''}`}
               </p>
             </div>
             <div className="mt-6 grid gap-x-8 gap-y-3 text-sm sm:grid-cols-2">
@@ -348,6 +348,8 @@ function ResultCard({
           reportFocus={reportFocus}
           defaultClarityGoal={reportContext?.clarityGoal || reportConfig.defaultClarityGoal}
           funnelContext={funnelContext}
+          strongest={snapshot.strongest}
+          watch={snapshot.watch}
         />
       )}
     </>

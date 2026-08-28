@@ -233,6 +233,29 @@ test('newsletter capture uses a readable editorial treatment instead of a purple
   assert.doesNotMatch(blogPostPage, /Get weekly astrology insights/);
 });
 
+test('free checkout teaser avoids unlock/soulmate slop and names the real watch area', () => {
+  const modal = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/SaveResultModal.jsx'),
+    'utf8',
+  );
+  assert.doesNotMatch(modal, /unlock/i);
+  assert.doesNotMatch(modal, /soulmate|destined|fated|twin flame|cosmic/i);
+  assert.match(modal, /Get the full report/);
+  assert.match(modal, /watch\.label/);
+  assert.match(modal, /strongest\.label/);
+});
+
+test('ResultCard free teaser names the watch area and its score, not generic prose', () => {
+  const card = fs.readFileSync(
+    path.join(root, 'apps/web/src/components/ResultCard.jsx'),
+    'utf8',
+  );
+  assert.match(card, /watch\.label\.toLowerCase\(\)/);
+  assert.match(card, /watch\.score/);
+  assert.match(card, /repair words/);
+  assert.doesNotMatch(card, /score spread/);
+});
+
 test('mobile Pair and Group selector is compact and centered', () => {
   const calculator = fs.readFileSync(
     path.join(root, 'apps/web/src/components/CompatibilityCalculator.jsx'),

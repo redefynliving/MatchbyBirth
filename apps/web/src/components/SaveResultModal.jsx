@@ -33,6 +33,8 @@ function SaveResultModal({
   reportFocus = 'full_compatibility',
   defaultClarityGoal = null,
   funnelContext = null,
+  strongest = null,
+  watch = null,
 }) {
   const reportConfig = getReportFocusConfig(reportFocus);
   const [email, setEmail] = useState('');
@@ -178,8 +180,14 @@ function SaveResultModal({
               <div className="bg-card border border-border rounded-2xl p-6 shadow-sm relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent flex flex-col justify-end items-center p-6 text-center pb-8 z-10">
                   <LockKeyhole className="h-8 w-8 text-primary mb-3" />
-	                  <p className="font-bold text-sm text-foreground">Purchase to unlock all four chapters</p>
-	                  <p className="text-xs text-muted-foreground max-w-xs mt-1">Unlock all nine sections across Overview, Relating, Building, and Action plan, plus private link access and a PDF copy.</p>
+	                  <p className="font-bold text-sm text-foreground">Get the full report</p>
+	                  {watch && strongest ? (
+	                    <p className="text-xs text-muted-foreground max-w-xs mt-1">
+	                      Section 4 names your {watch.label.toLowerCase()} at {watch.score} — the score area most likely to cause friction. The full report gives the repair words for it, plus your strongest area ({strongest.label} at {strongest.score}, where this connection already flows). Nine sections, private link, PDF by email.
+	                    </p>
+	                  ) : (
+	                    <p className="text-xs text-muted-foreground max-w-xs mt-1">All nine sections, private link access, and a PDF copy.</p>
+	                  )}
 	                </div>
 	                <div className="filter blur-[5px] select-none text-xs text-muted-foreground leading-relaxed space-y-2">
 	                  <h4 className="font-bold text-foreground">Section 2: Built for this report focus</h4>
