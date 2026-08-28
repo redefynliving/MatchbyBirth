@@ -8131,6 +8131,58 @@ faq: [
     `,
   },
 
+  {
+    slug: 'this-weekend-sky-pisces-eclipse-venus-saturn-mars-cancer',
+    title: 'This Weekend\'s Sky: A Pisces Eclipse, a Venus–Saturn Wall, and Mars in Cancer',
+    date: '2026-08-28',
+    description: 'The August 28–30 window stacks a Pisces lunar eclipse, Venus opposite Saturn, and Mars in Cancer. Here is what each one asks of your relationships — as a lens, not a verdict.',
+    tags: ['pisces-eclipse', 'venus-saturn', 'mars-in-cancer', 'lunar-eclipse', 'relationship-timing', 'transits', '2026'],
+    category: 'seasonal',
+    content: `
+      <p>Friday night opens with a Pisces full moon that is also a partial lunar eclipse. Two days later, on Sunday, Venus in Libra sits exactly opposite Saturn in Aries. Mars has been moving through Cancer since August 11 and stays there until late September. Stacked together, this is the most relationship-dense weekend of the month — not because the sky decides anything for you, but because it hands you a clear set of tensions to notice.</p>
+
+      <h2>What the Pisces eclipse actually surfaces</h2>
+
+      <p>A full moon already pulls feelings to the surface. An eclipse does it harder and faster. In Pisces, the theme is boundaries: where you merged with someone else's mood and stopped noticing your own. The classic scene is the 11 PM text that reads as caring but is really a test. One person wants reassurance; the other reads pressure. The eclipse just makes the pattern louder than usual.</p>
+
+      <p>Use it as data, not drama. If a reaction feels outsized this weekend, ask whether it was about this moment or a hundred older ones. The eclipse is the moment the sky insists you see the pattern — it does not tell you what to do with it.</p>
+
+      <h2>Venus opposite Saturn: the wall in the room</h2>
+
+      <p>Venus rules what you want in love; Saturn is the limit, the clock, the commitment that costs something. When they face each other on Sunday, you feel the gap between the connection you want and the one you can actually build. This is the transit of the difficult conversation: money, timelines, whether two people want the same level of seriousness.</p>
+
+      <p>Saturn does not end relationships. It exposes which ones were held together by avoidance. A pairing that names the hard thing — "I need to know if this is going somewhere" — comes out stronger. A pairing that performs ease to dodge the topic finds the wall only gets taller.</p>
+
+      <h2>Mars in Cancer: anger that goes quiet</h2>
+
+      <p>Mars is how we act and fight. In Cancer, that heat turns inward. Anger shows up as withdrawal, a slammed door that is really a slammed feeling, or a cold text instead of a loud one. This runs from August 11 through September 27, so it is not a weekend event — it is the background weather your eclipse and Venus–Saturn moments happen inside.</p>
+
+      <p>The risk is scorekeeping: one person goes quiet, the other doubles down to get a response, and the loop tightens. Name the feeling before it becomes a strategy. "I'm not angry, I'm hurt" is a sentence that changes the whole temperature of a Mars-in-Cancer argument.</p>
+
+      <h2>How the three show up together</h2>
+
+      <p>Picture a couple on Saturday. The eclipse stirs an old insecurity (Why do I always reach out first?). Sunday, Venus opposite Saturn forces it into words (Are we building the same thing?). Underneath both, Mars in Cancer makes walking away feel safer than saying the scared part out loud. The transits are not separate events. They are one long invitation to say the true thing one day earlier than pride allows.</p>
+
+      <h2>A practical weekend check</h2>
+
+      <p>You do not need to track degrees to use this. Three moves:</p>
+
+      <ul>
+        <li>Before a hard talk, name your actual feeling in one sentence. Hurt, not angry. Unsure, not fine.</li>
+        <li>If someone goes quiet, ask what they need — space or a reply — instead of filling the silence with guesses.</li>
+        <li>Treat any outsized reaction this weekend as a clue about a pattern, not a verdict about the person.</li>
+      </ul>
+
+      <h2>Where astrology actually helps here</h2>
+
+      <p>These transits describe weather, not fate. The useful part is that they give you a shared language for a tense 72 hours. Your actual compatibility lives in the slower map — your moon sign (how you feel safe), your Venus sign (how you love), and your Mars sign (how you fight). Those do not change when the planets shift.</p>
+
+      <p>See your own baseline before the weekend gets loud. <a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a> and pull both charts by birth date — free, private, no signup. For the fight mechanics underneath all this, read our guide to <a href="https://matchbybirth.com/blog/mars-signs-conflict-styles">Mars signs and conflict styles</a>. And for the Venus–Saturn seriousness question, our <a href="https://matchbybirth.com/blog/venus-signs-love-language">Venus signs love language guide</a> shows what each sign actually wants.</p>
+
+      <p>Astrology is symbolic, not a proven science. None of these transits predict what will happen between two people. They are a vocabulary for noticing — and the person who names the pattern first usually handles it best.</p>
+    `,
+  },
+
 ];
 
 export const existingPosts = posts;
