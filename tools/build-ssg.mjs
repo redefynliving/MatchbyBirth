@@ -63,6 +63,22 @@ function preRenderPages() {
       route: 'about',
       title: 'About Match by Birth | Compatibility Tool',
       description: 'Learn who Match by Birth is for, what the compatibility calculator does, what it does not claim, and how birth details are handled.',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'AJ Fox',
+        jobTitle: 'Founder & Astrological Researcher',
+        url: 'https://matchbybirth.com/about',
+        sameAs: [
+          'https://matchbybirth.com',
+        ],
+        description: 'Founder of Match by Birth. Focused on making astrology a practical tool for relationships.',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Match by Birth',
+          url: 'https://matchbybirth.com',
+        },
+      },
       content: `
         <header>
           <h1>About Match by Birth</h1>
@@ -488,6 +504,11 @@ function preRenderPages() {
       .replace(/<meta name="twitter:title" content="[^"]*"\s*\/?>/g, `<meta name="twitter:title" content="${safeTitle}">`)
       .replace(/<meta name="twitter:description" content="[^"]*"\s*\/?>/g, `<meta name="twitter:description" content="${safeDescription}">`)
       .replace(/<div id="root">[\s\S]*?<\/div>/g, `<div id="root">${page.content}</div>`);
+
+    if (page.jsonLd) {
+      const jsonLdScript = `\n\t\t<script type="application/ld+json">${JSON.stringify(page.jsonLd)}</script>`;
+      pageHtml = pageHtml.replace(/(<script type="module"[^>]*><\/script>)/, `${jsonLdScript}\n\t\t$1`);
+    }
 
     fs.writeFileSync(path.join(pageDir, 'index.html'), pageHtml, 'utf8');
     console.log(`[SSG] Route /${page.route} pre-rendered.`);

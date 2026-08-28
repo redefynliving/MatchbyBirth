@@ -4,6 +4,23 @@ import { Link } from 'react-router-dom';
 import BackButton from '@/components/BackButton.jsx';
 
 function AboutPage() {
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'AJ Fox',
+    jobTitle: 'Founder & Astrological Researcher',
+    url: 'https://matchbybirth.com/about',
+    sameAs: [
+      'https://matchbybirth.com',
+    ],
+    description: 'Founder of Match by Birth. Focused on making astrology a practical tool for relationships.',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Match by Birth',
+      url: 'https://matchbybirth.com',
+    },
+  };
+
   return (
     <>
       <Helmet>
@@ -13,6 +30,7 @@ function AboutPage() {
           content="Learn who Match by Birth is for, what the compatibility calculator does, what it does not claim, and how birth details are handled."
         />
         <link rel="canonical" href="https://matchbybirth.com/about" />
+        <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
       </Helmet>
 
       <main role="main" className="min-h-screen bg-background py-16 md:py-24">
