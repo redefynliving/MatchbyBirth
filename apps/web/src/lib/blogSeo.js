@@ -52,7 +52,7 @@ export function buildArticleSchema(post) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: seo.description,
-    image: [seo.image],
+    image: [post.image || seo.image],
     datePublished: seo.datePublished,
     dateModified: seo.dateModified,
     articleSection: seo.categoryLabel,

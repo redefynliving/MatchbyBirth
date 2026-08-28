@@ -55,6 +55,26 @@ const posts = [
     title: 'Best Zodiac Match for Every Sign in 2026',
     subtitle: 'Your Top Compatibility Pick',
   },
+  {
+    slug: 'jupiter-signs-compatibility-meaning',
+    title: 'Jupiter Signs',
+    subtitle: 'How Your Jupiter Placement Shapes Love',
+  },
+  {
+    slug: 'twin-flame-astrology-signs',
+    title: 'Twin Flames in Astrology',
+    subtitle: 'What Your Birth Chart Says About Soul Connections',
+  },
+  {
+    slug: 'birth-chart-compatibility-guide',
+    title: 'Birth Chart Compatibility',
+    subtitle: 'How to Read Two Charts for Relationship Potential',
+  },
+  {
+    slug: 'saturn-sign-commitment-style',
+    title: 'Saturn Signs',
+    subtitle: 'How Your Saturn Placement Reveals Commitment',
+  },
 ];
 
 function createSVG(title, subtitle) {

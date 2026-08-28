@@ -18,7 +18,8 @@
     "topics:replenish": "node automation/replenish-topics.mjs"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "sharp": "^0.35.4"
   },
   "workspaces": [
     "apps/*"

@@ -13,6 +13,7 @@ import {
   getBlogPostPath,
   getBlogPostSeo,
   getRelatedPosts,
+  SITE_URL,
 } from '../src/lib/blogSeo.js';
 
 function escapeHtml(value) {
@@ -257,6 +258,7 @@ export function renderArticleHtml({ template, post } = {}) {
   const relatedPosts = getRelatedPosts(post, posts);
   const relatedPairings = Array.isArray(post.firstSign) || post.firstSign ? getRelatedPairings(post, 8) : [];
   const seo = getBlogPostSeo({ ...post, description });
+  const postOgImage = `${SITE_URL}/og/${post.slug}.png`;
   const body = `
     <main class="static-blog-shell">
       <article>
@@ -302,14 +304,14 @@ export function renderArticleHtml({ template, post } = {}) {
     route: `/blog/${post.slug}`,
     canonical: seo.url,
     body,
-    image: seo.image,
+    image: postOgImage,
     type: 'article',
     head: `<meta name="author" content="${escapeHtml(seo.authorName)}" />
     <meta property="article:published_time" content="${escapeHtml(seo.datePublished)}" />
     <meta property="article:modified_time" content="${escapeHtml(seo.dateModified)}" />
     <meta property="article:section" content="${escapeHtml(seo.categoryLabel)}" />
     ${seo.tags.map((tag) => `<meta property="article:tag" content="${escapeHtml(tag)}" />`).join('\n    ')}
-    ${renderJsonLd(buildArticleSchema({ ...post, description }))}
+    ${renderJsonLd(buildArticleSchema({ ...post, description, image: postOgImage }))}
     ${renderJsonLd(buildBreadcrumbSchema(post))}
     ${buildFaqSchema(post) ? renderJsonLd(buildFaqSchema(post)) : ''}`,
   });
