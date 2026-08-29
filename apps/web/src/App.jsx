@@ -36,6 +36,7 @@ const LifePathCompatibilityPage = lazy(() => import('@/pages/LifePathCompatibili
 const MoonSignCompatibilityPage = lazy(() => import('@/pages/MoonSignCompatibilityPage.jsx'));
 const TeamCompatibilityPage = lazy(() => import('@/pages/TeamCompatibilityPage.jsx'));
 const FunnelDashboardPage = lazy(() => import('@/pages/FunnelDashboardPage.jsx'));
+const ShopPage = lazy(() => import('@/pages/ShopPage.jsx'));
 
 function RouteFallback() {
   return (
@@ -79,6 +80,7 @@ function App() {
               <Route path="/tools/moon-sign-compatibility" element={<MoonSignCompatibilityPage />} />
               <Route path="/tools/team-compatibility" element={<TeamCompatibilityPage />} />
               <Route path="/admin/funnel" element={<FunnelDashboardPage />} />
+              <Route path="/shop" element={<ShopPage />} />
 
               {/* Catch-all route */}
               <Route path="*" element={

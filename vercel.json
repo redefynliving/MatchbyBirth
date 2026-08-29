@@ -54,6 +54,8 @@
     { "source": "/tools/life-path-compatibility", "destination": "/tools/life-path-compatibility/index.html" },
     { "source": "/tools/moon-sign-compatibility", "destination": "/tools/moon-sign-compatibility/index.html" },
     { "source": "/tools/team-compatibility", "destination": "/tools/team-compatibility/index.html" },
+    { "source": "/daily-horoscope", "destination": "/daily-horoscope/index.html" },
+    { "source": "/weekly-horoscope", "destination": "/weekly-horoscope/index.html" },
     { "source": "/blog/category/:slug", "destination": "/blog/category/:slug/index.html" },
     { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },

@@ -481,7 +481,133 @@ function preRenderPages() {
           <p>Read the <a href="/blog/category/moon-signs">Moon Sign compatibility guides</a>, try the <a href="/tools/life-path-compatibility">Life Path compatibility calculator</a>, or check <a href="/tools/crush-birthday-compatibility">crush birthday compatibility</a>.</p>
         </article>
       `
-    }
+    },
+    {
+      route: 'daily-horoscope',
+      title: 'Daily Horoscope | Match by Birth',
+      description: 'Get your daily horoscope for all 12 zodiac signs. Todays astrological transits and what they mean for your love, career, and energy.',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Daily Horoscope | Match by Birth',
+        description: 'Daily horoscope for all 12 zodiac signs with transit-based insights.',
+        url: 'https://matchbybirth.com/daily-horoscope',
+      },
+      content: `
+        <header>
+          <p>Daily astrology</p>
+          <h1>Daily Horoscope</h1>
+          <p>Today's astrological transits and what they mean for your sign. Use these themes as a lens for the day, not as a prediction.</p>
+        </header>
+        <article>
+          <h2>Today's Transits</h2>
+          <p>The Moon continues its journey through the zodiac, activating different emotional needs for each sign. Fast-moving planets (Mercury, Venus, Mars) shape communication, love, and initiative. Use these themes to be more intentional today.</p>
+
+          <h2>Aries (March 21 – April 19)</h2>
+          <p>Today brings a surge of energy to your career sector. You may feel ambitious and ready to take on new challenges. In relationships, your directness is an asset — just be mindful of coming on too strong. A conversation that has been postponed is worth having now.</p>
+
+          <h2>Taurus (April 20 – May 20)</h2>
+          <p>Stability is your theme today. You may feel drawn to routines and comfort. In love, small gestures speak louder than grand declarations. Financially, it is a good day to review your budget rather than make impulsive purchases.</p>
+
+          <h2>Gemini (May 21 – June 21)</h2>
+          <p>Communication flows easily today. Conversations that felt stuck may suddenly move forward. In relationships, curiosity keeps things interesting. Ask questions. Listen to the answers. A short trip or change of scenery refreshes your perspective.</p>
+
+          <h2>Cancer (June 21 – July 22)</h2>
+          <p>Emotions run deep today. You may feel more sensitive than usual — this is data, not a flaw. In relationships, vulnerability strengthens connection. At home, small improvements to your space make you feel more settled.</p>
+
+          <h2>Leo (July 23 – August 22)</h2>
+          <p>Your natural charisma is amplified today. People are drawn to your energy. In love, generosity and warmth attract the right attention. Creatively, this is a good day to start something new or share your work with others.</p>
+
+          <h2>Virgo (August 23 – September 22)</h2>
+          <p>Details matter today. Your analytical skills are sharp, making it a good day for problem-solving and organization. In relationships, practical acts of service show you care. Health-wise, small improvements to your routine pay off.</p>
+
+          <h2>Libra (September 23 – October 22)</h2>
+          <p>Harmony is your focus today. You may feel motivated to resolve conflicts and strengthen partnerships. In love, compromise and fairness deepen connection. Aesthetically, beautifying your environment lifts your mood.</p>
+
+          <h2>Scorpio (October 23 – November 21)</h2>
+          <p>Intensity is your superpower today. You see beneath the surface and are not afraid of depth. In relationships, honesty — even when it is uncomfortable — builds trust. Financially, research before committing.</p>
+
+          <h2>Sagittarius (November 22 – December 21)</h2>
+          <p>Adventure calls today. You may feel restless and drawn to new experiences. In relationships, give your partner space to roam — freedom strengthens your bond. Learning something new expands your horizons.</p>
+
+          <h2>Capricorn (December 22 – January 19)</h2>
+          <p>Discipline and ambition are highlighted today. You are willing to do the work that others avoid. In relationships, loyalty and consistency matter more than drama. Career-wise, steady progress toward your goals is favored.</p>
+
+          <h2>Aquarius (January 20 – February 18)</h2>
+          <p>Originality and community are your themes today. You may feel pulled toward collaborative projects or causes. In relationships, friendship is the foundation — share ideas, not just feelings. A small experiment in how you connect pays off.</p>
+
+          <h2>Pisces (February 19 – March 20)</h2>
+          <p>Intuition runs high today. You may sense what others need before they say it. In love, gentle check-ins beat big conversations. Creatively, let something unfinished simmer rather than forcing a conclusion.</p>
+
+          <h2>Use it as a lens</h2>
+          <p>A daily horoscope is a prompt for attention, not a script. The useful move is to notice one theme that fits and act on it — name the postponed conversation, send the small gesture, protect the routine that steadies you.</p>
+          <p>See your own pattern underneath the signs: <a href="/#calculator">run a private compatibility check</a> or read the <a href="/blog/category/moon-signs">Moon Sign guides</a>.</p>
+        </article>
+      `,
+    },
+    {
+      route: 'weekly-horoscope',
+      title: 'Weekly Horoscope | Match by Birth',
+      description: 'Get your weekly horoscope for all 12 zodiac signs. This weeks astrological weather and what it means for your love, work, and energy.',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: 'Weekly Horoscope | Match by Birth',
+        description: 'Weekly horoscope for all 12 zodiac signs with transit-based insights.',
+        url: 'https://matchbybirth.com/weekly-horoscope',
+      },
+      content: `
+        <header>
+          <p>Weekly astrology</p>
+          <h1>Weekly Horoscope</h1>
+          <p>This week's astrological weather and what it means for your sign. Use these themes as a lens for the week, not as a prediction.</p>
+        </header>
+        <article>
+          <h2>This Week's Weather</h2>
+          <p>The week's slower planets set a backdrop; the faster ones (Mercury, Venus, Mars) create the daily texture. Watch for one repeating theme in your sign and let it guide the conversations worth having.</p>
+
+          <h2>Aries (March 21 – April 19)</h2>
+          <p>A week for momentum. Career and visibility move if you initiate. In love, lead with honesty about what you want; avoid the too-strong start that makes someone brace instead of lean in.</p>
+
+          <h2>Taurus (April 20 – May 20)</h2>
+          <p>A week for steadying. Routines and small comforts reset your nervous system. In love, consistency speaks; one reliable gesture outperforms a grand plan you may not keep.</p>
+
+          <h2>Gemini (May 21 – June 21)</h2>
+          <p>A week for movement in conversation. Stuck talks loosen if you ask and actually listen. In love, curiosity is the connector — trade questions, not monologues.</p>
+
+          <h2>Cancer (June 21 – July 22)</h2>
+          <p>A week for feelings close to the surface. Protect your space; small home improvements ground you. In love, naming the sensitivity early prevents it reading as distance.</p>
+
+          <h2>Leo (July 23 – August 22)</h2>
+          <p>A week for shine. Your warmth draws the right attention. In love, generosity lands; creatively, start the thing you keep describing.</p>
+
+          <h2>Virgo (August 23 – September 22)</h2>
+          <p>A week for order. Problems yield to method. In love, service is how you say care; health routines compound if you start small.</p>
+
+          <h2>Libra (September 23 – October 22)</h2>
+          <p>A week for balance. Repair a frayed partnership; fairness deepens it. In love, compromise is closeness, not loss.</p>
+
+          <h2>Scorpio (October 23 – November 21)</h2>
+          <p>A week for depth. Surface-level talks bore you; go under. In love, hard honesty builds trust faster than smooth evasion.</p>
+
+          <h2>Sagittarius (November 22 – December 21)</h2>
+          <p>A week for range. Restlessness is data — give it direction. In love, space is glue; don't mistake autonomy for withdrawal.</p>
+
+          <h2>Capricorn (December 22 – January 19)</h2>
+          <p>A week for building. Quiet progress beats loud starts. In love, loyalty shown through follow-through matters more than drama.</p>
+
+          <h2>Aquarius (January 20 – February 18)</h2>
+          <p>A week for the collective. Collaboration pulls you forward. In love, friendship first; share the idea, not just the feeling.</p>
+
+          <h2>Pisces (February 19 – March 20)</h2>
+          <p>A week for intuition. You read the room before it speaks. In love, a soft check-in beats a heavy talk; let unfinished things breathe.</p>
+
+          <h2>Use it as a lens</h2>
+          <p>A weekly horoscope is a prompt for attention across seven days, not a forecast. Pick one theme, act on it once, and notice what shifts.</p>
+          <p>See your own pattern underneath the signs: <a href="/#calculator">run a private compatibility check</a> or read the <a href="/blog/category/moon-signs">Moon Sign guides</a>.</p>
+        </article>
+      `,
+    },
   ];
 
   // Pre-render standard pages

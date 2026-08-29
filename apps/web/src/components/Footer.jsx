@@ -34,6 +34,7 @@ function Footer() {
               {/* About page removed from footer quick links to match header */}
               <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link>
               <Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog & Guides</Link>
+              <Link to="/shop" className="text-muted-foreground hover:text-primary transition-colors">Shop</Link>
               <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
             </nav>
           </div>
