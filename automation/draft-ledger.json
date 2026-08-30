@@ -1,5 +1,49 @@
 [
   {
+    "slug": "compatibility-and-communication-styles",
+    "title": "Compatibility and Communication: How Astrology Can Help",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "Compatibility and Communication: How Astrology Can Help",
+    "metaDescription": "compatibility and communication: how compatibility reports can improve communication in relationships. A practical, no-jargon read",
+    "wordCount": 707,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-08-30T18:33:02.813Z",
+    "approved": false
+  },
+  {
     "slug": "zodiac-signs-and-family-dynamics",
     "title": "Zodiac Signs and Family Dynamics: Understanding the Connections",
     "focusKeyword": "family",
