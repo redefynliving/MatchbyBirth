@@ -1,5 +1,49 @@
 [
   {
+    "slug": "building-stronger-relationships-with-astrology",
+    "title": "Building Stronger Relationships with Astrology",
+    "focusKeyword": "zodiac",
+    "metaTitle": "Building Stronger Relationships with Astrology",
+    "metaDescription": "building stronger relationships with astrology: using astrology to strengthen and deepen relationships. A practical, no-jargon read",
+    "wordCount": 714,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-01T18:20:46.719Z",
+    "approved": false
+  },
+  {
     "slug": "friendship-compatibility-and-numerology",
     "title": "The Numerology of Friendship Compatibility",
     "focusKeyword": "friendship",
