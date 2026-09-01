@@ -19,6 +19,7 @@ const routes = {
   '/api/unsubscribe': () => require('./_lib/unsubscribe.js'),
   '/api/places': () => require('./_lib/places.js'),
   '/api/cyclecalcs/moon': () => require('./_lib/cyclecalcs.js'),
+  '/api/printful-products': () => require('./_lib/printful-products.js'),
 };
 
 function addResponseHelpers(res) {
