@@ -1,5 +1,49 @@
 [
   {
+    "slug": "workplace-communication-and-zodiac-signs",
+    "title": "Zodiac Signs and Workplace Communication: Understanding the Styles",
+    "focusKeyword": "workplace",
+    "metaTitle": "Zodiac Signs and Workplace Communication: Understanding the ",
+    "metaDescription": "workplace communication and zodiac signs: how zodiac signs influence communication styles in the workplace. A practical, no-jargon read",
+    "wordCount": 716,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-02T18:32:36.732Z",
+    "approved": false
+  },
+  {
     "slug": "building-stronger-relationships-with-astrology",
     "title": "Building Stronger Relationships with Astrology",
     "focusKeyword": "zodiac",
