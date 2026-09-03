@@ -1,5 +1,49 @@
 [
   {
+    "slug": "astrology-and-relationship-boundaries",
+    "title": "Astrology and Relationship Boundaries: Finding Healthy Limits",
+    "focusKeyword": "zodiac",
+    "metaTitle": "Astrology and Relationship Boundaries: Finding Healthy Limit",
+    "metaDescription": "astrology and relationship boundaries: how astrology can help establish and maintain healthy relationship boundaries. A practical, no-jargon read",
+    "wordCount": 713,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-03T18:29:11.612Z",
+    "approved": false
+  },
+  {
     "slug": "workplace-communication-and-zodiac-signs",
     "title": "Zodiac Signs and Workplace Communication: Understanding the Styles",
     "focusKeyword": "workplace",
