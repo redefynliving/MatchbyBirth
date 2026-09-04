@@ -1,5 +1,49 @@
 [
   {
+    "slug": "the-importance-of-exact-birth-matching",
+    "title": "The Importance of Exact Birth Matching in Astrology",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "The Importance of Exact Birth Matching in Astrology",
+    "metaDescription": "exact birth matching: why exact birth matching is crucial for accurate compatibility reports. A practical, no-jargon read",
+    "wordCount": 709,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-04T18:16:04.659Z",
+    "approved": false
+  },
+  {
     "slug": "astrology-and-relationship-boundaries",
     "title": "Astrology and Relationship Boundaries: Finding Healthy Limits",
     "focusKeyword": "zodiac",
