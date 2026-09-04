@@ -8183,6 +8183,210 @@ faq: [
     `,
   },
 
+{
+    slug: 'electional-astrology-relationships',
+    title: 'Electional Astrology for Relationships: Timing Love, Marriage, and New Beginnings',
+    date: '2026-09-03',
+    updatedAt: '2026-09-03',
+    description: 'Electional astrology picks the exact moment to start something. Here is how to time a first date, proposal, wedding, or moving in together using Venus, the Moon, and planetary hours.',
+    tags: ['electional-astrology', 'timing', 'marriage', 'wedding-date', 'venus', 'moon', 'planetary-hours', 'relationships', 'learn-astrology'],
+    category: 'learn-astrology',
+    faq: [
+      { question: 'What is electional astrology for relationships?', answer: 'It is the practice of choosing the date and time to begin a relationship action — a first date, proposal, wedding, or move-in — so the chart of that moment supports the action. The chart cast for the exact second of the beginning becomes the chart of the thing you started.' },
+      { question: 'When should I avoid getting married or proposing?', answer: 'Avoid Venus retrograde (relationships started then tend to revisit or reverse), a void-of-course Moon (the event lacks a timer and drifts), Mars in the 7th house (built-in conflict), an eclipse within 3 days (unstable chart), and Mercury retrograde for the paperwork-heavy moments like signing a marriage license.' },
+      { question: 'What is the single most important planet for relationship elections?', answer: 'Venus. It is the planet of attraction, union, and pleasure. In any relationship election, Venus should be direct, not combust, not in fall (Virgo), and making applying aspects to benefics like Jupiter or the Moon.' },
+      { question: 'Do I really need an exact time and location for the election?', answer: 'Yes. The ascendant and house cusps change roughly every 4 minutes as the Earth rotates. A wedding in Chicago at 4:00 PM and the same time in Detroit will have different rising signs, which changes the ascendant ruler, the 7th house, and the planetary hours. Use your exact ceremony venue coordinates.' },
+      { question: 'Does a perfect election guarantee the relationship will work?', answer: 'No. A good election removes avoidable friction and gives the thing you are starting a tailwind, but it does not override free will, incompatibility, or lack of effort. The chart is the weather; you still fly the plane.' },
+    ],
+    content: `
+      <h1>Electional Astrology for Relationships: Timing Love, Marriage, and New Beginnings</h1>
+
+      <p>Most people use astrology to read a chart that already exists — a birth chart, a synastry overlay, a composite. Electional astrology works the other direction: you choose the moment so the chart says what you want it to say. You are not reading the weather. You are picking the day to sail.</p>
+
+      <p>For relationships, that means picking the date and time for a first date, a proposal, a wedding, moving in together, or even launching a dating profile. The moment something begins imprints a chart that shapes its trajectory. A well-elected start does not guarantee success, but a poorly elected one adds friction you did not need.</p>
+
+      <h2>The Core Principle: The Beginning Is the Chart</h2>
+
+      <p>In electional astrology, the chart of the moment you initiate an action becomes the chart <em>of that action</em>. A wedding chart is not the couple's composite. It is the chart cast for the exact second the officiant says "I now pronounce you." That chart's rising sign, Moon, Venus, and angular planets describe the marriage as an entity — its tone, its challenges, its longevity.</p>
+
+      <p>The same logic applies to any deliberate start: the moment you send the first message, the moment you sign the lease together, the moment you say "yes." The chart of that moment travels with the thing you started.</p>
+
+      <h2>Venus: The Non-Negotiable</h2>
+
+      <p>Venus is the planet of attraction, union, and pleasure. In any relationship election, Venus must be unafflicted — preferably direct, not combust, not in fall (Virgo), and making applying aspects to benefics (Jupiter, Moon, Mercury). If Venus is retrograde, square Saturn, or conjunct Mars in a hard aspect, the election is weakened. You want Venus to <em>function</em> — to bring ease, magnetism, and staying power.</p>
+
+      <p>Ideal Venus signs for relationship elections: Taurus, Libra, Pisces (exalted), Cancer. Avoid: Virgo (fall), Aries/Scorpio (detriment — though Aries Venus can work for a bold, fast-moving start if other factors support it).</p>
+
+      <h2>The Moon: The Timer and the Vessel</h2>
+
+      <p>The Moon is the fastest mover and the traditional "timer" of events. In electional work, the Moon's condition is the single most important factor after Venus. You need:</p>
+
+      <ul>
+        <li><strong>Waxing Moon</strong> (New to Full) for growth, accumulation, things coming together. Waning Moon suits endings, separations, or releasing.</li>
+        <li><strong>Avoid void-of-course Moon.</strong> A void Moon makes no more major aspects before changing signs. Actions started then drift or fizzle.</li>
+        <li><strong>Moon applying to a benefic</strong> — Moon applying to Jupiter, Venus, or a well-placed Mercury is gold. Applying to Saturn, Mars, or the nodes adds weight, delay, or volatility.</li>
+        <li><strong>Moon in a fertile sign</strong> — Cancer, Scorpio, Pisces, Taurus, Libra. Avoid barren signs (Gemini, Leo, Virgo, Sagittarius, Capricorn, Aquarius) unless the election specifically demands speed or intellect over emotional depth.</li>
+      </ul>
+
+      <h2>The Ascendant and Its Ruler</h2>
+
+      <p>The rising sign of the election chart becomes the "personality" of the event. For relationships, you want the ascendant in a Venus-ruled sign (Taurus, Libra) or a Moon-ruled sign (Cancer). The ruler of the ascendant — Venus for Taurus/Libra, Moon for Cancer — must be well-placed, angular (1st, 4th, 7th, 10th), and making good aspects. If the ascendant ruler is combust, retrograde, or in the 6th, 8th, or 12th house, the election struggles to manifest cleanly.</p>
+
+      <h2>The 7th House: The Partner and the Partnership</h2>
+
+      <p>The 7th house cusp (descendant) and its ruler describe the other person and the partnership dynamic. You want the 7th ruler strong and unafflicted. If the 7th ruler is Saturn in fall, or combust Mercury, or retrograde Mars, the partnership inherits those signatures — restriction, miscommunication, conflict.</p>
+
+      <p>Planets in the 7th house of the election chart become co-rulers of the partnership. A well-placed Jupiter there expands the bond. Saturn there brings duty and longevity but also weight. Mars brings heat and drive — good for passion, tricky for peace.</p>
+
+      <h2>Planetary Hours: The Micro-Timing Layer</h2>
+
+      <p>Even on a perfect day, the hour matters. Each day is divided into 12 planetary hours of daylight and 12 of darkness, each ruled by a planet in Chaldean order (Saturn, Jupiter, Mars, Sun, Venus, Mercury, Moon). The hour ruler flavors the minute you act.</p>
+
+      <p>For relationships, the Venus hour is ideal. The Moon hour works for emotional bonding. The Jupiter hour expands. Avoid Saturn hours (heavy, delayed), Mars hours (conflict-prone unless you want intensity), and Mercury hours (mental, not romantic — though fine for signing paperwork).</p>
+
+      <p>You calculate planetary hours for your exact location. Tools like Time Nomad, Astro Gold, or the free <a href="https://www.lunarplanner.com/planetaryhours.html">Lunar Planner calculator</a> handle this in seconds.</p>
+
+      <h2>Common Relationship Elections — What to Optimize For</h2>
+
+      <h3>First Date or Meeting Someone New</h3>
+      <p><strong>Goal:</strong> Spark, ease, mutual interest, a second date.<br>
+      <strong>Priorities:</strong> Venus angular or trine Moon/Jupiter. Moon waxing in a social sign (Libra, Gemini, Leo, Sagittarius). Ascendant in air or fire for chemistry. Mercury well-aspected for conversation flow.<br>
+      <strong>Avoid:</strong> Mercury retrograde (miscommunication), Moon void, Venus square Saturn (awkwardness).</p>
+
+      <h3>Proposal</h3>
+      <p><strong>Goal:</strong> A clear "yes," emotional weight, a memory that lasts.<br>
+      <strong>Priorities:</strong> Venus in Taurus, Libra, or Pisces. Moon applying to Venus or Jupiter. Ascendant in a fixed sign (Taurus, Leo, Scorpio, Aquarius) for durability. 7th ruler strong. Jupiter aspecting Venus or the Moon.<br>
+      <strong>Avoid:</strong> Venus retrograde, Moon in Scorpio (intensity can read as pressure), Saturn rising (heavy, delayed answer).</p>
+
+      <h3>Wedding</h3>
+      <p><strong>Goal:</strong> Longevity, shared purpose, resilience, joy.<br>
+      <strong>Priorities:</strong> This is the big one. The wedding chart <em>is</em> the marriage chart. You want:</p>
+      <ul>
+        <li>Venus direct, unafflicted, ideally angular or in the 7th</li>
+        <li>Moon waxing, in Cancer/Taurus/Libra/Pisces, applying to benefics</li>
+        <li>Ascendant in Taurus, Libra, Cancer, or Capricorn (Saturn rules Capricorn — longevity)</li>
+        <li>7th ruler (the partner) strong and well-aspected</li>
+        <li>No malefics (Mars, Saturn) in the 1st or 7th unless extremely well-dignified</li>
+        <li>Jupiter aspecting the ascendant, Moon, or Venus</li>
+        <li>The Sun not combust (obviously) and preferably in a sign that supports commitment (Taurus, Cancer, Libra, Capricorn)</li>
+      </ul>
+      <p><strong>Avoid:</strong> Venus retrograde (the classic "do not marry" window), Mars in the 7th (conflict), Saturn in the 1st (cold start), Moon void, eclipses within 3 days (volatile).</p>
+
+      <h3>Moving In Together</h3>
+      <p><strong>Goal:</strong> Domestic harmony, shared resources, practical compatibility.<br>
+      <strong>Priorities:</strong> 4th house (home) and its ruler strong. Moon in Cancer or Taurus. Venus in the 4th or 2nd (resources). Saturn well-placed — you want some Saturn here for stability, just not afflicting the ascendant or 7th. Mercury trine Saturn for clear agreements on bills, chores, space.<br>
+      <strong>Avoid:</strong> Mars in the 4th (domestic friction), Uranus in the 4th (instability), Moon void.</p>
+
+      <h3>Launching a Dating Profile</h3>
+      <p><strong>Goal:</strong> Visibility, attraction, quality matches.<br>
+      <strong>Priorities:</strong> Venus in the 1st, 5th, or 11th. Moon waxing in a social sign. Ascendant in Leo, Libra, or Sagittarius (magnetic, visible). Jupiter aspecting Venus or the ascendant. Mercury strong for good photos and bio copy.<br>
+      <strong>Avoid:</strong> Venus retrograde (old flames resurface, not new ones), 12th house emphasis (invisible), Moon in Scorpio (attracts intensity you may not want).</p>
+
+      <h2>A Worked Example: Electing a Wedding Date</h2>
+
+      <p>Say you want a Saturday wedding in June 2026. Pull up the ephemeris and scan for:</p>
+      <ol>
+        <li>Venus direct, not combust, ideally in Taurus, Libra, Cancer, or Pisces.</li>
+        <li>Moon waxing, not void, in a fertile sign, applying to Venus or Jupiter.</li>
+        <li>Ascendant in Taurus, Libra, or Cancer — check the exact time for your venue's coordinates.</li>
+        <li>7th ruler (descendant ruler) strong.</li>
+        <li>No Mars or Saturn in 1st or 7th. No eclipse nearby.</li>
+        <li>Venus hour on the day.</li>
+      </ol>
+
+      <p>You land on Saturday, June 20, 2026 at 4:30 PM. Venus is in Cancer (exalted in the 11th house of community — beautiful for a wedding surrounded by loved ones). Moon is waxing in Libra, applying to a trine with Venus. Ascendant at that time is Libra (Venus-ruled). Venus rules the 1st and 8th — shared resources, intimacy. The 7th house cusp is Aries; its ruler Mars is in Virgo in the 12th — not ideal, but Mars is not afflicting the 1st or 7th directly. Jupiter in Gemini trines the Libra ascendant. The Venus hour at 4:30 PM locks it in.</p>
+
+      <p>That is a viable election. Not perfect — Mars in the 12th ruling the 7th is a minor flaw — but workable. You would present this to the couple with the caveat: "This is the best window in June. Here is what it gives you. Here is the one compromise."</p>
+
+      <h2>The Hard Constraints You Cannot Fix</h2>
+
+      <p>Some conditions make an election unsalvageable. Do not proceed if:</p>
+      <ul>
+        <li><strong>Venus is retrograde.</strong> The planet of union is moving backward. Relationships started then tend to revisit, reverse, or require a redo.</li>
+        <li><strong>Mars is retrograde in the 7th or ruling the 7th.</strong> The drive to partner is inverted. Conflict loops.</li>
+        <li><strong>Moon is void of course.</strong> The event lacks a timer. It drifts.</li>
+        <li><strong>An eclipse falls within 3 days before or after.</strong> Eclipses scramble the signal. The chart is not stable.</li>
+        <li><strong>Mercury retrograde for paperwork-heavy elections</strong> (signing a marriage license, lease, prenup) — delays, errors, re-signing.</li>
+      </ul>
+
+      <p>These are not "challenging." They are structural breaks. Pick another window.</p>
+
+      <h2>The Honest Caveat</h2>
+
+      <p>Electional astrology is a symbolic technology, not a guarantee. A perfect election does not override free will, incompatibility, or life circumstances. A couple with a difficult wedding chart can build a magnificent marriage through consciousness and effort. A couple with a pristine election can divorce in two years.</p>
+
+      <p>What a good election <em>does</em>: it removes avoidable friction. It gives the thing you are starting a tailwind instead of a headwind. It stacks the symbolic deck in your favor. That is worth doing — but it is not magic.</p>
+
+      <p>Also: the best election in the world cannot compensate for two people who do not communicate, do not share values, or do not choose each other daily. The chart is the weather. You still fly the plane.</p>
+
+      <h2>How to Actually Do This</h2>
+
+      <ol>
+        <li><strong>Define the action precisely.</strong> "Wedding" is not enough. Is it the license signing? The ceremony start? The first kiss? The reception entrance? Each has a different chart.</li>
+        <li><strong>Get the exact location.</strong> Ascendant and house cusps change every 4 minutes. A wedding in Chicago at 4:00 PM and a wedding in Detroit at 4:00 PM have different rising signs.</li>
+        <li><strong>Run the ephemeris for your date range.</strong> Use <a href="https://www.astro.com">astro.com</a>, <a href="https://www.astro-seek.com">astro-seek.com</a>, or Solar Fire. Scan for Venus and Moon conditions first — they eliminate 80% of dates fast.</li>
+        <li><strong>Cast the chart for the exact minute.</strong> Check ascendant, house rulers, planetary hours.</li>
+        <li><strong>Present 2 to 3 options with tradeoffs.</strong> Never just one. The couple chooses.</li>
+      </ol>
+
+      <p>If you want the foundation first, our <a href="https://matchbybirth.com/blog/planets-in-astrology-guide">planets guide</a> and <a href="https://matchbybirth.com/blog/saturn-sign-commitment-style">Saturn commitment style guide</a> explain the building blocks before you start overlaying charts. For the post-decision analysis, <a href="https://matchbybirth.com/blog/synastry-vs-composite-charts">synastry and composite</a> tell you what the relationship looks like once it begins.</p>
+
+      <h2>Quick Reference Cheat Sheet</h2>
+
+      <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+        <thead>
+          <tr style="background:#f3f4f6;">
+            <th style="padding:0.5rem; border:1px solid #e5e7eb; text-align:left;">Election Type</th>
+            <th style="padding:0.5rem; border:1px solid #e5e7eb; text-align:left;">Venus</th>
+            <th style="padding:0.5rem; border:1px solid #e5e7eb; text-align:left;">Moon</th>
+            <th style="padding:0.5rem; border:1px solid #e5e7eb; text-align:left;">Ascendant</th>
+            <th style="padding:0.5rem; border:1px solid #e5e7eb; text-align:left;">Avoid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">First Date</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Direct, social sign</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Waxing, air/fire</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Air/fire</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Mercury Rx, Moon void</td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Proposal</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Taurus/Libra/Pisces</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Applying to Venus/Jupiter</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Fixed sign</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Venus Rx, Saturn rising</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Wedding</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Angular, unafflicted</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Waxing, fertile, to benefics</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Taurus/Libra/Cancer/Cap</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Venus Rx, Mars 7th, eclipses</td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Move In</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">2nd/4th house</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Cancer/Taurus</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Earth/water</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Mars 4th, Uranus 4th</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Dating Profile</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">1st/5th/11th</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Waxing, social</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Leo/Libra/Sag</td>
+            <td style="padding:0.5rem; border:1px solid #e5e7eb;">Venus Rx, 12th emphasis</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Pick your moment. Cast the chart. Start with the wind at your back.</p>
+
+      <p><a href="https://matchbybirth.com">Check your compatibility on Match by Birth</a>.</p>
+    `,
+  },
 ];
 
 export const existingPosts = posts;
