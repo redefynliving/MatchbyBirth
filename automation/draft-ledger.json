@@ -1,5 +1,49 @@
 [
   {
+    "slug": "numerology-and-relationship-timing",
+    "title": "Numerology and Relationship Timing: Understanding the Cycles",
+    "focusKeyword": "relationship-timing",
+    "metaTitle": "Numerology and Relationship Timing: Understanding the Cycles",
+    "metaDescription": "numerology and relationship timing: how numerology influences the timing of relationships and life events. A practical, no-jargon read",
+    "wordCount": 713,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-05T17:15:03.022Z",
+    "approved": false
+  },
+  {
     "slug": "the-importance-of-exact-birth-matching",
     "title": "The Importance of Exact Birth Matching in Astrology",
     "focusKeyword": "birth-matching",
