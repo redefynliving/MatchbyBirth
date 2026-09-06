@@ -608,6 +608,30 @@ function preRenderPages() {
         </article>
       `,
     },
+    {
+      route: '404',
+      title: 'Page Not Found | Match by Birth',
+      description: 'The page you are looking for does not exist.',
+      content: `
+        <header>
+          <h1>Page not found</h1>
+          <p>We could not find the page you were looking for.</p>
+        </header>
+        <article>
+          <h2>This page does not exist</h2>
+          <p>The link may be outdated, mistyped, or pointing to something we have removed.</p>
+          <h2>Try these instead</h2>
+          <ul>
+            <li><a href="/">Go to the calculator</a></li>
+            <li><a href="/blog">Browse the blog</a></li>
+            <li><a href="/about">Read about Match by Birth</a></li>
+            <li><a href="/faq">Check the FAQ</a></li>
+          </ul>
+          <p>If you believe this is an error, email <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.</p>
+        </article>
+      `,
+      is404: true,
+    },
   ];
 
   // Pre-render standard pages
@@ -634,6 +658,19 @@ function preRenderPages() {
     if (page.jsonLd) {
       const jsonLdScript = `\n\t\t<script type="application/ld+json">${JSON.stringify(page.jsonLd)}</script>`;
       pageHtml = pageHtml.replace(/(<script type="module"[^>]*><\/script>)/, `${jsonLdScript}\n\t\t$1`);
+    }
+
+    if (page.is404) {
+      // Insert noindex robots meta right after the charset meta
+      pageHtml = pageHtml.replace(
+        /<meta charset="UTF-8" \/>/,
+        '<meta charset="UTF-8" />\n\t\t<meta name="robots" content="noindex, nofollow" />'
+      );
+      // Remove any duplicate canonical that pointed to homepage, keep only the /404 one
+      pageHtml = pageHtml.replace(
+        /<link rel="canonical" href="https:\/\/matchbybirth\.com\/" data-react-helmet="true" \/>/g,
+        ''
+      );
     }
 
     fs.writeFileSync(path.join(pageDir, 'index.html'), pageHtml, 'utf8');
