@@ -1,5 +1,49 @@
 [
   {
+    "slug": "family-astrology-and-communication",
+    "title": "Family Astrology and Communication: Building Stronger Bonds",
+    "focusKeyword": "family",
+    "metaTitle": "Family Astrology and Communication: Building Stronger Bonds",
+    "metaDescription": "family astrology and communication: how astrology can improve communication and understanding within families. A practical, no-jargon read",
+    "wordCount": 712,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-06T17:35:15.234Z",
+    "approved": false
+  },
+  {
     "slug": "numerology-and-relationship-timing",
     "title": "Numerology and Relationship Timing: Understanding the Cycles",
     "focusKeyword": "relationship-timing",
