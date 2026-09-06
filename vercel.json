@@ -59,6 +59,12 @@
     { "source": "/blog/category/:slug", "destination": "/blog/category/:slug/index.html" },
     { "source": "/blog/:slug", "destination": "/blog/:slug/index.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
+    { "source": "/result", "destination": "/index.html" },
+    { "source": "/report-success", "destination": "/index.html" },
+    { "source": "/report", "destination": "/index.html" },
+    { "source": "/admin/funnel", "destination": "/index.html" },
+    { "source": "/unsubscribe", "destination": "/index.html" },
+    { "source": "/shop", "destination": "/index.html" },
     { "source": "/404", "destination": "/404/index.html" }
   ],
   "headers": [
@@ -86,7 +92,31 @@
       ]
     },
     {
+      "source": "/report-success",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/report",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
       "source": "/admin/funnel",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/unsubscribe",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/shop",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]
