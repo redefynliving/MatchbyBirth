@@ -1,5 +1,49 @@
 [
   {
+    "slug": "zodiac-signs-and-communication-patterns",
+    "title": "Zodiac Signs and Communication Patterns: Understanding the Styles",
+    "focusKeyword": "zodiac",
+    "metaTitle": "Zodiac Signs and Communication Patterns: Understanding the S",
+    "metaDescription": "zodiac signs and communication patterns: how zodiac signs influence communication patterns in relationships. A practical, no-jargon read",
+    "wordCount": 715,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-07T19:05:25.379Z",
+    "approved": false
+  },
+  {
     "slug": "family-astrology-and-communication",
     "title": "Family Astrology and Communication: Building Stronger Bonds",
     "focusKeyword": "family",
