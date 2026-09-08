@@ -1,5 +1,49 @@
 [
   {
+    "slug": "compatibility-reports-and-relationship-growth",
+    "title": "Compatibility Reports and Relationship Growth: A Tool for Deepening Connections",
+    "focusKeyword": "birth-matching",
+    "metaTitle": "Compatibility Reports and Relationship Growth: A Tool for De",
+    "metaDescription": "compatibility reports and relationship growth: how compatibility reports can facilitate growth and development in relationships. A practical, no-jargon read",
+    "wordCount": 717,
+    "headingCount": 8,
+    "faqCount": 2,
+    "takeawayCount": 4,
+    "seoScore": 100,
+    "seoChecks": [
+      {
+        "name": "wordCount>=650",
+        "ok": true
+      },
+      {
+        "name": "metaDesc 80-160",
+        "ok": true
+      },
+      {
+        "name": "internal link",
+        "ok": true
+      },
+      {
+        "name": "example/scenario",
+        "ok": true
+      },
+      {
+        "name": ">=3 headings",
+        "ok": true
+      },
+      {
+        "name": "no weak intro",
+        "ok": true
+      },
+      {
+        "name": "<3 generic phrases",
+        "ok": true
+      }
+    ],
+    "draftedAt": "2026-09-08T18:29:04.619Z",
+    "approved": false
+  },
+  {
     "slug": "zodiac-signs-and-communication-patterns",
     "title": "Zodiac Signs and Communication Patterns: Understanding the Styles",
     "focusKeyword": "zodiac",
