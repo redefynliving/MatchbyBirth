@@ -1,4 +1,8 @@
+import editorialPosts from './editorial-posts-2026-09.js';
+
 import sanityPosts from './sanity-posts.generated.js';
+
+
 
 const posts = [
   {
@@ -8390,4 +8394,4 @@ faq: [
 ];
 
 export const existingPosts = posts;
-export default [...posts, ...sanityPosts];
+export default [...editorialPosts, ...posts, ...sanityPosts];
