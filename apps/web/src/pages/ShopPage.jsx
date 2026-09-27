@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowUpRight, Sparkles, Star, Moon, Heart, Sun } from 'lucide-react';
+import { Sparkles, Star, Moon, Heart } from 'lucide-react';
 import NewsletterCapture from '@/components/NewsletterCapture.jsx';
 
 /* ── Design system (mirrors MatchByBirth brand tokens) ────────────────────── */
@@ -39,10 +38,10 @@ function SignPair({ a, b, glyphA, glyphB }) {
 function MyPerson({ sign, glyph }) {
   return (
     <Preview>
-      <svg viewBox="0 0 200 250" className="w-full" role="img" aria-label={`my person is a ${sign}`}>
+      <svg viewBox="0 0 200 250" className="w-full" role="img" aria-label={`my person is ${/^[aeiou]/i.test(sign) ? 'an' : 'a'} ${sign}`}>
         <rect x="20" y="10" width="160" height="230" rx="14" fill={NIGHT} />
         <text x="100" y="96" textAnchor="middle" fontSize="40" fill={MIST} fontFamily="system-ui, sans-serif">my person</text>
-        <text x="100" y="128" textAnchor="middle" fontSize="22" fill={MIST} fontFamily="system-ui, sans-serif">is a</text>
+        <text x="100" y="128" textAnchor="middle" fontSize="22" fill={MIST} fontFamily="system-ui, sans-serif">{/^[aeiou]/i.test(sign) ? 'is an' : 'is a'}</text>
         <text x="100" y="184" textAnchor="middle" fontSize="54" fill={GOLD} fontFamily="Georgia, serif">{glyph}</text>
         <text x="100" y="220" textAnchor="middle" fontSize="18" letterSpacing="3" fill={MIST} fontFamily="system-ui, sans-serif">{sign.toUpperCase()}</text>
       </svg>
@@ -73,7 +72,7 @@ function WallArt({ kind, label, sub }) {
   );
 }
 
-/* ── The 18-design pack (each = a real, shippable preview + Printful prompt) ─ */
+/* ── Design previews ─ */
 const SIGN_PAIRS = [
   { a: 'Taurus', b: 'Scorpio', gA: '♉', gB: '♏' },
   { a: 'Gemini', b: 'Aquarius', gA: '♊', gB: '♒' },
@@ -91,37 +90,18 @@ const ART = [
 ];
 
 const PRODUCTS = [
-  ...SIGN_PAIRS.map((p) => ({ key: `sp-${p.a}`, name: `${p.a} ♥ ${p.b} Tee`, price: '$32', note: 'sign-pair · 200–300% margin', art: <SignPair {...p} /> })),
-  ...MY_PERSON.map((p) => ({ key: `mp-${p.sign}`, name: `My Person Is A ${p.sign} Tee`, price: '$32', note: 'relationship identity', art: <MyPerson {...p} /> })),
-  ...ART.map((p) => ({ key: `art-${p.sub}`, name: p.label, price: p.kind === 'moon' ? '$38' : '$42', note: 'wall art · 2–3× margin', art: <WallArt {...p} /> })),
+  ...SIGN_PAIRS.map((p) => ({ key: `sp-${p.a}`, name: `${p.a} ♥ ${p.b} Tee`, art: <SignPair {...p} /> })),
+  ...MY_PERSON.map((p) => ({ key: `mp-${p.sign}`, name: `My Person Is ${/^[aeiou]/i.test(p.sign) ? 'An' : 'A'} ${p.sign} Tee`, art: <MyPerson {...p} /> })),
+  ...ART.map((p) => ({ key: `art-${p.sub}`, name: p.label, art: <WallArt {...p} /> })),
 ];
 
 const COLLECTIONS = [
   { id: 'sign-pair', icon: Heart, title: 'Sign Pair Tees', blurb: 'Wear the match. "Taurus ♥ Scorpio", "Gemini × Aquarius" — clean typographic tees for the couple that already knows their chart.' },
-  { id: 'partner-sign', icon: Star, title: '"My Person Is A…"', blurb: 'Partner-is-a-sign tees. The low-key flex for people who read the birth chart before the bio.' },
-  { id: 'birth-chart-art', icon: Moon, title: 'Birth Chart & Moon Phase Wall Art', blurb: 'Framed birth-chart prints and moon-phase posters. Highest margin in the shop — quiet, premium, gift-ready.' },
+  { id: 'partner-sign', icon: Star, title: '"My Person Is…"', blurb: 'Partner-sign tees. The low-key flex for people who read the birth chart before the bio.' },
+  { id: 'birth-chart-art', icon: Moon, title: 'Birth Chart & Moon Phase Wall Art', blurb: 'Framed birth-chart prints and moon-phase posters. Quiet, personal, gift-ready.' },
 ];
 
 export default function ShopPage() {
-  const [printful, setPrintful] = React.useState({ configured: false, products: [] });
-
-  React.useEffect(() => {
-    let alive = true;
-    fetch('/api/printful-products')
-      .then((r) => r.json())
-      .then((d) => { if (alive && d) setPrintful({ configured: !!d.configured, products: d.products || [] }); })
-      .catch(() => {});
-    return () => { alive = false; };
-  }, []);
-
-  // When Printful is live, match its synced products to our design names by fuzzy contains.
-  const liveHrefFor = (name) => {
-    if (!printful.configured) return null;
-    const hit = printful.products.find((p) =>
-      p.name && name.toLowerCase().includes(p.name.toLowerCase().slice(0, 6)));
-    return hit ? hit.href : 'https://matchbybirth.printful.me';
-  };
-
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 md:py-16">
       <header className="text-center">
@@ -133,8 +113,8 @@ export default function ShopPage() {
           Astrology you can wear.
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
-          Identity merch for people who already know their sign. Printed on demand — made
-          after you order, shipped straight to you. No warehouse, no waste.
+          Sign-pair tees and birth-chart art are coming soon. Preview the designs below
+          and sign up to hear when checkout opens.
         </p>
       </header>
 
@@ -151,39 +131,23 @@ export default function ShopPage() {
       </section>
 
       <section className="mt-14">
-        <h2 className="text-xl font-semibold tracking-tight text-foreground">In the shop</h2>
+        <h2 className="text-xl font-semibold tracking-tight text-foreground">Coming soon</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Fifteen designs, printed to order via Printful. Each piece is made after you check out.
+          Preview fifteen designs. Checkout is not open yet.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PRODUCTS.map((p) => {
-            const href = liveHrefFor(p.name);
-            const Card = (
-              <div className="flex flex-col rounded-xl border border-border bg-card p-4 shadow-sm">
-                {p.art}
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <h3 className="text-sm font-semibold text-foreground">{p.name}</h3>
-                  <span className="shrink-0 text-sm font-semibold text-primary">{p.price}</span>
-                </div>
-                <p className="mt-1 text-xs leading-5 text-muted-foreground">{p.note}</p>
-              </div>
-            );
-            return href ? (
-              <a key={p.key} href={href} target="_blank" rel="noopener noreferrer" className="block transition-transform hover:-translate-y-0.5">
-                {Card}
-              </a>
-            ) : (
-              <div key={p.key}>{Card}</div>
-            );
-          })}
+          {PRODUCTS.map((p) => (
+            <article key={p.key} className="flex flex-col rounded-xl border border-border bg-card p-4 shadow-sm">
+              {p.art}
+              <h3 className="mt-3 text-sm font-semibold text-foreground">{p.name}</h3>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="mt-12 rounded-xl border border-dashed border-border bg-card/50 p-6 text-center">
         <p className="text-sm text-muted-foreground">
-          {printful.configured
-            ? 'Shop is live — every design above links straight to Printful checkout. Made to order, shipped to you.'
-            : 'Storefront is live. Product fulfillment connects to Printful next — each design above is print-ready. Drop your email and you’ll get the link the moment checkout opens.'}
+          These are previews, not items available for purchase. Sign up below to hear when checkout opens.
         </p>
       </section>
 
@@ -191,16 +155,13 @@ export default function ShopPage() {
         <NewsletterCapture
           consentSource="shop_apparel"
           title="Get the shop when checkout opens"
-          description="Fifteen sign-pair and birth-chart designs are ready. Leave your email and you'll get the Printful link the moment it goes live — plus the occasional relationship-timing note."
+          description="Leave your email for a note when the shop opens, plus occasional Match by Birth updates."
           buttonLabel="Notify me"
           finePrint="Free. Unsubscribe anytime."
         />
       </section>
 
-      <p className="mt-10 text-center text-xs text-muted-foreground">
-        Fulfilled by Printful. Match By Birth handles design + astrology; Printful handles print,
-        pack, and ship.
-      </p>
+
     </div>
   );
 }
