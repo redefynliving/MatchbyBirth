@@ -49,11 +49,20 @@ function urlForPath(pagePath) {
   return normalized === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalized}`;
 }
 
+// A planned editorial date is not evidence that a page changed in the future.
+// Keep sitemap lastmod within the build date even for predated posts.
+function sitemapLastmod(value) {
+  const date = typeof value === 'string' ? value.slice(0, 10) : '';
+  return /^\d{4}-\d{2}-\d{2}$/.test(date) && date <= BUILD_DATE
+    ? date
+    : BUILD_DATE;
+}
+
 function entry({ pagePath, lastmod = BUILD_DATE }) {
   return [
     '  <url>',
     `    <loc>${xmlEscape(urlForPath(pagePath))}</loc>`,
-    `    <lastmod>${xmlEscape(lastmod)}</lastmod>`,
+    `    <lastmod>${xmlEscape(sitemapLastmod(lastmod))}</lastmod>`,
     '  </url>',
   ].join('\n');
 }
