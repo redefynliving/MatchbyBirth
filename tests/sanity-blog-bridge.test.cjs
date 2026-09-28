@@ -9,11 +9,11 @@ const { pathToFileURL } = require('node:url');
 
 const root = path.resolve(__dirname, '..');
 
-test('blog data imports generated Sanity posts and keeps coded posts first', () => {
+test('blog data imports editorial and generated Sanity posts before coded posts', () => {
   const source = fs.readFileSync(path.join(root, 'apps/web/src/data/posts/index.js'), 'utf8');
 
   assert.match(source, /import sanityPosts from '\.\/sanity-posts\.generated\.js';/);
-  assert.match(source, /export default \[\.\.\.posts, \.\.\.sanityPosts\];/);
+  assert.match(source, /export default \[\.\.\.editorialPosts, \.\.\.posts, \.\.\.sanityPosts\];/);
 });
 
 test('web build uses committed Sanity posts before generating SEO files', () => {
