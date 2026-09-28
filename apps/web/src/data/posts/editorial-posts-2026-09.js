@@ -1,6 +1,215 @@
 // Editorial posts published September 2026.
 const editorialPosts = [
   {
+    slug: "zodiac-sign-compatibility-ranked",
+    title: "Zodiac Compatibility, Ranked: Every Sign's Best and Hardest Matches",
+    date: "2026-09-28",
+    description: "Every zodiac sign's strongest and hardest matches in one place, with the element, modality, and opposition logic behind each ranking - not just a score.",
+    tags: ["zodiac", "compatibility", "sign-guide", "rankings", "love"],
+    category: "sign-guide",
+    content: `
+<p>Every sign has matches that feel like coming home and matches that feel like homework. This is the full rundown in one place: all twelve signs, their strongest pairings, their hardest ones, and the actual reasons behind each - so you can look up your sign, or theirs, and understand the pattern instead of memorizing a score.</p>
+
+<h2>At a Glance: The Short Version</h2>
+<p><strong>Easy mode:</strong> Fire and Air feed each other. Earth and Water nourish each other. Same-element pairs speak the same language from day one.</p>
+<p><strong>Growth mode:</strong> Signs that share a modality (cardinal, fixed, or mutable) clash over whose way wins. Opposite signs fascinate each other and exhaust each other in equal measure.</p>
+<p><strong>The honest caveat:</strong> A sun-sign ranking is a starting lens, not a verdict. Your Moon sign runs your emotional life and your Venus sign runs your love style - two "bad matches" with compatible Moons often outlast two "perfect matches" without them.</p>
+
+<h2>How These Rankings Actually Work</h2>
+<p>Three layers of astrological logic do most of the work here:</p>
+<p><strong>Element.</strong> The twelve signs split into Fire (Aries, Leo, Sagittarius), Earth (Taurus, Virgo, Capricorn), Air (Gemini, Libra, Aquarius), and Water (Cancer, Scorpio, Pisces). Fire and Air are extroverted energies - action and ideas - so they accelerate each other. Earth and Water are receptive energies - substance and feeling - so they deepen each other. Same-element pairs sit four months apart and tend to understand each other without translation.</p>
+<p><strong>Modality.</strong> Each element contains one cardinal sign (starts things), one fixed sign (sustains things), and one mutable sign (adapts things). Two signs that share a modality are square - four signs apart - and they grind: two initiators competing to lead, two immovable objects refusing to yield, or two adapters shape-shifting past each other. Squares are not doomed; they are where the growth is. They just never run on autopilot.</p>
+<p><strong>Opposition.</strong> Signs six months apart are opposites: same axis, opposite ends. Aries-Libra, Taurus-Scorpio, Gemini-Sagittarius, Cancer-Capricorn, Leo-Aquarius, Virgo-Pisces. Opposites attract because each holds what the other lacks - and fight for the same reason.</p>
+<p>One more thing, because this site has published ranked lists before: a numeric verdict ("9/10") is a shortcut, not a measurement. Compatibility lives in the whole chart. The <a href="/blog/moon-signs-emotional-compatibility">Moon sign guide</a> covers the emotional layer, the <a href="/blog/venus-signs-love-language">Venus sign guide</a> covers how each person actually gives love, and <a href="/blog/what-compatibility-score-means">what a compatibility score means</a> explains what our calculator does and does not claim. Use the rankings below the way you would use a weather forecast for a climate: directionally true, personally incomplete.</p>
+
+<h2>Aries (March 21 - April 19)</h2>
+<p>Cardinal Fire, ruled by Mars. Aries loves at full speed: direct pursuit, quick attachment, zero interest in games. The gift is courage; the shadow is treating a partner like a conquest and a calm relationship like a boring one.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Leo.</strong> Two fires who admire each other's nerve instead of fearing it. This is the power-couple pairing: loud, warm, and loyal once ego stops keeping score. <a href="/blog/aries-leo-compatibility">Aries and Leo deep dive</a>.</li>
+<li><strong>Sagittarius.</strong> The adventure duo. Sagittarius gives Aries the one thing it cannot give itself - a horizon - and Aries gives Sagittarius a reason to actually start. <a href="/blog/aries-sagittarius-compatibility">Aries and Sagittarius deep dive</a>.</li>
+<li><strong>Gemini.</strong> Air feeds fire. Gemini keeps Aries mentally busy, and Aries turns Gemini's talk into motion. Low boredom risk on both sides. <a href="/blog/aries-and-gemini-compatibility">Aries and Gemini deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Cancer.</strong> Cardinal square. Aries leads with the chin; Cancer leads with the heart. Aries experiences Cancer's caution as clinging, and Cancer experiences Aries' bluntness as carelessness. Works when Aries learns to land softly. <a href="/blog/aries-and-cancer-compatibility">Aries and Cancer deep dive</a>.</li>
+<li><strong>Capricorn.</strong> The other cardinal square. Both want to run things, on different clocks: Aries wants it now, Capricorn wants it to last. Respect is available; impatience is the tax. <a href="/blog/aries-and-capricorn-compatibility">Aries and Capricorn deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Scorpio</strong> - the other Mars-ruled sign. Same fuel, different engines: Aries burns fast and open, Scorpio burns slow and hidden. <a href="/blog/aries-scorpio-compatibility">Aries and Scorpio deep dive</a>.</p>
+
+<h2>Taurus (April 20 - May 20)</h2>
+<p>Fixed Earth, ruled by Venus. Taurus loves by building: routines, meals, touch, a home that feels like one. The gift is reliability; the shadow is digging in so hard that "stable" becomes "stuck."</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Virgo.</strong> Two earth signs who show love the same way: through useful, tangible devotion. Nobody has to explain why the details matter. <a href="/blog/taurus-virgo-compatibility">Taurus and Virgo deep dive</a>.</li>
+<li><strong>Cancer.</strong> Earth and water at their most domestic. Cancer brings the feeling, Taurus brings the container, and both would rather stay in than perform. <a href="/blog/taurus-cancer-nurturing-pair">Taurus and Cancer deep dive</a>.</li>
+<li><strong>Capricorn.</strong> The empire builders. Shared patience, shared standards, shared suspicion of anything flashy and unearned. <a href="/blog/capricorn-taurus-compatibility">Capricorn and Taurus deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Aquarius.</strong> Fixed square. Taurus maintains the garden; Aquarius wants to redesign it. One protects what works, the other is bored by it. <a href="/blog/taurus-and-aquarius-compatibility">Taurus and Aquarius deep dive</a>.</li>
+<li><strong>Leo.</strong> The other fixed square. Two proud, stubborn wills who both expect the applause. Warm when aligned, glacial when not. <a href="/blog/taurus-and-leo-compatibility">Taurus and Leo deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Scorpio</strong>, the opposite sign - the most magnetic pairing on the wheel and the least casual one. <a href="/blog/taurus-and-scorpio-compatibility">Taurus and Scorpio deep dive</a>.</p>
+
+<h2>Gemini (May 21 - June 21)</h2>
+<p>Mutable Air, ruled by Mercury. Gemini loves through conversation: questions, jokes, ideas traded at speed. The gift is curiosity; the shadow is skimming - ten tabs open, none finished.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Libra.</strong> Two air signs with matching social intelligence. The talk never runs out, and neither minds that the other has a full calendar. <a href="/blog/libra-gemini-air-sign-romance">Libra and Gemini deep dive</a>.</li>
+<li><strong>Aquarius.</strong> The idea exchange. Aquarius brings the weird conviction, Gemini brings the range, and both treat independence as respect rather than distance. <a href="/blog/aquarius-gemini-compatibility">Aquarius and Gemini deep dive</a>.</li>
+<li><strong>Aries.</strong> Fire plus air: motion plus chatter. Aries acts on Gemini's ideas before Gemini gets bored of them. <a href="/blog/aries-and-gemini-compatibility">Aries and Gemini deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Virgo.</strong> Mutable square, and awkwardly, both are Mercury-ruled. Same planet, opposite use: Gemini collects, Virgo edits. Each thinks the other is doing it wrong. <a href="/blog/gemini-and-virgo-compatibility">Gemini and Virgo deep dive</a>.</li>
+<li><strong>Pisces.</strong> The other mutable square. Gemini explains, Pisces absorbs. Words versus feelings, both convinced they communicated. <a href="/blog/gemini-and-pisces-compatibility">Gemini and Pisces deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Sagittarius</strong>, the opposite sign - the eternal debate partners who either travel the world together or argue about the map. <a href="/blog/gemini-sagittarius-opposites-that-work">Gemini and Sagittarius deep dive</a>.</p>
+
+<h2>Cancer (June 21 - July 22)</h2>
+<p>Cardinal Water, ruled by the Moon. Cancer loves by protecting: feeding, remembering, checking in, building a private world for two. The gift is devotion; the shadow is keeping score of care nobody was asked to give.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Scorpio.</strong> Two water signs who both know what it costs to trust. Scorpio matches Cancer's depth instead of mocking its softness. <a href="/blog/cancer-scorpio-compatibility">Cancer and Scorpio deep dive</a>.</li>
+<li><strong>Pisces.</strong> The emotional sanctuary pair. Feelings move between these two without needing translation, and both would rather repair than win. <a href="/blog/pisces-cancer-compatibility">Pisces and Cancer deep dive</a>.</li>
+<li><strong>Taurus.</strong> Water nourishes earth. Cancer grows the feelings, Taurus grows the tomatoes, and the home they build tends to last. <a href="/blog/taurus-cancer-nurturing-pair">Taurus and Cancer deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Aries.</strong> Cardinal square. Aries charges; Cancer flinches, then grips tighter. The whole work is pacing - Aries slowing down, Cancer speaking up before the resentment file gets thick. <a href="/blog/aries-and-cancer-compatibility">Aries and Cancer deep dive</a>.</li>
+<li><strong>Libra.</strong> The other cardinal square. Cancer decides with the gut, Libra with the scales. Each experiences the other's method as evasion. <a href="/blog/cancer-and-libra-compatibility">Cancer and Libra deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Capricorn</strong>, the opposite sign - the classic builder-and-nurturer axis: structure outside, softness inside, if both stop auditioning for the other's role. <a href="/blog/cancer-and-capricorn-compatibility">Cancer and Capricorn deep dive</a>.</p>
+
+<h2>Leo (July 23 - August 22)</h2>
+<p>Fixed Fire, ruled by the Sun. Leo loves generously and loudly - grand gestures, fierce loyalty, real warmth. The gift is wholeheartedness; the shadow is needing an audience for everything, including the relationship.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Sagittarius.</strong> Playmates for life. Sagittarius laughs at Leo's drama instead of wilting under it, and Leo makes Sagittarius feel celebrated rather than managed. <a href="/blog/leo-sagittarius-compatibility">Leo and Sagittarius deep dive</a>.</li>
+<li><strong>Aries.</strong> The fire-sign power couple. Competition stays playful as long as both win often enough. <a href="/blog/aries-leo-compatibility">Aries and Leo deep dive</a>.</li>
+<li><strong>Libra.</strong> Air fans the flame. Libra supplies the admiration Leo runs on, and Leo supplies the decisiveness Libra quietly craves. <a href="/blog/leo-and-libra-compatibility">Leo and Libra deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Taurus.</strong> Fixed square. Stubbornness squared: both dig in, both wait for the other to come to them. The make-up is always worth the fight; the wait is the problem. <a href="/blog/taurus-and-leo-compatibility">Taurus and Leo deep dive</a>.</li>
+<li><strong>Scorpio.</strong> The other fixed square. Leo wants everything in the open; Scorpio keeps the vault closed. Trust is the entire relationship here. <a href="/blog/leo-and-scorpio-compatibility">Leo and Scorpio deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Aquarius</strong>, the opposite sign - the spotlight and the rebel, sharing one axis of fixed conviction. <a href="/blog/leo-aquarius-fixed-signs-big-sparks">Leo and Aquarius deep dive</a>.</p>
+
+<h2>Virgo (August 23 - September 22)</h2>
+<p>Mutable Earth, ruled by Mercury. Virgo loves through acts of service: the remembered detail, the fixed problem, the quiet improvement nobody asked for. The gift is devotion in the details; the shadow is criticism that was meant as care.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Taurus.</strong> Fellow earth, fellow realist. Taurus appreciates the effort Virgo hides in plain sight, and neither has to perform romance to prove it. <a href="/blog/taurus-virgo-compatibility">Taurus and Virgo deep dive</a>.</li>
+<li><strong>Capricorn.</strong> Two builders. Capricorn brings the five-year plan, Virgo brings the checklist, and both find that genuinely romantic. <a href="/blog/virgo-and-capricorn-compatibility">Virgo and Capricorn deep dive</a>.</li>
+<li><strong>Cancer.</strong> Water softens earth. Cancer feels cared for by Virgo's service, and Virgo feels safe inside Cancer's loyalty. <a href="/blog/cancer-and-virgo-compatibility">Cancer and Virgo deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Sagittarius.</strong> Mutable square. Virgo edits; Sagittarius blurts. One optimizes the map, the other wants to burn it and explore. <a href="/blog/virgo-and-sagittarius-compatibility">Virgo and Sagittarius deep dive</a>.</li>
+<li><strong>Gemini.</strong> The other mutable square and fellow Mercury child. Gemini skims what Virgo studies. Both are smart; they just grade differently. <a href="/blog/gemini-and-virgo-compatibility">Gemini and Virgo deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Pisces</strong>, the opposite sign - logic and intuition on one axis, each holding the other's missing half. <a href="/blog/virgo-pisces-logic-intuition-love">Virgo and Pisces deep dive</a>.</p>
+
+<h2>Libra (September 23 - October 22)</h2>
+<p>Cardinal Air, ruled by Venus. Libra loves through harmony: consideration, aesthetics, the relationship as its own art project. The gift is fairness; the shadow is conflict-avoidance that lets small things curdle into distance.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Gemini.</strong> Fellow air, fellow talker. The conversation that starts at dinner is still going at 2 a.m., and both call that intimacy. <a href="/blog/libra-gemini-air-sign-romance">Libra and Gemini deep dive</a>.</li>
+<li><strong>Aquarius.</strong> The idealist pair. Aquarius gives Libra a cause to share, Libra gives Aquarius a collaborator who actually listens. <a href="/blog/libra-and-aquarius-compatibility">Libra and Aquarius deep dive</a>.</li>
+<li><strong>Leo.</strong> The glamorous romance. Leo brings the warmth, Libra brings the charm, and both care about how love looks and feels. <a href="/blog/leo-and-libra-compatibility">Leo and Libra deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Cancer.</strong> Cardinal square. Libra weighs, Cancer feels. Head versus heart, both initiating, both sure their way is kinder. <a href="/blog/cancer-and-libra-compatibility">Cancer and Libra deep dive</a>.</li>
+<li><strong>Capricorn.</strong> The other cardinal square. Capricorn's blunt ambition can read as cold to Libra; Libra's deliberation reads as stalling to Capricorn. <a href="/blog/libra-and-capricorn-compatibility">Libra and Capricorn deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Aries</strong>, the opposite sign - self and other on one axis. Aries teaches Libra to decide; Libra teaches Aries to consider. <a href="/blog/aries-and-libra-compatibility">Aries and Libra deep dive</a>.</p>
+
+<h2>Scorpio (October 23 - November 21)</h2>
+<p>Fixed Water, ruled by Pluto and Mars. Scorpio loves at full depth or not at all: privacy, loyalty tests, total merge. The gift is unmatched devotion; the shadow is control dressed up as protection.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Cancer.</strong> Fellow water, fellow vault. Both understand that trust is built slowly and guarded fiercely, so neither rushes the other. <a href="/blog/cancer-scorpio-compatibility">Cancer and Scorpio deep dive</a>.</li>
+<li><strong>Pisces.</strong> The depth charge. Pisces meets Scorpio in the deep end without flinching, and softens what Scorpio armors. <a href="/blog/scorpio-and-pisces-compatibility">Scorpio and Pisces deep dive</a>.</li>
+<li><strong>Capricorn.</strong> Water shapes earth. Both are private, patient, and playing a long game - loyalty is a shared first language. <a href="/blog/scorpio-capricorn-compatibility">Scorpio and Capricorn deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Leo.</strong> Fixed square. Leo wants the love public; Scorpio wants it sealed. Two strong wills negotiating who holds the map. <a href="/blog/leo-and-scorpio-compatibility">Leo and Scorpio deep dive</a>.</li>
+<li><strong>Aquarius.</strong> The other fixed square. Scorpio merges; Aquarius floats. Intensity meets detachment, and both feel unloved in their own language. <a href="/blog/scorpio-and-aquarius-compatibility">Scorpio and Aquarius deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Taurus</strong>, the opposite sign - sensuality squared, stubbornness squared, loyalty forever if trust survives the first year. <a href="/blog/taurus-and-scorpio-compatibility">Taurus and Scorpio deep dive</a>.</p>
+
+<h2>Sagittarius (November 22 - December 21)</h2>
+<p>Mutable Fire, ruled by Jupiter. Sagittarius loves through shared adventure: the trip, the debate, the honest truth at the wrong moment. The gift is optimism; the shadow is confusing freedom with absence.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Aries.</strong> Fellow fire, fellow starter. Aries matches Sagittarius' pace and never asks it to sit still. <a href="/blog/aries-sagittarius-compatibility">Aries and Sagittarius deep dive</a>.</li>
+<li><strong>Leo.</strong> Warmth plus wanderlust. Leo keeps the home fire fun rather than confining, and Sagittarius actually comes back. <a href="/blog/leo-sagittarius-compatibility">Leo and Sagittarius deep dive</a>.</li>
+<li><strong>Aquarius.</strong> The independence club. Both treat space as a gift, not a threat, and the ideas travel as far as the suitcases. <a href="/blog/sagittarius-and-aquarius-compatibility">Sagittarius and Aquarius deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Virgo.</strong> Mutable square. Sagittarius sketches in broad strokes; Virgo corrects the strokes. Precision versus perspective, daily. <a href="/blog/virgo-and-sagittarius-compatibility">Virgo and Sagittarius deep dive</a>.</li>
+<li><strong>Pisces.</strong> The other mutable square. Sagittarius' honesty lands as cruelty; Pisces' sensitivity reads as evasion. Both are kinder than the other assumes. <a href="/blog/sagittarius-and-pisces-compatibility">Sagittarius and Pisces deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Gemini</strong>, the opposite sign - the student and the philosopher, arguing happily all the way to the airport. <a href="/blog/gemini-sagittarius-opposites-that-work">Gemini and Sagittarius deep dive</a>.</p>
+
+<h2>Capricorn (December 22 - January 19)</h2>
+<p>Cardinal Earth, ruled by Saturn. Capricorn loves through commitment: providing, planning, showing up for decades. The gift is endurance; the shadow is treating tenderness as a lower priority than progress.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Taurus.</strong> Fellow earth, fellow builder. Shared work ethic, shared standards, and a home that improves every year they are in it. <a href="/blog/capricorn-taurus-compatibility">Capricorn and Taurus deep dive</a>.</li>
+<li><strong>Virgo.</strong> The quiet power couple. Both speak fluent follow-through, and neither mistakes the other's reserve for indifference. <a href="/blog/virgo-and-capricorn-compatibility">Virgo and Capricorn deep dive</a>.</li>
+<li><strong>Scorpio.</strong> Earth and water with a long memory. Scorpio brings the intensity, Capricorn brings the structure, and both keep their word. <a href="/blog/scorpio-capricorn-compatibility">Scorpio and Capricorn deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Aries.</strong> Cardinal square. Aries wants it Tuesday; Capricorn wants it right. Two leaders, two timelines, one calendar. <a href="/blog/aries-and-capricorn-compatibility">Aries and Capricorn deep dive</a>.</li>
+<li><strong>Libra.</strong> The other cardinal square. Capricorn builds; Libra deliberates. Each experiences the other's thoroughness as the relationship's delay. <a href="/blog/libra-and-capricorn-compatibility">Libra and Capricorn deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Cancer</strong>, the opposite sign - the provider and the nurturer, learning to trade roles without keeping score. <a href="/blog/cancer-and-capricorn-compatibility">Cancer and Capricorn deep dive</a>.</p>
+
+<h2>Aquarius (January 20 - February 18)</h2>
+<p>Fixed Air, ruled by Uranus and Saturn. Aquarius loves through ideas and friendship: shared causes, long talks, total acceptance of the other's weirdness. The gift is loyalty to who you actually are; the shadow is a detachment that partners can mistake for indifference.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Gemini.</strong> Fellow air, fellow mind. Neither clips the other's social wings, and the conversation is the relationship's engine. <a href="/blog/aquarius-gemini-compatibility">Aquarius and Gemini deep dive</a>.</li>
+<li><strong>Libra.</strong> The elegant alliance. Libra smooths Aquarius' edges, Aquarius gives Libra's ideals somewhere to live. <a href="/blog/libra-and-aquarius-compatibility">Libra and Aquarius deep dive</a>.</li>
+<li><strong>Sagittarius.</strong> Fire plus air, freedom plus philosophy. Both would rather explore than nest, and neither guilt-trips the other for it. <a href="/blog/sagittarius-and-aquarius-compatibility">Sagittarius and Aquarius deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Taurus.</strong> Fixed square. Taurus tends the familiar; Aquarius needs the experiment. Comfort versus novelty, both dug in. <a href="/blog/taurus-and-aquarius-compatibility">Taurus and Aquarius deep dive</a>.</li>
+<li><strong>Scorpio.</strong> The other fixed square. Scorpio wants total merge; Aquarius wants a plus-one. Neither is wrong, and both feel it. <a href="/blog/scorpio-and-aquarius-compatibility">Scorpio and Aquarius deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Leo</strong>, the opposite sign - the individual and the collective on one axis, with real sparks when ego yields. <a href="/blog/leo-aquarius-fixed-signs-big-sparks">Leo and Aquarius deep dive</a>.</p>
+
+<h2>Pisces (February 19 - March 20)</h2>
+<p>Mutable Water, ruled by Neptune and Jupiter. Pisces loves by dissolving into it: empathy, romance, the feeling that two people share one weather system. The gift is unconditional tenderness; the shadow is escaping into fantasy when reality asks for a conversation.</p>
+<h3>Strongest matches</h3>
+<ul>
+<li><strong>Cancer.</strong> Fellow water, fellow feeler. The sanctuary pairing - both protect the soft world they build, and both apologize first. <a href="/blog/pisces-cancer-compatibility">Pisces and Cancer deep dive</a>.</li>
+<li><strong>Scorpio.</strong> Depth meets devotion. Scorpio guards what Pisces gives freely, which is exactly what Pisces needs guarded. <a href="/blog/scorpio-and-pisces-compatibility">Scorpio and Pisces deep dive</a>.</li>
+<li><strong>Taurus.</strong> Water nourishes earth. Taurus gives Pisces' dreams a house to live in, and Pisces gives Taurus a reason to dream. <a href="/blog/taurus-and-pisces-compatibility">Taurus and Pisces deep dive</a>.</li>
+</ul>
+<h3>Takes more work</h3>
+<ul>
+<li><strong>Gemini.</strong> Mutable square. Pisces speaks in feelings, Gemini in footnotes. Both communicate constantly and still miss each other. <a href="/blog/gemini-and-pisces-compatibility">Gemini and Pisces deep dive</a>.</li>
+<li><strong>Sagittarius.</strong> The other mutable square. Sagittarius' truth-telling bruises; Pisces' vagueness frustrates. Gentleness is the whole assignment. <a href="/blog/sagittarius-and-pisces-compatibility">Sagittarius and Pisces deep dive</a>.</li>
+</ul>
+<p>Wild card: <strong>Virgo</strong>, the opposite sign - the dreamer and the editor, each quietly fixing the other's life. <a href="/blog/virgo-pisces-logic-intuition-love">Virgo and Pisces deep dive</a>.</p>
+
+<h2>What About Same-Sign Pairings?</h2>
+<p>Two of the same sign is a mirror, not a match grade. It doubles the gifts and the shadows at once: two Leos adore and upstage each other in equal measure, two Scorpios build an unbreakable vault or a mutually assured standoff, two Geminis never finish a sentence or a lease. Same-sign pairs work best when both people have done some growing first - self-knowledge is what keeps a mirror from becoming an echo chamber. Every ordered pairing on this site has its own deep dive; the pair pages are linked throughout the sections above.</p>
+
+<h2>Tonight's Action</h2>
+<p>Look up your sign, then look up theirs - but compare notes on one thing only: the <em>reason</em> listed under the pairing, not the placement. If the reason describes a friction you two actually have, you learned something useful. If it does not, your Moon and Venus signs are probably running the show, and the <a href="/blog/sun-moon-rising-signs-difference">Sun, Moon, and Rising guide</a> is your next read. Then run your two birth dates through the <a href="/#calculator">compatibility calculator</a> and read the result the way it was built to be read: as a conversation starter, not a verdict. <a href="/blog/how-to-read-compatibility-responsibly">Here is how to do that well</a>.</p>
+    `,
+  },
+  {
     slug: "how-to-calculate-life-path-number",
     title: "How to Calculate Your Life Path Number (Step by Step)",
     date: "2026-09-21",
