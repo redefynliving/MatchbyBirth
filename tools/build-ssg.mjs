@@ -177,36 +177,82 @@ function preRenderPages() {
     {
       route: 'contact',
       title: 'Contact Us | Match by Birth',
-      description: 'Get in touch with the Match by Birth team for support, feedback, or inquiries.',
+      description: 'Get in touch with the Match by Birth team for report support, payment help, privacy requests, feedback, or press inquiries.',
       content: `
         <header>
           <h1>Contact Us</h1>
           <p>We'd love to hear from you.</p>
         </header>
         <article>
-          <p>For support regarding purchased reports, general questions, or feedback, please email our team at:</p>
-          <p><strong>support@matchbybirth.com</strong></p>
-          <p>We typically respond to all support requests within 24 to 48 hours.</p>
+          <h2>Email us</h2>
+          <p>The fastest way to reach the Match by Birth team is email:</p>
+          <p><strong><a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a></strong></p>
+          <p>We typically reply within 1-2 business days. Including the details below helps us solve things in one reply instead of three.</p>
+
+          <h2>Report delivery and payment help</h2>
+          <p>If you purchased a compatibility report and something went wrong - a missing or broken report link, a wrong email address at checkout, or a charge you don't recognize - email us with:</p>
+          <ul>
+            <li>The email address used at checkout</li>
+            <li>The report link if you have it (check your inbox and spam folder first)</li>
+            <li>The approximate date of purchase</li>
+          </ul>
+          <p>Payments are processed by Stripe, so we never see your card number - but we can resend report links, fix delivery emails, and review refund requests. See our <a href="/refund-policy">refund policy</a> and <a href="/report-delivery">report delivery</a> pages for the details.</p>
+
+          <h2>Account, results, and email preferences</h2>
+          <p>Questions about a saved or shared result? Paste the result link into your email so we can find it. Every marketing email we send includes a one-click unsubscribe link at the bottom; if anything about your subscription looks wrong, forward the email you received and we'll sort it out.</p>
+
+          <h2>Privacy requests</h2>
+          <p>You can ask us to delete a shared result, a purchased report, or your email from our systems at any time. Send the relevant link or address to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a> and read the <a href="/privacy">privacy policy</a> for exactly what we store and why.</p>
+
+          <h2>Bugs and feedback</h2>
+          <p>Something broken or confusing? Tell us the page URL, what you expected, what happened instead, and your device and browser. Feedback about readings, guides, and features is genuinely welcome - this site improves one email at a time.</p>
         </article>
       `
     },
     {
       route: 'privacy',
       title: 'Privacy Policy | Match by Birth',
-      description: 'How Match by Birth processes calculator, result, payment, email, and analytics data.',
+      description: 'How Match by Birth processes calculator, result, payment, email, analytics, and advertising data - and how to ask us to delete yours.',
       content: `
         <header>
           <h1>Privacy Policy</h1>
-          <p>Last Updated: June 9, 2026</p>
+          <p>Last Updated: September 28, 2026</p>
         </header>
         <article>
-          <p>At Match by Birth, we take your privacy seriously. This policy explains how we collect, use, and protect your data.</p>
-          <h2>Birth Date Calculations</h2>
-          <p>We process all birth date, place, and time inputs transiently in server memory. We do not store birth dates in any database, and they are never exposed in sharing links.</p>
-          <h2>Payments</h2>
-          <p>Payments are handled securely by Stripe. We do not store or process your credit card details on our servers.</p>
-          <h2>Marketing & Emails</h2>
-          <p>If you subscribe to our newsletter, we store your email with consent. Every email contains a one-click unsubscribe link.</p>
+          <p>At Match by Birth, we take your privacy seriously. Birth dates are processed to calculate your result, but they are not stored in our database or included in new share links. This policy explains what we collect, what we never collect, and who handles what.</p>
+
+          <h2>1. Information you provide</h2>
+          <p>The free calculator receives display names or aliases and birth dates. If you purchase a report or opt into updates, we also receive your email address. Payment card information is collected directly by Stripe and is never handled by Match by Birth.</p>
+
+          <h2>2. Calculator processing and saved results</h2>
+          <p>Names and birth dates are transmitted securely to our calculation endpoint. Birth dates are used transiently to determine signs and scores, then discarded. We store a sanitized result containing display names, signs, scores, interpretations, and an opaque sharing identifier. Unpaid shared results expire after approximately 90 days. Purchased results and reports are retained so the buyer can revisit them, unless deletion is requested.</p>
+
+          <h2>3. Private sharing</h2>
+          <p>New result URLs contain a random share identifier rather than names or birth dates. Anyone who receives that link can view the sanitized result, so only share it with people you trust.</p>
+
+          <h2>4. Purchases and reports</h2>
+          <p>Stripe processes checkout and payment data. We store the checkout status, amount, currency, delivery email, and provider identifiers needed to fulfill or refund the purchase. Anthropic receives the sanitized signs, scores, and display names needed to generate a paid report; it does not receive birth dates or your email address. Resend receives the delivery email and completed report.</p>
+
+          <h2>5. Optional marketing email</h2>
+          <p>Report delivery does not automatically enroll you in marketing. Marketing consent is optional and unchecked by default. If you opt in, we retain your email until you unsubscribe or request deletion. Every marketing email includes a one-click unsubscribe link.</p>
+
+          <h2>6. Analytics and cookies</h2>
+          <p>We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. With your consent, we also use Microsoft Clarity to understand page interactions such as clicks, scrolling, and navigation. Analytics events do not include names, birth dates, emails, or private result tokens.</p>
+
+          <h2>7. Advertising</h2>
+          <p>We display ads served by Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to Match by Birth and/or other sites on the internet. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads">Google Ads Settings</a>, and you can learn more at <a href="https://policies.google.com/technologies/ads">Google's advertising privacy page</a>.</p>
+
+          <h2>8. Service providers</h2>
+          <p>Vercel: website hosting, server functions, and aggregate analytics. Microsoft Clarity: consent-based website interaction analytics. Supabase: secure database storage. Stripe: payment processing. Anthropic: paid report generation using sanitized result data. Resend: transactional and opted-in email delivery. Google AdSense: advertising.</p>
+
+          <h2>9. Your choices and rights</h2>
+          <p>You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>. We may ask for reasonable verification before deleting purchase records.</p>
+
+          <h2>10. Security and children</h2>
+          <p>We use access controls, encrypted connections, private report tokens, and restricted server credentials. No online system is risk-free. Match by Birth is not directed to children under 13, and children should not submit personal information.</p>
+
+          <h2>11. Contact</h2>
+          <p>Privacy questions may be sent to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.</p>
         </article>
       `
     },
