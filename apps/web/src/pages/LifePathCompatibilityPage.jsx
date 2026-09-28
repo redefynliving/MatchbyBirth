@@ -62,9 +62,9 @@ const readingModes = [
 ];
 
 const relatedGuides = [
-  ['Life Path Number Compatibility Guide', '/blog/life-path-number-compatibility-guide'],
-  ['Birth Date Compatibility vs. Zodiac Compatibility', '/blog/birth-date-compatibility-vs-zodiac-compatibility'],
-  ['How to Use Compatibility Results Responsibly', '/blog/how-to-use-compatibility-results-responsibly'],
+  ['How to Calculate Your Life Path Number', '/blog/how-to-calculate-life-path-number'],
+  ['Life Path vs Zodiac', '/blog/life-path-vs-zodiac'],
+  ['How to Use Compatibility Results Responsibly', '/blog/how-to-read-compatibility-responsibly'],
 ];
 
 function LifePathTool({ source = 'life_path_compatibility' }) {
