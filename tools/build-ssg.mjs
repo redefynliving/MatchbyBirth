@@ -451,7 +451,7 @@ function preRenderPages() {
           <h2>Responsible use</h2>
           <p>Life path compatibility is a reflection tool, not a relationship verdict. Use it to start a clearer conversation, not to outsource judgment.</p>
           <h2>Related guides</h2>
-          <p>Read the <a href="/blog/life-path-number-compatibility-guide">Life Path Number Compatibility Guide</a>, compare <a href="/blog/birth-date-compatibility-vs-zodiac-compatibility">birth date compatibility vs. zodiac compatibility</a>, or learn <a href="/blog/how-to-use-compatibility-results-responsibly">how to use compatibility results responsibly</a>.</p>
+          <p>Read the <a href="/blog/how-to-calculate-life-path-number">how to calculate your Life Path number</a>, compare <a href="/blog/life-path-vs-zodiac">Life Path vs Zodiac</a>, or learn <a href="/blog/how-to-read-compatibility-responsibly">how to use compatibility results responsibly</a>.</p>
           <p>Read <a href="/how-it-works">how Match by Birth works</a> or try the <a href="/tools/crush-birthday-compatibility">crush birthday compatibility calculator</a>.</p>
         </article>
       `
