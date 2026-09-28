@@ -61,6 +61,8 @@ export function getCategoryMeta(categoryKey) {
 }
 
 export function getPostCategory(post) {
+  if (post.slug === 'moon-signs-emotional-compatibility') return 'moon-signs';
+  
   if (post.category) return post.category;
   if (post.tags?.some((tag) => ['moon-signs', 'moon-sign', 'moon'].includes(tag))) return 'moon-signs';
   if (post.slug.endsWith('-compatibility') && !post.slug.includes('-compatibility-')) return 'sign-guide';
