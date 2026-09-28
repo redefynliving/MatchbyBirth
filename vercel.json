@@ -26,6 +26,66 @@
       "permanent": true
     },
     {
+      "source": "/blog/aries-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/taurus-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/gemini-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cancer-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/leo-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/virgo-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/libra-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/scorpio-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/sagittarius-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/capricorn-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aquarius-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pisces-compatibility",
+      "destination": "/blog/zodiac-sign-compatibility-ranked",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -123,6 +183,18 @@
     },
     {
       "source": "/404",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/daily-horoscope",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/weekly-horoscope",
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]
