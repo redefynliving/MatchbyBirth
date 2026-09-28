@@ -122,8 +122,8 @@ test('Life Path page works as one SEO hub for number and compatibility intent', 
   assert.match(page, /Compare two people/);
   assert.match(page, /calculateLifePathNumber/);
   assert.match(page, /life_path_single_completed/);
-  assert.match(page, /\/blog\/life-path-number-compatibility-guide/);
-  assert.match(page, /\/blog\/how-to-use-compatibility-results-responsibly/);
+  assert.match(page, /\/blog\/how-to-calculate-life-path-number/);
+  assert.match(page, /\/blog\/how-to-read-compatibility-responsibly/);
 
   assert.match(ssg, /Life Path Compatibility Calculator & Number Chart/);
   assert.match(ssg, /Compare two people or find one number/);
