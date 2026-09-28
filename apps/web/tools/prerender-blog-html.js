@@ -100,6 +100,12 @@ function renderDocument({
       .static-related strong { color: #1a1a2e; display: block; }
       .static-related span { color: #6f6780; display: block; font-weight: 400; margin-top: 4px; }
     </style>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7210866068673514" crossorigin="anonymous"></script>
+    
+    <meta name="p:domain_verify" content="0894662099a5980c098514f9a40d9d8e" />
+
+
     ${head}
     ${assetTags}
   </head>
