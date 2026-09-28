@@ -24,7 +24,7 @@ function PrivacyPolicyPage() {
             <header className="mb-10 border-b border-border pb-6">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">Privacy Policy</h1>
               <p className="text-sm font-medium uppercase tracking-wider text-primary mt-2">
-                Last Updated: July 19, 2026
+                Last Updated: September 28, 2026
               </p>
             </header>
 
@@ -76,12 +76,19 @@ function PrivacyPolicyPage() {
               <div>
                 <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">6. Analytics and Cookies</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. With your consent, we also use Microsoft Clarity to understand page interactions, such as clicks, scrolling, and navigation. Analytics events do not include names, birth dates, emails, or private result tokens. Advertising or other optional services may use cookies where disclosed by the site and permitted by your browser or consent settings.
+                  We use Vercel Analytics to measure aggregate events such as calculations, shares, checkout starts, and completed report delivery. With your consent, we also use Microsoft Clarity to understand page interactions, such as clicks, scrolling, and navigation. Analytics events do not include names, birth dates, emails, or private result tokens.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">7. Service Providers</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">7. Advertising</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  We display ads served by Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to Match by Birth and/or other sites on the internet. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>, and you can learn more at <a href="https://policies.google.com/technologies/ads" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Google's advertising privacy page</a>.
+                </p>
+              </div>
+
+              <div>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">8. Service Providers</h2>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2 leading-relaxed">
                   <li><strong className="text-foreground font-semibold">Vercel:</strong> website hosting, server functions, and aggregate analytics.</li>
                   <li><strong className="text-foreground font-semibold">Microsoft Clarity:</strong> consent-based website interaction analytics.</li>
@@ -89,25 +96,26 @@ function PrivacyPolicyPage() {
                   <li><strong className="text-foreground font-semibold">Stripe:</strong> payment processing.</li>
                   <li><strong className="text-foreground font-semibold">Anthropic:</strong> paid report generation using sanitized result data.</li>
                   <li><strong className="text-foreground font-semibold">Resend:</strong> transactional and opted-in email delivery.</li>
+                  <li><strong className="text-foreground font-semibold">Google AdSense:</strong> advertising.</li>
                 </ul>
               </div>
 
               <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">8. Your Choices and Rights</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">9. Your Choices and Rights</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline font-semibold">support@matchbybirth.com</a>. We may ask for reasonable verification before deleting purchase records.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">9. Security and Children</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">10. Security and Children</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   We use access controls, encrypted connections, private report tokens, and restricted server credentials. No online system is risk-free. Match by Birth is not directed to children under 13, and children should not submit personal information.
                 </p>
               </div>
 
               <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">10. Contact</h2>
+                <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">11. Contact</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   Privacy questions may be sent to <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline font-semibold">support@matchbybirth.com</a>.
                 </p>
