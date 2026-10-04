@@ -1,4 +1,5 @@
 import editorialPosts from './editorial-posts-2026-09.js';
+import editorialPostsOct2026 from './editorial-posts-2026-10.js';
 import sanityPosts from './sanity-posts.generated.js';
 import part1 from './posts-legacy-part1.js';
 import part2 from './posts-legacy-part2.js';
@@ -15,4 +16,4 @@ import part11 from './posts-legacy-part11.js';
 const posts = [...part1, ...part2, ...part3, ...part4, ...part5, ...part6, ...part7, ...part8, ...part9, ...part10, ...part11];
 
 export const existingPosts = posts;
-export default [...editorialPosts, ...posts, ...sanityPosts];
+export default [...editorialPostsOct2026, ...editorialPosts, ...posts, ...sanityPosts];
