@@ -27,11 +27,13 @@ async function main() {
     console.warn(`::warning::Topic runway is low: ${eligibleCount} eligible topics remain. Run the weekly topic-replenish workflow.`);
   }
   if (!topic) {
+    // Queue exhaustion is an expected state (weekly topic-replenish refills
+    // it). Exit cleanly so the scheduled run does not report a failure.
     const message = exhausted
       ? '[daily] no eligible topics remain (all slugs taken in Sanity). Replenish the topic queue.'
       : '[daily] no eligible topic today.';
-    console.error(`::error::${message}`);
-    process.exit(1);
+    console.warn(`::warning::${message}`);
+    return;
   }
   console.log(`[daily] topic: ${topic.slug} (${topic.keyword})`);
   const post = await draftPost(topic);
