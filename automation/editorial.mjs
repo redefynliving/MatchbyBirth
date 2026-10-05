@@ -83,7 +83,7 @@ async function callLLM(systemPrompt, userPrompt) {
   const res = await fetch(`${url.replace(/\/$/, '')}/chat/completions`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
-    body: JSON.stringify({ model, messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.7 }),
+    body: JSON.stringify({ model, messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userPrompt }], temperature: 0.7, max_completion_tokens: 16000 }),
   });
   if (!res.ok) throw new Error(`LLM ${res.status}`);
   const data = await res.json();
