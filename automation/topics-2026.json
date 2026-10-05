@@ -619,6 +619,132 @@
       "angle": "how compatibility reports can facilitate growth and development in relationships",
       "category": "birth-matching",
       "title": "Compatibility Reports and Relationship Growth: A Tool for Deepening Connections"
+    },
+    {
+      "slug": "using-compatibility-calculator-for-first-relationship",
+      "keyword": "compatibility calculator first relationship",
+      "angle": "Step‑by‑step guide for newcomers to use the free tool when starting a serious partnership.",
+      "category": "birth-matching",
+      "title": "How to Use a Free Compatibility Calculator for Your First Serious Relationship"
+    },
+    {
+      "slug": "numerology-compatibility-for-business-partners",
+      "keyword": "numerology compatibility business partners",
+      "angle": "Explain how personal numbers reveal strengths and challenges in professional collaborations.",
+      "category": "numerology",
+      "title": "Numerology Compatibility: Finding the Right Business Partner with Numbers"
+    },
+    {
+      "slug": "relationship-timing-when-to-propose-astrology",
+      "keyword": "best time to propose astrology",
+      "angle": "Use planetary cycles to identify optimal windows for taking the next romantic step.",
+      "category": "relationship-timing",
+      "title": "Astrological Relationship Timing: When Is the Best Time to Propose?"
+    },
+    {
+      "slug": "friendship-compatibility-using-birth-charts",
+      "keyword": "friendship compatibility birth chart",
+      "angle": "Show how to compare charts to discover natural friend affinities and growth areas.",
+      "category": "friendship",
+      "title": "Friendship Compatibility: How Birth Charts Reveal Your Best Friends"
+    },
+    {
+      "slug": "family-dynamics-astrology-birth-matching",
+      "keyword": "family dynamics birth matching",
+      "angle": "Demonstrate how exact birth matching clarifies parent‑child and sibling roles.",
+      "category": "family",
+      "title": "Family Dynamics: Using Exact Birth Matching to Understand Parent‑Child Relationships"
+    },
+    {
+      "slug": "workplace-team-building-astrology-reports",
+      "keyword": "workplace astrology team building",
+      "angle": "Guide managers on using compatibility reports to create balanced, productive teams.",
+      "category": "workplace",
+      "title": "Workplace Team Building: Leveraging Astrology Compatibility Reports for Cohesive Teams"
+    },
+    {
+      "slug": "responsible-use-astrology-compatibility-tools",
+      "keyword": "responsible use astrology compatibility",
+      "angle": "Outline ethical practices and limits when applying compatibility tools in personal life.",
+      "category": "responsible-use",
+      "title": "Responsible Use of Astrology Compatibility Tools: Best Practices"
+    },
+    {
+      "slug": "how-numerology-influences-relationship-cycles",
+      "keyword": "numerology relationship cycles",
+      "angle": "Explain the impact of personal numbers on recurring relationship patterns and timing.",
+      "category": "numerology",
+      "title": "How Numerology Influences Relationship Cycles and Compatibility"
+    },
+    {
+      "slug": "using-compatibility-report-to-improve-communication",
+      "keyword": "compatibility report improve communication",
+      "angle": "Show practical ways to translate report insights into everyday conversation habits.",
+      "category": "birth-matching",
+      "title": "Using Your Compatibility Report to Improve Communication with Your Partner"
+    },
+    {
+      "slug": "astrology-and-relationship-goals-alignment",
+      "keyword": "astrology relationship goals alignment",
+      "angle": "Help couples align long‑term aspirations by comparing chart strengths and challenges.",
+      "category": "zodiac",
+      "title": "Aligning Relationship Goals with Astrology: A Compatibility Perspective"
+    },
+    {
+      "slug": "friendship-compatibility-numbers-vs-astrology",
+      "keyword": "friendship compatibility numbers vs astrology",
+      "angle": "Compare numerology and astrology methods for evaluating friend fit, guiding users to the calculator.",
+      "category": "friendship",
+      "title": "Friendship Compatibility: Numbers vs. Astrology – Which Tells the Better Story?"
+    },
+    {
+      "slug": "birth-matching-for-stepfamily-integration",
+      "keyword": "birth matching stepfamily integration",
+      "angle": "Provide a roadmap for blending new family members using exact chart comparisons.",
+      "category": "family",
+      "title": "Integrating Stepfamilies: How Exact Birth Matching Helps Blend New Relationships"
+    },
+    {
+      "slug": "career-pairing-astrology-compatibility-for-cofounders",
+      "keyword": "astrology compatibility cofounders",
+      "angle": "Assist entrepreneurs in evaluating potential co‑founder dynamics through chart analysis.",
+      "category": "workplace",
+      "title": "Career Pairing: Astrology Compatibility for Startup Co‑Founders"
+    },
+    {
+      "slug": "relationship-timing-using-moon-phases",
+      "keyword": "relationship timing moon phases",
+      "angle": "Teach readers how to sync major relationship moves with supportive lunar phases.",
+      "category": "relationship-timing",
+      "title": "Relationship Timing: Harnessing Moon Phases to Plan Milestones"
+    },
+    {
+      "slug": "numerology-life-path-and-relationship-compatibility",
+      "keyword": "life path number relationship compatibility",
+      "angle": "Detail how each life‑path number interacts with others in love and partnership.",
+      "category": "numerology",
+      "title": "Life Path Numbers and Relationship Compatibility: A Numerology Guide"
+    },
+    {
+      "slug": "responsible-astrology-avoiding-prediction-fallacies",
+      "keyword": "responsible astrology avoiding fallacies",
+      "angle": "Identify common misinterpretations and offer guidance for accurate, ethical use.",
+      "category": "responsible-use",
+      "title": "Responsible Astrology: Avoiding Common Prediction Fallacies in Compatibility"
+    },
+    {
+      "slug": "using-birth-matching-to-resolve-family-conflicts",
+      "keyword": "birth matching resolve family conflicts",
+      "angle": "Show how precise chart data can pinpoint underlying tensions and suggest healing steps.",
+      "category": "family",
+      "title": "Resolving Family Conflicts with Exact Birth Matching Insights"
+    },
+    {
+      "slug": "workplace-communication-styles-astrology-profile",
+      "keyword": "workplace communication astrology profile",
+      "angle": "Map zodiac communication traits to improve teamwork and reduce misunderstandings.",
+      "category": "workplace",
+      "title": "Workplace Communication Styles: What Your Astrology Profile Reveals"
     }
   ],
   "note": "Dedup is enforced at runtime by checking existing Sanity slugs. Do not add pair-comparison slugs here — those 66 pages already exist. Dates verified from public 2026 forecasts; update yearly."
