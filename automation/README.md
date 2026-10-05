@@ -33,7 +33,7 @@ A rotating pool across your real verticals (not just relationships):
 ## Secrets (repo Settings → Secrets)
 - `SANITY_PROJECT_ID` (default `4qj4p6px`), `SANITY_DATASET` (`production`), `SANITY_API_VERSION` (`2025-01-01`)
 - `SANITY_API_TOKEN` — **write** token
-- `LLM_API_URL` (`https://api.groq.com/openai/v1`), `LLM_API_KEY` (free Groq key), `LLM_MODEL` (`llama-3.3-70b-versatile`)
+- `LLM_API_URL` (`https://api.groq.com/openai/v1`), `LLM_API_KEY` (free Groq key), `LLM_MODEL` (`openai/gpt-oss-120b` — Groq decommissioned `llama-3.3-70b-versatile` on 2026-08-16)
 - `VERCEL_DEPLOY_HOOK` — from Vercel project → Deploy Hooks
 - `BLOG_AUTO_PUBLISH` — `1` to auto-publish, `0` to leave as a raw draft for your weekly review
 
