@@ -38,27 +38,64 @@ function isPairComparison(slug) {
   return new Set(signHits).size >= 2;
 }
 
+function stripReasoning(text) {
+  // Reasoning models (e.g. gpt-oss) may wrap chain-of-thought in tags whose
+  // stray brackets break naive first-[ to last-] slicing. Drop it entirely.
+  return String(text || '')
+    .replace(/<think>[\s\S]*?<\/think>/gi, '')
+    .replace(/<\|start_of_thought\|>[\s\S]*?<\|end_of_thought\|>/gi, '');
+}
+
+function extractBalancedArrays(text) {
+  // Find top-level [...] regions with balanced brackets, ignoring brackets
+  // inside JSON strings. Returns every candidate region in order.
+  const regions = [];
+  let depth = 0;
+  let start = -1;
+  let inString = false;
+  let escaped = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (ch === '\\') escaped = true;
+      else if (ch === '"') inString = false;
+      continue;
+    }
+    if (ch === '"') inString = true;
+    else if (ch === '[') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (ch === ']') {
+      depth--;
+      if (depth === 0 && start >= 0) {
+        regions.push(text.slice(start, i + 1));
+        start = -1;
+      }
+      if (depth < 0) depth = 0;
+    }
+  }
+  return regions;
+}
+
 function extractTopics(raw) {
-  const text = String(raw || '').trim();
+  const text = stripReasoning(raw).trim();
   const candidates = [text];
   const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
   if (fenced) candidates.push(fenced[1].trim());
-
-  const arrayStart = text.indexOf('[');
-  const arrayEnd = text.lastIndexOf(']');
-  if (arrayStart >= 0 && arrayEnd > arrayStart) {
-    candidates.push(text.slice(arrayStart, arrayEnd + 1));
-  }
+  candidates.push(...extractBalancedArrays(text));
 
   for (const candidate of candidates) {
     try {
       const parsed = JSON.parse(candidate);
-      if (Array.isArray(parsed)) return parsed;
-      if (Array.isArray(parsed?.topics)) return parsed.topics;
+      if (Array.isArray(parsed) && parsed.length) return parsed;
+      if (Array.isArray(parsed?.topics) && parsed.topics.length) return parsed.topics;
     } catch {
       // Try the next extraction shape.
     }
   }
+  // Log a truncated preview so the next parse failure is diagnosable from the run log.
+  console.error(`[replenish] unparseable LLM response preview: ${text.slice(0, 500)}`);
   throw new Error('[replenish] LLM did not return a JSON topic array.');
 }
 
@@ -99,6 +136,7 @@ async function callLLM(prompt) {
             'Prioritize search intent and a clear path to the free compatibility calculator.',
             'Do not invent dates, planetary positions, statistics, or sources.',
             'Do not generate pair-comparison topics such as Aries and Scorpio compatibility.',
+            'Do not include any reasoning, thinking traces, or <think> tags in your output.',
             'Return ONLY a JSON array. No markdown, commentary, or code fences.',
           ].join(' '),
         },
