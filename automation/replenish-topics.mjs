@@ -46,9 +46,9 @@ function stripReasoning(text) {
     .replace(/<\|start_of_thought\|>[\s\S]*?<\|end_of_thought\|>/gi, '');
 }
 
-function extractBalancedArrays(text) {
-  // Find top-level [...] regions with balanced brackets, ignoring brackets
-  // inside JSON strings. Returns every candidate region in order.
+function extractBalanced(text, open, close) {
+  // Find top-level open..close regions with balanced delimiters, ignoring
+  // delimiters inside JSON strings. Returns every candidate region in order.
   const regions = [];
   let depth = 0;
   let start = -1;
@@ -63,10 +63,10 @@ function extractBalancedArrays(text) {
       continue;
     }
     if (ch === '"') inString = true;
-    else if (ch === '[') {
+    else if (ch === open) {
       if (depth === 0) start = i;
       depth++;
-    } else if (ch === ']') {
+    } else if (ch === close) {
       depth--;
       if (depth === 0 && start >= 0) {
         regions.push(text.slice(start, i + 1));
@@ -83,7 +83,7 @@ function extractTopics(raw) {
   const candidates = [text];
   const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i);
   if (fenced) candidates.push(fenced[1].trim());
-  candidates.push(...extractBalancedArrays(text));
+  candidates.push(...extractBalanced(text, '[', ']'));
 
   for (const candidate of candidates) {
     try {
@@ -94,8 +94,32 @@ function extractTopics(raw) {
       // Try the next extraction shape.
     }
   }
-  // Log a truncated preview so the next parse failure is diagnosable from the run log.
-  console.error(`[replenish] unparseable LLM response preview: ${text.slice(0, 500)}`);
+
+  // Last resort: a single malformed entry (e.g. an unescaped quote or a raw
+  // newline inside one topic's string) poisons the whole-array parse.
+  // Recover topic-by-topic from the largest array region instead.
+  const arrays = extractBalanced(text, '[', ']');
+  const biggest = arrays.sort((a, b) => b.length - a.length)[0];
+  if (biggest) {
+    const recovered = [];
+    for (const obj of extractBalanced(biggest.slice(1, -1), '{', '}')) {
+      try {
+        const parsed = JSON.parse(obj);
+        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) recovered.push(parsed);
+      } catch {
+        // Skip the malformed entry; keep the rest.
+      }
+    }
+    if (recovered.length) {
+      console.warn(
+        `[replenish] whole-array JSON parse failed; recovered ${recovered.length} individual topics.`,
+      );
+      return recovered;
+    }
+  }
+
+  // Log a generous preview so the next parse failure is diagnosable from the run log.
+  console.error(`[replenish] unparseable LLM response (length ${text.length}) preview: ${text.slice(0, 2000)}`);
   throw new Error('[replenish] LLM did not return a JSON topic array.');
 }
 
