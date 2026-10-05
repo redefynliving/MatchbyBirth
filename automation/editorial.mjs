@@ -78,7 +78,7 @@ You do not need a special moment to use this. Pick the one relationship or group
 async function callLLM(systemPrompt, userPrompt) {
   const url = process.env.LLM_API_URL;
   const key = process.env.LLM_API_KEY;
-  const model = process.env.LLM_MODEL || 'llama-3.3-70b-versatile';
+  const model = process.env.LLM_MODEL || 'openai/gpt-oss-120b';
   if (!url || !key) return null;
   const res = await fetch(`${url.replace(/\/$/, '')}/chat/completions`, {
     method: 'POST',
