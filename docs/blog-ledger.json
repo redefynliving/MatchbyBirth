@@ -70,14 +70,14 @@
     },
     {
       "day": 3,
-      "publish_date": "2026-07-08",
+      "publish_date": "2026-10-05",
       "slug": "why-birth-time-matters-in-compatibility",
       "title": "Why Birth Time Matters More Than You Think in Compatibility",
       "category": "learn-astrology",
       "primary_keyword": "birth time",
       "angle": "why exact time changes the read",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-05 in editorial-posts-2026-10.js. Pre-publish checklist passed all items: entertainment framing + disclaimer; no health/financial/legal advice; no named people; original text; facts sourced (rising sign ~2h per starpowered.com/nerdbot.com; Moon 2-3 days standard); no transit dates used; no affiliates; slug collision checked against 141 published slugs; near-duplicate check vs exact-mode-vs-sun-sign (angle materially different: compatibility-specific, internal link added)."
     },
     {
       "day": 4,
@@ -376,5 +376,8 @@
       "status": "planned",
       "notes": "Show draft to user before publishing live."
     }
+  ],
+  "first_run_notes_2026_10_05": [
+    "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8\u00b029 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22\u00b051-52 Libra; inferior conjunction Oct 24 at 0\u00b045 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
   ]
 }
