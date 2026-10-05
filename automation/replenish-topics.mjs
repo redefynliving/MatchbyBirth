@@ -151,6 +151,10 @@ async function callLLM(prompt) {
     body: JSON.stringify({
       model,
       temperature: 0.7,
+      // Reasoning models (e.g. gpt-oss) spend output tokens on hidden
+      // reasoning first; without an explicit budget the visible JSON gets
+      // truncated mid-array. 16k covers reasoning + 24 candidate topics.
+      max_completion_tokens: 16000,
       messages: [
         {
           role: 'system',
