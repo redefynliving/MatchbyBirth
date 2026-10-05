@@ -84,7 +84,7 @@ const editorialPostsOctober2026 = [
     category: "learn-astrology",
     content: `
 <p>Two people born on the same day can have noticeably different compatibility readings. The reason is rarely the planets - it is the clock. Your birth time decides which sign was rising, where your Moon sat, which houses your planets landed in, and who you show up as at first glance. Change the time by a few hours and the whole reading shifts.</p>
-<p><em>A quick note before we start: astrology is for entertainment and general reflection, not advice. Birth time sharpens a chart's detail; it does not change a relationship's outcome. For entertainment purposes only.</em></p>
+<p><em>A quick note before we start: astrology is for entertainment and general reflection, not advice. Birth time sharpens a chart's detail; it does not change a relationship's outcome. For entertainment and general information only. Not medical, financial, legal, or relationship advice.</em></p>
 
 <h2>At a Glance: The Short Version</h2>
 <p><strong>What birth time controls:</strong> Your rising sign (which changes roughly every two hours), your exact Moon sign, your house placements, and your descendant - the point that describes how you meet other people one on one.</p>
