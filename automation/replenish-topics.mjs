@@ -78,7 +78,7 @@ async function fetchSanityPosts() {
 async function callLLM(prompt) {
   const url = process.env.LLM_API_URL;
   const key = process.env.LLM_API_KEY;
-  const model = process.env.LLM_MODEL || 'llama-3.3-70b-versatile';
+  const model = process.env.LLM_MODEL || 'openai/gpt-oss-120b';
   if (!url || !key) throw new Error('[replenish] LLM_API_URL and LLM_API_KEY are required.');
 
   const res = await fetch(`${url.replace(/\/$/, '')}/chat/completions`, {
