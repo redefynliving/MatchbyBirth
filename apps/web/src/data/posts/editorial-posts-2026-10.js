@@ -131,6 +131,72 @@ const editorialPostsOctober2026 = [
 <p>Find one birth time tonight - yours or your partner's. Check the certificate, text a parent, look at the family records. Then run both dates through the <a href="/#calculator">compatibility calculator</a>, once with the time and once without, and notice which parts of the reading change. The parts that stay the same are your foundation; the parts that shift are where precision lives. And if you want the method for reading what comes out, <a href="/blog/how-to-read-synastry-chart">the synastry guide</a> walks through it step by step.</p>
     `,
   },
+  {
+    slug: "house-overlays-in-synastry",
+    title: "House Overlays in Synastry: What They Really Mean",
+    date: "2026-10-06",
+    description: "House overlays in synastry show where one person's planets land in your houses and what that activates. The real meaning, house by house, plus myths to skip.",
+    tags: ["synastry", "house-overlays", "compatibility", "birth-chart", "guide"],
+    category: "learn-astrology",
+    content: `
+<p>Some people walk into your life and immediately start rearranging the furniture. Not your actual furniture - your inner rooms. The way you think, the way you rest, the way you argue, the way you want. In synastry, that rearranging has a name: <strong>house overlays</strong>. They are one of the most personal layers of a compatibility chart, and also one of the most misunderstood.</p>
+<p><em>A quick note before we start: astrology is for entertainment and general reflection, not advice. House overlays describe dynamics, not destinies - they cannot tell you whether to stay, leave, or commit. For entertainment and general information only. Not medical, financial, legal, or relationship advice.</em></p>
+
+<h2>At a Glance: The Short Version</h2>
+<p><strong>What it is:</strong> A house overlay happens when one person's planet falls into the other person's house in synastry. The planet person activates a specific life area for the house person - identity, home, romance, work, and so on (lookupthestars.com).</p>
+<p><strong>The key distinction:</strong> Overlays show <em>where</em> you affect someone; aspects show <em>how</em> you interact. The house person usually feels the activation more, because the planet lands in their life domain (lookupthestars.com).</p>
+<p><strong>The honest caveat:</strong> House overlays do not guarantee compatibility. They show where and how someone gets under your skin - not whether the relationship lasts. And without accurate birth times, treat every overlay as tentative (astrologygeeks.com).</p>
+
+<h2>What a House Overlay Actually Is</h2>
+<p>Every birth chart is divided into twelve houses, each covering an area of life: identity, money, communication, home, romance, daily work, partnership, shared resources, beliefs, career, friendship, and the unconscious. In synastry - the technique of laying two charts on top of each other - you can see where one person's planets land inside the other person's houses. Those landings are the overlays.</p>
+<p>Cafe Astrology offers the clearest mental image: a house overlay works like a <strong>permanent transit</strong> to that house of your chart. Just as a transiting planet temporarily lights up an area of life, another person's planet sitting in your house keeps that area lit for as long as they are around (cafeastrology.com).</p>
+<p>Every overlay has two roles. The <strong>planet person</strong> brings the energy - Mars acts, Venus attracts, the Moon feels, Mercury talks. The <strong>house person</strong> feels where it lands, because it is landing in their inner rooms. As a rule, the house person feels the activation more (lookupthestars.com). If their Saturn falls in your 4th house, you are the one whose sense of home and security gets the Saturn treatment.</p>
+<p>If you are new to reading two charts together, <a href="/blog/how-to-read-synastry-chart">the synastry beginner's guide</a> walks through the full method - overlays are one of its four steps.</p>
+
+<h2>Overlays Show Where, Aspects Show How</h2>
+<p>This is the sentence that unlocks the whole technique: <strong>house overlays show <em>where</em> you affect someone; aspects show <em>how</em> you interact</strong> (lookupthestars.com). An aspect between their Venus and your Mars describes the style of attraction - the flavor of the conversation between those two planets. Their Venus landing in your 5th house describes the territory: romance, play, and creativity become the rooms where the relationship happens.</p>
+<p>Overlays also explain one of synastry's strangest effects. Strong overlays can make a connection feel fated or strangely familiar even when, on paper, two people have little in common (oxyness.com). Someone's planet has walked into a room of yours that rarely gets visitors, and the novelty registers as significance. The feeling is real. The conclusion - "this must be destiny" - is not.</p>
+
+<h2>The House-by-House Map</h2>
+<p>Here is the traditional read on what each house overlay tends to activate for the house person. Treat these as a map of <em>where the relationship gets personal</em>, not as verdicts - and remember context always matters (lookupthestars.com):</p>
+<p><strong>1st house - identity.</strong> Their planets here touch how you see yourself. You may feel unusually seen and energized around them - or unusually self-conscious.</p>
+<p><strong>2nd house - values and resources.</strong> They activate your sense of worth, your money habits, what you value. Practical help or value clashes tend to surface here.</p>
+<p><strong>3rd house - communication.</strong> Daily talk, thinking patterns, the rhythm of ordinary days. Conversation either flows or grates.</p>
+<p><strong>4th house - home and roots.</strong> Your emotional foundation, family patterns, sense of security. This overlay often carries a "feels like family" quality (theinnerwheel.com).</p>
+<p><strong>5th house - romance and play.</strong> Dating energy, creativity, fun. The relationship's playground.</p>
+<p><strong>6th house - routine and work.</strong> Daily habits, health rhythms, how you divide the labor of life. Helpful or nagging, sometimes both.</p>
+<p><strong>7th house - partnership itself.</strong> The most "relationship" of the overlays: their planets here press directly on your one-on-one bonding patterns.</p>
+<p><strong>8th house - intimacy and shared resources.</strong> The deep end: trust, merging, transformation. Can feel consuming or magnetic - but intensity here is not the same as health (oxyness.com).</p>
+<p><strong>9th house - beliefs and horizons.</strong> Worldview, adventure, what you are reaching toward. They may widen your world or challenge your certainties.</p>
+<p><strong>10th house - ambition and reputation.</strong> Career, public image, long-term goals. Their energy can fuel your ambition - or turn it into pressure (lookupthestars.com).</p>
+<p><strong>11th house - friendship and future plans.</strong> Community, shared dreams, the social layer. The "us plus our people" zone.</p>
+<p><strong>12th house - the unconscious.</strong> Hidden patterns, what you keep private, the things you do not show. Overlays here can feel strangely fated - and confusing, because the activation happens below the surface.</p>
+<p>For the full tour of what each house covers on its own, <a href="/blog/twelve-astrological-houses-compatibility-complete-guide">the twelve houses compatibility guide</a> goes room by room.</p>
+
+<h2>The Pop Astrology Corrective</h2>
+<p>Search "house overlays" and you will find verdicts everywhere: their Venus in your 7th means soulmates, their Saturn in your 12th means run. This is the part to unlearn. Overlays describe <em>activation zones</em> - where someone gets under your skin - not compatibility scores. As Look Up The Stars puts it, house overlays do not guarantee compatibility; they show where and how someone gets under your skin (lookupthestars.com).</p>
+<p>The 8th house gets the most dramatic writing online, and it deserves a specific caution: 8th-house overlays show up in friendships and family bonds too, not only romance (nyravale.wordpress.com). Intensity is information, not a verdict - and not a measure of the relationship's health.</p>
+<p>Saturn overlays get similar treatment. Someone's Saturn in one of your personal houses can feel stabilizing - or heavy - depending on the whole picture (oxyness.com). One overlay never tells the story alone.</p>
+
+<h2>The Birth Time Problem</h2>
+<p>Here is the unglamorous catch: <strong>house overlays depend heavily on accurate birth time for the person whose houses are being used</strong>. If that person's birth time is approximate or unknown, treat the overlay meanings as tentative rather than fixed (astrologygeeks.com).</p>
+<p>Two more technical wrinkles worth knowing. The house system you use can shift a planet into a neighboring house, especially near a cusp or at higher latitudes - the planet's position stays the same, but its house context changes (astrologygeeks.com). And overlays run both ways: their Venus may fall in your 5th house while your Venus falls in their 11th, telling two different stories (astrologygeeks.com).</p>
+<p><a href="/blog/why-birth-time-matters-in-compatibility">The birth-time guide</a> covers exactly what goes fuzzy - and what stays readable - when times are missing.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>Do house overlays work in both directions?</h3>
+<p>Yes - and the two directions can tell different stories. Always read both: where their planets land in your houses, and where yours land in theirs. One direction might be all romance while the other is all friendship.</p>
+<h3>Which house overlays matter most in synastry?</h3>
+<p>Tradition points to the 1st, 4th, 5th, 7th, 8th, and 12th houses as the most relationship-defining overlays - but context always matters more than any ranking (lookupthestars.com). A quiet 2nd-house overlay in a committed partnership can matter more than a dramatic 8th-house one in a fling.</p>
+<h3>Can house overlays tell me if we will last?</h3>
+<p>No. They tell you where the relationship gets personal and memorable. Staying power lives in the aspects between your planets - especially Saturn contacts - and in real life: communication, repair, and choice. Overlays describe the terrain, not the destination.</p>
+<h3>What if I don't know our birth times?</h3>
+<p>Then read the overlays lightly or skip them. Planetary aspects between the two charts stay readable from dates alone and carry most of the meaning. Times add precision, not magic.</p>
+
+<h2>Tonight's Action</h2>
+<p>Find one overlay tonight. Pull up both charts - or run your dates through the <a href="/#calculator">compatibility calculator</a> - and spot a single planet of theirs landing in one of your houses. Then write one honest sentence about where you actually feel that person in your life: your confidence, your routines, your ambitions, your rest. Compare the sentence to the house meaning above. Where they match, you have found an activation zone; where they do not, trust your lived experience over the map. And if you want the full reading method, <a href="/blog/how-to-read-synastry-chart">the synastry guide</a> puts overlays back into the whole picture.</p>
+    `,
+  },
 ];
 
 export default editorialPostsOctober2026;
