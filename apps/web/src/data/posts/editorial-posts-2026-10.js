@@ -45,7 +45,7 @@ const editorialPostsOctober2026 = [
 <p><strong>Their planets in your 8th house</strong> (intimacy, merging) create intensity and vulnerability. Powerful bonding or power struggles, sometimes both.</p>
 <p><strong>Their planets in your 4th house</strong> (home, emotional roots) feel familiar fast - comfort, or old family patterns waking up.</p>
 <p><strong>Their planets in your 1st house</strong> (identity) mean they see you vividly - and you feel seen, for better or worse.</p>
-<p>House overlays are directional: their Mars in your 7th house feels different from your Mars in their 7th. Read both directions. The houses receiving the most planets show where the relationship concentrates its energy.</p>
+<p>House overlays are directional: their Mars in your 7th house feels different from your Mars in their 7th. Read both directions. The houses receiving the most planets show where the relationship concentrates its energy. For the full house-by-house map of what each overlay activates, see <a href="/blog/house-overlays-in-synastry">House Overlays in Synastry: What They Really Mean</a>.</p>
 
 <h2>Step 4: Look at Saturn - the Long-Term Glue</h2>
 <p>Beginners obsess over Venus and Mars. Veterans check Saturn. Saturn contacts in synastry describe commitment, responsibility, and staying power - the unglamorous infrastructure a relationship stands on.</p>
