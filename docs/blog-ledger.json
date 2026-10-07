@@ -98,8 +98,8 @@
       "category": "learn-astrology",
       "primary_keyword": "7th house",
       "angle": "commitment, mirroring, and roles",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-07 in editorial-posts-2026-10.js (commit 84e93afd). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer present; no health/financial/legal advice; no outcome promises (post explicitly denies spouse-naming, wedding timing, and verdicts); no named real people; original text; facts sourced (7th=partnership axis, Descendant, rules marriage/business/contracts/open enemies: astrology.com; 5th-vs-7th binding distinction: astrology42.com; 1st/7th mirror, open rivals: theinscribermag.com; cooperation/compromise, partner traits: indastro.com; Libra/Venus natural rulership, cusp+ruler reading method, empty-7th guidance: astralunaria.com; ruling-planet-as-guide: insightfulpsychics.com; Descendant energies sought in others: yourtango.com); no transit dates used; no affiliates; nothing personal; slug collision-checked against repo (no match; no existing 7th-house-specific post; twelve-houses posts cover 7th in one paragraph only); angle distinct from day-4 house-overlays 7th section (axis/commitment/mirroring vs overlay technique); meta 159 chars with keyword front-loaded; 4 internal links + calculator; single H1, H2s answer related questions. Note: item's pre-waiver 'show draft' note superseded by Alijah's 2026-10-04 per-draft-approval waiver (approval_policy unchanged)."
     },
     {
       "day": 6,
@@ -378,6 +378,6 @@
     }
   ],
   "first_run_notes_2026_10_05": [
-    "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8°29 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22°51-52 Libra; inferior conjunction Oct 24 at 0°45 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
+    "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8\u00b029 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22\u00b051-52 Libra; inferior conjunction Oct 24 at 0\u00b045 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
   ]
 }
