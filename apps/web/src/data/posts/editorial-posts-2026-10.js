@@ -197,6 +197,62 @@ const editorialPostsOctober2026 = [
 <p>Find one overlay tonight. Pull up both charts - or run your dates through the <a href="/#calculator">compatibility calculator</a> - and spot a single planet of theirs landing in one of your houses. Then write one honest sentence about where you actually feel that person in your life: your confidence, your routines, your ambitions, your rest. Compare the sentence to the house meaning above. Where they match, you have found an activation zone; where they do not, trust your lived experience over the map. And if you want the full reading method, <a href="/blog/how-to-read-synastry-chart">the synastry guide</a> puts overlays back into the whole picture.</p>
     `,
   },
+  {
+    slug: "seventh-house-partnership-axis",
+    title: "The 7th House in Astrology: The Partnership Axis",
+    date: "2026-10-07",
+    description: "The 7th house in astrology rules marriage, committed partnerships, business partners, and contracts. Learn what the partnership house means and how to read it.",
+    tags: ["7th-house", "houses", "partnership", "commitment", "birth-chart", "compatibility"],
+    category: "learn-astrology",
+    content: `
+<p>Every chart has a "me" house and a "we" house. The 1st house is you: identity, body, first impressions. Directly across the wheel sits the 7th - the house of the other. Marriage, committed partnership, business alliances, signed contracts, and, in a twist most beginners miss, your open rivals all live here. If the 1st house is who you are alone, the 7th is who you become with someone.</p>
+<p><em>A quick note before we start: astrology is for entertainment and general reflection, not advice. The 7th house describes relationship patterns, not verdicts - it cannot tell you who to marry, when, or whether to stay. For entertainment and general information only. Not medical, financial, legal, or relationship advice.</em></p>
+
+<h2>At a Glance: The Short Version</h2>
+<p><strong>What it is:</strong> The 7th house is the partnership axis of the birth chart, sitting directly opposite the 1st house of self. Its cusp is called the Descendant, the point across the wheel from your Ascendant (astralunaria.com).</p>
+<p><strong>What it rules:</strong> Marriage and committed romance, business partnerships, contracts and legal agreements, negotiations - and open enemies, the people who oppose you face to face (astrology.com; theinscribermag.com).</p>
+<p><strong>How to read it:</strong> Note the sign on the 7th-house cusp, any planets sitting inside, and where the cusp's ruling planet lands in your chart. The story lives in the combination (astralunaria.com; insightfulpsychics.com).</p>
+<p><strong>The honest caveat:</strong> An empty 7th house says nothing bad about your love life - most people have several empty houses and partner up just fine. And no placement here can name your future spouse or time a wedding. Patterns, not persons.</p>
+
+<h2>What the 7th House Rules</h2>
+<p>Tradition calls it the house of partnership, and the name undersells it. The 7th covers every serious one-to-one bond: marriage, long-term romance, business partnerships, and the contracts and legal agreements that make partnerships official (astrology.com; astrology42.com). It also rules open enemies and rivals - the people who stand against you openly, a different flavor from hidden undermining (theinscribermag.com). Same axis, flipped: the 7th is where you meet the other, ally or adversary.</p>
+<p>The move from the 1st to the 7th is the chart's big turn from self to other. Where the 1st house says "I am," the 7th says "we are": cooperation, compromise, and the quality of how you relate (astrology.com; indastro.com). It is naturally associated with Libra and Venus, which is why balance, fairness, and attraction color everything this house touches (astralunaria.com).</p>
+<p>One useful distinction: the 5th house is romance and affairs - butterflies, dating, the spark. The 7th is what happens when a bond gets binding: commitment, shared purpose, the paperwork (astrology42.com). A 5th-house fling can grow into a 7th-house partnership, but they are different rooms with different rules.</p>
+
+<h2>The 1st/7th Axis: Self Meets Other</h2>
+<p>Because it sits opposite the 1st house, the 7th works like a mirror. The 1st is how you meet the world; the 7th describes what you look for in the people who meet you back (theinscribermag.com). The sign on your Descendant points to energies you don't easily generate on your own - so you go looking for them in partners (yourtango.com). "Opposites attract" isn't just a saying here; it's the geometry of the chart (indastro.com).</p>
+<p>This is also where projection lives. The traits that fascinate or frustrate you most in partners often mirror disowned parts of yourself. A well-read 7th house doesn't just describe your relationships - it describes the roles you keep casting: the peacemaker, the challenger, the steady one, the wildcard. Read it as a casting sheet, not a verdict.</p>
+<p>For the two-chart view - how your 7th interacts with someone else's planets - <a href="/blog/how-to-read-synastry-chart">the synastry guide</a> walks through the full method, and <a href="/blog/house-overlays-in-synastry">the house-overlays post</a> covers what it means when their planets land in your 7th.</p>
+
+<h2>How to Find Your 7th House</h2>
+<p>Pull up your birth chart and find the Descendant - usually marked "DC" on the right side of the wheel, directly across from the Ascendant ("AC"). Note the sign on that cusp and any planets in the 7th-house wedge. Then find the planet that rules the cusp sign and see where it sits: that planet is the 7th house's landlord, and its placement carries real weight (insightfulpsychics.com).</p>
+<p>One caution: house cusps depend on an accurate birth time. A wrong or missing time can slide the Descendant into the wrong sign - <a href="/blog/why-birth-time-matters-in-compatibility">the birth-time guide</a> explains exactly what goes fuzzy and what stays readable when times are missing.</p>
+
+<h2>Planets in the 7th House: A Quick Flavor Guide</h2>
+<p>Planets inside the 7th color how partnership feels to you - texture, not destiny. A few traditional flavors, read lightly: Venus here, the natural ruler at home, puts harmony and attraction at the center of how you bond (astralunaria.com). Mercury here makes mental connection the priority - you bond through talk, wit, and shared ideas (insightfulpsychics.com).</p>
+<p>Whatever sits there - or doesn't - use the same method every time: sign on the cusp, planets inside, then the cusp ruler's sign, house, and aspects. Hard contacts describe friction to work with, easy ones describe comfort to enjoy; neither is a verdict on whether a relationship will last.</p>
+
+<h2>The Pop-Astrology Corrective: What the 7th House Cannot Tell You</h2>
+<p><strong>It doesn't name your person.</strong> The 7th describes patterns in how you partner - what you seek, what you project, how you commit. It cannot pick a name out of a crowd or time a wedding. Anyone selling you a spouse's initials from your Descendant is selling something else.</p>
+<p><strong>An empty 7th house is not a curse.</strong> No planets there just means no concentrated natal focus in that slice of the wheel. Read the cusp sign and its ruling planet instead - many well-partnered people have empty 7th houses (astralunaria.com; insightfulpsychics.com).</p>
+<p><strong>There are no "bad" 7th houses.</strong> Placements that get called "difficult" online describe the work in a partnership, not the outcome. The chart shows terrain; you and the other person choose the route.</p>
+
+<h2>Frequently Asked Questions</h2>
+<h3>What is the 7th house in astrology?</h3>
+<p>The partnership house: the slice of your birth chart governing committed one-to-one relationships - marriage, long-term romance, business partners, contracts - sitting directly opposite the 1st house of self. Its cusp is the Descendant (astralunaria.com).</p>
+<h3>What does the 7th house rule?</h3>
+<p>Marriage and committed partnerships, business alliances, contracts and legal agreements, negotiations, and open rivals - everyone you meet as an equal, ally or adversary (astrology.com; theinscribermag.com).</p>
+<h3>What does it mean if my 7th house is empty?</h3>
+<p>Only that no major planets sat there at your birth. It says nothing negative about your love life. Read the sign on the cusp and where that sign's ruling planet sits - that is where the story lives (astralunaria.com; insightfulpsychics.com).</p>
+<h3>How do I find my 7th house?</h3>
+<p>Look for the Descendant (DC) on a birth chart - the point directly across from your Ascendant. The sign there and any planets in that wedge are your 7th house. You need a reasonably accurate birth time for the cusp to be right.</p>
+<h3>Can the 7th house tell me who I'll marry?</h3>
+<p>No. It describes how you relate and what you seek in partners - patterns, not persons. It can't name anyone, time anything, or guarantee outcomes. That's what keeps astrology reflection rather than fortune-telling.</p>
+
+<h2>Tonight's Action</h2>
+<p>Find your Descendant tonight. Pull up your chart - or run your birth details through the <a href="/#calculator">compatibility calculator</a> - and write down the sign on your 7th-house cusp. Then write one honest sentence about the trait you most consistently seek in partners: steadiness, spark, depth, humor, ambition. Compare the sentence to the sign. Where they rhyme, you've found your axis talking; where they don't, trust your lived pattern over the symbol. And if you want the full twelve-house map, <a href="/blog/twelve-astrological-houses-explained">the houses guide</a> puts the 7th back into the whole wheel.</p>
+    `,
+  },
 ];
 
 export default editorialPostsOctober2026;
