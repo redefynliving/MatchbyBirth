@@ -109,19 +109,19 @@
       "category": "learn-astrology",
       "primary_keyword": "venus sign",
       "angle": "love style and attraction patterns",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "skipped",
+      "notes": "SKIPPED 2026-10-08: near-duplicate of published post 'venus-signs-love-language' (Venus Signs and the Language of Love, 2026-07-23), which already covers Venus-sign love styles, what Venus reveals about how you love, and how you need to be loved. Same topic angle; per duplicate rules. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
     },
     {
       "day": 7,
-      "publish_date": "2026-07-12",
+      "publish_date": "2026-10-08",
       "slug": "venus-mars-aspects-attraction",
       "title": "Venus-Mars Aspects: Where Attraction Actually Starts",
       "category": "learn-astrology",
       "primary_keyword": "venus mars aspects",
       "angle": "desire, chemistry, and pursuit",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-08 (commit 1141f8ac0dac) to editorial-posts-2026-10.js. Checklist: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post denies verdicts, guarantees); no named real people; original text; facts sourced (advanced-astrology.com, astrologyschool.com, chi-nese.com, starsandtarot.com, astrologyaddict.com); no transit dates; no affiliates; nothing personal. Slug collision-checked against full repo; angle distinct from venus-signs-love-language and astrology-aspects-explained. Meta 159 chars, keyword front-loaded. Internal links: how-to-read-synastry-chart, venus-signs-love-language + /#calculator. Single H1 (template), H2s answer related questions. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
     },
     {
       "day": 8,
