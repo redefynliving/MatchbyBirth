@@ -217,7 +217,7 @@ const postsPart = [
     "faq": [
       {
         "question": "When does Venus retrograde start and end in 2026?",
-        "answer": "Venus stations retrograde on October 3, 2026 at 14 degrees Scorpio and stations direct on November 14, 2026 at 24 degrees Libra — a 41-day retrograde period. The shadow phase began in mid-August 2026 and extends until mid-December 2026 when Venus re-passes the retrograde degree."
+        "answer": "Venus stations retrograde on October 3, 2026 at 8°29′ Scorpio and stations direct on November 13, 2026 at 22°51′ Libra — a 41-day retrograde period. The shadow phase began in late August 2026 and extends until mid-December 2026 when Venus re-passes the retrograde degree."
       },
       {
         "question": "What does Venus retrograde in Scorpio mean for relationships?",
@@ -225,7 +225,7 @@ const postsPart = [
       },
       {
         "question": "What happens when Mercury also goes retrograde October 2026?",
-        "answer": "Mercury stations retrograde on October 24, 2026 at 22 degrees Scorpio, one day before Venus backs into Libra. This creates a rare double retrograde — both Venus and Mercury stationary retrograde from October 24 to November 14, then both station direct on the same day. This double retrograde amplifies relationship and communication review themes."
+        "answer": "Mercury stations retrograde on October 24, 2026 at 21° Scorpio, one day before Venus backs into Libra. This creates a rare double retrograde — both Venus and Mercury retrograde from October 24 to November 13, then both station direct on the same day. This double retrograde amplifies relationship and communication review themes."
       },
       {
         "question": "Is Venus retrograde bad for love and relationships?",
