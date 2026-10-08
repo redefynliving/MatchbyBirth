@@ -379,5 +379,24 @@
   ],
   "first_run_notes_2026_10_05": [
     "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8\u00b029 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22\u00b051-52 Libra; inferior conjunction Oct 24 at 0\u00b045 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
-  ]
+  ],
+  "maintenance_notes_2026_10_08": {
+    "date": "2026-10-08",
+    "item": "Corrected wrong station dates/degrees in post 'venus-retrograde-scorpio-libra-2026-relationship-healing' (posts-legacy-part8.js, commit 3cd7194ab7c6).",
+    "corrections": [
+      "Venus stations retrograde Oct 3, 2026 at 8\u00b029\u2032 Scorpio (was: 14\u00b0 Scorpio)",
+      "Venus stations direct Nov 13, 2026 at 22\u00b051\u2032 Libra (was: Nov 14 at 24\u00b0 Libra)",
+      "Title/H1/section date range October 3\u201314 \u2192 October 3 \u2013 November 13",
+      "Mercury stations retrograde Oct 24, 2026 at 21\u00b0 Scorpio (was: 22\u00b0); both planets station direct Nov 13 (was: Nov 14)",
+      "Pre-shadow began late August 2026 (was: mid-August)"
+    ],
+    "sources": [
+      "astrology.com",
+      "paulalustemberg.com",
+      "cafeastrology.com",
+      "deluxeastrology.com",
+      "synthesisastrology.com"
+    ],
+    "note": "The 2026-10-05 first-run check missed this slug (it exists in posts-legacy-part8.js). The other two Venus retrograde posts were re-checked: venus-retrograde-2026 (no degrees cited, dates Oct 3\u2013Nov 13 correct) and venus-retrograde-survival-guide-relationship-healing (generic 41-day phasing, no specific dates/degrees) \u2014 no fixes needed."
+  }
 }
