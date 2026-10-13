@@ -248,7 +248,7 @@ export default function PremiumPage() {
 	              <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
 	                <Link to="/report-delivery" className="text-primary hover:underline">Report delivery</Link>
 	                <Link to="/refund-policy" className="text-primary hover:underline">Refund policy</Link>
-	                <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline">support@matchbybirth.com</a>
+	                <a href="mailto:redefynliving@gmail.com" className="text-primary hover:underline">redefynliving@gmail.com</a>
 	              </div>
 	            </section>
 	          </div>
