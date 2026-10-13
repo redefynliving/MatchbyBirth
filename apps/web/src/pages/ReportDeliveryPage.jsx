@@ -57,7 +57,7 @@ function ReportDeliveryPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground">If something goes wrong</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  If the first report attempt fails, delivery is retried automatically. If you paid but cannot access the report, email <a href="mailto:support@matchbybirth.com" className="font-semibold text-primary hover:underline">support@matchbybirth.com</a> with your checkout email and any result link you have.
+                  If the first report attempt fails, delivery is retried automatically. If you paid but cannot access the report, email <a href="mailto:redefynliving@gmail.com" className="font-semibold text-primary hover:underline">redefynliving@gmail.com</a> with your checkout email and any result link you have.
                 </p>
               </section>
 
