@@ -26,8 +26,8 @@ function ContactPage() {
           <div className="bg-card border border-border rounded-3xl p-8 md:p-10 shadow-sm shadow-elevated space-y-8">
             <div className="text-center bg-muted/40 py-4 px-6 rounded-2xl border border-border/50">
               <span className="text-xs font-semibold text-muted-foreground block mb-1">Email us at</span>
-              <a href="mailto:support@matchbybirth.com" className="text-xl md:text-2xl font-bold text-primary hover:text-primary/95 transition-colors">
-                support@matchbybirth.com
+              <a href="mailto:redefynliving@gmail.com" className="text-xl md:text-2xl font-bold text-primary hover:text-primary/95 transition-colors">
+                redefynliving@gmail.com
               </a>
               <p className="text-muted-foreground text-sm mt-2">We typically reply within 1-2 business days.</p>
             </div>
@@ -57,7 +57,7 @@ function ContactPage() {
             <section className="border-t border-border pt-6">
               <h2 className="text-base md:text-lg font-semibold text-foreground mb-3">Privacy requests</h2>
               <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                You can ask us to delete a shared result, a purchased report, or your email from our systems at any time. Send the relevant link or address to support@matchbybirth.com and read the privacy policy for exactly what we store and why.
+                You can ask us to delete a shared result, a purchased report, or your email from our systems at any time. Send the relevant link or address to redefynliving@gmail.com and read the privacy policy for exactly what we store and why.
               </p>
             </section>
 
