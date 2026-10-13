@@ -93,8 +93,8 @@ function AboutPage() {
                 <h2 className="text-2xl font-semibold tracking-tight text-foreground">Support and feedback</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
                   Questions, corrections, and support requests can be sent to{' '}
-                  <a href="mailto:support@matchbybirth.com" className="font-semibold text-primary hover:underline">
-                    support@matchbybirth.com
+                  <a href="mailto:redefynliving@gmail.com" className="font-semibold text-primary hover:underline">
+                    redefynliving@gmail.com
                   </a>
                   . We review feedback to make the calculator clearer, more useful, and easier to understand.
                 </p>
