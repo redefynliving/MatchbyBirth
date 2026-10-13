@@ -20,9 +20,9 @@ function Footer() {
               Clear, private compatibility readings for romantic, friendship, family, work, and group connections.
             </p>
             <div className="flex flex-col space-y-2 pt-2">
-              <a href="mailto:support@matchbybirth.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:redefynliving@gmail.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                 <Mail className="w-4 h-4" />
-                <span>support@matchbybirth.com</span>
+                <span>redefynliving@gmail.com</span>
               </a>
             </div>
           </div>
