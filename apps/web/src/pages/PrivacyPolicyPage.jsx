@@ -103,7 +103,7 @@ function PrivacyPolicyPage() {
               <div>
                 <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">9. Your Choices and Rights</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline font-semibold">support@matchbybirth.com</a>. We may ask for reasonable verification before deleting purchase records.
+                  You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:redefynliving@gmail.com" className="text-primary hover:underline font-semibold">redefynliving@gmail.com</a>. We may ask for reasonable verification before deleting purchase records.
                 </p>
               </div>
 
@@ -117,7 +117,7 @@ function PrivacyPolicyPage() {
               <div>
                 <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">11. Contact</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Privacy questions may be sent to <a href="mailto:support@matchbybirth.com" className="text-primary hover:underline font-semibold">support@matchbybirth.com</a>.
+                  Privacy questions may be sent to <a href="mailto:redefynliving@gmail.com" className="text-primary hover:underline font-semibold">redefynliving@gmail.com</a>.
                 </p>
               </div>
             </section>
