@@ -43,7 +43,7 @@ function RefundPolicyPage() {
               <section>
                 <h2 className="text-xl font-semibold text-foreground">When refunds are available</h2>
                 <p className="mt-3 leading-relaxed text-muted-foreground">
-                  Email <a href="mailto:support@matchbybirth.com" className="font-semibold text-primary hover:underline">support@matchbybirth.com</a> if you paid and did not receive access, received a broken report link, were charged incorrectly, or the report could not be generated. Include the checkout email and any result or report link you have.
+                  Email <a href="mailto:redefynliving@gmail.com" className="font-semibold text-primary hover:underline">redefynliving@gmail.com</a> if you paid and did not receive access, received a broken report link, were charged incorrectly, or the report could not be generated. Include the checkout email and any result or report link you have.
                 </p>
               </section>
 
