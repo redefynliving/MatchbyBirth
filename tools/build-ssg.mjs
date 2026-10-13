@@ -95,7 +95,7 @@ function preRenderPages() {
           <h2>How privacy works</h2>
           <p>Birth dates are processed for the calculation and are not used for identity profiling. Shared result links use opaque URLs and do not put raw birth details in the address.</p>
           <h2>Support and feedback</h2>
-          <p>Questions, corrections, and support requests can be sent to support@matchbybirth.com.</p>
+          <p>Questions, corrections, and support requests can be sent to redefynliving@gmail.com.</p>
         </article>
       `
     },
@@ -186,7 +186,7 @@ function preRenderPages() {
         <article>
           <h2>Email us</h2>
           <p>The fastest way to reach the Match by Birth team is email:</p>
-          <p><strong><a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a></strong></p>
+          <p><strong><a href="mailto:redefynliving@gmail.com">redefynliving@gmail.com</a></strong></p>
           <p>We typically reply within 1-2 business days. Including the details below helps us solve things in one reply instead of three.</p>
 
           <h2>Report delivery and payment help</h2>
@@ -202,7 +202,7 @@ function preRenderPages() {
           <p>Questions about a saved or shared result? Paste the result link into your email so we can find it. Every marketing email we send includes a one-click unsubscribe link at the bottom; if anything about your subscription looks wrong, forward the email you received and we'll sort it out.</p>
 
           <h2>Privacy requests</h2>
-          <p>You can ask us to delete a shared result, a purchased report, or your email from our systems at any time. Send the relevant link or address to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a> and read the <a href="/privacy">privacy policy</a> for exactly what we store and why.</p>
+          <p>You can ask us to delete a shared result, a purchased report, or your email from our systems at any time. Send the relevant link or address to <a href="mailto:redefynliving@gmail.com">redefynliving@gmail.com</a> and read the <a href="/privacy">privacy policy</a> for exactly what we store and why.</p>
 
           <h2>Bugs and feedback</h2>
           <p>Something broken or confusing? Tell us the page URL, what you expected, what happened instead, and your device and browser. Feedback about readings, guides, and features is genuinely welcome - this site improves one email at a time.</p>
@@ -246,13 +246,13 @@ function preRenderPages() {
           <p>Vercel: website hosting, server functions, and aggregate analytics. Microsoft Clarity: consent-based website interaction analytics. Supabase: secure database storage. Stripe: payment processing. Anthropic: paid report generation using sanitized result data. Resend: transactional and opted-in email delivery. Google AdSense: advertising.</p>
 
           <h2>9. Your choices and rights</h2>
-          <p>You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>. We may ask for reasonable verification before deleting purchase records.</p>
+          <p>You may ask us to delete a shared result, purchased report, purchase email, or marketing subscription. Send the relevant result or report link and your request to <a href="mailto:redefynliving@gmail.com">redefynliving@gmail.com</a>. We may ask for reasonable verification before deleting purchase records.</p>
 
           <h2>10. Security and children</h2>
           <p>We use access controls, encrypted connections, private report tokens, and restricted server credentials. No online system is risk-free. Match by Birth is not directed to children under 13, and children should not submit personal information.</p>
 
           <h2>11. Contact</h2>
-          <p>Privacy questions may be sent to <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.</p>
+          <p>Privacy questions may be sent to <a href="mailto:redefynliving@gmail.com">redefynliving@gmail.com</a>.</p>
         </article>
       `
     },
@@ -302,7 +302,7 @@ function preRenderPages() {
           <h2>What you are buying</h2>
           <p>A paid Match by Birth report is a one-time digital compatibility report delivered by private link and email. It expands the free result into strengths, friction points, communication notes, a watch area, and practical conversation prompts.</p>
           <h2>When refunds are available</h2>
-          <p>Email support@matchbybirth.com if you paid and did not receive access, received a broken report link, were charged incorrectly, or the report could not be generated.</p>
+          <p>Email redefynliving@gmail.com if you paid and did not receive access, received a broken report link, were charged incorrectly, or the report could not be generated.</p>
           <h2>When refunds may not apply</h2>
           <p>Because reports are digital goods delivered after checkout, refunds are not guaranteed simply because a reading is not the answer someone hoped for. Match by Birth is designed for reflection and conversation, not certainty, prediction, or a relationship verdict.</p>
           <h2>How fast support replies</h2>
@@ -373,7 +373,7 @@ function preRenderPages() {
           <h2>What data is used</h2>
           <p>The report uses sanitized compatibility data: display names, signs, elements, scores, relationship type, and the result summary. Birth dates and the checkout email are not sent to the AI provider. Payment details are handled by Stripe.</p>
           <h2>If something goes wrong</h2>
-          <p>If the first report attempt fails, delivery is retried automatically. If you paid but cannot access the report, email support@matchbybirth.com with your checkout email and any result link you have.</p>
+          <p>If the first report attempt fails, delivery is retried automatically. If you paid but cannot access the report, email redefynliving@gmail.com with your checkout email and any result link you have.</p>
         </article>
       `
     },
@@ -673,7 +673,7 @@ function preRenderPages() {
             <li><a href="/about">Read about Match by Birth</a></li>
             <li><a href="/faq">Check the FAQ</a></li>
           </ul>
-          <p>If you believe this is an error, email <a href="mailto:support@matchbybirth.com">support@matchbybirth.com</a>.</p>
+          <p>If you believe this is an error, email <a href="mailto:redefynliving@gmail.com">redefynliving@gmail.com</a>.</p>
         </article>
       `,
       is404: true,
