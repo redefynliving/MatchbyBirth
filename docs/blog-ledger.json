@@ -185,14 +185,14 @@
     },
     {
       "day": 13,
-      "publish_date": "2026-07-18",
+      "publish_date": "2026-10-14",
       "slug": "north-node-synastry",
       "title": "North Node Contacts in Synastry: The Karmic Pull Explained",
       "category": "learn-astrology",
       "primary_keyword": "north node synastry",
       "angle": "growth lessons and pull",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-14, commit de4658ad. Checklist passed: entertainment framing + exact SOUL.md disclaimer; no health/legal/financial advice; no outcome promises (post explicitly denies verdicts, fate, past-life proof); no named real people; original text; interpretive claims attributed to named domains from SERP (12andus.com, theinnerwheel.com, mercury-magazine.com); astronomy fact (nodes = Moon-orbit/ecliptic crossings) distinguished from interpretation; no transit dates used (n/a - natal technique); no affiliates; nothing personal. Meta 155 chars, keyword at title front. Internal links: 4 older posts (how-to-read-synastry-chart, north-south-node-astrology, saturn-in-synastry, house-overlays-in-synastry) + /#calculator, all verified in live sitemap. Collision: slug absent from sitemap; angle is dedicated synastry-technique guide, materially different from north-south-node-astrology natal overview. Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
     },
     {
       "day": 14,
