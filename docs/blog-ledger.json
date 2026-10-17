@@ -232,14 +232,15 @@
     },
     {
       "day": 17,
-      "publish_date": "2026-07-22",
+      "publish_date": "2026-10-17",
       "slug": "eleventh-house-friendship-love",
       "title": "The 11th House in Love: When Friendship Becomes the Match",
       "category": "relationships",
       "primary_keyword": "11th house love",
       "angle": "best-friend-to-partner transitions",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-17. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver. Pre-publish checklist passed: entertainment framing + exact SOUL.md disclaimer verbatim; no health/medical/legal/financial advice; no outcome promises (corrective denies verdicts); no named real people; original text; interpretations framed as astrology, planet-by-planet lines cited to celesian.com 11th-house guide; no transit dates used (n/a); no affiliates; nothing personal. Meta 155 chars, keyword '11th house love' front-loaded in title. Internal links: 4 older posts (fifth-house-romance, seventh-house-partnership-axis, how-to-read-synastry-chart, house-overlays-in-synastry) + /#calculator. Category learn-astrology (house-series convention, supersedes queue 'relationships'). Single H1, 7 H2s, 5 FAQ H3s. node --check passed.",
+      "commit": "b26669fa168ec270a56b439b035a0e61acd7d1fb"
     },
     {
       "day": 18,
