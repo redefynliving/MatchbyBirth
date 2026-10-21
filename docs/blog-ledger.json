@@ -1,423 +1,423 @@
 {
- "site": "Match by Birth",
- "version": 2,
- "approval_policy": {
-  "publish_only_after_user_approval": false,
-  "draft_shown_for_review": true,
-  "status_flow": [
-   "planned",
-   "drafted",
-   "awaiting_approval",
-   "approved",
-   "scheduled",
-   "published"
+  "site": "Match by Birth",
+  "version": 2,
+  "approval_policy": {
+    "publish_only_after_user_approval": false,
+    "draft_shown_for_review": true,
+    "status_flow": [
+      "planned",
+      "drafted",
+      "awaiting_approval",
+      "approved",
+      "scheduled",
+      "published"
+    ],
+    "waiver_note": "Alijah waived per-draft approval on 2026-10-04 (via Instinct handover). Muse may publish only under the Strict posting rules: entertainment framing + disclaimer, no health/financial/legal advice, no named real people, original text, every fact sourced, astro dates checked against a named source with timezone, no affiliate/income claims, nothing personal about Alijah. Rules may be tightened, never loosened."
+  },
+  "duplicate_rules": [
+    "Never reuse an existing slug.",
+    "Never reuse the same topic angle within the next 30 posts.",
+    "Avoid near-duplicate titles that target the same intent with only wording changes.",
+    "If a topic is already published, mark it archived and do not repeat it unless the angle changes materially."
   ],
-  "waiver_note": "Alijah waived per-draft approval on 2026-10-04 (via Instinct handover). Muse may publish only under the Strict posting rules: entertainment framing + disclaimer, no health/financial/legal advice, no named real people, original text, every fact sourced, astro dates checked against a named source with timezone, no affiliate/income claims, nothing personal about Alijah. Rules may be tightened, never loosened."
- },
- "duplicate_rules": [
-  "Never reuse an existing slug.",
-  "Never reuse the same topic angle within the next 30 posts.",
-  "Avoid near-duplicate titles that target the same intent with only wording changes.",
-  "If a topic is already published, mark it archived and do not repeat it unless the angle changes materially."
- ],
- "workflow": [
-  "Pick the next planned item from the queue.",
-  "Check the existing post archive for slug and intent collisions.",
-  "Draft the post in the Match by Birth structure.",
-  "Show the full draft to the user for approval.",
-  "Only after approval, publish live and move the item to published.",
-  "Log the final slug and date in the archive so it cannot be repeated."
- ],
- "quality_rules": [
-  "Tailored to Match by Birth, not generic astrology filler.",
-  "Premium, clean, intentional, and easy to scan.",
-  "Human-like voice with specific examples and practical takeaways.",
-  "No placeholder content, no duplicated sections, no AI slop."
- ],
- "fields": [
-  "day",
-  "publish_date",
-  "slug",
-  "title",
-  "category",
-  "primary_keyword",
-  "angle",
-  "status",
-  "notes"
- ],
- "queue": [
-  {
-   "day": 1,
-   "publish_date": "2026-07-06",
-   "slug": "how-to-read-synastry-chart",
-   "title": "How to Read a Synastry Chart",
-   "category": "learn-astrology",
-   "primary_keyword": "synastry",
-   "angle": "synastry basics step-by-step",
-   "status": "published",
-   "notes": "Published 2026-10-04 by Muse. Pre-publish checklist passed: original text, disclaimer present, no health/financial/legal claims, no named real people, no dated astro claims, 6 internal links + calculator, meta accurate."
-  },
-  {
-   "day": 2,
-   "publish_date": "2026-07-07",
-   "slug": "synastry-vs-composite-chart",
-   "title": "Synastry vs Composite Chart: Which One to Trust First?",
-   "category": "learn-astrology",
-   "primary_keyword": "composite chart",
-   "angle": "when to use each chart type",
-   "status": "skipped",
-   "notes": "SKIPPED 2026-10-04: near-duplicate of published slug synastry-vs-composite-charts (same intent, singular/plural variant). Per duplicate rules: do not publish without a materially new angle and keyword."
-  },
-  {
-   "day": 3,
-   "publish_date": "2026-10-05",
-   "slug": "why-birth-time-matters-in-compatibility",
-   "title": "Why Birth Time Matters More Than You Think in Compatibility",
-   "category": "learn-astrology",
-   "primary_keyword": "birth time",
-   "angle": "why exact time changes the read",
-   "status": "published",
-   "notes": "Published 2026-10-05 in editorial-posts-2026-10.js. Pre-publish checklist passed all items: entertainment framing + disclaimer; no health/financial/legal advice; no named people; original text; facts sourced (rising sign ~2h per starpowered.com/nerdbot.com; Moon 2-3 days standard); no transit dates used; no affiliates; slug collision checked against 141 published slugs; near-duplicate check vs exact-mode-vs-sun-sign (angle materially different: compatibility-specific, internal link added)."
-  },
-  {
-   "day": 4,
-   "publish_date": "2026-10-06",
-   "slug": "house-overlays-in-synastry",
-   "title": "House Overlays in Synastry: What They Really Mean",
-   "category": "learn-astrology",
-   "primary_keyword": "house overlays",
-   "angle": "where one chart lands in the other",
-   "status": "published",
-   "notes": "Published 2026-10-06 in editorial-posts-2026-10.js (commit 950b2dde). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer present; no health/financial/legal advice; no outcome promises (explicitly denies compatibility verdicts); no named real people; original text; facts sourced (house-overlay definition, where/how distinction, house-person-feels-more, no-guarantee caveat, relationship-defining houses: lookupthestars.com; permanent-transit framing: cafeastrology.com; 4th-house family quality: theinnerwheel.com; fated-feeling effect + Saturn stabilizing-or-heavy: oxyness.com; birth-time dependence, house-system shifts, both-directions example: astrologygeeks.com; 8th-house in friendships: nyravale.wordpress.com); no transit dates used; no affiliates; nothing personal; slug collision-checked against 147 published slugs; angle distinct from how-to-read-synastry-chart (beginner overview) and twelve-houses posts; meta 157 chars with keyword front; 3 internal links + calculator; single H1, H2s answering related questions."
-  },
-  {
-   "day": 5,
-   "publish_date": "2026-07-10",
-   "slug": "seventh-house-partnership-axis",
-   "title": "The 7th House in Astrology: The Partnership Axis",
-   "category": "learn-astrology",
-   "primary_keyword": "7th house",
-   "angle": "commitment, mirroring, and roles",
-   "status": "published",
-   "notes": "Published 2026-10-07 in editorial-posts-2026-10.js (commit 84e93afd). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer present; no health/financial/legal advice; no outcome promises (post explicitly denies spouse-naming, wedding timing, and verdicts); no named real people; original text; facts sourced (7th=partnership axis, Descendant, rules marriage/business/contracts/open enemies: astrology.com; 5th-vs-7th binding distinction: astrology42.com; 1st/7th mirror, open rivals: theinscribermag.com; cooperation/compromise, partner traits: indastro.com; Libra/Venus natural rulership, cusp+ruler reading method, empty-7th guidance: astralunaria.com; ruling-planet-as-guide: insightfulpsychics.com; Descendant energies sought in others: yourtango.com); no transit dates used; no affiliates; nothing personal; slug collision-checked against repo (no match; no existing 7th-house-specific post; twelve-houses posts cover 7th in one paragraph only); angle distinct from day-4 house-overlays 7th section (axis/commitment/mirroring vs overlay technique); meta 159 chars with keyword front-loaded; 4 internal links + calculator; single H1, H2s answer related questions. Note: item's pre-waiver 'show draft' note superseded by Alijah's 2026-10-04 per-draft-approval waiver (approval_policy unchanged)."
-  },
-  {
-   "day": 6,
-   "publish_date": "2026-07-11",
-   "slug": "venus-sign-love-style",
-   "title": "What Your Venus Sign Says About How You Love",
-   "category": "learn-astrology",
-   "primary_keyword": "venus sign",
-   "angle": "love style and attraction patterns",
-   "status": "skipped",
-   "notes": "SKIPPED 2026-10-08: near-duplicate of published post 'venus-signs-love-language' (Venus Signs and the Language of Love, 2026-07-23), which already covers Venus-sign love styles, what Venus reveals about how you love, and how you need to be loved. Same topic angle; per duplicate rules. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
-  },
-  {
-   "day": 7,
-   "publish_date": "2026-10-08",
-   "slug": "venus-mars-aspects-attraction",
-   "title": "Venus-Mars Aspects: Where Attraction Actually Starts",
-   "category": "learn-astrology",
-   "primary_keyword": "venus mars aspects",
-   "angle": "desire, chemistry, and pursuit",
-   "status": "published",
-   "notes": "Published 2026-10-08 (commit 1141f8ac0dac) to editorial-posts-2026-10.js. Checklist: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post denies verdicts, guarantees); no named real people; original text; facts sourced (advanced-astrology.com, astrologyschool.com, chi-nese.com, starsandtarot.com, astrologyaddict.com); no transit dates; no affiliates; nothing personal. Slug collision-checked against full repo; angle distinct from venus-signs-love-language and astrology-aspects-explained. Meta 159 chars, keyword front-loaded. Internal links: how-to-read-synastry-chart, venus-signs-love-language + /#calculator. Single H1 (template), H2s answer related questions. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
-  },
-  {
-   "day": 8,
-   "publish_date": "2026-10-09",
-   "slug": "saturn-in-synastry",
-   "title": "Saturn in Synastry: The Reality Check That Makes Love Last",
-   "category": "learn-astrology",
-   "primary_keyword": "saturn synastry",
-   "angle": "stability, boundaries, and tests",
-   "status": "published",
-   "notes": "Published 2026-10-09 (commit 0c56ba87f733fdd6e2720a356a3c25c5f26fe8ef) to editorial-posts-2026-10.js. Checklist: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts; 'Saturn does not predict outcomes; it prices them'); no named real people; original text; facts sourced (theinnerwheel.com, elsaelsa.com, astromatrix.org, medium.com, billherbst.com - inline domain citations); no transit dates used (n/a); no affiliates; nothing personal. Slug collision-checked against full repo (141 slugs, no match); angle distinct from saturn-sign-commitment-style (natal sign focus) and saturn-return-astrology-guide (natal transits). Meta 159 chars, keyword front-loaded. Internal links: 3 older posts + calculator. Single H1 (template), H2s answer related questions. Pre-waiver 'show draft' note superseded by 2026-10-04 per-draft-approval waiver."
-  },
-  {
-   "day": 9,
-   "publish_date": "2026-07-14",
-   "slug": "descendant-relationship-mirror",
-   "title": "The Descendant in Astrology: Your Relationship Mirror",
-   "category": "learn-astrology",
-   "primary_keyword": "descendant",
-   "angle": "partner archetype and projection",
-   "status": "published",
-   "notes": "Pre-waiver 'show draft' note superseded by 2026-10-04 waiver. Checklist passed: entertainment framing + exact SOUL disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts - 'charts describe tendencies'); no named real people; original text; facts sourced inline (psychicoz.com, bornundersaturn.com, authorityastrology.com); no transit dates used (n/a); no affiliates; nothing personal; slug not among published slugs; angle materially distinct from seventh-house-partnership-axis (dedicated point-guide: ASC-DC mechanics, 12-sign table, projection depth, synastry-to-DC contacts). Meta 159 chars, keyword front-loaded. Internal links: seventh-house-partnership-axis, why-birth-time-matters-in-compatibility, how-to-read-synastry-chart + /#calculator. Commit fd40ace8. Verified live via browser read.",
-   "published_date": "2026-10-10"
-  },
-  {
-   "day": 10,
-   "publish_date": "2026-07-15",
-   "slug": "mercury-in-synastry-communication",
-   "title": "Mercury in Synastry: How Couples Talk, Argue, and Repair",
-   "category": "learn-astrology",
-   "primary_keyword": "mercury synastry",
-   "angle": "conversation, conflict, repair",
-   "status": "published",
-   "notes": "Published 2026-10-11 (commit cb3e527e). Pre-publish checklist passed: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts); no named real people; original text; facts sourced inline (authorityastrology.com, astrologify.com); no transit dates used (n/a - natal synastry technique); no affiliates; nothing personal. Meta 152 chars, keyword \"Mercury in Synastry\" front-loaded in title. Internal links: how-to-read-synastry-chart, mercury-signs-communication-style, venus-mars-aspects-attraction, descendant-relationship-mirror, /#calculator (all verified live in sitemap 2026-10-11). Collision check: slug absent from 221 live blog URLs; angle materially distinct from mercury-signs-communication-style (natal) and all mercury-retrograde posts (transit). Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver."
-  },
-  {
-   "day": 11,
-   "publish_date": "2026-07-16",
-   "slug": "fifth-house-romance",
-   "title": "The 5th House in Astrology: Where Romance Feels Alive",
-   "category": "learn-astrology",
-   "primary_keyword": "5th house",
-   "angle": "dating spark and creative chemistry",
-   "status": "published",
-   "notes": "Published 2026-10-12. Collision: slug not in live sitemap (222 blog URLs); angle materially different from seventh-house-partnership-axis (commitment vs dating spark), house-overlays-in-synastry (technique), twelve-astrological-houses-* (broad overviews). Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver (approval_policy.publish_only_after_user_approval=false). Strict checklist: all items passed - entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (explicit tendencies-not-verdicts corrective); no named real people; original text; facts sourced to named domains (tarot.com, entertainment.howstuffworks.com, astrosagga.com, thesaturnway.com); no transit dates (natal technique); no affiliates; nothing personal. Meta 158 chars, keyword \"5th house\" front-loaded in title. Internal links: 4 older posts (seventh-house-partnership-axis, twelve-astrological-houses-explained, house-overlays-in-synastry, venus-mars-aspects-attraction) + /#calculator, all verified live in sitemap. Single H1 (template), H2s answering related questions, FAQ H3s. node --check passed before commit.",
-   "published_date": "2026-10-12",
-   "commit": "9316ab76ffef0bdb9c55a3331d1664e081202097"
-  },
-  {
-   "day": 12,
-   "publish_date": "2026-07-17",
-   "slug": "eighth-house-intimacy",
-   "title": "The 8th House in Astrology: Trust, Intimacy, and Merging",
-   "category": "learn-astrology",
-   "primary_keyword": "8th house",
-   "angle": "trust, vulnerability, shared resources",
-   "status": "published",
-   "notes": "Published 2026-10-13. Collision: slug not in live sitemap; angle materially distinct from seventh-house-partnership-axis (commitment axis vs merging/intimacy), fifth-house-romance (dating spark), house-overlays-in-synastry (technique), twelve-astrological-houses-* (broad overviews). Pre-waiver 'show draft' note superseded by Alijah's 2026-10-04 per-draft-approval waiver (approval_policy.publish_only_after_user_approval=false). Strict checklist: all items passed - entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice (shared-resources section describes trust/merging tendencies only, no recommendations); no outcome promises (post explicitly denies verdicts - 'tendencies, not verdicts'); no named real people; original text; facts sourced inline to named domains (awakenche.org, intuitiveanswers.com, astrosagga.com, thesaturnway.com, astrologyschool.com); no transit dates (natal technique); no affiliates; nothing personal. Meta 159 chars, keyword '8th house' front-loaded. Internal links: 4 older posts (seventh-house-partnership-axis, fifth-house-romance, twelve-astrological-houses-explained, house-overlays-in-synastry) + /#calculator, all verified live in the sitemap. Single H1 (template), H2s answering related questions, FAQ H3s. node --check passed before commit.",
-   "published_date": "2026-10-13",
-   "commit": "511ea16d24f84e121a7534b95890434bf6012b73"
-  },
-  {
-   "day": 13,
-   "publish_date": "2026-10-14",
-   "slug": "north-node-synastry",
-   "title": "North Node Contacts in Synastry: The Karmic Pull Explained",
-   "category": "learn-astrology",
-   "primary_keyword": "north node synastry",
-   "angle": "growth lessons and pull",
-   "status": "published",
-   "notes": "Published 2026-10-14, commit de4658ad. Checklist passed: entertainment framing + exact SOUL.md disclaimer; no health/legal/financial advice; no outcome promises (post explicitly denies verdicts, fate, past-life proof); no named real people; original text; interpretive claims attributed to named domains from SERP (12andus.com, theinnerwheel.com, mercury-magazine.com); astronomy fact (nodes = Moon-orbit/ecliptic crossings) distinguished from interpretation; no transit dates used (n/a - natal technique); no affiliates; nothing personal. Meta 155 chars, keyword at title front. Internal links: 4 older posts (how-to-read-synastry-chart, north-south-node-astrology, saturn-in-synastry, house-overlays-in-synastry) + /#calculator, all verified in live sitemap. Collision: slug absent from sitemap; angle is dedicated synastry-technique guide, materially different from north-south-node-astrology natal overview. Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
-  },
-  {
-   "day": 14,
-   "publish_date": "2026-10-15",
-   "slug": "vertex-in-synastry",
-   "title": "Vertex in Synastry: Why Some Encounters Feel Fated",
-   "category": "learn-astrology",
-   "primary_keyword": "vertex synastry",
-   "angle": "unexpected but persistent attraction",
-   "status": "published",
-   "notes": "Published 2026-10-15, commit 7a0fa4c. Checklist passed: entertainment framing + exact SOUL.md disclaimer ('For entertainment and general information only. Not medical, financial, legal, or relationship advice.'); no health/legal/financial advice; no outcome promises (post explicitly denies verdicts - 'the point describes the arrival, not the stay'; twin-flame framing corrected); no named real people; original text; no images; geometry facts (ecliptic x prime vertical, birth-time sensitivity) distinguished from astrological interpretation; interpretive claims framed as astrological symbolism ('astrologers describe', 'in astrological symbolism'); no transit dates used (n/a - synastry technique); no affiliates; nothing personal. Meta 154 chars, keyword 'vertex synastry' at title front. Internal links: 4 older posts (vertex-astrology-fated-encounters, how-to-read-synastry-chart, north-node-synastry, house-overlays-in-synastry) + /#calculator. Collision: slug absent from archived slug list (all-slugs.txt) and from editorial-posts-2026-10.js before append; angle is dedicated synastry-technique guide on Vertex contacts, materially different from vertex-astrology-fated-encounters natal overview (dedicated-guide vs overview, same adjudication as day-10/12/13 precedents). SERP check: intent = what Vertex contacts mean, planet-by-planet conjunctions, Vertex vs North Node, orbs, fated-feeling meaning - all covered. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
-  },
-  {
-   "day": 15,
-   "publish_date": "2026-07-20",
-   "slug": "juno-commitment-patterns",
-   "title": "Juno in Astrology: The Commitment Pattern You Repeat",
-   "category": "learn-astrology",
-   "primary_keyword": "juno",
-   "angle": "marriage ideals and commitment habits",
-   "status": "skipped",
-   "notes": "Show draft to user before publishing live.",
-   "skip_reason": "Near-duplicate angle vs published 'juno-asteroid-commitment-astrology' (2026-08-08, 'Juno in Astrology: The Asteroid That Reveals Your Soulmate and Commitment Style'). Existing post already covers natal Juno reading (sign/element, house, aspects), synastry, and Juno vs Venus/Moon. Day-15 angle 'marriage ideals and commitment habits' targets the same intent with only wording changes; per duplicate rules, skipped 2026-10-16 after reading the existing post in full."
-  },
-  {
-   "day": 16,
-   "publish_date": "2026-10-16",
-   "slug": "chiron-in-relationships",
-   "title": "Chiron in Relationships: Where Old Wounds Get Reopened",
-   "category": "relationships",
-   "primary_keyword": "chiron relationships",
-   "angle": "relationship wounds and healing",
-   "status": "published",
-   "notes": "Show draft to user before publishing live.",
-   "published_slug": "chiron-in-relationships",
-   "checklist_notes": "Strict checklist 2026-10-16: all passed. Entertainment framing + exact SOUL.md disclaimer; no health/medical/legal/financial advice; no outcome promises (post explicitly denies verdicts - 'describes the material, not the outcome'); no named real people (Dawn Bodrogi cited as published source only); original text; astronomy (discovery 1977, orbit between Saturn and Uranus) sourced to astronomy.com/Wikipedia and distinguished from interpretation; synastry claims sourced to theinnerwheel.com and astroary.com; no affiliates; nothing personal. Meta 158 chars, keyword 'Chiron in relationships' front-loaded. Internal links: chiron-sign-wounded-healer, how-to-read-synastry-chart, mercury-in-synastry-communication + /#calculator, all verified in archive. Single H1 via template, 12 H2s, FAQ with 5 H3s. Collision: day-15 juno-commitment-patterns skipped (near-duplicate of published juno-asteroid-commitment-astrology). Day-16 adjudicated materially different from published chiron-sign-wounded-healer (2026-08-07 natal overview; existing relationships coverage = 2 paragraphs; new post is a dedicated synastry-technique guide: contacts, aspects, planet-by-planet, house overlays, replay-vs-healing loop). node --check passed; committed 37cfaccb. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
-  },
-  {
-   "day": 17,
-   "publish_date": "2026-10-17",
-   "slug": "eleventh-house-friendship-love",
-   "title": "The 11th House in Love: When Friendship Becomes the Match",
-   "category": "relationships",
-   "primary_keyword": "11th house love",
-   "angle": "best-friend-to-partner transitions",
-   "status": "published",
-   "notes": "Published 2026-10-17. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver. Pre-publish checklist passed: entertainment framing + exact SOUL.md disclaimer verbatim; no health/medical/legal/financial advice; no outcome promises (corrective denies verdicts); no named real people; original text; interpretations framed as astrology, planet-by-planet lines cited to celesian.com 11th-house guide; no transit dates used (n/a); no affiliates; nothing personal. Meta 155 chars, keyword '11th house love' front-loaded in title. Internal links: 4 older posts (fifth-house-romance, seventh-house-partnership-axis, how-to-read-synastry-chart, house-overlays-in-synastry) + /#calculator. Category learn-astrology (house-series convention, supersedes queue 'relationships'). Single H1, 7 H2s, 5 FAQ H3s. node --check passed.",
-   "commit": "b26669fa168ec270a56b439b035a0e61acd7d1fb"
-  },
-  {
-   "day": 18,
-   "publish_date": "2026-07-23",
-   "slug": "twelfth-house-hidden-patterns",
-   "title": "The 12th House in Relationships: Hidden Bonds and Quiet Patterns",
-   "category": "relationships",
-   "primary_keyword": "12th house relationships",
-   "angle": "subconscious bonds and secrecy",
-   "status": "published",
-   "notes": "Published 2026-10-18 via matchbybirth-daily-ops (commit 7d62c8a0). Checklist: all Strict-rule items passed. Category learn-astrology per house-series convention (queue had relationships). Interpretations sourced to dxpnet.com 12th-house guide; no transit dates used. Pre-waiver show-draft note superseded by 2026-10-04 waiver. approval_policy.publish_only_after_user_approval=false verified intact.",
-   "published_date": "2026-10-18"
-  },
-  {
-   "day": 19,
-   "publish_date": "2026-10-19",
-   "slug": "chemistry-vs-compatibility",
-   "title": "Chemistry vs Compatibility: How to Tell the Difference",
-   "category": "relationships",
-   "primary_keyword": "chemistry vs compatibility",
-   "angle": "spark versus real fit",
-   "status": "published",
-   "notes": "Published 2026-10-19 under 2026-10-04 waiver (publish_only_after_user_approval=false intact). Strict checklist passed: entertainment framing + exact SOUL.md disclaimer verbatim; no health/medical/legal/financial advice; no outcome guarantees (tendency language; 'not a law / not a promise / not a verdict' stated); no named real people; original text (SERP echo phrasing reworded during draft QA); fast-body/slow-structure framing attributed to AskAstrology's 'Chemistry and Compatibility: One Expires, the Other Does Not'; no transit dates (date/timezone rule n/a); no affiliates; nothing personal; slug free across 161 published slugs; angle 'spark vs real fit' materially distinct from venus-mars-aspects-attraction (aspect mechanics), what-compatibility-score-means (score interpretation), birth-chart-compatibility-guide (reading method). Meta 158 chars, keyword front. Internal links: venus-mars-aspects-attraction, saturn-in-synastry, house-overlays-in-synastry, how-to-read-synastry-chart + https://matchbybirth.com/#calculator. Single H1 (template title), H2s answer related questions, FAQ 5 H3s. node --check passed. Live verification pending (browser).",
-   "commit": "020a54093e645f8ade75a503306b7c880f291150"
-  },
-  {
-   "day": 20,
-   "publish_date": "2026-07-25",
-   "slug": "what-makes-love-feel-safe",
-   "title": "What Makes a Relationship Feel Safe in Astrology",
-   "category": "relationships",
-   "primary_keyword": "relationship safety",
-   "angle": "emotional security markers",
-   "status": "published",
-   "notes": "Show draft to user before publishing live.",
-   "published_date": "2026-10-20",
-   "checklist": "Strict rules passed 2026-10-20: entertainment framing + exact disclaimer verbatim in intro note; no health/medical/legal/financial advice; attachment-style section framed as tendencies, explicitly not a diagnosis; no outcome guarantees (tendency language, \"not a verdict\"); no named real people; original text (SERP-echo scan clean); facts framed as astrological interpretation, attachment theory cited as psychology framework, Sim Elman (simelman.com) named source; no transit dates used; no affiliates; nothing personal; slug not among 162 published slugs; angle \"emotional security markers\" distinct from moon-signs-emotional-compatibility (pairings) and chemistry-vs-compatibility (spark vs structure); meta 154 chars, keyword front in title; 5 internal links verified against archive slugs + calculator; single H1, 6 H2s, FAQ 5 H3s; node --check passed. Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
-  },
-  {
-   "day": 21,
-   "publish_date": "2026-07-26",
-   "slug": "mutual-effort-synastry",
-   "title": "How to Spot Mutual Effort in a Synastry Chart",
-   "category": "learn-astrology",
-   "primary_keyword": "mutual effort",
-   "angle": "reciprocity signals in the chart",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 22,
-   "publish_date": "2026-07-27",
-   "slug": "easy-matches-never-deepen",
-   "title": "Why Some Easy Matches Never Deepen",
-   "category": "relationships",
-   "primary_keyword": "easy matches",
-   "angle": "low-friction, low-depth dynamics",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 23,
-   "publish_date": "2026-07-28",
-   "slug": "hard-matches-still-last",
-   "title": "Why Some Difficult Matches Still Last",
-   "category": "relationships",
-   "primary_keyword": "hard matches",
-   "angle": "hard-but-stable relationship patterns",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 24,
-   "publish_date": "2026-07-29",
-   "slug": "venus-retrograde-dating",
-   "title": "Venus Retrograde and Dating: What to Reassess",
-   "category": "seasonal",
-   "primary_keyword": "venus retrograde",
-   "angle": "pause, revisit, refine dating",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 25,
-   "publish_date": "2026-07-30",
-   "slug": "saturn-return-relationship-decisions",
-   "title": "Saturn Return and Relationship Decisions",
-   "category": "seasonal",
-   "primary_keyword": "saturn return relationships",
-   "angle": "adult choices and long-term realism",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 26,
-   "publish_date": "2026-07-31",
-   "slug": "jupiter-transits-relationship-growth",
-   "title": "Jupiter Transits and Relationship Growth",
-   "category": "seasonal",
-   "primary_keyword": "jupiter transits",
-   "angle": "growth windows and expansion",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 27,
-   "publish_date": "2026-08-01",
-   "slug": "eclipse-season-relationship-turning-points",
-   "title": "Eclipse Season and Relationship Turning Points",
-   "category": "seasonal",
-   "primary_keyword": "eclipse season",
-   "angle": "turning points and recalibration",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 28,
-   "publish_date": "2026-08-02",
-   "slug": "relationship-timing-in-astrology",
-   "title": "Relationship Timing in Astrology: When to Start, Define, or Wait",
-   "category": "seasonal",
-   "primary_keyword": "relationship timing",
-   "angle": "practical timing for love",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 29,
-   "publish_date": "2026-08-03",
-   "slug": "first-date-energy-birth-chart",
-   "title": "How to Read First-Date Energy in a Birth Chart",
-   "category": "learn-astrology",
-   "primary_keyword": "first date energy",
-   "angle": "first-date impression clues",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  },
-  {
-   "day": 30,
-   "publish_date": "2026-08-04",
-   "slug": "long-term-potential-synastry",
-   "title": "Long-Term Potential in a Synastry Chart: What to Look For",
-   "category": "learn-astrology",
-   "primary_keyword": "long-term potential",
-   "angle": "staying power markers",
-   "status": "planned",
-   "notes": "Show draft to user before publishing live."
-  }
- ],
- "first_run_notes_2026_10_05": [
-  "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8\u00b029 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22\u00b051-52 Libra; inferior conjunction Oct 24 at 0\u00b045 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
- ],
- "maintenance_notes_2026_10_08": {
-  "date": "2026-10-08",
-  "item": "Corrected wrong station dates/degrees in post 'venus-retrograde-scorpio-libra-2026-relationship-healing' (posts-legacy-part8.js, commit 3cd7194ab7c6).",
-  "corrections": [
-   "Venus stations retrograde Oct 3, 2026 at 8\u00b029\u2032 Scorpio (was: 14\u00b0 Scorpio)",
-   "Venus stations direct Nov 13, 2026 at 22\u00b051\u2032 Libra (was: Nov 14 at 24\u00b0 Libra)",
-   "Title/H1/section date range October 3\u201314 \u2192 October 3 \u2013 November 13",
-   "Mercury stations retrograde Oct 24, 2026 at 21\u00b0 Scorpio (was: 22\u00b0); both planets station direct Nov 13 (was: Nov 14)",
-   "Pre-shadow began late August 2026 (was: mid-August)"
+  "workflow": [
+    "Pick the next planned item from the queue.",
+    "Check the existing post archive for slug and intent collisions.",
+    "Draft the post in the Match by Birth structure.",
+    "Show the full draft to the user for approval.",
+    "Only after approval, publish live and move the item to published.",
+    "Log the final slug and date in the archive so it cannot be repeated."
   ],
-  "sources": [
-   "astrology.com",
-   "paulalustemberg.com",
-   "cafeastrology.com",
-   "deluxeastrology.com",
-   "synthesisastrology.com"
+  "quality_rules": [
+    "Tailored to Match by Birth, not generic astrology filler.",
+    "Premium, clean, intentional, and easy to scan.",
+    "Human-like voice with specific examples and practical takeaways.",
+    "No placeholder content, no duplicated sections, no AI slop."
   ],
-  "note": "The 2026-10-05 first-run check missed this slug (it exists in posts-legacy-part8.js). The other two Venus retrograde posts were re-checked: venus-retrograde-2026 (no degrees cited, dates Oct 3\u2013Nov 13 correct) and venus-retrograde-survival-guide-relationship-healing (generic 41-day phasing, no specific dates/degrees) \u2014 no fixes needed."
- },
- "maintenance_notes_2026_10_09": {
-  "venus_retrograde_faq_live_verification": "Re-verified 2026-10-09: FAQ corrections from 2026-10-08 (commits 3cd7194a/53f395ec/17d633ca) are now live at matchbybirth.com/blog/venus-retrograde-scorpio-libra-2026-relationship-healing. Live page shows: Venus stations Rx Oct 3 2026 at 8deg29' Scorpio; stations direct Nov 13 2026 at 22deg51' Libra (41 days); Mercury stations Rx Oct 24 at 21deg Scorpio; both station direct same day Nov 13; shadow 'until mid-December 2026' (consistent with Dec 15). Follow-up item from 2026-10-08 log closed; deploy propagated.",
-  "approval_policy_intact": "publish_only_after_user_approval=false with waiver note unchanged."
- },
- "maintenance_notes_2026_10_10": [
-  "Day-9 Descendant post published and committed (fd40ace8); live verification pending in daily log."
- ],
- "maintenance_notes_2026_10_15": "gh.py helper broke: deployment removed /opt/muse/skills/custom-connector-setup/templates/skill/bin/dynamic_credentials.py. Patched gh.py to try /opt/muse/skills/custom-connector-setup/bin/ first (CONNECTOR.md-documented path) with fallback to the old template path. GitHub GET/PUT verified working after patch."
+  "fields": [
+    "day",
+    "publish_date",
+    "slug",
+    "title",
+    "category",
+    "primary_keyword",
+    "angle",
+    "status",
+    "notes"
+  ],
+  "queue": [
+    {
+      "day": 1,
+      "publish_date": "2026-07-06",
+      "slug": "how-to-read-synastry-chart",
+      "title": "How to Read a Synastry Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "synastry",
+      "angle": "synastry basics step-by-step",
+      "status": "published",
+      "notes": "Published 2026-10-04 by Muse. Pre-publish checklist passed: original text, disclaimer present, no health/financial/legal claims, no named real people, no dated astro claims, 6 internal links + calculator, meta accurate."
+    },
+    {
+      "day": 2,
+      "publish_date": "2026-07-07",
+      "slug": "synastry-vs-composite-chart",
+      "title": "Synastry vs Composite Chart: Which One to Trust First?",
+      "category": "learn-astrology",
+      "primary_keyword": "composite chart",
+      "angle": "when to use each chart type",
+      "status": "skipped",
+      "notes": "SKIPPED 2026-10-04: near-duplicate of published slug synastry-vs-composite-charts (same intent, singular/plural variant). Per duplicate rules: do not publish without a materially new angle and keyword."
+    },
+    {
+      "day": 3,
+      "publish_date": "2026-10-05",
+      "slug": "why-birth-time-matters-in-compatibility",
+      "title": "Why Birth Time Matters More Than You Think in Compatibility",
+      "category": "learn-astrology",
+      "primary_keyword": "birth time",
+      "angle": "why exact time changes the read",
+      "status": "published",
+      "notes": "Published 2026-10-05 in editorial-posts-2026-10.js. Pre-publish checklist passed all items: entertainment framing + disclaimer; no health/financial/legal advice; no named people; original text; facts sourced (rising sign ~2h per starpowered.com/nerdbot.com; Moon 2-3 days standard); no transit dates used; no affiliates; slug collision checked against 141 published slugs; near-duplicate check vs exact-mode-vs-sun-sign (angle materially different: compatibility-specific, internal link added)."
+    },
+    {
+      "day": 4,
+      "publish_date": "2026-10-06",
+      "slug": "house-overlays-in-synastry",
+      "title": "House Overlays in Synastry: What They Really Mean",
+      "category": "learn-astrology",
+      "primary_keyword": "house overlays",
+      "angle": "where one chart lands in the other",
+      "status": "published",
+      "notes": "Published 2026-10-06 in editorial-posts-2026-10.js (commit 950b2dde). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer present; no health/financial/legal advice; no outcome promises (explicitly denies compatibility verdicts); no named real people; original text; facts sourced (house-overlay definition, where/how distinction, house-person-feels-more, no-guarantee caveat, relationship-defining houses: lookupthestars.com; permanent-transit framing: cafeastrology.com; 4th-house family quality: theinnerwheel.com; fated-feeling effect + Saturn stabilizing-or-heavy: oxyness.com; birth-time dependence, house-system shifts, both-directions example: astrologygeeks.com; 8th-house in friendships: nyravale.wordpress.com); no transit dates used; no affiliates; nothing personal; slug collision-checked against 147 published slugs; angle distinct from how-to-read-synastry-chart (beginner overview) and twelve-houses posts; meta 157 chars with keyword front; 3 internal links + calculator; single H1, H2s answering related questions."
+    },
+    {
+      "day": 5,
+      "publish_date": "2026-07-10",
+      "slug": "seventh-house-partnership-axis",
+      "title": "The 7th House in Astrology: The Partnership Axis",
+      "category": "learn-astrology",
+      "primary_keyword": "7th house",
+      "angle": "commitment, mirroring, and roles",
+      "status": "published",
+      "notes": "Published 2026-10-07 in editorial-posts-2026-10.js (commit 84e93afd). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer present; no health/financial/legal advice; no outcome promises (post explicitly denies spouse-naming, wedding timing, and verdicts); no named real people; original text; facts sourced (7th=partnership axis, Descendant, rules marriage/business/contracts/open enemies: astrology.com; 5th-vs-7th binding distinction: astrology42.com; 1st/7th mirror, open rivals: theinscribermag.com; cooperation/compromise, partner traits: indastro.com; Libra/Venus natural rulership, cusp+ruler reading method, empty-7th guidance: astralunaria.com; ruling-planet-as-guide: insightfulpsychics.com; Descendant energies sought in others: yourtango.com); no transit dates used; no affiliates; nothing personal; slug collision-checked against repo (no match; no existing 7th-house-specific post; twelve-houses posts cover 7th in one paragraph only); angle distinct from day-4 house-overlays 7th section (axis/commitment/mirroring vs overlay technique); meta 159 chars with keyword front-loaded; 4 internal links + calculator; single H1, H2s answer related questions. Note: item's pre-waiver 'show draft' note superseded by Alijah's 2026-10-04 per-draft-approval waiver (approval_policy unchanged)."
+    },
+    {
+      "day": 6,
+      "publish_date": "2026-07-11",
+      "slug": "venus-sign-love-style",
+      "title": "What Your Venus Sign Says About How You Love",
+      "category": "learn-astrology",
+      "primary_keyword": "venus sign",
+      "angle": "love style and attraction patterns",
+      "status": "skipped",
+      "notes": "SKIPPED 2026-10-08: near-duplicate of published post 'venus-signs-love-language' (Venus Signs and the Language of Love, 2026-07-23), which already covers Venus-sign love styles, what Venus reveals about how you love, and how you need to be loved. Same topic angle; per duplicate rules. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
+    },
+    {
+      "day": 7,
+      "publish_date": "2026-10-08",
+      "slug": "venus-mars-aspects-attraction",
+      "title": "Venus-Mars Aspects: Where Attraction Actually Starts",
+      "category": "learn-astrology",
+      "primary_keyword": "venus mars aspects",
+      "angle": "desire, chemistry, and pursuit",
+      "status": "published",
+      "notes": "Published 2026-10-08 (commit 1141f8ac0dac) to editorial-posts-2026-10.js. Checklist: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post denies verdicts, guarantees); no named real people; original text; facts sourced (advanced-astrology.com, astrologyschool.com, chi-nese.com, starsandtarot.com, astrologyaddict.com); no transit dates; no affiliates; nothing personal. Slug collision-checked against full repo; angle distinct from venus-signs-love-language and astrology-aspects-explained. Meta 159 chars, keyword front-loaded. Internal links: how-to-read-synastry-chart, venus-signs-love-language + /#calculator. Single H1 (template), H2s answer related questions. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver."
+    },
+    {
+      "day": 8,
+      "publish_date": "2026-10-09",
+      "slug": "saturn-in-synastry",
+      "title": "Saturn in Synastry: The Reality Check That Makes Love Last",
+      "category": "learn-astrology",
+      "primary_keyword": "saturn synastry",
+      "angle": "stability, boundaries, and tests",
+      "status": "published",
+      "notes": "Published 2026-10-09 (commit 0c56ba87f733fdd6e2720a356a3c25c5f26fe8ef) to editorial-posts-2026-10.js. Checklist: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts; 'Saturn does not predict outcomes; it prices them'); no named real people; original text; facts sourced (theinnerwheel.com, elsaelsa.com, astromatrix.org, medium.com, billherbst.com - inline domain citations); no transit dates used (n/a); no affiliates; nothing personal. Slug collision-checked against full repo (141 slugs, no match); angle distinct from saturn-sign-commitment-style (natal sign focus) and saturn-return-astrology-guide (natal transits). Meta 159 chars, keyword front-loaded. Internal links: 3 older posts + calculator. Single H1 (template), H2s answer related questions. Pre-waiver 'show draft' note superseded by 2026-10-04 per-draft-approval waiver."
+    },
+    {
+      "day": 9,
+      "publish_date": "2026-07-14",
+      "slug": "descendant-relationship-mirror",
+      "title": "The Descendant in Astrology: Your Relationship Mirror",
+      "category": "learn-astrology",
+      "primary_keyword": "descendant",
+      "angle": "partner archetype and projection",
+      "status": "published",
+      "notes": "Pre-waiver 'show draft' note superseded by 2026-10-04 waiver. Checklist passed: entertainment framing + exact SOUL disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts - 'charts describe tendencies'); no named real people; original text; facts sourced inline (psychicoz.com, bornundersaturn.com, authorityastrology.com); no transit dates used (n/a); no affiliates; nothing personal; slug not among published slugs; angle materially distinct from seventh-house-partnership-axis (dedicated point-guide: ASC-DC mechanics, 12-sign table, projection depth, synastry-to-DC contacts). Meta 159 chars, keyword front-loaded. Internal links: seventh-house-partnership-axis, why-birth-time-matters-in-compatibility, how-to-read-synastry-chart + /#calculator. Commit fd40ace8. Verified live via browser read.",
+      "published_date": "2026-10-10"
+    },
+    {
+      "day": 10,
+      "publish_date": "2026-07-15",
+      "slug": "mercury-in-synastry-communication",
+      "title": "Mercury in Synastry: How Couples Talk, Argue, and Repair",
+      "category": "learn-astrology",
+      "primary_keyword": "mercury synastry",
+      "angle": "conversation, conflict, repair",
+      "status": "published",
+      "notes": "Published 2026-10-11 (commit cb3e527e). Pre-publish checklist passed: entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (post explicitly denies verdicts); no named real people; original text; facts sourced inline (authorityastrology.com, astrologify.com); no transit dates used (n/a - natal synastry technique); no affiliates; nothing personal. Meta 152 chars, keyword \"Mercury in Synastry\" front-loaded in title. Internal links: how-to-read-synastry-chart, mercury-signs-communication-style, venus-mars-aspects-attraction, descendant-relationship-mirror, /#calculator (all verified live in sitemap 2026-10-11). Collision check: slug absent from 221 live blog URLs; angle materially distinct from mercury-signs-communication-style (natal) and all mercury-retrograde posts (transit). Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver."
+    },
+    {
+      "day": 11,
+      "publish_date": "2026-07-16",
+      "slug": "fifth-house-romance",
+      "title": "The 5th House in Astrology: Where Romance Feels Alive",
+      "category": "learn-astrology",
+      "primary_keyword": "5th house",
+      "angle": "dating spark and creative chemistry",
+      "status": "published",
+      "notes": "Published 2026-10-12. Collision: slug not in live sitemap (222 blog URLs); angle materially different from seventh-house-partnership-axis (commitment vs dating spark), house-overlays-in-synastry (technique), twelve-astrological-houses-* (broad overviews). Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver (approval_policy.publish_only_after_user_approval=false). Strict checklist: all items passed - entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice; no outcome promises (explicit tendencies-not-verdicts corrective); no named real people; original text; facts sourced to named domains (tarot.com, entertainment.howstuffworks.com, astrosagga.com, thesaturnway.com); no transit dates (natal technique); no affiliates; nothing personal. Meta 158 chars, keyword \"5th house\" front-loaded in title. Internal links: 4 older posts (seventh-house-partnership-axis, twelve-astrological-houses-explained, house-overlays-in-synastry, venus-mars-aspects-attraction) + /#calculator, all verified live in sitemap. Single H1 (template), H2s answering related questions, FAQ H3s. node --check passed before commit.",
+      "published_date": "2026-10-12",
+      "commit": "9316ab76ffef0bdb9c55a3331d1664e081202097"
+    },
+    {
+      "day": 12,
+      "publish_date": "2026-07-17",
+      "slug": "eighth-house-intimacy",
+      "title": "The 8th House in Astrology: Trust, Intimacy, and Merging",
+      "category": "learn-astrology",
+      "primary_keyword": "8th house",
+      "angle": "trust, vulnerability, shared resources",
+      "status": "published",
+      "notes": "Published 2026-10-13. Collision: slug not in live sitemap; angle materially distinct from seventh-house-partnership-axis (commitment axis vs merging/intimacy), fifth-house-romance (dating spark), house-overlays-in-synastry (technique), twelve-astrological-houses-* (broad overviews). Pre-waiver 'show draft' note superseded by Alijah's 2026-10-04 per-draft-approval waiver (approval_policy.publish_only_after_user_approval=false). Strict checklist: all items passed - entertainment framing + exact SOUL.md disclaimer; no health/financial/legal advice (shared-resources section describes trust/merging tendencies only, no recommendations); no outcome promises (post explicitly denies verdicts - 'tendencies, not verdicts'); no named real people; original text; facts sourced inline to named domains (awakenche.org, intuitiveanswers.com, astrosagga.com, thesaturnway.com, astrologyschool.com); no transit dates (natal technique); no affiliates; nothing personal. Meta 159 chars, keyword '8th house' front-loaded. Internal links: 4 older posts (seventh-house-partnership-axis, fifth-house-romance, twelve-astrological-houses-explained, house-overlays-in-synastry) + /#calculator, all verified live in the sitemap. Single H1 (template), H2s answering related questions, FAQ H3s. node --check passed before commit.",
+      "published_date": "2026-10-13",
+      "commit": "511ea16d24f84e121a7534b95890434bf6012b73"
+    },
+    {
+      "day": 13,
+      "publish_date": "2026-10-14",
+      "slug": "north-node-synastry",
+      "title": "North Node Contacts in Synastry: The Karmic Pull Explained",
+      "category": "learn-astrology",
+      "primary_keyword": "north node synastry",
+      "angle": "growth lessons and pull",
+      "status": "published",
+      "notes": "Published 2026-10-14, commit de4658ad. Checklist passed: entertainment framing + exact SOUL.md disclaimer; no health/legal/financial advice; no outcome promises (post explicitly denies verdicts, fate, past-life proof); no named real people; original text; interpretive claims attributed to named domains from SERP (12andus.com, theinnerwheel.com, mercury-magazine.com); astronomy fact (nodes = Moon-orbit/ecliptic crossings) distinguished from interpretation; no transit dates used (n/a - natal technique); no affiliates; nothing personal. Meta 155 chars, keyword at title front. Internal links: 4 older posts (how-to-read-synastry-chart, north-south-node-astrology, saturn-in-synastry, house-overlays-in-synastry) + /#calculator, all verified in live sitemap. Collision: slug absent from sitemap; angle is dedicated synastry-technique guide, materially different from north-south-node-astrology natal overview. Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
+    },
+    {
+      "day": 14,
+      "publish_date": "2026-10-15",
+      "slug": "vertex-in-synastry",
+      "title": "Vertex in Synastry: Why Some Encounters Feel Fated",
+      "category": "learn-astrology",
+      "primary_keyword": "vertex synastry",
+      "angle": "unexpected but persistent attraction",
+      "status": "published",
+      "notes": "Published 2026-10-15, commit 7a0fa4c. Checklist passed: entertainment framing + exact SOUL.md disclaimer ('For entertainment and general information only. Not medical, financial, legal, or relationship advice.'); no health/legal/financial advice; no outcome promises (post explicitly denies verdicts - 'the point describes the arrival, not the stay'; twin-flame framing corrected); no named real people; original text; no images; geometry facts (ecliptic x prime vertical, birth-time sensitivity) distinguished from astrological interpretation; interpretive claims framed as astrological symbolism ('astrologers describe', 'in astrological symbolism'); no transit dates used (n/a - synastry technique); no affiliates; nothing personal. Meta 154 chars, keyword 'vertex synastry' at title front. Internal links: 4 older posts (vertex-astrology-fated-encounters, how-to-read-synastry-chart, north-node-synastry, house-overlays-in-synastry) + /#calculator. Collision: slug absent from archived slug list (all-slugs.txt) and from editorial-posts-2026-10.js before append; angle is dedicated synastry-technique guide on Vertex contacts, materially different from vertex-astrology-fated-encounters natal overview (dedicated-guide vs overview, same adjudication as day-10/12/13 precedents). SERP check: intent = what Vertex contacts mean, planet-by-planet conjunctions, Vertex vs North Node, orbs, fated-feeling meaning - all covered. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
+    },
+    {
+      "day": 15,
+      "publish_date": "2026-07-20",
+      "slug": "juno-commitment-patterns",
+      "title": "Juno in Astrology: The Commitment Pattern You Repeat",
+      "category": "learn-astrology",
+      "primary_keyword": "juno",
+      "angle": "marriage ideals and commitment habits",
+      "status": "skipped",
+      "notes": "Show draft to user before publishing live.",
+      "skip_reason": "Near-duplicate angle vs published 'juno-asteroid-commitment-astrology' (2026-08-08, 'Juno in Astrology: The Asteroid That Reveals Your Soulmate and Commitment Style'). Existing post already covers natal Juno reading (sign/element, house, aspects), synastry, and Juno vs Venus/Moon. Day-15 angle 'marriage ideals and commitment habits' targets the same intent with only wording changes; per duplicate rules, skipped 2026-10-16 after reading the existing post in full."
+    },
+    {
+      "day": 16,
+      "publish_date": "2026-10-16",
+      "slug": "chiron-in-relationships",
+      "title": "Chiron in Relationships: Where Old Wounds Get Reopened",
+      "category": "relationships",
+      "primary_keyword": "chiron relationships",
+      "angle": "relationship wounds and healing",
+      "status": "published",
+      "notes": "Show draft to user before publishing live.",
+      "published_slug": "chiron-in-relationships",
+      "checklist_notes": "Strict checklist 2026-10-16: all passed. Entertainment framing + exact SOUL.md disclaimer; no health/medical/legal/financial advice; no outcome promises (post explicitly denies verdicts - 'describes the material, not the outcome'); no named real people (Dawn Bodrogi cited as published source only); original text; astronomy (discovery 1977, orbit between Saturn and Uranus) sourced to astronomy.com/Wikipedia and distinguished from interpretation; synastry claims sourced to theinnerwheel.com and astroary.com; no affiliates; nothing personal. Meta 158 chars, keyword 'Chiron in relationships' front-loaded. Internal links: chiron-sign-wounded-healer, how-to-read-synastry-chart, mercury-in-synastry-communication + /#calculator, all verified in archive. Single H1 via template, 12 H2s, FAQ with 5 H3s. Collision: day-15 juno-commitment-patterns skipped (near-duplicate of published juno-asteroid-commitment-astrology). Day-16 adjudicated materially different from published chiron-sign-wounded-healer (2026-08-07 natal overview; existing relationships coverage = 2 paragraphs; new post is a dedicated synastry-technique guide: contacts, aspects, planet-by-planet, house overlays, replay-vs-healing loop). node --check passed; committed 37cfaccb. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
+    },
+    {
+      "day": 17,
+      "publish_date": "2026-10-17",
+      "slug": "eleventh-house-friendship-love",
+      "title": "The 11th House in Love: When Friendship Becomes the Match",
+      "category": "relationships",
+      "primary_keyword": "11th house love",
+      "angle": "best-friend-to-partner transitions",
+      "status": "published",
+      "notes": "Published 2026-10-17. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver. Pre-publish checklist passed: entertainment framing + exact SOUL.md disclaimer verbatim; no health/medical/legal/financial advice; no outcome promises (corrective denies verdicts); no named real people; original text; interpretations framed as astrology, planet-by-planet lines cited to celesian.com 11th-house guide; no transit dates used (n/a); no affiliates; nothing personal. Meta 155 chars, keyword '11th house love' front-loaded in title. Internal links: 4 older posts (fifth-house-romance, seventh-house-partnership-axis, how-to-read-synastry-chart, house-overlays-in-synastry) + /#calculator. Category learn-astrology (house-series convention, supersedes queue 'relationships'). Single H1, 7 H2s, 5 FAQ H3s. node --check passed.",
+      "commit": "b26669fa168ec270a56b439b035a0e61acd7d1fb"
+    },
+    {
+      "day": 18,
+      "publish_date": "2026-07-23",
+      "slug": "twelfth-house-hidden-patterns",
+      "title": "The 12th House in Relationships: Hidden Bonds and Quiet Patterns",
+      "category": "relationships",
+      "primary_keyword": "12th house relationships",
+      "angle": "subconscious bonds and secrecy",
+      "status": "published",
+      "notes": "Published 2026-10-18 via matchbybirth-daily-ops (commit 7d62c8a0). Checklist: all Strict-rule items passed. Category learn-astrology per house-series convention (queue had relationships). Interpretations sourced to dxpnet.com 12th-house guide; no transit dates used. Pre-waiver show-draft note superseded by 2026-10-04 waiver. approval_policy.publish_only_after_user_approval=false verified intact.",
+      "published_date": "2026-10-18"
+    },
+    {
+      "day": 19,
+      "publish_date": "2026-10-19",
+      "slug": "chemistry-vs-compatibility",
+      "title": "Chemistry vs Compatibility: How to Tell the Difference",
+      "category": "relationships",
+      "primary_keyword": "chemistry vs compatibility",
+      "angle": "spark versus real fit",
+      "status": "published",
+      "notes": "Published 2026-10-19 under 2026-10-04 waiver (publish_only_after_user_approval=false intact). Strict checklist passed: entertainment framing + exact SOUL.md disclaimer verbatim; no health/medical/legal/financial advice; no outcome guarantees (tendency language; 'not a law / not a promise / not a verdict' stated); no named real people; original text (SERP echo phrasing reworded during draft QA); fast-body/slow-structure framing attributed to AskAstrology's 'Chemistry and Compatibility: One Expires, the Other Does Not'; no transit dates (date/timezone rule n/a); no affiliates; nothing personal; slug free across 161 published slugs; angle 'spark vs real fit' materially distinct from venus-mars-aspects-attraction (aspect mechanics), what-compatibility-score-means (score interpretation), birth-chart-compatibility-guide (reading method). Meta 158 chars, keyword front. Internal links: venus-mars-aspects-attraction, saturn-in-synastry, house-overlays-in-synastry, how-to-read-synastry-chart + https://matchbybirth.com/#calculator. Single H1 (template title), H2s answer related questions, FAQ 5 H3s. node --check passed. Live verification pending (browser).",
+      "commit": "020a54093e645f8ade75a503306b7c880f291150"
+    },
+    {
+      "day": 20,
+      "publish_date": "2026-07-25",
+      "slug": "what-makes-love-feel-safe",
+      "title": "What Makes a Relationship Feel Safe in Astrology",
+      "category": "relationships",
+      "primary_keyword": "relationship safety",
+      "angle": "emotional security markers",
+      "status": "published",
+      "notes": "Show draft to user before publishing live.",
+      "published_date": "2026-10-20",
+      "checklist": "Strict rules passed 2026-10-20: entertainment framing + exact disclaimer verbatim in intro note; no health/medical/legal/financial advice; attachment-style section framed as tendencies, explicitly not a diagnosis; no outcome guarantees (tendency language, \"not a verdict\"); no named real people; original text (SERP-echo scan clean); facts framed as astrological interpretation, attachment theory cited as psychology framework, Sim Elman (simelman.com) named source; no transit dates used; no affiliates; nothing personal; slug not among 162 published slugs; angle \"emotional security markers\" distinct from moon-signs-emotional-compatibility (pairings) and chemistry-vs-compatibility (spark vs structure); meta 154 chars, keyword front in title; 5 internal links verified against archive slugs + calculator; single H1, 6 H2s, FAQ 5 H3s; node --check passed. Pre-waiver \"show draft\" note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact."
+    },
+    {
+      "day": 21,
+      "publish_date": "2026-10-21",
+      "slug": "mutual-effort-synastry",
+      "title": "How to Spot Mutual Effort in a Synastry Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "mutual effort",
+      "angle": "reciprocity signals in the chart",
+      "status": "published",
+      "notes": "Published 2026-10-21. Checklist: entertainment framing + exact SOUL.md disclaimer verbatim in intro note; no health/medical/legal/financial advice; no outcome guarantees (tendencies language, effort framed as choice); no named real people; original text, SERP-echo scan clean; no transit dates used (date/timezone rule not triggered); no affiliates; nothing personal. Meta 157 chars, keyword 'mutual effort' front-loaded in title. Internal links: 7 older posts (how-to-read-synastry-chart via calculator link? no - chemistry-vs-compatibility, what-makes-love-feel-safe, venus-mars-aspects-attraction, mercury-in-synastry-communication, saturn-in-synastry, house-overlays-in-synastry, twelfth-house-hidden-patterns) + calculator link. Single H1 via template title, 8 H2s incl. At a Glance, Tonight's Action, FAQ with 5 H3s. node --check passed (as .mjs). Commit bfa86dd8f1a925fd379727cd65b3958a5255e86f."
+    },
+    {
+      "day": 22,
+      "publish_date": "2026-07-27",
+      "slug": "easy-matches-never-deepen",
+      "title": "Why Some Easy Matches Never Deepen",
+      "category": "relationships",
+      "primary_keyword": "easy matches",
+      "angle": "low-friction, low-depth dynamics",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 23,
+      "publish_date": "2026-07-28",
+      "slug": "hard-matches-still-last",
+      "title": "Why Some Difficult Matches Still Last",
+      "category": "relationships",
+      "primary_keyword": "hard matches",
+      "angle": "hard-but-stable relationship patterns",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 24,
+      "publish_date": "2026-07-29",
+      "slug": "venus-retrograde-dating",
+      "title": "Venus Retrograde and Dating: What to Reassess",
+      "category": "seasonal",
+      "primary_keyword": "venus retrograde",
+      "angle": "pause, revisit, refine dating",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 25,
+      "publish_date": "2026-07-30",
+      "slug": "saturn-return-relationship-decisions",
+      "title": "Saturn Return and Relationship Decisions",
+      "category": "seasonal",
+      "primary_keyword": "saturn return relationships",
+      "angle": "adult choices and long-term realism",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 26,
+      "publish_date": "2026-07-31",
+      "slug": "jupiter-transits-relationship-growth",
+      "title": "Jupiter Transits and Relationship Growth",
+      "category": "seasonal",
+      "primary_keyword": "jupiter transits",
+      "angle": "growth windows and expansion",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 27,
+      "publish_date": "2026-08-01",
+      "slug": "eclipse-season-relationship-turning-points",
+      "title": "Eclipse Season and Relationship Turning Points",
+      "category": "seasonal",
+      "primary_keyword": "eclipse season",
+      "angle": "turning points and recalibration",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 28,
+      "publish_date": "2026-08-02",
+      "slug": "relationship-timing-in-astrology",
+      "title": "Relationship Timing in Astrology: When to Start, Define, or Wait",
+      "category": "seasonal",
+      "primary_keyword": "relationship timing",
+      "angle": "practical timing for love",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 29,
+      "publish_date": "2026-08-03",
+      "slug": "first-date-energy-birth-chart",
+      "title": "How to Read First-Date Energy in a Birth Chart",
+      "category": "learn-astrology",
+      "primary_keyword": "first date energy",
+      "angle": "first-date impression clues",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    },
+    {
+      "day": 30,
+      "publish_date": "2026-08-04",
+      "slug": "long-term-potential-synastry",
+      "title": "Long-Term Potential in a Synastry Chart: What to Look For",
+      "category": "learn-astrology",
+      "primary_keyword": "long-term potential",
+      "angle": "staying power markers",
+      "status": "planned",
+      "notes": "Show draft to user before publishing live."
+    }
+  ],
+  "first_run_notes_2026_10_05": [
+    "Venus retrograde 2026 check: post venus-retrograde-2026 (sanity-posts.generated.js) states stations retrograde Oct 3 through Nov 13, Scorpio to Libra - matches verified ephemeris data (Oct 3 07:10-07:16 UTC at 8\u00b029 Scorpio; direct Nov 13 7:20-7:26 PM EST / Nov 14 00:20-00:28 UTC at 22\u00b051-52 Libra; inferior conjunction Oct 24 at 0\u00b045 Scorpio; back into Libra Oct 25). Sources: nataljunction.com, astrologybay.com, paulalustemberg.com (all ephemeris-derived), jagannathhora.com. No wrong dates or degrees found; no correction needed. Flagged slug venus-retrograde-scorpio-libra-2026-relationship-healing does not exist in the repo; closest match is venus-retrograde-survival-guide-relationship-healing (linked from libra-season post)."
+  ],
+  "maintenance_notes_2026_10_08": {
+    "date": "2026-10-08",
+    "item": "Corrected wrong station dates/degrees in post 'venus-retrograde-scorpio-libra-2026-relationship-healing' (posts-legacy-part8.js, commit 3cd7194ab7c6).",
+    "corrections": [
+      "Venus stations retrograde Oct 3, 2026 at 8\u00b029\u2032 Scorpio (was: 14\u00b0 Scorpio)",
+      "Venus stations direct Nov 13, 2026 at 22\u00b051\u2032 Libra (was: Nov 14 at 24\u00b0 Libra)",
+      "Title/H1/section date range October 3\u201314 \u2192 October 3 \u2013 November 13",
+      "Mercury stations retrograde Oct 24, 2026 at 21\u00b0 Scorpio (was: 22\u00b0); both planets station direct Nov 13 (was: Nov 14)",
+      "Pre-shadow began late August 2026 (was: mid-August)"
+    ],
+    "sources": [
+      "astrology.com",
+      "paulalustemberg.com",
+      "cafeastrology.com",
+      "deluxeastrology.com",
+      "synthesisastrology.com"
+    ],
+    "note": "The 2026-10-05 first-run check missed this slug (it exists in posts-legacy-part8.js). The other two Venus retrograde posts were re-checked: venus-retrograde-2026 (no degrees cited, dates Oct 3\u2013Nov 13 correct) and venus-retrograde-survival-guide-relationship-healing (generic 41-day phasing, no specific dates/degrees) \u2014 no fixes needed."
+  },
+  "maintenance_notes_2026_10_09": {
+    "venus_retrograde_faq_live_verification": "Re-verified 2026-10-09: FAQ corrections from 2026-10-08 (commits 3cd7194a/53f395ec/17d633ca) are now live at matchbybirth.com/blog/venus-retrograde-scorpio-libra-2026-relationship-healing. Live page shows: Venus stations Rx Oct 3 2026 at 8deg29' Scorpio; stations direct Nov 13 2026 at 22deg51' Libra (41 days); Mercury stations Rx Oct 24 at 21deg Scorpio; both station direct same day Nov 13; shadow 'until mid-December 2026' (consistent with Dec 15). Follow-up item from 2026-10-08 log closed; deploy propagated.",
+    "approval_policy_intact": "publish_only_after_user_approval=false with waiver note unchanged."
+  },
+  "maintenance_notes_2026_10_10": [
+    "Day-9 Descendant post published and committed (fd40ace8); live verification pending in daily log."
+  ],
+  "maintenance_notes_2026_10_15": "gh.py helper broke: deployment removed /opt/muse/skills/custom-connector-setup/templates/skill/bin/dynamic_credentials.py. Patched gh.py to try /opt/muse/skills/custom-connector-setup/bin/ first (CONNECTOR.md-documented path) with fallback to the old template path. GitHub GET/PUT verified working after patch."
 }
