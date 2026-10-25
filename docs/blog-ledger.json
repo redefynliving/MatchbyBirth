@@ -325,14 +325,14 @@
     },
     {
       "day": 25,
-      "publish_date": "2026-07-30",
+      "publish_date": "2026-10-25",
       "slug": "saturn-return-relationship-decisions",
       "title": "Saturn Return and Relationship Decisions",
       "category": "seasonal",
       "primary_keyword": "saturn return relationships",
       "angle": "adult choices and long-term realism",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-25 in editorial-posts-2026-10.js (commit 37052f46f081e86f5b7ce3a3c6f5378639d8ff74). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer verbatim; no health/financial/legal advice; relationship-decision content framed as reflection questions only, explicitly no recommendation to commit, stay, or leave in intro note and marriage FAQ; no outcome guarantees (return explicitly does not decide, cause breakups, or grade a relationship); no named real people; original text, SERP used for intent only (commit/define, restructure, or end; first vs second return; partners out of sync); astronomical fact distinguished from interpretation (orbital period and age windows checkable; meanings labelled traditional interpretation); facts sourced: Saturn orbital period ~29.5 years / NASA 29-year journey around the Sun (science.nasa.gov), return ages 27-30, 57-60 and late 80s, 2-3 year window with multiple exact crossings due to retrograde (astra-link.app Saturn return page, corroborated by angelicasparke.com and cathygnatekastrologer.com deepen-or-dissolve framing); no specific transit dates or degrees used, so no timezone-dependent claim; no affiliates; nothing personal; slug collision-checked against 167 published slugs (both slug formats across all post files); angle materially distinct from saturn-return-astrology-guide (whole-life audit: career, houses, Saturn sign — this post is relationship decisions only and links it as the general guide) and from saturn-in-synastry (synastry contact vs transit, distinction explained in FAQ); meta 150 chars, keyword 'saturn return relationships' front-loaded in description and Saturn Return at front of title; 4 internal links (saturn-return-astrology-guide, saturn-in-synastry, mutual-effort-synastry, seventh-house-partnership-axis — all verified against published slug list) + calculator; single H1 via template, 8 H2s, FAQ with 5 H3s; node --check passed on full merged file."
     },
     {
       "day": 26,
