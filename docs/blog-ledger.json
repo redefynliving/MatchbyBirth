@@ -358,14 +358,14 @@
     },
     {
       "day": 28,
-      "publish_date": "2026-08-02",
+      "publish_date": "2026-10-28",
       "slug": "relationship-timing-in-astrology",
       "title": "Relationship Timing in Astrology: When to Start, Define, or Wait",
       "category": "seasonal",
       "primary_keyword": "relationship timing",
       "angle": "practical timing for love",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-28 in editorial-posts-2026-10.js. Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer verbatim; no health/financial/legal advice and no relationship advice (post explicitly refuses to recommend starting, defining, ending, or waiting, and assigns those decisions to the people involved); no outcome guarantees (corrective section rejects soulmate-window claims and invented statistics); no named real people; original text, SERP used for intent only; facts sourced (transit definition: Cafe Astrology; secondary progressions day-for-a-year: Astrotheme and Kepler College; progressed Moon 27-28yr cycle and ~2.5yr per sign: Cafe Astrology; Jupiter orbital period ~11.9yr and Saturn ~29.4yr: NASA; Venus/Jupiter/Saturn transit-to-relationship-house readings: Astrology Addict); no dated transit claims, so no timezone-dependent claim published; no affiliates; nothing personal. Slug collision-checked against 168 unique live slugs; angle materially distinct from electional-astrology-relationships (choosing an event moment, linked and contrasted), venus-retrograde-dating, saturn-return-relationship-decisions, and jupiter-transits-relationship-growth (all single-cycle posts, linked). Meta 156 chars, keyword 'relationship timing' front-loaded in title and description. Internal links: 4 older posts + calculator. Single H1 via template, 8 H2s answering related questions, FAQ with 5 H3s. node --check passed before commit."
     },
     {
       "day": 29,
