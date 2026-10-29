@@ -369,14 +369,16 @@
     },
     {
       "day": 29,
-      "publish_date": "2026-08-03",
+      "publish_date": "2026-10-29",
       "slug": "first-date-energy-birth-chart",
       "title": "How to Read First-Date Energy in a Birth Chart",
       "category": "learn-astrology",
       "primary_keyword": "first date energy",
       "angle": "first-date impression clues",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-29 in editorial-posts-2026-10.js (commit cb978309). Pre-publish checklist passed all items: entertainment framing + exact SOUL.md disclaimer verbatim; no health/financial/legal advice and no relationship advice (post explicitly refuses to screen, accept/reject, or predict a date outcome, and assigns go/stay decisions to the person based on actual treatment); no outcome guarantees (corrective section rejects screening, fated instant-chemistry readings, and performing your rising sign); no named real people; original text, SERP used for intent only; facts sourced inline to named domains (Ascendant definition and ~2-hourly sign change: Almanac.com; Ascendant as first-impression filter: mypeaceguru.com; chart-ruler list: diffsense.com; Sun conjunct Ascendant strong first impression: Cafe Astrology; 5th house dating/flirtation vs 7th partnership: tarot.com and deluxeastrology.com; Venus attraction / Mars desire-pursuit split and Moon-to-Ascendant familiarity: affectionadventures.com and jyotishgher.com); astronomy (horizon sign change from Earth rotation) distinguished from interpretation; no transit dates used; no affiliates; nothing personal. Slug collision-checked against 169 unique live slugs; angle materially distinct from fifth-house-romance (house alone), rising-signs-compatibility-first-impressions (two-chart rising comparison, linked), and venus-mars-aspects-attraction (aspect-focused, linked). Meta 155 chars, keyword 'first date energy' front-loaded in title and description. Internal links: 4 older posts + calculator. Single H1 via template, 10 H2s answering related questions, FAQ with 5 H3s. node --check passed before commit. Pre-waiver 'show draft' note superseded by 2026-10-04 waiver; approval_policy.publish_only_after_user_approval=false verified intact.",
+      "published_date": "2026-10-29",
+      "commit": "cb97830934105d9e2475d47a2feb06264803e87f"
     },
     {
       "day": 30,
