@@ -382,14 +382,14 @@
     },
     {
       "day": 30,
-      "publish_date": "2026-08-04",
+      "publish_date": "2026-10-30",
       "slug": "long-term-potential-synastry",
       "title": "Long-Term Potential in a Synastry Chart: What to Look For",
       "category": "learn-astrology",
       "primary_keyword": "long-term potential",
       "angle": "staying power markers",
-      "status": "planned",
-      "notes": "Show draft to user before publishing live."
+      "status": "published",
+      "notes": "Published 2026-10-30 in editorial-posts-2026-10.js (commit 96c7ffe3f69bb384682c5097f700c68947c7cc24). Pre-publish checklist passed all Strict items: entertainment framing + exact disclaimer; no health/financial/legal advice and no relationship advice (explicit refusals of stay/leave/commit decisions); no outcome guarantees (corrective rejects scoreboard, destiny, and exit readings; repetition described as themes, never a promise a bond will last); no named real people; original text, SERP used for intent only; facts sourced (deluxeastrology.com, thalira.com, theinnerwheel.com, astrology.com, resources.review42.com, lookupthestars.com, insightfulpsychics.com, authorityastrology.com, 12andus.com, nextastrology.com); no dated astro claims in post; meta 154 chars, keyword front-loaded; slug collision checked against 171 published slugs, angle distinct from saturn-in-synastry, mutual-effort-synastry, hard-matches-still-last, chemistry-vs-compatibility; 4 internal links + calculator; node --check passed. Venus retrograde priority re-verified 2026-10-30: Oct 3 07:16 UTC 8d29 Scorpio station retrograde, Libra re-entry Oct 25, station direct Nov 14 00:28 UTC (Nov 13 evening US) 22d52 Libra, shadow Aug 31-Dec 15 (NASA JPL Horizons via astra-link.app; totallytarot.net) - live posts match, no correction owed. QUEUE EXHAUSTED: this was the final planned item (day 30 of 30); new queue requires Alijah's theme direction per 2026-10-29 approval - do not invent one."
     }
   ],
   "first_run_notes_2026_10_05": [
